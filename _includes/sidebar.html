@@ -1,26 +1,18 @@
 <div class="link-wrapper">
-  {% if site.platforms %}
-  <ul class="link">
-    {%- for platform in site.platforms %}
-    <li><a href="{{ platform.link }}">{{ platform.icon }}&nbsp;{{ platform.name }}</a></li>
-    {%- endfor %}
-  </ul>
-  {% endif %}
+    <style scoped>
+      ul.link a {
+        color:var(--clr-h1-and-bold);
+        text-decoration:none;
+      }
 
-  {% if site.navigation %}
-  <h3 class="sidebar-h3">Contents:</h3>
-  <ul class="content">
-  {%- for item in site.navigation %}
-    <li><a href="{{ item.link }}">{{ item.name }}</a>
-        {% if item.sublist %}
-        <ul class="sublist">
-            {%- for subitem in item.sublist %}
-            <li><a href="{{ subitem.link }}">{{ subitem.name }}</a></li>
-            {%- endfor %}
-        </ul>
-        {% endif %}
-    </li>
-  {%- endfor %}
-  </ul>
-  {% endif %}
-</div>
+      ul.link a:hover, a:focus {
+        color: var(--clr-a-text-hvr);
+      }
+    </style>
+    <ul class="link">
+      {%- for platform in site.sidebar %}
+      <!-- <li><a href="{{ platform.link }}"><i class="{{ platform.icon }}"></i> {{ platform.name }}</a></li> -->
+       <li><a href="{{ platform.link }}">{{ platform.icon }}&nbsp;{{ platform.name }}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
