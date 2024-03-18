@@ -19,7 +19,7 @@ locale                   : "ko-KR"
 title                    : "ruyshy's blog"
 title_separator          : "|"
 subtitle                 : ""
-name                     : "ruyshy2"
+name                     : "ruyshy"
 description              : ""
 url                      : "https://ruyshy.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -32,7 +32,7 @@ words_per_minute         : 200
 comments:
   provider               : "disqus"
   disqus:
-    shortname            : "ruyshy"
+    shortname            : "ruyshy2"
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
