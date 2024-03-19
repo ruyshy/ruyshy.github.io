@@ -75,7 +75,7 @@ google:
 # SEO Related
 google_site_verification :
 bing_site_verification   :
-naver_site_verification  :
+naver_site_verification  : "cfc9afd8290c20e4e8fdf556ceb77f5ab7f618a3"
 yandex_site_verification :
 baidu_site_verification  :
 
@@ -205,7 +205,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: "Asia/Seoul"
+#timezone: "Asia/Seoul"
 
 
 # Plugins (previously gems:)
