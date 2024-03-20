@@ -10,9 +10,9 @@ main:
 docs:
 - title: "Category"
   children:
-    - title: "coding"
-      url: /coding/
-      category: "coding"
+    - title: "OpenGLGame"
+      url: /OpenGLGame/
+      category: "OpenGLGame"
 
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
