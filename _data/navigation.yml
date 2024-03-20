@@ -8,12 +8,11 @@ main:
   url: /search/
 
 docs:
-- title: "title"
+- title: "Category"
   children:
-    - title: "category"
-      url: /categories/
-    - title: "Tag"
-      url: /tags/
+    - title: "OpenGLGame"
+      url: /OpenGLGame/
+      category: "OpenGLGame"
 
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
