@@ -4,7 +4,7 @@ title:  "OpenGLGame: Making the Window with Win32 API"
 permalink: /OpenGLGame/
 categories: OpenGLGame
 typora-root-url: ../
-tag: [C++, OpenGL, Game, OpenGLGame]
+tag: [C++, OpenGL, Game, OpenGLGame, OpenGL3D, Engine, Graphics]
 toc: true
 toc_sticky : true
 author_profile: false
@@ -22,7 +22,7 @@ sequence language : c++
 
 
 
-## Visual Studio New Project
+# Visual Studio New Project
 
 <img src="/images/categories-OpenGLGame-Making-the-Window-with-Win32-API/New Project-0.png" alt="New Project-0"  />
 
@@ -44,7 +44,7 @@ sequence language : c++
 
 
 
-## Visual Studio Project Setting
+# Visual Studio Project Setting
 
 ![Project-screen-0](/images/categories-OpenGLGame-Making-the-Window-with-Win32-API/Project-screen-0.png)
 
@@ -70,7 +70,7 @@ sequence language : c++
 
 위와 같이 OpenGLGame Project를 우 클릭해서 추가 항목에 새 항목을 눌러 생성하거나 단축키 Ctrl+Shift+A를 눌러 새 항목을 생성 해줍니다.
 
-## Code Contents
+# Code Contents
 
 ```c++
 int main()
@@ -133,6 +133,8 @@ OGL3D\include
 OGL3D\source
 
 
+
+## OWindow Class
 
 ### OWindow.h
 
@@ -363,7 +365,7 @@ default 에서는 기본 윈도우 프로시저를 반환한다.
 
 
 
-### OGame
+## OGame Class
 
 위에서 OWindow를 추가했던 것 처럼 OGame이라는 클래스를 생성하고, Game 폴더의 각각의 헤더 파일과 코드 파일을 이동해줍니다.
 
