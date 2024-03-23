@@ -138,6 +138,9 @@ OGL3D\source
 
 ### OWindow.h
 
+<details>
+<summary>toggle source code</summary>
+<div markdown="1">
 ```c++
 #pragma once
 class OWindow
@@ -153,10 +156,15 @@ private:
 
 };
 ```
-
+</div>
+</details>
 
 
 ### OWindow.cpp
+
+<details>
+<summary>toggle source code</summary>
+<div markdown="1">
 
 ```c++
 #include <OGL3D/Window/OWindow.h>
@@ -219,7 +227,8 @@ bool OWindow::isClosed()
 }
 
 ```
-
+</div>
+</details>
 
 
 위와 같이 포함 디렉터리 설정을 했다면
@@ -372,7 +381,9 @@ default 에서는 기본 윈도우 프로시저를 반환한다.
 
 
 ### OGame.h
-
+<details>
+<summary>toggle source code</summary>
+<div markdown="1">
 ```c++
 #pragma once
 #include <memory>
@@ -396,13 +407,17 @@ protected:
 ```c++
 #include <memory>
 ```
+</div>
+</details>
 
 memory 헤더를 사용한 이유는 unique_ptr 스마트 포인터를 사용하기 위함.
 
 
 
 ### OGame.cpp
-
+<details>
+<summary>toggle source code</summary>
+<div markdown="1">
 ```c++
 #include <OGL3D/Game/OGame.h>
 #include <OGL3D/Window/OWindow.h>
@@ -437,6 +452,8 @@ void OGame::quit()
 	m_isRunning = false;
 }
 ```
+</div>
+</details>
 
 
 
