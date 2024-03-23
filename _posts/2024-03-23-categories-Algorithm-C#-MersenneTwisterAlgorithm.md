@@ -12,6 +12,8 @@ sidebar:
     nav: docs
 ---
 
+# MersenneTwisterAlgorithm
+
 ```c#
 public class MersenneTwisterAlgorithm
 {

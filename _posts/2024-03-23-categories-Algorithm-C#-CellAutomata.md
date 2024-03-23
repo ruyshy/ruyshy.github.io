@@ -1,10 +1,10 @@
 ---
 layout: single
-title:  "C# CellAutomata Algorithm"
+title:  "Unity C# CellAutomata Algorithm"
 permalink: /CSharp/CellAutomata
 categories: C#
 typora-root-url: ../
-tag: [C#, CSharp, Algorithm, CellAutomata, CellAutomataAlgorithm, Random]
+tag: [C#, CSharp, Unity, Algorithm, CellAutomata, CellAutomataAlgorithm, Random]
 toc: true
 toc_sticky : true
 author_profile: false

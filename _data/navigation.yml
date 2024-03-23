@@ -8,11 +8,11 @@ main:
   url: /search/
 
 docs:
-  - title: "OpenGLGame"
+  - title: "OpenGL"
     children:
-      - title: "OpenGLGame"
-        url: /categories/#openglgame
-        category: "OpenGLGame"
+      - title: "OpenGL"
+        url: /categories/#openGL
+        category: "OpenGL"
   - title: "Algorithm"
     children:
       - title: "C++"
