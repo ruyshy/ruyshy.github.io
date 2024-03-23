@@ -8,11 +8,19 @@ main:
   url: /search/
 
 docs:
-- title: "Category"
-  children:
-    - title: "OpenGLGame"
-      url: /categories/#openglgame
-      category: "OpenGLGame"
+  - title: "OpenGLGame"
+    children:
+      - title: "OpenGLGame"
+        url: /categories/#openglgame
+        category: "OpenGLGame"
+  - title: "Algorithm"
+    children:
+      - title: "C++"
+        url: /categories/#c++
+        category: "C++"
+      - title: "C#"
+        url: /categories/#cshap
+        category: "C#"
 
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/

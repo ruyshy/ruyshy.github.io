@@ -16,6 +16,12 @@ sidebar:
 
 
 
+## OpenGL glad
+
+<https://glad.dav1d.de/>
+
+
+
 
 
 ## OWindow.h
