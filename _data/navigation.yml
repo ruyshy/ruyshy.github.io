@@ -11,7 +11,7 @@ docs:
 - title: "Category"
   children:
     - title: "OpenGLGame"
-      url: /OpenGLGame/
+      url: categories/#OpenGLGame/
       category: "OpenGLGame"
 
   # - title: "About"

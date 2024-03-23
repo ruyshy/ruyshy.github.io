@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "OpenGLGame: Making the Window with Win32 API"
-permalink: /OpenGLGame/
+permalink: /OpenGLGame/Making-the-Window-with-Win32-API
 categories: OpenGLGame
 typora-root-url: ../
 tag: [C++, OpenGL, Game, OpenGLGame, OpenGL3D, Engine, Graphics]
