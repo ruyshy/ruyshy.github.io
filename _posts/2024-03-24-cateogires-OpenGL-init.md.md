@@ -1,7 +1,7 @@
 ---
 layout: single
-title:  "OpenGL: Making OpenGL 3D Engine"
-permalink: /OpenGL/Making-OpenGL-3D-Engine
+title:  "OpenGL: Making OpenGL Window"
+permalink: /OpenGL/Making-OpenGL-Window
 categories: OpenGL
 typora-root-url: ../
 tag: [C++, OpenGL, Game, OpenGL, OpenGL3D, Engine, Graphics]
@@ -14,7 +14,9 @@ sidebar:
 
 # OpenGL Study
 
-개인 공부 저장용.
+
+
+## OpenGL Making Window
 
 
 
