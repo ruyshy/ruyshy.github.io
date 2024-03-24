@@ -1,7 +1,7 @@
 ---
 layout: single
-title:  "OpenGL: Making OpenGL Window"
-permalink: /OpenGL/Making-OpenGL-Window
+title:  "OpenGL: Triangle"
+permalink: /OpenGL/Triangle
 categories: OpenGL
 typora-root-url: ../
 tag: [C++, OpenGL, Game, OpenGL, OpenGL3D, Engine, Graphics]
