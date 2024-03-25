@@ -135,3 +135,6 @@ return 0;
 }
 ```
 
+다음 결과물 : 
+
+![image-20240326010337925](/images/2024-03-24-cateogires-OpenGL-init.md/image-20240326010337925.png)

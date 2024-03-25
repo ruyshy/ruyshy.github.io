@@ -164,3 +164,6 @@ return 0;
 }
 ```
 
+다음 결과물 :
+
+![image-20240326010437823](/images/2024-03-24-cateogires-OpenGL-triangle.md/image-20240326010437823.png)
