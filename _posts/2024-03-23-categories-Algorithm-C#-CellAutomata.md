@@ -23,26 +23,30 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
 #region Cellular Automata
+// 셀룰러 오토마타 기반의 맵 핸들링 클래스 정의    
 public class MapHandler
 {
+    // 필요한 변수들과 속성 정의
     System.Random rand = new System.Random();
 
-public int[,] Map;
+	public int[,] Map;
 
-public int MapWidth { get; set; }
-public int MapHeight { get; set; }
-public int PercentAreWalls { get; set; }
-
+	public int MapWidth { get; set; }
+	public int MapHeight { get; set; }
+	public int PercentAreWalls { get; set; }
+    
+// 기본 생성자: 맵의 기본값을 설정하고 랜덤하게 채움
 public MapHandler()
 {
     MapWidth = 50;
     MapHeight = 50;
     PercentAreWalls = 40;
-
-​    RandomFillMap();
+    RandomFillMap();
 }
-
+    
+// 맵을 생성하고 벽을 배치하는 로직
 public void MakeCaverns()
 {
     for (int column = 0, row = 0; row <= MapHeight - 1; row++)
@@ -53,33 +57,35 @@ public void MakeCaverns()
         }
     }
 }
-
+    
+// 벽을 배치할 지 여부를 결정하는 함수
 public int PlaceWallLogic(int x, int y)
 {
     int numWalls = GetAdjacentWalls(x, y, 1, 1);
 
-​    if (Map[x, y] == 1)
-​    {
-​        if (numWalls >= 4)
-​        {
-​            return 1;
-​        }
-​        if (numWalls < 2)
-​        {
-​            return 0;
-​        }
+    if (Map[x, y] == 1)
+    {
+        if (numWalls >= 4)
+        {
+            return 1;
+        }
+        if (numWalls < 2)
+        {
+            return 0;
+        }
 
-​    }
-​    else
-​    {
-​        if (numWalls >= 5)
-​        {
-​            return 1;
-​        }
-​    }
-​    return 0;
+    }
+    else
+    {
+        if (numWalls >= 5)
+        {
+            return 1;
+        }
+    }
+    return 0;
 }
-
+    
+// 주어진 셀 주변의 벽 개수를 계산하는 함수
 public int GetAdjacentWalls(int x, int y, int scopeX, int scopeY)
 {
     int startX = x - scopeX;
@@ -87,27 +93,27 @@ public int GetAdjacentWalls(int x, int y, int scopeX, int scopeY)
     int endX = x + scopeX;
     int endY = y + scopeY;
 
-​    int iX = startX;
-​    int iY = startY;
+    int iX = startX;
+    int iY = startY;
 
-​    int wallCounter = 0;
+    int wallCounter = 0;
 
-​    for (iY = startY; iY <= endY; iY++)
-​    {
-​        for (iX = startX; iX <= endX; iX++)
-​        {
-​            if (!(iX == x && iY == y))
-​            {
-​                if (IsWall(iX, iY))
-​                {
-​                    wallCounter += 1;
-​                }
-​            }
-​        }
-​    }
-​    return wallCounter;
+    for (iY = startY; iY <= endY; iY++)
+    {
+        for (iX = startX; iX <= endX; iX++)
+        {
+            if (!(iX == x && iY == y))
+            {
+                if (IsWall(iX, iY))
+                {
+                    wallCounter += 1;
+                }
+            }
+        }
+    }
+    return wallCounter;
 }
-
+// 벽이 있는지 판단하는 메서드
 bool IsWall(int x, int y)
 {
     if (IsOutOfBounds(x, y))
@@ -115,18 +121,18 @@ bool IsWall(int x, int y)
         return true;
     }
 
-​    if (Map[x, y] == 1)
-​    {
-​        return true;
-​    }
-
-​    if (Map[x, y] == 0)
-​    {
-​        return false;
-​    }
-​    return false;
+    if (Map[x, y] == 1)
+    {
+        return true;
+    }
+    if (Map[x, y] == 0)
+    {
+        return false;
+    }
+    return false;
 }
-
+    
+// 맵이 경계 밖인지 확인하는 메서드
 bool IsOutOfBounds(int x, int y)
 {
     if (x < 0 || y < 0)
@@ -140,25 +146,26 @@ bool IsOutOfBounds(int x, int y)
     return false;
 }
 
+// 맵을 문자열로 바꾸는 메서드 (디버깅 및 표시용)
 public int[,] MapToString()
 {
     int[,] returnInt = new int[100, 100];
 
-​    List<int> mapSymbols = new List<int>();
-​    mapSymbols.Add(0);
-​    mapSymbols.Add(1);
-​    //mapSymbols.Add(2);
+    List<int> mapSymbols = new List<int>();
+    mapSymbols.Add(0);
+    mapSymbols.Add(1);
+    //mapSymbols.Add(2);
 
-​    for (int column = 0, row = 0; row < MapHeight; row++)
-​    {
-​        for (column = 0; column < MapWidth; column++)
-​        {
-​            returnInt[column, row] += mapSymbols[Map[column, row]];
-​        }
-​    }
-​    return returnInt;
+    for (int column = 0, row = 0; row < MapHeight; row++)
+    {
+        for (column = 0; column < MapWidth; column++)
+        {
+            returnInt[column, row] += mapSymbols[Map[column, row]];
+        }
+    }
+    return returnInt;
 }
-
+// 맵을 비우는 메서드
 public void BlankMap()
 {
     for (int column = 0, row = 0; row < MapHeight; row++)
@@ -169,49 +176,50 @@ public void BlankMap()
         }
     }
 }
-
+// 맵을 무작위로 채우는 메서드
 public void RandomFillMap()
 {
     Map = new int[MapWidth, MapHeight];
 
-​    int mapMiddle = 0;
-​    for (int column = 0, row = 0; row < MapHeight; row++)
-​    {
-​        for (column = 0; column < MapWidth; column++)
-​        {
-​            if (column == 0)
-​            {
-​                Map[column, row] = 1;
-​            }
-​            else if (row == 0)
-​            {
-​                Map[column, row] = 1;
-​            }
-​            else if (column == MapWidth - 1)
-​            {
-​                Map[column, row] = 1;
-​            }
-​            else if (row == MapHeight - 1)
-​            {
-​                Map[column, row] = 1;
-​            }
-​            else
-​            {
-​                mapMiddle = (MapHeight / 2);
+    int mapMiddle = 0;
+    for (int column = 0, row = 0; row < MapHeight; row++)
+    {
+        for (column = 0; column < MapWidth; column++)
+        {
+            if (column == 0)
+            {
+                Map[column, row] = 1;
+            }
+            else if (row == 0)
+            {
+                Map[column, row] = 1;
+            }
+            else if (column == MapWidth - 1)
+            {
+                Map[column, row] = 1;
+            }
+            else if (row == MapHeight - 1)
+            {
+                Map[column, row] = 1;
+            }
+            else
+            {
+                mapMiddle = (MapHeight / 2);
 
-​                if (row == mapMiddle)
-​                {
-​                    Map[column, row] = 0;
-​                }
-​                else
-​                {
-​                    Map[column, row] = RandomPercent(PercentAreWalls);
-​                }
-​            }
-​        }
-​    }
+                if (row == mapMiddle)
+                {
+                    Map[column, row] = 0;
+                }
+                else
+                {
+                    Map[column, row] = RandomPercent(PercentAreWalls);
+                }
+            }
+        }
+    }
 }
-
+    
+// 특정 확률로 난수를 생성하는 메서드
 int RandomPercent(int percent)
 {
     if (percent >= rand.Next(1, 101))
@@ -220,7 +228,8 @@ int RandomPercent(int percent)
     }
     return 0;
 }
-
+    
+// 생성자 오버로딩 - 맵의 크기와 벽 비율을 지정
 public MapHandler(int mapWidth, int mapHeight, int[,] map, int percentWalls = 40)
 {
     this.MapWidth = mapWidth;
@@ -232,10 +241,12 @@ public MapHandler(int mapWidth, int mapHeight, int[,] map, int percentWalls = 40
 
 }
 #endregion
-
+    
+// MapCreate 클래스는 맵을 생성하고 관리하는 Unity 컴포넌트입니다.
 public class MapCreate : MonoBehaviour
 {
     #region MAP VAR
+    // 맵과 관련된 변수들을 선언합니다.
     MapHandler[] Map = new MapHandler[5];
     Vector3[,] mVMap = new Vector3[50, 50];
     int[,] mNum = new int[50, 50];
@@ -245,39 +256,41 @@ public class MapCreate : MonoBehaviour
     public int mMapNum = 0;
     #endregion
 
-#region OBJ VAR
-public GameObject Respon;
-private Vector3 vRespon;
+	#region OBJ VAR
+	// 게임 오브젝트와 관련된 변수들을 선언합니다.
+	public GameObject Respon;
+	private Vector3 vRespon;
 
-public GameObject Stairs;
-private Vector3 vStairs;
+	public GameObject Stairs;
+	private Vector3 vStairs;
 
-public GameObject ResEnemy;
-private Vector3 vResEnemy;
-#endregion
+	public GameObject ResEnemy;
+	private Vector3 vResEnemy;
+	#endregion
 
-#region MAP method
-public void MapSet()
-{
-    Map[0] = new MapHandler();
-    Map[0].PercentAreWalls = UnityEngine.Random.Range(40, 48);
-    Map[0].RandomFillMap();
-    Map[0].MakeCaverns();
+	#region MAP method
+    // 맵 생성 및 관리와 관련된 메서드를 선언합니다.    
+	public void MapSet()
+	{
+		Map[0] = new MapHandler();
+		Map[0].PercentAreWalls = UnityEngine.Random.Range(40, 48);
+		Map[0].RandomFillMap();
+		Map[0].MakeCaverns();
 
-​    for (int x = 0; x < 50; x++)
-​        for (int y = 0; y < 50; y++)
-​            mVMap[x, y] = new Vector3(x, y, 0);
+		for (int x = 0; x < 50; x++)
+			for (int y = 0; y < 50; y++)
+				mVMap[x, y] = new Vector3(x, y, 0);
 
-​    mNum = Map[0].MapToString();
+		mNum = Map[0].MapToString();
 
-​    StageObj[0] = Instantiate(mStage.gameObject, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+		StageObj[0] = Instantiate(mStage.gameObject, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
 
-​    for (int x = 0; x < 50; x++)
-​        for (int y = 0; y < 50; y++)
-​            Instantiate(Tile[mNum[x, y]].gameObject, mVMap[x, y], Quaternion.identity).transform.parent = StageObj[0].transform;
+		for (int x = 0; x < 50; x++)
+			for (int y = 0; y < 50; y++)
+				Instantiate(Tile[mNum[x, y]].gameObject, mVMap[x, y], 	Quaternion.identity).transform.parent = StageObj[0].transform;
 
-​    MapGCR2x2(ref vStairs, mNum, 2, -1, 4);
-​    Instantiate(Stairs, vStairs, Quaternion.identity).transform.parent = StageObj[0].transform;
+	MapGCR2x2(ref vStairs, mNum, 2, -1, 4);
+	Instantiate(Stairs, vStairs, Quaternion.identity).transform.parent = StageObj[0].transform;
 
 }
 
@@ -302,21 +315,22 @@ public void MapGCR2x2(ref Vector3 vM, int[,] T, int S = 2, float Y = -1.0f, int 
         int tMX = mX.Next(0 + (S / 2), 50 - (S / 2));
         int tMY = mY.Next(0 + (S / 2), 50 - (S / 2));
 
-​        for (int x = -(S / 2); x < (S / 2); x++)
-​            for (int y = -(S / 2); y < (S / 2); y++)
-​                w = T[tMX + x, tMY + y] == 0 ? w + 1 : -(S * S);
+        for (int x = -(S / 2); x < (S / 2); x++)
+            for (int y = -(S / 2); y < (S / 2); y++)
+                w = T[tMX + x, tMY + y] == 0 ? w + 1 : -(S * S);
 
-​        vM = new Vector3(tMX, tMY, Y);
-​        if (h > 7)
-​            S = 2;
-​        T[tMX, tMY] = nNS;
-​        Set = w < 1;
-​    }
+        vM = new Vector3(tMX, tMY, Y);
+        if (h > 7)
+            S = 2;
+        T[tMX, tMY] = nNS;
+        Set = w < 1;
+    }
 
 }
 #endregion
 
 #region IEnumerator
+// 코루틴을 사용한 비동기적 처리를 위한 메서드들을 선언합니다.
 IEnumerator RandTime()
 {
     yield return new WaitForSeconds(0.5f);

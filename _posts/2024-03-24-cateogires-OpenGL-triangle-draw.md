@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "OpenGL: Triangle-draw"
+title:  "OpenGL: Triangle Draw"
 permalink: /OpenGL/Triangle-draw
 categories: OpenGL
 typora-root-url: ../

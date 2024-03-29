@@ -98,16 +98,16 @@ using namespace glm;
 class VBO
 {
 public:
-	// Reference ID of the Vertex Buffer Object
+	// 버텍스 버퍼 객체(Vertex Buffer Object)의 참조 ID
 	GLuint ID;
-	// Constructor that generates a Vertex Buffer Object and links it to vertices
+	// 버텍스를 연결하여 버텍스 버퍼 객체를 생성하는 생성자
 	VBO(GLfloat* vertices, GLsizeiptr size);
 
-	// Binds the VBO
+	// VBO를 바인드하는 함수
 	void Bind();
-	// Unbinds the VBO
+	// VBO의 바인딩을 해제하는 함수
 	void Unbind();
-	// Deletes the VBO
+	// VBO를 삭제하는 함수
 	void Delete();
 
 };
@@ -123,30 +123,30 @@ public:
 #include "pch.h"
 #include "VBO.h"
 
-// Constructor that generates a Vertex Buffer Object and links it to vertices
+// 생성자: 버텍스 버퍼 객체(Vertex Buffer Object)를 생성하고 버텍스 데이터와 연결
 VBO::VBO(GLfloat* vertices, GLsizeiptr size)
 {
-	glGenBuffers(1, &ID);
-	glBindBuffer(GL_ARRAY_BUFFER, ID);
-	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
+	glGenBuffers(1, &ID);	// OpenGL에 버퍼 객체를 생성하라고 요청
+	glBindBuffer(GL_ARRAY_BUFFER, ID);	// 생성된 버퍼를 GL_ARRAY_BUFFER로 바인딩
+	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);	// 버텍스 데이터를 버퍼에 복사
 }
 
-// Binds the VBO
+// VBO를 바인드하는 메소드
 void VBO::Bind()
 {
-	glBindBuffer(GL_ARRAY_BUFFER, ID);
+	glBindBuffer(GL_ARRAY_BUFFER, ID);	// 해당 ID의 버퍼를 GL_ARRAY_BUFFER로 바인드
 }
 
-// Unbinds the VBO
+// VBO의 바인딩을 해제하는 메소드
 void VBO::Unbind()
 {
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);	// 어떤 버퍼도 GL_ARRAY_BUFFER에 바인드되지 않도록 설정
 }
 
-// Deletes the VBO
+// VBO를 삭제하는 메소드
 void VBO::Delete()
 {
-	glDeleteBuffers(1, &ID);
+	glDeleteBuffers(1, &ID);	// OpenGL에 해당 ID의 버퍼 객체를 삭제하라고 요청
 }
 ```
 
@@ -163,18 +163,18 @@ void VBO::Delete()
 class VAO
 {
 public:
-	// ID reference for the Vertex Array Object
+	// 버텍스 배열 객체(Vertex Array Object)의 참조 ID
 	GLuint ID;
-	// Constructor that generates a VAO ID
+	 // VAO ID를 생성하는 생성자
 	VAO();
 
-	// Links a VBO to the VAO using a certain layout
+	// 특정 레이아웃을 사용하여 VBO를 VAO에 연결하는 함수
 	void LinkVBO(VBO& VBO, GLuint layout);
-	// Binds the VAO
+	// VAO를 바인드하는 함수
 	void Bind();
-	// Unbinds the VAO
+	// VAO의 바인딩을 해제하는 함수
 	void Unbind();
-	// Deletes the VAO
+	// VAO를 삭제하는 함수
 	void Delete();
 
 };
@@ -189,37 +189,37 @@ public:
 #include "pch.h"
 #include "VAO.h"
 
-// Constructor that generates a VAO ID
+// VAO ID를 생성하는 생성자
 VAO::VAO()
 {
-	glGenVertexArrays(1, &ID);
+	glGenVertexArrays(1, &ID);	// OpenGL에 VAO ID를 생성하라고 요청
 }
 
-// Links a VBO to the VAO using a certain layout
+// 특정 레이아웃을 사용하여 VBO를 VAO에 연결하는 메서드
 void VAO::LinkVBO(VBO& VBO, GLuint layout)
 {
-	VBO.Bind();
-	glVertexAttribPointer(layout, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-	glEnableVertexAttribArray(layout);
-	VBO.Unbind();
+	VBO.Bind();	// VBO를 바인드
+	glVertexAttribPointer(layout, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);	// VBO의 데이터 구조를 정의
+	glEnableVertexAttribArray(layout);	// 해당 버텍스 속성을 활성화
+	VBO.Unbind();	// VBO의 바인딩을 해제
 }
 
-// Binds the VAO
+// VAO를 바인드하는 메서드
 void VAO::Bind()
 {
-	glBindVertexArray(ID);
+	glBindVertexArray(ID);	// OpenGL에 현재 VAO를 바인드하라고 요청
 }
 
-// Unbinds the VAO
+// VAO의 바인딩을 해제하는 메서드
 void VAO::Unbind()
 {
-	glBindVertexArray(0);
+	glBindVertexArray(0);	// 바인드된 VAO를 해제
 }
 
-// Deletes the VAO
+// VAO를 삭제하는 메서드
 void VAO::Delete()
 {
-	glDeleteVertexArrays(1, &ID);
+	glDeleteVertexArrays(1, &ID);	// OpenGL에 해당 ID의 VAO를 삭제하라고 요청
 }
 
 
@@ -236,16 +236,16 @@ void VAO::Delete()
 class EBO
 {
 public:
-	// ID reference of Elements Buffer Object
+	// 엘리먼트 버퍼 객체(Elements Buffer Object)의 참조 ID
 	GLuint ID;
-	// Constructor that generates a Elements Buffer Object and links it to indices
+	// 인덱스를 연결하여 엘리먼트 버퍼 객체를 생성하는 생성자
 	EBO(GLuint* indices, GLsizeiptr size);
 
-	// Binds the EBO
+	// EBO를 바인드하는 메서드
 	void Bind();
-	// Unbinds the EBO
+	// EBO의 바인딩을 해제하는 메서드
 	void Unbind();
-	// Deletes the EBO
+	// EBO를 삭제하는 메서드
 	void Delete();
 
 };
@@ -261,30 +261,30 @@ public:
 #include "pch.h"
 #include "EBO.h"
 
-// Constructor that generates a Elements Buffer Object and links it to indices
+// 인덱스를 연결하여 엘리먼트 버퍼 객체를 생성하는 생성자
 EBO::EBO(GLuint* indices, GLsizeiptr size)
 {
-	glGenBuffers(1, &ID);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, GL_STATIC_DRAW);
+	glGenBuffers(1, &ID);	// OpenGL에 버퍼 객체를 생성하라고 요청
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);	// 생성된 버퍼를 GL_ELEMENT_ARRAY_BUFFER로 바인딩
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, GL_STATIC_DRAW);	// 인덱스 데이터를 버퍼에 복사
 }
 
-// Binds the EBO
+// EBO를 바인드하는 메소드
 void EBO::Bind()
 {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);	// 해당 ID의 버퍼를 GL_ELEMENT_ARRAY_BUFFER로 바인드
 }
 
-// Unbinds the EBO
+// EBO의 바인딩을 해제하는 메소드
 void EBO::Unbind()
 {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);	// 어떤 버퍼도 GL_ELEMENT_ARRAY_BUFFER에 바인드되지 않도록 설정
 }
 
-// Deletes the EBO
+// EBO를 삭제하는 메소드
 void EBO::Delete()
 {
-	glDeleteBuffers(1, &ID);
+	glDeleteBuffers(1, &ID);	// OpenGL에 해당 ID의 버퍼 객체를 삭제하라고 요청
 }
 ```
 
@@ -292,7 +292,7 @@ void EBO::Delete()
 
 ## Shader.h
 
-```
+```c++
 #ifndef SHADER_CLASS_H
 #define SHADER_CLASS_H
 
@@ -303,19 +303,20 @@ void EBO::Delete()
 #include<iostream>
 #include<cerrno>
 
+// 파일로부터 셰이더 파일을 읽어오는 함수
 std::string get_file_contents(const char* filename);
 
 class Shader
 {
 public:
-	// Reference ID of the Shader Program
+	// 셰이더 프로그램의 참조 ID
 	GLuint ID;
-	// Constructor that build the Shader Program from 2 different shaders
+	// 2개의 다른 셰이더로부터 셰이더 프로그램을 생성하는 생성자 different shaders
 	Shader(const char* vertexFile, const char* fragmentFile);
 
-	// Activates the Shader Program
+	// 셰이더 프로그램을 활성화하는 메서드
 	void Activate();
-	// Deletes the Shader Program
+	// 셰이더 프로그램을 삭제하는 메서드
 	void Delete();
 
 };
@@ -330,7 +331,7 @@ public:
 #include "pch.h"
 #include "Shader.h"
 
-// Reads a text file and outputs a string with everything in the text file
+// 텍스트 파일을 읽고 파일의 모든 내용을 문자열로 반환하는 함수
 std::string get_file_contents(const char* filename)
 {
 	std::ifstream in(filename, std::ios::binary);
@@ -347,55 +348,55 @@ std::string get_file_contents(const char* filename)
 	throw(errno);
 }
 
-// Constructor that build the Shader Program from 2 different shaders
+// 2개의 다른 셰이더로부터 셰이더 프로그램을 구축하는 생성자
 Shader::Shader(const char* vertexFile, const char* fragmentFile)
 {
-	// Read vertexFile and fragmentFile and store the strings
+	// 버텍스 파일과 프래그먼트 파일을 읽고 문자열로 저장
 	std::string vertexCode = get_file_contents(vertexFile);
 	std::string fragmentCode = get_file_contents(fragmentFile);
 
-	// Convert the shader source strings into character arrays
+	// 셰이더 소스 문자열을 문자 배열로 변환
 	const char* vertexSource = vertexCode.c_str();
 	const char* fragmentSource = fragmentCode.c_str();
 	
-	// Create Vertex Shader Object and get its reference
+	// 버텍스 셰이더 객체를 생성하고 참조를 얻음
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	// Attach Vertex Shader source to the Vertex Shader Object
+	// 버텍스 셰이더 소스를 버텍스 셰이더 객체에 연결
 	glShaderSource(vertexShader, 1, &vertexSource, NULL);
-	// Compile the Vertex Shader into machine code
+	// 버텍스 셰이더를 기계 코드로 컴파일
 	glCompileShader(vertexShader);
 	
-	// Create Fragment Shader Object and get its reference
+	// 프래그먼트 셰이더 객체를 생성하고 참조를 얻음
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	// Attach Fragment Shader source to the Fragment Shader Object
+	// 프래그먼트 셰이더 소스를 프래그먼트 셰이더 객체에 연결
 	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
-	// Compile the Vertex Shader into machine code
+	// 프래그먼트 셰이더를 기계 코드로 컴파일
 	glCompileShader(fragmentShader);
 	
-	// Create Shader Program Object and get its reference
+	// 셰이더 프로그램 객체를 생성하고 참조를 얻음
 	ID = glCreateProgram();
-	// Attach the Vertex and Fragment Shaders to the Shader Program
+	// 버텍스 및 프래그먼트 셰이더를 셰이더 프로그램에 연결
 	glAttachShader(ID, vertexShader);
 	glAttachShader(ID, fragmentShader);
-	// Wrap-up/Link all the shaders together into the Shader Program
+	// 모든 셰이더를 셰이더 프로그램에 묶어 연결
 	glLinkProgram(ID);
 	
-	// Delete the now useless Vertex and Fragment Shader objects
+	// 더 이상 필요 없는 버텍스 및 프래그먼트 셰이더 객체를 삭제
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
 }
 
-// Activates the Shader Program
+// 셰이더 프로그램을 활성화하는 메소드
 void Shader::Activate()
 {
-	glUseProgram(ID);
+	glUseProgram(ID);	// OpenGL에 현재 셰이더 프로그램을 사용하라고 요청
 }
 
-// Deletes the Shader Program
+// 셰이더 프로그램을 삭제하는 메소드
 void Shader::Delete()
 {
-	glDeleteProgram(ID);
+	glDeleteProgram(ID);	// OpenGL에 해당 ID의 셰이더 프로그램을 삭제하라고 요청
 }
 ```
 
@@ -412,7 +413,7 @@ void Shader::Delete()
 #include"EBO.h"
 
 
-// Vertices coordinates
+// 버텍스 좌표
 GLfloat vertices[] =
 {
 	-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower left corner
@@ -423,7 +424,7 @@ GLfloat vertices[] =
 	0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f // Inner down
 };
 
-// Indices for vertices order
+// 버텍스의 순서를 정의하는 인덱스
 GLuint indices[] =
 {
 	0, 3, 5, // Lower left triangle
@@ -433,89 +434,85 @@ GLuint indices[] =
 
 int main()
 {
-	// Initialize GLFW
+	// GLFW 초기화
 	glfwInit();
 
-	// Tell GLFW what version of OpenGL we are using 
-	// In this case we are using OpenGL 3.3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	// Tell GLFW we are using the CORE profile
-	// So that means we only have the modern functions
+	// OpenGL 버전 설정 (여기서는 4.6)
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+	// GLFW에게 CORE 프로필을 사용하고 있다고 알림
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	
-	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-	GLFWwindow* window = glfwCreateWindow(800, 800, "YoutubeOpenGL", NULL, NULL);
-	// Error check if the window fails to create
+	// GLFWwindow 객체 생성
+	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", NULL, NULL);
+	// 윈도우 생성 실패 확인
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
 		return -1;
 	}
-	// Introduce the window into the current context
+	// 생성된 윈도우를 현재 컨텍스트로 설정
 	glfwMakeContextCurrent(window);
 	
-	//Load GLAD so it configures OpenGL
+	// GLAD를 로드하여 OpenGL 구성
 	gladLoadGL();
-	// Specify the viewport of OpenGL in the Window
-	// In this case the viewport goes from x = 0, y = 0, to x = 800, y = 800
+	// OpenGL의 뷰포트 설정
 	glViewport(0, 0, 800, 800);
 
 
 
-	// Generates Shader object using shaders defualt.vert and default.frag
+	// 셰이더 프로그램 생성
 	Shader shaderProgram("default.vert", "default.frag");
 
 
-
-	// Generates Vertex Array Object and binds it
+	// VAO, VBO, EBO 생성 및 바인딩
+	// VAO: 버텍스 어레이 객체
 	VAO VAO1;
 	VAO1.Bind();
 	
-	// Generates Vertex Buffer Object and links it to vertices
+	// VBO: 버텍스 버퍼 객체
 	VBO VBO1(vertices, sizeof(vertices));
-	// Generates Element Buffer Object and links it to indices
+	// EBO: 엘리먼트 버퍼 객체
 	EBO EBO1(indices, sizeof(indices));
 	
-	// Links VBO to VAO
+	// VBO를 VAO에 연결
 	VAO1.LinkVBO(VBO1, 0);
-	// Unbind all to prevent accidentally modifying them
+	// 모든 객체의 바인딩 해제
 	VAO1.Unbind();
 	VBO1.Unbind();
 	EBO1.Unbind();
 
 
 
-	// Main while loop
+	// 메인 루프
 	while (!glfwWindowShouldClose(window))
 	{
-		// Specify the color of the background
+		// 배경색 지정 및 버퍼 클리어
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
-		// Clean the back buffer and assign the new color to it
 		glClear(GL_COLOR_BUFFER_BIT);
-		// Tell OpenGL which Shader Program we want to use
+		// 사용할 셰이더 프로그램 활성화
 		shaderProgram.Activate();
-		// Bind the VAO so OpenGL knows to use it
+		// VAO 바인딩
 		VAO1.Bind();
-		// Draw primitives, number of indices, datatype of indices, index of indices
+		// 삼각형 그리기
 		glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
-		// Swap the back buffer with the front buffer
+		// 버퍼 스왑
 		glfwSwapBuffers(window);
-		// Take care of all GLFW events
+		// GLFW 이벤트 처리
 		glfwPollEvents();
 	}
 
 
 
-	// Delete all the objects we've created
+	// 모든 OpenGL 객체 삭제
 	VAO1.Delete();
 	VBO1.Delete();
 	EBO1.Delete();
 	shaderProgram.Delete();
-	// Delete window before ending the program
+	// GLFWwindow 객체 삭제
 	glfwDestroyWindow(window);
-	// Terminate GLFW before ending the program
+	// GLFW 종료
 	glfwTerminate();
 	return 0;
 
