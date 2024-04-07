@@ -39,7 +39,7 @@ int main()
 	// glfw 초기화
 	glfwInit();
 
-	// GLFW에게 우리가 사용하고 있는 OpenGL 버전 알림.
+	// GLFW에게 사용하고 있는 OpenGL 버전 알림.
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	// GLFW 코어 프로필 사용, 전체 기능 사용
