@@ -15,7 +15,7 @@ sidebar:
 
 # git
 
-<https://github.com/ruyshy/opengl_project>
+<https://github.com/ruyshy/opengl_project/tree/dodge_bullets>
 
 
 
