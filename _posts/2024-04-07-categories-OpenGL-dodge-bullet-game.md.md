@@ -23,7 +23,7 @@ sidebar:
 
 key : w, a, s, d
 
-천 개의 총알을 미리 생성하고, Quad Tree 로 충돌 체크,
+천 개의 총알을 미리 생성하고, AABB로 충돌 체크 TODO : Quad Tree 사용한 충돌 체크 구현
 
 space bar, enter를 눌러 게임을 시작.
 
