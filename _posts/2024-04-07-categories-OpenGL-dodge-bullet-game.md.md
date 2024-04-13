@@ -17,7 +17,7 @@ sidebar:
 
 <https://github.com/ruyshy/opengl_project/tree/dodge_bullets>
 
-![FPS_ 61, VSync_ On (Press F3 to toggle) 2024-04-09 오후 7_48_47](/images/2024-04-07-categories-OpenGL-dodge-bullet-game.md/FPS_ 61, VSync_ On (Press F3 to toggle) 2024-04-09 오후 7_48_47.png)
+![2024-04-07](/images/2024-04-07-categories-OpenGL-dodge-bullet-game.md/2024-04-07.png)
 
 # Context
 
