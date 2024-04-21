@@ -1,20 +1,16 @@
 ---
 layout: single
-title:  "OpenGL: Triangle Draw"
+title: "OpenGL: Triangle Draw"
 permalink: /OpenGL/Triangle-draw
 categories: OpenGL
 typora-root-url: ../
 tag: [C++, OpenGL, Game, OpenGL, OpenGL3D, Engine, Graphics]
 toc: true
-toc_sticky : true
+toc_sticky: true
 author_profile: false
 sidebar:
-    nav: docs
+  nav: docs
 ---
-
-
-
-
 
 # main.cpp
 

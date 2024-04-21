@@ -1,17 +1,18 @@
 ---
 layout: single
-title:  "OpenGL: Triangle Indices1"
+title: "OpenGL: Triangle Indices1"
 permalink: /OpenGL/Triangle-Indices1
 categories: OpenGL
 typora-root-url: ../
 tag: [C++, OpenGL, Game, OpenGL, OpenGL3D, Engine, Graphics]
 toc: true
-toc_sticky : true
+toc_sticky: true
 author_profile: false
 published: true
 sidebar:
-    nav: docs
+  nav: docs
 ---
+
 # main.cpp
 
 ```c++
@@ -44,7 +45,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	// GLFW 코어 프로필 사용, 전체 기능 사용
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	
+
 	// window 생성 800 * 600
 	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", NULL, NULL);
 	// window 생성 실패 여부 검사
@@ -56,7 +57,7 @@ int main()
 	}
 	// 윈도우 창을 Context에 알림
 	glfwMakeContextCurrent(window);
-	
+
 	//GLAD 불러오기
 	gladLoadGL();
 	// OpenGL 뷰포트 설정
@@ -70,14 +71,14 @@ int main()
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	// 기계어 코드 컴파일 / GPU
 	glCompileShader(vertexShader);
-	
+
 	// 프래그먼트 셰이더 생성, 참조해서 가져오기
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	// 프래그먼트 셰이더 코드 연결
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	// 기계어 코드 컴파일 / GPU
 	glCompileShader(fragmentShader);
-	
+
 	// 셰이더 프로그램 객체 생성
 	GLuint shaderProgram = glCreateProgram();
 	// 정점 셰이더와 프로그먼트 셰이더를 프로그램에 연결
@@ -85,7 +86,7 @@ int main()
 	glAttachShader(shaderProgram, fragmentShader);
 	// 모든 셰이더를 프로그램으로 연결
 	glLinkProgram(shaderProgram);
-	
+
 	// 이제 쓸모없는 셰이더 객체 삭제
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
@@ -102,7 +103,7 @@ int main()
 		0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f, // 안쪽 오른쪽
 		0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f // 안쪽 아래
 	};
-	
+
 	// 정점 순서
 	GLuint indices[] =
 	{
@@ -110,33 +111,33 @@ int main()
 		3, 2, 4,
 		5, 4, 1
 	};
-	
+
 	// artex Array Object 및 Vertex Buffer Object, Element Buffer Object 에 대한 컨테이너를 생성
 	GLuint VAO, VBO, EBO;
-	
+
 	// 각각 1개의 객체를 사용하여 VAO VBO 생성
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
-	
+
 	// VAO를 바인딩
 	glBindVertexArray(VAO);
-	
+
 	// VBO 바인딩
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	// VBO 정점 추가
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	
+
 	// GL_ELEMENT_ARRAY_BUFFER로 지정하여 EBO를 바인딩
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	// EBO에 인덱스를 추가
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-	
+
 	// OpenGL이 VBO를 읽는 방법을 알 수 있도록 Vertex 속성을 구성
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	// OpenGL이 이를 사용할 수 있도록 Vertex 속성을 활성화
 	glEnableVertexAttribArray(0);
-	
+
 	// VAO와 VBO를 실수로 수정하지 않도록 VBO와 VAO를 모두 0에 바인딩
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
@@ -176,9 +177,5 @@ int main()
 
 }
 ```
-
-
-
-
 
 ![image-20240326075605321](/images/2024-03-26- categories-OpenGL-triangle-indices/image-20240326075605321.png)
