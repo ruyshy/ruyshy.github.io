@@ -1,21 +1,17 @@
 ---
 layout: single
-title:  "OpenGL: Triangle Indices2"
+title: "OpenGL: Triangle Indices2"
 permalink: /OpenGL/Triangle-Indices2
 categories: OpenGL
 typora-root-url: ../
 tag: [C++, OpenGL, Game, OpenGL, OpenGL3D, Engine, Graphics]
 toc: true
-toc_sticky : true
+toc_sticky: true
 author_profile: false
 published: true
 sidebar:
-    nav: docs
+  nav: docs
 ---
-
-
-
-
 
 ## pch.h
 
@@ -64,7 +60,7 @@ using namespace std;
 using namespace glm;
 
 //#include <ft2build.h>
-//#include FT_FREETYPE_H  
+//#include FT_FREETYPE_H
 //#pragma comment(lib,"freetype.lib")
 //
 ////fmod
@@ -81,11 +77,7 @@ using namespace glm;
 
 ```
 
-
-
 이전에 작업 하던 VAO, VBO, EBO 와 Shader를 활용했지만 모든 코드가 main.cpp에 작성한걸 클래스로 만들어 분리
-
-
 
 ## VBO.h
 
@@ -114,8 +106,6 @@ public:
 
 #endif
 ```
-
-
 
 ## VBO.cpp
 
@@ -150,8 +140,6 @@ void VBO::Delete()
 }
 ```
 
-
-
 ## VAO.h
 
 ```c++
@@ -180,8 +168,6 @@ public:
 };
 #endif
 ```
-
-
 
 ## VAO.cpp
 
@@ -225,8 +211,6 @@ void VAO::Delete()
 
 ```
 
-
-
 ## EBO.h
 
 ```c++
@@ -252,8 +236,6 @@ public:
 
 #endif
 ```
-
-
 
 ## EAO.cpp
 
@@ -288,8 +270,6 @@ void EBO::Delete()
 }
 ```
 
-
-
 ## Shader.h
 
 ```c++
@@ -322,8 +302,6 @@ public:
 };
 #endif
 ```
-
-
 
 ## Shader.cpp
 
@@ -358,21 +336,21 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	// 셰이더 소스 문자열을 문자 배열로 변환
 	const char* vertexSource = vertexCode.c_str();
 	const char* fragmentSource = fragmentCode.c_str();
-	
+
 	// 버텍스 셰이더 객체를 생성하고 참조를 얻음
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	// 버텍스 셰이더 소스를 버텍스 셰이더 객체에 연결
 	glShaderSource(vertexShader, 1, &vertexSource, NULL);
 	// 버텍스 셰이더를 기계 코드로 컴파일
 	glCompileShader(vertexShader);
-	
+
 	// 프래그먼트 셰이더 객체를 생성하고 참조를 얻음
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	// 프래그먼트 셰이더 소스를 프래그먼트 셰이더 객체에 연결
 	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
 	// 프래그먼트 셰이더를 기계 코드로 컴파일
 	glCompileShader(fragmentShader);
-	
+
 	// 셰이더 프로그램 객체를 생성하고 참조를 얻음
 	ID = glCreateProgram();
 	// 버텍스 및 프래그먼트 셰이더를 셰이더 프로그램에 연결
@@ -380,7 +358,7 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	glAttachShader(ID, fragmentShader);
 	// 모든 셰이더를 셰이더 프로그램에 묶어 연결
 	glLinkProgram(ID);
-	
+
 	// 더 이상 필요 없는 버텍스 및 프래그먼트 셰이더 객체를 삭제
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
@@ -399,8 +377,6 @@ void Shader::Delete()
 	glDeleteProgram(ID);	// OpenGL에 해당 ID의 셰이더 프로그램을 삭제하라고 요청
 }
 ```
-
-
 
 ## main.cpp
 
@@ -442,7 +418,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	// GLFW에게 CORE 프로필을 사용하고 있다고 알림
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	
+
 	// GLFWwindow 객체 생성
 	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", NULL, NULL);
 	// 윈도우 생성 실패 확인
@@ -454,7 +430,7 @@ int main()
 	}
 	// 생성된 윈도우를 현재 컨텍스트로 설정
 	glfwMakeContextCurrent(window);
-	
+
 	// GLAD를 로드하여 OpenGL 구성
 	gladLoadGL();
 	// OpenGL의 뷰포트 설정
@@ -470,12 +446,12 @@ int main()
 	// VAO: 버텍스 어레이 객체
 	VAO VAO1;
 	VAO1.Bind();
-	
+
 	// VBO: 버텍스 버퍼 객체
 	VBO VBO1(vertices, sizeof(vertices));
 	// EBO: 엘리먼트 버퍼 객체
 	EBO EBO1(indices, sizeof(indices));
-	
+
 	// VBO를 VAO에 연결
 	VAO1.LinkVBO(VBO1, 0);
 	// 모든 객체의 바인딩 해제
@@ -519,8 +495,6 @@ int main()
 }
 ```
 
-
-
 아래 파일은 쉐이더의 텍스트 파일
 
 ## default.vert
@@ -544,4 +518,3 @@ void main()
    FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);
 }
 ```
-

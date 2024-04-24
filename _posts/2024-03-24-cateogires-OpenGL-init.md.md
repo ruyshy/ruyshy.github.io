@@ -1,24 +1,20 @@
 ---
 layout: single
-title:  "OpenGL: Making OpenGL Window"
+title: "OpenGL: Making OpenGL Window"
 permalink: /OpenGL/Making-OpenGL-Window
 categories: OpenGL
 typora-root-url: ../
 tag: [C++, OpenGL, Game, OpenGL, OpenGL3D, Engine, Graphics]
 toc: true
-toc_sticky : true
+toc_sticky: true
 author_profile: false
 sidebar:
-    nav: docs
+  nav: docs
 ---
 
 # OpenGL Study
 
-
-
 ## OpenGL Making Window
-
-
 
 ## GLFW
 
@@ -27,8 +23,6 @@ sidebar:
 ## GLAD
 
 <https://glad.dav1d.de/>
-
-
 
 ## pch.h
 
@@ -78,8 +72,6 @@ using namespace glm;
 #endif // !PCH_H
 ```
 
-
-
 ## main.cpp
 
 ```c++
@@ -89,12 +81,12 @@ int main()
 {
 	int majorVersion = 4;
 	int minorVersion = 6;
-	
+
 
 // glfw 초기화
 glfwInit();
 
-// glfw 버전 4.6 
+// glfw 버전 4.6
 glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 // 전체 기능 사용
@@ -135,6 +127,6 @@ return 0;
 }
 ```
 
-다음 결과물 : 
+다음 결과물 :
 
 ![image-20240326010337925](/images/2024-03-24-cateogires-OpenGL-init.md/image-20240326010337925.png)

@@ -1,17 +1,16 @@
 ---
 layout: single
-title:  "Unity C# CellAutomata Algorithm"
+title: "Unity C# CellAutomata Algorithm"
 permalink: /CSharp/CellAutomata
 categories: C#
 typora-root-url: ../
 tag: [C#, CSharp, Unity, Algorithm, CellAutomata, CellAutomataAlgorithm, Random]
 toc: true
-toc_sticky : true
+toc_sticky: true
 author_profile: false
 sidebar:
-    nav: docs
+  nav: docs
 ---
-
 
 # Unity C# CellAutomata Algorithm
 
@@ -25,7 +24,7 @@ using UnityEngine.Tilemaps;
 
 
 #region Cellular Automata
-// 셀룰러 오토마타 기반의 맵 핸들링 클래스 정의    
+// 셀룰러 오토마타 기반의 맵 핸들링 클래스 정의
 public class MapHandler
 {
     // 필요한 변수들과 속성 정의
@@ -36,7 +35,7 @@ public class MapHandler
 	public int MapWidth { get; set; }
 	public int MapHeight { get; set; }
 	public int PercentAreWalls { get; set; }
-    
+
 // 기본 생성자: 맵의 기본값을 설정하고 랜덤하게 채움
 public MapHandler()
 {
@@ -45,7 +44,7 @@ public MapHandler()
     PercentAreWalls = 40;
     RandomFillMap();
 }
-    
+
 // 맵을 생성하고 벽을 배치하는 로직
 public void MakeCaverns()
 {
@@ -57,7 +56,7 @@ public void MakeCaverns()
         }
     }
 }
-    
+
 // 벽을 배치할 지 여부를 결정하는 함수
 public int PlaceWallLogic(int x, int y)
 {
@@ -84,7 +83,7 @@ public int PlaceWallLogic(int x, int y)
     }
     return 0;
 }
-    
+
 // 주어진 셀 주변의 벽 개수를 계산하는 함수
 public int GetAdjacentWalls(int x, int y, int scopeX, int scopeY)
 {
@@ -131,7 +130,7 @@ bool IsWall(int x, int y)
     }
     return false;
 }
-    
+
 // 맵이 경계 밖인지 확인하는 메서드
 bool IsOutOfBounds(int x, int y)
 {
@@ -218,7 +217,7 @@ public void RandomFillMap()
         }
     }
 }
-    
+
 // 특정 확률로 난수를 생성하는 메서드
 int RandomPercent(int percent)
 {
@@ -228,7 +227,7 @@ int RandomPercent(int percent)
     }
     return 0;
 }
-    
+
 // 생성자 오버로딩 - 맵의 크기와 벽 비율을 지정
 public MapHandler(int mapWidth, int mapHeight, int[,] map, int percentWalls = 40)
 {
@@ -241,7 +240,7 @@ public MapHandler(int mapWidth, int mapHeight, int[,] map, int percentWalls = 40
 
 }
 #endregion
-    
+
 // MapCreate 클래스는 맵을 생성하고 관리하는 Unity 컴포넌트입니다.
 public class MapCreate : MonoBehaviour
 {
@@ -269,7 +268,7 @@ public class MapCreate : MonoBehaviour
 	#endregion
 
 	#region MAP method
-    // 맵 생성 및 관리와 관련된 메서드를 선언합니다.    
+    // 맵 생성 및 관리와 관련된 메서드를 선언합니다.
 	public void MapSet()
 	{
 		Map[0] = new MapHandler();
@@ -397,4 +396,3 @@ void Start()
 
 
 ```
-

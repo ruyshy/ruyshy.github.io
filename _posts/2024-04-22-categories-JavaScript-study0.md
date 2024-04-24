@@ -13,25 +13,17 @@ sidebar:
   nav: docs
 ---
 
-
-
-
-
 ## 변수 네이밍 규칙
 
 숫자로 시작할 수 없다.
 
- $, _ 제외한 기호는 사용할 수 없다.
+$, \_ 제외한 기호는 사용할 수 없다.
 
 예약어를 사용할 수 없다. (자세한 예약어는 레퍼런스 참조)
-
-
 
 ## 비교문
 
 보통 다른 언어에서는 ==(Eqal)을 두 개씩 사용하여 비교했지만, js 에서는 === 3개를 사용해 비교하는 것이 좋다. 마찬가지의 다른걸 비교할 때, !== 로사용하여 비교.
-
-
 
 ## 함수
 
@@ -56,17 +48,14 @@ let varC = (value) => {
 
 console.log(varC(10));
 
-function FuncD(param)
-{
-    console.log(param);
+function FuncD(param) {
+  console.log(param);
 }
 ```
 
 JavaScript 호이스팅은 **인터프리터가 코드를 실행하기 전에 함수, 변수, 클래스 또는 임포트(import)의 선언문을 해당 범위의 맨 위로 끌어올리는 것처럼 보이는 현상**을 뜻합니다.
 
 FuncD에 보시면 파라미터의 값을 선언할 때, C++, C언어 와 달리 parameter에 값 형식을 정해주지 않고 자유롭게 사용이 가능하다.
-
-
 
 ## 객체
 
@@ -140,12 +129,10 @@ person["sayHi"]();
 객체간에 (===) 비교 연산자는 기본적으로 참조값을 기준으로 이루어짐
 
 ```javascript
-JSON.stringify(object1) === JSON.stringify(object2)
+JSON.stringify(object1) === JSON.stringify(object2);
 ```
 
 객체를 비교할 때 JSON 내장함수 stringify 등 내장 함수를 사용하여 비교해야 함
-
-
 
 ## 배열, 객체 순회 방법
 
@@ -197,11 +184,7 @@ for (let key in person) {
   const value = person[key];
   console.log(key, value);
 }
-
-
 ```
-
-
 
 ## 배열 요소 조작
 
@@ -243,8 +226,6 @@ let arr7 = [3, 4];
 let concatedArr = arr6.concat(arr7);
 console.log(concatedArr);
 ```
-
-
 
 ## 배열,객체 순회2
 
@@ -293,23 +274,16 @@ let index = arr3.indexOf(20);
 // 모든 요소를 순회하면서, 콜백함수를 만족하는 그런
 // 특정 요소의 인덱스(위치)를 반환하는 메서드
 let arr4 = [1, 2, 3];
-const findedIndex = arr4.findIndex(
-  (item) => item === 999
-);
+const findedIndex = arr4.findIndex((item) => item === 999);
 
 console.log(findedIndex);
 
 // 5. find
 // 모든 요소를 순회하면서 콜백함수를 만족하는 요소를 찾는데, 요소를 그대로 반환
 
-let arr5 = [
-  { name: "아무개" },
-  { name: "홍길동" },
-];
+let arr5 = [{ name: "아무개" }, { name: "홍길동" }];
 
-const finded = arr5.find(
-  (item) => item.name === "아무개"
-);
+const finded = arr5.find((item) => item.name === "아무개");
 
 console.log(finded);
 ```
@@ -327,9 +301,7 @@ let arr1 = [
   { name: "홍길동", hobby: "독서" },
 ];
 
-const tennisPeople = arr1.filter(
-  (item) => item.hobby === "테니스"
-);
+const tennisPeople = arr1.filter((item) => item.hobby === "테니스");
 
 // 2. map
 // 배열의 모든 요소를 순회하면서, 각각 콜백함수를 실행하고 그 결과값들을 모아서 새로운 배열로 반환
@@ -368,8 +340,6 @@ const joined = arr6.join(" ");
 console.log(joined);
 ```
 
-
-
 ## Data 객체, 날짜
 
 ```javascript
@@ -404,8 +374,6 @@ console.log(date1.toDateString());
 console.log(date1.toLocaleString());
 ```
 
-
-
 ## 비동기 Promise
 
 ```javascript
@@ -421,7 +389,6 @@ function add10(num) {
         reject("num이 숫자가 아닙니다");
       }
     }, 2000);
-
   });
 
   return promise;
@@ -443,8 +410,6 @@ add10(0)
     console.log(error);
   });
 ```
-
-
 
 ## Async
 
@@ -475,4 +440,3 @@ async function printData() {
 
 printData();
 ```
-

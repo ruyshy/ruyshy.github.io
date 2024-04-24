@@ -1,15 +1,15 @@
 ---
 layout: single
-title:  "C# MersenneTwisterAlgorithm"
+title: "C# MersenneTwisterAlgorithm"
 permalink: /CSharp/MersenneTwisterAlgorithm
 categories: C#
 typora-root-url: ../
 tag: [C#, CSharp, Algorithm, MersenneTwisterAlgorithm, MersenneTwister, Random]
 toc: true
-toc_sticky : true
+toc_sticky: true
 author_profile: false
 sidebar:
-    nav: docs
+  nav: docs
 ---
 
 # MersenneTwisterAlgorithm
