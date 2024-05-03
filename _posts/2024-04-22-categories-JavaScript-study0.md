@@ -422,7 +422,7 @@ async function getData() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
-        name: "이정환",
+        name: "아무개",
         id: "winterlood",
       });
     }, 1500);
