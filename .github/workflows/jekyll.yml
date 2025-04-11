@@ -1,28 +1,28 @@
-name: Deploy Jekyll site to GitHub Pages
+name: Build and Deploy Jekyll site
 
 on:
   push:
-    branches:
-      - main  # 또는 네 블로그 코드가 있는 브랜치명
+    branches: ["master"]
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: 3.1
 
-      - name: Install Dependencies
+      - name: Install Bundler & Gems
         run: |
           gem install bundler
           bundle install
 
-      - name: Build Site
+      - name: Build site with Jekyll
         run: bundle exec jekyll build
 
       - name: Deploy to GitHub Pages
