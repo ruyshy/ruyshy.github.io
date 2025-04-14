@@ -311,26 +311,21 @@ compress_html:
     envs: development
 
 
-# Defaults
 defaults:
   # _posts
   - scope:
       path: ""
       type: posts
-      values:
-        sidebar:
-          nav: "main"
-
     values:
       layout: single
       author_profile: true
       read_time: true
       comments:
-      provider: "utterances"
-      utterances:
-        theme: "github-dark"
-        issue_term: "pathname"
-        label: "comment"
+        provider: "utterances"
+        utterances:
+          theme: "github-dark"
+          issue_term: "pathname"
+          label: "comment"
       share: true
       related: true
       sidebar:
@@ -344,7 +339,7 @@ defaults:
       layout: home
       author_profile: true
 
-  #assembly categories
+  # assembly categories
   - scope:
       path: "_posts/assembly"
       type: posts
@@ -353,11 +348,11 @@ defaults:
       sidebar:
         nav: "main"
 
-    #blog categories
+  # blog categories
   - scope:
       path: "_posts/blog"
       type: posts
     values:
       categories: [blog]
       sidebar:
-        nav: "main"      
+        nav: "main"
