@@ -4,9 +4,6 @@ date: 2025-04-14
 tags: [GitHubBlog]
 ---
 
-
-# GitHub Blog Category, Post 설정
-
 GitHub Blog 시작하기에 이어 다음 편입니다.
 
 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다.
