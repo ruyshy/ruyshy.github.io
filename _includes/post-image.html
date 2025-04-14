@@ -1,0 +1,6 @@
+<!-- post-image.html -->
+{% assign parts = page.path | split: '/' %}
+{% assign category = parts[1] %}
+{% assign slug = parts[2] | remove: '.md' %}
+
+<img src="/assets/images/{{ category }}/{{ slug }}/{{ include.name }}" alt="{{ include.alt | default: include.name }}" style="max-width: 100%;">

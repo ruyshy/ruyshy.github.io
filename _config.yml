@@ -228,7 +228,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Seoul
 
 
 # Pagination with jekyll-paginate
@@ -317,6 +317,10 @@ defaults:
   - scope:
       path: ""
       type: posts
+      values:
+        sidebar:
+          nav: "main"
+
     values:
       layout: single
       author_profile: true
@@ -326,5 +330,34 @@ defaults:
       utterances:
         theme: "github-dark"
         issue_term: "pathname"
+        label: "comment"
       share: true
       related: true
+      sidebar:
+        nav: "main"
+
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: home
+      author_profile: true
+
+  #assembly categories
+  - scope:
+      path: "_posts/assembly"
+      type: posts
+    values:
+      categories: [assembly]
+      sidebar:
+        nav: "main"
+
+    #blog categories
+  - scope:
+      path: "_posts/blog"
+      type: posts
+    values:
+      categories: [blog]
+      sidebar:
+        nav: "main"      
