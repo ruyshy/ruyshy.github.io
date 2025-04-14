@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source branch (ph-pages)
+      - name: Checkout source branch
         uses: actions/checkout@v3
         with:
           ref: ph-pages
