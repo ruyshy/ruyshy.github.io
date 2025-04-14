@@ -10,4 +10,10 @@ var store = [{
         "tags": ["GitHubBlog"],
         "url": "/blog/blog-start/",
         "teaser": null
+      },{
+        "title": "GitHub Blog Category, Post 설정",
+        "excerpt":"GitHub Blog Category, Post 설정 GitHub Blog 시작하기에 이어 다음 편입니다. 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다. https://www.markdownguide.org/ 해당 사이트에서 마크다운 문법을 알아볼 수 있습니다. GitHub Blog 카테고리 설정 ._data\\navigation.yml 부분입니다. main: - title: \"Quick-Start Guide\" url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ # - title: \"About\" # url: https://mmistakes.github.io/minimal-mistakes/about/ # -...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog-category_post_setting/",
+        "teaser": null
       }]
