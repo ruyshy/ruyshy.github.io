@@ -322,7 +322,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
       comments:
       provider: "utterances"
       utterances:
@@ -339,6 +338,7 @@ defaults:
       type: posts
     values:
       categories: [assembly]
+      author_profile: true
       sidebar:
         nav: "main"
 
@@ -347,5 +347,6 @@ defaults:
       type: posts
     values:
       categories: [blog]
+      author_profile: true
       sidebar:
         nav: "main"
