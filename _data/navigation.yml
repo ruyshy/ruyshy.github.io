@@ -5,8 +5,7 @@ main:
   - title: "category"
     url: /categories/
     children:
-      - title: "Assembly"
-        url: /categories/assembly/
-    children:
-      - title: "Blog"
-        url: /categories/blog/
+    - title: "Assembly"
+      url: /categories/assembly/
+    - title: "Blog"
+      url: /categories/blog/
