@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-14T15:05:35+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Category, Post 설정</title><link href="https://ruyshy.github.io/blog/blog-category_post_setting/" rel="alternate" type="text/html" title="GitHub Blog Category, Post 설정" /><published>2025-04-14T00:00:00+09:00</published><updated>2025-04-14T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-category_post_setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-category_post_setting/"><![CDATA[<h1 id="github-blog-category-post-설정">GitHub Blog Category, Post 설정</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-14T15:08:19+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Category, Post 설정</title><link href="https://ruyshy.github.io/blog/blog-category-post-setting/" rel="alternate" type="text/html" title="GitHub Blog Category, Post 설정" /><published>2025-04-14T00:00:00+09:00</published><updated>2025-04-14T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-category-post-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-category-post-setting/"><![CDATA[<h1 id="github-blog-category-post-설정">GitHub Blog Category, Post 설정</h1>
 
 <p>GitHub Blog 시작하기에 이어 다음 편입니다.</p>
 
@@ -364,7 +364,7 @@
 
 
 
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category_post_setting/"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
 
 </code></pre></div></div>
 
@@ -382,7 +382,7 @@
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category_post_setting/ImageName.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ImageName.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
 
 </code></pre></div></div>
 
@@ -426,7 +426,7 @@ github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category_post_setting/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.
@@ -438,7 +438,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category_post_setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
@@ -448,7 +448,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category_post_setting/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>코드 저장소의 이름을 바꿔줘야 합니다.
@@ -462,7 +462,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category_post_setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>다음으로 Code로 돌아가서 <span class="gs">**_config.yml**</span>을 클릭해서 해당 파일로 들어갑니다.
@@ -472,7 +472,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category_post_setting/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>화면과 같이 펜모양 버튼을 눌러, 하단 메뉴인 Edit in place를 클릭하여 편집 화면으로 넘어갑니다.
