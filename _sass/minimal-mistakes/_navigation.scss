@@ -438,7 +438,7 @@
 
 .nav__list .nav__items {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.0rem;
 
   a {
     color: inherit;
@@ -448,6 +448,12 @@
     margin-inline-start: -0.5em;
     padding-inline: 0.5em;
     font-weight: bold;
+  }
+
+  .count {
+    font-weight: normal;
+    color: #888;
+    margin-left: 5px;
   }
 
   @include breakpoint(max-width $large - 1px) {
@@ -486,15 +492,19 @@
   font-weight: bold;
 }
 
+.nav-divider {
+  border: none;
+  border-top: 1px solid $border-color;
+  margin: 0.75rem 1rem 0.5rem;
+}
+
 .nav__sub-title {
-  display: block;
-  margin: 0.5rem 0;
-  padding: 0.25rem 0;
-  font-family: $sans-serif-narrow;
+  padding-left: 1rem;
   font-size: $type-size-6;
-  font-weight: bold;
+  color: #aaa;
+  margin-bottom: 0.3rem;
   text-transform: uppercase;
-  border-bottom: 1px solid $border-color;
+  letter-spacing: 0.05em;
 }
 
 /*
