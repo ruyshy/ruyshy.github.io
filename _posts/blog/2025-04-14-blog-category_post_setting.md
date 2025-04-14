@@ -1,6 +1,6 @@
 ---
 title: "GitHub Blog Category, Post 설정"
-date: 2025-04-10
+date: 2025-04-14
 tags: [GitHubBlog]
 ---
 
