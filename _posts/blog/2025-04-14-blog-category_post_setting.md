@@ -1,10 +1,9 @@
-# GitHub Blog Category, Post 설정
+---
+title: "GitHub Blog Category, Post 설정"
+date: 2025-04-10
+tags: [GitHubBlog]
+---
 
-생성자: ruyshy2
-생성 일시: 2025년 4월 14일 오전 11:53
-카테고리: Blog, Git
-최종 편집자:: ruyshy2
-최종 업데이트 시간: 2025년 4월 14일 오후 2:23
 
 # GitHub Blog Category, Post 설정
 
