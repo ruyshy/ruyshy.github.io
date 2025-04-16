@@ -26,24 +26,24 @@ var store = [{
         "title": "GitHub Blog Start",
         "excerpt":"GitHub Blog #1 jekyll 테마 GitHub Blog 시작하기 Jekyll 기반 GitHub Blog 생성 https://mmistakes.github.io/minimal-mistakes/ 해당 Jekyll 테마 기준으로 작성 되어있습니다. 준비해야 할 준비물 개인 GitHub 계정 (https://github.com/) Visual Studio Code (https://code.visualstudio.com/) GitHub Blog 시작하기 https://github.com/mmistakes/minimal-mistakes github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다. 해당 사이트에서 위 오른쪽에...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog-start/",
+        "url": "/blog/blog1-start/",
         "teaser": null
       },{
         "title": "GitHub Blog Category, Post 설정",
         "excerpt":"GitHub Blog #2 GitHub Blog 시작하기에 이어 다음 편입니다. 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다. https://www.markdownguide.org/ 해당 사이트에서 마크다운 문법을 알아볼 수 있습니다. GitHub Blog 카테고리 설정 ._data\\navigation.yml 부분입니다. main: - title: \"Quick-Start Guide\" url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ # - title: \"About\" # url: https://mmistakes.github.io/minimal-mistakes/about/ # - title: \"Sample...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog-category-post-setting/",
-        "teaser": null
-      },{
-        "title": "GitHub Blog Build&Release 설정",
-        "excerpt":"GitHub Blog #4 GitHub에 Action기능 알아보기 GitHub Action 문서 : https://docs.github.com/ko/actions GitHub Actions는 CI/CD(지속적 통합/배포)를 위한 자동화된 작업(Workflow)을 만들어주는 도구입니다. 블로그 자동 배포와 코드 빌드 등의 작업을 자동으로 처리할 수 있습니다. GitHub Actions 개념 정리 용어 설명 Workflow 자동화 작업의 전체 흐름 (YAML 파일로 설정) Job Workflow 내에서 실행되는 작업...","categories": ["blog"],
-        "tags": ["GitHubBlog"],
-        "url": "/blog/blog-build-release-setting/",
+        "url": "/blog/blog2-category-post-setting/",
         "teaser": null
       },{
         "title": "GitHub Blog Local Server 설정",
         "excerpt":"GitHub Blog #3 필요한 준비물 https://www.ruby-lang.org/ko/ Gemfile source \"https://rubygems.org\" gem \"jekyll\", \"~&gt; 4.3.2\" gem \"minimal-mistakes-jekyll\" gem \"jekyll-feed\" gem \"jekyll-seo-tag\" gem \"jekyll-paginate\" gem \"jekyll-sitemap\" gem \"jekyll-include-cache\" gem \"tzinfo\" gem \"tzinfo-data\" Ruby를 설치해줍니다. 저의 경우 ruby3.3.8 의 버전을 설치하여 진행했습니다. Gemfile을 위와 같이 수정을 진행합니다. 자기 자신의 Github Blog가 있는 로컬 폴더에서...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog-local-server-setting/",
+        "url": "/blog/blog3-local-server-setting/",
+        "teaser": null
+      },{
+        "title": "GitHub Blog Build&Release 설정",
+        "excerpt":"GitHub Blog #4 GitHub에 Action기능 알아보기 GitHub Action 문서 : https://docs.github.com/ko/actions GitHub Actions는 CI/CD(지속적 통합/배포)를 위한 자동화된 작업(Workflow)을 만들어주는 도구입니다. 블로그 자동 배포와 코드 빌드 등의 작업을 자동으로 처리할 수 있습니다. GitHub Actions 개념 정리 용어 설명 Workflow 자동화 작업의 전체 흐름 (YAML 파일로 설정) Job Workflow 내에서 실행되는 작업...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog4-build-release-setting/",
         "teaser": null
       }]
