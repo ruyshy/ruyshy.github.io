@@ -1,4 +1,181 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-16T10:35:24+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Local Server 설정</title><link href="https://ruyshy.github.io/blog/blog-local-server-setting/" rel="alternate" type="text/html" title="GitHub Blog Local Server 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-local-server-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-local-server-setting/"><![CDATA[<h2 id="필요한-준비물">필요한 준비물</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-16T11:58:38+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Build&amp;amp;Release 설정</title><link href="https://ruyshy.github.io/blog/blog-build-release-setting/" rel="alternate" type="text/html" title="GitHub Blog Build&amp;amp;Release 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-build-release-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-build-release-setting/"><![CDATA[<p>GitHub Blog #4</p>
+
+<h2 id="github에-action기능-알아보기">GitHub에 Action기능 알아보기</h2>
+
+<p>GitHub Action 문서 : <a href="https://docs.github.com/ko/actions">https://docs.github.com/ko/actions</a></p>
+
+<p>GitHub Actions는 <strong>CI/CD(지속적 통합/배포)</strong>를 위한 자동화된 작업(Workflow)을 만들어주는 도구입니다. 블로그 자동 배포와 코드 빌드 등의 작업을 자동으로 처리할 수 있습니다.</p>
+
+<h2 id="github-actions-개념-정리">GitHub Actions 개념 정리</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>용어</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Workflow</strong></td>
+      <td>자동화 작업의 전체 흐름 (YAML 파일로 설정)</td>
+    </tr>
+    <tr>
+      <td><strong>Job</strong></td>
+      <td>Workflow 내에서 실행되는 작업 단위</td>
+    </tr>
+    <tr>
+      <td><strong>Step</strong></td>
+      <td>Job 안에서 실행되는 세부 명령</td>
+    </tr>
+    <tr>
+      <td><strong>Action</strong></td>
+      <td>재사용 가능한 명령 묶음 (남이 만든 것도 쉽게 사용 가능)</td>
+    </tr>
+    <tr>
+      <td><strong>Runner</strong></td>
+      <td>GitHub 서버 or 네가 직접 설정한 컴퓨터에서 실행됨</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="github-workflow-생성-방법">GitHub Workflow 생성 방법</h2>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/blog/2025-04-16-blog-build-release-setting/image1.png" alt="image1" style="max-width: 100%;" /></p>
+
+<p>Action을 생성할 저장소에 들어가 Action을 눌러 Action페이지로 이동합니다.</p>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/blog/2025-04-16-blog-build-release-setting/image2.png" alt="image2" style="max-width: 100%;" /></p>
+
+<p>New workflow을 눌러 .yml을 작성해줍니다.</p>
+
+<h2 id="현재-blog-workflow">현재 Blog Workflow</h2>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and Deploy from ph-pages to gh-pages</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ph-pages</span>
+
+<span class="na">permissions</span><span class="pi">:</span>
+  <span class="na">contents</span><span class="pi">:</span> <span class="s">write</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build-deploy</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout source branch</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ref</span><span class="pi">:</span> <span class="s">ph-pages</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Ruby</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.1'</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">gem install bundler</span>
+          <span class="s">bundle install</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Jekyll site</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to gh-pages</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">github_token</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">publish_branch</span><span class="pi">:</span> <span class="s">gh-pages</span>
+          <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./_site</span>
+</code></pre></div></div>
+
+<h2 id="코드-진행-설명">코드 진행 설명</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ph-pages</code> 브랜치에 푸시하면,</li>
+  <li>GitHub 서버에서 자동으로 Ruby 세팅하고,</li>
+  <li>Jekyll로 블로그 빌드하고,</li>
+  <li>결과물(<code class="language-plaintext highlighter-rouge">_site</code> 폴더)을 <code class="language-plaintext highlighter-rouge">gh-pages</code> 브랜치로 배포함.</li>
+</ul>
+
+<h2 id="사용할-수-있는-곳">사용할 수 있는 곳</h2>
+
+<ul>
+  <li>블로그 자동 배포 (Jekyll, Hugo 등)</li>
+  <li>코드 테스트 자동 실행</li>
+  <li>PR 올릴 때 자동으로 포맷 검사</li>
+  <li>릴리즈 빌드 자동 생성</li>
+  <li>정적 웹사이트 자동 배포 (React, Vue 등)</li>
+</ul>
+
+<h2 id="위-코드-주의점-및-확인해야-할-부분">위 코드 주의점 및 확인해야 할 부분</h2>
+
+<ol>
+  <li>워크플로우 파일 위치 확인
+    <ol>
+      <li>워크플로우 파일이 반드시 <strong><code class="language-plaintext highlighter-rouge">.github/workflows/</code></strong> 폴더 안에 있어야 함.</li>
+    </ol>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code> .github/
+   workflows/
+     deploy.yml ← 여기에 있어야 작동함!
+    
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">ph-pages</code> 브랜치로 <strong>푸시가 실제로 있었는지</strong>
+    <ol>
+      <li>GitHub Action은 <code class="language-plaintext highlighter-rouge">on: push</code> 조건에 따라 실행됩니다. <code class="language-plaintext highlighter-rouge">ph-pages</code> 브랜치에 push해야만 작동합니다.
+        <ol>
+          <li>GitHub Desktop을 사용하는 경우, 커밋 후에 <strong>실제로 push까지 완료했는지 확인</strong>하세요.</li>
+          <li>파일만 수정하고 커밋하지 않으면 작동하지 않습니다.</li>
+          <li><code class="language-plaintext highlighter-rouge">git push origin ph-pages</code> 명령이 실행된 상태여야 합니다.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">.jekyll-cache</code>나 <code class="language-plaintext highlighter-rouge">_site</code>가 Git으로 추적되고 있는지
+    <ol>
+      <li>이건 종종 문제가 되진 않지만, 만약 <code class="language-plaintext highlighter-rouge">_site/</code>가 git에 들어있고 <code class="language-plaintext highlighter-rouge">.gitignore</code> 안 되어 있으면 충돌 생길 수 있음.</li>
+      <li><code class="language-plaintext highlighter-rouge">.gitignore</code>에 아래 내용이 있는지 확인:</li>
+    </ol>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code> _site/
+ .jekyll-cache/
+</code></pre></div>    </div>
+  </li>
+  <li>GitHub 페이지 설정 확인
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">gh-pages</code> 브랜치를 페이지 소스로 지정했는지?
+        <ol>
+          <li><a href="https://github.com/%EC%82%AC%EC%9A%A9%EC%9E%90%EB%AA%85/%EB%A0%88%ED%8F%AC%EB%AA%85/settings/pages">Repository → Settings → Pages</a> 에 가서</li>
+          <li><strong>Source</strong>: <code class="language-plaintext highlighter-rouge">gh-pages</code> 선택</li>
+          <li><strong>Folder</strong>: <code class="language-plaintext highlighter-rouge">/ (root)</code> 또는 <code class="language-plaintext highlighter-rouge">/docs</code> 말고 <code class="language-plaintext highlighter-rouge">/</code>로 돼야 함</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<p>push 없이도 수동 실행 가능하게 하려면 아래처럼 수정:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ph-pages</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span> <span class="c1"># 수동 실행 가능</span>
+
+</code></pre></div></div>
+
+<p>GitHub UI 상에서 “Run workflow” 버튼이 생성됩니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #4]]></summary></entry><entry><title type="html">GitHub Blog Local Server 설정</title><link href="https://ruyshy.github.io/blog/blog-local-server-setting/" rel="alternate" type="text/html" title="GitHub Blog Local Server 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-local-server-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-local-server-setting/"><![CDATA[<p>GitHub Blog #3</p>
+
+<h2 id="필요한-준비물">필요한 준비물</h2>
 
 <p><a href="https://www.ruby-lang.org/ko/">https://www.ruby-lang.org/ko/</a></p>
 
@@ -38,7 +215,9 @@
 
 <p>서버를 켜둔 상태에서 서버를 종료하려면 ctrl-c를 눌러 y를 입력해 서버를 종료합니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">bundle exec jekyll clean</code> 해당 명령어로 이전 빌드 결과가 꼬였거나, 레이아웃, 설정파일 변경 후 캐시를 무시하고 새로 빌드하고싶을 때 사용합니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[필요한 준비물]]></summary></entry><entry><title type="html">GitHub Blog Category, Post 설정</title><link href="https://ruyshy.github.io/blog/blog-category-post-setting/" rel="alternate" type="text/html" title="GitHub Blog Category, Post 설정" /><published>2025-04-14T00:00:00+09:00</published><updated>2025-04-14T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-category-post-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-category-post-setting/"><![CDATA[<p>GitHub Blog 시작하기에 이어 다음 편입니다.</p>
+<p><code class="language-plaintext highlighter-rouge">bundle exec jekyll clean</code> 해당 명령어로 이전 빌드 결과가 꼬였거나, 레이아웃, 설정파일 변경 후 캐시를 무시하고 새로 빌드하고싶을 때 사용합니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #3]]></summary></entry><entry><title type="html">GitHub Blog Category, Post 설정</title><link href="https://ruyshy.github.io/blog/blog-category-post-setting/" rel="alternate" type="text/html" title="GitHub Blog Category, Post 설정" /><published>2025-04-14T00:00:00+09:00</published><updated>2025-04-14T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-category-post-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-category-post-setting/"><![CDATA[<p>GitHub Blog #2</p>
+
+<p>GitHub Blog 시작하기에 이어 다음 편입니다.</p>
 
 <p>이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다.</p>
 
@@ -218,7 +397,7 @@
       <span class="c">&lt;!-- All --&gt;</span>
       <span class="nt">&lt;li&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/"</span> <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(4)<span class="nt">&lt;/span&gt;</span>
+          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(5)<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
 
@@ -239,7 +418,7 @@
         <span class="nt">&lt;li&gt;</span>
           <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/blog/"</span>
              <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(3)<span class="nt">&lt;/span&gt;</span>
+            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(4)<span class="nt">&lt;/span&gt;</span>
           <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
       
@@ -420,7 +599,7 @@
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ImageName.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ImageName.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
 
 </code></pre></div></div>
 
@@ -476,7 +655,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
@@ -486,7 +665,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>코드 저장소의 이름을 바꿔줘야 합니다.
@@ -500,7 +679,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>다음으로 Code로 돌아가서 <span class="gs">**_config.yml**</span>을 클릭해서 해당 파일로 들어갑니다.
@@ -510,7 +689,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog-category-post-setting/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>화면과 같이 펜모양 버튼을 눌러, 하단 메뉴인 Edit in place를 클릭하여 편집 화면으로 넘어갑니다.
@@ -518,7 +697,9 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
  url                      : "<span class="p">[</span><span class="nv">https://ruyshy.github.io</span><span class="p">](</span><span class="sx">https://ruyshy.github.io/</span><span class="p">)</span>"
 
 제일 먼저 url을 위 형식처럼 변경해줍니다.
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog 시작하기에 이어 다음 편입니다.]]></summary></entry><entry><title type="html">GitHub Blog Start</title><link href="https://ruyshy.github.io/blog/blog-start/" rel="alternate" type="text/html" title="GitHub Blog Start" /><published>2025-04-10T00:00:00+09:00</published><updated>2025-04-10T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-start</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-start/"><![CDATA[<h1 id="jekyll-테마-github-blog-시작하기">jekyll 테마 GitHub Blog 시작하기</h1>
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #2]]></summary></entry><entry><title type="html">GitHub Blog Start</title><link href="https://ruyshy.github.io/blog/blog-start/" rel="alternate" type="text/html" title="GitHub Blog Start" /><published>2025-04-10T00:00:00+09:00</published><updated>2025-04-10T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-start</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-start/"><![CDATA[<p>GitHub Blog #1</p>
+
+<h1 id="jekyll-테마-github-blog-시작하기">jekyll 테마 GitHub Blog 시작하기</h1>
 
 <h2 id="jekyll-기반-github-blog-생성">Jekyll 기반 GitHub Blog 생성</h2>
 
@@ -539,7 +720,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 <p>github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다.
 <!-- post-image.html --></p>
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.</p>
 
@@ -547,13 +728,13 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.</p>
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>코드 저장소의 이름을 바꿔줘야 합니다.</p>
 
@@ -563,13 +744,13 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>다음으로 Code로 돌아가서 <strong>_config.yml</strong>을 클릭해서 해당 파일로 들어갑니다.</p>
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>화면과 같이 펜모양 버튼을 눌러, 하단 메뉴인 Edit in place를 클릭하여 편집 화면으로 넘어갑니다.</p>
 
@@ -579,7 +760,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/Editing_ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_11_22.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/Editing_ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_11_22.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>변경 후, Commit changes…를 눌러 편집 완료를 진행합니다.</p>
 
@@ -587,7 +768,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshys_blog_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_13_31.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshys_blog_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_13_31.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>다음으로 자신의 블로그 홈페이지(<a href="https://ruyshy.github.io/">https://ruyshy.github.io/</a>)를 들어가서 정상적으로 만들어졌는지 확인합니다. 제 블로그는 이미 작성이 되어있기 때문에 저와 다르게 보이긴 해도 블로그에 접속하실 수 있습니다.</p>
 
@@ -595,13 +776,13 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_06_32.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_06_32.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>다시 GitHub 저장소로 돌아와서 Add file 버튼을 눌러 Create new file을 선택합니다.</p>
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/New_File_at____ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_08_36.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/New_File_at____ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_08_36.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>입력 칸에 _posts/ 를 입력해 폴더를 만들어줍니다.</p>
 
@@ -617,7 +798,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/image.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/image.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>살짝 스크롤을 내려보면</p>
 
@@ -626,7 +807,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/image%201.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/image%201.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>입력 후, 아래 줄에 아무 텍스트나 적어서 테스트를 진행 해봅시다.</p>
 
@@ -634,25 +815,25 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/Workflow_runs__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_50_39.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/Workflow_runs__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_50_39.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>적용 후, Action을 눌러 가보면 맨위에 노란색으로 뜨며 해당 액션을 눌러서 보면</p>
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/image%202.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/image%202.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>이런식으로 빌드가 진행되고 있습니다.</p>
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/image%203.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/image%203.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>위 스크린샷처럼 완료가 되면 홈페이지에 적용이 됩니다.</p>
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/image%204.png" alt="mmistakes" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/image%204.png" alt="image" style="max-width: 100%;" /></p>
 
 <p>포스트 작성까지 진행이 되었습니다.</p>
 
@@ -660,7 +841,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-10-blog-start/image%205.png" alt="mmistakes" style="max-width: 100%;" /></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[jekyll 테마 GitHub Blog 시작하기]]></summary></entry><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-09T00:00:00+09:00</published><updated>2025-04-09T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly-start/"><![CDATA[<h1 id="assembly-시작하기">Assembly 시작하기</h1>
+<p><img src="/assets/images/blog/2025-04-10-blog-start/image%205.png" alt="image" style="max-width: 100%;" /></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #1]]></summary></entry><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-09T00:00:00+09:00</published><updated>2025-04-09T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly-start/"><![CDATA[<h1 id="assembly-시작하기">Assembly 시작하기</h1>
 
 <h2 id="어셈블리assembly란">어셈블리(Assembly)란?</h2>
 

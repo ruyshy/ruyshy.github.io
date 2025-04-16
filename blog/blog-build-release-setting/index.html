@@ -1,0 +1,745 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GitHub Blog Build&amp;Release 설정 - ruyshy blog</title>
+<meta name="description" content="GitHub Blog #4">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="GitHub Blog Build&amp;Release 설정">
+<meta property="og:url" content="https://ruyshy.github.io/blog/blog-build-release-setting/">
+
+
+  <meta property="og:description" content="GitHub Blog #4">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-04-16T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/blog/blog-build-release-setting/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+
+      <!-- HOME -->
+      <li>
+        <a href="/" class="nav__item">
+          Home
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <li><hr class="nav-divider"></li>
+
+      <!-- CATEGORY TITLE -->
+      <li class="nav__title">Category</li>
+
+      <!-- All -->
+      <li>
+        <a href="/categories/" class="nav__item">
+          - All <span class="count">(5)</span>
+        </a>
+      </li>
+
+      <!-- Dynamic categories -->
+      
+      
+        
+        
+        <li>
+          <a href="/categories/assembly/"
+             class="nav__item">
+            - Assembly <span class="count">(1)</span>
+          </a>
+        </li>
+      
+        
+        
+        <li>
+          <a href="/categories/blog/"
+             class="nav__item">
+            - Blog <span class="count">(4)</span>
+          </a>
+        </li>
+      
+
+    </ul>
+  </nav>
+
+</div>
+
+
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="GitHub Blog Build&amp;Release 설정">
+    <meta itemprop="description" content="GitHub Blog #4">
+    <meta itemprop="datePublished" content="2025-04-16T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/blog/blog-build-release-setting/" itemprop="url">GitHub Blog Build&amp;Release 설정
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>GitHub Blog #4</p>
+
+<h2 id="github에-action기능-알아보기">GitHub에 Action기능 알아보기</h2>
+
+<p>GitHub Action 문서 : <a href="https://docs.github.com/ko/actions">https://docs.github.com/ko/actions</a></p>
+
+<p>GitHub Actions는 <strong>CI/CD(지속적 통합/배포)</strong>를 위한 자동화된 작업(Workflow)을 만들어주는 도구입니다. 블로그 자동 배포와 코드 빌드 등의 작업을 자동으로 처리할 수 있습니다.</p>
+
+<h2 id="github-actions-개념-정리">GitHub Actions 개념 정리</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>용어</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Workflow</strong></td>
+      <td>자동화 작업의 전체 흐름 (YAML 파일로 설정)</td>
+    </tr>
+    <tr>
+      <td><strong>Job</strong></td>
+      <td>Workflow 내에서 실행되는 작업 단위</td>
+    </tr>
+    <tr>
+      <td><strong>Step</strong></td>
+      <td>Job 안에서 실행되는 세부 명령</td>
+    </tr>
+    <tr>
+      <td><strong>Action</strong></td>
+      <td>재사용 가능한 명령 묶음 (남이 만든 것도 쉽게 사용 가능)</td>
+    </tr>
+    <tr>
+      <td><strong>Runner</strong></td>
+      <td>GitHub 서버 or 네가 직접 설정한 컴퓨터에서 실행됨</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="github-workflow-생성-방법">GitHub Workflow 생성 방법</h2>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/blog/2025-04-16-blog-build-release-setting/image1.png" alt="image1" style="max-width: 100%;" /></p>
+
+<p>Action을 생성할 저장소에 들어가 Action을 눌러 Action페이지로 이동합니다.</p>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/blog/2025-04-16-blog-build-release-setting/image2.png" alt="image2" style="max-width: 100%;" /></p>
+
+<p>New workflow을 눌러 .yml을 작성해줍니다.</p>
+
+<h2 id="현재-blog-workflow">현재 Blog Workflow</h2>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and Deploy from ph-pages to gh-pages</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ph-pages</span>
+
+<span class="na">permissions</span><span class="pi">:</span>
+  <span class="na">contents</span><span class="pi">:</span> <span class="s">write</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build-deploy</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout source branch</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ref</span><span class="pi">:</span> <span class="s">ph-pages</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Ruby</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.1'</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">gem install bundler</span>
+          <span class="s">bundle install</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Jekyll site</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to gh-pages</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">github_token</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">publish_branch</span><span class="pi">:</span> <span class="s">gh-pages</span>
+          <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./_site</span>
+</code></pre></div></div>
+
+<h2 id="코드-진행-설명">코드 진행 설명</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ph-pages</code> 브랜치에 푸시하면,</li>
+  <li>GitHub 서버에서 자동으로 Ruby 세팅하고,</li>
+  <li>Jekyll로 블로그 빌드하고,</li>
+  <li>결과물(<code class="language-plaintext highlighter-rouge">_site</code> 폴더)을 <code class="language-plaintext highlighter-rouge">gh-pages</code> 브랜치로 배포함.</li>
+</ul>
+
+<h2 id="사용할-수-있는-곳">사용할 수 있는 곳</h2>
+
+<ul>
+  <li>블로그 자동 배포 (Jekyll, Hugo 등)</li>
+  <li>코드 테스트 자동 실행</li>
+  <li>PR 올릴 때 자동으로 포맷 검사</li>
+  <li>릴리즈 빌드 자동 생성</li>
+  <li>정적 웹사이트 자동 배포 (React, Vue 등)</li>
+</ul>
+
+<h2 id="위-코드-주의점-및-확인해야-할-부분">위 코드 주의점 및 확인해야 할 부분</h2>
+
+<ol>
+  <li>워크플로우 파일 위치 확인
+    <ol>
+      <li>워크플로우 파일이 반드시 <strong><code class="language-plaintext highlighter-rouge">.github/workflows/</code></strong> 폴더 안에 있어야 함.</li>
+    </ol>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code> .github/
+   workflows/
+     deploy.yml ← 여기에 있어야 작동함!
+    
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">ph-pages</code> 브랜치로 <strong>푸시가 실제로 있었는지</strong>
+    <ol>
+      <li>GitHub Action은 <code class="language-plaintext highlighter-rouge">on: push</code> 조건에 따라 실행됩니다. <code class="language-plaintext highlighter-rouge">ph-pages</code> 브랜치에 push해야만 작동합니다.
+        <ol>
+          <li>GitHub Desktop을 사용하는 경우, 커밋 후에 <strong>실제로 push까지 완료했는지 확인</strong>하세요.</li>
+          <li>파일만 수정하고 커밋하지 않으면 작동하지 않습니다.</li>
+          <li><code class="language-plaintext highlighter-rouge">git push origin ph-pages</code> 명령이 실행된 상태여야 합니다.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">.jekyll-cache</code>나 <code class="language-plaintext highlighter-rouge">_site</code>가 Git으로 추적되고 있는지
+    <ol>
+      <li>이건 종종 문제가 되진 않지만, 만약 <code class="language-plaintext highlighter-rouge">_site/</code>가 git에 들어있고 <code class="language-plaintext highlighter-rouge">.gitignore</code> 안 되어 있으면 충돌 생길 수 있음.</li>
+      <li><code class="language-plaintext highlighter-rouge">.gitignore</code>에 아래 내용이 있는지 확인:</li>
+    </ol>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code> _site/
+ .jekyll-cache/
+</code></pre></div>    </div>
+  </li>
+  <li>GitHub 페이지 설정 확인
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">gh-pages</code> 브랜치를 페이지 소스로 지정했는지?
+        <ol>
+          <li><a href="https://github.com/%EC%82%AC%EC%9A%A9%EC%9E%90%EB%AA%85/%EB%A0%88%ED%8F%AC%EB%AA%85/settings/pages">Repository → Settings → Pages</a> 에 가서</li>
+          <li><strong>Source</strong>: <code class="language-plaintext highlighter-rouge">gh-pages</code> 선택</li>
+          <li><strong>Folder</strong>: <code class="language-plaintext highlighter-rouge">/ (root)</code> 또는 <code class="language-plaintext highlighter-rouge">/docs</code> 말고 <code class="language-plaintext highlighter-rouge">/</code>로 돼야 함</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<p>push 없이도 수동 실행 가능하게 하려면 아래처럼 수정:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ph-pages</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span> <span class="c1"># 수동 실행 가능</span>
+
+</code></pre></div></div>
+
+<p>GitHub UI 상에서 “Run workflow” 버튼이 생성됩니다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#githubblog" class="page__taxonomy-item p-category" rel="tag">GitHubBlog</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Category: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-16T00:00:00+09:00">April 16, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">공유하기</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Build%26Release+%EC%84%A4%EC%A0%95%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog-build-release-setting%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog-build-release-setting%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog-build-release-setting/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/blog-category-post-setting/" class="pagination--pager" title="GitHub Blog Category, Post 설정">Prev</a>
+    
+    
+      <a href="/blog/blog-local-server-setting/" class="pagination--pager" title="GitHub Blog Local Server 설정">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">참고</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog-local-server-setting/" rel="permalink">GitHub Blog Local Server 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #3
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog-category-post-setting/" rel="permalink">GitHub Blog Category, Post 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #2
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog-start/" rel="permalink">GitHub Blog Start
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #1
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/assembly/assembly-start/" rel="permalink">Assembly Start
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assembly 시작하기
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
