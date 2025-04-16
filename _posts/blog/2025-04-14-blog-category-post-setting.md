@@ -4,6 +4,8 @@ date: 2025-04-14
 tags: [GitHubBlog]
 ---
 
+GitHub Blog #2
+
 GitHub Blog 시작하기에 이어 다음 편입니다.
 
 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다.
@@ -270,7 +272,7 @@ defaults:
 4. 예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.
 
 ```markdown
-{% include post-image.html name="ImageName.png" alt="mmistakes" %}
+{% include post-image1.html name="ImageName.png" alt="image" %}
 ```
 
 ### Image Path 설정 장점 요약
@@ -307,17 +309,17 @@ Visual Studio Code ([https://code.visualstudio.com/](https://code.visualstudio.c
 [https://github.com/mmistakes/minimal-mistakes](https://github.com/mmistakes/minimal-mistakes)
 
 github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다.
-{% include post-image.html name="mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png" alt="mmistakes" %}
+{% include post-image2.html name="mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png" alt="mmistakes" %}
 
 해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.
 
 Fork 버튼을 누르면 로그인하고있는 Github계정에 **repositories(저장소)** 에 똑같은 코드를 가진 Project(코드 저장소)가 생성이 됩니다.
 
-{% include post-image.html name="ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png" alt="mmistakes" %}
+{% include post-image3.html name="ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png" alt="image" %}
 
 Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
 
-{% include post-image.html name="General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png" alt="mmistakes" %}
+{% include post-image4.html name="General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png" alt="image" %}
 
 코드 저장소의 이름을 바꿔줘야 합니다.
 
@@ -325,11 +327,11 @@ Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이
 
 저의 경우, 제 닉네임은 ruyshy 이므로 [ruyshy.github.io](http://ruyshy.github.io) 로 설정해줍니다.
 
-{% include post-image.html name="ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png" alt="mmistakes" %}
+{% include post-image5.html name="ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png" alt="image" %}
 
 다음으로 Code로 돌아가서 **_config.yml**을 클릭해서 해당 파일로 들어갑니다.
 
-{% include post-image.html name="ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png" alt="mmistakes" %}
+{% include post-image6.html name="ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png" alt="image" %}
 
 화면과 같이 펜모양 버튼을 눌러, 하단 메뉴인 Edit in place를 클릭하여 편집 화면으로 넘어갑니다.
 

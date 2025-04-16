@@ -4,6 +4,8 @@ date: 2025-04-16
 tags: [GitHubBlog]
 ---
 
+GitHub Blog #3
+
 ## 필요한 준비물
 
 [https://www.ruby-lang.org/ko/](https://www.ruby-lang.org/ko/)
@@ -33,7 +35,7 @@ Ruby를 설치해줍니다. 저의 경우 ruby3.3.8 의 버전을 설치하여 �
 5. `bundle exec jekyll serve` 을 통해 Local Server를 열어줍니다.
 6. 정상적으로 작동했으면 아래와 같은 그림의 텍스트가 cmd에서 실행됩니다.
     
-{% include post-image.html name="image.png" alt="image" %}
+{% include post-image1.html name="image.png" alt="image" %}
     
 7. Server address : [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 에 접속하여 실시간으로 수정을 진행하며 확인할 수 있습니다.
 
