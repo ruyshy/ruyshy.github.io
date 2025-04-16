@@ -328,6 +328,7 @@ defaults:
         theme: "github-dark"
         issue_term: "pathname"
         label: "comment"
+        repo: "ruyshy/ruyshy.github.io"
       share: true
       related: true
       sidebar:
