@@ -116,7 +116,7 @@ jobs:
     _site/
     .jekyll-cache/
     ```
-    
+
 4. GitHub 페이지 설정 확인
     1. `gh-pages` 브랜치를 페이지 소스로 지정했는지?
         1. [Repository → Settings → Pages](https://github.com/%EC%82%AC%EC%9A%A9%EC%9E%90%EB%AA%85/%EB%A0%88%ED%8F%AC%EB%AA%85/settings/pages) 에 가서
@@ -133,5 +133,4 @@ on:
   workflow_dispatch: # 수동 실행 가능
 
 ```
-
 GitHub UI 상에서 "Run workflow" 버튼이 생성됩니다.
