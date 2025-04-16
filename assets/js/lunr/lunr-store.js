@@ -46,4 +46,10 @@ var store = [{
         "tags": ["GitHubBlog"],
         "url": "/blog/blog4-build-release-setting/",
         "teaser": null
+      },{
+        "title": "GitHub Blog 댓글 설정",
+        "excerpt":"GitHub Blog #5 jekyll 테마(minimal-mistakes) 기준으로 작성되었습니다 1. GitHub 저장소 설정 Utterances는 댓글을 저장할 issue 기반 저장소가 필요합니다. 예: your-username/your-blog-repo 이 저장소의 issue 탭이 열려 있어야 함 댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 repo를 만들어도 됨. 2. Utterances 앱 설치 https://utteranc.es/ 접속 후 아래 순서대로 진행: Install...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog5-comment-setting/",
+        "teaser": null
       }]
