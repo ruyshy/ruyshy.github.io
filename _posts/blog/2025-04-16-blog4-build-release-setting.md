@@ -2,7 +2,6 @@
 title: "GitHub Blog Build&Release 설정"
 date: 2025-04-16
 tags: [GitHubBlog]
-comments: true
 ---
 
 GitHub Blog #4
