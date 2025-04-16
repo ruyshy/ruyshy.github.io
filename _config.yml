@@ -324,8 +324,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      comments: true
-      provider: "utterances"
       share: true
       related: true
       sidebar:
