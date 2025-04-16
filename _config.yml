@@ -322,7 +322,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      comments:
+      comments: true
       provider: "utterances"
       utterances:
         theme: "github-dark"
