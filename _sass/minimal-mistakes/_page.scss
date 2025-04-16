@@ -427,12 +427,14 @@ body {
 }
 
 .page__comments-title {
-  margin-top: 2rem;
-  margin-bottom: 10px;
-  padding-top: 2rem;
-  font-size: $type-size-6;
-  border-top: 1px solid $border-color;
-  text-transform: uppercase;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0rem;
+}
+
+#utterances-comments {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .page__comments-form {
