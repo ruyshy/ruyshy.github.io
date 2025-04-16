@@ -24,11 +24,11 @@ GitHub Actions는 **CI/CD(지속적 통합/배포)**를 위한 자동화된 작�
 
 ## GitHub Workflow 생성 방법
 
-{% include post-image1.html name="image1.png" alt="image1" %}
+{% include post-image.html name="image1.png" alt="image1" %}
 
 Action을 생성할 저장소에 들어가 Action을 눌러 Action페이지로 이동합니다.
 
-{% include post-image2.html name="image2.png" alt="image2" %}
+{% include post-image.html name="image2.png" alt="image2" %}
 
 New workflow을 눌러 .yml을 작성해줍니다.
 
