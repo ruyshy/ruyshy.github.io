@@ -4,7 +4,7 @@ date: 2025-04-16
 tags: [GitHubBlog]
 ---
 
-GitHub Blog #4
+GitHub Blog #3
 
 ## GitHub에 Action기능 알아보기
 

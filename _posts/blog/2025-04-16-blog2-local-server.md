@@ -4,7 +4,7 @@ date: 2025-04-16
 tags: [GitHubBlog]
 ---
 
-GitHub Blog #3
+GitHub Blog #2
 
 ## 필요한 준비물
 

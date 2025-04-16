@@ -1,10 +1,10 @@
 ---
 title: "GitHub Blog Category, Post 설정"
-date: 2025-04-14
+date: 2025-04-16
 tags: [GitHubBlog]
 ---
 
-GitHub Blog #2
+GitHub Blog #4
 
 GitHub Blog 시작하기에 이어 다음 편입니다.
 
