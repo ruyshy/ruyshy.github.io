@@ -29,27 +29,27 @@ var store = [{
         "url": "/blog/blog1-start/",
         "teaser": null
       },{
-        "title": "GitHub Blog Category, Post 설정",
-        "excerpt":"GitHub Blog #2 GitHub Blog 시작하기에 이어 다음 편입니다. 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다. https://www.markdownguide.org/ 해당 사이트에서 마크다운 문법을 알아볼 수 있습니다. GitHub Blog 카테고리 설정 ._data\\navigation.yml 부분입니다. main: - title: \"Quick-Start Guide\" url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ # - title: \"About\" # url: https://mmistakes.github.io/minimal-mistakes/about/ # - title: \"Sample...","categories": ["blog"],
-        "tags": ["GitHubBlog"],
-        "url": "/blog/blog2-category-post-setting/",
-        "teaser": null
-      },{
         "title": "GitHub Blog Local Server 설정",
-        "excerpt":"GitHub Blog #3 필요한 준비물 https://www.ruby-lang.org/ko/ Gemfile source \"https://rubygems.org\" gem \"jekyll\", \"~&gt; 4.3.2\" gem \"minimal-mistakes-jekyll\" gem \"jekyll-feed\" gem \"jekyll-seo-tag\" gem \"jekyll-paginate\" gem \"jekyll-sitemap\" gem \"jekyll-include-cache\" gem \"tzinfo\" gem \"tzinfo-data\" Ruby를 설치해줍니다. 저의 경우 ruby3.3.8 의 버전을 설치하여 진행했습니다. Gemfile을 위와 같이 수정을 진행합니다. 자기 자신의 Github Blog가 있는 로컬 폴더에서...","categories": ["blog"],
+        "excerpt":"GitHub Blog #2 필요한 준비물 https://www.ruby-lang.org/ko/ Gemfile source \"https://rubygems.org\" gem \"jekyll\", \"~&gt; 4.3.2\" gem \"minimal-mistakes-jekyll\" gem \"jekyll-feed\" gem \"jekyll-seo-tag\" gem \"jekyll-paginate\" gem \"jekyll-sitemap\" gem \"jekyll-include-cache\" gem \"tzinfo\" gem \"tzinfo-data\" Ruby를 설치해줍니다. 저의 경우 ruby3.3.8 의 버전을 설치하여 진행했습니다. Gemfile을 위와 같이 수정을 진행합니다. 자기 자신의 Github Blog가 있는 로컬 폴더에서...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog3-local-server-setting/",
+        "url": "/blog/blog2-local-server/",
         "teaser": null
       },{
         "title": "GitHub Blog Build&Release 설정",
-        "excerpt":"GitHub Blog #4 GitHub에 Action기능 알아보기 GitHub Action 문서 : https://docs.github.com/ko/actions GitHub Actions는 CI/CD(지속적 통합/배포)를 위한 자동화된 작업(Workflow)을 만들어주는 도구입니다. 블로그 자동 배포와 코드 빌드 등의 작업을 자동으로 처리할 수 있습니다. GitHub Actions 개념 정리 용어 설명 Workflow 자동화 작업의 전체 흐름 (YAML 파일로 설정) Job Workflow 내에서 실행되는 작업...","categories": ["blog"],
+        "excerpt":"GitHub Blog #3 GitHub에 Action기능 알아보기 GitHub Action 문서 : https://docs.github.com/ko/actions GitHub Actions는 CI/CD(지속적 통합/배포)를 위한 자동화된 작업(Workflow)을 만들어주는 도구입니다. 블로그 자동 배포와 코드 빌드 등의 작업을 자동으로 처리할 수 있습니다. GitHub Actions 개념 정리 용어 설명 Workflow 자동화 작업의 전체 흐름 (YAML 파일로 설정) Job Workflow 내에서 실행되는 작업...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog4-build-release-setting/",
+        "url": "/blog/blog3-build-release/",
+        "teaser": null
+      },{
+        "title": "GitHub Blog Category, Post 설정",
+        "excerpt":"GitHub Blog #4 GitHub Blog 시작하기에 이어 다음 편입니다. 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다. https://www.markdownguide.org/ 해당 사이트에서 마크다운 문법을 알아볼 수 있습니다. GitHub Blog 카테고리 설정 ._data\\navigation.yml 부분입니다. main: - title: \"Quick-Start Guide\" url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ # - title: \"About\" # url: https://mmistakes.github.io/minimal-mistakes/about/ # - title: \"Sample...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog4-category-post/",
         "teaser": null
       },{
         "title": "GitHub Blog 댓글 설정",
         "excerpt":"GitHub Blog #5 jekyll 테마(minimal-mistakes) 기준으로 작성되었습니다 1. GitHub 저장소 설정 Utterances는 댓글을 저장할 issue 기반 저장소가 필요합니다. 예: your-username/your-blog-repo 이 저장소의 issue 탭이 열려 있어야 함 댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 repo를 만들어도 됨. 2. Utterances 앱 설치 https://utteranc.es/ 접속 후 아래 순서대로 진행: Install...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog5-comment-setting/",
+        "url": "/blog/blog5-comment/",
         "teaser": null
       }]

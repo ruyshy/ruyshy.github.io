@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-16T15:06:06+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Local Server 설정</title><link href="https://ruyshy.github.io/blog/blog3-local-server-setting/" rel="alternate" type="text/html" title="GitHub Blog Local Server 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog3-local-server-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog3-local-server-setting/"><![CDATA[<p>GitHub Blog #3</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-16T16:28:42+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Local Server 설정</title><link href="https://ruyshy.github.io/blog/blog2-local-server/" rel="alternate" type="text/html" title="GitHub Blog Local Server 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog2-local-server</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog2-local-server/"><![CDATA[<p>GitHub Blog #2</p>
 
 <h2 id="필요한-준비물">필요한 준비물</h2>
 
@@ -32,7 +32,7 @@
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-16-blog3-local-server-setting/image.png" alt="image" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-16-blog2-local-server/image.png" alt="image" style="max-width: 100%;" /></p>
 
 <ol>
   <li>Server address : <a href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a> 에 접속하여 실시간으로 수정을 진행하며 확인할 수 있습니다.</li>
@@ -40,7 +40,7 @@
 
 <p>서버를 켜둔 상태에서 서버를 종료하려면 ctrl-c를 눌러 y를 입력해 서버를 종료합니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">bundle exec jekyll clean</code> 해당 명령어로 이전 빌드 결과가 꼬였거나, 레이아웃, 설정파일 변경 후 캐시를 무시하고 새로 빌드하고싶을 때 사용합니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #3]]></summary></entry><entry><title type="html">GitHub Blog Build&amp;amp;Release 설정</title><link href="https://ruyshy.github.io/blog/blog4-build-release-setting/" rel="alternate" type="text/html" title="GitHub Blog Build&amp;amp;Release 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog4-build-release-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog4-build-release-setting/"><![CDATA[<p>GitHub Blog #4</p>
+<p><code class="language-plaintext highlighter-rouge">bundle exec jekyll clean</code> 해당 명령어로 이전 빌드 결과가 꼬였거나, 레이아웃, 설정파일 변경 후 캐시를 무시하고 새로 빌드하고싶을 때 사용합니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #2]]></summary></entry><entry><title type="html">GitHub Blog Build&amp;amp;Release 설정</title><link href="https://ruyshy.github.io/blog/blog3-build-release/" rel="alternate" type="text/html" title="GitHub Blog Build&amp;amp;Release 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog3-build-release</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog3-build-release/"><![CDATA[<p>GitHub Blog #3</p>
 
 <h2 id="github에-action기능-알아보기">GitHub에 Action기능 알아보기</h2>
 
@@ -85,13 +85,13 @@
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-16-blog4-build-release-setting/image1.png" alt="image1" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-16-blog3-build-release/image1.png" alt="image1" style="max-width: 100%;" /></p>
 
 <p>Action을 생성할 저장소에 들어가 Action을 눌러 Action페이지로 이동합니다.</p>
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-16-blog4-build-release-setting/image2.png" alt="image2" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-16-blog3-build-release/image2.png" alt="image2" style="max-width: 100%;" /></p>
 
 <p>New workflow을 눌러 .yml을 작성해줍니다.</p>
 
@@ -214,119 +214,7 @@
   <span class="na">workflow_dispatch</span><span class="pi">:</span> <span class="c1"># 수동 실행 가능</span>
 
 </code></pre></div></div>
-<p>GitHub UI 상에서 “Run workflow” 버튼이 생성됩니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #4]]></summary></entry><entry><title type="html">GitHub Blog 댓글 설정</title><link href="https://ruyshy.github.io/blog/blog5-comment-setting/" rel="alternate" type="text/html" title="GitHub Blog 댓글 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog5-comment-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog5-comment-setting/"><![CDATA[<p>GitHub Blog #5</p>
-
-<p>jekyll 테마(<a href="https://mmistakes.github.io/minimal-mistakes/">minimal-mistakes</a>) 기준으로 작성되었습니다</p>
-
-<h2 id="1-github-저장소-설정">1. GitHub 저장소 설정</h2>
-
-<p>Utterances는 댓글을 저장할 <strong>issue 기반 저장소</strong>가 필요합니다.</p>
-
-<ul>
-  <li>예: <code class="language-plaintext highlighter-rouge">your-username/your-blog-repo</code></li>
-  <li>이 저장소의 <strong>issue 탭이 열려 있어야 함</strong></li>
-  <li>댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 repo를 만들어도 됨.</li>
-</ul>
-
-<h2 id="2-utterances-앱-설치">2. Utterances 앱 설치</h2>
-
-<p><a href="https://utteranc.es/">https://utteranc.es/</a> 접속 후 아래 순서대로 진행:</p>
-
-<ol>
-  <li><strong>Install Utterances</strong> 클릭 : <a href="https://github.com/apps/utterances">https://github.com/apps/utterances</a></li>
-</ol>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-16-blog5-comment-setting/image1.png" alt="image1" style="max-width: 100%;" /></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[https://www.notion.so](https://www.notion.so)
-</code></pre></div></div>
-
-<p>위와 같이 Only select repositories 선택 → 설치할 저장소 선택</p>
-
-<h2 id="3-_configyml-수정">3. <code class="language-plaintext highlighter-rouge">_config.yml</code> 수정</h2>
-
-<p>Jekyll 블로그에서 Utterances는 보통 post.html 같은 레이아웃 파일에 삽입함.</p>
-
-<p>이전에 minimal-mistakes 테마 사용하고 있을 때 아래와 같이 수정을 진행합니다.</p>
-
-<p>#Site Settings 부분:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Site Settings</span>
-<span class="na">locale                   </span><span class="pi">:</span> <span class="s2">"</span><span class="s">ko-KR"</span>
-<span class="na">rtl                      </span><span class="pi">:</span> <span class="c1"># true, false (default) # turns direction of the page into right to left for RTL languages</span>
-<span class="na">title                    </span><span class="pi">:</span> <span class="s2">"</span><span class="s">ruyshy</span><span class="nv"> </span><span class="s">blog"</span>
-<span class="na">title_separator          </span><span class="pi">:</span> <span class="s2">"</span><span class="s">-"</span>
-<span class="na">subtitle                 </span><span class="pi">:</span> <span class="c1"># site tagline that appears below site title in masthead</span>
-<span class="na">name                     </span><span class="pi">:</span> <span class="s2">"</span><span class="s">Jaehyeok</span><span class="nv"> </span><span class="s">Choi"</span>
-<span class="na">description              </span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-<span class="na">url                      </span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://ruyshy.github.io"</span>
-<span class="na">baseurl                  </span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-<span class="na">repository               </span><span class="pi">:</span> <span class="s2">"</span><span class="s">ruyshy/ruyshy.github.io"</span>
-<span class="na">teaser                   </span><span class="pi">:</span> <span class="c1"># path of fallback teaser image, e.g. "/assets/images/500x300.png"</span>
-<span class="na">logo                     </span><span class="pi">:</span> <span class="c1"># path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"</span>
-<span class="na">masthead_title           </span><span class="pi">:</span> <span class="c1"># overrides the website title displayed in the masthead, use " " for no title</span>
-<span class="na">breadcrumbs              </span><span class="pi">:</span> <span class="c1"># true, false (default)</span>
-<span class="na">words_per_minute         </span><span class="pi">:</span> <span class="m">200</span>
-<span class="na">enable_copy_code_button  </span><span class="pi">:</span> <span class="c1"># true, false (default)</span>
-<span class="na">copyright                </span><span class="pi">:</span> <span class="c1"># "copyright" name, defaults to site.title</span>
-<span class="na">copyright_url            </span><span class="pi">:</span> <span class="c1"># "copyright" URL, defaults to site.url</span>
-<span class="na">comments</span><span class="pi">:</span>
-  <span class="na">provider               </span><span class="pi">:</span> <span class="s2">"</span><span class="s">utterances"</span> <span class="c1"># false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"</span>
-  <span class="na">disqus</span><span class="pi">:</span>
-    <span class="na">shortname            </span><span class="pi">:</span> <span class="c1"># https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-</span>
-  <span class="na">discourse</span><span class="pi">:</span>
-    <span class="na">server               </span><span class="pi">:</span> <span class="c1"># https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org</span>
-  <span class="na">facebook</span><span class="pi">:</span>
-    <span class="c1"># https://developers.facebook.com/docs/plugins/comments</span>
-    <span class="na">appid                </span><span class="pi">:</span>
-    <span class="na">num_posts            </span><span class="pi">:</span> <span class="c1"># 5 (default)</span>
-    <span class="na">colorscheme          </span><span class="pi">:</span> <span class="c1"># "light" (default), "dark"</span>
-  <span class="na">utterances</span><span class="pi">:</span>
-    <span class="na">theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-dark"</span>
-    <span class="na">issue_term</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pathname"</span>
-    <span class="na">label</span><span class="pi">:</span> <span class="s2">"</span><span class="s">comment"</span>
-    <span class="na">repo</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ruyshy/ruyshy.github.io"</span>
-</code></pre></div></div>
-
-<p>주요 옵션:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">repo</code>: 댓글을 저장할 GitHub repo (예: <code class="language-plaintext highlighter-rouge">ruyshy2/ruyshy2.github.io</code>)</li>
-  <li><code class="language-plaintext highlighter-rouge">issue-term</code>: 댓글을 연결할 기준 (<code class="language-plaintext highlighter-rouge">pathname</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">og:title</code> 등)</li>
-  <li><code class="language-plaintext highlighter-rouge">theme</code>: 댓글창 테마 (<code class="language-plaintext highlighter-rouge">github-light</code>, <code class="language-plaintext highlighter-rouge">github-dark</code>, <code class="language-plaintext highlighter-rouge">preferred-color-scheme</code>, etc)</li>
-</ul>
-
-<p>defaults:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">comments</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-</code></pre></div></div>
-
-<p>저는 comments: 부분을 이렇게 설정을 진행했습니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-16-blog5-comment-setting/image2.png" alt="image2" style="max-width: 100%;" /></p>
-
-<p>위 처럼 블로그에서 test comment를 작성 했을 때,</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-16-blog5-comment-setting/image3.png" alt="image3" style="max-width: 100%;" /></p>
-
-<p>해당 저장소 Issues에 생성을 확인할 수 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #5]]></summary></entry><entry><title type="html">GitHub Blog Category, Post 설정</title><link href="https://ruyshy.github.io/blog/blog2-category-post-setting/" rel="alternate" type="text/html" title="GitHub Blog Category, Post 설정" /><published>2025-04-14T00:00:00+09:00</published><updated>2025-04-14T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog2-category-post-setting</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog2-category-post-setting/"><![CDATA[<p>GitHub Blog #2</p>
+<p>GitHub UI 상에서 “Run workflow” 버튼이 생성됩니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #3]]></summary></entry><entry><title type="html">GitHub Blog Category, Post 설정</title><link href="https://ruyshy.github.io/blog/blog4-category-post/" rel="alternate" type="text/html" title="GitHub Blog Category, Post 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog4-category-post</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog4-category-post/"><![CDATA[<p>GitHub Blog #4</p>
 
 <p>GitHub Blog 시작하기에 이어 다음 편입니다.</p>
 
@@ -692,7 +580,7 @@
 
 
 
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog2-category-post-setting/"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
 
 </code></pre></div></div>
 
@@ -710,7 +598,7 @@
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog2-category-post-setting/ImageName.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/ImageName.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
 
 </code></pre></div></div>
 
@@ -754,7 +642,7 @@ github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog2-category-post-setting/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.
@@ -766,7 +654,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog2-category-post-setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
@@ -776,7 +664,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog2-category-post-setting/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>코드 저장소의 이름을 바꿔줘야 합니다.
@@ -790,7 +678,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog2-category-post-setting/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>다음으로 Code로 돌아가서 <span class="gs">**_config.yml**</span>을 클릭해서 해당 파일로 들어갑니다.
@@ -800,7 +688,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 
 
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-14-blog2-category-post-setting/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
 
 
 </span>화면과 같이 펜모양 버튼을 눌러, 하단 메뉴인 Edit in place를 클릭하여 편집 화면으로 넘어갑니다.
@@ -808,7 +696,119 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
  url                      : "<span class="p">[</span><span class="nv">https://ruyshy.github.io</span><span class="p">](</span><span class="sx">https://ruyshy.github.io/</span><span class="p">)</span>"
 
 제일 먼저 url을 위 형식처럼 변경해줍니다.
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #2]]></summary></entry><entry><title type="html">GitHub Blog Start</title><link href="https://ruyshy.github.io/blog/blog1-start/" rel="alternate" type="text/html" title="GitHub Blog Start" /><published>2025-04-10T00:00:00+09:00</published><updated>2025-04-10T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog1-start</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog1-start/"><![CDATA[<p>GitHub Blog #1</p>
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #4]]></summary></entry><entry><title type="html">GitHub Blog 댓글 설정</title><link href="https://ruyshy.github.io/blog/blog5-comment/" rel="alternate" type="text/html" title="GitHub Blog 댓글 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog5-comment</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog5-comment/"><![CDATA[<p>GitHub Blog #5</p>
+
+<p>jekyll 테마(<a href="https://mmistakes.github.io/minimal-mistakes/">minimal-mistakes</a>) 기준으로 작성되었습니다</p>
+
+<h2 id="1-github-저장소-설정">1. GitHub 저장소 설정</h2>
+
+<p>Utterances는 댓글을 저장할 <strong>issue 기반 저장소</strong>가 필요합니다.</p>
+
+<ul>
+  <li>예: <code class="language-plaintext highlighter-rouge">your-username/your-blog-repo</code></li>
+  <li>이 저장소의 <strong>issue 탭이 열려 있어야 함</strong></li>
+  <li>댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 repo를 만들어도 됨.</li>
+</ul>
+
+<h2 id="2-utterances-앱-설치">2. Utterances 앱 설치</h2>
+
+<p><a href="https://utteranc.es/">https://utteranc.es/</a> 접속 후 아래 순서대로 진행:</p>
+
+<ol>
+  <li><strong>Install Utterances</strong> 클릭 : <a href="https://github.com/apps/utterances">https://github.com/apps/utterances</a></li>
+</ol>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/blog/2025-04-16-blog5-comment/image1.png" alt="image1" style="max-width: 100%;" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[https://www.notion.so](https://www.notion.so)
+</code></pre></div></div>
+
+<p>위와 같이 Only select repositories 선택 → 설치할 저장소 선택</p>
+
+<h2 id="3-_configyml-수정">3. <code class="language-plaintext highlighter-rouge">_config.yml</code> 수정</h2>
+
+<p>Jekyll 블로그에서 Utterances는 보통 post.html 같은 레이아웃 파일에 삽입함.</p>
+
+<p>이전에 minimal-mistakes 테마 사용하고 있을 때 아래와 같이 수정을 진행합니다.</p>
+
+<p>#Site Settings 부분:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Site Settings</span>
+<span class="na">locale                   </span><span class="pi">:</span> <span class="s2">"</span><span class="s">ko-KR"</span>
+<span class="na">rtl                      </span><span class="pi">:</span> <span class="c1"># true, false (default) # turns direction of the page into right to left for RTL languages</span>
+<span class="na">title                    </span><span class="pi">:</span> <span class="s2">"</span><span class="s">ruyshy</span><span class="nv"> </span><span class="s">blog"</span>
+<span class="na">title_separator          </span><span class="pi">:</span> <span class="s2">"</span><span class="s">-"</span>
+<span class="na">subtitle                 </span><span class="pi">:</span> <span class="c1"># site tagline that appears below site title in masthead</span>
+<span class="na">name                     </span><span class="pi">:</span> <span class="s2">"</span><span class="s">Jaehyeok</span><span class="nv"> </span><span class="s">Choi"</span>
+<span class="na">description              </span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+<span class="na">url                      </span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://ruyshy.github.io"</span>
+<span class="na">baseurl                  </span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+<span class="na">repository               </span><span class="pi">:</span> <span class="s2">"</span><span class="s">ruyshy/ruyshy.github.io"</span>
+<span class="na">teaser                   </span><span class="pi">:</span> <span class="c1"># path of fallback teaser image, e.g. "/assets/images/500x300.png"</span>
+<span class="na">logo                     </span><span class="pi">:</span> <span class="c1"># path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"</span>
+<span class="na">masthead_title           </span><span class="pi">:</span> <span class="c1"># overrides the website title displayed in the masthead, use " " for no title</span>
+<span class="na">breadcrumbs              </span><span class="pi">:</span> <span class="c1"># true, false (default)</span>
+<span class="na">words_per_minute         </span><span class="pi">:</span> <span class="m">200</span>
+<span class="na">enable_copy_code_button  </span><span class="pi">:</span> <span class="c1"># true, false (default)</span>
+<span class="na">copyright                </span><span class="pi">:</span> <span class="c1"># "copyright" name, defaults to site.title</span>
+<span class="na">copyright_url            </span><span class="pi">:</span> <span class="c1"># "copyright" URL, defaults to site.url</span>
+<span class="na">comments</span><span class="pi">:</span>
+  <span class="na">provider               </span><span class="pi">:</span> <span class="s2">"</span><span class="s">utterances"</span> <span class="c1"># false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"</span>
+  <span class="na">disqus</span><span class="pi">:</span>
+    <span class="na">shortname            </span><span class="pi">:</span> <span class="c1"># https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-</span>
+  <span class="na">discourse</span><span class="pi">:</span>
+    <span class="na">server               </span><span class="pi">:</span> <span class="c1"># https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org</span>
+  <span class="na">facebook</span><span class="pi">:</span>
+    <span class="c1"># https://developers.facebook.com/docs/plugins/comments</span>
+    <span class="na">appid                </span><span class="pi">:</span>
+    <span class="na">num_posts            </span><span class="pi">:</span> <span class="c1"># 5 (default)</span>
+    <span class="na">colorscheme          </span><span class="pi">:</span> <span class="c1"># "light" (default), "dark"</span>
+  <span class="na">utterances</span><span class="pi">:</span>
+    <span class="na">theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-dark"</span>
+    <span class="na">issue_term</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pathname"</span>
+    <span class="na">label</span><span class="pi">:</span> <span class="s2">"</span><span class="s">comment"</span>
+    <span class="na">repo</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ruyshy/ruyshy.github.io"</span>
+</code></pre></div></div>
+
+<p>주요 옵션:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">repo</code>: 댓글을 저장할 GitHub repo (예: <code class="language-plaintext highlighter-rouge">ruyshy2/ruyshy2.github.io</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">issue-term</code>: 댓글을 연결할 기준 (<code class="language-plaintext highlighter-rouge">pathname</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">og:title</code> 등)</li>
+  <li><code class="language-plaintext highlighter-rouge">theme</code>: 댓글창 테마 (<code class="language-plaintext highlighter-rouge">github-light</code>, <code class="language-plaintext highlighter-rouge">github-dark</code>, <code class="language-plaintext highlighter-rouge">preferred-color-scheme</code>, etc)</li>
+</ul>
+
+<p>defaults:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
+</code></pre></div></div>
+
+<p>저는 comments: 부분을 이렇게 설정을 진행했습니다.</p>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/blog/2025-04-16-blog5-comment/image2.png" alt="image2" style="max-width: 100%;" /></p>
+
+<p>위 처럼 블로그에서 test comment를 작성 했을 때,</p>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/blog/2025-04-16-blog5-comment/image3.png" alt="image3" style="max-width: 100%;" /></p>
+
+<p>해당 저장소 Issues에 생성을 확인할 수 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #5]]></summary></entry><entry><title type="html">GitHub Blog Start</title><link href="https://ruyshy.github.io/blog/blog1-start/" rel="alternate" type="text/html" title="GitHub Blog Start" /><published>2025-04-10T00:00:00+09:00</published><updated>2025-04-10T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog1-start</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog1-start/"><![CDATA[<p>GitHub Blog #1</p>
 
 <h1 id="jekyll-테마-github-blog-시작하기">jekyll 테마 GitHub Blog 시작하기</h1>
 
