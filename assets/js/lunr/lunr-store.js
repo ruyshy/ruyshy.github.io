@@ -34,4 +34,10 @@ var store = [{
         "tags": ["GitHubBlog"],
         "url": "/blog/blog-category-post-setting/",
         "teaser": null
+      },{
+        "title": "GitHub Blog Local Server 설정",
+        "excerpt":"필요한 준비물 https://www.ruby-lang.org/ko/ Gemfile source \"https://rubygems.org\" gem \"jekyll\", \"~&gt; 4.3.2\" gem \"minimal-mistakes-jekyll\" gem \"jekyll-feed\" gem \"jekyll-seo-tag\" gem \"jekyll-paginate\" gem \"jekyll-sitemap\" gem \"jekyll-include-cache\" gem \"tzinfo\" gem \"tzinfo-data\" Ruby를 설치해줍니다. 저의 경우 ruby3.3.8 의 버전을 설치하여 진행했습니다. Gemfile을 위와 같이 수정을 진행합니다. 자기 자신의 Github Blog가 있는 로컬 폴더에서 cmd를 실행시키거나 cmd를...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog-local-server-setting/",
+        "teaser": null
       }]
