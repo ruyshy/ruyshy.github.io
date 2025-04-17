@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Assembly Start - ruyshy blog</title>
-<meta name="description" content="Assembly 시작하기">
+<!-- begin _includes/seo.html --><title>GitHub Blog Font 설정 - ruyshy blog</title>
+<meta name="description" content="GitHub Blog #6">
 
 
   <meta name="author" content="ruyshy">
@@ -23,30 +23,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="Assembly Start">
-<meta property="og:url" content="https://ruyshy.github.io/assembly/assembly-start/">
+<meta property="og:title" content="GitHub Blog Font 설정">
+<meta property="og:url" content="https://ruyshy.github.io/blog/blog6-font/">
 
 
-  <meta property="og:description" content="Assembly 시작하기">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2025-04-09T00:00:00+09:00">
+  <meta property="og:description" content="GitHub Blog #6">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2025-04-17T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://ruyshy.github.io/assembly/assembly-start/">
+
+<link rel="canonical" href="https://ruyshy.github.io/blog/blog6-font/">
 
 
 
@@ -312,16 +312,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Assembly Start">
-    <meta itemprop="description" content="Assembly 시작하기">
-    <meta itemprop="datePublished" content="2025-04-09T00:00:00+09:00">
+    <meta itemprop="headline" content="GitHub Blog Font 설정">
+    <meta itemprop="description" content="GitHub Blog #6">
+    <meta itemprop="datePublished" content="2025-04-17T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/assembly/assembly-start/" itemprop="url">Assembly Start
+            <a href="https://ruyshy.github.io/blog/blog6-font/" itemprop="url">GitHub Blog Font 설정
 </a>
           </h1>
           
@@ -332,149 +332,66 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="assembly-시작하기">Assembly 시작하기</h1>
+        <p>GitHub Blog #6</p>
 
-<h2 id="어셈블리assembly란">어셈블리(Assembly)란?</h2>
+<p>여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다.</p>
 
-<p>어셈블리어는 사람이 읽을 수 있는 저수준 언어로, CPU가 실제로 이해하는 기계어(machine code)와 1:1로 대응돼.
-쉽게 말하면, CPU와 직접 대화하기 직전 단계라고 볼 수 있어.</p>
+<p><a href="https://fonts.google.com/">https://fonts.google.com/</a></p>
 
-<h2 id="왜-어셈블리를-배울까">왜 어셈블리를 배울까?</h2>
+<p>저는 Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
 
-<ul>
-  <li>시스템 내부 동작을 깊이 이해할 수 있음</li>
-  <li>최적화된 코드 작성 가능 (속도 극한까지 뽑기)</li>
-  <li>리버스 엔지니어링, 보안 분야에서 필수</li>
-  <li>디버깅 능력 향상</li>
-</ul>
+<p>_sass\minimal-mistakes_variables.scss 추가</p>
 
-<h2 id="구조부터-알아보자">구조부터 알아보자</h2>
-
-<p>어셈블리는 일반적으로 특정 <strong>CPU 아키텍처</strong>에 종속돼.</p>
-
-<p>가장 많이 쓰이는 건 <strong>x86 / x86-64(Intel/AMD 계열)</strong> 이고,</p>
-
-<p>임베디드 쪽은 <strong>ARM</strong> 계열이 많아.</p>
-
-<p>이번에는 <strong>x86-64 기준</strong>으로 설명할게!</p>
-
-<h2 id="기본-개념">기본 개념</h2>
-
-<h3 id="1-레지스터register">1. <strong>레지스터(Register)</strong></h3>
-
-<p>CPU 내부에 있는 <strong>초고속 메모리</strong>. 대표적인 레지스터들:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>이름</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">RAX</code></td>
-      <td>계산 결과 저장 (주요 연산용)</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">RBX</code>, <code class="language-plaintext highlighter-rouge">RCX</code>, <code class="language-plaintext highlighter-rouge">RDX</code></td>
-      <td>범용 레지스터</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">RSP</code></td>
-      <td>스택 포인터 (Stack Pointer)</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">RBP</code></td>
-      <td>베이스 포인터 (Base Pointer)</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">RSI</code>, <code class="language-plaintext highlighter-rouge">RDI</code></td>
-      <td>문자열 처리 또는 함수 인자용</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="2-기본-명령어">2. <strong>기본 명령어</strong></h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>명령어</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">MOV</code></td>
-      <td>값 복사</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">ADD</code></td>
-      <td>덧셈</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">SUB</code></td>
-      <td>뺄셈</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">MUL</code>, <code class="language-plaintext highlighter-rouge">IMUL</code></td>
-      <td>곱셈</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">DIV</code>, <code class="language-plaintext highlighter-rouge">IDIV</code></td>
-      <td>나눗셈</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">PUSH</code> / <code class="language-plaintext highlighter-rouge">POP</code></td>
-      <td>스택에 값 넣기 / 빼기</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">CMP</code></td>
-      <td>비교</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">JMP</code>, <code class="language-plaintext highlighter-rouge">JE</code>, <code class="language-plaintext highlighter-rouge">JNE</code>, <code class="language-plaintext highlighter-rouge">JG</code>, <code class="language-plaintext highlighter-rouge">JL</code>, …</td>
-      <td>조건 분기</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">CALL</code>, <code class="language-plaintext highlighter-rouge">RET</code></td>
-      <td>함수 호출 / 복귀</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="간단-예제">간단 예제</h2>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">section</span> <span class="nv">.text</span>
-    <span class="nf">global</span> <span class="nv">_start</span>
-
-<span class="nl">_start:</span>
-    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>       <span class="c1">; rax = 5</span>
-    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">3</span>       <span class="c1">; rax += 3 → rax = 8</span>
-    <span class="c1">; 여기서 프로그램 종료 (Linux 기준)</span>
-    <span class="nf">mov</span> <span class="nb">rdi</span><span class="p">,</span> <span class="mi">0</span>       <span class="c1">; return code = 0</span>
-    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">60</span>      <span class="c1">; syscall: exit</span>
-    <span class="nf">syscall</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$dongle</span><span class="p">:</span> <span class="s1">'Dongle'</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 </code></pre></div></div>
 
-<h2 id="컴파일--실행-linux-기준">컴파일 &amp; 실행 (Linux 기준)</h2>
+<p>수정해야 할 부분:</p>
 
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">nasm</span> <span class="o">-</span><span class="nv">f</span> <span class="nv">elf64</span> <span class="nv">hello.asm</span> <span class="o">-</span><span class="nv">o</span> <span class="nv">hello.o</span>
-<span class="nf">ld</span> <span class="nv">hello.o</span> <span class="o">-</span><span class="nv">o</span> <span class="nv">hello</span>
-<span class="nf">.</span><span class="o">/</span><span class="nv">hello</span>
-<span class="nf">echo</span> <span class="kc">$</span><span class="nv">?</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$global-font-family</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$header-font-family</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 </code></pre></div></div>
 
-<h2 id="다음에-다룰-주제들">다음에 다룰 주제들</h2>
+<p>수정할 코드:</p>
 
-<ol>
-  <li>메모리 구조 (스택, 힙, 데이터 섹션 등)</li>
-  <li>함수 호출 규약 (calling convention)</li>
-  <li>조건문, 반복문 구현</li>
-  <li>리버싱을 위한 디스어셈블리 감상법</li>
-  <li>디버거 사용법 (gdb, x64dbg 등)</li>
-</ol>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$global-font-family</span><span class="p">:</span> <span class="nv">$dongle</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$header-font-family</span><span class="p">:</span> <span class="nv">$dongle</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>수정해야 할 부분:</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* system typefaces */</span>
+<span class="nv">$serif</span><span class="p">:</span> <span class="n">Dongle</span><span class="o">,</span> <span class="n">Georgia</span><span class="o">,</span> <span class="n">Times</span><span class="o">,</span> <span class="nb">serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$sans-serif</span><span class="p">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Dongle"</span><span class="o">,</span><span class="s2">"Roboto"</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span>
+  <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="s2">"Lucida Grande"</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$monospace</span><span class="p">:</span> <span class="n">Monaco</span><span class="o">,</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">"Lucida Console"</span><span class="o">,</span> <span class="nb">monospace</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+
+<span class="cm">/* sans serif typefaces */</span>
+<span class="nv">$sans-serif-narrow</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$helvetica</span><span class="p">:</span> <span class="s2">"Dongle"</span><span class="o">,</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위 처럼 Dongle를 추가해주었습니다.</p>
+
+<p>\assets\css\main.scss 추가</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@font-face</span> <span class="p">{</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s1">'Dongle'</span><span class="p">;</span>
+    <span class="nl">src</span><span class="p">:</span> <span class="sx">url('/assets/fonts/Dongle-Regular.ttf')</span> <span class="nf">format</span><span class="p">(</span><span class="s1">'truetype'</span><span class="p">);</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>블로그에 새로운 폰트를 적용했습니다.</p>
+
+  <p>그런데 막상 적용해보니, 폰트마다 고유한 크기나 두께가 다르다 보니 기존 스타일과 미묘하게 어긋나는 부분들이 보이더라고요.</p>
+
+  <p>보기 좋은 글을 만들기 위해 폰트 스타일과 크기도 함께 조정했습니다.</p>
+
+  <p>작은 차이지만, 이 변화가 블로그를 훨씬 더 자연스럽고 세련되게 만들어 줄 것 같아요.</p>
+
+</blockquote>
 
         
       </section>
@@ -491,9 +408,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#nasm" class="page__taxonomy-item p-category" rel="tag">nasm</a><span class="sep">, </span>
-    
-      <a href="/tags/#reverse" class="page__taxonomy-item p-category" rel="tag">reverse</a>
+      <a href="/tags/#githubblog" class="page__taxonomy-item p-category" rel="tag">GitHubBlog</a>
     
     </span>
   </p>
@@ -510,7 +425,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Category: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#assembly" class="page__taxonomy-item p-category" rel="tag">assembly</a>
+      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
     
     </span>
   </p>
@@ -518,28 +433,28 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-09T00:00:00+09:00">April 9, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-17T00:00:00+09:00">April 17, 2025</time></p>
 
       </footer>
 
       <section class="page__share">
   <h4 class="page__share-title">공유하기</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=Assembly+Start%20https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly-start%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Font+%EC%84%A4%EC%A0%95%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog6-font%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly-start%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog6-font%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/assembly/assembly-start/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog6-font/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Prev</a>
+      <a href="/blog/blog5-comment/" class="pagination--pager" title="GitHub Blog 댓글 설정">Prev</a>
     
     
-      <a href="/blog/blog1-start/" class="pagination--pager" title="GitHub Blog Start">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -563,29 +478,6 @@
   
   <h2 class="page__related-title">참고</h2>
   <div class="grid__wrapper">
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/blog6-font/" rel="permalink">GitHub Blog Font 설정
-</a>
-      
-    </h2>
-    
-
-
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #6
-</p>
-  </article>
-</div>
-
     
       
       
@@ -651,6 +543,29 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">GitHub Blog #3
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog2-local-server/" rel="permalink">GitHub Blog Local Server 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #2
 </p>
   </article>
 </div>

@@ -52,4 +52,10 @@ var store = [{
         "tags": ["GitHubBlog"],
         "url": "/blog/blog5-comment/",
         "teaser": null
+      },{
+        "title": "GitHub Blog Font 설정",
+        "excerpt":"GitHub Blog #6 여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다. https://fonts.google.com/ 저는 Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다. _sass\\minimal-mistakes_variables.scss 추가 $dongle: 'Dongle', -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif !default; 수정해야 할 부분: $global-font-family: $sans-serif !default; $header-font-family: $sans-serif !default; 수정할 코드: $global-font-family: $dongle !default; $header-font-family: $dongle !default; 수정해야 할 부분: /*...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog6-font/",
+        "teaser": null
       }]
