@@ -3,7 +3,14 @@
 search: false
 ---
 
+@font-face {
+    font-family: 'Dongle';
+    src: url('/assets/fonts/Dongle-Regular.woff') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @charset "utf-8";
 
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes/skins/dark";
 @import "minimal-mistakes"; // main partials
