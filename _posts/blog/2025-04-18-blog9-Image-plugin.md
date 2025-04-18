@@ -4,6 +4,7 @@ date: 2025-04-18
 tags: [GitHubBlog]
 ---
 
+GitHub Blog #9
 
 ## 기존 방식 과 태그 플러그인 비교
 
