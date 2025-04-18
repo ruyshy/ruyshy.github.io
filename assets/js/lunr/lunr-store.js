@@ -70,4 +70,16 @@ var store = [{
         "tags": ["nasm","assembly"],
         "url": "/assembly/assembly2-setting/",
         "teaser": null
+      },{
+        "title": "GitHub Blog 목차 설정",
+        "excerpt":"GitHub Blog #8 목차 설정 방법 목차 설정 코드: toc: true toc_sticky: true toc는 목차, toc_sticky는 스크롤 따라가기 게시글 설정 예시: --- title: \"GitHub Blog Start\" date: 2025-04-10 tags: [GitHubBlog] toc: true toc_sticky: true --- 게시글 전체 적용 예시 (_config.yml): - scope: path: \"\" type: posts values: layout: single author_profile:...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog8-toc/",
+        "teaser": null
+      },{
+        "title": "GitHub Blog Image Plugin",
+        "excerpt":"기존 방식 과 태그 플러그인 비교 기존에 이미지 불러오는 방식: &lt;!-- post-image.html --&gt; &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image.png\" alt=\"image\" style=\"max-width: 100%;\"&gt; 플러그인 적용한 방식: &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png\" alt=\"tag image test\" style=\"max-width:100%;\"&gt; or &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png\" alt=\"image1.png\" style=\"max-width:100%;\"&gt; \\plugins\\imgtag.rb 코드 추가 module Jekyll class ImgTag &lt; Liquid::Tag def initialize(tag_name, markup, tokens) super @markup = markup.strip end...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog9-Image-plugin/",
+        "teaser": null
       }]

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-18T15:35:21+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-18T17:15:26+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
 
 <p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
 
@@ -878,7 +878,134 @@
 <p>정상 출력:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello, Assembly!
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><summary type="html"><![CDATA[assembly#2]]></summary></entry><entry><title type="html">GitHub Blog Font 설정</title><link href="https://ruyshy.github.io/blog/blog7-font/" rel="alternate" type="text/html" title="GitHub Blog Font 설정" /><published>2025-04-17T00:00:00+09:00</published><updated>2025-04-17T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog7-font</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog7-font/"><![CDATA[<p>GitHub Blog #7</p>
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><summary type="html"><![CDATA[assembly#2]]></summary></entry><entry><title type="html">GitHub Blog 목차 설정</title><link href="https://ruyshy.github.io/blog/blog8-toc/" rel="alternate" type="text/html" title="GitHub Blog 목차 설정" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog8-toc</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog8-toc/"><![CDATA[<p>GitHub Blog #8</p>
+
+<h2 id="목차-설정-방법">목차 설정 방법</h2>
+
+<p>목차 설정 코드:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>toc: true
+toc_sticky: true
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">toc</code>는 목차, <code class="language-plaintext highlighter-rouge">toc_sticky</code>는 스크롤 따라가기</p>
+
+<p>게시글 설정 예시:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Blog</span><span class="nv"> </span><span class="s">Start"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-10</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">GitHubBlog</span><span class="pi">]</span>
+<span class="na">toc</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">toc_sticky</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>게시글 전체 적용 예시 (_config.yml):</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">toc</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #8]]></summary></entry><entry><title type="html">GitHub Blog Image Plugin</title><link href="https://ruyshy.github.io/blog/blog9-Image-plugin/" rel="alternate" type="text/html" title="GitHub Blog Image Plugin" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog9-Image-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog9-Image-plugin/"><![CDATA[<h2 id="기존-방식-과-태그-플러그인-비교">기존 방식 과 태그 플러그인 비교</h2>
+
+<p>기존에 이미지 불러오는 방식:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-18-blog9-Image-plugin/image.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+
+<p>플러그인 적용한 방식:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png"</span> <span class="na">alt=</span><span class="s">"tag image test"</span> <span class="na">style=</span><span class="s">"max-width:100%;"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png"</span> <span class="na">alt=</span><span class="s">"image1.png"</span> <span class="na">style=</span><span class="s">"max-width:100%;"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p><em>\plugins\img</em>tag.rb 코드 추가</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">class</span> <span class="nc">ImgTag</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Tag</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">markup</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
+      <span class="k">super</span>
+      <span class="vi">@markup</span> <span class="o">=</span> <span class="n">markup</span><span class="p">.</span><span class="nf">strip</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+      <span class="n">args</span> <span class="o">=</span> <span class="vi">@markup</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">","</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span>
+      <span class="n">img_name</span> <span class="o">=</span> <span class="n">sanitize</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+      <span class="n">alt_text</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="n">sanitize</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">:</span> <span class="n">img_name</span>
+
+      <span class="n">page</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">registers</span><span class="p">[</span><span class="ss">:page</span><span class="p">]</span> <span class="o">||</span> <span class="p">{}</span>
+      <span class="n">page_path</span> <span class="o">=</span> <span class="n">page</span><span class="p">[</span><span class="s1">'path'</span><span class="p">]</span> <span class="o">||</span> <span class="s1">''</span>
+
+      <span class="n">parts</span> <span class="o">=</span> <span class="n">page_path</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
+
+      <span class="n">idx</span> <span class="o">=</span> <span class="n">parts</span><span class="p">.</span><span class="nf">find_index</span><span class="p">(</span><span class="s2">"_posts"</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">idx</span> <span class="o">&amp;&amp;</span> <span class="n">parts</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">post_filename</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
+      <span class="k">else</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="s2">""</span>
+        <span class="n">post_filename</span> <span class="o">=</span> <span class="s2">"unknown-post.md"</span>
+      <span class="k">end</span>
+
+      <span class="n">post_name</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">basename</span><span class="p">(</span><span class="n">post_filename</span><span class="p">,</span> <span class="no">File</span><span class="p">.</span><span class="nf">extname</span><span class="p">(</span><span class="n">post_filename</span><span class="p">))</span>
+
+      <span class="n">img_src</span> <span class="o">=</span> <span class="s2">"/assets/images/</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">post_name</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">img_name</span><span class="si">}</span><span class="s2">"</span>
+
+      <span class="sx">%(&lt;img src="</span><span class="si">#{</span><span class="n">img_src</span><span class="si">}</span><span class="sx">" alt="</span><span class="si">#{</span><span class="n">alt_text</span><span class="si">}</span><span class="sx">" style="max-width:100%;"&gt;)</span>
+    <span class="k">end</span>
+
+    <span class="kp">private</span>
+
+    <span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+      <span class="n">text</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="s1">'"'</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">gsub</span><span class="p">(</span><span class="s2">"'"</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'img'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">ImgTag</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h2 id="예시-사용법">예시 사용법</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>작성</th>
+      <th>실제 결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/blog/2025-04-18-blog9-Image-plugin/test.png" alt="test.png" style="max-width:100%;"&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/xxx/xxx/test.png" alt="test.png" style="max-width:100%;"&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/blog/2025-04-18-blog9-Image-plugin/test.png" alt="설명" style="max-width:100%;"&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/xxx/xxx/test.png" alt="설명" style="max-width:100%;"&gt;</code></td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[기존 방식 과 태그 플러그인 비교]]></summary></entry><entry><title type="html">GitHub Blog Font 설정</title><link href="https://ruyshy.github.io/blog/blog7-font/" rel="alternate" type="text/html" title="GitHub Blog Font 설정" /><published>2025-04-17T00:00:00+09:00</published><updated>2025-04-17T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog7-font</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog7-font/"><![CDATA[<p>GitHub Blog #7</p>
 
 <p>여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다.</p>
 
@@ -1431,7 +1558,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
       <span class="c">&lt;!-- All --&gt;</span>
       <span class="nt">&lt;li&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/"</span> <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(9)<span class="nt">&lt;/span&gt;</span>
+          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(11)<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
 
@@ -1452,7 +1579,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
         <span class="nt">&lt;li&gt;</span>
           <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/blog/"</span>
              <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(7)<span class="nt">&lt;/span&gt;</span>
+            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(9)<span class="nt">&lt;/span&gt;</span>
           <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
       
@@ -1716,148 +1843,4 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <p><img src="/assets/images/blog/2025-04-16-blog6-comment/image3.png" alt="image3" style="max-width: 100%;" /></p>
 
-<p>해당 저장소 Issues에 생성을 확인할 수 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #6]]></summary></entry><entry><title type="html">GitHub Blog Start</title><link href="https://ruyshy.github.io/blog/blog1-start/" rel="alternate" type="text/html" title="GitHub Blog Start" /><published>2025-04-10T00:00:00+09:00</published><updated>2025-04-10T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog1-start</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog1-start/"><![CDATA[<p>GitHub Blog #1</p>
-
-<h1 id="jekyll-테마-github-blog-시작하기">jekyll 테마 GitHub Blog 시작하기</h1>
-
-<h2 id="jekyll-기반-github-blog-생성">Jekyll 기반 GitHub Blog 생성</h2>
-
-<p><a href="https://mmistakes.github.io/minimal-mistakes/">https://mmistakes.github.io/minimal-mistakes/</a></p>
-
-<p>해당 Jekyll 테마 기준으로 작성 되어있습니다.</p>
-
-<h2 id="준비해야-할-준비물">준비해야 할 준비물</h2>
-
-<p>개인 GitHub 계정 (<a href="https://github.com/">https://github.com/</a>)</p>
-
-<p>Visual Studio Code (<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>)</p>
-
-<h2 id="github-blog-시작하기">GitHub Blog 시작하기</h2>
-
-<p><a href="https://github.com/mmistakes/minimal-mistakes">https://github.com/mmistakes/minimal-mistakes</a></p>
-
-<p>github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다.
-<!-- post-image.html --></p>
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.</p>
-
-<p>Fork 버튼을 누르면 로그인하고있는 Github계정에 <strong>repositories(저장소)</strong> 에 똑같은 코드를 가진 Project(코드 저장소)가 생성이 됩니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>코드 저장소의 이름을 바꿔줘야 합니다.</p>
-
-<p>무조건 자기 자신의 <a href="http://githubID.github.io">githubID.github.io</a></p>
-
-<p>저의 경우, 제 닉네임은 ruyshy 이므로 <a href="http://ruyshy.github.io">ruyshy.github.io</a> 로 설정해줍니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>다음으로 Code로 돌아가서 <strong>_config.yml</strong>을 클릭해서 해당 파일로 들어갑니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>화면과 같이 펜모양 버튼을 눌러, 하단 메뉴인 Edit in place를 클릭하여 편집 화면으로 넘어갑니다.</p>
-
-<p>url                      : “<a href="https://ruyshy.github.io/">https://ruyshy.github.io</a>”</p>
-
-<p>제일 먼저 url을 위 형식처럼 변경해줍니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/Editing_ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_11_22.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>변경 후, Commit changes…를 눌러 편집 완료를 진행합니다.</p>
-
-<p>이 작업을 통해 자신의 블로그를 접속하실 수 있게 됩니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/ruyshys_blog_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_13_31.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>다음으로 자신의 블로그 홈페이지(<a href="https://ruyshy.github.io/">https://ruyshy.github.io/</a>)를 들어가서 정상적으로 만들어졌는지 확인합니다. 제 블로그는 이미 작성이 되어있기 때문에 저와 다르게 보이긴 해도 블로그에 접속하실 수 있습니다.</p>
-
-<h1 id="blog-post-작성-방법">Blog Post 작성 방법</h1>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_06_32.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>다시 GitHub 저장소로 돌아와서 Add file 버튼을 눌러 Create new file을 선택합니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/New_File_at____ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_08_36.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>입력 칸에 _posts/ 를 입력해 폴더를 만들어줍니다.</p>
-
-<p>다음 입력 칸에 포스트 파일을 작성할 것인데, 작성할 때, 형식은 다음과 같습니다.</p>
-
-<p>예시) <a href="http://YYYY-MM-DD-PostName.md">YYYY-MM-DD-PostName.md</a> (2025-04-10-TestPost.md)</p>
-
-<p>.md 확장자는 마크다운 파일 형식입니다.</p>
-
-<p><a href="https://mmistakes.github.io/minimal-mistakes/docs/configuration/#paginate-v2">https://mmistakes.github.io/minimal-mistakes/docs/configuration/#paginate-v2</a></p>
-
-<p>해당 홈페이지에 들어가면</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/image.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>살짝 스크롤을 내려보면</p>
-
-<p>Then, create <code class="language-plaintext highlighter-rouge">/posts/index.html</code> with the following content:
-밑에 코드 블럭을 복사해서 깃허브 코드에 붙여줍니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/image%201.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>입력 후, 아래 줄에 아무 텍스트나 적어서 테스트를 진행 해봅시다.</p>
-
-<p>편집이 다 끝나면, Commit changes… 을 눌러 저장소에 적용합니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/Workflow_runs__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_5_50_39.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>적용 후, Action을 눌러 가보면 맨위에 노란색으로 뜨며 해당 액션을 눌러서 보면</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/image%202.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>이런식으로 빌드가 진행되고 있습니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/image%203.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>위 스크린샷처럼 완료가 되면 홈페이지에 적용이 됩니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/image%204.png" alt="image" style="max-width: 100%;" /></p>
-
-<p>포스트 작성까지 진행이 되었습니다.</p>
-
-<p>Posts를 눌러 작성이 된 내용이 뛰워지는 것을 확인할 수 있습니다.</p>
-
-<!-- post-image.html -->
-
-<p><img src="/assets/images/blog/2025-04-10-blog1-start/image%205.png" alt="image" style="max-width: 100%;" /></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #1]]></summary></entry></feed>
+<p>해당 저장소 Issues에 생성을 확인할 수 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #6]]></summary></entry></feed>
