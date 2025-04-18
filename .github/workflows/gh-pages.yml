@@ -1,4 +1,4 @@
-name: Build and Deploy from ph-pages to gh-pages
+name: Build and Deploy Jekyll
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source branch
+      - name: Checkout source
         uses: actions/checkout@v3
         with:
           ref: ph-pages
@@ -35,5 +35,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
           publish_dir: ./_site
+          publish_branch: gh-pages
