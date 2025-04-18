@@ -55,13 +55,13 @@ var store = [{
       },{
         "title": "Assembly Start",
         "excerpt":"assembly#1 시작하기 앞 서, 학습할 사이트 목록 입니다. 드림 해커 : https://dreamhack.io/ CrackMe : https://crackmy.app/ 어셈블리(Assembly)란? 어셈블리어는 사람이 읽을 수 있는 저수준 언어로, CPU가 실제로 이해하는 기계어(machine code)와 1:1로 대응됨. 쉽게 말하면, CPU와 직접 대화하기 직전 단계라고 볼 수 있음. 한 줄로 요약하면 “CPU가 이해할 수 있는 인간 최저 레벨...","categories": ["assembly"],
-        "tags": ["nasm","reverse"],
+        "tags": ["nasm","assembly"],
         "url": "/assembly/assembly1-start/",
         "teaser": null
       },{
         "title": "Assembly Setting",
         "excerpt":"assembly#2 Assembly 실습 환경 만들기 레지스터랑 메모리 구조 이해 단계에서 이론을 배웠고, 기본 명령어부터 익히기 전에 Assembly를 실습 할 수 있는 환경을 만들어보자. 1. 기본 툴 세팅 NASM (코드 작성+컴파일) x64dbg (디버깅) VS Code (편집기) MinGW 설치 (Windows용 gcc 컴파일러) 1-1. NASM 설치 공식 사이트: https://www.nasm.us/ 들어가서 Download &gt; Windows...","categories": ["assembly"],
-        "tags": ["nasm","reverse"],
+        "tags": ["nasm","assembly"],
         "url": "/assembly/assembly2-setting/",
         "teaser": null
       }]
