@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-18T12:38:29+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-18T12:39:01+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
 
 <p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
 
@@ -752,18 +752,7 @@
     <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
     <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
   <span class="p">}</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p>블로그에 새로운 폰트를 적용했습니다.</p>
-
-  <p>그런데 막상 적용해보니, 폰트마다 고유한 크기나 두께가 다르다 보니 기존 스타일과 미묘하게 어긋나는 부분들이 보이더라고요.</p>
-
-  <p>보기 좋은 글을 만들기 위해 폰트 스타일과 크기도 함께 조정했습니다.</p>
-
-  <p>작은 차이지만, 이 변화가 블로그를 훨씬 더 자연스럽고 세련되게 만들어 줄 것 같아요.</p>
-
-</blockquote>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #6]]></summary></entry><entry><title type="html">GitHub Blog Local Server 설정</title><link href="https://ruyshy.github.io/blog/blog2-local-server/" rel="alternate" type="text/html" title="GitHub Blog Local Server 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog2-local-server</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog2-local-server/"><![CDATA[<p>GitHub Blog #2</p>
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #6]]></summary></entry><entry><title type="html">GitHub Blog Local Server 설정</title><link href="https://ruyshy.github.io/blog/blog2-local-server/" rel="alternate" type="text/html" title="GitHub Blog Local Server 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog2-local-server</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog2-local-server/"><![CDATA[<p>GitHub Blog #2</p>
 
 <h2 id="필요한-준비물">필요한 준비물</h2>
 
