@@ -26,7 +26,8 @@ or
 {% img "image1.png" %}
 ```
 
-*\plugins\img*tag.rb 코드 추가
+
+## \plugins\img*tag.rb 코드 추가
 
 ```ruby
 module Jekyll
