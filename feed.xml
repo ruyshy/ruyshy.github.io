@@ -1,12 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-18T14:13:42+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly1 Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly1 Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<h1 id="assembly-시작하기">assembly 시작하기</h1>
-
-<p>생성자: ruyshy2
-생성 일시: 2025년 4월 9일 오후 5:34
-카테고리: Reversing, asm
-최종 편집자:: ruyshy2
-최종 업데이트 시간: 2025년 4월 18일 오후 2:12</p>
-
-<p>assembly#1</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-18T15:10:54+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
 
 <p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
 
@@ -734,7 +726,7 @@
   <li>무조건 Windows API (<code class="language-plaintext highlighter-rouge">WriteFile</code>, <code class="language-plaintext highlighter-rouge">ExitProcess</code>, <code class="language-plaintext highlighter-rouge">GetStdHandle</code>, 등등) 호출하는 구조.</li>
   <li>인자는 RCX, RDX, R8, R9에 순서대로 넣는다.</li>
   <li>스택 16바이트 정렬 <strong>필수</strong>.</li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><summary type="html"><![CDATA[assembly 시작하기]]></summary></entry><entry><title type="html">Assembly Setting</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly Setting" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly#2</p>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><summary type="html"><![CDATA[assembly#1]]></summary></entry><entry><title type="html">Assembly Setting</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly Setting" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly#2</p>
 
 <h1 id="assembly-실습-환경-만들기">Assembly 실습 환경 만들기</h1>
 
