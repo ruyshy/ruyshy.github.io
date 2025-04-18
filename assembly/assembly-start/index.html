@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Assembly Start - ruyshy blog</title>
-<meta name="description" content="Assembly 시작하기">
+<meta name="description" content="assembly#1">
 
 
   <meta name="author" content="ruyshy">
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://ruyshy.github.io/assembly/assembly-start/">
 
 
-  <meta property="og:description" content="Assembly 시작하기">
+  <meta property="og:description" content="assembly#1">
 
 
 
@@ -35,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2025-04-09T00:00:00+09:00">
+  <meta property="article:published_time" content="2025-04-18T00:00:00+09:00">
 
 
 
@@ -313,8 +313,8 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Assembly Start">
-    <meta itemprop="description" content="Assembly 시작하기">
-    <meta itemprop="datePublished" content="2025-04-09T00:00:00+09:00">
+    <meta itemprop="description" content="assembly#1">
+    <meta itemprop="datePublished" content="2025-04-18T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
@@ -332,149 +332,561 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="assembly-시작하기">Assembly 시작하기</h1>
+        <p>assembly#1</p>
 
-<h2 id="어셈블리assembly란">어셈블리(Assembly)란?</h2>
+<p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
 
-<p>어셈블리어는 사람이 읽을 수 있는 저수준 언어로, CPU가 실제로 이해하는 기계어(machine code)와 1:1로 대응돼.
-쉽게 말하면, CPU와 직접 대화하기 직전 단계라고 볼 수 있어.</p>
+<p>드림 해커 : https://dreamhack.io/</p>
 
-<h2 id="왜-어셈블리를-배울까">왜 어셈블리를 배울까?</h2>
+<p>CrackMe : https://crackmy.app/</p>
+
+<h1 id="어셈블리assembly란"><strong>어셈블리(Assembly)란?</strong></h1>
+
+<p>어셈블리어는 사람이 읽을 수 있는 저수준 언어로, CPU가 실제로 이해하는 기계어(machine code)와 1:1로 대응됨. 쉽게 말하면, CPU와 직접 대화하기 직전 단계라고 볼 수 있음.</p>
+
+<p>한 줄로 요약하면 “CPU가 이해할 수 있는 인간 최저 레벨 언어” (C보다 훨씬 더 하드웨어에 가깝다.)</p>
+
+<h2 id="assembly에서-필수로-알아야-할-개념">Assembly에서 필수로 알아야 할 개념</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>개념</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>레지스터(Register)</td>
+      <td>CPU 안에 있는 초고속 저장소 (eax, ebx, ecx, edx 같은 것)</td>
+    </tr>
+    <tr>
+      <td>스택(Stack)</td>
+      <td>함수 호출할 때 사용하는 메모리 공간 (push/pop)</td>
+    </tr>
+    <tr>
+      <td>메모리 주소(Address)</td>
+      <td>직접 RAM의 위치를 다룬다</td>
+    </tr>
+    <tr>
+      <td>명령어(Instruction)</td>
+      <td><code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">jmp</code> 같은 한 줄짜리 CPU 명령</td>
+    </tr>
+    <tr>
+      <td>플래그(Flag)</td>
+      <td>연산 결과를 저장하는 상태 비트 (Zero Flag, Carry Flag 등)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="공부-순서-추천">공부 순서 추천</h2>
 
 <ul>
-  <li>시스템 내부 동작을 깊이 이해할 수 있음</li>
-  <li>최적화된 코드 작성 가능 (속도 극한까지 뽑기)</li>
-  <li>리버스 엔지니어링, 보안 분야에서 필수</li>
-  <li>디버깅 능력 향상</li>
+  <li>
+    <p><strong>레지스터랑 메모리 구조 이해</strong></p>
+
+    <p>(eax, esp, ebp 같은 거 감 잡기)</p>
+  </li>
+  <li>
+    <p><strong>기본 명령어부터 익히기</strong></p>
+
+    <p>(mov, add, sub, cmp, jmp, call, ret)</p>
+  </li>
+  <li>
+    <p><strong>함수 호출 규칙(Call Convention)</strong></p>
+
+    <p>(stdcall, cdecl 이런 거)</p>
+  </li>
+  <li>
+    <p><strong>스택과 함수 호출 분석</strong></p>
+
+    <p>(push, pop으로 스택 프레임 조작하는 것 보기)</p>
+  </li>
+  <li>
+    <p><strong>조건 분기(Conditional Jump)</strong></p>
+
+    <p>(cmp, je, jne, jg, jl 등 분기 흐름 익히기)</p>
+  </li>
+  <li>
+    <p><strong>간단한 프로그램 작성</strong></p>
+
+    <p>(Hello World 출력 Assembly 버전)</p>
+  </li>
+  <li>
+    <p><strong>디버거로 어셈블리 흐름 읽는 연습</strong></p>
+
+    <p>(x64dbg로 한 줄 한 줄 따라가며 이해)</p>
+  </li>
 </ul>
 
-<h2 id="구조부터-알아보자">구조부터 알아보자</h2>
+<h1 id="1-레지스터랑-메모리-구조-이해">1. 레지스터랑 메모리 구조 이해</h1>
 
-<p>어셈블리는 일반적으로 특정 <strong>CPU 아키텍처</strong>에 종속돼.</p>
+<h2 id="레지스터register란">레지스터(Register)란?</h2>
 
-<p>가장 많이 쓰이는 건 <strong>x86 / x86-64(Intel/AMD 계열)</strong> 이고,</p>
+<ul>
+  <li>CPU 안에 있는 <strong>작고 빠른 기억장치</strong>.</li>
+  <li><strong>변수 같은 거 저장</strong>하는 초고속 칸이라고 생각하면 됨.</li>
+</ul>
 
-<p>임베디드 쪽은 <strong>ARM</strong> 계열이 많아.</p>
-
-<p>이번에는 <strong>x86-64 기준</strong>으로 설명할게!</p>
-
-<h2 id="기본-개념">기본 개념</h2>
-
-<h3 id="1-레지스터register">1. <strong>레지스터(Register)</strong></h3>
-
-<p>CPU 내부에 있는 <strong>초고속 메모리</strong>. 대표적인 레지스터들:</p>
+<h2 id="32bit-레지스터-x86-기준">32bit 레지스터 (x86 기준)</h2>
 
 <table>
   <thead>
     <tr>
-      <th>이름</th>
+      <th>레지스터</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>EAX</strong></td>
+      <td>연산 결과 저장 (주로 사용)</td>
+    </tr>
+    <tr>
+      <td><strong>EBX</strong></td>
+      <td>데이터 베이스 역할 (서브 저장소)</td>
+    </tr>
+    <tr>
+      <td><strong>ECX</strong></td>
+      <td>루프 카운터 (반복문 돌릴 때)</td>
+    </tr>
+    <tr>
+      <td><strong>EDX</strong></td>
+      <td>입출력 연산 결과 저장 (EAX랑 비슷하지만 구분)</td>
+    </tr>
+    <tr>
+      <td><strong>ESI</strong></td>
+      <td>소스 인덱스 (메모리 복사 같은 작업할 때)</td>
+    </tr>
+    <tr>
+      <td><strong>EDI</strong></td>
+      <td>목적지 인덱스 (메모리 복사 목적지)</td>
+    </tr>
+    <tr>
+      <td><strong>ESP</strong></td>
+      <td>스택 포인터 (현재 스택 꼭대기 가리킴)</td>
+    </tr>
+    <tr>
+      <td><strong>EBP</strong></td>
+      <td>베이스 포인터 (함수 스택 프레임 관리)</td>
+    </tr>
+    <tr>
+      <td><strong>EIP</strong></td>
+      <td>다음 실행할 명령어 주소 (Instruction Pointer)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>참고: 64bit는 EAX → RAX 처럼 “R” 붙는다 (RAX, RBX, …)</p>
+
+<h2 id="64bit-레지스터">64bit 레지스터</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>레지스터</th>
       <th>설명</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">RAX</code></td>
-      <td>계산 결과 저장 (주요 연산용)</td>
+      <td><strong>RAX</strong></td>
+      <td>연산 결과 저장 (64bit)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">RBX</code>, <code class="language-plaintext highlighter-rouge">RCX</code>, <code class="language-plaintext highlighter-rouge">RDX</code></td>
-      <td>범용 레지스터</td>
+      <td><strong>RBX</strong></td>
+      <td>데이터 저장용 (서브 저장소)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">RSP</code></td>
-      <td>스택 포인터 (Stack Pointer)</td>
+      <td><strong>RCX</strong></td>
+      <td>루프 카운터</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">RBP</code></td>
-      <td>베이스 포인터 (Base Pointer)</td>
+      <td><strong>RDX</strong></td>
+      <td>입출력 결과 저장</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">RSI</code>, <code class="language-plaintext highlighter-rouge">RDI</code></td>
-      <td>문자열 처리 또는 함수 인자용</td>
+      <td><strong>RSI</strong></td>
+      <td>소스 인덱스</td>
+    </tr>
+    <tr>
+      <td><strong>RDI</strong></td>
+      <td>목적지 인덱스</td>
+    </tr>
+    <tr>
+      <td><strong>RSP</strong></td>
+      <td>스택 포인터 (stack pointer)</td>
+    </tr>
+    <tr>
+      <td><strong>RBP</strong></td>
+      <td>베이스 포인터 (base pointer)</td>
+    </tr>
+    <tr>
+      <td><strong>RIP</strong></td>
+      <td>명령어 포인터 (instruction pointer)</td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="2-기본-명령어">2. <strong>기본 명령어</strong></h3>
+<p>32bit에서는 EAX, EBX, 64bit는 앞에 “R” 붙고 64bit 크기로 바뀐다.</p>
+
+<p>추가로: <strong>r8 ~ r15</strong> 라는 새로운 레지스터들도 생겼음.</p>
+
+<p>→ 64bit에서는 레지스터가 더 많음 (덕분에 더 자유롭게 코딩 가능)</p>
+
+<h2 id="rax-eax-ax-ah-al-구조">RAX, EAX, AX, AH, AL 구조</h2>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">RAX</span>  <span class="o">(</span><span class="nt">64bit</span><span class="o">)</span> 
+ <span class="err">└──</span> <span class="nt">EAX</span>  <span class="o">(</span><span class="err">하위</span> <span class="nt">32bit</span><span class="o">)</span>
+      <span class="err">└──</span> <span class="nt">AX</span>   <span class="o">(</span><span class="err">하위</span> <span class="nt">16bit</span><span class="o">)</span>
+           <span class="err">├──</span> <span class="nt">AH</span> <span class="o">(</span><span class="err">상위</span> <span class="nt">8bit</span><span class="o">)</span>
+           <span class="err">└──</span> <span class="nt">AL</span> <span class="o">(</span><span class="err">하위</span> <span class="nt">8bit</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p><strong>RAX는 EAX를 포함하고, EAX는 AX를 포함하고, AX는 AH + AL로 나뉜다.</strong></p>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/assembly/2025-04-18-assembly-start/image1.png" alt="image1" style="max-width: 100%;" /></p>
+
+<ul>
+  <li><strong>EAX/RAX (Accumulator Register, 누산기 레지스터)</strong>산술, 논리 연산을 담당하는 레지스터로, 함수의 반환 값이 이 레지스터에 저장된다.
+    <ul>
+      <li><strong>EAX 레지스터의 종류</strong></li>
+      <li>RAX: 64비트 (x86-64 아키텍처에서 확장된 EAX)</li>
+      <li>EAX: 32비트 누산기 레지스터</li>
+      <li>AX: 16비트의 EAX 레지스터 하위 부분</li>
+      <li>AH: AX의 상위 8비트</li>
+      <li>AL: AX의 하위 8비트</li>
+    </ul>
+  </li>
+  <li><strong>EBX/RBX (Base Register, 베이스 레지스터)</strong>메모리 주소를 저장하기 위해 사용되는 레지스터.종종 배열이나 문자열과 같은 데이터 구조에 접근하기 위한 기준 포인터로 사용된다.
+    <ul>
+      <li><strong>EBX 레지스터의 종류</strong></li>
+      <li>RBX: 64비트 (x86-64 아키텍처에서 확장된 EBX)</li>
+      <li>EBX: 32비트 베이스 레지스터</li>
+      <li>BX: 16비트의 EBX 레지스터 하위 부분</li>
+      <li>BH: BX의 상위 8비트</li>
+      <li>BL: BX의 하위 8비트</li>
+    </ul>
+  </li>
+  <li><strong>ECX/RCX (Count Register, 카운트 레지스터)</strong>반복 작업에서 카운터 역할을 수행하는 레지스터이다.loop 명령어 사용 시 레지스터의 값을 하나씩 감소 시키며, 0이 될 때 까지 반복 작업을 수행한다.
+    <ul>
+      <li><strong>ECX 레지스터의 종류</strong></li>
+      <li>RCX: 64비트 (x86-64 아키텍처에서 확장된 ECX)</li>
+      <li>ECX: 32비트 카운트 레지스터</li>
+      <li>CX: 16비트의 ECX 레지스터 하위 부분</li>
+      <li>CH: CX의 상위 8비트</li>
+      <li>CL: CX의 하위 8비트</li>
+    </ul>
+  </li>
+  <li><strong>EDX/RDX (Data Register, 데이터 레지스터)</strong>EAX 레지스터와 함께 사용하여 큰 수를 연산을 하거나, 그 결과를 저장할 수 있는 레지스터이다.64bit 더블 워드 연산을 수행할 때에도 사용 가능하다. (div, mul)
+    <ul>
+      <li><strong>EDX 레지스터의 종류</strong></li>
+      <li>RDX: 64비트 (x86-64 아키텍처에서 확장된 EDX)</li>
+      <li>EDX: 32비트 데이터 레지스터</li>
+      <li>DX: 16비트의 EDX 레지스터 하위 부분</li>
+      <li>DH: DX의 상위 8비트</li>
+      <li>DL: DX의 하위 8비트</li>
+    </ul>
+  </li>
+  <li><strong>ESI/RSI (Source Index, 소스 인덱스 레지스터)</strong>데이터 복사, 문자열 연산, 입력/출력 처리 등의 작업에서 소스 데이터의 주소를 가리키는 데 사용된다.
+    <ul>
+      <li><strong>ESI 레지스터의 종류</strong></li>
+      <li>RSI: 64비트 (x86-64 아키텍처에서 확장된 ESI)</li>
+      <li>ESI: 32비트 소스 인덱스 레지스터</li>
+      <li>SI: 16비트의 ESI 레지스터 하위 부분</li>
+    </ul>
+  </li>
+  <li><strong>EDI/RDI (Destination Index, 목적지 인덱스 레지스터)</strong>데이터 복사, 문자열 처리, 배열 조작 등의 작업에서 목적지 데이터의 메모리 주소를 가리키는데 사용된다.
+    <ul>
+      <li><strong>EDI 레지스터의 종류</strong></li>
+      <li>RDI: 64비트 (x86-64 아키텍처에서 확장된 EDI)</li>
+      <li>EDI: 32비트 목적지 인덱스 레지스터</li>
+      <li>DI: 16비트의 EDI 레지스터 하위 부분</li>
+    </ul>
+  </li>
+  <li><strong>ESP/RSP (Stack Pointer, 스택 포인터 레지스터)</strong>프로그램의 스택 메모리 내에서, 현재 스택 최상단 주소를 저장하는 레지스터이다.함수 호출, 지역 변수 관리, 함수 내 데이터 저장 및 복구 등의 작업에서 필수적으로 사용된다.
+    <ul>
+      <li><strong>ESP 레지스터의 종류</strong></li>
+      <li>RSP: 64비트 (x86-64 아키텍처에서 확장된 ESP)</li>
+      <li>ESP: 32비트 스택 포인터 레지스터.</li>
+      <li>SP: 16비트의 ESP 레지스터 하위 부분.</li>
+    </ul>
+  </li>
+  <li><strong>EBP/RBP (Base Pointer, 베이스 포인터 레지스터)</strong>함수 내의 지역 변수와 인자에 일관되고, 쉽게 접근하기 위해 사용되는 포인터 역할 레지스터이다.스택 내에서 접근할 부분의 메모리 주소를 저장한다.
+    <ul>
+      <li><strong>EBP 레지스터의 종류</strong></li>
+      <li>RBP: 64비트 (x86-64 아키텍처에서 확장된 EBP).</li>
+      <li>EBP: 32비트 베이스 포인터 레지스터.</li>
+      <li>BP: 16비트의 EBP 레지스터 하위 부분.</li>
+    </ul>
+  </li>
+  <li><strong>EIP/RIP (Instruction Pointer, 명령 포인터)</strong>다음에 실행될 명령의 메모리 주소를 저장한다.
+    <ul>
+      <li><strong>EIP 레지스터의 종류</strong></li>
+      <li>RIP: 64비트 (x86-64 아키텍처)</li>
+      <li>EIP: 32비트</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="windows-64bit-assembly-기본-구조">Windows 64bit Assembly 기본 구조</h2>
+
+<blockquote>
+  <p>윈도우에서는 리눅스처럼 syscall 직접 안 씀.</p>
+
+  <p>➔ 대신, <strong>Windows API</strong>를 “함수 호출” 방식으로 사용.</p>
+
+</blockquote>
+
+<p><strong>예시:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MessageBoxA</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ExitProcess</code></li>
+  <li><code class="language-plaintext highlighter-rouge">WriteFile</code></li>
+  <li>이런 윈도우 기본 함수들을 호출하는 식!</li>
+</ul>
+
+<h2 id="windows-64bit-레지스터-호출-규약-중요">Windows 64bit 레지스터 호출 규약 (중요)</h2>
+
+<p>Windows 64bit는 호출 규칙이 정해져 있음: (<strong>Windows x64 Calling Convention</strong>)</p>
 
 <table>
   <thead>
     <tr>
-      <th>명령어</th>
+      <th>순서</th>
+      <th>레지스터</th>
       <th>설명</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">MOV</code></td>
-      <td>값 복사</td>
+      <td>1</td>
+      <td>RCX</td>
+      <td>첫 번째 인자</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">ADD</code></td>
-      <td>덧셈</td>
+      <td>2</td>
+      <td>RDX</td>
+      <td>두 번째 인자</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">SUB</code></td>
-      <td>뺄셈</td>
+      <td>3</td>
+      <td>R8</td>
+      <td>세 번째 인자</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">MUL</code>, <code class="language-plaintext highlighter-rouge">IMUL</code></td>
-      <td>곱셈</td>
+      <td>4</td>
+      <td>R9</td>
+      <td>네 번째 인자</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">DIV</code>, <code class="language-plaintext highlighter-rouge">IDIV</code></td>
-      <td>나눗셈</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">PUSH</code> / <code class="language-plaintext highlighter-rouge">POP</code></td>
-      <td>스택에 값 넣기 / 빼기</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">CMP</code></td>
-      <td>비교</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">JMP</code>, <code class="language-plaintext highlighter-rouge">JE</code>, <code class="language-plaintext highlighter-rouge">JNE</code>, <code class="language-plaintext highlighter-rouge">JG</code>, <code class="language-plaintext highlighter-rouge">JL</code>, …</td>
-      <td>조건 분기</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">CALL</code>, <code class="language-plaintext highlighter-rouge">RET</code></td>
-      <td>함수 호출 / 복귀</td>
+      <td>이후</td>
+      <td>스택(Stack)</td>
+      <td>다섯 번째 인자부터는 스택에 저장</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="간단-예제">간단 예제</h2>
+<p>즉, 함수 부를 때 <strong>인자(arguments)는 레지스터에 순서대로 넣는다!</strong></p>
 
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">section</span> <span class="nv">.text</span>
-    <span class="nf">global</span> <span class="nv">_start</span>
+<h2 id="함수-호출할-때-필요한-기본">함수 호출할 때 필요한 기본</h2>
 
-<span class="nl">_start:</span>
-    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>       <span class="c1">; rax = 5</span>
-    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">3</span>       <span class="c1">; rax += 3 → rax = 8</span>
-    <span class="c1">; 여기서 프로그램 종료 (Linux 기준)</span>
-    <span class="nf">mov</span> <span class="nb">rdi</span><span class="p">,</span> <span class="mi">0</span>       <span class="c1">; return code = 0</span>
-    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">60</span>      <span class="c1">; syscall: exit</span>
-    <span class="nf">syscall</span>
+<ul>
+  <li>함수 호출 전 인자를 RCX, RDX, R8, R9에 셋팅</li>
+  <li>호출할 때 <code class="language-plaintext highlighter-rouge">call 함수이름</code></li>
+  <li>스택은 항상 <strong>16바이트 정렬</strong> 되어야 함 (중요!)</li>
+</ul>
+
+<blockquote>
+  <p>왜 16바이트 정렬?</p>
+
+  <p>➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
+
+</blockquote>
+
+<h2 id="메모리-구조-이해">메모리 구조 이해</h2>
+
+<!-- post-image.html -->
+
+<p><img src="/assets/images/assembly/2025-04-18-assembly-start/image2.png" alt="image2" style="max-width: 100%;" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>영역</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Text (Code) 영역</strong></td>
+      <td>프로그램 코드 저장 (명령어들)</td>
+    </tr>
+    <tr>
+      <td><strong>Data 영역</strong></td>
+      <td>전역 변수 저장</td>
+    </tr>
+    <tr>
+      <td><strong>BSS 영역</strong></td>
+      <td>초기화 안 된 전역 변수 저장</td>
+    </tr>
+    <tr>
+      <td><strong>Heap 영역</strong></td>
+      <td>동적 할당 (new/malloc)</td>
+    </tr>
+    <tr>
+      <td><strong>Stack 영역</strong></td>
+      <td>함수 호출, 지역변수 저장, 복귀 주소 저장</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Stack</strong>이 특히 중요</p>
+
+<ul>
+  <li>함수 부를 때마다 스택 위에 “새로운 공간”이 만들어지고</li>
+  <li>함수 끝나면 그 공간이 “자동으로 사라짐”.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 코드(Code) 영역메모리의 코드(Code) 영역은 실행할 프로그램의 코드가 저장되는 영역으로 텍스트 영역이라고도 부른다. Hex파일이나 BIN 파일 메모리이다. CPU는 코드 영역에 저장된 명령어를 하나씩 가져가서 처리하게 되며 컴파일 타임에 결정되고 중간에 코드를 바꿀 수 없게 Read-Only로 지정되어 있다.
+
+2. 데이터(Data) 영역메모리의 데이터(Data) 영역은 프로그램의 전역 변수(global), 정적(static) 변수, 배열(array), 구조체(structure)가 저장되는 영역이다. 초기화된 데이터는 data영역에 저장되며, 초기화되지 않는 데이터는 BSS(Block Stated Symbol) 영역에 저장된다. 이 영역은 실행 도중에 전역 변수가 변경될 수도 있으니 Read-Write로 지정되어 있다. 프로그램의 시작과 함께 할당되고, 프로그램 종료 시 소멸된다.
+
+3. 힙(Heap) 영역메모리의 힙(Heap) 영역은 사용자가 집접 관리할 수 있는 '그기고 해야만 하는' 메모리 영역으로 사용자에 의해 메모리 공간이 동적으로 할당되고 해제된다. 힙 영역은 메모리의 낮은 주소에서 높은 주소의 방향으로 할당된다.
+
+4. 스택(Stack) 영역메모리의 스택(Stack) 영역은 함수의 호출과 관계되는 지역 변수와 매개변수가 저장되는 영역으로  함수의 호출과 함께 할당되며, 함수의 호출이 완료되면 소멸된다. 이렇게 스택영역에 저장되는 함수의 호출 정보를 스택 프레임이라고 한다. 스택 영역은 푸시(push) 동작으로 데이터를 저장하고 , 팝(pop) 동작으로 데이터를 인출한다. 이러한 스택은 후입선출(LIFO, Last-In First-Out) 방식에 따라 동작하므로, 가장 늦게 저장된 데이터가 가장 먼저 인출된다. 스택 영역은 메모리의 높은 주소에서 낮은 주소의 방향으로 할당된다.
 </code></pre></div></div>
 
-<h2 id="컴파일--실행-linux-기준">컴파일 &amp; 실행 (Linux 기준)</h2>
+<h2 id="64bit-메모리-구조">64bit 메모리 구조</h2>
 
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">nasm</span> <span class="o">-</span><span class="nv">f</span> <span class="nv">elf64</span> <span class="nv">hello.asm</span> <span class="o">-</span><span class="nv">o</span> <span class="nv">hello.o</span>
-<span class="nf">ld</span> <span class="nv">hello.o</span> <span class="o">-</span><span class="nv">o</span> <span class="nv">hello</span>
-<span class="nf">.</span><span class="o">/</span><span class="nv">hello</span>
-<span class="nf">echo</span> <span class="kc">$</span><span class="nv">?</span>
+<p>64bit는 메모리 주소 자체가 64bit.</p>
+
+<p>(= 2의 64승 만큼 메모리 접근할 수 있음. <strong>거의 무한대</strong>)</p>
+
+<p>나머지 구조는 비슷하지만:</p>
+
+<ul>
+  <li><strong>스택(Stack)</strong> 여전히 사용</li>
+  <li><strong>힙(Heap)</strong> 여전히 malloc/new로 동적 할당</li>
+  <li><strong>데이터 영역(Data)</strong> 여전히 전역 변수 저장</li>
+</ul>
+
+<p><strong>다만!</strong> 64bit에서는 스택 정렬(16바이트 alignment)이 필수.
+(뒤에 함수 호출할 때 배울 예정)</p>
+
+<h2 id="레지스터와-메모리-관계-요약">레지스터와 메모리 관계 요약</h2>
+
+<ul>
+  <li>레지스터는 <strong>초고속 임시 저장소</strong> (작고 빠름)</li>
+  <li>메모리는 <strong>크고 느림</strong> (하지만 양은 많음)</li>
+  <li>속도: 레지스터 » 캐시 » 메모리(RAM)</li>
+</ul>
+
+<p>그래서 Assembly 코드는 <strong>“레지스터를 최대한 많이 쓰고”</strong>, <strong>“필요할 때만 메모리 접근”</strong> 하려 함.</p>
+
+<h2 id="실행-흐름-예제">실행 흐름 예제</h2>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">eax</span><span class="p">,</span> <span class="mi">5</span>      <span class="c1">; eax에 5 저장</span>
+<span class="nf">mov</span> <span class="nb">ebx</span><span class="p">,</span> <span class="mi">10</span>     <span class="c1">; ebx에 10 저장</span>
+<span class="nf">add</span> <span class="nb">eax</span><span class="p">,</span> <span class="nb">ebx</span>    <span class="c1">; eax = eax + ebx (5 + 10 = 15)</span>
 </code></pre></div></div>
 
-<h2 id="다음에-다룰-주제들">다음에 다룰 주제들</h2>
+<p>실행 흐름:</p>
 
-<ol>
-  <li>메모리 구조 (스택, 힙, 데이터 섹션 등)</li>
-  <li>함수 호출 규약 (calling convention)</li>
-  <li>조건문, 반복문 구현</li>
-  <li>리버싱을 위한 디스어셈블리 감상법</li>
-  <li>디버거 사용법 (gdb, x64dbg 등)</li>
-</ol>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">eax = 5</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ebx = 10</code></li>
+  <li><code class="language-plaintext highlighter-rouge">eax = eax + ebx</code> → 결과 15가 eax에 들어감</li>
+</ul>
+
+<h2 id="windows-64bit-hello-world-assembly-예제">Windows 64bit Hello World Assembly 예제</h2>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+
+<span class="nf">extern</span> <span class="nv">ExitProcess</span> <span class="p">:</span> <span class="nv">proc</span>
+<span class="nf">extern</span> <span class="nv">GetStdHandle</span> <span class="p">:</span> <span class="nv">proc</span>
+<span class="nf">extern</span> <span class="nv">WriteFile</span> <span class="p">:</span> <span class="nv">proc</span>
+
+<span class="nf">section</span> <span class="nv">.data</span>
+    <span class="nf">helloMsg</span> <span class="nv">db</span> <span class="err">"</span><span class="nv">Hello</span><span class="p">,</span> <span class="nv">Windows</span> <span class="mi">64</span><span class="o">-</span><span class="nv">bit</span> <span class="nv">Assembly</span><span class="err">!"</span><span class="p">,</span> <span class="mh">0xA</span>
+    <span class="no">helloLen</span><span class="kd"> equ</span> <span class="kc">$</span> <span class="o">-</span> <span class="nv">helloMsg</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nf">global</span> <span class="nv">main</span>
+<span class="nl">main:</span>
+    <span class="c1">; GetStdHandle(STD_OUTPUT_HANDLE)</span>
+    <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span>           <span class="c1">; STD_OUTPUT_HANDLE</span>
+    <span class="nf">call</span> <span class="nv">GetStdHandle</span>
+    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="nb">rax</span>           <span class="c1">; 핸들을 rbx에 저장</span>
+
+    <span class="c1">; WriteFile(handle, buffer, length, &amp;written, NULL)</span>
+    <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="nb">rbx</span>           <span class="c1">; 핸들</span>
+    <span class="nf">lea</span> <span class="nb">rdx</span><span class="p">,</span> <span class="p">[</span><span class="nv">helloMsg</span><span class="p">]</span>    <span class="c1">; 버퍼</span>
+    <span class="nf">mov</span> <span class="nv">r8</span><span class="p">,</span> <span class="nv">helloLen</span>       <span class="c1">; 길이</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">32</span>            <span class="c1">; 스택 16바이트 정렬 + WriteFile에 공간 마련</span>
+    <span class="nf">xor</span> <span class="nv">r9</span><span class="p">,</span> <span class="nv">r9</span>             <span class="c1">; written 포인터 NULL</span>
+    <span class="nf">call</span> <span class="nv">WriteFile</span>
+    <span class="nf">add</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">32</span>            <span class="c1">; 스택 복원</span>
+
+    <span class="c1">; ExitProcess(0)</span>
+    <span class="nf">xor</span> <span class="nb">rcx</span><span class="p">,</span> <span class="nb">rcx</span>
+    <span class="nf">call</span> <span class="nv">ExitProcess</span>
+</code></pre></div></div>
+
+<p>정리 포인트:</p>
+
+<ul>
+  <li>API 부르기 전에 RCX, RDX, R8, R9 셋팅</li>
+  <li><code class="language-plaintext highlighter-rouge">sub rsp, 32</code>로 스택을 정렬</li>
+  <li>함수 끝나면 <code class="language-plaintext highlighter-rouge">add rsp, 32</code>로 스택 복구</li>
+  <li>ExitProcess로 종료</li>
+</ul>
+
+<h2 id="운영체제-차이-요약">운영체제 차이 요약</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>리눅스</th>
+      <th>윈도우</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>호출 방식</td>
+      <td>syscall 직접 호출</td>
+      <td>Windows API 호출</td>
+    </tr>
+    <tr>
+      <td>시스템콜 번호 필요</td>
+      <td>O</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>인자 전달 방식</td>
+      <td>레지스터 + 스택</td>
+      <td>RCX, RDX, R8, R9 순서</td>
+    </tr>
+    <tr>
+      <td>스택 정렬</td>
+      <td>16바이트 필수 아님</td>
+      <td>16바이트 필수</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="요약">요약</h2>
+
+<ul>
+  <li>Windows에서는 syscall 사용 안 함.</li>
+  <li>무조건 Windows API (<code class="language-plaintext highlighter-rouge">WriteFile</code>, <code class="language-plaintext highlighter-rouge">ExitProcess</code>, <code class="language-plaintext highlighter-rouge">GetStdHandle</code>, 등등) 호출하는 구조.</li>
+  <li>인자는 RCX, RDX, R8, R9에 순서대로 넣는다.</li>
+  <li>스택 16바이트 정렬 <strong>필수</strong>.</li>
+</ul>
 
         
       </section>
@@ -518,7 +930,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-09T00:00:00+09:00">April 9, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-18T00:00:00+09:00">April 18, 2025</time></p>
 
       </footer>
 
@@ -536,10 +948,10 @@
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Prev</a>
+      <a href="/blog/blog6-font/" class="pagination--pager" title="GitHub Blog Font 설정">Prev</a>
     
     
-      <a href="/blog/blog1-start/" class="pagination--pager" title="GitHub Blog Start">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

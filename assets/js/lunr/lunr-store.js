@@ -17,12 +17,6 @@ var store = [{
         "url": "/categories/",
         "teaser": null
       },{
-        "title": "Assembly Start",
-        "excerpt":"Assembly 시작하기 어셈블리(Assembly)란? 어셈블리어는 사람이 읽을 수 있는 저수준 언어로, CPU가 실제로 이해하는 기계어(machine code)와 1:1로 대응돼. 쉽게 말하면, CPU와 직접 대화하기 직전 단계라고 볼 수 있어. 왜 어셈블리를 배울까? 시스템 내부 동작을 깊이 이해할 수 있음 최적화된 코드 작성 가능 (속도 극한까지 뽑기) 리버스 엔지니어링, 보안 분야에서 필수 디버깅...","categories": ["assembly"],
-        "tags": ["nasm","reverse"],
-        "url": "/assembly/assembly-start/",
-        "teaser": null
-      },{
         "title": "GitHub Blog Start",
         "excerpt":"GitHub Blog #1 jekyll 테마 GitHub Blog 시작하기 Jekyll 기반 GitHub Blog 생성 https://mmistakes.github.io/minimal-mistakes/ 해당 Jekyll 테마 기준으로 작성 되어있습니다. 준비해야 할 준비물 개인 GitHub 계정 (https://github.com/) Visual Studio Code (https://code.visualstudio.com/) GitHub Blog 시작하기 https://github.com/mmistakes/minimal-mistakes github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다. 해당 사이트에서 위 오른쪽에...","categories": ["blog"],
         "tags": ["GitHubBlog"],
@@ -57,5 +51,11 @@ var store = [{
         "excerpt":"GitHub Blog #6 여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다. https://fonts.google.com/ 저는 Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다. _sass\\minimal-mistakes_variables.scss 추가 $dongle: 'Dongle', -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif !default; 수정해야 할 부분: $global-font-family: $sans-serif !default; $header-font-family: $sans-serif !default; 수정할 코드: $global-font-family: $dongle !default; $header-font-family: $dongle !default; 수정해야 할 부분: /*...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog6-font/",
+        "teaser": null
+      },{
+        "title": "Assembly Start",
+        "excerpt":"assembly#1 시작하기 앞 서, 학습할 사이트 목록 입니다. 드림 해커 : https://dreamhack.io/ CrackMe : https://crackmy.app/ 어셈블리(Assembly)란? 어셈블리어는 사람이 읽을 수 있는 저수준 언어로, CPU가 실제로 이해하는 기계어(machine code)와 1:1로 대응됨. 쉽게 말하면, CPU와 직접 대화하기 직전 단계라고 볼 수 있음. 한 줄로 요약하면 “CPU가 이해할 수 있는 인간 최저 레벨...","categories": ["assembly"],
+        "tags": ["nasm","reverse"],
+        "url": "/assembly/assembly-start/",
         "teaser": null
       }]
