@@ -1,10 +1,8 @@
-# assembly 시작하기
-
-생성자: ruyshy2
-생성 일시: 2025년 4월 9일 오후 5:34
-카테고리: Reversing, asm
-최종 편집자:: ruyshy2
-최종 업데이트 시간: 2025년 4월 18일 오후 2:12
+---
+title: "Assembly Start"
+date: 2025-04-18
+tags: [nasm, assembly]
+---
 
 assembly#1
 
