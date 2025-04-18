@@ -59,9 +59,9 @@ var store = [{
         "url": "/blog/blog7-font/",
         "teaser": null
       },{
-        "title": "Assembly Start",
-        "excerpt":"assembly#1 시작하기 앞 서, 학습할 사이트 목록 입니다. 드림 해커 : https://dreamhack.io/ CrackMe : https://crackmy.app/ 어셈블리(Assembly)란? 어셈블리어는 사람이 읽을 수 있는 저수준 언어로, CPU가 실제로 이해하는 기계어(machine code)와 1:1로 대응됨. 쉽게 말하면, CPU와 직접 대화하기 직전 단계라고 볼 수 있음. 한 줄로 요약하면 “CPU가 이해할 수 있는 인간 최저 레벨...","categories": ["assembly"],
-        "tags": ["nasm","assembly"],
+        "title": "Assembly1 Start",
+        "excerpt":"assembly 시작하기 생성자: ruyshy2 생성 일시: 2025년 4월 9일 오후 5:34 카테고리: Reversing, asm 최종 편집자:: ruyshy2 최종 업데이트 시간: 2025년 4월 18일 오후 2:12 assembly#1 시작하기 앞 서, 학습할 사이트 목록 입니다. 드림 해커 : https://dreamhack.io/  CrackMe : https://crackmy.app/ 어셈블리(Assembly)란? 어셈블리어는 사람이 읽을 수 있는 저수준 언어로, CPU가 실제로 이해하는 기계어(machine...","categories": ["assembly"],
+        "tags": [],
         "url": "/assembly/assembly1-start/",
         "teaser": null
       },{

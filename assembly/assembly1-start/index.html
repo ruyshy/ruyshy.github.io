@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Assembly Start - ruyshy blog</title>
-<meta name="description" content="assembly#1">
+<!-- begin _includes/seo.html --><title>Assembly1 Start - ruyshy blog</title>
+<meta name="description" content="assembly 시작하기">
 
 
   <meta name="author" content="ruyshy">
@@ -23,11 +23,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="Assembly Start">
+<meta property="og:title" content="Assembly1 Start">
 <meta property="og:url" content="https://ruyshy.github.io/assembly/assembly1-start/">
 
 
-  <meta property="og:description" content="assembly#1">
+  <meta property="og:description" content="assembly 시작하기">
 
 
 
@@ -312,8 +312,8 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Assembly Start">
-    <meta itemprop="description" content="assembly#1">
+    <meta itemprop="headline" content="Assembly1 Start">
+    <meta itemprop="description" content="assembly 시작하기">
     <meta itemprop="datePublished" content="2025-04-18T00:00:00+09:00">
     
 
@@ -321,7 +321,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/assembly/assembly1-start/" itemprop="url">Assembly Start
+            <a href="https://ruyshy.github.io/assembly/assembly1-start/" itemprop="url">Assembly1 Start
 </a>
           </h1>
           
@@ -332,13 +332,21 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>assembly#1</p>
+        <h1 id="assembly-시작하기">assembly 시작하기</h1>
+
+<p>생성자: ruyshy2
+생성 일시: 2025년 4월 9일 오후 5:34
+카테고리: Reversing, asm
+최종 편집자:: ruyshy2
+최종 업데이트 시간: 2025년 4월 18일 오후 2:12</p>
+
+<p>assembly#1</p>
 
 <p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
-<blockquote>
-  <p>드림 해커 : <a href="https://dreamhack.io/">https://dreamhack.io/</a>
-CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
-</blockquote>
+
+<p>드림 해커 : https://dreamhack.io/ </p>
+
+<p>CrackMe : https://crackmy.app/</p>
 
 <h1 id="어셈블리assembly란"><strong>어셈블리(Assembly)란?</strong></h1>
 
@@ -346,7 +354,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
 
 <p>한 줄로 요약하면 “CPU가 이해할 수 있는 인간 최저 레벨 언어” (C보다 훨씬 더 하드웨어에 가깝다.)</p>
 
-<h2 id="assembly에서-필수로-알아야-할-개념">Assembly에서 필수로 알아야 할 개념</h2>
+<h2 id="assembly에서-필수로-알아야-할-개념"><strong>Assembly에서 필수로 알아야 할 개념</strong></h2>
 
 <table>
   <thead>
@@ -370,7 +378,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
     </tr>
     <tr>
       <td>명령어(Instruction)</td>
-      <td><code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">jmp</code> 같은 한 줄짜리 CPU 명령</td>
+      <td><code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">jmp</code> 같은 한 줄짜리 CPU 명령</td>
     </tr>
     <tr>
       <td>플래그(Flag)</td>
@@ -379,7 +387,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
   </tbody>
 </table>
 
-<h2 id="공부-순서-추천">공부 순서 추천</h2>
+<h2 id="공부-순서-추천"><strong>공부 순서 추천</strong></h2>
 
 <ul>
   <li>
@@ -419,28 +427,62 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
   </li>
 </ul>
 
-<h1 id="1-레지스터랑-메모리-구조-이해">1. 레지스터랑 메모리 구조 이해</h1>
+<h1 id="1-레지스터랑-메모리-구조-이해"><strong>1. 레지스터랑 메모리 구조 이해</strong></h1>
 
-<h2 id="레지스터register란">레지스터(Register)란?</h2>
+<h2 id="레지스터register란"><strong>레지스터(Register)란?</strong></h2>
 
 <ul>
-  <li>CPU 안에 있는 <strong>작고 빠른 기억장치</strong>.</li>
+  <li>CPU 안에 있는 <strong>작고 빠른 기억장치</strong>.</li>
   <li><strong>변수 같은 거 저장</strong>하는 초고속 칸이라고 생각하면 됨.</li>
 </ul>
 
-<h2 id="레지스터의-전체-분류-x86-64-기준">레지스터의 전체 분류 (x86-64 기준)</h2>
-<p>| 분류 | 예시 | 설명 |
-| — | — | — |
-| <strong>일반 목적 레지스터 (GPR)</strong> | RAX, RBX, RCX, … | 연산, 데이터 저장, 함수 인자 전달 |
-| <strong>세그먼트 레지스터</strong> | CS, DS, SS, ES, FS, GS | 메모리 세그먼트 구분 |
-| <strong>플래그 레지스터 (FLAGS/RFLAGS)</strong> | EFLAGS, RFLAGS | 조건 분기, 연산 결과 상태 저장 |
-| <strong>포인터/인덱스 레지스터</strong> | RIP, RSP, RBP, RSI, RDI | 명령어 포인터, 스택, 베이스, 인덱싱 |
-| <strong>제어 레지스터 (CRx)</strong> | CR0, CR2, CR3, CR4 | 페이지 테이블, 보호모드 등 제어 |
-| <strong>디버그 레지스터</strong> | DR0–DR7 | 브레이크포인트 설정 등에 사용 |</p>
+<h2 id="레지스터의-전체-분류-x86-64-기준"><strong>레지스터의 전체 분류 (x86-64 기준)</strong></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>분류</th>
+      <th>예시</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>일반 목적 레지스터 (GPR)</strong></td>
+      <td>RAX, RBX, RCX, …</td>
+      <td>연산, 데이터 저장, 함수 인자 전달</td>
+    </tr>
+    <tr>
+      <td><strong>세그먼트 레지스터</strong></td>
+      <td>CS, DS, SS, ES, FS, GS</td>
+      <td>메모리 세그먼트 구분</td>
+    </tr>
+    <tr>
+      <td><strong>플래그 레지스터 (FLAGS/RFLAGS)</strong></td>
+      <td>EFLAGS, RFLAGS</td>
+      <td>조건 분기, 연산 결과 상태 저장</td>
+    </tr>
+    <tr>
+      <td><strong>포인터/인덱스 레지스터</strong></td>
+      <td>RIP, RSP, RBP, RSI, RDI</td>
+      <td>명령어 포인터, 스택, 베이스, 인덱싱</td>
+    </tr>
+    <tr>
+      <td><strong>제어 레지스터 (CRx)</strong></td>
+      <td>CR0, CR2, CR3, CR4</td>
+      <td>페이지 테이블, 보호모드 등 제어</td>
+    </tr>
+    <tr>
+      <td><strong>디버그 레지스터</strong></td>
+      <td>DR0–DR7</td>
+      <td>브레이크포인트 설정 등에 사용</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>대부분 실무에서 GPR, FLAGS, 세그먼트 레지스터까지 알면 충분</p>
 
-<h2 id="32bit-레지스터-x86-기준">32bit 레지스터 (x86 기준)</h2>
+<h2 id="32bit-레지스터-x86-기준"><strong>32bit 레지스터 (x86 기준)</strong></h2>
 
 <table>
   <thead>
@@ -491,7 +533,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
 
 <p>참고: 64bit는 EAX → RAX 처럼 “R” 붙는다 (RAX, RBX, …)</p>
 
-<h2 id="64bit-레지스터">64bit 레지스터</h2>
+<h2 id="64bit-레지스터"><strong>64bit 레지스터</strong></h2>
 
 <table>
   <thead>
@@ -540,54 +582,101 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
   </tbody>
 </table>
 
-<h2 id="세그먼트-레지스터-segment-registers">세그먼트 레지스터 (Segment Registers)</h2>
-<p>| 레지스터 | 설명 |
-| — | — |
-| <strong>CS</strong> | Code Segment: 명령어(코드)가 들어있는 영역 |
-| <strong>DS</strong> | Data Segment: 일반 데이터가 들어있는 영역 |
-| <strong>SS</strong> | Stack Segment: 스택 데이터가 들어있는 영역 |
-| <strong>ES/FS/GS</strong> | 확장 세그먼트: 특수 목적 (스레드 로컬 등) |</p>
+<h2 id="세그먼트-레지스터-segment-registers"><strong>세그먼트 레지스터 (Segment Registers)</strong></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>레지스터</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>CS</strong></td>
+      <td>Code Segment: 명령어(코드)가 들어있는 영역</td>
+    </tr>
+    <tr>
+      <td><strong>DS</strong></td>
+      <td>Data Segment: 일반 데이터가 들어있는 영역</td>
+    </tr>
+    <tr>
+      <td><strong>SS</strong></td>
+      <td>Stack Segment: 스택 데이터가 들어있는 영역</td>
+    </tr>
+    <tr>
+      <td><strong>ES/FS/GS</strong></td>
+      <td>확장 세그먼트: 특수 목적 (스레드 로컬 등)</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>중요한 사실:</p>
+
 <blockquote>
-  <p>64bit에서는 대부분 세그먼트 의미가 무시되거나 고정됨.
-예를 들어:</p>
+  <p>64bit에서는 대부분 세그먼트 의미가 무시되거나 고정됨. 예를 들어:</p>
+
   <ul>
     <li>CS, DS, SS 같은 건 거의 고정값으로 유지되고</li>
     <li>FS, GS만 스레드 로컬 데이터(TIB/TEB 접근)처럼 제한적으로 사용돼.</li>
   </ul>
 </blockquote>
 
-<p>즉, 64bit에서는 세그먼트 레지스터 사용 거의 안 한다.
-예외적으로 FS/GS는 구조체 접근할 때 쓰기도 함 (예: gs:[0x30] → PEB)</p>
+<p>즉, 64bit에서는 세그먼트 레지스터 사용 거의 안 한다. 예외적으로 FS/GS는 구조체 접근할 때 쓰기도 함 (예: gs:[0x30] → PEB)</p>
 
-<h2 id="플래그-레지스터-rflags--eflags">플래그 레지스터 (RFLAGS / EFLAGS)</h2>
-<p>| 플래그 이름 | 설명 |
-| — | — |
-| <strong>ZF (Zero Flag)</strong> | 연산 결과가 0이면 설정됨 |
-| <strong>CF (Carry Flag)</strong> | 자리 올림 발생 시 설정됨 |
-| <strong>SF (Sign Flag)</strong> | 부호 비트 (음수면 1) |
-| <strong>OF (Overflow Flag)</strong> | 부호 있는 오버플로우 발생 시 설정됨 |
-| <strong>PF (Parity Flag)</strong> | 결과의 1 비트 개수가 짝수면 설정됨 |
-| <strong>AF (Auxiliary Carry)</strong> | BCD 연산 시 사용됨 |</p>
+<h2 id="플래그-레지스터-rflags--eflags"><strong>플래그 레지스터 (RFLAGS / EFLAGS)</strong></h2>
 
-<p>cmp, test 같은 명령어는
-→ 내부적으로 연산 후 플래그 레지스터를 변경하고
-→ je, jne, jg, jl 같은 조건 분기 명령어에서
-→ 플래그 값을 참조해서 분기한다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>플래그 이름</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ZF (Zero Flag)</strong></td>
+      <td>연산 결과가 0이면 설정됨</td>
+    </tr>
+    <tr>
+      <td><strong>CF (Carry Flag)</strong></td>
+      <td>자리 올림 발생 시 설정됨</td>
+    </tr>
+    <tr>
+      <td><strong>SF (Sign Flag)</strong></td>
+      <td>부호 비트 (음수면 1)</td>
+    </tr>
+    <tr>
+      <td><strong>OF (Overflow Flag)</strong></td>
+      <td>부호 있는 오버플로우 발생 시 설정됨</td>
+    </tr>
+    <tr>
+      <td><strong>PF (Parity Flag)</strong></td>
+      <td>결과의 1 비트 개수가 짝수면 설정됨</td>
+    </tr>
+    <tr>
+      <td><strong>AF (Auxiliary Carry)</strong></td>
+      <td>BCD 연산 시 사용됨</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>cmp, test 같은 명령어는 → 내부적으로 연산 후 플래그 레지스터를 변경하고 → je, jne, jg, jl 같은 조건 분기 명령어에서 → 플래그 값을 참조해서 분기한다.</p>
 
 <p>예시:</p>
+
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
 <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>     <span class="c1">; ZF = 1</span>
 <span class="no">je</span><span class="kd">  equ</span><span class="nb">al</span><span class="nv">_label</span> <span class="c1">; ZF가 1이면 점프함 (==)</span>
 
 <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">3</span>     <span class="c1">; ZF = 0, SF = 0</span>
 <span class="nf">jg</span>  <span class="nv">greater_label</span> <span class="c1">; rax &gt; 3 → 점프</span>
-</code></pre></div></div>
-<p>플래그가 이렇게 연산 결과를 기억하고,
-조건 분기를 가능하게 만들어주는 핵심 역할을 한다.</p>
 
-<h2 id="레지스터-요약">레지스터 요약</h2>
+</code></pre></div></div>
+
+<p>플래그가 이렇게 연산 결과를 기억하고, 조건 분기를 가능하게 만들어주는 핵심 역할을 한다.</p>
+
+<h2 id="레지스터-요약"><strong>레지스터 요약</strong></h2>
 
 <table>
   <thead>
@@ -616,26 +705,25 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
   </tbody>
 </table>
 
-<h2 id="암기-포인트">암기 포인트</h2>
+<h2 id="암기-포인트"><strong>암기 포인트</strong></h2>
 
 <ul>
   <li><strong>64bit에서는 세그먼트 레지스터 거의 안 씀</strong></li>
   <li><strong>플래그 레지스터는 조건 분기에 핵심</strong></li>
-  <li><strong>일반 레지스터만 쓰는 게 거의 대부분</strong> (RAX, RCX, RSI, …)</li>
+  <li><strong>일반 레지스터만 쓰는 게 거의 대부분</strong> (RAX, RCX, RSI, …)</li>
 </ul>
 
-<h2 id="rax-eax-ax-ah-al-구조">RAX, EAX, AX, AH, AL 구조</h2>
+<h2 id="rax-eax-ax-ah-al-구조"><strong>RAX, EAX, AX, AH, AL 구조</strong></h2>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">RAX</span>  <span class="o">(</span><span class="nt">64bit</span><span class="o">)</span> 
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">RAX</span>  <span class="o">(</span><span class="nt">64bit</span><span class="o">)</span>
  <span class="err">└──</span> <span class="nt">EAX</span>  <span class="o">(</span><span class="err">하위</span> <span class="nt">32bit</span><span class="o">)</span>
       <span class="err">└──</span> <span class="nt">AX</span>   <span class="o">(</span><span class="err">하위</span> <span class="nt">16bit</span><span class="o">)</span>
            <span class="err">├──</span> <span class="nt">AH</span> <span class="o">(</span><span class="err">상위</span> <span class="nt">8bit</span><span class="o">)</span>
            <span class="err">└──</span> <span class="nt">AL</span> <span class="o">(</span><span class="err">하위</span> <span class="nt">8bit</span><span class="o">)</span>
+
 </code></pre></div></div>
 
-<p>32bit에서는 EAX, EBX, 64bit는 앞에 “R” 붙고 64bit 크기로 바뀐다.
-추가로: <strong>r8 ~ r15</strong> 라는 새로운 레지스터들도 생겼음.
-→ 64bit에서는 레지스터가 더 많음 (덕분에 더 자유롭게 코딩 가능)</p>
+<p>32bit에서는 EAX, EBX, 64bit는 앞에 “R” 붙고 64bit 크기로 바뀐다. 추가로: <strong>r8 ~ r15</strong> 라는 새로운 레지스터들도 생겼음. → 64bit에서는 레지스터가 더 많음 (덕분에 더 자유롭게 코딩 가능)</p>
 
 <p><strong>RAX는 EAX를 포함하고, EAX는 AX를 포함하고, AX는 AH + AL로 나뉜다.</strong></p>
 
@@ -644,7 +732,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
 <p><img src="/assets/images/assembly/2025-04-18-assembly1-start/image1.png" alt="image1" style="max-width: 100%;" /></p>
 
 <ul>
-  <li><strong>EAX/RAX (Accumulator Register, 누산기 레지스터)</strong>산술, 논리 연산을 담당하는 레지스터로, 함수의 반환 값이 이 레지스터에 저장된다.
+  <li>*EAX/RAX (Accumulator Register, 누산기 레지스터)**산술, 논리 연산을 담당하는 레지스터로, 함수의 반환 값이 이 레지스터에 저장된다.
     <ul>
       <li><strong>EAX 레지스터의 종류</strong></li>
       <li>RAX: 64비트 (x86-64 아키텍처에서 확장된 EAX)</li>
@@ -654,7 +742,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <li>AL: AX의 하위 8비트</li>
     </ul>
   </li>
-  <li><strong>EBX/RBX (Base Register, 베이스 레지스터)</strong>메모리 주소를 저장하기 위해 사용되는 레지스터.종종 배열이나 문자열과 같은 데이터 구조에 접근하기 위한 기준 포인터로 사용된다.
+  <li>*EBX/RBX (Base Register, 베이스 레지스터)**메모리 주소를 저장하기 위해 사용되는 레지스터.종종 배열이나 문자열과 같은 데이터 구조에 접근하기 위한 기준 포인터로 사용된다.
     <ul>
       <li><strong>EBX 레지스터의 종류</strong></li>
       <li>RBX: 64비트 (x86-64 아키텍처에서 확장된 EBX)</li>
@@ -664,7 +752,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <li>BL: BX의 하위 8비트</li>
     </ul>
   </li>
-  <li><strong>ECX/RCX (Count Register, 카운트 레지스터)</strong>반복 작업에서 카운터 역할을 수행하는 레지스터이다.loop 명령어 사용 시 레지스터의 값을 하나씩 감소 시키며, 0이 될 때 까지 반복 작업을 수행한다.
+  <li>*ECX/RCX (Count Register, 카운트 레지스터)**반복 작업에서 카운터 역할을 수행하는 레지스터이다.loop 명령어 사용 시 레지스터의 값을 하나씩 감소 시키며, 0이 될 때 까지 반복 작업을 수행한다.
     <ul>
       <li><strong>ECX 레지스터의 종류</strong></li>
       <li>RCX: 64비트 (x86-64 아키텍처에서 확장된 ECX)</li>
@@ -674,7 +762,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <li>CL: CX의 하위 8비트</li>
     </ul>
   </li>
-  <li><strong>EDX/RDX (Data Register, 데이터 레지스터)</strong>EAX 레지스터와 함께 사용하여 큰 수를 연산을 하거나, 그 결과를 저장할 수 있는 레지스터이다.64bit 더블 워드 연산을 수행할 때에도 사용 가능하다. (div, mul)
+  <li>*EDX/RDX (Data Register, 데이터 레지스터)**EAX 레지스터와 함께 사용하여 큰 수를 연산을 하거나, 그 결과를 저장할 수 있는 레지스터이다.64bit 더블 워드 연산을 수행할 때에도 사용 가능하다. (div, mul)
     <ul>
       <li><strong>EDX 레지스터의 종류</strong></li>
       <li>RDX: 64비트 (x86-64 아키텍처에서 확장된 EDX)</li>
@@ -684,7 +772,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <li>DL: DX의 하위 8비트</li>
     </ul>
   </li>
-  <li><strong>ESI/RSI (Source Index, 소스 인덱스 레지스터)</strong>데이터 복사, 문자열 연산, 입력/출력 처리 등의 작업에서 소스 데이터의 주소를 가리키는 데 사용된다.
+  <li>*ESI/RSI (Source Index, 소스 인덱스 레지스터)**데이터 복사, 문자열 연산, 입력/출력 처리 등의 작업에서 소스 데이터의 주소를 가리키는 데 사용된다.
     <ul>
       <li><strong>ESI 레지스터의 종류</strong></li>
       <li>RSI: 64비트 (x86-64 아키텍처에서 확장된 ESI)</li>
@@ -692,7 +780,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <li>SI: 16비트의 ESI 레지스터 하위 부분</li>
     </ul>
   </li>
-  <li><strong>EDI/RDI (Destination Index, 목적지 인덱스 레지스터)</strong>데이터 복사, 문자열 처리, 배열 조작 등의 작업에서 목적지 데이터의 메모리 주소를 가리키는데 사용된다.
+  <li>*EDI/RDI (Destination Index, 목적지 인덱스 레지스터)**데이터 복사, 문자열 처리, 배열 조작 등의 작업에서 목적지 데이터의 메모리 주소를 가리키는데 사용된다.
     <ul>
       <li><strong>EDI 레지스터의 종류</strong></li>
       <li>RDI: 64비트 (x86-64 아키텍처에서 확장된 EDI)</li>
@@ -700,7 +788,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <li>DI: 16비트의 EDI 레지스터 하위 부분</li>
     </ul>
   </li>
-  <li><strong>ESP/RSP (Stack Pointer, 스택 포인터 레지스터)</strong>프로그램의 스택 메모리 내에서, 현재 스택 최상단 주소를 저장하는 레지스터이다.함수 호출, 지역 변수 관리, 함수 내 데이터 저장 및 복구 등의 작업에서 필수적으로 사용된다.
+  <li>*ESP/RSP (Stack Pointer, 스택 포인터 레지스터)**프로그램의 스택 메모리 내에서, 현재 스택 최상단 주소를 저장하는 레지스터이다.함수 호출, 지역 변수 관리, 함수 내 데이터 저장 및 복구 등의 작업에서 필수적으로 사용된다.
     <ul>
       <li><strong>ESP 레지스터의 종류</strong></li>
       <li>RSP: 64비트 (x86-64 아키텍처에서 확장된 ESP)</li>
@@ -708,7 +796,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <li>SP: 16비트의 ESP 레지스터 하위 부분.</li>
     </ul>
   </li>
-  <li><strong>EBP/RBP (Base Pointer, 베이스 포인터 레지스터)</strong>함수 내의 지역 변수와 인자에 일관되고, 쉽게 접근하기 위해 사용되는 포인터 역할 레지스터이다.스택 내에서 접근할 부분의 메모리 주소를 저장한다.
+  <li>*EBP/RBP (Base Pointer, 베이스 포인터 레지스터)**함수 내의 지역 변수와 인자에 일관되고, 쉽게 접근하기 위해 사용되는 포인터 역할 레지스터이다.스택 내에서 접근할 부분의 메모리 주소를 저장한다.
     <ul>
       <li><strong>EBP 레지스터의 종류</strong></li>
       <li>RBP: 64비트 (x86-64 아키텍처에서 확장된 EBP).</li>
@@ -716,7 +804,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <li>BP: 16비트의 EBP 레지스터 하위 부분.</li>
     </ul>
   </li>
-  <li><strong>EIP/RIP (Instruction Pointer, 명령 포인터)</strong>다음에 실행될 명령의 메모리 주소를 저장한다.
+  <li>*EIP/RIP (Instruction Pointer, 명령 포인터)**다음에 실행될 명령의 메모리 주소를 저장한다.
     <ul>
       <li><strong>EIP 레지스터의 종류</strong></li>
       <li>RIP: 64비트 (x86-64 아키텍처)</li>
@@ -725,12 +813,12 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
   </li>
 </ul>
 
-<h2 id="windows-64bit-assembly-기본-구조">Windows 64bit Assembly 기본 구조</h2>
+<h2 id="windows-64bit-assembly-기본-구조"><strong>Windows 64bit Assembly 기본 구조</strong></h2>
 
 <blockquote>
   <p>윈도우에서는 리눅스처럼 syscall 직접 안 씀.</p>
 
-  <p>➔ 대신, <strong>Windows API</strong>를 “함수 호출” 방식으로 사용.</p>
+  <p>➔ 대신, <strong>Windows API</strong>를 “함수 호출” 방식으로 사용.</p>
 
 </blockquote>
 
@@ -743,7 +831,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
   <li>이런 윈도우 기본 함수들을 호출하는 식!</li>
 </ul>
 
-<h2 id="windows-64bit-레지스터-호출-규약-중요">Windows 64bit 레지스터 호출 규약 (중요)</h2>
+<h2 id="windows-64bit-레지스터-호출-규약-중요"><strong>Windows 64bit 레지스터 호출 규약 (중요)</strong></h2>
 
 <p>Windows 64bit는 호출 규칙이 정해져 있음: (<strong>Windows x64 Calling Convention</strong>)</p>
 
@@ -784,23 +872,22 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
   </tbody>
 </table>
 
-<p>즉, 함수 부를 때 <strong>인자(arguments)는 레지스터에 순서대로 넣는다!</strong></p>
+<p>즉, 함수 부를 때 <strong>인자(arguments)는 레지스터에 순서대로 넣는다!</strong></p>
 
-<h2 id="함수-호출할-때-필요한-기본">함수 호출할 때 필요한 기본</h2>
+<h2 id="함수-호출할-때-필요한-기본"><strong>함수 호출할 때 필요한 기본</strong></h2>
 
 <ul>
   <li>함수 호출 전 인자를 RCX, RDX, R8, R9에 셋팅</li>
-  <li>호출할 때 <code class="language-plaintext highlighter-rouge">call 함수이름</code></li>
-  <li>스택은 항상 <strong>16바이트 정렬</strong> 되어야 함 (중요!)</li>
+  <li>호출할 때 <code class="language-plaintext highlighter-rouge">call 함수이름</code></li>
+  <li>스택은 항상 <strong>16바이트 정렬</strong> 되어야 함 (중요!)</li>
 </ul>
 
 <blockquote>
-  <p>왜 16바이트 정렬?
-➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
+  <p>왜 16바이트 정렬? ➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
 
 </blockquote>
 
-<h2 id="메모리-구조-이해">메모리 구조 이해</h2>
+<h2 id="메모리-구조-이해"><strong>메모리 구조 이해</strong></h2>
 
 <!-- post-image.html -->
 
@@ -851,40 +938,41 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
 3. 힙(Heap) 영역메모리의 힙(Heap) 영역은 사용자가 집접 관리할 수 있는 '그기고 해야만 하는' 메모리 영역으로 사용자에 의해 메모리 공간이 동적으로 할당되고 해제된다. 힙 영역은 메모리의 낮은 주소에서 높은 주소의 방향으로 할당된다.
 
 4. 스택(Stack) 영역메모리의 스택(Stack) 영역은 함수의 호출과 관계되는 지역 변수와 매개변수가 저장되는 영역으로  함수의 호출과 함께 할당되며, 함수의 호출이 완료되면 소멸된다. 이렇게 스택영역에 저장되는 함수의 호출 정보를 스택 프레임이라고 한다. 스택 영역은 푸시(push) 동작으로 데이터를 저장하고 , 팝(pop) 동작으로 데이터를 인출한다. 이러한 스택은 후입선출(LIFO, Last-In First-Out) 방식에 따라 동작하므로, 가장 늦게 저장된 데이터가 가장 먼저 인출된다. 스택 영역은 메모리의 높은 주소에서 낮은 주소의 방향으로 할당된다.
+
 </code></pre></div></div>
 
-<h2 id="64bit-메모리-구조">64bit 메모리 구조</h2>
+<h2 id="64bit-메모리-구조"><strong>64bit 메모리 구조</strong></h2>
 
 <p>64bit는 메모리 주소 자체가 64bit.</p>
 
-<p>(= 2의 64승 만큼 메모리 접근할 수 있음. <strong>거의 무한대</strong>)</p>
+<p>(= 2의 64승 만큼 메모리 접근할 수 있음. <strong>거의 무한대</strong>)</p>
 
 <p>나머지 구조는 비슷하지만:</p>
 
 <ul>
-  <li><strong>스택(Stack)</strong> 여전히 사용</li>
-  <li><strong>힙(Heap)</strong> 여전히 malloc/new로 동적 할당</li>
-  <li><strong>데이터 영역(Data)</strong> 여전히 전역 변수 저장</li>
+  <li><strong>스택(Stack)</strong> 여전히 사용</li>
+  <li><strong>힙(Heap)</strong> 여전히 malloc/new로 동적 할당</li>
+  <li><strong>데이터 영역(Data)</strong> 여전히 전역 변수 저장</li>
 </ul>
 
-<p><strong>다만!</strong> 64bit에서는 스택 정렬(16바이트 alignment)이 필수.
-(뒤에 함수 호출할 때 배울 예정)</p>
+<p><strong>다만!</strong> 64bit에서는 스택 정렬(16바이트 alignment)이 필수. (뒤에 함수 호출할 때 배울 예정)</p>
 
-<h2 id="레지스터와-메모리-관계-요약">레지스터와 메모리 관계 요약</h2>
+<h2 id="레지스터와-메모리-관계-요약"><strong>레지스터와 메모리 관계 요약</strong></h2>
 
 <ul>
-  <li>레지스터는 <strong>초고속 임시 저장소</strong> (작고 빠름)</li>
-  <li>메모리는 <strong>크고 느림</strong> (하지만 양은 많음)</li>
+  <li>레지스터는 <strong>초고속 임시 저장소</strong> (작고 빠름)</li>
+  <li>메모리는 <strong>크고 느림</strong> (하지만 양은 많음)</li>
   <li>속도: 레지스터 » 캐시 » 메모리(RAM)</li>
 </ul>
 
-<p>그래서 Assembly 코드는 <strong>“레지스터를 최대한 많이 쓰고”</strong>, <strong>“필요할 때만 메모리 접근”</strong> 하려 함.</p>
+<p>그래서 Assembly 코드는 <strong>“레지스터를 최대한 많이 쓰고”</strong>, <strong>“필요할 때만 메모리 접근”</strong> 하려 함.</p>
 
-<h2 id="실행-흐름-예제">실행 흐름 예제</h2>
+<h2 id="실행-흐름-예제"><strong>실행 흐름 예제</strong></h2>
 
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">eax</span><span class="p">,</span> <span class="mi">5</span>      <span class="c1">; eax에 5 저장</span>
 <span class="nf">mov</span> <span class="nb">ebx</span><span class="p">,</span> <span class="mi">10</span>     <span class="c1">; ebx에 10 저장</span>
 <span class="nf">add</span> <span class="nb">eax</span><span class="p">,</span> <span class="nb">ebx</span>    <span class="c1">; eax = eax + ebx (5 + 10 = 15)</span>
+
 </code></pre></div></div>
 
 <p>실행 흐름:</p>
@@ -892,10 +980,10 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">eax = 5</code></li>
   <li><code class="language-plaintext highlighter-rouge">ebx = 10</code></li>
-  <li><code class="language-plaintext highlighter-rouge">eax = eax + ebx</code> → 결과 15가 eax에 들어감</li>
+  <li><code class="language-plaintext highlighter-rouge">eax = eax + ebx</code> → 결과 15가 eax에 들어감</li>
 </ul>
 
-<h2 id="windows-64bit-hello-world-assembly-예제">Windows 64bit Hello World Assembly 예제</h2>
+<h2 id="windows-64bit-hello-world-assembly-예제"><strong>Windows 64bit Hello World Assembly 예제</strong></h2>
 
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 
@@ -927,6 +1015,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
     <span class="c1">; ExitProcess(0)</span>
     <span class="nf">xor</span> <span class="nb">rcx</span><span class="p">,</span> <span class="nb">rcx</span>
     <span class="nf">call</span> <span class="nv">ExitProcess</span>
+
 </code></pre></div></div>
 
 <p>정리 포인트:</p>
@@ -934,11 +1023,11 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
 <ul>
   <li>API 부르기 전에 RCX, RDX, R8, R9 셋팅</li>
   <li><code class="language-plaintext highlighter-rouge">sub rsp, 32</code>로 스택을 정렬</li>
-  <li>함수 끝나면 <code class="language-plaintext highlighter-rouge">add rsp, 32</code>로 스택 복구</li>
+  <li>함수 끝나면 <code class="language-plaintext highlighter-rouge">add rsp, 32</code>로 스택 복구</li>
   <li>ExitProcess로 종료</li>
 </ul>
 
-<h2 id="운영체제-차이-요약">운영체제 차이 요약</h2>
+<h2 id="운영체제-차이-요약"><strong>운영체제 차이 요약</strong></h2>
 
 <table>
   <thead>
@@ -972,13 +1061,13 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
   </tbody>
 </table>
 
-<h2 id="요약">요약</h2>
+<h2 id="요약"><strong>요약</strong></h2>
 
 <ul>
   <li>Windows에서는 syscall 사용 안 함.</li>
-  <li>무조건 Windows API (<code class="language-plaintext highlighter-rouge">WriteFile</code>, <code class="language-plaintext highlighter-rouge">ExitProcess</code>, <code class="language-plaintext highlighter-rouge">GetStdHandle</code>, 등등) 호출하는 구조.</li>
+  <li>무조건 Windows API (<code class="language-plaintext highlighter-rouge">WriteFile</code>, <code class="language-plaintext highlighter-rouge">ExitProcess</code>, <code class="language-plaintext highlighter-rouge">GetStdHandle</code>, 등등) 호출하는 구조.</li>
   <li>인자는 RCX, RDX, R8, R9에 순서대로 넣는다.</li>
-  <li>스택 16바이트 정렬 <strong>필수</strong>.</li>
+  <li>스택 16바이트 정렬 <strong>필수</strong>.</li>
 </ul>
 
         
@@ -987,23 +1076,6 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <footer class="page__meta">
         
         
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#assembly" class="page__taxonomy-item p-category" rel="tag">assembly</a><span class="sep">, </span>
-    
-      <a href="/tags/#nasm" class="page__taxonomy-item p-category" rel="tag">nasm</a>
-    
-    </span>
-  </p>
-
-
 
 
   
@@ -1030,7 +1102,7 @@ CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
       <section class="page__share">
   <h4 class="page__share-title">공유하기</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=Assembly+Start%20https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly1-start%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Assembly1+Start%20https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly1-start%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly1-start%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
