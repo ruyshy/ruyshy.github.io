@@ -78,7 +78,7 @@ var store = [{
         "teaser": null
       },{
         "title": "GitHub Blog Image Plugin",
-        "excerpt":"GitHub Blog #9 기존 방식 과 태그 플러그인 비교 기존에 이미지 불러오는 방식: &lt;!-- post-image.html --&gt; &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image.png\" alt=\"image\" style=\"max-width: 100%;\"&gt; 플러그인 적용한 방식: &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png\" alt=\"tag image test\" style=\"max-width:100%;\"&gt; or &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png\" alt=\"image1.png\" style=\"max-width:100%;\"&gt; \\plugins\\imgtag.rb 코드 추가 module Jekyll class ImgTag &lt; Liquid::Tag def initialize(tag_name, markup, tokens) super @markup...","categories": ["blog"],
+        "excerpt":"GitHub Blog #9 기존 방식 과 태그 플러그인 비교 기존에 이미지 불러오는 방식: &lt;!-- post-image.html --&gt; &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image.png\" alt=\"image\" style=\"max-width: 100%;\"&gt; 플러그인 적용한 방식: &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png\" alt=\"tag image test\" style=\"max-width:100%;\"&gt; or &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png\" alt=\"image1.png\" style=\"max-width:100%;\"&gt; \\plugins\\img*tag.rb 코드 추가 module Jekyll class ImgTag &lt; Liquid::Tag def initialize(tag_name, markup, tokens) super @markup...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog9-Image-plugin/",
         "teaser": null
