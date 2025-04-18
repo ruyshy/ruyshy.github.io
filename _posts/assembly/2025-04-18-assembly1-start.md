@@ -1,16 +1,16 @@
 ---
 title: "Assembly Start"
 date: 2025-04-18
-tags: [nasm, reverse]
+tags: [nasm, assembly]
 ---
 
 assembly#1
 
 시작하기 앞 서, 학습할 사이트 목록 입니다.
 
-드림 해커 : https://dreamhack.io/
+드림 해커 : [https://dreamhack.io/](https://dreamhack.io/)
 
-CrackMe : https://crackmy.app/
+CrackMe : [https://crackmy.app/](https://crackmy.app/)
 
 # **어셈블리(Assembly)란?**
 

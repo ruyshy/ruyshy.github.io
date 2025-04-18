@@ -1,7 +1,7 @@
 ---
 title: "Assembly Setting"
 date: 2025-04-18
-tags: [nasm, reverse]
+tags: [nasm, assembly]
 ---
 
 assembly#2
