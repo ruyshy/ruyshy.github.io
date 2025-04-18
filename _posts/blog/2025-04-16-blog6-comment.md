@@ -4,7 +4,7 @@ date: 2025-04-16
 tags: [GitHubBlog]
 ---
 
-GitHub Blog #5
+GitHub Blog #6
 
 jekyll 테마([minimal-mistakes](https://mmistakes.github.io/minimal-mistakes/)) 기준으로 작성되었습니다
 
