@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>GitHub Blog Local Server 설정 - ruyshy blog</title>
-<meta name="description" content="GitHub Blog #2">
+<!-- begin _includes/seo.html --><title>GitHub Blog Font 설정 - ruyshy blog</title>
+<meta name="description" content="GitHub Blog #7">
 
 
   <meta name="author" content="ruyshy">
@@ -23,30 +23,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="GitHub Blog Local Server 설정">
-<meta property="og:url" content="https://ruyshy.github.io/blog/blog2-local-server/">
+<meta property="og:title" content="GitHub Blog Font 설정">
+<meta property="og:url" content="https://ruyshy.github.io/blog/blog7-font/">
 
 
-  <meta property="og:description" content="GitHub Blog #2">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2025-04-16T00:00:00+09:00">
+  <meta property="og:description" content="GitHub Blog #7">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2025-04-17T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://ruyshy.github.io/blog/blog2-local-server/">
+
+<link rel="canonical" href="https://ruyshy.github.io/blog/blog7-font/">
 
 
 
@@ -312,16 +312,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="GitHub Blog Local Server 설정">
-    <meta itemprop="description" content="GitHub Blog #2">
-    <meta itemprop="datePublished" content="2025-04-16T00:00:00+09:00">
+    <meta itemprop="headline" content="GitHub Blog Font 설정">
+    <meta itemprop="description" content="GitHub Blog #7">
+    <meta itemprop="datePublished" content="2025-04-17T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/blog/blog2-local-server/" itemprop="url">GitHub Blog Local Server 설정
+            <a href="https://ruyshy.github.io/blog/blog7-font/" itemprop="url">GitHub Blog Font 설정
 </a>
           </h1>
           
@@ -332,49 +332,58 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>GitHub Blog #2</p>
+        <p>GitHub Blog #7</p>
 
-<h2 id="필요한-준비물">필요한 준비물</h2>
+<p>여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다.</p>
 
-<p><a href="https://www.ruby-lang.org/ko/">https://www.ruby-lang.org/ko/</a></p>
+<p><a href="https://fonts.google.com/">https://fonts.google.com/</a></p>
 
-<h2 id="gemfile">Gemfile</h2>
+<p>저는 폰트를 다운 받아서 진행했습니다.
+Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+<p>_sass\minimal-mistakes_variables.scss 추가</p>
 
-<span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 4.3.2"</span>
-<span class="n">gem</span> <span class="s2">"minimal-mistakes-jekyll"</span>
-<span class="n">gem</span> <span class="s2">"jekyll-feed"</span>
-<span class="n">gem</span> <span class="s2">"jekyll-seo-tag"</span>
-<span class="n">gem</span> <span class="s2">"jekyll-paginate"</span>
-<span class="n">gem</span> <span class="s2">"jekyll-sitemap"</span>
-<span class="n">gem</span> <span class="s2">"jekyll-include-cache"</span>
-<span class="n">gem</span> <span class="s2">"tzinfo"</span>
-<span class="n">gem</span> <span class="s2">"tzinfo-data"</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$dongle</span><span class="p">:</span> <span class="s1">'Dongle'</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Ruby를 설치해줍니다. 저의 경우 ruby3.3.8 의 버전을 설치하여 진행했습니다.</p>
+<p>수정해야 할 부분:</p>
 
-<ol>
-  <li>Gemfile을 위와 같이 수정을 진행합니다.</li>
-  <li>자기 자신의 Github Blog가 있는 로컬 폴더에서 cmd를 실행시키거나 cmd를 실행시켜 예시) cd C:[ruyshy.github.io](http://ruyshy.github.io/)(경로) 통해 이동해줍니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">bundle install</code> 명령어를 통해 위와 같은 종속성을 설치를 진행합니다.</li>
-  <li>설치가 정상적으로 진행되었을 때, Gemfile.lock 파일이 생성이 됩니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> 을 통해 Local Server를 열어줍니다.</li>
-  <li>정상적으로 작동했으면 아래와 같은 그림의 텍스트가 cmd에서 실행됩니다.</li>
-</ol>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$global-font-family</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$header-font-family</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
 
-<!-- post-image.html -->
+<p>수정할 코드:</p>
 
-<p><img src="/assets/images/blog/2025-04-16-blog2-local-server/image.png" alt="image" style="max-width: 100%;" /></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$global-font-family</span><span class="p">:</span> <span class="nv">$dongle</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$header-font-family</span><span class="p">:</span> <span class="nv">$dongle</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
 
-<ol>
-  <li>Server address : <a href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a> 에 접속하여 실시간으로 수정을 진행하며 확인할 수 있습니다.</li>
-</ol>
+<p>수정해야 할 부분:</p>
 
-<p>서버를 켜둔 상태에서 서버를 종료하려면 ctrl-c를 눌러 y를 입력해 서버를 종료합니다.</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* system typefaces */</span>
+<span class="nv">$serif</span><span class="p">:</span> <span class="n">Dongle</span><span class="o">,</span> <span class="n">Georgia</span><span class="o">,</span> <span class="n">Times</span><span class="o">,</span> <span class="nb">serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$sans-serif</span><span class="p">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Dongle"</span><span class="o">,</span><span class="s2">"Roboto"</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span>
+  <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="s2">"Lucida Grande"</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$monospace</span><span class="p">:</span> <span class="n">Monaco</span><span class="o">,</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">"Lucida Console"</span><span class="o">,</span> <span class="nb">monospace</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 
-<p><code class="language-plaintext highlighter-rouge">bundle exec jekyll clean</code> 해당 명령어로 이전 빌드 결과가 꼬였거나, 레이아웃, 설정파일 변경 후 캐시를 무시하고 새로 빌드하고싶을 때 사용합니다.</p>
+<span class="cm">/* sans serif typefaces */</span>
+<span class="nv">$sans-serif-narrow</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$helvetica</span><span class="p">:</span> <span class="s2">"Dongle"</span><span class="o">,</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위 처럼 Dongle를 추가해주었습니다.</p>
+
+<p>\assets\css\main.scss 추가</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@font-face</span> <span class="p">{</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s1">'Dongle'</span><span class="p">;</span>
+    <span class="nl">src</span><span class="p">:</span> <span class="sx">url('/assets/fonts/Dongle-Regular.ttf')</span> <span class="nf">format</span><span class="p">(</span><span class="s1">'truetype'</span><span class="p">);</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>저는 기본 폰트가 이쁜거같아서 다시 원상 복구 했습니다.</p>
 
         
       </section>
@@ -416,28 +425,28 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-16T00:00:00+09:00">April 16, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-17T00:00:00+09:00">April 17, 2025</time></p>
 
       </footer>
 
       <section class="page__share">
   <h4 class="page__share-title">공유하기</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Local+Server+%EC%84%A4%EC%A0%95%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog2-local-server%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Font+%EC%84%A4%EC%A0%95%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog7-font%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog2-local-server%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog7-font%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog2-local-server/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog7-font/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/blog1-start/" class="pagination--pager" title="GitHub Blog Start">Prev</a>
+      <a href="/blog/blog6-comment/" class="pagination--pager" title="GitHub Blog 댓글 설정">Prev</a>
     
     
-      <a href="/blog/blog3-build-release/" class="pagination--pager" title="GitHub Blog Build&amp;Release 설정">Next</a>
+      <a href="/assembly/assembly1-start/" class="pagination--pager" title="Assembly Start">Next</a>
     
   </nav>
 
@@ -518,14 +527,14 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog7-font/" rel="permalink">GitHub Blog Font 설정
+        <a href="/blog/blog6-comment/" rel="permalink">GitHub Blog 댓글 설정
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #7
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #6
 </p>
   </article>
 </div>
@@ -541,14 +550,14 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog6-comment/" rel="permalink">GitHub Blog 댓글 설정
+        <a href="/blog/blog5-category/" rel="permalink">GitHub Blog Category 설정
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #6
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #5
 </p>
   </article>
 </div>

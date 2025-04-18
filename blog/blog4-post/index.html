@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>GitHub Blog Font 설정 - ruyshy blog</title>
-<meta name="description" content="GitHub Blog #6">
+<!-- begin _includes/seo.html --><title>GitHub Blog Post 설정 - ruyshy blog</title>
+<meta name="description" content="GitHub Blog #4">
 
 
   <meta name="author" content="ruyshy">
@@ -23,30 +23,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="GitHub Blog Font 설정">
-<meta property="og:url" content="https://ruyshy.github.io/blog/blog6-font/">
+<meta property="og:title" content="GitHub Blog Post 설정">
+<meta property="og:url" content="https://ruyshy.github.io/blog/blog4-post/">
 
 
-  <meta property="og:description" content="GitHub Blog #6">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2025-04-17T00:00:00+09:00">
+  <meta property="og:description" content="GitHub Blog #4">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2025-04-16T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://ruyshy.github.io/blog/blog6-font/">
+
+<link rel="canonical" href="https://ruyshy.github.io/blog/blog4-post/">
 
 
 
@@ -276,7 +276,7 @@
       <!-- All -->
       <li>
         <a href="/categories/" class="nav__item">
-          - All <span class="count">(8)</span>
+          - All <span class="count">(9)</span>
         </a>
       </li>
 
@@ -297,7 +297,7 @@
         <li>
           <a href="/categories/blog/"
              class="nav__item">
-            - Blog <span class="count">(6)</span>
+            - Blog <span class="count">(7)</span>
           </a>
         </li>
       
@@ -312,16 +312,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="GitHub Blog Font 설정">
-    <meta itemprop="description" content="GitHub Blog #6">
-    <meta itemprop="datePublished" content="2025-04-17T00:00:00+09:00">
+    <meta itemprop="headline" content="GitHub Blog Post 설정">
+    <meta itemprop="description" content="GitHub Blog #4">
+    <meta itemprop="datePublished" content="2025-04-16T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/blog/blog6-font/" itemprop="url">GitHub Blog Font 설정
+            <a href="https://ruyshy.github.io/blog/blog4-post/" itemprop="url">GitHub Blog Post 설정
 </a>
           </h1>
           
@@ -332,56 +332,111 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>GitHub Blog #6</p>
+        <p>GitHub Blog #4</p>
 
-<p>여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다.</p>
+<h2 id="github-blog-image-path-설정하기">GitHub Blog Image Path 설정하기</h2>
 
-<p><a href="https://fonts.google.com/">https://fonts.google.com/</a></p>
+<p>._include\ 해당 경로에 post-image.html 생성합니다.</p>
 
-<p>저는 Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span>
 
-<p>_sass\minimal-mistakes_variables.scss 추가</p>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$dongle</span><span class="p">:</span> <span class="s1">'Dongle'</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+
+
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+
 </code></pre></div></div>
 
-<p>수정해야 할 부분:</p>
+<p>예시:</p>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$global-font-family</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$header-font-family</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<ol>
+  <li>_posts\blog[2025-04-10-blog-start.md](http://2025-04-10-blog-start.md/)라는 포스트가 있습니다.</li>
+  <li>\assets\images[2025-04-10-blog-start](http://2025-04-10-blog-start.md/) 폴더를 생성합니다.</li>
+  <li>이 폴더에 게시글에 넣을 이미지를 저장합니다.</li>
+  <li>예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.</li>
+</ol>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/ImageName.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+
 </code></pre></div></div>
 
-<p>수정할 코드:</p>
+<h3 id="image-path-설정-장점-요약">Image Path 설정 장점 요약</h3>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$global-font-family</span><span class="p">:</span> <span class="nv">$dongle</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$header-font-family</span><span class="p">:</span> <span class="nv">$dongle</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<ol>
+  <li>폴더명만 보면 어떤 글에 쓰였는지 바로 보임.</li>
+  <li>Markdown에서도 포스트 경로 = 이미지 경로 연상하기 쉬움</li>
+  <li>나중에 썸네일 자동 생성이나 포스트 삭제 시 이미지 관리도 편함</li>
+</ol>
+
+<h3 id="github-blog-시작하기-post-예시-코드">GitHub Blog 시작하기 Post 예시 코드</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Blog</span><span class="nv"> </span><span class="s">Start"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-10</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">GitHubBlog</span><span class="pi">]</span>
+<span class="nn">---</span>
+
+<span class="gh"># jekyll 테마 GitHub Blog 시작하기</span>
+
+<span class="gu">## Jekyll 기반 GitHub Blog 생성</span>
+
+<span class="p">[</span><span class="nv">https://mmistakes.github.io/minimal-mistakes/</span><span class="p">](</span><span class="sx">https://mmistakes.github.io/minimal-mistakes/</span><span class="p">)</span>
+
+해당 Jekyll 테마 기준으로 작성 되어있습니다.
+
+<span class="gu">## 준비해야 할 준비물</span>
+
+개인 GitHub 계정 (<span class="p">[</span><span class="nv">https://github.com/</span><span class="p">](</span><span class="sx">https://github.com/</span><span class="p">)</span>)
+
+Visual Studio Code (<span class="p">[</span><span class="nv">https://code.visualstudio.com/</span><span class="p">](</span><span class="sx">https://code.visualstudio.com/</span><span class="p">)</span>)
+
+<span class="gu">## GitHub Blog 시작하기</span>
+
+<span class="p">[</span><span class="nv">https://github.com/mmistakes/minimal-mistakes</span><span class="p">](</span><span class="sx">https://github.com/mmistakes/minimal-mistakes</span><span class="p">)</span>
+
+github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다.
+<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+
+
+</span>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.
+
+Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">**repositories(저장소)**</span> 에 똑같은 코드를 가진 Project(코드 저장소)가 생성이 됩니다.
+
+<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+
+
+</span>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
+
+<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+
+
+</span>코드 저장소의 이름을 바꿔줘야 합니다.
+
+무조건 자기 자신의 <span class="p">[</span><span class="nv">githubID.github.io</span><span class="p">](</span><span class="sx">http://githubID.github.io</span><span class="p">)</span>
+
+...내용
+
 </code></pre></div></div>
-
-<p>수정해야 할 부분:</p>
-
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* system typefaces */</span>
-<span class="nv">$serif</span><span class="p">:</span> <span class="n">Dongle</span><span class="o">,</span> <span class="n">Georgia</span><span class="o">,</span> <span class="n">Times</span><span class="o">,</span> <span class="nb">serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$sans-serif</span><span class="p">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Dongle"</span><span class="o">,</span><span class="s2">"Roboto"</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span>
-  <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="s2">"Lucida Grande"</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$monospace</span><span class="p">:</span> <span class="n">Monaco</span><span class="o">,</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">"Lucida Console"</span><span class="o">,</span> <span class="nb">monospace</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-
-<span class="cm">/* sans serif typefaces */</span>
-<span class="nv">$sans-serif-narrow</span><span class="p">:</span> <span class="nv">$sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$helvetica</span><span class="p">:</span> <span class="s2">"Dongle"</span><span class="o">,</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>위 처럼 Dongle를 추가해주었습니다.</p>
-
-<p>\assets\css\main.scss 추가</p>
-
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@font-face</span> <span class="p">{</span>
-    <span class="nl">font-family</span><span class="p">:</span> <span class="s1">'Dongle'</span><span class="p">;</span>
-    <span class="nl">src</span><span class="p">:</span> <span class="sx">url('/assets/fonts/Dongle-Regular.ttf')</span> <span class="nf">format</span><span class="p">(</span><span class="s1">'truetype'</span><span class="p">);</span>
-    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
-    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
-  <span class="p">}</span>
-</code></pre></div></div>
-
 
         
       </section>
@@ -423,28 +478,28 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-17T00:00:00+09:00">April 17, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-16T00:00:00+09:00">April 16, 2025</time></p>
 
       </footer>
 
       <section class="page__share">
   <h4 class="page__share-title">공유하기</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Font+%EC%84%A4%EC%A0%95%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog6-font%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Post+%EC%84%A4%EC%A0%95%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog4-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog6-font%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog4-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog6-font/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog4-post/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/blog5-comment/" class="pagination--pager" title="GitHub Blog 댓글 설정">Prev</a>
+      <a href="/blog/blog3-build-release/" class="pagination--pager" title="GitHub Blog Build&amp;Release 설정">Prev</a>
     
     
-      <a href="/assembly/assembly1-start/" class="pagination--pager" title="Assembly Start">Next</a>
+      <a href="/blog/blog5-category/" class="pagination--pager" title="GitHub Blog Category 설정">Next</a>
     
   </nav>
 
@@ -525,14 +580,14 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog5-comment/" rel="permalink">GitHub Blog 댓글 설정
+        <a href="/blog/blog7-font/" rel="permalink">GitHub Blog Font 설정
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #5
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #7
 </p>
   </article>
 </div>
@@ -548,14 +603,14 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog4-category-post/" rel="permalink">GitHub Blog Category, Post 설정
+        <a href="/blog/blog6-comment/" rel="permalink">GitHub Blog 댓글 설정
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #4
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #6
 </p>
   </article>
 </div>

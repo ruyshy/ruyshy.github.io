@@ -35,22 +35,28 @@ var store = [{
         "url": "/blog/blog3-build-release/",
         "teaser": null
       },{
-        "title": "GitHub Blog Category, Post 설정",
-        "excerpt":"GitHub Blog #4 GitHub Blog 시작하기에 이어 다음 편입니다. 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다. https://www.markdownguide.org/ 해당 사이트에서 마크다운 문법을 알아볼 수 있습니다. GitHub Blog 카테고리 설정 ._data\\navigation.yml 부분입니다. main: - title: \"Quick-Start Guide\" url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ # - title: \"About\" # url: https://mmistakes.github.io/minimal-mistakes/about/ # - title: \"Sample...","categories": ["blog"],
+        "title": "GitHub Blog Post 설정",
+        "excerpt":"GitHub Blog #4 GitHub Blog Image Path 설정하기 ._include\\ 해당 경로에 post-image.html 생성합니다. &lt;!-- post-image.html --&gt; &lt;img src=\"/assets/images/blog/2025-04-16-blog4-post/\" alt=\"\" style=\"max-width: 100%;\"&gt; 예시: _posts\\blog[2025-04-10-blog-start.md](http://2025-04-10-blog-start.md/)라는 포스트가 있습니다. \\assets\\images[2025-04-10-blog-start](http://2025-04-10-blog-start.md/) 폴더를 생성합니다. 이 폴더에 게시글에 넣을 이미지를 저장합니다. 예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다. &lt;!-- post-image.html --&gt;...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog4-category-post/",
+        "url": "/blog/blog4-post/",
+        "teaser": null
+      },{
+        "title": "GitHub Blog Category 설정",
+        "excerpt":"GitHub Blog #5 GitHub Blog 시작하기에 이어 다음 편입니다. 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다. https://www.markdownguide.org/ 해당 사이트에서 마크다운 문법을 알아볼 수 있습니다. GitHub Blog 카테고리 설정 ._data\\navigation.yml 부분입니다. main: - title: \"Quick-Start Guide\" url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ # - title: \"About\" # url: https://mmistakes.github.io/minimal-mistakes/about/ # - title: \"Sample...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog5-category/",
         "teaser": null
       },{
         "title": "GitHub Blog 댓글 설정",
-        "excerpt":"GitHub Blog #5 jekyll 테마(minimal-mistakes) 기준으로 작성되었습니다 1. GitHub 저장소 설정 Utterances는 댓글을 저장할 issue 기반 저장소가 필요합니다. 예: your-username/your-blog-repo 이 저장소의 issue 탭이 열려 있어야 함 댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 repo를 만들어도 됨. 2. Utterances 앱 설치 https://utteranc.es/ 접속 후 아래 순서대로 진행: Install...","categories": ["blog"],
+        "excerpt":"GitHub Blog #6 jekyll 테마(minimal-mistakes) 기준으로 작성되었습니다 1. GitHub 저장소 설정 Utterances는 댓글을 저장할 issue 기반 저장소가 필요합니다. 예: your-username/your-blog-repo 이 저장소의 issue 탭이 열려 있어야 함 댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 repo를 만들어도 됨. 2. Utterances 앱 설치 https://utteranc.es/ 접속 후 아래 순서대로 진행: Install...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog5-comment/",
+        "url": "/blog/blog6-comment/",
         "teaser": null
       },{
         "title": "GitHub Blog Font 설정",
-        "excerpt":"GitHub Blog #6 여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다. https://fonts.google.com/ 저는 Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다. _sass\\minimal-mistakes_variables.scss 추가 $dongle: 'Dongle', -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif !default; 수정해야 할 부분: $global-font-family: $sans-serif !default; $header-font-family: $sans-serif !default; 수정할 코드: $global-font-family: $dongle !default; $header-font-family: $dongle !default; 수정해야 할 부분: /*...","categories": ["blog"],
+        "excerpt":"GitHub Blog #7 여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다. https://fonts.google.com/ 저는 폰트를 다운 받아서 진행했습니다. Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다. _sass\\minimal-mistakes_variables.scss 추가 $dongle: 'Dongle', -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif !default; 수정해야 할 부분: $global-font-family: $sans-serif !default; $header-font-family: $sans-serif !default; 수정할 코드: $global-font-family: $dongle !default; $header-font-family: $dongle !default;...","categories": ["blog"],
         "tags": ["GitHubBlog"],
-        "url": "/blog/blog6-font/",
+        "url": "/blog/blog7-font/",
         "teaser": null
       },{
         "title": "Assembly Start",

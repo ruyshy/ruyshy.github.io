@@ -276,7 +276,7 @@
       <!-- All -->
       <li>
         <a href="/categories/" class="nav__item">
-          - All <span class="count">(8)</span>
+          - All <span class="count">(9)</span>
         </a>
       </li>
 
@@ -297,7 +297,7 @@
         <li>
           <a href="/categories/blog/"
              class="nav__item">
-            - Blog <span class="count">(6)</span>
+            - Blog <span class="count">(7)</span>
           </a>
         </li>
       
@@ -428,6 +428,18 @@
   <li><strong>변수 같은 거 저장</strong>하는 초고속 칸이라고 생각하면 됨.</li>
 </ul>
 
+<h2 id="레지스터의-전체-분류-x86-64-기준">레지스터의 전체 분류 (x86-64 기준)</h2>
+<p>| 분류 | 예시 | 설명 |
+| — | — | — |
+| <strong>일반 목적 레지스터 (GPR)</strong> | RAX, RBX, RCX, … | 연산, 데이터 저장, 함수 인자 전달 |
+| <strong>세그먼트 레지스터</strong> | CS, DS, SS, ES, FS, GS | 메모리 세그먼트 구분 |
+| <strong>플래그 레지스터 (FLAGS/RFLAGS)</strong> | EFLAGS, RFLAGS | 조건 분기, 연산 결과 상태 저장 |
+| <strong>포인터/인덱스 레지스터</strong> | RIP, RSP, RBP, RSI, RDI | 명령어 포인터, 스택, 베이스, 인덱싱 |
+| <strong>제어 레지스터 (CRx)</strong> | CR0, CR2, CR3, CR4 | 페이지 테이블, 보호모드 등 제어 |
+| <strong>디버그 레지스터</strong> | DR0–DR7 | 브레이크포인트 설정 등에 사용 |</p>
+
+<p>대부분 실무에서 GPR, FLAGS, 세그먼트 레지스터까지 알면 충분</p>
+
 <h2 id="32bit-레지스터-x86-기준">32bit 레지스터 (x86 기준)</h2>
 
 <table>
@@ -528,11 +540,92 @@
   </tbody>
 </table>
 
-<p>32bit에서는 EAX, EBX, 64bit는 앞에 “R” 붙고 64bit 크기로 바뀐다.</p>
+<h2 id="세그먼트-레지스터-segment-registers">세그먼트 레지스터 (Segment Registers)</h2>
+<p>| 레지스터 | 설명 |
+| — | — |
+| <strong>CS</strong> | Code Segment: 명령어(코드)가 들어있는 영역 |
+| <strong>DS</strong> | Data Segment: 일반 데이터가 들어있는 영역 |
+| <strong>SS</strong> | Stack Segment: 스택 데이터가 들어있는 영역 |
+| <strong>ES/FS/GS</strong> | 확장 세그먼트: 특수 목적 (스레드 로컬 등) |</p>
 
-<p>추가로: <strong>r8 ~ r15</strong> 라는 새로운 레지스터들도 생겼음.</p>
+<p>중요한 사실:</p>
+<blockquote>
+  <p>64bit에서는 대부분 세그먼트 의미가 무시되거나 고정됨.</p>
+</blockquote>
 
-<p>→ 64bit에서는 레지스터가 더 많음 (덕분에 더 자유롭게 코딩 가능)</p>
+<p>예를 들어:</p>
+<blockquote>
+  <ul>
+    <li>CS, DS, SS 같은 건 거의 고정값으로 유지되고</li>
+    <li>FS, GS만 스레드 로컬 데이터(TIB/TEB 접근)처럼 제한적으로 사용돼.</li>
+  </ul>
+</blockquote>
+
+<p>즉, 64bit에서는 세그먼트 레지스터 사용 거의 안 한다.
+예외적으로 FS/GS는 구조체 접근할 때 쓰기도 함 (예: gs:[0x30] → PEB)</p>
+
+<h2 id="플래그-레지스터-rflags--eflags">플래그 레지스터 (RFLAGS / EFLAGS)</h2>
+<p>| 플래그 이름 | 설명 |
+| — | — |
+| <strong>ZF (Zero Flag)</strong> | 연산 결과가 0이면 설정됨 |
+| <strong>CF (Carry Flag)</strong> | 자리 올림 발생 시 설정됨 |
+| <strong>SF (Sign Flag)</strong> | 부호 비트 (음수면 1) |
+| <strong>OF (Overflow Flag)</strong> | 부호 있는 오버플로우 발생 시 설정됨 |
+| <strong>PF (Parity Flag)</strong> | 결과의 1 비트 개수가 짝수면 설정됨 |
+| <strong>AF (Auxiliary Carry)</strong> | BCD 연산 시 사용됨 |</p>
+
+<p>cmp, test 같은 명령어는
+→ 내부적으로 연산 후 플래그 레지스터를 변경하고
+→ je, jne, jg, jl 같은 조건 분기 명령어에서
+→ 플래그 값을 참조해서 분기한다.</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
+<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>     <span class="c1">; ZF = 1</span>
+<span class="no">je</span><span class="kd">  equ</span><span class="nb">al</span><span class="nv">_label</span> <span class="c1">; ZF가 1이면 점프함 (==)</span>
+
+<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">3</span>     <span class="c1">; ZF = 0, SF = 0</span>
+<span class="nf">jg</span>  <span class="nv">greater_label</span> <span class="c1">; rax &gt; 3 → 점프</span>
+</code></pre></div></div>
+<p>플래그가 이렇게 연산 결과를 기억하고,
+조건 분기를 가능하게 만들어주는 핵심 역할을 한다.</p>
+
+<h2 id="레지스터-요약">레지스터 요약</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>분류</th>
+      <th>레지스터</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>일반 목적</strong></td>
+      <td>RAX~R15</td>
+      <td>데이터 저장/연산</td>
+    </tr>
+    <tr>
+      <td><strong>세그먼트</strong></td>
+      <td>CS, DS, SS, FS, GS</td>
+      <td>메모리 세그먼트 (64bit에선 거의 무시됨)</td>
+    </tr>
+    <tr>
+      <td><strong>플래그</strong></td>
+      <td>RFLAGS</td>
+      <td>연산 결과 상태 저장 (분기 판단용)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="암기-포인트">암기 포인트</h2>
+
+<ul>
+  <li><strong>64bit에서는 세그먼트 레지스터 거의 안 씀</strong></li>
+  <li><strong>플래그 레지스터는 조건 분기에 핵심</strong></li>
+  <li><strong>일반 레지스터만 쓰는 게 거의 대부분</strong> (RAX, RCX, RSI, …)</li>
+  <li></li>
+</ul>
 
 <h2 id="rax-eax-ax-ah-al-구조">RAX, EAX, AX, AH, AL 구조</h2>
 
@@ -542,6 +635,10 @@
            <span class="err">├──</span> <span class="nt">AH</span> <span class="o">(</span><span class="err">상위</span> <span class="nt">8bit</span><span class="o">)</span>
            <span class="err">└──</span> <span class="nt">AL</span> <span class="o">(</span><span class="err">하위</span> <span class="nt">8bit</span><span class="o">)</span>
 </code></pre></div></div>
+
+<p>32bit에서는 EAX, EBX, 64bit는 앞에 “R” 붙고 64bit 크기로 바뀐다.
+추가로: <strong>r8 ~ r15</strong> 라는 새로운 레지스터들도 생겼음.
+→ 64bit에서는 레지스터가 더 많음 (덕분에 더 자유롭게 코딩 가능)</p>
 
 <p><strong>RAX는 EAX를 포함하고, EAX는 AX를 포함하고, AX는 AH + AL로 나뉜다.</strong></p>
 
@@ -701,9 +798,8 @@
 </ul>
 
 <blockquote>
-  <p>왜 16바이트 정렬?</p>
-
-  <p>➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
+  <p>왜 16바이트 정렬?
+➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
 
 </blockquote>
 
@@ -948,7 +1044,7 @@
       
   <nav class="pagination">
     
-      <a href="/blog/blog6-font/" class="pagination--pager" title="GitHub Blog Font 설정">Prev</a>
+      <a href="/blog/blog7-font/" class="pagination--pager" title="GitHub Blog Font 설정">Prev</a>
     
     
       <a href="/assembly/assembly2-setting/" class="pagination--pager" title="Assembly Setting">Next</a>
@@ -1009,7 +1105,30 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog6-font/" rel="permalink">GitHub Blog Font 설정
+        <a href="/blog/blog7-font/" rel="permalink">GitHub Blog Font 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #7
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog6-comment/" rel="permalink">GitHub Blog 댓글 설정
 </a>
       
     </h2>
@@ -1032,7 +1151,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog5-comment/" rel="permalink">GitHub Blog 댓글 설정
+        <a href="/blog/blog5-category/" rel="permalink">GitHub Blog Category 설정
 </a>
       
     </h2>
@@ -1040,29 +1159,6 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">GitHub Blog #5
-</p>
-  </article>
-</div>
-
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/blog4-category-post/" rel="permalink">GitHub Blog Category, Post 설정
-</a>
-      
-    </h2>
-    
-
-
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #4
 </p>
   </article>
 </div>

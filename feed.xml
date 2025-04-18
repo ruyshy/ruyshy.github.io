@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-18T12:41:35+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-18T14:02:12+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
 
 <p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
 
@@ -93,6 +93,18 @@
   <li>CPU 안에 있는 <strong>작고 빠른 기억장치</strong>.</li>
   <li><strong>변수 같은 거 저장</strong>하는 초고속 칸이라고 생각하면 됨.</li>
 </ul>
+
+<h2 id="레지스터의-전체-분류-x86-64-기준">레지스터의 전체 분류 (x86-64 기준)</h2>
+<p>| 분류 | 예시 | 설명 |
+| — | — | — |
+| <strong>일반 목적 레지스터 (GPR)</strong> | RAX, RBX, RCX, … | 연산, 데이터 저장, 함수 인자 전달 |
+| <strong>세그먼트 레지스터</strong> | CS, DS, SS, ES, FS, GS | 메모리 세그먼트 구분 |
+| <strong>플래그 레지스터 (FLAGS/RFLAGS)</strong> | EFLAGS, RFLAGS | 조건 분기, 연산 결과 상태 저장 |
+| <strong>포인터/인덱스 레지스터</strong> | RIP, RSP, RBP, RSI, RDI | 명령어 포인터, 스택, 베이스, 인덱싱 |
+| <strong>제어 레지스터 (CRx)</strong> | CR0, CR2, CR3, CR4 | 페이지 테이블, 보호모드 등 제어 |
+| <strong>디버그 레지스터</strong> | DR0–DR7 | 브레이크포인트 설정 등에 사용 |</p>
+
+<p>대부분 실무에서 GPR, FLAGS, 세그먼트 레지스터까지 알면 충분</p>
 
 <h2 id="32bit-레지스터-x86-기준">32bit 레지스터 (x86 기준)</h2>
 
@@ -194,11 +206,92 @@
   </tbody>
 </table>
 
-<p>32bit에서는 EAX, EBX, 64bit는 앞에 “R” 붙고 64bit 크기로 바뀐다.</p>
+<h2 id="세그먼트-레지스터-segment-registers">세그먼트 레지스터 (Segment Registers)</h2>
+<p>| 레지스터 | 설명 |
+| — | — |
+| <strong>CS</strong> | Code Segment: 명령어(코드)가 들어있는 영역 |
+| <strong>DS</strong> | Data Segment: 일반 데이터가 들어있는 영역 |
+| <strong>SS</strong> | Stack Segment: 스택 데이터가 들어있는 영역 |
+| <strong>ES/FS/GS</strong> | 확장 세그먼트: 특수 목적 (스레드 로컬 등) |</p>
 
-<p>추가로: <strong>r8 ~ r15</strong> 라는 새로운 레지스터들도 생겼음.</p>
+<p>중요한 사실:</p>
+<blockquote>
+  <p>64bit에서는 대부분 세그먼트 의미가 무시되거나 고정됨.</p>
+</blockquote>
 
-<p>→ 64bit에서는 레지스터가 더 많음 (덕분에 더 자유롭게 코딩 가능)</p>
+<p>예를 들어:</p>
+<blockquote>
+  <ul>
+    <li>CS, DS, SS 같은 건 거의 고정값으로 유지되고</li>
+    <li>FS, GS만 스레드 로컬 데이터(TIB/TEB 접근)처럼 제한적으로 사용돼.</li>
+  </ul>
+</blockquote>
+
+<p>즉, 64bit에서는 세그먼트 레지스터 사용 거의 안 한다.
+예외적으로 FS/GS는 구조체 접근할 때 쓰기도 함 (예: gs:[0x30] → PEB)</p>
+
+<h2 id="플래그-레지스터-rflags--eflags">플래그 레지스터 (RFLAGS / EFLAGS)</h2>
+<p>| 플래그 이름 | 설명 |
+| — | — |
+| <strong>ZF (Zero Flag)</strong> | 연산 결과가 0이면 설정됨 |
+| <strong>CF (Carry Flag)</strong> | 자리 올림 발생 시 설정됨 |
+| <strong>SF (Sign Flag)</strong> | 부호 비트 (음수면 1) |
+| <strong>OF (Overflow Flag)</strong> | 부호 있는 오버플로우 발생 시 설정됨 |
+| <strong>PF (Parity Flag)</strong> | 결과의 1 비트 개수가 짝수면 설정됨 |
+| <strong>AF (Auxiliary Carry)</strong> | BCD 연산 시 사용됨 |</p>
+
+<p>cmp, test 같은 명령어는
+→ 내부적으로 연산 후 플래그 레지스터를 변경하고
+→ je, jne, jg, jl 같은 조건 분기 명령어에서
+→ 플래그 값을 참조해서 분기한다.</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
+<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>     <span class="c1">; ZF = 1</span>
+<span class="no">je</span><span class="kd">  equ</span><span class="nb">al</span><span class="nv">_label</span> <span class="c1">; ZF가 1이면 점프함 (==)</span>
+
+<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">3</span>     <span class="c1">; ZF = 0, SF = 0</span>
+<span class="nf">jg</span>  <span class="nv">greater_label</span> <span class="c1">; rax &gt; 3 → 점프</span>
+</code></pre></div></div>
+<p>플래그가 이렇게 연산 결과를 기억하고,
+조건 분기를 가능하게 만들어주는 핵심 역할을 한다.</p>
+
+<h2 id="레지스터-요약">레지스터 요약</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>분류</th>
+      <th>레지스터</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>일반 목적</strong></td>
+      <td>RAX~R15</td>
+      <td>데이터 저장/연산</td>
+    </tr>
+    <tr>
+      <td><strong>세그먼트</strong></td>
+      <td>CS, DS, SS, FS, GS</td>
+      <td>메모리 세그먼트 (64bit에선 거의 무시됨)</td>
+    </tr>
+    <tr>
+      <td><strong>플래그</strong></td>
+      <td>RFLAGS</td>
+      <td>연산 결과 상태 저장 (분기 판단용)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="암기-포인트">암기 포인트</h2>
+
+<ul>
+  <li><strong>64bit에서는 세그먼트 레지스터 거의 안 씀</strong></li>
+  <li><strong>플래그 레지스터는 조건 분기에 핵심</strong></li>
+  <li><strong>일반 레지스터만 쓰는 게 거의 대부분</strong> (RAX, RCX, RSI, …)</li>
+  <li></li>
+</ul>
 
 <h2 id="rax-eax-ax-ah-al-구조">RAX, EAX, AX, AH, AL 구조</h2>
 
@@ -208,6 +301,10 @@
            <span class="err">├──</span> <span class="nt">AH</span> <span class="o">(</span><span class="err">상위</span> <span class="nt">8bit</span><span class="o">)</span>
            <span class="err">└──</span> <span class="nt">AL</span> <span class="o">(</span><span class="err">하위</span> <span class="nt">8bit</span><span class="o">)</span>
 </code></pre></div></div>
+
+<p>32bit에서는 EAX, EBX, 64bit는 앞에 “R” 붙고 64bit 크기로 바뀐다.
+추가로: <strong>r8 ~ r15</strong> 라는 새로운 레지스터들도 생겼음.
+→ 64bit에서는 레지스터가 더 많음 (덕분에 더 자유롭게 코딩 가능)</p>
 
 <p><strong>RAX는 EAX를 포함하고, EAX는 AX를 포함하고, AX는 AH + AL로 나뉜다.</strong></p>
 
@@ -367,9 +464,8 @@
 </ul>
 
 <blockquote>
-  <p>왜 16바이트 정렬?</p>
-
-  <p>➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
+  <p>왜 16바이트 정렬?
+➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
 
 </blockquote>
 
@@ -704,13 +800,14 @@
 <p>정상 출력:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello, Assembly!
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><summary type="html"><![CDATA[assembly#2]]></summary></entry><entry><title type="html">GitHub Blog Font 설정</title><link href="https://ruyshy.github.io/blog/blog6-font/" rel="alternate" type="text/html" title="GitHub Blog Font 설정" /><published>2025-04-17T00:00:00+09:00</published><updated>2025-04-17T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog6-font</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog6-font/"><![CDATA[<p>GitHub Blog #6</p>
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><summary type="html"><![CDATA[assembly#2]]></summary></entry><entry><title type="html">GitHub Blog Font 설정</title><link href="https://ruyshy.github.io/blog/blog7-font/" rel="alternate" type="text/html" title="GitHub Blog Font 설정" /><published>2025-04-17T00:00:00+09:00</published><updated>2025-04-17T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog7-font</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog7-font/"><![CDATA[<p>GitHub Blog #7</p>
 
 <p>여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다.</p>
 
 <p><a href="https://fonts.google.com/">https://fonts.google.com/</a></p>
 
-<p>저는 Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
+<p>저는 폰트를 다운 받아서 진행했습니다.
+Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
 
 <p>_sass\minimal-mistakes_variables.scss 추가</p>
 
@@ -752,7 +849,9 @@
     <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
     <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
   <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #6]]></summary></entry><entry><title type="html">GitHub Blog Local Server 설정</title><link href="https://ruyshy.github.io/blog/blog2-local-server/" rel="alternate" type="text/html" title="GitHub Blog Local Server 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog2-local-server</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog2-local-server/"><![CDATA[<p>GitHub Blog #2</p>
+</code></pre></div></div>
+
+<p>저는 기본 폰트가 이쁜거같아서 다시 원상 복구 했습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #7]]></summary></entry><entry><title type="html">GitHub Blog Local Server 설정</title><link href="https://ruyshy.github.io/blog/blog2-local-server/" rel="alternate" type="text/html" title="GitHub Blog Local Server 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog2-local-server</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog2-local-server/"><![CDATA[<p>GitHub Blog #2</p>
 
 <h2 id="필요한-준비물">필요한 준비물</h2>
 
@@ -968,7 +1067,111 @@
   <span class="na">workflow_dispatch</span><span class="pi">:</span> <span class="c1"># 수동 실행 가능</span>
 
 </code></pre></div></div>
-<p>GitHub UI 상에서 “Run workflow” 버튼이 생성됩니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #3]]></summary></entry><entry><title type="html">GitHub Blog Category, Post 설정</title><link href="https://ruyshy.github.io/blog/blog4-category-post/" rel="alternate" type="text/html" title="GitHub Blog Category, Post 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog4-category-post</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog4-category-post/"><![CDATA[<p>GitHub Blog #4</p>
+<p>GitHub UI 상에서 “Run workflow” 버튼이 생성됩니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #3]]></summary></entry><entry><title type="html">GitHub Blog Post 설정</title><link href="https://ruyshy.github.io/blog/blog4-post/" rel="alternate" type="text/html" title="GitHub Blog Post 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog4-post</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog4-post/"><![CDATA[<p>GitHub Blog #4</p>
+
+<h2 id="github-blog-image-path-설정하기">GitHub Blog Image Path 설정하기</h2>
+
+<p>._include\ 해당 경로에 post-image.html 생성합니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span>
+
+
+
+
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+
+<p>예시:</p>
+
+<ol>
+  <li>_posts\blog[2025-04-10-blog-start.md](http://2025-04-10-blog-start.md/)라는 포스트가 있습니다.</li>
+  <li>\assets\images[2025-04-10-blog-start](http://2025-04-10-blog-start.md/) 폴더를 생성합니다.</li>
+  <li>이 폴더에 게시글에 넣을 이미지를 저장합니다.</li>
+  <li>예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.</li>
+</ol>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/ImageName.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+
+<h3 id="image-path-설정-장점-요약">Image Path 설정 장점 요약</h3>
+
+<ol>
+  <li>폴더명만 보면 어떤 글에 쓰였는지 바로 보임.</li>
+  <li>Markdown에서도 포스트 경로 = 이미지 경로 연상하기 쉬움</li>
+  <li>나중에 썸네일 자동 생성이나 포스트 삭제 시 이미지 관리도 편함</li>
+</ol>
+
+<h3 id="github-blog-시작하기-post-예시-코드">GitHub Blog 시작하기 Post 예시 코드</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Blog</span><span class="nv"> </span><span class="s">Start"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-10</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">GitHubBlog</span><span class="pi">]</span>
+<span class="nn">---</span>
+
+<span class="gh"># jekyll 테마 GitHub Blog 시작하기</span>
+
+<span class="gu">## Jekyll 기반 GitHub Blog 생성</span>
+
+<span class="p">[</span><span class="nv">https://mmistakes.github.io/minimal-mistakes/</span><span class="p">](</span><span class="sx">https://mmistakes.github.io/minimal-mistakes/</span><span class="p">)</span>
+
+해당 Jekyll 테마 기준으로 작성 되어있습니다.
+
+<span class="gu">## 준비해야 할 준비물</span>
+
+개인 GitHub 계정 (<span class="p">[</span><span class="nv">https://github.com/</span><span class="p">](</span><span class="sx">https://github.com/</span><span class="p">)</span>)
+
+Visual Studio Code (<span class="p">[</span><span class="nv">https://code.visualstudio.com/</span><span class="p">](</span><span class="sx">https://code.visualstudio.com/</span><span class="p">)</span>)
+
+<span class="gu">## GitHub Blog 시작하기</span>
+
+<span class="p">[</span><span class="nv">https://github.com/mmistakes/minimal-mistakes</span><span class="p">](</span><span class="sx">https://github.com/mmistakes/minimal-mistakes</span><span class="p">)</span>
+
+github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다.
+<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+
+
+</span>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.
+
+Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">**repositories(저장소)**</span> 에 똑같은 코드를 가진 Project(코드 저장소)가 생성이 됩니다.
+
+<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+
+
+</span>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
+
+<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+
+
+
+
+</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
+
+
+</span>코드 저장소의 이름을 바꿔줘야 합니다.
+
+무조건 자기 자신의 <span class="p">[</span><span class="nv">githubID.github.io</span><span class="p">](</span><span class="sx">http://githubID.github.io</span><span class="p">)</span>
+
+...내용
+
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #4]]></summary></entry><entry><title type="html">GitHub Blog Category 설정</title><link href="https://ruyshy.github.io/blog/blog5-category/" rel="alternate" type="text/html" title="GitHub Blog Category 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog5-category</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog5-category/"><![CDATA[<p>GitHub Blog #5</p>
 
 <p>GitHub Blog 시작하기에 이어 다음 편입니다.</p>
 
@@ -1150,7 +1353,7 @@
       <span class="c">&lt;!-- All --&gt;</span>
       <span class="nt">&lt;li&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/"</span> <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(8)<span class="nt">&lt;/span&gt;</span>
+          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(9)<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
 
@@ -1171,7 +1374,7 @@
         <span class="nt">&lt;li&gt;</span>
           <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/blog/"</span>
              <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(6)<span class="nt">&lt;/span&gt;</span>
+            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(7)<span class="nt">&lt;/span&gt;</span>
           <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
       
@@ -1323,134 +1526,7 @@
 
 <p>해당 카테고리를 설정한 assembly, blog 부분입니다.</p>
 
-<p>“_post/assembly” 경로에 설정에서 values: categories : [assembly] 이 값이 있으면 해당 경로에 Post는 자동으로 카테고리가 설정 됩니다.</p>
-
-<h2 id="github-blog-image-path-설정하기">GitHub Blog Image Path 설정하기</h2>
-
-<p>._include\ 해당 경로에 post-image.html 생성합니다.</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span>
-
-
-
-
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
-
-</code></pre></div></div>
-
-<p>예시:</p>
-
-<ol>
-  <li>._posts\blog[2025-04-10-blog-start.md](http://2025-04-10-blog-start.md/)라는 포스트가 있습니다.</li>
-  <li>\assets\images[2025-04-10-blog-start](http://2025-04-10-blog-start.md/) 폴더를 생성합니다.</li>
-  <li>이 폴더에 게시글에 넣을 이미지를 저장합니다.</li>
-  <li>예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.</li>
-</ol>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
-
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/ImageName.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
-
-</code></pre></div></div>
-
-<h3 id="image-path-설정-장점-요약">Image Path 설정 장점 요약</h3>
-
-<ol>
-  <li>폴더명만 보면 어떤 글에 쓰였는지 바로 보임.</li>
-  <li>Markdown에서도 포스트 경로 = 이미지 경로 연상하기 쉬움</li>
-  <li>나중에 썸네일 자동 생성이나 포스트 삭제 시 이미지 관리도 편함</li>
-</ol>
-
-<h3 id="github-blog-시작하기-post-예시-코드">GitHub Blog 시작하기 Post 예시 코드</h3>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Blog</span><span class="nv"> </span><span class="s">Start"</span>
-<span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-10</span>
-<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">GitHubBlog</span><span class="pi">]</span>
-<span class="nn">---</span>
-
-<span class="gh"># jekyll 테마 GitHub Blog 시작하기</span>
-
-<span class="gu">## Jekyll 기반 GitHub Blog 생성</span>
-
-<span class="p">[</span><span class="nv">https://mmistakes.github.io/minimal-mistakes/</span><span class="p">](</span><span class="sx">https://mmistakes.github.io/minimal-mistakes/</span><span class="p">)</span>
-
-해당 Jekyll 테마 기준으로 작성 되어있습니다.
-
-<span class="gu">## 준비해야 할 준비물</span>
-
-개인 GitHub 계정 (<span class="p">[</span><span class="nv">https://github.com/</span><span class="p">](</span><span class="sx">https://github.com/</span><span class="p">)</span>)
-
-Visual Studio Code (<span class="p">[</span><span class="nv">https://code.visualstudio.com/</span><span class="p">](</span><span class="sx">https://code.visualstudio.com/</span><span class="p">)</span>)
-
-<span class="gu">## GitHub Blog 시작하기</span>
-
-<span class="p">[</span><span class="nv">https://github.com/mmistakes/minimal-mistakes</span><span class="p">](</span><span class="sx">https://github.com/mmistakes/minimal-mistakes</span><span class="p">)</span>
-
-github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다.
-<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
-
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
-
-
-</span>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.
-
-Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">**repositories(저장소)**</span> 에 똑같은 코드를 가진 Project(코드 저장소)가 생성이 됩니다.
-
-<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
-
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
-
-
-</span>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
-
-<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
-
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
-
-
-</span>코드 저장소의 이름을 바꿔줘야 합니다.
-
-무조건 자기 자신의 <span class="p">[</span><span class="nv">githubID.github.io</span><span class="p">](</span><span class="sx">http://githubID.github.io</span><span class="p">)</span>
-
-저의 경우, 제 닉네임은 ruyshy 이므로 <span class="p">[</span><span class="nv">ruyshy.github.io</span><span class="p">](</span><span class="sx">http://ruyshy.github.io</span><span class="p">)</span> 로 설정해줍니다.
-
-<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
-
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_59_32.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
-
-
-</span>다음으로 Code로 돌아가서 <span class="gs">**_config.yml**</span>을 클릭해서 해당 파일로 들어갑니다.
-
-<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
-
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-category-post/ruyshy.github.io__config.yml_at_main__ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_2_01_54.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
-
-
-</span>화면과 같이 펜모양 버튼을 눌러, 하단 메뉴인 Edit in place를 클릭하여 편집 화면으로 넘어갑니다.
-
- url                      : "<span class="p">[</span><span class="nv">https://ruyshy.github.io</span><span class="p">](</span><span class="sx">https://ruyshy.github.io/</span><span class="p">)</span>"
-
-제일 먼저 url을 위 형식처럼 변경해줍니다.
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #4]]></summary></entry><entry><title type="html">GitHub Blog 댓글 설정</title><link href="https://ruyshy.github.io/blog/blog5-comment/" rel="alternate" type="text/html" title="GitHub Blog 댓글 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog5-comment</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog5-comment/"><![CDATA[<p>GitHub Blog #5</p>
+<p>“_post/assembly” 경로에 설정에서 values: categories : [assembly] 이 값이 있으면 해당 경로에 Post는 자동으로 카테고리가 설정 됩니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #5]]></summary></entry><entry><title type="html">GitHub Blog 댓글 설정</title><link href="https://ruyshy.github.io/blog/blog6-comment/" rel="alternate" type="text/html" title="GitHub Blog 댓글 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog6-comment</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog6-comment/"><![CDATA[<p>GitHub Blog #6</p>
 
 <p>jekyll 테마(<a href="https://mmistakes.github.io/minimal-mistakes/">minimal-mistakes</a>) 기준으로 작성되었습니다</p>
 
@@ -1474,7 +1550,7 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-16-blog5-comment/image1.png" alt="image1" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-16-blog6-comment/image1.png" alt="image1" style="max-width: 100%;" /></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[https://www.notion.so](https://www.notion.so)
 </code></pre></div></div>
@@ -1554,15 +1630,15 @@ Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-16-blog5-comment/image2.png" alt="image2" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-16-blog6-comment/image2.png" alt="image2" style="max-width: 100%;" /></p>
 
 <p>위 처럼 블로그에서 test comment를 작성 했을 때,</p>
 
 <!-- post-image.html -->
 
-<p><img src="/assets/images/blog/2025-04-16-blog5-comment/image3.png" alt="image3" style="max-width: 100%;" /></p>
+<p><img src="/assets/images/blog/2025-04-16-blog6-comment/image3.png" alt="image3" style="max-width: 100%;" /></p>
 
-<p>해당 저장소 Issues에 생성을 확인할 수 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #5]]></summary></entry><entry><title type="html">GitHub Blog Start</title><link href="https://ruyshy.github.io/blog/blog1-start/" rel="alternate" type="text/html" title="GitHub Blog Start" /><published>2025-04-10T00:00:00+09:00</published><updated>2025-04-10T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog1-start</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog1-start/"><![CDATA[<p>GitHub Blog #1</p>
+<p>해당 저장소 Issues에 생성을 확인할 수 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #6]]></summary></entry><entry><title type="html">GitHub Blog Start</title><link href="https://ruyshy.github.io/blog/blog1-start/" rel="alternate" type="text/html" title="GitHub Blog Start" /><published>2025-04-10T00:00:00+09:00</published><updated>2025-04-10T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog1-start</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog1-start/"><![CDATA[<p>GitHub Blog #1</p>
 
 <h1 id="jekyll-테마-github-blog-시작하기">jekyll 테마 GitHub Blog 시작하기</h1>
 
