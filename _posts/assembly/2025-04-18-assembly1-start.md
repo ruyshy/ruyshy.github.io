@@ -7,10 +7,8 @@ tags: [nasm, assembly]
 assembly#1
 
 시작하기 앞 서, 학습할 사이트 목록 입니다.
-
-드림 해커 : [https://dreamhack.io/](https://dreamhack.io/)
-
-CrackMe : [https://crackmy.app/](https://crackmy.app/)
+> 드림 해커 : [https://dreamhack.io/](https://dreamhack.io/)
+> CrackMe : [https://crackmy.app/](https://crackmy.app/)
 
 # **어셈블리(Assembly)란?**
 
@@ -118,7 +116,6 @@ CrackMe : [https://crackmy.app/](https://crackmy.app/)
 
 중요한 사실:
 > 64bit에서는 대부분 세그먼트 의미가 무시되거나 고정됨.
-
 예를 들어:
 > - CS, DS, SS 같은 건 거의 고정값으로 유지되고
 > - FS, GS만 스레드 로컬 데이터(TIB/TEB 접근)처럼 제한적으로 사용돼.
@@ -141,6 +138,7 @@ cmp, test 같은 명령어는
 → je, jne, jg, jl 같은 조건 분기 명령어에서
 → 플래그 값을 참조해서 분기한다.
 
+예시:
 ```nasm
 mov rax, 5
 cmp rax, 5     ; ZF = 1
@@ -165,7 +163,6 @@ jg  greater_label ; rax > 3 → 점프
 - **64bit에서는 세그먼트 레지스터 거의 안 씀**
 - **플래그 레지스터는 조건 분기에 핵심**
 - **일반 레지스터만 쓰는 게 거의 대부분** (RAX, RCX, RSI, ...)
-- 
 
 ## RAX, EAX, AX, AH, AL 구조
 
