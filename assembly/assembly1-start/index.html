@@ -335,10 +335,10 @@
         <p>assembly#1</p>
 
 <p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
-
-<p>드림 해커 : <a href="https://dreamhack.io/">https://dreamhack.io/</a></p>
-
-<p>CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
+<blockquote>
+  <p>드림 해커 : <a href="https://dreamhack.io/">https://dreamhack.io/</a>
+CrackMe : <a href="https://crackmy.app/">https://crackmy.app/</a></p>
+</blockquote>
 
 <h1 id="어셈블리assembly란"><strong>어셈블리(Assembly)란?</strong></h1>
 
@@ -550,11 +550,8 @@
 
 <p>중요한 사실:</p>
 <blockquote>
-  <p>64bit에서는 대부분 세그먼트 의미가 무시되거나 고정됨.</p>
-</blockquote>
-
-<p>예를 들어:</p>
-<blockquote>
+  <p>64bit에서는 대부분 세그먼트 의미가 무시되거나 고정됨.
+예를 들어:</p>
   <ul>
     <li>CS, DS, SS 같은 건 거의 고정값으로 유지되고</li>
     <li>FS, GS만 스레드 로컬 데이터(TIB/TEB 접근)처럼 제한적으로 사용돼.</li>
@@ -579,6 +576,7 @@
 → je, jne, jg, jl 같은 조건 분기 명령어에서
 → 플래그 값을 참조해서 분기한다.</p>
 
+<p>예시:</p>
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
 <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>     <span class="c1">; ZF = 1</span>
 <span class="no">je</span><span class="kd">  equ</span><span class="nb">al</span><span class="nv">_label</span> <span class="c1">; ZF가 1이면 점프함 (==)</span>
@@ -624,7 +622,6 @@
   <li><strong>64bit에서는 세그먼트 레지스터 거의 안 씀</strong></li>
   <li><strong>플래그 레지스터는 조건 분기에 핵심</strong></li>
   <li><strong>일반 레지스터만 쓰는 게 거의 대부분</strong> (RAX, RCX, RSI, …)</li>
-  <li></li>
 </ul>
 
 <h2 id="rax-eax-ax-ah-al-구조">RAX, EAX, AX, AH, AL 구조</h2>
