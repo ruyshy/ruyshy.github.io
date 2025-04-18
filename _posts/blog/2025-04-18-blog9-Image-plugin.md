@@ -27,7 +27,7 @@ or
 ```
 
 
-## \plugins\img*tag.rb 코드 추가
+## \plugins\img_tag.rb 코드 추가
 
 ```ruby
 module Jekyll
