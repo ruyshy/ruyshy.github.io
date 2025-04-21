@@ -18,7 +18,7 @@ sasm 공식 홈페이지 : [https://dman95.github.io/SASM/english.html](https://
 
 ## SASM Setting
 
-{% img "image1.png" %}
+
 
 nasm x64 기준으로 진행 합니다.
 
@@ -46,11 +46,11 @@ main:
 
 단축키 F9를 눌러 테스트를 진행할 수 있습니다.
 
-{% img "image2.png" %}
+
 
 단축키 F5를 눌러보면
 
-{% img "image3.png" %}
+
 
 저처럼 memory와 registers를 볼 수 있도록
 
