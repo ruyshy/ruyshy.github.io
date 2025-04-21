@@ -1,5 +1,5 @@
 ---
-title: "Assembly Start"
+title: "Assembly 시작하기"
 date: 2025-04-18
 tags: [nasm, assembly]
 ---
@@ -348,49 +348,6 @@ add eax, ebx    ; eax = eax + ebx (5 + 10 = 15)
 - `eax = 5`
 - `ebx = 10`
 - `eax = eax + ebx` → 결과 15가 eax에 들어감
-
-## **Windows 64bit Hello World Assembly 예제**
-
-```nasm
-default rel
-
-extern ExitProcess : proc
-extern GetStdHandle : proc
-extern WriteFile : proc
-
-section .data
-    helloMsg db "Hello, Windows 64-bit Assembly!", 0xA
-    helloLen equ $ - helloMsg
-
-section .text
-global main
-main:
-    ; GetStdHandle(STD_OUTPUT_HANDLE)
-    mov rcx, -11           ; STD_OUTPUT_HANDLE
-    call GetStdHandle
-    mov rbx, rax           ; 핸들을 rbx에 저장
-
-    ; WriteFile(handle, buffer, length, &written, NULL)
-    mov rcx, rbx           ; 핸들
-    lea rdx, [helloMsg]    ; 버퍼
-    mov r8, helloLen       ; 길이
-    sub rsp, 32            ; 스택 16바이트 정렬 + WriteFile에 공간 마련
-    xor r9, r9             ; written 포인터 NULL
-    call WriteFile
-    add rsp, 32            ; 스택 복원
-
-    ; ExitProcess(0)
-    xor rcx, rcx
-    call ExitProcess
-
-```
-
-정리 포인트:
-
-- API 부르기 전에 RCX, RDX, R8, R9 셋팅
-- `sub rsp, 32`로 스택을 정렬
-- 함수 끝나면 `add rsp, 32`로 스택 복구
-- ExitProcess로 종료
 
 ## **운영체제 차이 요약**
 
