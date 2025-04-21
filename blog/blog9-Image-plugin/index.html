@@ -361,7 +361,7 @@
 
 <p>or</p>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png"</span> <span class="na">alt=</span><span class="s">"image1.png"</span> <span class="na">style=</span><span class="s">"max-width:100%;"</span><span class="nt">&gt;</span>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% img "image1.png" %}
 </code></pre></div></div>
 
 <h2 id="pluginsimg_tagrb-코드-추가">\plugins\img_tag.rb 코드 추가</h2>
@@ -422,11 +422,11 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/blog/2025-04-18-blog9-Image-plugin/test.png" alt="test.png" style="max-width:100%;"&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">{% img "test.png" %}</code></td>
       <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/xxx/xxx/test.png" alt="test.png" style="max-width:100%;"&gt;</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/blog/2025-04-18-blog9-Image-plugin/test.png" alt="설명" style="max-width:100%;"&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">{% img "test.png", "설명" %}</code></td>
       <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/xxx/xxx/test.png" alt="설명" style="max-width:100%;"&gt;</code></td>
     </tr>
   </tbody>
