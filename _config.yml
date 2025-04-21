@@ -116,7 +116,7 @@ analytics:
 # Site Author
 author:
   name             : "ruyshy"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/profile/github_profile_image.jpg"
   bio              : ""
   location         : "South Korea"
   email            : "ruyshyttr@gmail.com"
