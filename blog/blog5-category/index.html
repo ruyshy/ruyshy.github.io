@@ -276,7 +276,7 @@
       <!-- All -->
       <li>
         <a href="/categories/" class="nav__item">
-          - All <span class="count">(11)</span>
+          - All <span class="count">(12)</span>
         </a>
       </li>
 
@@ -297,7 +297,7 @@
         <li>
           <a href="/categories/blog/"
              class="nav__item">
-            - Blog <span class="count">(9)</span>
+            - Blog <span class="count">(10)</span>
           </a>
         </li>
       
@@ -521,7 +521,7 @@
       <span class="c">&lt;!-- All --&gt;</span>
       <span class="nt">&lt;li&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/"</span> <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(11)<span class="nt">&lt;/span&gt;</span>
+          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(12)<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
 
@@ -542,7 +542,7 @@
         <span class="nt">&lt;li&gt;</span>
           <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/blog/"</span>
              <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(9)<span class="nt">&lt;/span&gt;</span>
+            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(10)<span class="nt">&lt;/span&gt;</span>
           <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
       
@@ -793,6 +793,29 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/blog/blog10-code-block-copy-button/" rel="permalink">GitHub Blog CodeBlock Copy
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #10
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/blog/blog9-Image-plugin/" rel="permalink">GitHub Blog Image Plugin
 </a>
       
@@ -852,29 +875,6 @@
 </div>
 
     
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/assembly/assembly1-start/" rel="permalink">Assembly Start
-</a>
-      
-    </h2>
-    
-
-
-    <p class="archive__item-excerpt" itemprop="description">assembly#1
-</p>
-  </article>
-</div>
-
-    
   </div>
 </div>
 
@@ -924,6 +924,38 @@
 
       </footer>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script>
+    
 
     
   <script src="/assets/js/main.min.js"></script>

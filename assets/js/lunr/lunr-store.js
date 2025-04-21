@@ -78,8 +78,14 @@ var store = [{
         "teaser": null
       },{
         "title": "GitHub Blog Image Plugin",
-        "excerpt":"GitHub Blog #9 기존 방식 과 태그 플러그인 비교 기존에 이미지 불러오는 방식: &lt;!-- post-image.html --&gt; &lt;img src=\"/assets/images/blog/2025-04-18-blog9-Image-plugin/image.png\" alt=\"image\" style=\"max-width: 100%;\"&gt; 플러그인 적용한 방식: {% img \"image1.png\", \"tag image test\" %} or {% img \"image1.png\" %} \\plugins\\img_tag.rb 코드 추가 module Jekyll class ImgTag &lt; Liquid::Tag def initialize(tag_name, markup, tokens) super...","categories": ["blog"],
+        "excerpt":"GitHub Blog #9 기존 방식 과 태그 플러그인 비교 기존에 이미지 불러오는 방식: {% include post-image.html name=\"image.png\" alt=\"image\" %} 플러그인 적용한 방식: {% img \"image1.png\", \"tag image test\" %} or {% img \"image1.png\" %} \\plugins\\img_tag.rb 코드 추가 module Jekyll class ImgTag &lt; Liquid::Tag def initialize(tag_name, markup, tokens) super @markup =...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog9-Image-plugin/",
+        "teaser": null
+      },{
+        "title": "GitHub Blog CodeBlock Copy",
+        "excerpt":"GitHub Blog #10 code block copy button 추가 \\include\\code-block_custom.html 추가 &lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js\"&gt;&lt;/script&gt; &lt;script&gt; document.addEventListener('DOMContentLoaded', function() { document.querySelectorAll('div.highlighter-rouge').forEach(function(block) { var button = document.createElement('button'); button.className = 'copy-button'; button.textContent = 'Copy'; button.style.position = 'absolute'; button.style.top = '0.25em'; button.style.right = '0.25em'; block.style.position = 'relative'; block.appendChild(button); }); var clipboard = new ClipboardJS('.copy-button', { target: function(trigger)...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog10-code-block-copy-button/",
         "teaser": null
       }]
