@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 ---
 
 <!doctype html>
+{% raw %}
 {% include copyright.html %}
 <html lang="{{ site.locale | replace: "_", "-" | default: "en" }}" class="no-js">
   <head>
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {% include scripts.html %}
   </body>
 </html>
-
+{% endraw %}
 ```
 
 ### \_sass\minimal-mistakes\_buttons.scss 코드에 추가

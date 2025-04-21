@@ -52,6 +52,7 @@ Quick-Start Guide 해당 부분을 지워줍니다.
 ### .\_includes\sidebar.html 입니다.
 
 ```html
+{% raw %}
 {% if page.author_profile or layout.author_profile or page.sidebar %}
 <div class="sidebar sticky">
 
@@ -101,7 +102,7 @@ Quick-Start Guide 해당 부분을 지워줍니다.
 </div>
 
 {% endif %}
-
+{% endraw %}
 ```
 
  위와 같이 카테고리를 설정해줍니다.
