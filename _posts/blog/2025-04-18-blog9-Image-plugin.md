@@ -17,7 +17,7 @@ GitHub Blog #9
 플러그인 적용한 방식:
 
 ```markdown
-{% img "image1.png", "tag image test" %}
+{% raw %}{% img "image1.png", "tag image test" %}{% endraw %}
 ```
 
 or
