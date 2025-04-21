@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T18:20:22+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 실습 환경 설정</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly 실습 환경 설정" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly#2</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T18:36:20+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 실습 환경 설정</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly 실습 환경 설정" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly#2</p>
 
 <h2 id="sasm">SASM</h2>
 
@@ -1180,12 +1180,13 @@ Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
 
 <h2 id="현재-blog-workflow">현재 Blog Workflow</h2>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and Deploy from ph-pages to gh-pages</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and Deploy Jekyll</span>
 
 <span class="na">on</span><span class="pi">:</span>
   <span class="na">push</span><span class="pi">:</span>
     <span class="na">branches</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">ph-pages</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span>
 
 <span class="na">permissions</span><span class="pi">:</span>
   <span class="na">contents</span><span class="pi">:</span> <span class="s">write</span>
@@ -1195,7 +1196,7 @@ Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
     <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
 
     <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout source branch</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout source</span>
         <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
         <span class="na">with</span><span class="pi">:</span>
           <span class="na">ref</span><span class="pi">:</span> <span class="s">ph-pages</span>
@@ -1203,15 +1204,18 @@ Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Ruby</span>
         <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
         <span class="na">with</span><span class="pi">:</span>
-          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.1'</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.3'</span>
 
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span>
         <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
           <span class="s">gem install bundler</span>
           <span class="s">bundle install</span>
 
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Clean previous builds</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll clean</span>
+
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Jekyll site</span>
-        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build --future</span>
 
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to gh-pages</span>
         <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
@@ -1229,6 +1233,12 @@ Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
   <li>Jekyll로 블로그 빌드하고,</li>
   <li>결과물(<code class="language-plaintext highlighter-rouge">_site</code> 폴더)을 <code class="language-plaintext highlighter-rouge">gh-pages</code> 브랜치로 배포함.</li>
 </ul>
+
+<h2 id="github-설정">GitHub 설정</h2>
+
+<p><img src="/assets/images/blog/2025-04-16-blog3-build-release/image3.png" alt="image3.png" style="max-width:100%;" /></p>
+
+<p>Branch 를 gh-pages 로 설정해줘야 합니다!!!</p>
 
 <h2 id="사용할-수-있는-곳">사용할 수 있는 곳</h2>
 
