@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Assembly Setting - ruyshy blog</title>
+<!-- begin _includes/seo.html --><title>Assembly 실습 환경 설정 - ruyshy blog</title>
 <meta name="description" content="assembly#2">
 
 
@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="Assembly Setting">
+<meta property="og:title" content="Assembly 실습 환경 설정">
 <meta property="og:url" content="https://ruyshy.github.io/assembly/assembly2-setting/">
 
 
@@ -35,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2025-04-18T00:00:00+09:00">
+  <meta property="article:published_time" content="2025-04-21T00:00:00+09:00">
 
 
 
@@ -318,16 +318,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Assembly Setting">
+    <meta itemprop="headline" content="Assembly 실습 환경 설정">
     <meta itemprop="description" content="assembly#2">
-    <meta itemprop="datePublished" content="2025-04-18T00:00:00+09:00">
+    <meta itemprop="datePublished" content="2025-04-21T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/assembly/assembly2-setting/" itemprop="url">Assembly Setting
+            <a href="https://ruyshy.github.io/assembly/assembly2-setting/" itemprop="url">Assembly 실습 환경 설정
 </a>
           </h1>
           
@@ -341,163 +341,115 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#assembly-실습-환경-만들기">Assembly 실습 환경 만들기</a><ul><li><a href="#1-기본-툴-세팅">1. 기본 툴 세팅</a><ul><li><a href="#1-1-nasm-설치">1-1. NASM 설치</a></li><li><a href="#1-2-x64dbg-설치">1-2. x64dbg 설치</a></li><li><a href="#1-3-vs-code-설치-코드-편집용">1-3. VS Code 설치 (코드 편집용)</a></li><li><a href="#1-4-mingw-설치-windows용-gcc-컴파일러">1-4. MinGW 설치 (Windows용 gcc 컴파일러)</a></li></ul></li><li><a href="#2-간단한-hello-world-코드-작성">2. 간단한 Hello World 코드 작성</a><ul><li><a href="#2-1-컴파일--실행">2-1. 컴파일 &amp; 실행</a></li></ul></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#sasm">SASM</a></li><li><a href="#sasm-설치하기">SASM 설치하기</a></li><li><a href="#sasm-setting">SASM Setting</a><ul><li><a href="#코드-흐름-살펴보기">코드 흐름 살펴보기</a></li></ul></li></ul>
             </nav>
           </aside>
         
         <p>assembly#2</p>
 
-<h1 id="assembly-실습-환경-만들기">Assembly 실습 환경 만들기</h1>
+<h2 id="sasm">SASM</h2>
 
-<p>레지스터랑 메모리 구조 이해 단계에서 이론을 배웠고, 기본 명령어부터 익히기 전에 Assembly를 실습 할 수 있는 환경을 만들어보자.</p>
+<p><strong>SASM ( SimpleASM</strong> 의 약자 )은 <a href="https://en.wikipedia.org/wiki/Netwide_Assembler">NASM</a> , <a href="https://en.wikipedia.org/wiki/MASM">MASM</a> , <a href="https://en.wikipedia.org/wiki/GNU_Assembler">GAS</a> , <a href="https://en.wikipedia.org/wiki/FASM">FASM</a> 어셈블리 언어를 위한 무료 <a href="https://en.wikipedia.org/wiki/Open_source">오픈 소스</a> 크로스 플랫폼 <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">통합 개발 환경</a> 입니다 . 구문 강조 기능과 디버거가 포함되어 있습니다.</p>
 
-<h2 id="1-기본-툴-세팅">1. 기본 툴 세팅</h2>
+<h2 id="sasm-설치하기">SASM 설치하기</h2>
 
-<p>NASM (코드 작성+컴파일)</p>
+<p>sasm 공식 홈페이지 : <a href="https://dman95.github.io/SASM/english.html">https://dman95.github.io/SASM/english.html</a></p>
 
-<p>x64dbg (디버깅)</p>
+<p>해당 홈페이지에 접속하여 설치파일 다운로드 후, 설치를 진행합니다.</p>
 
-<p>VS Code (편집기)</p>
+<h2 id="sasm-setting">SASM Setting</h2>
 
-<p>MinGW 설치 (Windows용 gcc 컴파일러)</p>
+<p><img src="/assets/images/assembly/2025-04-21-assembly2-setting/SASM_2025-04-21_오후_5_12_52.png" alt="SASM_2025-04-21_오후_5_12_52.png" style="max-width:100%;" /></p>
 
-<h3 id="1-1-nasm-설치">1-1. NASM 설치</h3>
+<p>nasm x64 기준으로 진행 합니다.</p>
 
-<ul>
-  <li>공식 사이트: <a href="https://www.nasm.us/">https://www.nasm.us/</a></li>
-  <li>들어가서 <strong>Download</strong> &gt; <strong>Windows binaries</strong>(.zip) 다운로드</li>
-  <li>압축 풀고 <code class="language-plaintext highlighter-rouge">nasm.exe</code>를 적당한 경로에  옮기기(예: <code class="language-plaintext highlighter-rouge">C:\Tools\nasm\nasm.exe</code>)</li>
-</ul>
+<p>설치 후, 설치 경로인 \SASM\Projects 폴더 안에 여러 예제를 테스트 할 수 있습니다.</p>
 
-<p><strong>환경 변수 등록</strong></p>
+<p>File→Open 메뉴를 가보면 자동으로 \SASM\Projects 경로로 기본 설정 되어 있습니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">시스템 환경 변수 편집</code> → <code class="language-plaintext highlighter-rouge">환경 변수</code> → <code class="language-plaintext highlighter-rouge">Path</code>에 NASM 폴더 추가
-(예: <code class="language-plaintext highlighter-rouge">C:\Tools\nasm</code>)</p>
+<p>NASM 위주로 학습을 진행할 예정이니, <code class="language-plaintext highlighter-rouge">NASMHellox64.asm</code> 를 살펴 봅시다.</p>
 
-<p>테스트:</p>
-
-<p>cmd 에서 <code class="language-plaintext highlighter-rouge">nasm -v</code>  입력 후, 버전 나오면 성공</p>
-
-<h3 id="1-2-x64dbg-설치">1-2. x64dbg 설치</h3>
-
-<ul>
-  <li>공식 사이트: <a href="https://x64dbg.com/">https://x64dbg.com/</a></li>
-  <li>Download &gt; 최신버전 다운로드</li>
-  <li>설치 or 포터블(zip) 풀어서 사용</li>
-</ul>
-
-<p>설치 완료하면 <code class="language-plaintext highlighter-rouge">x64dbg.exe</code> (64비트 디버거) 바로 실행 가능</p>
-
-<h3 id="1-3-vs-code-설치-코드-편집용">1-3. VS Code 설치 (코드 편집용)</h3>
-
-<ul>
-  <li><a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> 가서 설치</li>
-  <li>확장 프로그램(Extension)으로:
-    <ul>
-      <li>“MASM/TASM syntax highlighting” 설치 (색깔 입히기용)</li>
-      <li>“Code Runner” (컴파일 단축용, 있어도 되고 없어도 됨)</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="1-4-mingw-설치-windows용-gcc-컴파일러">1-4. MinGW 설치 (Windows용 gcc 컴파일러)</h3>
-
-<ul>
-  <li>공식 링크: https://sourceforge.net/projects/mingw/</li>
-  <li>초록색 버튼 “<strong>Download</strong>”</li>
-  <li>파일 이름 예시: <code class="language-plaintext highlighter-rouge">mingw-get-setup.exe</code></li>
-</ul>
-
-<p><strong>설치 진행</strong></p>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">mingw-get-setup.exe</code> 실행</li>
-  <li>설치 위치는 예를 들면 <code class="language-plaintext highlighter-rouge">C:\MinGW</code> 추천</li>
-  <li>설치할 때 <strong>아래 항목만 체크</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">mingw32-gcc-g++</code></li>
-      <li><code class="language-plaintext highlighter-rouge">mingw32-gcc-gcc</code></li>
-      <li><code class="language-plaintext highlighter-rouge">mingw32-binutils</code></li>
-      <li><code class="language-plaintext highlighter-rouge">mingw32-make</code></li>
-    </ul>
-  </li>
-</ol>
-
-<p>(IDE 같은 거 설치 안 해도 됨.)</p>
-
-<p><strong>환경변수 설정</strong></p>
-
-<p>설치 완료되면, <strong>시스템 환경 변수(Path)에 추가</strong></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">시스템 환경 변수 편집</code> → <code class="language-plaintext highlighter-rouge">환경 변수</code> → <code class="language-plaintext highlighter-rouge">Path</code> 편집 → 새로 만들기 → <code class="language-plaintext highlighter-rouge">C:\MinGW\bin</code> 입력</li>
-</ul>
-
-<p>cmd 에서 <code class="language-plaintext highlighter-rouge">gcc --version</code>  입력 후, 버전 나오면 성공</p>
-
-<h2 id="2-간단한-hello-world-코드-작성">2. 간단한 Hello World 코드 작성</h2>
-
-<p>VS Code 열고 새로운 파일 생성
-파일 이름: <code class="language-plaintext highlighter-rouge">hello.asm</code></p>
-
-<p>내용:</p>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
-
-<span class="nf">extern</span> <span class="nv">ExitProcess</span> <span class="p">:</span> <span class="nv">proc</span>
-<span class="nf">extern</span> <span class="nv">GetStdHandle</span> <span class="p">:</span> <span class="nv">proc</span>
-<span class="nf">extern</span> <span class="nv">WriteFile</span> <span class="p">:</span> <span class="nv">proc</span>
-
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">%include "io64.inc"
+</span>
 <span class="nf">section</span> <span class="nv">.data</span>
-    <span class="nf">helloMsg</span> <span class="nv">db</span> <span class="err">"</span><span class="nv">Hello</span><span class="p">,</span> <span class="nv">Windows</span> <span class="mi">64</span><span class="o">-</span><span class="nv">bit</span> <span class="nv">Assembly</span><span class="err">!"</span><span class="p">,</span> <span class="mh">0xA</span>
-    <span class="no">helloLen</span><span class="kd"> equ</span> <span class="kc">$</span> <span class="o">-</span> <span class="nv">helloMsg</span>
+    <span class="nf">msg</span> <span class="nv">db</span> <span class="s">'Hello, world!'</span><span class="p">,</span> <span class="mi">0</span>
 
 <span class="nf">section</span> <span class="nv">.text</span>
 <span class="nf">global</span> <span class="nv">main</span>
 <span class="nl">main:</span>
-    <span class="c1">; GetStdHandle(STD_OUTPUT_HANDLE)</span>
-    <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span>           <span class="c1">; STD_OUTPUT_HANDLE</span>
-    <span class="nf">call</span> <span class="nv">GetStdHandle</span>
-    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="nb">rax</span>           <span class="c1">; 핸들을 rbx에 저장</span>
-
-    <span class="c1">; WriteFile(handle, buffer, length, &amp;written, NULL)</span>
-    <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="nb">rbx</span>           <span class="c1">; 핸들</span>
-    <span class="nf">lea</span> <span class="nb">rdx</span><span class="p">,</span> <span class="p">[</span><span class="nv">helloMsg</span><span class="p">]</span>    <span class="c1">; 버퍼</span>
-    <span class="nf">mov</span> <span class="nv">r8</span><span class="p">,</span> <span class="nv">helloLen</span>       <span class="c1">; 길이</span>
-    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">32</span>            <span class="c1">; 스택 16바이트 정렬 + WriteFile에 공간 마련</span>
-    <span class="nf">xor</span> <span class="nv">r9</span><span class="p">,</span> <span class="nv">r9</span>             <span class="c1">; written 포인터 NULL</span>
-    <span class="nf">call</span> <span class="nv">WriteFile</span>
-    <span class="nf">add</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">32</span>            <span class="c1">; 스택 복원</span>
-
-    <span class="c1">; ExitProcess(0)</span>
-    <span class="nf">xor</span> <span class="nb">rcx</span><span class="p">,</span> <span class="nb">rcx</span>
-    <span class="nf">call</span> <span class="nv">ExitProcess</span>
-
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span> <span class="c1">; for correct debugging</span>
+    <span class="nf">PRINT_STRING</span> <span class="nv">msg</span> <span class="c1">; print hello world</span>
+    <span class="nf">NEWLINE</span> <span class="c1">; print newline</span>
+    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span> <span class="c1">; set rax to 0</span>
+    <span class="nf">ret</span> <span class="c1">; return</span>
 </code></pre></div></div>
 
-<p>NASM으로 컴파일하고 실행해보면서 흐름을 눈으로 보는 게 핵심.</p>
+<p>단축키 F9를 눌러 테스트를 진행할 수 있습니다.</p>
 
-<h3 id="2-1-컴파일--실행">2-1. 컴파일 &amp; 실행</h3>
+<p><img src="/assets/images/assembly/2025-04-21-assembly2-setting/SASM_2025-04-21_오후_5_42_56.png" alt="SASM_2025-04-21_오후_5_42_56.png" style="max-width:100%;" /></p>
 
-<p>1단계: NASM으로 컴파일 (hello.obj 만들기)</p>
+<p>단축키 F5를 눌러보면</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nasm <span class="nt">-f</span> win32 hello.asm <span class="nt">-o</span> hello.obj
+<p><img src="/assets/images/assembly/2025-04-21-assembly2-setting/SASM_2025-04-21_오후_5_43_27.png" alt="SASM_2025-04-21_오후_5_43_27.png" style="max-width:100%;" /></p>
+
+<p>저처럼 memory와 registers를 볼 수 있도록</p>
+
+<p>Debug→Show Memory, Show Registers 설정을 on으로 설정합시다!</p>
+
+<h3 id="코드-흐름-살펴보기">코드 흐름 살펴보기</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">%include "io64.inc"
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">io64.inc</code> 파일을 include 한다는 뜻.</li>
+  <li>이 안에는 <code class="language-plaintext highlighter-rouge">PRINT_STRING</code>, <code class="language-plaintext highlighter-rouge">NEWLINE</code> 같은 매크로(편의 함수)가 정의되어 있음.</li>
+  <li><strong>즉, 직접 WriteFile 같은 API 호출 안 해도</strong> 편하게 출력 가능하게 만든 것.</li>
+</ul>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">section</span> <span class="nv">.data</span>
+    <span class="nf">msg</span> <span class="nv">db</span> <span class="s">'Hello, world!'</span><span class="p">,</span> <span class="mi">0</span>
 </code></pre></div></div>
 
-<p>2단계: 링커로 exe 만들기 (MinGW)</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.data</code> 섹션: 데이터를 정의하는 곳.</li>
+  <li><code class="language-plaintext highlighter-rouge">msg</code>라는 이름으로 문자열 저장.</li>
+  <li>문자열 끝에 <code class="language-plaintext highlighter-rouge">0</code> (NULL) 추가. (C 스타일 문자열)</li>
+</ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc hello.obj <span class="nt">-o</span> hello.exe
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">section</span> <span class="nv">.text</span>
+<span class="nf">global</span> <span class="nv">main</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
 </code></pre></div></div>
 
-<p>3단계: 실행</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.text</code> 섹션: 실행되는 코드</li>
+  <li><code class="language-plaintext highlighter-rouge">global main</code>: 프로그램 진입점을 <code class="language-plaintext highlighter-rouge">main</code> 함수로 지정 (링커가 main 찾게)</li>
+  <li><code class="language-plaintext highlighter-rouge">mov rbp, rsp</code>: 디버깅할 때 스택 프레임 만들려고 넣는 것. (사실 없어도 돌아가긴 함)</li>
+</ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hello.exe
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nf">PRINT_STRING</span> <span class="nv">msg</span>
+    <span class="nf">NEWLINE</span>
 </code></pre></div></div>
 
-<p>정상 출력:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">PRINT_STRING msg</code>: <code class="language-plaintext highlighter-rouge">msg</code> 내용을 콘솔에 출력 (io64.inc 매크로 덕분)</li>
+  <li><code class="language-plaintext highlighter-rouge">NEWLINE</code>: 줄 바꿈 출력</li>
+</ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello, Assembly!
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
+    <span class="nf">ret</span>
 </code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">xor rax, rax</code>: rax 레지스터를 0으로 세팅 (종료코드 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">ret</code>: 함수 리턴 → 프로그램 종료</li>
+</ul>
+
+<p>다음 편 :</p>
+
+<p>assembly <strong>기본 명령어부터 익히기</strong></p>
 
         
       </section>
@@ -541,14 +493,14 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-18T00:00:00+09:00">April 18, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-21T00:00:00+09:00">April 21, 2025</time></p>
 
       </footer>
 
       <section class="page__share">
   <h4 class="page__share-title">공유하기</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=Assembly+Setting%20https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly2-setting%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Assembly+%EC%8B%A4%EC%8A%B5+%ED%99%98%EA%B2%BD+%EC%84%A4%EC%A0%95%20https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly2-setting%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly2-setting%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -559,10 +511,10 @@
       
   <nav class="pagination">
     
-      <a href="/assembly/assembly1-start/" class="pagination--pager" title="Assembly Start">Prev</a>
+      <a href="/blog/blog9-Image-plugin/" class="pagination--pager" title="GitHub Blog Image Plugin">Prev</a>
     
     
-      <a href="/blog/blog8-toc/" class="pagination--pager" title="GitHub Blog 목차 설정">Next</a>
+      <a href="/blog/blog10-code-block-copy-button/" class="pagination--pager" title="GitHub Blog CodeBlock Copy">Next</a>
     
   </nav>
 
@@ -666,7 +618,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/assembly/assembly1-start/" rel="permalink">Assembly Start
+        <a href="/assembly/assembly1-start/" rel="permalink">Assembly 시작하기
 </a>
       
     </h2>
