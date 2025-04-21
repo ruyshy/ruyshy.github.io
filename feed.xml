@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T18:36:20+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 실습 환경 설정</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly 실습 환경 설정" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly#2</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T18:37:38+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 실습 환경 설정</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly 실습 환경 설정" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly#2</p>
 
 <h2 id="sasm">SASM</h2>
 
@@ -110,31 +110,31 @@
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">div.highlighter-rouge</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">block</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">div.highlighter-rouge</span><span class="dl">'</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">block</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
     <span class="nx">button</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">copy-button</span><span class="dl">'</span><span class="p">;</span>
     <span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Copy</span><span class="dl">'</span><span class="p">;</span>
     <span class="nx">button</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">;</span>
     <span class="nx">button</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0.25em</span><span class="dl">'</span><span class="p">;</span>
     <span class="nx">button</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0.25em</span><span class="dl">'</span><span class="p">;</span>
     <span class="nx">block</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">relative</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">block</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+    <span class="nx">block</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
   <span class="p">});</span>
 
-  <span class="kd">var</span> <span class="nx">clipboard</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ClipboardJS</span><span class="p">(</span><span class="dl">'</span><span class="s1">.copy-button</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">clipboard</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClipboardJS</span><span class="p">(</span><span class="dl">'</span><span class="s1">.copy-button</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">target</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">trigger</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">trigger</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">pre</span><span class="dl">'</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">trigger</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">pre</span><span class="dl">'</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">});</span>
 
-  <span class="nx">clipboard</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">clipboard</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">originalText</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">textContent</span><span class="p">;</span>
     <span class="nx">e</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Copied!</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="nx">e</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">originalText</span><span class="p">;</span>
     <span class="p">},</span> <span class="mi">1500</span><span class="p">);</span>
-    <span class="nx">e</span><span class="p">.</span><span class="nx">clearSelection</span><span class="p">();</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nf">clearSelection</span><span class="p">();</span>
   <span class="p">});</span>
 <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
@@ -917,8 +917,8 @@ toc_sticky: true
 <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Blog</span><span class="nv"> </span><span class="s">Start"</span>
 <span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-10</span>
 <span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">GitHubBlog</span><span class="pi">]</span>
-<span class="na">toc</span><span class="pi">:</span> <span class="no">true</span>
-<span class="na">toc_sticky</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">toc</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">toc_sticky</span><span class="pi">:</span> <span class="kc">true</span>
 <span class="nn">---</span>
 </code></pre></div></div>
 
@@ -929,12 +929,12 @@ toc_sticky: true
       <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
     <span class="na">values</span><span class="pi">:</span>
       <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">toc</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">comments</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">toc</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
       <span class="na">sidebar</span><span class="pi">:</span>
         <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
 </code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #8]]></summary></entry><entry><title type="html">GitHub Blog Image Plugin</title><link href="https://ruyshy.github.io/blog/blog9-Image-plugin/" rel="alternate" type="text/html" title="GitHub Blog Image Plugin" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog9-Image-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog9-Image-plugin/"><![CDATA[<p>GitHub Blog #9</p>
@@ -988,7 +988,7 @@ toc_sticky: true
 
       <span class="n">img_src</span> <span class="o">=</span> <span class="s2">"/assets/images/</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">post_name</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">img_name</span><span class="si">}</span><span class="s2">"</span>
 
-      <span class="sx">%(&lt;img src="#{img_src}" alt="#{alt_text}" style="max-width:100%;"&gt;)</span>
+      <span class="sx">%(&lt;img src="</span><span class="si">#{</span><span class="n">img_src</span><span class="si">}</span><span class="sx">" alt="</span><span class="si">#{</span><span class="n">alt_text</span><span class="si">}</span><span class="sx">" style="max-width:100%;"&gt;)</span>
     <span class="k">end</span>
 
     <span class="kp">private</span>
@@ -1089,15 +1089,15 @@ Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
 
 <h2 id="gemfile">Gemfile</h2>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Gemfile</span>
+<span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
 
 <span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 4.3.2"</span>
-<span class="n">gem</span> <span class="s2">"minimal-mistakes-jekyll"</span>
-<span class="n">gem</span> <span class="s2">"jekyll-feed"</span>
-<span class="n">gem</span> <span class="s2">"jekyll-seo-tag"</span>
 <span class="n">gem</span> <span class="s2">"jekyll-paginate"</span>
 <span class="n">gem</span> <span class="s2">"jekyll-sitemap"</span>
+<span class="n">gem</span> <span class="s2">"jekyll-feed"</span>
 <span class="n">gem</span> <span class="s2">"jekyll-include-cache"</span>
+<span class="n">gem</span> <span class="s2">"jekyll-gist"</span>
 <span class="n">gem</span> <span class="s2">"tzinfo"</span>
 <span class="n">gem</span> <span class="s2">"tzinfo-data"</span>
 </code></pre></div></div>
@@ -1542,16 +1542,16 @@ Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이
 
     <span class="na">values</span><span class="pi">:</span>
       <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">read_time</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">read_time</span><span class="pi">:</span> <span class="kc">true</span>
       <span class="na">comments</span><span class="pi">:</span>
       <span class="na">provider</span><span class="pi">:</span> <span class="s2">"</span><span class="s">utterances"</span>
       <span class="na">utterances</span><span class="pi">:</span>
         <span class="na">theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-dark"</span>
         <span class="na">issue_term</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pathname"</span>
         <span class="na">label</span><span class="pi">:</span> <span class="s2">"</span><span class="s">comment"</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
       <span class="na">sidebar</span><span class="pi">:</span>
         <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
 
@@ -1561,7 +1561,7 @@ Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이
       <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
     <span class="na">values</span><span class="pi">:</span>
       <span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
 
   <span class="c1">#assembly categories</span>
   <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
@@ -1588,16 +1588,16 @@ Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">values</span><span class="pi">:</span>
       <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">read_time</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">read_time</span><span class="pi">:</span> <span class="kc">true</span>
       <span class="na">comments</span><span class="pi">:</span>
       <span class="na">provider</span><span class="pi">:</span> <span class="s2">"</span><span class="s">utterances"</span>
       <span class="na">utterances</span><span class="pi">:</span>
         <span class="na">theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-dark"</span>
         <span class="na">issue_term</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pathname"</span>
         <span class="na">label</span><span class="pi">:</span> <span class="s2">"</span><span class="s">comment"</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
       <span class="na">sidebar</span><span class="pi">:</span>
         <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
 </code></pre></div></div>
