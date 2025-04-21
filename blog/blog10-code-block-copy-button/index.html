@@ -387,6 +387,8 @@
   <li>복사 성공하면 버튼이 1.5초 동안 <code class="language-plaintext highlighter-rouge">"Copied!"</code>로 변하고</li>
   <li>다시 <code class="language-plaintext highlighter-rouge">"Copy"</code>로 자동 복구됨.</li>
   <li>오류나면 콘솔에 에러도 출력되게 함.</li>
+  <li>local로 하고 싶을 때, https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js 해당 파일을 Ctrl+S로 저장 후, /assets/js/vendor/ 해당 경로에 clipboard.min.js 옮긴 후, 맨 위 줄 아래처럼 변경하면 local로 진행 가능!</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;script src="/assets/js/vendor/clipboard.min.js"&gt;&lt;/script&gt;</code></li>
 </ul>
 
 <h3 id="_layoutsdefaulthtml-코드에-추가">_layouts\default.html 코드에 추가</h3>
@@ -686,7 +688,7 @@
       </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+    <script src="/assets/js/vendor/clipboard.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {

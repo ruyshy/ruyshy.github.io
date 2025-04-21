@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T13:57:09+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog CodeBlock Copy</title><link href="https://ruyshy.github.io/blog/blog10-code-block-copy-button/" rel="alternate" type="text/html" title="GitHub Blog CodeBlock Copy" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog10-code-block-copy-button</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog10-code-block-copy-button/"><![CDATA[<p>GitHub Blog #10</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T14:10:17+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog CodeBlock Copy</title><link href="https://ruyshy.github.io/blog/blog10-code-block-copy-button/" rel="alternate" type="text/html" title="GitHub Blog CodeBlock Copy" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog10-code-block-copy-button</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog10-code-block-copy-button/"><![CDATA[<p>GitHub Blog #10</p>
 
 <h2 id="code-block-copy-button-추가">code block copy button 추가</h2>
 
@@ -40,6 +40,8 @@
   <li>복사 성공하면 버튼이 1.5초 동안 <code class="language-plaintext highlighter-rouge">"Copied!"</code>로 변하고</li>
   <li>다시 <code class="language-plaintext highlighter-rouge">"Copy"</code>로 자동 복구됨.</li>
   <li>오류나면 콘솔에 에러도 출력되게 함.</li>
+  <li>local로 하고 싶을 때, https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js 해당 파일을 Ctrl+S로 저장 후, /assets/js/vendor/ 해당 경로에 clipboard.min.js 옮긴 후, 맨 위 줄 아래처럼 변경하면 local로 진행 가능!</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;script src="/assets/js/vendor/clipboard.min.js"&gt;&lt;/script&gt;</code></li>
 </ul>
 
 <h3 id="_layoutsdefaulthtml-코드에-추가">_layouts\default.html 코드에 추가</h3>
