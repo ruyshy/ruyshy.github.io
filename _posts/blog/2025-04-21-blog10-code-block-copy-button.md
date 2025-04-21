@@ -46,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
 - 복사 성공하면 버튼이 1.5초 동안 `"Copied!"`로 변하고
 - 다시 `"Copy"`로 자동 복구됨.
 - 오류나면 콘솔에 에러도 출력되게 함.
+- local로 하고 싶을 때, https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js 해당 파일을 Ctrl+S로 저장 후, /assets/js/vendor/ 해당 경로에 clipboard.min.js 옮긴 후, 맨 위 줄 아래처럼 변경하면 local로 진행 가능! 
+- `<script src="/assets/js/vendor/clipboard.min.js"></script>`
 
 ### \_layouts\default.html 코드에 추가
 
