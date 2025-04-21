@@ -35,12 +35,13 @@ New workflow을 눌러 .yml을 작성해줍니다.
 ## 현재 Blog Workflow
 
 ```yaml
-name: Build and Deploy from ph-pages to gh-pages
+name: Build and Deploy Jekyll
 
 on:
   push:
     branches:
       - ph-pages
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -50,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source branch
+      - name: Checkout source
         uses: actions/checkout@v3
         with:
           ref: ph-pages
@@ -58,15 +59,18 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: '3.3'
 
       - name: Install dependencies
         run: |
           gem install bundler
           bundle install
 
+      - name: Clean previous builds
+        run: bundle exec jekyll clean
+
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --future
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -82,6 +86,12 @@ jobs:
 - GitHub 서버에서 자동으로 Ruby 세팅하고,
 - Jekyll로 블로그 빌드하고,
 - 결과물(`_site` 폴더)을 `gh-pages` 브랜치로 배포함.
+
+## GitHub 설정
+
+{% img "image3.png" %}
+
+Branch 를 gh-pages 로 설정해줘야 합니다!!!
 
 ## 사용할 수 있는 곳
 
