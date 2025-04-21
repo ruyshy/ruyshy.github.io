@@ -5,7 +5,7 @@ on:
     branches:
       - ph-pages
   workflow_dispatch:
-  
+
 permissions:
   contents: write
 
@@ -22,19 +22,22 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: '3.3'
 
       - name: Install dependencies
         run: |
           gem install bundler
           bundle install
 
-      - name: Build Jekyll site
+      - name: Clean previous builds
+        run: bundle exec jekyll clean
+
+      - name: Build Jekyll site (no github-pages gem!)
         run: bundle exec jekyll build --future
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
           publish_branch: gh-pages
+          publish_dir: ./_site
