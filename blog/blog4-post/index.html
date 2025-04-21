@@ -351,12 +351,13 @@
 
 <p>._include\ 해당 경로에 post-image.html 생성합니다.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c">&lt;!-- post-image.html --&gt;</span>
+{% assign parts = page.path | split: '/' %}
+{% assign category = parts[1] %}
+{% assign slug = parts[2] | remove: '.md' %}
 
-
-
-
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/{{ category }}/{{ slug }}/{{ include.name }}"</span> <span class="na">alt=</span><span class="s">"{{ include.alt | default: include.name }}"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
 
 </code></pre></div></div>
 
@@ -369,13 +370,7 @@
   <li>예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.</li>
 </ol>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
-
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/ImageName.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
-
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include post-image.html name="ImageName.png" alt="image" %}
 </code></pre></div></div>
 
 <h3 id="image-path-설정-장점-요약">Image Path 설정 장점 요약</h3>
@@ -388,12 +383,13 @@
 
 <h3 id="github-blog-시작하기-post-예시-코드">GitHub Blog 시작하기 Post 예시 코드</h3>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Blog</span><span class="nv"> </span><span class="s">Start"</span>
-<span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-10</span>
-<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">GitHubBlog</span><span class="pi">]</span>
-<span class="nn">---</span>
-
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">
+---</span>
+title: "GitHub Blog Start"
+date: 2025-04-10
+<span class="gh">tags: [GitHubBlog]
+---
+</span>
 <span class="gh"># jekyll 테마 GitHub Blog 시작하기</span>
 
 <span class="gu">## Jekyll 기반 GitHub Blog 생성</span>
@@ -413,37 +409,19 @@ Visual Studio Code (<span class="p">[</span><span class="nv">https://code.visual
 <span class="p">[</span><span class="nv">https://github.com/mmistakes/minimal-mistakes</span><span class="p">](</span><span class="sx">https://github.com/mmistakes/minimal-mistakes</span><span class="p">)</span>
 
 github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다.
-<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+{% include post-image.html name="mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png" alt="mmistakes" %}
 
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/mmistakes_minimal-mistakes___triangular_ruler__Jekyll_theme_for_building_a_personal_site_blog_project_documentation_or_portfolio._-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_47_30.png"</span> <span class="na">alt=</span><span class="s">"mmistakes"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
-
-
-</span>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.
+해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.
 
 Fork 버튼을 누르면 로그인하고있는 Github계정에 <span class="gs">**repositories(저장소)**</span> 에 똑같은 코드를 가진 Project(코드 저장소)가 생성이 됩니다.
 
-<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
+{% include post-image.html name="ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png" alt="image" %}
 
+Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
 
+{% include post-image.html name="General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png" alt="image" %}
 
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/ruyshy_ruyshy.github.io_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_53_33_-_%EB%B3%B5%EC%82%AC%EB%B3%B8.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
-
-
-</span>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.
-
-<span class="c">&lt;!-- post-image.html --&gt;</span><span class="sb">
-
-
-
-
-</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-16-blog4-post/General_-_Chrome_2025-04-10_%EC%98%A4%ED%9B%84_1_55_02.png"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span><span class="sb">
-
-
-</span>코드 저장소의 이름을 바꿔줘야 합니다.
+코드 저장소의 이름을 바꿔줘야 합니다.
 
 무조건 자기 자신의 <span class="p">[</span><span class="nv">githubID.github.io</span><span class="p">](</span><span class="sx">http://githubID.github.io</span><span class="p">)</span>
 

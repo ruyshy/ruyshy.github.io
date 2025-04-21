@@ -391,135 +391,19 @@
 <h3 id="_includessidebarhtml-입니다">._includes\sidebar.html 입니다.</h3>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
 
-  
-    
-
-
-<span class="nt">&lt;div</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/Person"</span> <span class="na">class=</span><span class="s">"h-card"</span><span class="nt">&gt;</span>
-
-  
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"author__avatar"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://ruyshy.github.io/"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/profile/github_profile_image.jpg"</span> <span class="na">alt=</span><span class="s">"ruyshy"</span> <span class="na">itemprop=</span><span class="s">"image"</span> <span class="na">class=</span><span class="s">"u-photo"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  
-
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"author__content"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"author__name p-name"</span> <span class="na">itemprop=</span><span class="s">"name"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"u-url"</span> <span class="na">rel=</span><span class="s">"me"</span> <span class="na">href=</span><span class="s">"https://ruyshy.github.io/"</span> <span class="na">itemprop=</span><span class="s">"url"</span><span class="nt">&gt;</span>ruyshy<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/h3&gt;</span>
-    
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"author__bio p-note"</span> <span class="na">itemprop=</span><span class="s">"description"</span><span class="nt">&gt;</span>
-        
-
-      <span class="nt">&lt;/div&gt;</span>
-    
-  <span class="nt">&lt;/div&gt;</span>
-
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"author__urls-wrapper"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn--inverse"</span><span class="nt">&gt;</span>팔로우<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"author__urls social-icons"</span><span class="nt">&gt;</span>
-      
-        <span class="nt">&lt;li</span> <span class="na">itemprop=</span><span class="s">"homeLocation"</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/Place"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-fw fa-map-marker-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;</span> <span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"p-locality"</span><span class="nt">&gt;</span>South Korea<span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-      
-
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/ruyshy"</span> <span class="na">rel=</span><span class="s">"nofollow noopener noreferrer me"</span> <span class="na">itemprop=</span><span class="s">"sameAs"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-fw fa-github"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;&lt;span</span> <span class="na">class=</span><span class="s">"label"</span><span class="nt">&gt;</span>GitHub<span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
-          
-        
-          
-        
-      
-
-      
-
-      
-        <span class="nt">&lt;li&gt;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"mailto:ruyshyttr@gmail.com"</span> <span class="na">rel=</span><span class="s">"me"</span> <span class="na">class=</span><span class="s">"u-email"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;meta</span> <span class="na">itemprop=</span><span class="s">"email"</span> <span class="na">content=</span><span class="s">"ruyshyttr@gmail.com"</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-fw fa-envelope-square"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;&lt;span</span> <span class="na">class=</span><span class="s">"label"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/span&gt;</span>
-          <span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <span class="c">&lt;!--
-  &lt;li&gt;
-    &lt;a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me"&gt;
-      &lt;i class="fas fa-fw" aria-hidden="true"&gt;&lt;/i&gt; Custom Social Profile Link
-    &lt;/a&gt;
-  &lt;/li&gt;
---&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-  
+  {% if page.author_profile or layout.author_profile %}
+    {% include author-profile.html %}
+  {% endif %}
 
   <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav__list"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav__items"</span><span class="nt">&gt;</span>
 
       <span class="c">&lt;!-- HOME --&gt;</span>
       <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/"</span> <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/' %} active{% endif %}"</span><span class="nt">&gt;</span>
           Home
         <span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
@@ -532,39 +416,30 @@
 
       <span class="c">&lt;!-- All --&gt;</span>
       <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/"</span> <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(12)<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/categories/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/categories/' %} active{% endif %}"</span><span class="nt">&gt;</span>
+          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>({{ site.posts | size }})<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
 
       <span class="c">&lt;!-- Dynamic categories --&gt;</span>
-      
-      
-        
-        
+      {% assign sorted_categories = site.categories | sort %}
+      {% for category in sorted_categories %}
+        {% assign cat_name = category[0] %}
+        {% assign cat_posts = category[1] %}
         <span class="nt">&lt;li&gt;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/assembly/"</span>
-             <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-            - Assembly <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(2)<span class="nt">&lt;/span&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/categories/' | append: cat_name | append: '/' | relative_url }}"</span>
+             <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/categories/' | append: cat_name | append: '/' %} active{% endif %}"</span><span class="nt">&gt;</span>
+            - {{ cat_name | capitalize }} <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>({{ cat_posts | size }})<span class="nt">&lt;/span&gt;</span>
           <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
-      
-        
-        
-        <span class="nt">&lt;li&gt;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/blog/"</span>
-             <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
-            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(10)<span class="nt">&lt;/span&gt;</span>
-          <span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-      
+      {% endfor %}
 
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/nav&gt;</span>
 
 <span class="nt">&lt;/div&gt;</span>
 
-
+{% endif %}
 
 </code></pre></div></div>
 

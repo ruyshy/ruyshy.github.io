@@ -36,7 +36,7 @@ var store = [{
         "teaser": null
       },{
         "title": "GitHub Blog Post 설정",
-        "excerpt":"GitHub Blog #4 GitHub Blog Image Path 설정하기 ._include\\ 해당 경로에 post-image.html 생성합니다. &lt;!-- post-image.html --&gt; &lt;img src=\"/assets/images/blog/2025-04-16-blog4-post/\" alt=\"\" style=\"max-width: 100%;\"&gt; 예시: _posts\\blog[2025-04-10-blog-start.md](http://2025-04-10-blog-start.md/)라는 포스트가 있습니다. \\assets\\images[2025-04-10-blog-start](http://2025-04-10-blog-start.md/) 폴더를 생성합니다. 이 폴더에 게시글에 넣을 이미지를 저장합니다. 예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다. &lt;!-- post-image.html --&gt;...","categories": ["blog"],
+        "excerpt":"GitHub Blog #4 GitHub Blog Image Path 설정하기 ._include\\ 해당 경로에 post-image.html 생성합니다. &lt;!-- post-image.html --&gt; {% assign parts = page.path | split: '/' %} {% assign category = parts[1] %} {% assign slug = parts[2] | remove: '.md' %} &lt;img src=\"/assets/images/{{ category }}/{{ slug }}/{{ include.name }}\" alt=\"{{ include.alt...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog4-post/",
         "teaser": null
