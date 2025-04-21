@@ -17,31 +17,31 @@ var store = [{
         "url": "/categories/",
         "teaser": null
       },{
-        "title": "GitHub Blog Start",
+        "title": "GitHub Blog 시작하기",
         "excerpt":"GitHub Blog #1 jekyll 테마 GitHub Blog 시작하기 Jekyll 기반 GitHub Blog 생성 https://mmistakes.github.io/minimal-mistakes/ 해당 Jekyll 테마 기준으로 작성 되어있습니다. 준비해야 할 준비물 개인 GitHub 계정 (https://github.com/) Visual Studio Code (https://code.visualstudio.com/) GitHub Blog 시작하기 https://github.com/mmistakes/minimal-mistakes github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다. 해당 사이트에서 위 오른쪽에...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog1-start/",
         "teaser": null
       },{
-        "title": "GitHub Blog Local Server 설정",
+        "title": "GitHub Blog 로컬 서버 설정",
         "excerpt":"GitHub Blog #2 필요한 준비물 https://www.ruby-lang.org/ko/ Gemfile # Gemfile source \"https://rubygems.org\" gem \"jekyll\", \"~&gt; 4.3.2\" gem \"jekyll-paginate\" gem \"jekyll-sitemap\" gem \"jekyll-feed\" gem \"jekyll-include-cache\" gem \"jekyll-gist\" gem \"tzinfo\" gem \"tzinfo-data\" Ruby를 설치해줍니다. 저의 경우 ruby3.3.8 의 버전을 설치하여 진행했습니다. Gemfile을 위와 같이 수정을 진행합니다. 자기 자신의 Github Blog가 있는 로컬 폴더에서...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog2-local-server/",
         "teaser": null
       },{
-        "title": "GitHub Blog Build&Release 설정",
+        "title": "GitHub Blog 빌드&릴리즈 설정",
         "excerpt":"GitHub Blog #3 GitHub에 Action기능 알아보기 GitHub Action 문서 : https://docs.github.com/ko/actions GitHub Actions는 CI/CD(지속적 통합/배포)를 위한 자동화된 작업(Workflow)을 만들어주는 도구입니다. 블로그 자동 배포와 코드 빌드 등의 작업을 자동으로 처리할 수 있습니다. GitHub Actions 개념 정리 용어 설명 Workflow 자동화 작업의 전체 흐름 (YAML 파일로 설정) Job Workflow 내에서 실행되는 작업...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog3-build-release/",
         "teaser": null
       },{
-        "title": "GitHub Blog Post 설정",
+        "title": "GitHub Blog 게시글 설정",
         "excerpt":"GitHub Blog #4 GitHub Blog Image Path 설정하기 ._include\\ 해당 경로에 post-image.html 생성합니다. &lt;!-- post-image.html --&gt; {% assign parts = page.path | split: '/' %} {% assign category = parts[1] %} {% assign slug = parts[2] | remove: '.md' %} &lt;img src=\"/assets/images/{{ category }}/{{ slug }}/{{ include.name }}\" alt=\"{{ include.alt...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog4-post/",
         "teaser": null
       },{
-        "title": "GitHub Blog Category 설정",
+        "title": "GitHub Blog 카테고리 설정",
         "excerpt":"GitHub Blog #5 GitHub Blog 시작하기에 이어 다음 편입니다. 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다. https://www.markdownguide.org/ 해당 사이트에서 마크다운 문법을 알아볼 수 있습니다. GitHub Blog 카테고리 설정 ._data\\navigation.yml 부분입니다. main: - title: \"Quick-Start Guide\" url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/ # - title: \"About\" # url: https://mmistakes.github.io/minimal-mistakes/about/ # - title: \"Sample...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog5-category/",
@@ -53,7 +53,7 @@ var store = [{
         "url": "/blog/blog6-comment/",
         "teaser": null
       },{
-        "title": "GitHub Blog Font 설정",
+        "title": "GitHub Blog 폰트 설정",
         "excerpt":"GitHub Blog #7 여러 폰트 사이트가 있지만 저는 구글 폰트 사이트를 예시로 사용하겠습니다. https://fonts.google.com/ 저는 폰트를 다운 받아서 진행했습니다. Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다. _sass\\minimal-mistakes_variables.scss 추가 $dongle: 'Dongle', -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif !default; 수정해야 할 부분: $global-font-family: $sans-serif !default; $header-font-family: $sans-serif !default; 수정할 코드: $global-font-family: $dongle !default; $header-font-family: $dongle !default;...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog7-font/",
@@ -71,7 +71,7 @@ var store = [{
         "url": "/blog/blog8-toc/",
         "teaser": null
       },{
-        "title": "GitHub Blog Image Plugin",
+        "title": "GitHub Blog 이미지 커스텀 플로그인",
         "excerpt":"GitHub Blog #9 기존 방식 과 태그 플러그인 비교 기존에 이미지 불러오는 방식: {% include post-image.html name=\"image.png\" alt=\"image\" %} 플러그인 적용한 방식: {% img \"image1.png\", \"tag image test\" %} or {% img \"image1.png\" %} \\plugins\\img_tag.rb 코드 추가 module Jekyll class ImgTag &lt; Liquid::Tag def initialize(tag_name, markup, tokens) super @markup =...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog9-Image-plugin/",
@@ -83,7 +83,7 @@ var store = [{
         "url": "/assembly/assembly2-setting/",
         "teaser": null
       },{
-        "title": "GitHub Blog CodeBlock Copy",
+        "title": "GitHub Blog 코드블럭 copy 버튼",
         "excerpt":"GitHub Blog #10 code block copy button 추가 \\include\\code-block_custom.html 추가 &lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js\"&gt;&lt;/script&gt; &lt;script&gt; document.addEventListener('DOMContentLoaded', function() { document.querySelectorAll('div.highlighter-rouge').forEach(function(block) { var button = document.createElement('button'); button.className = 'copy-button'; button.textContent = 'Copy'; button.style.position = 'absolute'; button.style.top = '0.25em'; button.style.right = '0.25em'; block.style.position = 'relative'; block.appendChild(button); }); var clipboard = new ClipboardJS('.copy-button', { target: function(trigger)...","categories": ["blog"],
         "tags": ["GitHubBlog"],
         "url": "/blog/blog10-code-block-copy-button/",
