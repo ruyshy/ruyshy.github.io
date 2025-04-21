@@ -1,5 +1,5 @@
 ---
-title: "GitHub Blog Build&Release 설정"
+title: "GitHub Blog 빌드&릴리즈 설정"
 date: 2025-04-16
 tags: [GitHubBlog]
 ---

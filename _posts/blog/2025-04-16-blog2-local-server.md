@@ -1,5 +1,5 @@
 ---
-title: "GitHub Blog Local Server 설정"
+title: "GitHub Blog 로컬 서버 설정"
 date: 2025-04-16
 tags: [GitHubBlog]
 ---

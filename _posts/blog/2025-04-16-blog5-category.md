@@ -1,5 +1,5 @@
 ---
-title: "GitHub Blog Category 설정"
+title: "GitHub Blog 카테고리 설정"
 date: 2025-04-16
 tags: [GitHubBlog]
 ---

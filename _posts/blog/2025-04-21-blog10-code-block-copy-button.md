@@ -1,5 +1,5 @@
 ---
-title: "GitHub Blog CodeBlock Copy"
+title: "GitHub Blog 코드블럭 copy 버튼"
 date: 2025-04-21
 tags: [GitHubBlog]
 ---

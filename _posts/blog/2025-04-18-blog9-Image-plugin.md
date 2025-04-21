@@ -1,5 +1,5 @@
 ---
-title: "GitHub Blog Image Plugin"
+title: "GitHub Blog 이미지 커스텀 플로그인"
 date: 2025-04-18
 tags: [GitHubBlog]
 ---
