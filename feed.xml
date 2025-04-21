@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T10:12:04+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T11:26:51+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
 
 <p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
 
@@ -987,6 +987,14 @@ toc_sticky: true
 <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'img'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">ImgTag</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<h2 id="주의사항">주의사항</h2>
+<p>해당 글 처럼 블로그 예시를 작성하기 위해</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {% raw %}
+ {% img "test.png" %}
+ {% endraw %}
+</code></pre></div></div>
+<p>liquid 문법의 raw tag를 사용해야한다.</p>
 
 <h2 id="예시-사용법">예시 사용법</h2>
 
