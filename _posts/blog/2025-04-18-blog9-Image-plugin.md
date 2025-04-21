@@ -11,7 +11,7 @@ GitHub Blog #9
 기존에 이미지 불러오는 방식:
 
 ```markdown
-{% include post-image.html name="image.png" alt="image" %}
+{% raw %}{% include post-image.html name="image.png" alt="image" %}{% endraw %}
 ```
 
 플러그인 적용한 방식:
