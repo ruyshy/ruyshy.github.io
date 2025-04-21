@@ -23,7 +23,7 @@ GitHub Blog #9
 or
 
 ```markdown
-{% img "image1.png" %}
+{% raw %}{% img "image1.png" %}{% endraw %}
 ```
 
 
@@ -79,5 +79,5 @@ Liquid::Template.register_tag('img', Jekyll::ImgTag)
 
 | 작성 | 실제 결과 |
 | --- | --- |
-| `{% img "test.png" %}` | `<img src="/assets/images/xxx/xxx/test.png" alt="test.png" style="max-width:100%;">` |
-| `{% img "test.png", "설명" %}` | `<img src="/assets/images/xxx/xxx/test.png" alt="설명" style="max-width:100%;">` |
+| `{% raw %}{% img "test.png" %}{% endraw %}` | `<img src="/assets/images/xxx/xxx/test.png" alt="test.png" style="max-width:100%;">` |
+| `{% raw %}{% img "test.png", "설명" %}{% endraw %}` | `<img src="/assets/images/xxx/xxx/test.png" alt="설명" style="max-width:100%;">` |
