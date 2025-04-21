@@ -75,6 +75,16 @@ Liquid::Template.register_tag('img', Jekyll::ImgTag)
 
 ```
 
+## 주의사항
+해당 글 처럼 블로그 예시를 작성하기 위해
+```
+ {% raw %}{%{% endraw %} raw {% raw %}%}{% endraw %}
+ {% raw %}{% img "test.png" %}{% endraw %}
+ {% raw %}{%{% endraw %} endraw {% raw %}%}{% endraw %}
+```
+liquid 문법의 raw tag를 사용해야한다.
+
+
 ## 예시 사용법
 
 | 작성 | 실제 결과 |
