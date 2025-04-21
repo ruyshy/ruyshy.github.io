@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T09:55:20+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-21T10:09:53+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly Start</title><link href="https://ruyshy.github.io/assembly/assembly1-start/" rel="alternate" type="text/html" title="Assembly Start" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly1-start</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly1-start/"><![CDATA[<p>assembly#1</p>
 
 <p>시작하기 앞 서, 학습할 사이트 목록 입니다.</p>
 
@@ -933,7 +933,7 @@ toc_sticky: true
 
 <p>플러그인 적용한 방식:</p>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/blog/2025-04-18-blog9-Image-plugin/image1.png"</span> <span class="na">alt=</span><span class="s">"tag image test"</span> <span class="na">style=</span><span class="s">"max-width:100%;"</span><span class="nt">&gt;</span>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% img "image1.png", "tag image test" %}
 </code></pre></div></div>
 
 <p>or</p>
