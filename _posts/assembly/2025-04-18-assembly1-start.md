@@ -4,7 +4,7 @@ date: 2025-04-18
 tags: [nasm, assembly]
 ---
 
-assembly#1
+assembly #1
 
 시작하기 앞 서, 학습할 사이트 목록 입니다.
 

@@ -4,6 +4,8 @@ date: 2025-04-22
 tags: [nasm, assembly]
 ---
 
+assembly #2
+
 ## 1. SASM
 
 **SASM ( SimpleASM** 의 약자 )은 [NASM](https://en.wikipedia.org/wiki/Netwide_Assembler) , [MASM](https://en.wikipedia.org/wiki/MASM) , [GAS](https://en.wikipedia.org/wiki/GNU_Assembler) , [FASM](https://en.wikipedia.org/wiki/FASM) 어셈블리 언어를 위한 무료 [오픈 소스](https://en.wikipedia.org/wiki/Open_source) 크로스 플랫폼 [통합 개발 환경](https://en.wikipedia.org/wiki/Integrated_development_environment) 입니다 . 구문 강조 기능과 디버거가 포함되어 있습니다.
