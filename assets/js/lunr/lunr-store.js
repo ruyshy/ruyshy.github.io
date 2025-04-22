@@ -77,12 +77,6 @@ var store = [{
         "url": "/blog/blog9-Image-plugin/",
         "teaser": null
       },{
-        "title": "Assembly 실습 환경 설정",
-        "excerpt":"assembly#2 SASM SASM ( SimpleASM 의 약자 )은 NASM , MASM , GAS , FASM 어셈블리 언어를 위한 무료 오픈 소스 크로스 플랫폼 통합 개발 환경 입니다 . 구문 강조 기능과 디버거가 포함되어 있습니다. SASM 설치하기 sasm 공식 홈페이지 : https://dman95.github.io/SASM/english.html 해당 홈페이지에 접속하여 설치파일 다운로드 후, 설치를 진행합니다. SASM Setting nasm x64 기준으로 진행 합니다. 설치 후, 설치 경로인 \\SASM\\Projects 폴더 안에 여러 예제를...","categories": ["assembly"],
-        "tags": ["nasm","assembly"],
-        "url": "/assembly/assembly2-setting/",
-        "teaser": null
-      },{
         "title": "GitHub Blog 코드블럭 copy 버튼",
         "excerpt":"GitHub Blog #10 code block copy button 추가 \\include\\code-block_custom.html 추가 &lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js\"&gt;&lt;/script&gt; &lt;script&gt; document.addEventListener('DOMContentLoaded', function() { document.querySelectorAll('div.highlighter-rouge').forEach(function(block) { var button = document.createElement('button'); button.className = 'copy-button'; button.textContent = 'Copy'; button.style.position = 'absolute'; button.style.top = '0.25em'; button.style.right = '0.25em'; block.style.position = 'relative'; block.appendChild(button); }); var clipboard = new ClipboardJS('.copy-button', { target: function(trigger)...","categories": ["blog"],
         "tags": ["GitHubBlog"],

@@ -284,7 +284,7 @@
       <!-- All -->
       <li>
         <a href="/categories/" class="nav__item">
-          - All <span class="count">(14)</span>
+          - All <span class="count">(13)</span>
         </a>
       </li>
 
@@ -296,7 +296,7 @@
         <li>
           <a href="/categories/assembly/"
              class="nav__item">
-            - Assembly <span class="count">(3)</span>
+            - Assembly <span class="count">(2)</span>
           </a>
         </li>
       
@@ -556,9 +556,9 @@
 
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
-<ul>
-  <li>
-    <p>미션 1.</p>
+<details>
+<summary>미션 1.</summary>
+<div>
 
     <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -574,27 +574,47 @@
     <ul>
       <li>‘H’, ‘e’, ‘l’, ‘l’, ‘o’, … 문자들이 차례로 들어가 있나?</li>
     </ul>
-  </li>
-  <li>미션 1. 풀이
+
+  </div>
+</details>
+<p><br /></p>
+
+<details>
+<summary>미션 1. 풀이</summary>
+<div>
+
     <ol>
-      <li>F5(Debug)를 눌러 디버깅 진행</li>
+      <li>
+        <p>F5(Debug)를 눌러 디버깅 진행</p>
+      </li>
       <li>
         <p>F10(Step Over)를 통해 <code class="language-plaintext highlighter-rouge">PRINT_STRING msg ;</code> 까지 디버깅 하기.</p>
 
         <p><img src="/assets/images/assembly/2025-04-22-assembly2-setting/image4.png" alt="image4.png" style="max-width:100%;" /></p>
       </li>
-      <li>Memory 창에서 Add variable…을 눌러 msg 추가하고, Type은 Smart, b, 14 설정하면 “Hello, world!” 가 표현되는 것을 확인할 수 있다. (스페이스(공백)과 마지막에 0을 합친 문자열 개수가 14개)</li>
+      <li>
+        <p>Memory 창에서 Add variable…을 눌러 msg 추가하고, Type은 Smart, b, 14 설정하면 “Hello, world!” 가 표현되는 것을 확인할 수 있다. (스페이스(공백)과 마지막에 0을 합친 문자열 개수가 14개)</p>
+      </li>
       <li>
         <p>Type을 Hex로 변경해보면 <code class="language-plaintext highlighter-rouge">{0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c,0x64, 0x21, 0x0}</code> 해당 16진수인 값이 나오는데 아래의 아스키 코드표를 보면 H(0x48)을 확인할 수 있다. 해당값은 아스키코드 16진수 값이다!</p>
 
         <p><img src="/assets/images/assembly/2025-04-22-assembly2-setting/image5.png" alt="image5.png" style="max-width:100%;" /></p>
       </li>
-      <li>마지막에 0(0x00)을 넣어준 이유는 문자열의 끝을 알기 위해서 넣어준 것이다!</li>
-      <li>즉 <code class="language-plaintext highlighter-rouge">msg db 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21, 0x00</code> 이렇게 선언한 것과 <code class="language-plaintext highlighter-rouge">msg db 'Hello, world!', 0</code> 이렇게 선언한 것은 똑같다!</li>
+      <li>
+        <p>마지막에 0(0x00)을 넣어준 이유는 문자열의 끝을 알기 위해서 넣어준 것이다!</p>
+      </li>
+      <li>
+        <p>즉, <code class="language-plaintext highlighter-rouge">msg db 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21, 0x00</code> 이렇게 선언한 것과 <code class="language-plaintext highlighter-rouge">msg db 'Hello, world!', 0</code> 이렇게 선언한 것은 똑같다!</p>
+      </li>
     </ol>
-  </li>
-  <li>
-    <p>미션 2.</p>
+
+  </div>
+</details>
+<p><br /></p>
+
+<details>
+<summary>미션 2.</summary>
+<div>
 
     <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -610,15 +630,24 @@
     <ul>
       <li><code class="language-plaintext highlighter-rouge">RAX</code> 값이 0으로 깔끔하게 초기화됐나?</li>
     </ul>
-  </li>
-  <li>미션 2. 풀이
+
+  </div>
+</details>
+<p><br /></p>
+
+<details>
+<summary>미션 2. 풀이</summary>
+<div>
+
     <ul>
       <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
       <li><strong>F10 (Step Over)</strong> 여러 번 눌러서 <code class="language-plaintext highlighter-rouge">xor rax, rax</code> <strong>직전</strong>까지 이동</li>
       <li><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 줄에서 <strong>브레이크포인트 (F8)</strong> 설정</li>
       <li><strong>Ctrl+R (Registers 창)</strong> 열어서 레지스터 상태 확인
         <ul>
-          <li>이 시점에서는 <code class="language-plaintext highlighter-rouge">RAX</code>가 0이 아닐 수 있음</li>
+          <li>
+            <p>이 시점에서는 <code class="language-plaintext highlighter-rouge">RAX</code>가 0이 아닐 수 있음</p>
+          </li>
           <li>
             <p>예를 들면, <code class="language-plaintext highlighter-rouge">RAX = 0x000000000000000d</code> (13, 문자열 길이)처럼 되어 있을 수도 있다.</p>
 
@@ -626,7 +655,9 @@
           </li>
         </ul>
       </li>
-      <li><strong>F11 (Step Into)</strong> 눌러 <code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 한 줄 실행</li>
+      <li>
+        <p><strong>F11 (Step Into)</strong> 눌러 <code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 한 줄 실행</p>
+      </li>
       <li>다시 <strong>Registers 창</strong> 확인
         <ul>
           <li>이제 <code class="language-plaintext highlighter-rouge">RAX = 0x0000000000000000</code> 으로 초기화되어 있어야 한다.</li>
@@ -635,13 +666,19 @@
         <p><strong>원리 설명</strong></p>
 
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">xor rax, rax</code>는 <strong>RAX를 자기 자신과 XOR</strong> 연산하는 것</li>
-          <li><strong>어떤 값이든 자기 자신과 XOR 하면 무조건 0이 된다</strong>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code>는 <strong>RAX를 자기 자신과 XOR</strong> 연산하는 것</p>
+          </li>
+          <li>
+            <p><strong>어떤 값이든 자기 자신과 XOR 하면 무조건 0이 된다</strong></p>
+
             <ul>
               <li>수학적으로: <code class="language-plaintext highlighter-rouge">x xor x = 0</code></li>
             </ul>
           </li>
-          <li>그래서 <code class="language-plaintext highlighter-rouge">xor rax, rax</code>는 매우 빠르고 최적화된 <strong>레지스터 클리어 방법</strong>이다.
+          <li>
+            <p>그래서 <code class="language-plaintext highlighter-rouge">xor rax, rax</code>는 매우 빠르고 최적화된 <strong>레지스터 클리어 방법</strong>이다.</p>
+
             <ul>
               <li><code class="language-plaintext highlighter-rouge">mov rax, 0</code> 보다 사이즈가 작고 CPU에 부담도 덜 준다.</li>
             </ul>
@@ -649,8 +686,10 @@
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+
+  </div>
+</details>
+<p><br /></p>
 
 <h2 id="3-assembly-변수-선언-방법">3. Assembly 변수 선언 방법</h2>
 
@@ -842,9 +881,9 @@
   <li>C언어나 어셈블리 디버깅할 때 리틀엔디안/빅엔디안 이해 못하면 메모리 값 해석을 절대 못한다.</li>
 </ul>
 
-<p>다음 편 :</p>
-
-<p>assembly <strong>기본 명령어부터 익히기</strong></p>
+<p><br />
+다음 편 :<br />
+assembly <strong>기본 명령어부터 익히기</strong></p>
 
         
       </section>
@@ -986,7 +1025,6 @@
     
       
       
-      
 
 
 
@@ -1003,6 +1041,29 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">GitHub Blog #9
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog8-toc/" rel="permalink">GitHub Blog 목차 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #8
 </p>
   </article>
 </div>
