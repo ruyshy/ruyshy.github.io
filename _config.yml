@@ -49,6 +49,7 @@ comments:
     issue_term: "pathname"
     label: "comment"
     repo: "ruyshy/ruyshy.github.io"
+    crossorigin: "anonymous"
   giscus:
     repo_id              : # Shown during giscus setup at https://giscus.app
     category_name        : # Full text name of the category
