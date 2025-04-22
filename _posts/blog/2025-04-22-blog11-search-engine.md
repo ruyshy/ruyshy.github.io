@@ -114,6 +114,7 @@ google_site_verification : 0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU
 
 위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 push 진행 → 확인을 눌러 진행.
 
+{% img "image8.png" %}
 
-
+인증이 완료되었네요! 굿굿
 
