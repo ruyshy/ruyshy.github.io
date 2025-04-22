@@ -71,9 +71,13 @@ section .data
     msg db 'Hello, world!', 0
 ```
 
-- `.data` 섹션: 데이터를 정의하는 곳.
-- `msg`라는 이름으로 문자열 저장.
-- 문자열 끝에 `0` (NULL) 추가. (C 스타일 문자열)
+- `.data` 섹션: "초기화된 데이터 (변수)" 를 저장하는 곳.
+- `msg`라는 변수가 선언 
+- 구체적으로 보면:
+- `msg` = label (라벨이란, 어떤 메모리 위치를 부르는 이름)
+- `db` = define byte (1바이트씩 데이터를 정의하겠다는 뜻)
+- `'Hello, world!', 0` = 13바이트 크기 문자열 ('Hello, world!' + NULL 문자 0)
+- 즉, `msg`는 메모리에 H, e, l, l, o, ,, w, o, r, l, d, !, 0 이렇게 바이트 단위로 저장된 배열.
 
 ```nasm
 section .text
