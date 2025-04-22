@@ -1,85 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://ruyshy.github.io/categories/assembly/</loc>
-<lastmod>2025-04-22T13:01:02+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/categories/blog/</loc>
-<lastmod>2025-04-22T13:01:02+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/categories/</loc>
-<lastmod>2025-04-22T13:01:02+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog1-start/</loc>
-<lastmod>2025-04-10T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog2-local-server/</loc>
-<lastmod>2025-04-16T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog3-build-release/</loc>
-<lastmod>2025-04-16T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog4-post/</loc>
-<lastmod>2025-04-16T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog5-category/</loc>
-<lastmod>2025-04-16T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog6-comment/</loc>
-<lastmod>2025-04-16T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog7-font/</loc>
-<lastmod>2025-04-17T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/assembly/assembly1-start/</loc>
-<lastmod>2025-04-18T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog8-toc/</loc>
-<lastmod>2025-04-18T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog9-Image-plugin/</loc>
-<lastmod>2025-04-18T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/assembly/assembly2-setting/</loc>
-<lastmod>2025-04-21T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/blog/blog10-code-block-copy-button/</loc>
-<lastmod>2025-04-21T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>https://ruyshy.github.io/categories/assembly/</loc>
-</url>
-<url>
-<loc>https://ruyshy.github.io/categories/blog/</loc>
-</url>
-<url>
-<loc>https://ruyshy.github.io/categories/</loc>
-</url>
-<url>
-<loc>https://ruyshy.github.io/</loc>
-</url>
-<url>
-<loc>https://ruyshy.github.io/page2/</loc>
-</url>
-<url>
-<loc>https://ruyshy.github.io/page3/</loc>
-</url>
-<url>
-<loc>https://ruyshy.github.io/google4ff4f4c3a6be9ee7.html</loc>
-<lastmod>2025-04-22T13:00:41+09:00</lastmod>
-</url>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog10-code-block-copy-button/</loc>
+      
+        <lastmod>2025-04-21T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/assembly/assembly2-setting/</loc>
+      
+        <lastmod>2025-04-21T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog9-Image-plugin/</loc>
+      
+        <lastmod>2025-04-18T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog8-toc/</loc>
+      
+        <lastmod>2025-04-18T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/assembly/assembly1-start/</loc>
+      
+        <lastmod>2025-04-18T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog7-font/</loc>
+      
+        <lastmod>2025-04-17T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog6-comment/</loc>
+      
+        <lastmod>2025-04-16T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog5-category/</loc>
+      
+        <lastmod>2025-04-16T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog4-post/</loc>
+      
+        <lastmod>2025-04-16T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog3-build-release/</loc>
+      
+        <lastmod>2025-04-16T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog2-local-server/</loc>
+      
+        <lastmod>2025-04-16T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>https://ruyshy.github.io/blog/blog1-start/</loc>
+      
+        <lastmod>2025-04-10T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
 </urlset>
