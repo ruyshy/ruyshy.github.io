@@ -437,7 +437,8 @@
         <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll clean</span>
 
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Jekyll site</span>
-        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build --future</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">JEKYLL_ENV=production bundle exec jekyll build --future</span>
+
 
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to gh-pages</span>
         <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
@@ -601,10 +602,14 @@
 
     
       
-        <p>
-          Comments are configured with provider: <strong>utterances</strong>,
-          but are disabled in non-production environments.
-        </p>
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
       
     
   </article>
