@@ -1,4 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-22T13:55:57+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 실습 환경 설정</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly 실습 환경 설정" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly#2</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-22T14:15:56+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog 검색엔진 설정</title><link href="https://ruyshy.github.io/blog/blog11-search-engine/" rel="alternate" type="text/html" title="GitHub Blog 검색엔진 설정" /><published>2025-04-22T00:00:00+09:00</published><updated>2025-04-22T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog11-search-engine</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog11-search-engine/"><![CDATA[<p>GitHub Blog #11</p>
+
+<h2 id="검색-엔진-개요">검색 엔진 개요</h2>
+
+<p>월드 와이드 웹 상에 존재하는 정보와 웹 사이트를 검색하기 위한 프로그램. 웹의 정보를 긁어오는 소프트웨어는 크롤러라고 부르고, 그 행위는 크롤링이라고 부른다. 참고로 일반 검색 엔진에 안 잡히는 웹을 딥 웹이라고 한다.</p>
+
+<h2 id="검색-엔진-종류">검색 엔진 종류</h2>
+
+<p>구글, 네이버, Bing, zum, 네이트, 다음… 여러가지가 있습니다.</p>
+
+<h2 id="google-search-console">Google Search Console</h2>
+
+<p><strong>Google Search Console :</strong> <a href="https://search.google.com/search-console/welcome?utm_source=about-page">https://search.google.com/search-console/welcome?utm_source=about-page</a></p>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image1.png" alt="image1.png" style="max-width:100%;" /></p>
+
+<p>접속 후, URL 접두어에 자기 블로그 주소를 추가 후, 계숙을 눌러줍니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image2.png" alt="image2.png" style="max-width:100%;" /></p>
+
+<p>계숙 버튼을 눌러 진행을 하면 다음 화면이 나오는데, 파일을 다운로드 받고 다운 받은 파일을 깃허브 저장소 최상단 폴더에 넣어줍니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image3.png" alt="image3.png" style="max-width:100%;" /></p>
+
+<p>저장소에 push를 진행하고, 배포가 완료된 후, 확인 버튼을 눌러 진행하면 다음과 같이 창이 바뀌는데, 속성으로 이동을 눌러 설정을 해주도록 합시다.</p>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image4.png" alt="image4.png" style="max-width:100%;" /></p>
+
+<p>Sitemap을 눌러 해당 설정 화면이 나오면 sitemap.xml을 추가해주는 작업을 진행해야 합니다. 저는 예전에 설정해둔 sitemap이 제출이 되어있긴하네요. 일단 진행해봅시다.</p>
+
+<h2 id="sitemapxml-생성">\sitemap.xml 생성</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: null
+---
+
+<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;urlset</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"</span>
+  <span class="na">xmlns=</span><span class="s">"http://www.sitemaps.org/schemas/sitemap/0.9"</span><span class="nt">&gt;</span>
+  {% for post in site.posts %}
+    <span class="nt">&lt;url&gt;</span>
+      <span class="nt">&lt;loc&gt;</span>{{ site.url }}{{ post.url }}<span class="nt">&lt;/loc&gt;</span>
+      {% if post.last_modified_at == null %}
+        <span class="nt">&lt;lastmod&gt;</span>{{ post.date | date_to_xmlschema }}<span class="nt">&lt;/lastmod&gt;</span>
+      {% else %}
+        <span class="nt">&lt;lastmod&gt;</span>{{ post.last_modified_at | date_to_xmlschema }}<span class="nt">&lt;/lastmod&gt;</span>
+      {% endif %}
+
+      {% if post.sitemap.changefreq == null %}
+        <span class="nt">&lt;changefreq&gt;</span>weekly<span class="nt">&lt;/changefreq&gt;</span>
+      {% else %}
+        <span class="nt">&lt;changefreq&gt;</span>{{ post.sitemap.changefreq }}<span class="nt">&lt;/changefreq&gt;</span>
+      {% endif %}
+
+      {% if post.sitemap.priority == null %}
+          <span class="nt">&lt;priority&gt;</span>0.5<span class="nt">&lt;/priority&gt;</span>
+      {% else %}
+        <span class="nt">&lt;priority&gt;</span>{{ post.sitemap.priority }}<span class="nt">&lt;/priority&gt;</span>
+      {% endif %}
+
+    <span class="nt">&lt;/url&gt;</span>
+  {% endfor %}
+  
+<span class="nt">&lt;/urlset&gt;</span>
+</code></pre></div></div>
+
+<p>작성 후, 깃허브 저장소에 push를 진행합니다.</p>
+
+<p>깃허브 action으로 배포가 진행이 되었다면 새 사이트맵 제출을 해줍니다.</p>
+
+<p>(sitemap.xml)</p>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image5.png" alt="image5.png" style="max-width:100%;" /></p>
+
+<p>일단 성공적으로 제출이 진행 되었네요.</p>
+
+<h2 id="robotstxt-생성">\robots.txt 생성</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User-agent: *
+Allow: /
+Sitemap: https://ruyshy.github.io/sitemap.xml
+</code></pre></div></div>
+
+<p>robots.txt 생성 후, 깃허브 저장소에 push, 다시 사이트 맵을 제출해줍니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image6.png" alt="image6.png" style="max-width:100%;" /></p>
+
+<p>구글에 검색해보니 잘 보이는 듯 합니다.</p>
+
+<h2 id="추가-소유권-인증-방법2">추가 소유권 인증 방법2</h2>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image7.png" alt="image7.png" style="max-width:100%;" /></p>
+
+<p>설정 → 소유권 인증 으로 들어가보면 HTML 태그가 있습니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"google-site-verification"</span> <span class="na">content=</span><span class="s">"0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>content 안에 있는 내용을 복사한 뒤, _config.yml 에서 <code class="language-plaintext highlighter-rouge">google-site-verification:</code> 해당 부분을 찾습니다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">google_site_verification </span><span class="pi">:</span> <span class="s">0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU</span>
+</code></pre></div></div>
+
+<p>위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 push 진행 → 확인을 눌러 진행.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #11]]></summary></entry><entry><title type="html">Assembly 실습 환경 설정</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly 실습 환경 설정" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly#2</p>
 
 <h2 id="sasm">SASM</h2>
 
@@ -1390,240 +1494,4 @@ Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이
 
 ...내용
 
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #4]]></summary></entry><entry><title type="html">GitHub Blog 카테고리 설정</title><link href="https://ruyshy.github.io/blog/blog5-category/" rel="alternate" type="text/html" title="GitHub Blog 카테고리 설정" /><published>2025-04-16T00:00:00+09:00</published><updated>2025-04-16T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog5-category</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog5-category/"><![CDATA[<p>GitHub Blog #5</p>
-
-<p>GitHub Blog 시작하기에 이어 다음 편입니다.</p>
-
-<p>이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다.</p>
-
-<p><a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a></p>
-
-<p>해당 사이트에서 마크다운 문법을 알아볼 수 있습니다.</p>
-
-<h2 id="github-blog-카테고리-설정">GitHub Blog 카테고리 설정</h2>
-
-<h3 id="_datanavigationyml-부분입니다">._data\navigation.yml 부분입니다.</h3>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">main</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Quick-Start</span><span class="nv"> </span><span class="s">Guide"</span>
-    <span class="na">url</span><span class="pi">:</span> <span class="s">https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/</span>
-  <span class="c1"># - title: "About"</span>
-  <span class="c1">#   url: https://mmistakes.github.io/minimal-mistakes/about/</span>
-  <span class="c1"># - title: "Sample Posts"</span>
-  <span class="c1">#   url: /year-archive/</span>
-  <span class="c1"># - title: "Sample Collections"</span>
-  <span class="c1">#   url: /collection-archive/</span>
-  <span class="c1"># - title: "Sitemap"</span>
-  <span class="c1">#   url: /sitemap/</span>
-</code></pre></div></div>
-
-<p>Quick-Start Guide 해당 부분을 지워줍니다.</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Home"</span>
-    <span class="na">url</span><span class="pi">:</span> <span class="s">/</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">category"</span>
-    <span class="na">url</span><span class="pi">:</span> <span class="s">/categories/</span>
-    <span class="na">children</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Assembly"</span>
-        <span class="na">url</span><span class="pi">:</span> <span class="s">/categories/assembly/</span>
-    <span class="na">children</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Blog"</span>
-        <span class="na">url</span><span class="pi">:</span> <span class="s">/categories/blog/</span>
-</code></pre></div></div>
-
-<p>그리고 위와 같이 카테고리를 추가합니다.</p>
-
-<h3 id="_includessidebarhtml-입니다">._includes\sidebar.html 입니다.</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-{% if page.author_profile or layout.author_profile or page.sidebar %}
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
-
-  {% if page.author_profile or layout.author_profile %}
-    {% include author-profile.html %}
-  {% endif %}
-
-  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav__list"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav__items"</span><span class="nt">&gt;</span>
-
-      <span class="c">&lt;!-- HOME --&gt;</span>
-      <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/' %} active{% endif %}"</span><span class="nt">&gt;</span>
-          Home
-        <span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-
-      <span class="c">&lt;!-- Divider --&gt;</span>
-      <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"nav-divider"</span><span class="nt">&gt;&lt;/li&gt;</span>
-
-      <span class="c">&lt;!-- CATEGORY TITLE --&gt;</span>
-      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav__title"</span><span class="nt">&gt;</span>Category<span class="nt">&lt;/li&gt;</span>
-
-      <span class="c">&lt;!-- All --&gt;</span>
-      <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/categories/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/categories/' %} active{% endif %}"</span><span class="nt">&gt;</span>
-          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>({{ site.posts | size }})<span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;/li&gt;</span>
-
-      <span class="c">&lt;!-- Dynamic categories --&gt;</span>
-      {% assign sorted_categories = site.categories | sort %}
-      {% for category in sorted_categories %}
-        {% assign cat_name = category[0] %}
-        {% assign cat_posts = category[1] %}
-        <span class="nt">&lt;li&gt;</span>
-          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/categories/' | append: cat_name | append: '/' | relative_url }}"</span>
-             <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/categories/' | append: cat_name | append: '/' %} active{% endif %}"</span><span class="nt">&gt;</span>
-            - {{ cat_name | capitalize }} <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>({{ cat_posts | size }})<span class="nt">&lt;/span&gt;</span>
-          <span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-      {% endfor %}
-
-    <span class="nt">&lt;/ul&gt;</span>
-  <span class="nt">&lt;/nav&gt;</span>
-
-<span class="nt">&lt;/div&gt;</span>
-
-{% endif %}
-
-</code></pre></div></div>
-
-<p>위와 같이 카테고리를 설정해줍니다.</p>
-
-<h3 id="_pagescategoriesmd-추가">._pages\categories.md 추가</h3>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">category"</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">categories</span>
-<span class="na">permalink</span><span class="pi">:</span> <span class="s">/categories/</span>
-<span class="nn">---</span>
-
-</code></pre></div></div>
-
-<p>예시) <a href="http://ruyshy.github.io/categories/">ruyshy.github.io/categories/</a> 페이지</p>
-
-<h3 id="이어서-_pagesassemblymd">이어서 ._pages\assembly.md</h3>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Assembly"</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">category</span>
-<span class="na">permalink</span><span class="pi">:</span> <span class="s">/categories/assembly/</span>
-<span class="na">taxonomy</span><span class="pi">:</span> <span class="s">assembly</span>
-<span class="nn">---</span>
-
-</code></pre></div></div>
-
-<p>예) assembly 카테고리 추가) <a href="ruyshy.github.io/categories/assembly/">ruyshy.github.io/categories/assembly/</a></p>
-
-<h3 id="_sass_navigationscss-편집을-진행합니다">._sass_navigation.scss 편집을 진행합니다.</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.nav__list .nav__items {
-...(source)
-
-  .count {
-    font-weight: normal;
-    color: #888;
-    margin-left: 5px;
-  }
-</code></pre></div></div>
-
-<p>.count 부분을 추가해줍니다. (css 스타일 설정 카테고리 옆에 숫자)</p>
-
-<h3 id="_configyml-해당-파일을-편집을-진행합니다">._config.yml 해당 파일을 편집을 진행합니다.</h3>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Defaults</span>
-<span class="na">defaults</span><span class="pi">:</span>
-  <span class="c1"># _posts</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-      <span class="na">values</span><span class="pi">:</span>
-        <span class="na">sidebar</span><span class="pi">:</span>
-          <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">read_time</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">comments</span><span class="pi">:</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s2">"</span><span class="s">utterances"</span>
-      <span class="na">utterances</span><span class="pi">:</span>
-        <span class="na">theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-dark"</span>
-        <span class="na">issue_term</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pathname"</span>
-        <span class="na">label</span><span class="pi">:</span> <span class="s2">"</span><span class="s">comment"</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-
-  <span class="c1"># _pages</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-
-  <span class="c1">#assembly categories</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">_posts/assembly"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">assembly</span><span class="pi">]</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-
-    <span class="c1">#blog categories</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">_posts/blog"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">blog</span><span class="pi">]</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>      
-</code></pre></div></div>
-
-<p>현재 저의 defaults: 코드입니다.</p>
-
-<p>주목해야 할 부분</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">read_time</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">comments</span><span class="pi">:</span>
-      <span class="na">provider</span><span class="pi">:</span> <span class="s2">"</span><span class="s">utterances"</span>
-      <span class="na">utterances</span><span class="pi">:</span>
-        <span class="na">theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-dark"</span>
-        <span class="na">issue_term</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pathname"</span>
-        <span class="na">label</span><span class="pi">:</span> <span class="s2">"</span><span class="s">comment"</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-</code></pre></div></div>
-
-<p>해당 부분에 sidebar: 부분과</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">#assembly categories</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">_posts/assembly"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">assembly</span><span class="pi">]</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-
-    <span class="c1">#blog categories</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">_posts/blog"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">blog</span><span class="pi">]</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>  
-</code></pre></div></div>
-
-<p>해당 카테고리를 설정한 assembly, blog 부분입니다.</p>
-
-<p>“_post/assembly” 경로에 설정에서 values: categories : [assembly] 이 값이 있으면 해당 경로에 Post는 자동으로 카테고리가 설정 됩니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #5]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><summary type="html"><![CDATA[GitHub Blog #4]]></summary></entry></feed>

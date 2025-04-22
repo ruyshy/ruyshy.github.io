@@ -88,4 +88,10 @@ var store = [{
         "tags": ["GitHubBlog"],
         "url": "/blog/blog10-code-block-copy-button/",
         "teaser": null
+      },{
+        "title": "GitHub Blog 검색엔진 설정",
+        "excerpt":"GitHub Blog #11 검색 엔진 개요 월드 와이드 웹 상에 존재하는 정보와 웹 사이트를 검색하기 위한 프로그램. 웹의 정보를 긁어오는 소프트웨어는 크롤러라고 부르고, 그 행위는 크롤링이라고 부른다. 참고로 일반 검색 엔진에 안 잡히는 웹을 딥 웹이라고 한다. 검색 엔진 종류 구글, 네이버, Bing, zum, 네이트, 다음… 여러가지가 있습니다. Google Search...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog11-search-engine/",
+        "teaser": null
       }]
