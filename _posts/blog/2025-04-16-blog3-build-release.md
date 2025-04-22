@@ -70,7 +70,8 @@ jobs:
         run: bundle exec jekyll clean
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build --future
+        run: JEKYLL_ENV=production bundle exec jekyll build --future
+
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
