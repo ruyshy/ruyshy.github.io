@@ -89,6 +89,12 @@ var store = [{
         "url": "/assembly/assembly2-setting/",
         "teaser": null
       },{
+        "title": "Assembly 기본 명령어부터 익히기-1",
+        "excerpt":"assembly #3 1. 기본 명령어 리스트 (Windows 64bit 기준) 명령어 역할 비고 mov 데이터 복사 레지스터, 메모리, 즉시값 add 덧셈 레지스터끼리, 값 더하기 sub 뺄셈 레지스터끼리, 값 빼기 inc 1 증가 rax 같은 레지스터 1 증가 dec 1 감소 rbx 같은 레지스터 1 감소 push 스택에 저장 rsp를 줄이고 값...","categories": ["assembly"],
+        "tags": ["nasm","assembly"],
+        "url": "/assembly/assembly3-basic-commands-1/",
+        "teaser": null
+      },{
         "title": "GitHub Blog 검색엔진 설정",
         "excerpt":"GitHub Blog #11 검색 엔진 개요 월드 와이드 웹 상에 존재하는 정보와 웹 사이트를 검색하기 위한 프로그램. 웹의 정보를 긁어오는 소프트웨어는 크롤러라고 부르고, 그 행위는 크롤링이라고 부른다. 참고로 일반 검색 엔진에 안 잡히는 웹을 딥 웹이라고 한다. 검색 엔진 종류 구글, 네이버, Bing, zum, 네이트, 다음… 여러가지가 있습니다. Google Search...","categories": ["blog"],
         "tags": ["GitHubBlog"],

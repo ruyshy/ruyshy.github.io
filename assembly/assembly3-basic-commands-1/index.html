@@ -1,0 +1,1268 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Assembly 기본 명령어부터 익히기-1 - ruyshy blog</title>
+<meta name="description" content="assembly #3">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="Assembly 기본 명령어부터 익히기-1">
+<meta property="og:url" content="https://ruyshy.github.io/assembly/assembly3-basic-commands-1/">
+
+
+  <meta property="og:description" content="assembly #3">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-04-22T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/assembly/assembly3-basic-commands-1/">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://ruyshy.github.io/">
+        <img src="/assets/images/profile/github_profile_image.jpg" alt="ruyshy" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+
+      <!-- HOME -->
+      <li>
+        <a href="/" class="nav__item">
+          Home
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <li><hr class="nav-divider"></li>
+
+      <!-- CATEGORY TITLE -->
+      <li class="nav__title">Category</li>
+
+      <!-- All -->
+      <li>
+        <a href="/categories/" class="nav__item">
+          - All <span class="count">(14)</span>
+        </a>
+      </li>
+
+      <!-- Dynamic categories -->
+      
+      
+        
+        
+        <li>
+          <a href="/categories/assembly/"
+             class="nav__item">
+            - Assembly <span class="count">(3)</span>
+          </a>
+        </li>
+      
+        
+        
+        <li>
+          <a href="/categories/blog/"
+             class="nav__item">
+            - Blog <span class="count">(11)</span>
+          </a>
+        </li>
+      
+
+    </ul>
+  </nav>
+
+</div>
+
+
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Assembly 기본 명령어부터 익히기-1">
+    <meta itemprop="description" content="assembly #3">
+    <meta itemprop="datePublished" content="2025-04-22T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/assembly/assembly3-basic-commands-1/" itemprop="url">Assembly 기본 명령어부터 익히기-1
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#1-기본-명령어-리스트-windows-64bit-기준">1. 기본 명령어 리스트 (Windows 64bit 기준)</a></li><li><a href="#2-각-명령어-설명">2. 각 명령어 설명</a><ul><li><a href="#2-1-mov-데이터-복사">2-1. mov (데이터 복사)</a></li><li><a href="#2-2-add-덧셈">2-2. add (덧셈)</a></li><li><a href="#2-3-sub-뺄셈">2-3. sub (뺄셈)</a></li><li><a href="#2-4-inc--dec-1-증가--1-감소">2-4. inc / dec (1 증가 / 1 감소)</a></li><li><a href="#2-5-push--pop-스택에-저장꺼내기">2-5. push / pop (스택에 저장/꺼내기)</a></li><li><a href="#2-6-call--ret-함수-호출--복귀">2-6. call / ret (함수 호출 / 복귀)</a></li><li><a href="#2-7-cmp--jmp--je--jne-비교-점프">2-7. cmp / jmp / je / jne (비교, 점프)</a></li><li><a href="#2-8-요약">2-8. 요약</a></li></ul></li><li><a href="#3-기본-실습-문제">3. 기본 실습 문제</a><ul><li><a href="#3-1-기본-실습-문제-풀기-전-알아두기">3-1. 기본 실습 문제 풀기 전 알아두기</a></li><li><a href="#3-2-문제-풀이">3-2. 문제 풀이</a></li><li><a href="#3-2-체크포인트">3-2. 체크포인트</a></li></ul></li><li><a href="#4-조건-분기-명령어">4. 조건 분기 명령어</a><ul><li><a href="#4-1-예제-1-je-같으면-점프">4-1. 예제 1: je (같으면 점프)</a></li><li><a href="#4-2-예제-2-jne-다르면-점프">4-2. 예제 2: jne (다르면 점프)</a></li><li><a href="#4-3-예제-3-jg--jl-크거나-작을-때-점프">4-3. 예제 3: jg / jl (크거나 작을 때 점프)</a></li><li><a href="#4-4-cmp가-뭘-하는지-한-번-더-강조">4-4. cmp가 뭘 하는지 한 번 더 강조</a></li><li><a href="#4-5-요약">4-5. 요약</a></li><li><a href="#4-6-미션">4-6. 미션</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>assembly #3</p>
+
+<h2 id="1-기본-명령어-리스트-windows-64bit-기준">1. 기본 명령어 리스트 (Windows 64bit 기준)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>명령어</th>
+      <th>역할</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>mov</strong></td>
+      <td>데이터 복사</td>
+      <td>레지스터, 메모리, 즉시값</td>
+    </tr>
+    <tr>
+      <td><strong>add</strong></td>
+      <td>덧셈</td>
+      <td>레지스터끼리, 값 더하기</td>
+    </tr>
+    <tr>
+      <td><strong>sub</strong></td>
+      <td>뺄셈</td>
+      <td>레지스터끼리, 값 빼기</td>
+    </tr>
+    <tr>
+      <td><strong>inc</strong></td>
+      <td>1 증가</td>
+      <td>rax 같은 레지스터 1 증가</td>
+    </tr>
+    <tr>
+      <td><strong>dec</strong></td>
+      <td>1 감소</td>
+      <td>rbx 같은 레지스터 1 감소</td>
+    </tr>
+    <tr>
+      <td><strong>push</strong></td>
+      <td>스택에 저장</td>
+      <td>rsp를 줄이고 값 저장</td>
+    </tr>
+    <tr>
+      <td><strong>pop</strong></td>
+      <td>스택에서 꺼냄</td>
+      <td>rsp를 늘리고 값 가져옴</td>
+    </tr>
+    <tr>
+      <td><strong>call</strong></td>
+      <td>함수 호출</td>
+      <td>주소 저장 + 점프</td>
+    </tr>
+    <tr>
+      <td><strong>ret</strong></td>
+      <td>복귀</td>
+      <td>스택에서 복귀 주소 꺼내서 점프</td>
+    </tr>
+    <tr>
+      <td><strong>cmp</strong></td>
+      <td>비교</td>
+      <td>플래그만 세팅 (값은 안 바뀜)</td>
+    </tr>
+    <tr>
+      <td><strong>jmp</strong></td>
+      <td>무조건 점프</td>
+      <td>그냥 이동</td>
+    </tr>
+    <tr>
+      <td><strong>je, jne</strong></td>
+      <td>조건부 점프</td>
+      <td>Zero Flag 기반 (같으면/다르면)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="2-각-명령어-설명">2. 각 명령어 설명</h2>
+
+<h3 id="2-1-mov-데이터-복사">2-1. <strong>mov</strong> (데이터 복사)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>        <span class="c1">; rax에 10 저장</span>
+<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="nb">rax</span>       <span class="c1">; rax 값을 rbx로 복사</span>
+</code></pre></div></div>
+
+<p><strong>mov</strong>는 그냥 값을 복붙 한다고 생각하면 됌</p>
+
+<h3 id="2-2-add-덧셈">2-2. <strong>add</strong> (덧셈)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
+<span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">3</span>         <span class="c1">; rax = rax + 3</span>
+</code></pre></div></div>
+
+<p><strong>add dst, src</strong> ➔ dst = dst + src</p>
+
+<h3 id="2-3-sub-뺄셈">2-3. <strong>sub</strong> (뺄셈)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
+<span class="nf">sub</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">2</span>         <span class="c1">; rax = rax - 2</span>
+</code></pre></div></div>
+
+<p><strong>sub dst, src</strong> ➔ dst = dst - src</p>
+
+<h3 id="2-4-inc--dec-1-증가--1-감소">2-4. inc / dec (1 증가 / 1 감소)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">10</span>
+<span class="nf">inc</span> <span class="nb">rcx</span>            <span class="c1">; rcx = rcx + 1</span>
+<span class="nf">dec</span> <span class="nb">rcx</span>            <span class="c1">; rcx = rcx - 1</span>
+</code></pre></div></div>
+
+<h3 id="2-5-push--pop-스택에-저장꺼내기">2-5. push / pop (스택에 저장/꺼내기)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">1234</span>
+<span class="nf">push</span> <span class="nb">rax</span>           <span class="c1">; rax를 스택에 저장</span>
+<span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">0</span>         <span class="c1">; rax를 0으로 초기화</span>
+<span class="nf">pop</span> <span class="nb">rax</span>            <span class="c1">; 스택에서 rax 복원</span>
+</code></pre></div></div>
+
+<p>push하면 rsp 줄어들고,
+pop하면 rsp 다시 올라간다.</p>
+
+<h3 id="2-6-call--ret-함수-호출--복귀">2-6. call / ret (함수 호출 / 복귀)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">call</span> <span class="nv">my_function</span>   <span class="c1">; 함수 호출 (현재 위치를 스택에 저장하고 점프)</span>
+
+<span class="c1">; ...</span>
+
+<span class="nl">my_function:</span>
+    <span class="c1">; (여기 코드 실행)</span>
+    <span class="nf">ret</span>            <span class="c1">; 스택에서 복귀주소 꺼내서 돌아감</span>
+</code></pre></div></div>
+
+<p>함수 부르기/돌아오기 핵심. 나중에 스택 프레임이라는 중요한 것을 배울 예정.</p>
+
+<h3 id="2-7-cmp--jmp--je--jne-비교-점프">2-7. cmp / jmp / je / jne (비교, 점프)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
+<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>         <span class="c1">; rax == 5 인지 비교 (ZF 플래그 세팅)</span>
+<span class="no">je</span><span class="kd">  equ</span><span class="nb">al</span><span class="nv">_label</span>    <span class="c1">; 같으면 equal_label로 점프</span>
+<span class="nf">jne</span> <span class="nv">not_equal_label</span><span class="c1">; 다르면 not_equal_label로 점프</span>
+<span class="nf">jmp</span> <span class="nv">end_label</span>      <span class="c1">; 무조건 end_label로 점프</span>
+
+<span class="nl">equal_label:</span>
+    <span class="c1">; 여기는 rax == 5일 때 옴</span>
+    <span class="nf">jmp</span> <span class="nv">end_label</span>
+
+<span class="nl">not_equal_label:</span>
+    <span class="c1">; 여기는 rax != 5일 때 옴</span>
+
+<span class="nl">end_label:</span>
+    <span class="c1">; 프로그램 계속 진행</span>
+</code></pre></div></div>
+
+<p>cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)</p>
+
+<p>예시:</p>
+
+<p><code class="language-plaintext highlighter-rouge">rax == 5</code> 일 때 <code class="language-plaintext highlighter-rouge">ZF = 1</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">rax &gt; 5 or rax &lt; 5</code> 일 때 <code class="language-plaintext highlighter-rouge">ZF = 0</code></p>
+
+<h3 id="2-8-요약">2-8. 요약</h3>
+
+<ul>
+  <li>mov로 값 복사</li>
+  <li>add/sub/inc/dec로 값 변경</li>
+  <li>push/pop으로 스택 저장/복구</li>
+  <li>call/ret으로 함수 호출/복귀</li>
+  <li>cmp + je/jne/jmp로 조건 분기</li>
+</ul>
+
+<h2 id="3-기본-실습-문제">3. 기본 실습 문제</h2>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">; 1. rax에 10 저장</span>
+<span class="c1">; 2. rbx에 20 저장</span>
+<span class="c1">; 3. rax와 rbx를 더해서 rax에 저장</span>
+<span class="c1">; 4. rax 값을 스택에 push</span>
+<span class="c1">; 5. rax를 0으로 만든 뒤</span>
+<span class="c1">; 6. 스택에서 rax 값을 pop해서 복구</span>
+<span class="c1">; 7. rax == 30 이면 끝나는 루프</span>
+</code></pre></div></div>
+
+<h3 id="3-1-기본-실습-문제-풀기-전-알아두기">3-1. 기본 실습 문제 풀기 전 알아두기</h3>
+
+<ol>
+  <li>
+    <p>기본 실습 문제 풀기 기본 환경 코드:</p>
+
+    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">default</span> <span class="nv">rel</span>
+ <span class="nf">global</span> <span class="nv">main</span>
+    
+ <span class="nf">section</span> <span class="nv">.text</span>
+ <span class="nl">main:</span>
+     <span class="c1">; 여기에 코드 작성</span>
+ <span class="nl">.end:</span>
+     <span class="nf">jmp</span> <span class="nv">.end</span>   <span class="c1">; 무한 루프 (프로그램 강제 정지용)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Assembly에서 “루프(반복)” 만들기
+    <ol>
+      <li>Assembly에서는 루프라는 걸 따로 지원하지 않는다.</li>
+      <li><strong>“명령어 점프(jmp)” + “조건 비교(cmp + je/jne 등)”</strong> ➔ 이걸 조합해서 <strong>수동으로 루프를 만든다.</strong></li>
+    </ol>
+  </li>
+  <li>루프 기본 패턴
+    <ol>
+      <li>
+        <p>무한 루프 (종료 조건 없음)</p>
+
+        <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nl">.loop:</span>
+     <span class="c1">; (여기에 반복할 코드)</span>
+     <span class="nf">jmp</span> <span class="nv">.loop</span>
+</code></pre></div>        </div>
+
+        <ol>
+          <li><code class="language-plaintext highlighter-rouge">.loop:</code> 이라는 레이블(이름표)을 붙이고</li>
+          <li>다시 <code class="language-plaintext highlighter-rouge">.loop</code>로 <code class="language-plaintext highlighter-rouge">jmp</code>해서 영원히 돌아오는 구조</li>
+          <li>C로 치면 <code class="language-plaintext highlighter-rouge">while (1) { }</code> 와 같음.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>카운터 기반 루프 (조건부 반복)</p>
+
+    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">5</span>        <span class="c1">; 반복할 횟수 5회</span>
+    
+ <span class="nl">.loop:</span>
+     <span class="c1">; (여기에 반복할 코드)</span>
+    
+     <span class="nf">dec</span> <span class="nb">rcx</span>        <span class="c1">; rcx = rcx - 1</span>
+     <span class="nf">cmp</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">0</span>
+     <span class="nf">jne</span> <span class="nv">.loop</span>      <span class="c1">; rcx != 0 이면 다시 반복</span>
+</code></pre></div>    </div>
+
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">rcx</code>에 반복 횟수를 세팅하고</li>
+      <li><code class="language-plaintext highlighter-rouge">dec</code>로 하나 줄이고</li>
+      <li><code class="language-plaintext highlighter-rouge">cmp</code>로 0이 됐는지 비교</li>
+      <li><code class="language-plaintext highlighter-rouge">jne</code>로 0이 아니면 다시 <code class="language-plaintext highlighter-rouge">.loop</code>로 점프</li>
+      <li>
+        <p>C로 치면:</p>
+
+        <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">int</span> <span class="nv">i</span> <span class="err">=</span> <span class="mi">5</span><span class="c1">;</span>
+ <span class="nf">while</span> <span class="p">(</span><span class="nv">i</span><span class="o">--</span><span class="p">)</span> <span class="err">{</span>
+     <span class="o">//</span> <span class="err">반복</span>
+ <span class="err">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>루프 만들 때 필요한 명령어</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>명령어</th>
+          <th>역할</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>jmp label</strong></td>
+          <td>무조건 점프</td>
+        </tr>
+        <tr>
+          <td><strong>cmp dst, src</strong></td>
+          <td>비교 후 플래그 설정</td>
+        </tr>
+        <tr>
+          <td><strong>je label</strong></td>
+          <td>같으면 점프 (ZF = 1)</td>
+        </tr>
+        <tr>
+          <td><strong>jne label</strong></td>
+          <td>다르면 점프 (ZF = 0)</td>
+        </tr>
+        <tr>
+          <td><strong>dec reg</strong></td>
+          <td>1 감소</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h3 id="3-2-문제-풀이">3-2. 문제 풀이</h3>
+
+<p>먼저 3-1-a 에 기본 코드를 토대로 기본 실습 문제를 진행 해보자.</p>
+
+<p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
+
+<details>
+<summary>한 줄씩 풀이 보기</summary>
+<div>
+
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
+      <li><code class="language-plaintext highlighter-rouge">mov rbx, 20</code>   ;mov 명령어로 rbx 에 20을 저장</li>
+      <li><code class="language-plaintext highlighter-rouge">add rax, rbx</code>   ;add 명령어로 rax 와 rbx 덧셈 연산 후, rax에 값을 저장</li>
+      <li><code class="language-plaintext highlighter-rouge">push rax</code>   ; rax 값을 push = stack에 rax 값을 저장</li>
+      <li><code class="language-plaintext highlighter-rouge">mov rax 0</code>   ; rax 값에 0을 저장</li>
+      <li><code class="language-plaintext highlighter-rouge">pop rax</code>   ; stack 에서 이전에 저장한 rax(30)을 rax로 복구 = stack에서 rax값을 넣기</li>
+      <li><code class="language-plaintext highlighter-rouge">cmp rax, 30</code>   ;rax값 과 30을 비교</li>
+      <li><code class="language-plaintext highlighter-rouge">je .end</code>   ;<code class="language-plaintext highlighter-rouge">cmp</code> ➔ Zero Flag(ZF) 세팅, <code class="language-plaintext highlighter-rouge">je</code> ➔ ZF가 1이면 점프 (== 같을 때 점프)</li>
+      <li><code class="language-plaintext highlighter-rouge">.loop:</code>   ;루프문</li>
+      <li><code class="language-plaintext highlighter-rouge">jmp .loop</code>   ;(틀릴 경우 무한 루프)</li>
+      <li><code class="language-plaintext highlighter-rouge">.end:</code>  ; <code class="language-plaintext highlighter-rouge">je .end</code> 에 선언한 곳</li>
+      <li><code class="language-plaintext highlighter-rouge">jmp .end</code>  ;정상 종료 무한 루프 종료</li>
+    </ol>
+
+  </div>
+</details>
+
+<details>
+<summary>최종 답안 보기</summary>
+<div>
+
+    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<span class="nf">global</span> <span class="nv">main</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>        <span class="c1">; 1. rax = 10</span>
+    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">20</span>        <span class="c1">; 2. rbx = 20</span>
+    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>       <span class="c1">; 3. rax = rax + rbx</span>
+    <span class="nf">push</span> <span class="nb">rax</span>           <span class="c1">; 4. 스택에 저장</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">0</span>         <span class="c1">; 5. rax 초기화</span>
+    <span class="nf">pop</span> <span class="nb">rax</span>            <span class="c1">; 6. 스택에서 복구</span>
+    <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">30</span>        <span class="c1">; 7. 30과 비교</span>
+    <span class="nf">je</span> <span class="nv">.end</span>            <span class="c1">; 같으면 끝</span>
+<span class="nl">.loop:</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; (틀릴 경우 무한루프)</span>
+
+<span class="nl">.end:</span>
+    <span class="nf">jmp</span> <span class="nv">.end</span>           <span class="c1">; 정상 종료 무한루프</span>
+
+</code></pre></div>    </div>
+
+  </div>
+</details>
+
+<h3 id="3-2-체크포인트">3-2. 체크포인트</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">push</code>, <code class="language-plaintext highlighter-rouge">pop</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jmp</code> 명령어 사용</li>
+  <li>스택 쓰고 복구하는 흐름 익힘</li>
+  <li>cmp/je 조건 분기 맛보기</li>
+</ul>
+
+<h2 id="4-조건-분기-명령어">4. 조건 분기 명령어</h2>
+
+<p><strong>조건 분기 명령어란?</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cmp</code> 명령어로 <strong>두 값을 비교</strong>한 다음</li>
+  <li>플래그 레지스터(<code class="language-plaintext highlighter-rouge">ZF</code>, <code class="language-plaintext highlighter-rouge">SF</code>, <code class="language-plaintext highlighter-rouge">CF</code>, <code class="language-plaintext highlighter-rouge">OF</code> 등)에 결과가 저장.</li>
+  <li>이 플래그를 보고 <strong>조건에 맞으면 점프(jmp)</strong> 하는 구조.</li>
+</ul>
+
+<p><strong>조건 분기 명령어 핵심 3단계</strong></p>
+
+<ul>
+  <li><strong>cmp dst, src</strong>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">dst - src</code>를 “계산만” 하고</li>
+      <li><strong>값은 버리고 플래그만 세팅</strong>한다.</li>
+    </ul>
+  </li>
+  <li><strong>플래그 레지스터 값 설정</strong>
+    <ul>
+      <li>Zero Flag(ZF), Sign Flag(SF), Carry Flag(CF), Overflow Flag(OF) 설정</li>
+    </ul>
+  </li>
+  <li><strong>je, jne, jg, jl 등 분기 명령어로 점프</strong></li>
+</ul>
+
+<p>자주 쓰는 조건 분기 명령어</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>명령어</th>
+      <th>의미</th>
+      <th>조건</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>je</strong></td>
+      <td>Jump if Equal</td>
+      <td>ZF == 1 (같으면)</td>
+    </tr>
+    <tr>
+      <td><strong>jne</strong></td>
+      <td>Jump if Not Equal</td>
+      <td>ZF == 0 (다르면)</td>
+    </tr>
+    <tr>
+      <td><strong>jg</strong></td>
+      <td>Jump if Greater</td>
+      <td>(SF == OF) &amp;&amp; (ZF == 0) (크면)</td>
+    </tr>
+    <tr>
+      <td><strong>jge</strong></td>
+      <td>Jump if Greater or Equal</td>
+      <td>SF == OF (크거나 같으면)</td>
+    </tr>
+    <tr>
+      <td><strong>jl</strong></td>
+      <td>Jump if Less</td>
+      <td>SF != OF (작으면)</td>
+    </tr>
+    <tr>
+      <td><strong>jle</strong></td>
+      <td>Jump if Less or Equal</td>
+      <td>(SF != OF)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Assembly에서는 거의 <strong>je, jne, jg, jl</strong>만 쓴다고 보면 됌.</p>
+
+<h3 id="4-1-예제-1-je-같으면-점프">4-1. 예제 1: je (같으면 점프)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>
+<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">10</span>
+<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>    <span class="c1">; rax == rbx 비교</span>
+<span class="no">je</span><span class="kd">  equ</span><span class="nb">al</span><span class="nv">_label</span> <span class="c1">; 같으면 equal_label로 점프</span>
+<span class="nf">jmp</span> <span class="nv">end_label</span>
+
+<span class="nl">equal_label:</span>
+    <span class="c1">; 여기 도착</span>
+    <span class="c1">; rax == rbx 일 때만</span>
+
+<span class="nl">end_label:</span>
+    <span class="c1">; 프로그램 종료</span>
+</code></pre></div></div>
+
+<p>rax == rbx이면 <code class="language-plaintext highlighter-rouge">equal_label</code>로 점프!</p>
+
+<h3 id="4-2-예제-2-jne-다르면-점프">4-2. 예제 2: jne (다르면 점프)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>
+<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">5</span>
+<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>
+<span class="nf">jne</span> <span class="nv">not_equal_label</span>
+<span class="nf">jmp</span> <span class="nv">end_label</span>
+
+<span class="nl">not_equal_label:</span>
+    <span class="c1">; rax != rbx일 때 오는 곳</span>
+
+<span class="nl">end_label:</span>
+    <span class="c1">; 프로그램 종료</span>
+</code></pre></div></div>
+
+<p>rax != rbx이면 <code class="language-plaintext highlighter-rouge">not_equal_label</code>로 점프!</p>
+
+<h3 id="4-3-예제-3-jg--jl-크거나-작을-때-점프">4-3. 예제 3: jg / jl (크거나 작을 때 점프)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">20</span>
+<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">10</span>
+<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>
+<span class="nf">jg</span> <span class="nv">greater_label</span>
+<span class="nf">jl</span> <span class="nv">less_label</span>
+<span class="nf">jmp</span> <span class="nv">end_label</span>
+
+<span class="nl">greater_label:</span>
+    <span class="c1">; rax &gt; rbx</span>
+    <span class="nf">jmp</span> <span class="nv">end_label</span>
+
+<span class="nl">less_label:</span>
+    <span class="c1">; rax &lt; rbx</span>
+    <span class="nf">jmp</span> <span class="nv">end_label</span>
+
+<span class="nl">end_label:</span>
+    <span class="c1">; 프로그램 종료</span>
+</code></pre></div></div>
+
+<p>rax &gt; rbx이면 <code class="language-plaintext highlighter-rouge">greater_label</code>,</p>
+
+<p>rax &lt; rbx이면 <code class="language-plaintext highlighter-rouge">less_label</code> 로 간다.</p>
+
+<h3 id="4-4-cmp가-뭘-하는지-한-번-더-강조">4-4. cmp가 뭘 하는지 한 번 더 강조</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>
+</code></pre></div></div>
+
+<p>→ 실제로는 <code class="language-plaintext highlighter-rouge">rax - rbx</code>를 계산</p>
+
+<p>→ 그 결과에 따라 <strong>Zero/Sign/Carry/Overflow</strong> 플래그를 조정</p>
+
+<p>→ 그리고 분기 명령어(<code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jg</code>, <code class="language-plaintext highlighter-rouge">jl</code> 등)가 이 플래그를 보는 거야.</p>
+
+<blockquote>
+  <p>즉, cmp는 “비교만 하고 아무것도 저장하지 않는다.”</p>
+
+  <p><strong>플래그 세팅만 한다.</strong></p>
+
+</blockquote>
+
+<h3 id="4-5-요약">4-5. 요약</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>플래그</th>
+      <th>의미</th>
+      <th>영향 받는 분기</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ZF (Zero Flag)</strong></td>
+      <td>두 값이 같으면 세팅</td>
+      <td>je, jne</td>
+    </tr>
+    <tr>
+      <td><strong>SF (Sign Flag)</strong></td>
+      <td>결과가 음수면 세팅</td>
+      <td>jg, jl</td>
+    </tr>
+    <tr>
+      <td><strong>OF (Overflow Flag)</strong></td>
+      <td>오버플로우 발생 여부</td>
+      <td>jg, jl</td>
+    </tr>
+    <tr>
+      <td><strong>CF (Carry Flag)</strong></td>
+      <td>자리 올림/내림 발생 여부</td>
+      <td>(unsigned 비교에 사용)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>signed/unsigned 구분이 있는데, 일단 지금은 <strong>정수 부호 있는(signed) 비교</strong>만 다룬다.</p>
+
+<h3 id="4-6-미션">4-6. 미션</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">; 1. rax에 7 저장</span>
+<span class="c1">; 2. rbx에 5 저장</span>
+<span class="c1">; 3. cmp로 비교</span>
+<span class="c1">; 4. 크면 "greater", 작으면 "less" 레이블로 점프</span>
+<span class="c1">; 5. 둘 다 아니면 "equal" 레이블로 점프</span>
+</code></pre></div></div>
+
+<p>기본 코드:</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<span class="nf">global</span> <span class="nv">main</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nl">main:</span>
+    <span class="c1">; 여기부터 네 코드</span>
+
+<span class="nl">.loop:</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; 프로그램 끝 (무한 대기)</span>
+
+<span class="nl">greater:</span>
+    <span class="c1">; 여기는 rax &gt; rbx 일 때 오는 곳</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>
+
+<span class="nl">less:</span>
+    <span class="c1">; 여기는 rax &lt; rbx 일 때 오는 곳</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>
+
+<span class="nl">equal:</span>
+    <span class="c1">; 여기는 rax == rbx 일 때 오는 곳</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>
+</code></pre></div></div>
+
+<details>
+<summary>미션 풀이:</summary>
+<div>
+
+    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<span class="nf">global</span> <span class="nv">main</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">7</span>         <span class="c1">; rax = 7</span>
+    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">5</span>         <span class="c1">; rbx = 5</span>
+    <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>       <span class="c1">; rax - rbx 비교 (7 - 5)</span>
+    <span class="nf">jg</span> <span class="nv">greater</span>         <span class="c1">; rax &gt; rbx 이면 greater로 점프</span>
+    <span class="nf">jl</span> <span class="nv">less</span>            <span class="c1">; rax &lt; rbx 이면 less로 점프</span>
+    <span class="no">je</span><span class="kd"> equ</span><span class="nb">al</span>           <span class="c1">; rax == rbx 이면 equal로 점프</span>
+
+<span class="nl">.loop:</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; 프로그램 끝 (무한 대기)</span>
+
+<span class="nl">greater:</span>
+    <span class="c1">; rax &gt; rbx일 때</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>
+
+<span class="nl">less:</span>
+    <span class="c1">; rax &lt; rbx일 때</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>
+
+<span class="nl">equal:</span>
+    <span class="c1">; rax == rbx일 때</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>
+</code></pre></div>    </div>
+
+    <p><strong>흐름 해석</strong></p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">7</code>과 <code class="language-plaintext highlighter-rouge">5</code> 비교 → 결과는 “7 &gt; 5”니까 <code class="language-plaintext highlighter-rouge">jg greater</code> 실행</li>
+      <li>프로그램은 <code class="language-plaintext highlighter-rouge">greater:</code>로 점프</li>
+      <li>거기서 <code class="language-plaintext highlighter-rouge">.loop</code>로 넘어가서 무한 대기</li>
+    </ul>
+
+  </div>
+</details>
+<p><br /></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#assembly" class="page__taxonomy-item p-category" rel="tag">assembly</a><span class="sep">, </span>
+    
+      <a href="/tags/#nasm" class="page__taxonomy-item p-category" rel="tag">nasm</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Category: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#assembly" class="page__taxonomy-item p-category" rel="tag">assembly</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-22T00:00:00+09:00">April 22, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">공유하기</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=Assembly+%EA%B8%B0%EB%B3%B8+%EB%AA%85%EB%A0%B9%EC%96%B4%EB%B6%80%ED%84%B0+%EC%9D%B5%ED%9E%88%EA%B8%B0-1%20https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly3-basic-commands-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly3-basic-commands-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/assembly/assembly3-basic-commands-1/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/assembly/assembly2-setting/" class="pagination--pager" title="Assembly 실습 환경 설정">Prev</a>
+    
+    
+      <a href="/blog/blog11-search-engine/" class="pagination--pager" title="GitHub Blog 검색엔진 설정">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
+      
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">참고</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog11-search-engine/" rel="permalink">GitHub Blog 검색엔진 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #11
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/assembly/assembly2-setting/" rel="permalink">Assembly 실습 환경 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">assembly #2
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog10-code-block-copy-button/" rel="permalink">GitHub Blog 코드블럭 copy 버튼
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #10
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog9-Image-plugin/" rel="permalink">GitHub Blog 이미지 커스텀 플로그인
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #9
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="/assets/js/vendor/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script>
+    
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'ruyshy/ruyshy.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+  </body>
+</html>
