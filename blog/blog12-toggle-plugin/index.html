@@ -462,32 +462,7 @@
 
 <h2 id="_layoutsdefaulthtml-수정">_layouts\default.html 수정</h2>
 
-<p>`<script>
-    document.addEventListener("DOMContentLoaded", () =&gt; {
-        document.querySelectorAll('.toggle-label').forEach(labelEl =&gt; {
-            const baseText = labelEl.dataset.label;
-            labelEl.textContent = '▶ ' + baseText;
-          });
-    });</script></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function toggleTextContent(id, labelEl) {
-  const content = document.getElementById(id);
-  const isExpanded = content.classList.contains('expanded');
-  const baseText = labelEl.dataset.label;
-
-  labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
-
-  if (isExpanded) {
-    content.classList.remove('expanded');
-    content.style.maxHeight = '0px';
-    content.style.display = 'none';
-  } else {
-    content.classList.add('expanded');
-    content.style.display = 'block';
-    content.style.maxHeight = content.scrollHeight + 'px';
-  }
-}     &lt;/script&gt;`  해당 코드 추가해줘야 함.
-</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">{% include toggle-script.html %}</code>  해당 코드 추가해줘야 함.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 ---
@@ -643,9 +618,9 @@
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-795ifs', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-82ay88', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-795ifs" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-82ay88" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -661,9 +636,9 @@
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-n68q18', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-p58yud', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-n68q18" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-p58yud" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
