@@ -100,4 +100,10 @@ var store = [{
         "tags": ["GitHubBlog"],
         "url": "/blog/blog11-search-engine/",
         "teaser": null
+      },{
+        "title": "GitHub Blog Toggle Pugin 설정",
+        "excerpt":"GitHub Blog #12 Markdown 기본 Toggle 사용 방법 &lt;details&gt; &lt;summary&gt;toggle 펼쳐보기&lt;/summary&gt; &lt;div markdown=\"1\"&gt; ```markdown 코드 ``` -- 내용 -- - 테스트1 - 테스트2 &lt;/div&gt; &lt;/details&gt; 기본 토글: toggle 펼쳐보기 코드 – 내용 – 테스트1 테스트2 _plugins\\toggle_tag.rb 추가 module Jekyll class ToggleText &lt; Liquid::Block def initialize(tag_name, markup, tokens) super if markup...","categories": ["blog"],
+        "tags": ["GitHubBlog"],
+        "url": "/blog/blog12-toggle-plugin/",
+        "teaser": null
       }]

@@ -290,7 +290,7 @@
       <!-- All -->
       <li>
         <a href="/categories/" class="nav__item">
-          - All <span class="count">(14)</span>
+          - All <span class="count">(15)</span>
         </a>
       </li>
 
@@ -311,7 +311,7 @@
         <li>
           <a href="/categories/blog/"
              class="nav__item">
-            - Blog <span class="count">(11)</span>
+            - Blog <span class="count">(12)</span>
           </a>
         </li>
       
@@ -341,6 +341,26 @@
 
 
 
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog12-toggle-plugin/" rel="permalink">GitHub Blog Toggle Pugin 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #12
+</p>
+  </article>
+</div>
 
 
 
@@ -418,26 +438,6 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">GitHub Blog #10
-</p>
-  </article>
-</div>
-
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/blog9-Image-plugin/" rel="permalink">GitHub Blog 이미지 커스텀 플로그인
-</a>
-      
-    </h2>
-    
-
-
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #9
 </p>
   </article>
 </div>
@@ -572,7 +572,32 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
     
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script>
 
     
   <script src="/assets/js/main.min.js"></script>

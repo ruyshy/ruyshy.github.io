@@ -284,7 +284,7 @@
       <!-- All -->
       <li>
         <a href="/categories/" class="nav__item">
-          - All <span class="count">(14)</span>
+          - All <span class="count">(15)</span>
         </a>
       </li>
 
@@ -305,7 +305,7 @@
         <li>
           <a href="/categories/blog/"
              class="nav__item">
-            - Blog <span class="count">(11)</span>
+            - Blog <span class="count">(12)</span>
           </a>
         </li>
       
@@ -502,34 +502,34 @@ pop하면 rsp 다시 올라간다.</p>
 <p>cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)</p>
 
 <h3 id="2-8-기본-실습-문제1">2-8. 기본 실습 문제1</h3>
-<pre><code class="language-assembly">    rax에 10 저장
-	rbx에 20 저장
-    rcx에 5 저장
-    rax + rbx 결과를 rax에 저장
-    rax - rcx 결과를 rax에 저장
-    rax를 스택에 저장
-    rbx를 스택에 저장
-	스택에서 rbx 복구
-	스택에서 rax 복구        
-</code></pre>
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nf">rax</span><span class="err">에</span> <span class="mi">10</span> <span class="err">저장</span>
+	<span class="nf">rbx</span><span class="err">에</span> <span class="mi">20</span> <span class="err">저장</span>
+    <span class="nf">rcx</span><span class="err">에</span> <span class="mi">5</span> <span class="err">저장</span>
+    <span class="nf">rax</span> <span class="o">+</span> <span class="nb">rbx</span> <span class="err">결과를</span> <span class="nb">rax</span><span class="err">에</span> <span class="err">저장</span>
+    <span class="nf">rax</span> <span class="o">-</span> <span class="nb">rcx</span> <span class="err">결과를</span> <span class="nb">rax</span><span class="err">에</span> <span class="err">저장</span>
+    <span class="nf">rax</span><span class="err">를</span> <span class="err">스택에</span> <span class="err">저장</span>
+    <span class="nf">rbx</span><span class="err">를</span> <span class="err">스택에</span> <span class="err">저장</span>
+	<span class="err">스택에서</span> <span class="nf">rbx</span> <span class="err">복구</span>
+	<span class="err">스택에서</span> <span class="nf">rax</span> <span class="err">복구</span>        
+</code></pre></div></div>
 
 <blockquote>
   <p>실습 문제1 풀기 전, 스택(Stack) 후입선출</p>
 </blockquote>
 
 <p>기본 코드 골격:</p>
-<pre><code class="language-assembly">default rel
-global main
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<span class="nf">global</span> <span class="nv">main</span>
 
-section .text
-main:
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nl">main:</span>
 
-    ; 여기부터 코드 작성
+    <span class="c1">; 여기부터 코드 작성</span>
 
-.loop:
-    jmp .loop
+<span class="nl">.loop:</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>
 
-</code></pre>
+</code></pre></div></div>
 
 <p>.loop:은 그냥 프로그램 끝에 멈추는 곳.</p>
 
@@ -538,27 +538,27 @@ main:
 <summary>실습 문제 풀이1</summary>
 <div>
 
-    <pre><code class="language-assembly">default rel
-global main
+    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<span class="nf">global</span> <span class="nv">main</span>
 
-section .text
-main:
-    mov rax, 10        ; rax = 10
-    mov rbx, 20        ; rbx = 20
-    mov rcx, 5         ; rcx = 5
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>        <span class="c1">; rax = 10</span>
+    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">20</span>        <span class="c1">; rbx = 20</span>
+    <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">5</span>         <span class="c1">; rcx = 5</span>
 
-    add rax, rbx       ; rax = rax + rbx (10 + 20 = 30)
-    sub rax, rcx       ; rax = rax - rcx (30 - 5 = 25)
+    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>       <span class="c1">; rax = rax + rbx (10 + 20 = 30)</span>
+    <span class="nf">sub</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rcx</span>       <span class="c1">; rax = rax - rcx (30 - 5 = 25)</span>
 
-    push rax           ; 스택에 rax(25) 저장
-    push rbx           ; 스택에 rbx(20) 저장
+    <span class="nf">push</span> <span class="nb">rax</span>           <span class="c1">; 스택에 rax(25) 저장</span>
+    <span class="nf">push</span> <span class="nb">rbx</span>           <span class="c1">; 스택에 rbx(20) 저장</span>
 
-    pop rbx            ; 스택에서 rbx 복구 (20)
-    pop rax            ; 스택에서 rax 복구 (25)
+    <span class="nf">pop</span> <span class="nb">rbx</span>            <span class="c1">; 스택에서 rbx 복구 (20)</span>
+    <span class="nf">pop</span> <span class="nb">rax</span>            <span class="c1">; 스택에서 rax 복구 (25)</span>
 
-.loop:
-    jmp .loop          ; 프로그램 종료 대기
-</code></pre>
+<span class="nl">.loop:</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; 프로그램 종료 대기</span>
+</code></pre></div>    </div>
 
     <p>동작 흐름 다시 정리
 rax = 10</p>
@@ -1142,6 +1142,29 @@ rax = 10</p>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/blog/blog12-toggle-plugin/" rel="permalink">GitHub Blog Toggle Pugin 설정
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #12
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/blog/blog11-search-engine/" rel="permalink">GitHub Blog 검색엔진 설정
 </a>
       
@@ -1196,29 +1219,6 @@ rax = 10</p>
 
 
     <p class="archive__item-excerpt" itemprop="description">GitHub Blog #10
-</p>
-  </article>
-</div>
-
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/blog9-Image-plugin/" rel="permalink">GitHub Blog 이미지 커스텀 플로그인
-</a>
-      
-    </h2>
-    
-
-
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog #9
 </p>
   </article>
 </div>
@@ -1304,7 +1304,32 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
     
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script>
 
     
   <script src="/assets/js/main.min.js"></script>
