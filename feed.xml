@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-22T19:39:54+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 실습 환경 설정</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly 실습 환경 설정" /><published>2025-04-22T00:00:00+09:00</published><updated>2025-04-22T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly #2</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-23T10:07:48+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 실습 환경 설정</title><link href="https://ruyshy.github.io/assembly/assembly2-setting/" rel="alternate" type="text/html" title="Assembly 실습 환경 설정" /><published>2025-04-22T00:00:00+09:00</published><updated>2025-04-22T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly2-setting</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly2-setting/"><![CDATA[<p>assembly #2</p>
 
 <h2 id="1-sasm">1. SASM</h2>
 
@@ -690,13 +690,91 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p>cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)</p>
 
-<p>예시:</p>
+<h3 id="2-8-기본-실습-문제1">2-8. 기본 실습 문제1</h3>
+<pre><code class="language-assembly">    rax에 10 저장
+	rbx에 20 저장
+    rcx에 5 저장
+    rax + rbx 결과를 rax에 저장
+    rax - rcx 결과를 rax에 저장
+    rax를 스택에 저장
+    rbx를 스택에 저장
+	스택에서 rbx 복구
+	스택에서 rax 복구        
+</code></pre>
 
-<p><code class="language-plaintext highlighter-rouge">rax == 5</code> 일 때 <code class="language-plaintext highlighter-rouge">ZF = 1</code></p>
+<blockquote>
+  <p>실습 문제1 풀기 전, 스택(Stack) 후입선출</p>
+</blockquote>
 
-<p><code class="language-plaintext highlighter-rouge">rax &gt; 5 or rax &lt; 5</code> 일 때 <code class="language-plaintext highlighter-rouge">ZF = 0</code></p>
+<p>기본 코드 골격:</p>
+<pre><code class="language-assembly">default rel
+global main
 
-<h3 id="2-8-요약">2-8. 요약</h3>
+section .text
+main:
+
+    ; 여기부터 코드 작성
+
+.loop:
+    jmp .loop
+
+</code></pre>
+
+<p>.loop:은 그냥 프로그램 끝에 멈추는 곳.</p>
+
+<p><br /></p>
+<details>
+<summary>실습 문제 풀이1</summary>
+<div>
+
+    <pre><code class="language-assembly">default rel
+global main
+
+section .text
+main:
+    mov rax, 10        ; rax = 10
+    mov rbx, 20        ; rbx = 20
+    mov rcx, 5         ; rcx = 5
+
+    add rax, rbx       ; rax = rax + rbx (10 + 20 = 30)
+    sub rax, rcx       ; rax = rax - rcx (30 - 5 = 25)
+
+    push rax           ; 스택에 rax(25) 저장
+    push rbx           ; 스택에 rbx(20) 저장
+
+    pop rbx            ; 스택에서 rbx 복구 (20)
+    pop rax            ; 스택에서 rax 복구 (25)
+
+.loop:
+    jmp .loop          ; 프로그램 종료 대기
+</code></pre>
+
+    <p>동작 흐름 다시 정리
+rax = 10</p>
+
+    <p>rbx = 20</p>
+
+    <p>rcx = 5</p>
+
+    <p>add rax, rbx → rax = 30</p>
+
+    <p>sub rax, rcx → rax = 25</p>
+
+    <p>push rax → (25 스택 저장)</p>
+
+    <p>push rbx → (20 스택 저장)</p>
+
+    <p>pop rbx → (20 복구)</p>
+
+    <p>pop rax → (25 복구)</p>
+
+    <p>스택 동작 순서(후입선출 LIFO 구조)</p>
+
+  </div>
+</details>
+<p><br /></p>
+
+<h3 id="2-9-요약">2-9. 요약</h3>
 
 <ul>
   <li>mov로 값 복사</li>
@@ -706,7 +784,7 @@ pop하면 rsp 다시 올라간다.</p>
   <li>cmp + je/jne/jmp로 조건 분기</li>
 </ul>
 
-<h2 id="3-기본-실습-문제">3. 기본 실습 문제</h2>
+<h2 id="3-기본-실습-문제2">3. 기본 실습 문제2</h2>
 
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">; 1. rax에 10 저장</span>
 <span class="c1">; 2. rbx에 20 저장</span>
