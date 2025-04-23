@@ -109,7 +109,7 @@ end_label:
 cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)
 
 ### 2-8. 기본 실습 문제1
-```assembly
+```nasm
     rax에 10 저장
 	rbx에 20 저장
     rcx에 5 저장
@@ -124,7 +124,7 @@ cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF
 > 실습 문제1 풀기 전, 스택(Stack) 후입선출
 
 기본 코드 골격:
-```assembly
+```nasm
 default rel
 global main
 
@@ -145,7 +145,7 @@ main:
 <summary>실습 문제 풀이1</summary>
 <div markdown="1">
 
-```assembly
+```nasm
 default rel
 global main
 
