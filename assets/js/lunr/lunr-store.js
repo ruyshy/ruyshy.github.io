@@ -106,4 +106,10 @@ var store = [{
         "tags": ["GitHub Blog","toggle 플러그인","Liquid 태그","접기 기능","Jekyll UI 구성"],
         "url": "/blog/blog12-toggle-plugin/",
         "teaser": null
+      },{
+        "title": "test",
+        "excerpt":"test quiz              mov rax, 20 mov rbx, 10 add rax, rbx                                                         20                                                          30                                                          40                                                          50                              제출                       mov rax, 20 → rax에 20이 들어간다   mov rbx, 10 → rbx에 10이 들어간다   add rax, rbx → rax = 20 + 10 = 30          ","categories": ["blog"],
+        "tags": ["test"],
+        "url": "/blog/blog13-test/",
+        "teaser": null
       }]
