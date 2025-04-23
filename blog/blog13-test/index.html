@@ -349,8 +349,8 @@
         
         <h2 id="test-quiz">test quiz</h2>
 
-<div class="quiz-box" id="quiz-box-528361">
-  <div class="quiz-message" id="quiz-message-528361" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-736438">
+  <div class="quiz-message" id="quiz-message-736438" style="display: none;"></div>
   <div class="quiz-question">
     <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">20</span>
 <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">10</span>
@@ -358,39 +358,39 @@
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-528361" onsubmit="return false;">
+  <form id="quiz-form-736438" onsubmit="return false;">
     <div class="quiz-choices">
       
           <div class="quiz-choice">
-            <input type="radio" name="quiz-answer-528361" id="quiz-528361-0" value="20" data-correct="false" />
-            <label for="quiz-528361-0">20</label>
+            <input type="radio" name="quiz-answer-736438" id="quiz-736438-0" value="20" data-correct="false" />
+            <label for="quiz-736438-0">20</label>
           </div>
         
 
           <div class="quiz-choice">
-            <input type="radio" name="quiz-answer-528361" id="quiz-528361-1" value="30" data-correct="true" />
-            <label for="quiz-528361-1">30</label>
+            <input type="radio" name="quiz-answer-736438" id="quiz-736438-1" value="30" data-correct="true" />
+            <label for="quiz-736438-1">30</label>
           </div>
         
 
           <div class="quiz-choice">
-            <input type="radio" name="quiz-answer-528361" id="quiz-528361-2" value="40" data-correct="false" />
-            <label for="quiz-528361-2">40</label>
+            <input type="radio" name="quiz-answer-736438" id="quiz-736438-2" value="40" data-correct="false" />
+            <label for="quiz-736438-2">40</label>
           </div>
         
 
           <div class="quiz-choice">
-            <input type="radio" name="quiz-answer-528361" id="quiz-528361-3" value="50" data-correct="false" />
-            <label for="quiz-528361-3">50</label>
+            <input type="radio" name="quiz-answer-736438" id="quiz-736438-3" value="50" data-correct="false" />
+            <label for="quiz-736438-3">50</label>
           </div>
         
     </div>
-    <button type="button" onclick="window.checkQuizAnswer_528361()">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer_736438()">제출</button>
   </form>
-  <div id="quiz-result-528361" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-528361" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-528361', this)" data-label="해설 보기"></div>
-  <div id="toggle-528361" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-736438" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-736438" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-736438', this)" data-label="해설 보기"></div>
+  <div id="toggle-736438" class="toggle-body" style="display: none; max-height: 0;">
     <ul>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 20</code> → rax에 20이 들어간다</li>
   <li><code class="language-plaintext highlighter-rouge">mov rbx, 10</code> → rbx에 10이 들어간다</li>
@@ -401,24 +401,24 @@
 </div>
 </div>
 <script>
-window.checkQuizAnswer_528361 = function () {
-  const form = document.getElementById("quiz-form-528361");
-  const selected = form.querySelector("input[name='quiz-answer-528361']:checked");
-  const result = document.getElementById("quiz-result-528361");
-  const box = document.getElementById("quiz-box-528361");
-  const message = document.getElementById("quiz-message-528361");
-  const explanationToggle = document.getElementById("quiz-explanation-toggle-528361");
+window.checkQuizAnswer_736438 = function () {
+  const form = document.getElementById("quiz-form-736438");
+  const selected = form.querySelector("input[name='quiz-answer-736438']:checked");
+  const result = document.getElementById("quiz-result-736438");
+  const box = document.getElementById("quiz-box-736438");
+  const message = document.getElementById("quiz-message-736438");
+  const explanationToggle = document.getElementById("quiz-explanation-toggle-736438");
 
   message.style.display = 'none';
   message.style.opacity = 1;
   message.innerHTML = '';
 
   if (!selected) {
-    window.showMessage_528361(message, "정답을 선택해주세요!", "info");
+    window.showMessage_736438(message, "정답을 선택해주세요!", "info");
     return;
   }
 
-  const inputs = form.querySelectorAll("input[name='quiz-answer-528361']");
+  const inputs = form.querySelectorAll("input[name='quiz-answer-736438']");
   if (selected.dataset.correct === "true") {
     box.classList.add("quiz-correct");
     result.innerHTML = "✅ <strong>정답입니다!</strong><br><br>";
@@ -434,7 +434,7 @@ window.checkQuizAnswer_528361 = function () {
     retryBtn.innerText = "다시 풀기";
     retryBtn.style.marginTop = "1em";
     retryBtn.onclick = function () {
-      window.retryQuiz("528361");
+      window.retryQuiz("736438");
     };
     result.appendChild(retryBtn);
 
@@ -442,19 +442,19 @@ window.checkQuizAnswer_528361 = function () {
     box.classList.remove("quiz-correct");
     result.innerHTML = '';
     explanationToggle.style.display = "none";
-    window.showMessage_528361(message, "❌ 오답입니다", "error");
+    window.showMessage_736438(message, "❌ 오답입니다", "error");
   }
 };
 
-window.showMessage_528361 = function (el, text, type) {
+window.showMessage_736438 = function (el, text, type) {
   el.className = "quiz-message quiz-message-" + type;
   el.innerHTML = text + '<span class="quiz-message-close" onclick=\"this.parentNode.style.display=\'none\'\">×</span>';
   el.style.display = "block";
-  el.style.opacity = 1;
+  el.style.opacity = 0.5;
 
   setTimeout(() => {
     el.style.opacity = "0.2";
-    setTimeout(() => { el.style.display = "none"; el.style.opacity = 1; }, 1000);
+    setTimeout(() => { el.style.display = "none"; el.style.opacity = 0.5; }, 1000);
   }, 2000);
 };
 
