@@ -124,11 +124,11 @@ module Jekyll
           el.className = "quiz-message quiz-message-" + type;
           el.innerHTML = text + '<span class="quiz-message-close" onclick=\\"this.parentNode.style.display=\\'none\\'\\">×</span>';
           el.style.display = "block";
-          el.style.opacity = 1;
+          el.style.opacity = 0.5;
 
           setTimeout(() => {
             el.style.opacity = "0.2";
-            setTimeout(() => { el.style.display = "none"; el.style.opacity = 1; }, 1000);
+            setTimeout(() => { el.style.display = "none"; el.style.opacity = 0.5; }, 1000);
           }, 2000);
         };
 
