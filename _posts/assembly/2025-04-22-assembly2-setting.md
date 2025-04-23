@@ -1,10 +1,14 @@
 ---
-title: "Assembly 실습 환경 설정"
+title: "Assembly 실습 환경 설정 - SASM 기반 NASM 디버깅 입문"
+description: "Windows 환경에서 NASM 어셈블리어 학습을 위한 SASM 설치부터 디버깅 실습, 레지스터 분석, 변수 선언, 엔디안까지 실습 중심으로 설명합니다."
 date: 2025-04-22
-tags: [nasm, assembly]
+tags: [nasm, assembly, SASM, 어셈블리 실습, Windows Assembly]
 ---
 
-assembly #2
+Windows 환경에서 NASM 어셈블리를 실습하려면 가장 쉬운 도구는 **SASM**입니다.  
+이 글에서는 **SASM 설치 → Hello, world 예제 → 디버깅 방법 → 메모리/레지스터 분석**까지  
+어셈블리 학습의 첫 실습 환경을 완벽하게 세팅하는 방법을 정리합니다.
+
 
 ## 1. SASM
 

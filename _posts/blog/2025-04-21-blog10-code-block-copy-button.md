@@ -1,10 +1,15 @@
 ---
-title: "GitHub Blog 코드블럭 copy 버튼"
+title: "GitHub Blog 코드 복사 버튼 추가 - Jekyll에서 Copy 버튼 구현"
+description: "Jekyll 블로그 코드블럭에 'Copy' 버튼을 추가하고 clipboard.js를 활용하여 복사 기능과 복사 후 메시지를 구현하는 방법을 정리합니다."
 date: 2025-04-21
-tags: [GitHubBlog]
+tags: [GitHub Blog, 코드 복사, clipboard.js, Jekyll Copy 버튼, Code block]
 ---
 
-GitHub Blog #10
+Jekyll 블로그에서 **코드블럭에 복사 버튼을 추가**하고 싶다면,  
+`clipboard.js`를 활용해 `div.highlighter-rouge` 안에 Copy 버튼을 삽입하면 됩니다.  
+이 글에서는 **복사 기능 구현 → 복사 후 텍스트 변경 → 로컬 대체까지**  
+완벽하게 적용하는 법을 단계별로 설명합니다.
+
 
 ## code block copy button 추가
 

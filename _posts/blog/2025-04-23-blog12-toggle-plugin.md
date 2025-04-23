@@ -1,10 +1,14 @@
 ---
-title: "GitHub Blog Toggle Pugin 설정"
+title: "GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기"
+description: "Jekyll 블로그에서 Liquid 플러그인을 활용해 접이식 토글(Toggle) UI를 직접 구현하고, class 옵션과 접힘 효과를 설정하는 방법을 소개합니다."
 date: 2025-04-23
-tags: [GitHubBlog]
+tags: [GitHub Blog, toggle 플러그인, Liquid 태그, 접기 기능, Jekyll UI 구성]
 ---
 
-GitHub Blog #12
+Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 `<details>` 외에도  
+**커스텀 Liquid 플러그인을 통해 더 유연하고 스타일링 가능한 Toggle UI**를 구현할 수 있습니다.  
+이 글에서는 toggle 플러그인을 직접 만들어 접기 기능을 구현하고,  
+내용에 따라 class, 제목, 마크다운을 넣을 수 있도록 확장하는 방법을 소개합니다.
 
 
 ## Markdown 기본 Toggle 사용 방법
@@ -290,11 +294,11 @@ module Jekyll
 - 리스트도 가능
 - 코드도 가능
 
-{% endtoggle %}
-<----------------------------------------------------------------->
-{% toggle 클릭해서 보기2 class="h3" %}
+{% endtoggle %}   
+<----------------------------------------------------------------->   
+{% toggle 클릭해서 보기2 class="h3" %}   
 
-이 안에 접히는 내용이 들어갑니다.
+이 안에 접히는 내용이 들어갑니다.   
 ```markdown
   코드 내용
 ```

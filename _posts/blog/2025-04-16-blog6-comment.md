@@ -1,12 +1,15 @@
 ---
-title: "GitHub Blog 댓글 설정"
+title: "GitHub Blog 댓글 설정 - Utterances를 이용한 Jekyll 댓글 시스템"
+description: "Jekyll 블로그에서 GitHub 기반 댓글 시스템인 Utterances를 설정하고 GitHub Actions 및 config.yml에 적용하는 전체 과정을 설명합니다."
 date: 2025-04-16
-tags: [GitHubBlog]
+tags: [GitHub Blog, 댓글 시스템, Utterances, Jekyll, GitHub Comments]
 ---
 
-GitHub Blog #6
+Jekyll 블로그에 **댓글 기능을 추가**하고 싶다면,  
+GitHub의 이슈 기능을 활용하는 `Utterances`가 가장 간단하면서도 강력한 선택입니다.  
+이 글에서는 minimal-mistakes 테마를 기준으로,  
+**Utterances 댓글 시스템을 설정하고 `_config.yml`과 블로그 포스트에 적용하는 방법**을 설명합니다.
 
-jekyll 테마([minimal-mistakes](https://mmistakes.github.io/minimal-mistakes/)) 기준으로 작성되었습니다
 
 ## 1. GitHub 저장소 설정
 
@@ -22,7 +25,7 @@ Utterances는 댓글을 저장할 **issue 기반 저장소**가 필요합니다.
 
 1. **Install Utterances** 클릭 : [https://github.com/apps/utterances](https://github.com/apps/utterances)
     
-{% include post-image.html name="image1.png" alt="image1" %}
+{% img "utterances-git-hub-install.png", "utterances-git-hub-install" %}
     
     [https://www.notion.so](https://www.notion.so)
     
@@ -100,10 +103,10 @@ defaults:
 
 저는 comments: 부분을 이렇게 설정을 진행했습니다.
 
-{% include post-image.html name="image2.png" alt="image2" %}
+{% img "github-blog-comments.png", "github-blog-comments" %}
 
 위 처럼 블로그에서 test comment를 작성 했을 때, 
 
-{% include post-image.html name="image3.png" alt="image3" %}
+{% img "github-blog-comment-issues.png", "github-blog-comment-issues" %}
 
 해당 저장소 Issues에 생성을 확인할 수 있습니다.

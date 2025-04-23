@@ -1,10 +1,14 @@
 ---
-title: "GitHub Blog 게시글 설정"
+title: "GitHub Blog 이미지 경로 설정 - Jekyll 블로그 이미지 관리법"
+description: "Jekyll 블로그에서 게시글 별로 이미지를 정리하는 방법과 post-image.html 인클루드를 활용한 이미지 경로 자동 설정 방식을 소개합니다."
 date: 2025-04-16
-tags: [GitHubBlog]
+tags: [GitHub Blog, 이미지 경로 설정, post-image, Jekyll 이미지 관리]
 ---
 
-GitHub Blog #4
+Jekyll 기반 GitHub 블로그에서 이미지를 체계적으로 관리하고 싶다면,  
+**게시글 별 이미지 폴더 구조**를 사용하는 것이 좋습니다.   
+이 글에서는 `post-image.html` 인클루드를 만들어,   
+자동으로 포스트 경로에 맞는 이미지 경로를 지정하는 방법을 소개합니다.
 
 ## GitHub Blog Image Path 설정하기
 
@@ -23,10 +27,11 @@ GitHub Blog #4
 
 예시:
 
-1. \_posts\blog\[2025-04-10-blog-start.md](http://2025-04-10-blog-start.md/)라는 포스트가 있습니다.
-2. \assets\images\[2025-04-10-blog-start](http://2025-04-10-blog-start.md/) 폴더를 생성합니다.
-3. 이 폴더에 게시글에 넣을 이미지를 저장합니다.
-4. 예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.
+1. `\_posts\blog\2025-04-10-blog-start.md` 라는 포스트가 있습니다.   
+2. `\assets\images\2025-04-10-blog-start` 폴더를 생성합니다.   
+3. 이 폴더에 게시글에 넣을 이미지를 저장합니다.   
+4. 예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.   
+(현재 blog라는 카테고리를 사용중, 다음 작성글에서 카테고리를 다룰 예정입니다.)   
 
 ```markdown
 {% raw %}{% include post-image.html name="ImageName.png" alt="image" %}{% endraw %}
@@ -34,15 +39,14 @@ GitHub Blog #4
 
 ### Image Path 설정 장점 요약
 
-1. 폴더명만 보면 어떤 글에 쓰였는지 바로 보임.
-2. Markdown에서도 포스트 경로 = 이미지 경로 연상하기 쉬움
-3. 나중에 썸네일 자동 생성이나 포스트 삭제 시 이미지 관리도 편함
+1. 폴더명만 보면 어떤 글에 쓰였는지 바로 보임.   
+2. Markdown에서도 포스트 경로 = 이미지 경로 연상하기 쉬움   
+3. 나중에 썸네일 자동 생성이나 포스트 삭제 시 이미지 관리도 편함   
 
 ### GitHub Blog 시작하기 Post 예시 코드
 
 ```markdown
-{% raw %}
----
+{% raw %}---
 title: "GitHub Blog Start"
 date: 2025-04-10
 tags: [GitHubBlog]
@@ -83,6 +87,10 @@ Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이
 
 무조건 자기 자신의 [githubID.github.io](http://githubID.github.io)
 
-...내용
-{% endraw %}
+...내용{% endraw %}
 ```
+
+### (다음에 설명) 이미지 플러그인 사용
+
+위 코드는 예전 방식의 이미지를 불러오는 방식입니다. 추 후, 설명할 내용이지만
+[깃허브 블로그 이미지 플러그인 사용하기](https://ruyshy.github.io/blog/blog9-Image-plugin/) 해당 게시글에서 `ruby Jekyll Liquid::Tag` 을 사용하는 방식으로 변경했습니다!

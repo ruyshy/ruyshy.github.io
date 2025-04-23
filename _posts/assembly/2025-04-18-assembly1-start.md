@@ -1,12 +1,19 @@
 ---
-title: "Assembly 시작하기"
+title: "Assembly 시작하기 - Windows 64bit NASM 어셈블리 입문 가이드"
+description: "Windows 64bit에서 NASM을 활용한 어셈블리어 학습을 위한 기초 개념, 레지스터 구조, 메모리 구조, 조건 분기, 호출 규약 등을 한 글로 정리한 시작 가이드입니다."
 date: 2025-04-18
-tags: [nasm, assembly]
+tags: [nasm, assembly, Windows Assembly, x64dbg, 어셈블리 시작하기]
 ---
 
-assembly #1
+Windows 64bit 기반 NASM 어셈블리를 처음 공부한다면,  
+이 글에서 **레지스터 구조 → 명령어 구조 → 메모리 → 호출 규약 → 실전 흐름까지**  
+한 번에 정리해드릴게요.  
 
-시작하기 앞 서, 학습할 사이트 목록 입니다.
+x64dbg로 디버깅을 하면서 구조를 시각화해보고,  
+어떻게 동작하는지를 정확히 이해하는 데 큰 도움이 될 겁니다.
+
+
+#### 시작하기 앞 서, 학습할 사이트 목록 입니다.
 
 드림 해커 : https://dreamhack.io/ 
 

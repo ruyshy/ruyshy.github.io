@@ -1,10 +1,15 @@
 ---
-title: "GitHub Blog 이미지 커스텀 플로그인"
+title: "GitHub Blog 이미지 태그 플러그인 만들기 - Jekyll에서 커스텀 Liquid 태그로 이미지 처리 자동화"
+description: "Jekyll 블로그에서 직접 만든 Liquid 플러그인을 통해 게시글 경로 기반으로 이미지를 자동으로 불러오는 {% img %} 커스텀 태그를 구현하는 방법을 소개합니다."
 date: 2025-04-18
-tags: [GitHubBlog]
+tags: [GitHub Blog, Jekyll, 이미지 태그, Liquid 플러그인, 커스텀 태그]
 ---
 
-GitHub Blog #9
+Jekyll 블로그에서 **이미지를 불러오는 태그를 매번 include로 작성하기 번거롭다면**,  
+Liquid 플러그인을 직접 만들어 `post 경로 기반 자동 이미지 경로 지정`이 가능한  
+`{% img %}` 커스텀 태그를 사용하는 것이 훨씬 효율적입니다.  
+이 글에서는 **Jekyll 플러그인 구조부터 img 태그 구현까지** 모든 과정을 예제로 설명합니다.
+
 
 ## 기존 방식 과 태그 플러그인 비교
 

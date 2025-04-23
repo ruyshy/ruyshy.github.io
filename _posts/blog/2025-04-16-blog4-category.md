@@ -1,12 +1,15 @@
 ---
-title: "GitHub Blog 카테고리 설정"
+title: "GitHub Blog 카테고리 설정 - Jekyll 블로그 사이드바 구성 완벽 가이드"
+description: "minimal-mistakes 테마 기반 Jekyll 블로그에서 카테고리를 설정하고 sidebar.html, navigation.yml, _config.yml 파일을 활용해 자동 분류 기능을 구현하는 방법을 설명합니다."
 date: 2025-04-16
-tags: [GitHubBlog]
+tags: [GitHub Blog, Jekyll, 카테고리 설정, 사이드바 구성, navigation.yml, config.yml]
 ---
 
-GitHub Blog #5
+Jekyll 기반 GitHub 블로그를 카테고리별로 나눠서 정리하고 싶다면,  
+`_data/navigation.yml`, `_includes/sidebar.html`, `_config.yml` 설정이 핵심입니다.  
+이 포스트에서는 **minimal-mistakes 테마** 기준으로  
+**카테고리를 생성하고 사이드바에 자동으로 표시하는 설정법**을 순차적으로 설명합니다.
 
-GitHub Blog 시작하기에 이어 다음 편입니다.
 
 이 글은 기본적인 마크다운 문법을 알고 있다고 가정하고 진행합니다.
 

@@ -357,3 +357,12 @@ defaults:
       author_profile: true
       sidebar:
         nav: "main"
+        
+  - scope:
+      path: "_posts/etc"
+      type: posts
+    values:
+      categories: [etc]
+      author_profile: true
+      sidebar:
+        nav: "main"

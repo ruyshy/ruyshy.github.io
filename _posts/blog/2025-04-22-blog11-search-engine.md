@@ -1,10 +1,14 @@
 ---
-title: "GitHub Blog 검색엔진 설정"
+title: "GitHub Blog 검색엔진 등록 & SEO 설정 - Google Search Console 연동"
+description: "Jekyll 기반 GitHub 블로그에서 Google Search Console 등록부터 sitemap.xml, robots.txt, jekyll-seo-tag 플러그인까지 검색 노출을 위한 설정 방법을 정리합니다."
 date: 2025-04-22
-tags: [GitHubBlog]
+tags: [GitHub Blog, SEO 설정, Google Search Console, sitemap.xml, jekyll-seo-tag]
 ---
 
-GitHub Blog #11
+GitHub Pages에서 만든 Jekyll 블로그를 **검색엔진에 노출시키기 위해서는**  
+Google Search Console 등록과 sitemap, robots.txt, 그리고 SEO 메타태그 설정이 필요합니다.  
+이 포스트는 GitHub 블로그의 SEO 설정을 처음부터 끝까지 따라 할 수 있도록 구성된 실전 가이드입니다.
+
 
 ## 검색 엔진 개요
 
@@ -18,19 +22,19 @@ GitHub Blog #11
 
 **Google Search Console :** [https://search.google.com/search-console/welcome?utm_source=about-page](https://search.google.com/search-console/welcome?utm_source=about-page)
 
-{% img "image1.png" %}
+{% img "image1.png", "Google Search Console 시작 화면" %}
 
 접속 후, URL 접두어에 자기 블로그 주소를 추가 후, 계숙을 눌러줍니다.
 
-{% img "image2.png" %}
+{% img "image2.png", "블로그 도메인 등록 단계" %}
 
 계숙 버튼을 눌러 진행을 하면 다음 화면이 나오는데, 파일을 다운로드 받고 다운 받은 파일을 깃허브 저장소 최상단 폴더에 넣어줍니다.
 
-{% img "image3.png" %}
+{% img "image3.png", "인증 HTML 파일 다운로드 안내" %}
 
 저장소에 push를 진행하고, 배포가 완료된 후, 확인 버튼을 눌러 진행하면 다음과 같이 창이 바뀌는데, 속성으로 이동을 눌러 설정을 해주도록 합시다.
 
-{% img "image4.png" %}
+{% img "image4.png", "속성 확인 후 설정 화면" %}
 
 Sitemap을 눌러 해당 설정 화면이 나오면 sitemap.xml을 추가해주는 작업을 진행해야 합니다. 저는 예전에 설정해둔 sitemap이 제출이 되어있긴하네요. 일단 진행해봅시다.
 
@@ -78,7 +82,7 @@ layout: null
 
 (sitemap.xml)
 
-{% img "image5.png" %}
+{% img "image5.png", "sitemap.xml 제출 화면" %}
 
 일단 성공적으로 제출이 진행 되었네요.
 
@@ -92,13 +96,65 @@ Sitemap: https://ruyshy.github.io/sitemap.xml
 
 robots.txt 생성 후, 깃허브 저장소에 push, 다시 사이트 맵을 제출해줍니다.
 
-{% img "image6.png" %}
+{% img "image6.png", "검색엔진 등록 확인 화면" %}
 
 구글에 검색해보니 잘 보이는 듯 합니다.
 
+## jekyll-seo-tag 사용
+
+### _config.yml plugin: 내용 추가
+
+`  - jekyll-seo-tag` 추가하기
+
+```yaml
+# Plugins (previously gems:)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+# mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+```
+
+### Gemfile 내용 추가
+`gem "jekyll-seo-tag"` 추가
+
+```
+# Gemfile
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3.2"
+gem "minimal-mistakes-jekyll"
+gem "jekyll-paginate"
+gem "jekyll-sitemap"
+gem "jekyll-seo-tag"
+gem "jekyll-feed"
+gem "jekyll-include-cache"
+gem "jekyll-gist"
+gem "tzinfo"
+gem "tzinfo-data"
+```
+
+### 추가 진행 후
+cmd 에서 해당 명령어 입력
+```bash
+bundle install
+```
+
+
 ## 추가 소유권 인증 방법2
 
-{% img "image7.png" %}
+{% img "image7.png", "HTML 메타태그 소유권 인증 안내" %}
 
 설정 → 소유권 인증 으로 들어가보면 HTML 태그가 있습니다.
 
@@ -114,7 +170,7 @@ google_site_verification : 0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU
 
 위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 push 진행 → 확인을 눌러 진행.
 
-{% img "image8.png" %}
+{% img "image8.png", "소유권 인증 완료 알림" %}
 
 인증이 완료되었네요! 굿굿
 

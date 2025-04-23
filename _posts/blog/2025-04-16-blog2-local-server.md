@@ -1,10 +1,14 @@
 ---
-title: "GitHub Blog 로컬 서버 설정"
+title: "GitHub Blog 로컬 서버 설정 - Jekyll 개발 환경 구축"
+description: "GitHub 블로그를 로컬에서 개발하기 위해 Jekyll과 Ruby, Bundler를 설치하고 로컬 서버를 실행하는 방법을 설명합니다."
 date: 2025-04-16
-tags: [GitHubBlog]
+tags: [GitHub Blog, Jekyll, 로컬 서버, Ruby, bundle exec jekyll serve]
 ---
 
-GitHub Blog #2
+GitHub 블로그를 로컬에서 수정하고 테스트하려면,  
+**Jekyll 로컬 서버 설정**을 통해 실시간으로 확인하는 환경이 필요합니다.   
+이 글에서는 Ruby, Jekyll, Bundler 설치부터 `bundle exec jekyll serve` 명령어로 로컬 서버를 띄우는 전체 과정을 설명합니다.
+
 
 ## 필요한 준비물
 
@@ -35,9 +39,9 @@ Ruby를 설치해줍니다. 저의 경우 ruby3.3.8 의 버전을 설치하여 �
 5. `bundle exec jekyll serve` 을 통해 Local Server를 열어줍니다.
 6. 정상적으로 작동했으면 아래와 같은 그림의 텍스트가 cmd에서 실행됩니다.
     
-{% include post-image.html name="image.png" alt="image" %}
+{% img "github-blog-local-server-bash-image.png", "github-blog-local-server-bash-image" %}
     
-7. Server address : [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 에 접속하여 실시간으로 수정을 진행하며 확인할 수 있습니다.
+1. Server address : [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 에 접속하여 실시간으로 수정을 진행하며 확인할 수 있습니다.
 
 서버를 켜둔 상태에서 서버를 종료하려면 ctrl-c를 눌러 y를 입력해 서버를 종료합니다.
 

@@ -1,10 +1,18 @@
 ---
-title: "Assembly 기본 명령어부터 익히기-1"
+title: "Assembly 기본 명령어 - Windows NASM 실습 가이드"
+description: "Windows 64bit 기반 NASM 어셈블리에서 자주 사용하는 기본 명령어 mov, add, sub, cmp, jmp, push, pop, call, ret, 조건 분기(jg, je, jne, jl) 사용법과 실습 예제를 설명합니다."
 date: 2025-04-22
-tags: [nasm, assembly]
+tags: [nasm, assembly, 어셈블리 명령어, 조건 분기, Windows Assembly]
 ---
 
-assembly #3
+NASM 기반 어셈블리를 처음 접하는 사용자라면,  
+**가장 먼저 익혀야 할 것은 기본 명령어의 역할과 사용법**입니다.  
+이 글에서는 `mov`, `add`, `sub`, `cmp`, `jmp`, `push`, `pop`, `call`, `ret`  
+같은 필수 명령어들을 **Windows 64bit 기준 실습 코드**와 함께 정리합니다.
+
+또한, `cmp` 명령어와 플래그 레지스터(Zero Flag, Sign Flag 등)의 작동 원리를  
+**조건 분기 명령어 (`je`, `jne`, `jg`, `jl`)**와 함께 다루며 실습 기반으로 설명합니다.
+
 
 ## 1. 기본 명령어 리스트 (Windows 64bit 기준)
 

@@ -1,10 +1,15 @@
 ---
-title: "GitHub Blog 빌드&릴리즈 설정"
+title: "GitHub Blog 빌드 & 릴리즈 자동화 - GitHub Actions로 Jekyll 배포하기"
+description: "GitHub Actions를 활용하여 Jekyll 기반 GitHub 블로그를 자동으로 빌드하고 gh-pages 브랜치로 배포하는 방법을 설명합니다."
 date: 2025-04-16
-tags: [GitHubBlog]
+tags: [GitHub Blog, Jekyll, GitHub Actions, 블로그 자동 배포, CI/CD]
 ---
 
-GitHub Blog #3
+GitHub 블로그를 운영하면서 **자동 배포**를 설정하고 싶다면,   
+`GitHub Actions`를 사용한 CI/CD 환경이 필요합니다.   
+이 글에서는 Jekyll로 작성한 블로그를 GitHub 서버에서 자동으로 빌드하고  
+`gh-pages` 브랜치로 배포하는 워크플로우를 설정하는 방법을 정리합니다.
+
 
 ## GitHub에 Action기능 알아보기
 
@@ -24,11 +29,11 @@ GitHub Actions는 **CI/CD(지속적 통합/배포)**를 위한 자동화된 작�
 
 ## GitHub Workflow 생성 방법
 
-{% include post-image.html name="image1.png" alt="image1" %}
+{% img "github-blog-actions-click.png", "github-blog-actions-click" %}
 
 Action을 생성할 저장소에 들어가 Action을 눌러 Action페이지로 이동합니다.
 
-{% include post-image.html name="image2.png" alt="image2" %}
+{% img "github-blog-new-workflow.png", "github-blog-new-workflow" %}
 
 New workflow을 눌러 .yml을 작성해줍니다.
 
@@ -90,9 +95,14 @@ jobs:
 
 ## GitHub 설정
 
-{% img "image3.png" %}
+{% img "github-blog-repo-build-setting.png", "github-blog-repo-build-setting" %}
 
-Branch 를 gh-pages 로 설정해줘야 합니다!!!
+> Build and deployment
+> 
+> Source 설정을 Deploy from a branch 으로 변경
+> 
+> Branch 설정을 gh-pages 으로 변경
+
 
 ## 사용할 수 있는 곳
 
@@ -105,13 +115,12 @@ Branch 를 gh-pages 로 설정해줘야 합니다!!!
 ## 위 코드 주의점 및 확인해야 할 부분
 
 1. 워크플로우 파일 위치 확인
-    1. 워크플로우 파일이 반드시 **`.github/workflows/`** 폴더 안에 있어야 함.
+    1. `deploy.yml` 으로 설정했다면, 워크플로우 파일이 반드시 **`.github/workflows/`** 폴더 안에 있어야 함.
     
     ```markdown
     .github/
       workflows/
-        deploy.yml ← 여기에 있어야 작동함!
-    
+        deploy.yml ← 여기에 있어야 작동함!  
     ```
     
 2. `ph-pages` 브랜치로 **푸시가 실제로 있었는지**
@@ -144,4 +153,5 @@ on:
   workflow_dispatch: # 수동 실행 가능
 
 ```
-GitHub UI 상에서 "Run workflow" 버튼이 생성됩니다.
+
+`workflow_dispatch:`가 있을 때, GitHub UI 상에서 "Run workflow" 버튼이 생성됩니다.
