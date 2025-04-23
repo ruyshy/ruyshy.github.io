@@ -141,9 +141,7 @@ main:
 .loop:은 그냥 프로그램 끝에 멈추는 곳.
 
 <br/>
-<details>
-<summary>실습 문제 풀이1</summary>
-<div markdown="1">
+{% toggle 실습 문제 풀이1 %}
 
 ```nasm
 default rel
@@ -189,8 +187,7 @@ pop rax → (25 복구)
 
 스택 동작 순서(후입선출 LIFO 구조)
 
-</div>
-</details>
+{% endtoggle %}
 <br/>
 
 ### 2-9. 요약
@@ -286,9 +283,8 @@ pop rax → (25 복구)
 
 진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.
 
-<details>
-<summary>한 줄씩 풀이 보기</summary>
-<div markdown="1">
+
+{% toggle 한 줄씩 풀이 보기 %}
 
 1. `mov rax, 10`   ;mov 명렁어로 rax 에 10을 저장
 2. `mov rbx, 20`   ;mov 명령어로 rbx 에 20을 저장
@@ -303,12 +299,9 @@ pop rax → (25 복구)
 11. `.end:`  ; `je .end` 에 선언한 곳
 12. `jmp .end`  ;정상 종료 무한 루프 종료
 
-</div>
-</details>
+{% endtoggle %}
 
-<details>
-<summary>최종 답안 보기</summary>
-<div markdown="1">
+{% toggle 최종 답안 보기 %}
 
 ```nasm
 default rel
@@ -332,8 +325,7 @@ main:
 
 ```
 
-</div>
-</details>
+{% endtoggle %}
 
 ### 3-2. 체크포인트
 
@@ -499,9 +491,8 @@ equal:
     jmp .loop
 ```
 
-<details>
-<summary>미션 풀이:</summary>
-<div markdown="1">
+
+{% toggle 미션 풀이: %}
 
 ```nasm
 default rel
@@ -538,6 +529,5 @@ equal:
 - 프로그램은 `greater:`로 점프
 - 거기서 `.loop`로 넘어가서 무한 대기
 
-</div>
-</details>
+{% endtoggle %}
 <br/>

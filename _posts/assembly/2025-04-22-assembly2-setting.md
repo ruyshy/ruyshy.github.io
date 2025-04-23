@@ -153,9 +153,8 @@ main:
 
 ### 2-4. SASM 디버깅 연습 미션&풀이
 
-<details>
-<summary>미션 1.</summary>
-<div markdown="1">
+
+{% toggle 미션 1. %}
 
 `msg` 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.
     
@@ -168,13 +167,10 @@ main:
     
 - 'H', 'e', 'l', 'l', 'o', ... 문자들이 차례로 들어가 있나?
 
-</div>
-</details>
+{% endtoggle %}
 <br/>
-   
-<details>
-<summary>미션 1. 풀이</summary>
-<div markdown="1">
+
+{% toggle 미션 1. 풀이 %}
 
 1. F5(Debug)를 눌러 디버깅 진행
    
@@ -191,16 +187,13 @@ main:
 5. 마지막에 0(0x00)을 넣어준 이유는 문자열의 끝을 알기 위해서 넣어준 것이다!
    
 6. 즉, `msg db 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21, 0x00` 이렇게 선언한 것과 `msg db 'Hello, world!', 0` 이렇게 선언한 것은 똑같다!
-   
 
-</div>
-</details>
+{% endtoggle %}
 <br/>
    
-<details>
-<summary>미션 2.</summary>
-<div markdown="1">
-   
+
+{% toggle 미션 2. %}
+
 `xor rax, rax` 명령어 수행 전후 `RAX` 값 비교하기
     
 **목표**:
@@ -211,16 +204,12 @@ main:
 **체크 포인트**:
     
 - `RAX` 값이 0으로 깔끔하게 초기화됐나?
-   
 
-</div>
-</details>    
+{% endtoggle %} 
 <br/>
-   
-<details>
-<summary>미션 2. 풀이</summary>
-<div markdown="1">
-   
+
+{% toggle 미션 2. 풀이 %}
+
 - **F5 (Debug)** 눌러 디버깅 모드 진입
 - **F10 (Step Over)** 여러 번 눌러서 `xor rax, rax` **직전**까지 이동
 - `xor rax, rax` 줄에서 **브레이크포인트 (F8)** 설정
@@ -247,10 +236,8 @@ main:
     - 그래서 `xor rax, rax`는 매우 빠르고 최적화된 **레지스터 클리어 방법**이다.
    
         - `mov rax, 0` 보다 사이즈가 작고 CPU에 부담도 덜 준다.
-   
 
-</div>
-</details>
+{% endtoggle %} 
 <br/>   
 
 ## 3. Assembly 변수 선언 방법
