@@ -26,6 +26,7 @@ GitHub Blog #12
 </div>
 </details>
 ````
+<br/>
 
 ### 기본 토글:
 
@@ -44,6 +45,7 @@ GitHub Blog #12
 
 </div>
 </details>
+<br/>
 
 ## \_plugins\toggle_tag.rb 추가
 
@@ -84,6 +86,7 @@ module Jekyll
   
   Liquid::Template.register_tag('toggle', Jekyll::ToggleText)
 ```
+<br/>
 
 ## \_includes\toggle-script.html 추가
 
@@ -115,6 +118,7 @@ module Jekyll
     }    
 </script>
 ```
+<br/>
 
 ## \_layouts\default.html 수정
 
@@ -160,6 +164,7 @@ module Jekyll
   </body>
 </html>{% endraw %}
 ```
+<br/>
 
 ## \_sass\minimal-mistakes\_custom.scss 추가
 
@@ -198,6 +203,7 @@ module Jekyll
 .toggle-label.h3 { @extend h3; }
 .toggle-label.h4 { @extend h4; }
 ```
+<br/>
 
 ## \_sass\minimal-mistakes.scss 수정
 
@@ -245,6 +251,7 @@ module Jekyll
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
 ```
+<br/>
 
 ### toggle tag 사용법
 
