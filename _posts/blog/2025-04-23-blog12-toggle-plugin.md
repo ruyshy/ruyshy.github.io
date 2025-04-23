@@ -122,7 +122,7 @@ module Jekyll
 
 ## \_layouts\default.html 수정
 
-`{% include toggle-script.html %}`  해당 코드 추가해줘야 함.
+`{% raw %}{% include toggle-script.html %}{% endraw %}`  해당 코드 추가해줘야 함.
 
 ```html
 ---
