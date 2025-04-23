@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-23T19:04:23+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기</title><link href="https://ruyshy.github.io/blog/blog12-toggle-plugin/" rel="alternate" type="text/html" title="GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기" /><published>2025-04-23T00:00:00+09:00</published><updated>2025-04-23T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog12-toggle-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog12-toggle-plugin/"><![CDATA[<p>Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 <code class="language-plaintext highlighter-rouge">&lt;details&gt;</code> 외에도<br />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-23T19:22:47+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기</title><link href="https://ruyshy.github.io/blog/blog12-toggle-plugin/" rel="alternate" type="text/html" title="GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기" /><published>2025-04-23T00:00:00+09:00</published><updated>2025-04-23T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog12-toggle-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog12-toggle-plugin/"><![CDATA[<p>Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 <code class="language-plaintext highlighter-rouge">&lt;details&gt;</code> 외에도<br />
 <strong>커스텀 Liquid 플러그인을 통해 더 유연하고 스타일링 가능한 Toggle UI</strong>를 구현할 수 있습니다.<br />
 이 글에서는 toggle 플러그인을 직접 만들어 접기 기능을 구현하고,<br />
 내용에 따라 class, 제목, 마크다운을 넣을 수 있도록 확장하는 방법을 소개합니다.</p>
@@ -272,9 +272,9 @@
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-d2cuh9', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-i0ht49', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-d2cuh9" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-i0ht49" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -290,9 +290,9 @@
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-aw6m3x', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-f8gy1k', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-aw6m3x" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-f8gy1k" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -306,8 +306,8 @@
   </div>
 </div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="toggle 플러그인" /><category term="Liquid 태그" /><category term="접기 기능" /><category term="Jekyll UI 구성" /><summary type="html"><![CDATA[Jekyll 블로그에서 Liquid 플러그인을 활용해 접이식 토글(Toggle) UI를 직접 구현하고, class 옵션과 접힘 효과를 설정하는 방법을 소개합니다.]]></summary></entry><entry><title type="html">test</title><link href="https://ruyshy.github.io/blog/blog13-test/" rel="alternate" type="text/html" title="test" /><published>2025-04-23T00:00:00+09:00</published><updated>2025-04-23T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog13-test</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog13-test/"><![CDATA[<h2 id="test-quiz">test quiz</h2>
 
-<div class="quiz-box" id="quiz-box-794288">
-  <div class="quiz-message" id="quiz-message-794288" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-528361">
+  <div class="quiz-message" id="quiz-message-528361" style="display: none;"></div>
   <div class="quiz-question">
     <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">20</span>
 <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">10</span>
@@ -315,39 +315,39 @@
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-794288" onsubmit="return false;">
+  <form id="quiz-form-528361" onsubmit="return false;">
     <div class="quiz-choices">
       
           <div class="quiz-choice">
-            <input type="radio" name="quiz-answer-794288" id="quiz-794288-0" value="20" data-correct="false" />
-            <label for="quiz-794288-0">20</label>
+            <input type="radio" name="quiz-answer-528361" id="quiz-528361-0" value="20" data-correct="false" />
+            <label for="quiz-528361-0">20</label>
           </div>
         
 
           <div class="quiz-choice">
-            <input type="radio" name="quiz-answer-794288" id="quiz-794288-1" value="30" data-correct="true" />
-            <label for="quiz-794288-1">30</label>
+            <input type="radio" name="quiz-answer-528361" id="quiz-528361-1" value="30" data-correct="true" />
+            <label for="quiz-528361-1">30</label>
           </div>
         
 
           <div class="quiz-choice">
-            <input type="radio" name="quiz-answer-794288" id="quiz-794288-2" value="40" data-correct="false" />
-            <label for="quiz-794288-2">40</label>
+            <input type="radio" name="quiz-answer-528361" id="quiz-528361-2" value="40" data-correct="false" />
+            <label for="quiz-528361-2">40</label>
           </div>
         
 
           <div class="quiz-choice">
-            <input type="radio" name="quiz-answer-794288" id="quiz-794288-3" value="50" data-correct="false" />
-            <label for="quiz-794288-3">50</label>
+            <input type="radio" name="quiz-answer-528361" id="quiz-528361-3" value="50" data-correct="false" />
+            <label for="quiz-528361-3">50</label>
           </div>
         
     </div>
-    <button type="button" onclick="window.checkQuizAnswer_794288()">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer_528361()">제출</button>
   </form>
-  <div id="quiz-result-794288" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-794288" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-794288', this)" data-label="해설 보기"></div>
-  <div id="toggle-794288" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-528361" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-528361" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-528361', this)" data-label="해설 보기"></div>
+  <div id="toggle-528361" class="toggle-body" style="display: none; max-height: 0;">
     <ul>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 20</code> → rax에 20이 들어간다</li>
   <li><code class="language-plaintext highlighter-rouge">mov rbx, 10</code> → rbx에 10이 들어간다</li>
@@ -358,24 +358,24 @@
 </div>
 </div>
 <script>
-window.checkQuizAnswer_794288 = function () {
-  const form = document.getElementById("quiz-form-794288");
-  const selected = form.querySelector("input[name='quiz-answer-794288']:checked");
-  const result = document.getElementById("quiz-result-794288");
-  const box = document.getElementById("quiz-box-794288");
-  const message = document.getElementById("quiz-message-794288");
-  const explanationToggle = document.getElementById("quiz-explanation-toggle-794288");
+window.checkQuizAnswer_528361 = function () {
+  const form = document.getElementById("quiz-form-528361");
+  const selected = form.querySelector("input[name='quiz-answer-528361']:checked");
+  const result = document.getElementById("quiz-result-528361");
+  const box = document.getElementById("quiz-box-528361");
+  const message = document.getElementById("quiz-message-528361");
+  const explanationToggle = document.getElementById("quiz-explanation-toggle-528361");
 
   message.style.display = 'none';
   message.style.opacity = 1;
   message.innerHTML = '';
 
   if (!selected) {
-    window.showMessage_794288(message, "정답을 선택해주세요!", "info");
+    window.showMessage_528361(message, "정답을 선택해주세요!", "info");
     return;
   }
 
-  const inputs = form.querySelectorAll("input[name='quiz-answer-794288']");
+  const inputs = form.querySelectorAll("input[name='quiz-answer-528361']");
   if (selected.dataset.correct === "true") {
     box.classList.add("quiz-correct");
     result.innerHTML = "✅ <strong>정답입니다!</strong><br><br>";
@@ -391,7 +391,7 @@ window.checkQuizAnswer_794288 = function () {
     retryBtn.innerText = "다시 풀기";
     retryBtn.style.marginTop = "1em";
     retryBtn.onclick = function () {
-      window.retryQuiz("794288");
+      window.retryQuiz("528361");
     };
     result.appendChild(retryBtn);
 
@@ -399,11 +399,11 @@ window.checkQuizAnswer_794288 = function () {
     box.classList.remove("quiz-correct");
     result.innerHTML = '';
     explanationToggle.style.display = "none";
-    window.showMessage_794288(message, "❌ 오답입니다", "error");
+    window.showMessage_528361(message, "❌ 오답입니다", "error");
   }
 };
 
-window.showMessage_794288 = function (el, text, type) {
+window.showMessage_528361 = function (el, text, type) {
   el.className = "quiz-message quiz-message-" + type;
   el.innerHTML = text + '<span class="quiz-message-close" onclick=\"this.parentNode.style.display=\'none\'\">×</span>';
   el.style.display = "block";
@@ -652,9 +652,9 @@ window.retryQuiz = function (id) {
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-6d669o', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-vmy8ux', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-6d669o" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-vmy8ux" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -678,9 +678,9 @@ window.retryQuiz = function (id) {
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-6zhm62', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-rdm16d', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-6zhm62" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-rdm16d" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>
@@ -714,9 +714,9 @@ window.retryQuiz = function (id) {
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-oi5x1c', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-duxg0z', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-oi5x1c" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-duxg0z" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -740,9 +740,9 @@ window.retryQuiz = function (id) {
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-2qdvjz', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-z0k2ke', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-2qdvjz" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-z0k2ke" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
@@ -1184,9 +1184,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-y7q4jl', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-irh1ay', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-y7q4jl" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-irh1ay" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -1370,9 +1370,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-c46cj1', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-rxm265', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-c46cj1" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-rxm265" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
@@ -1394,9 +1394,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-vwgmhi', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-jjynj4', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-vwgmhi" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-jjynj4" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -1653,9 +1653,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-60zd0a', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-4m0gzh', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-60zd0a" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-4m0gzh" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
