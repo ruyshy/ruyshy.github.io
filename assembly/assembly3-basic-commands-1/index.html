@@ -534,11 +534,12 @@ pop하면 rsp 다시 올라간다.</p>
 <p>.loop:은 그냥 프로그램 끝에 멈추는 곳.</p>
 
 <p><br /></p>
-<details>
-<summary>실습 문제 풀이1</summary>
-<div>
-
-    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<div class="toggle">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-4bcgho', this)" data-label="실습 문제 풀이1">
+  </div>
+  <div id="toggle-4bcgho" class="toggle-body" style="display: none; max-height: 0;">
+    
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
 
 <span class="nf">section</span> <span class="nv">.text</span>
@@ -558,31 +559,33 @@ pop하면 rsp 다시 올라간다.</p>
 
 <span class="nl">.loop:</span>
     <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; 프로그램 종료 대기</span>
-</code></pre></div>    </div>
+</code></pre></div></div>
 
-    <p>동작 흐름 다시 정리
+<p>동작 흐름 다시 정리
 rax = 10</p>
 
-    <p>rbx = 20</p>
+<p>rbx = 20</p>
 
-    <p>rcx = 5</p>
+<p>rcx = 5</p>
 
-    <p>add rax, rbx → rax = 30</p>
+<p>add rax, rbx → rax = 30</p>
 
-    <p>sub rax, rcx → rax = 25</p>
+<p>sub rax, rcx → rax = 25</p>
 
-    <p>push rax → (25 스택 저장)</p>
+<p>push rax → (25 스택 저장)</p>
 
-    <p>push rbx → (20 스택 저장)</p>
+<p>push rbx → (20 스택 저장)</p>
 
-    <p>pop rbx → (20 복구)</p>
+<p>pop rbx → (20 복구)</p>
 
-    <p>pop rax → (25 복구)</p>
+<p>pop rax → (25 복구)</p>
 
-    <p>스택 동작 순서(후입선출 LIFO 구조)</p>
+<p>스택 동작 순서(후입선출 LIFO 구조)</p>
+
 
   </div>
-</details>
+</div>
+
 <p><br /></p>
 
 <h3 id="2-9-요약">2-9. 요약</h3>
@@ -717,33 +720,36 @@ rax = 10</p>
 
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
-<details>
-<summary>한 줄씩 풀이 보기</summary>
-<div>
+<div class="toggle">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-ufqmbj', this)" data-label="한 줄씩 풀이 보기">
+  </div>
+  <div id="toggle-ufqmbj" class="toggle-body" style="display: none; max-height: 0;">
+    
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">mov rbx, 20</code>   ;mov 명령어로 rbx 에 20을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">add rax, rbx</code>   ;add 명령어로 rax 와 rbx 덧셈 연산 후, rax에 값을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">push rax</code>   ; rax 값을 push = stack에 rax 값을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">mov rax 0</code>   ; rax 값에 0을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">pop rax</code>   ; stack 에서 이전에 저장한 rax(30)을 rax로 복구 = stack에서 rax값을 넣기</li>
+  <li><code class="language-plaintext highlighter-rouge">cmp rax, 30</code>   ;rax값 과 30을 비교</li>
+  <li><code class="language-plaintext highlighter-rouge">je .end</code>   ;<code class="language-plaintext highlighter-rouge">cmp</code> ➔ Zero Flag(ZF) 세팅, <code class="language-plaintext highlighter-rouge">je</code> ➔ ZF가 1이면 점프 (== 같을 때 점프)</li>
+  <li><code class="language-plaintext highlighter-rouge">.loop:</code>   ;루프문</li>
+  <li><code class="language-plaintext highlighter-rouge">jmp .loop</code>   ;(틀릴 경우 무한 루프)</li>
+  <li><code class="language-plaintext highlighter-rouge">.end:</code>  ; <code class="language-plaintext highlighter-rouge">je .end</code> 에 선언한 곳</li>
+  <li><code class="language-plaintext highlighter-rouge">jmp .end</code>  ;정상 종료 무한 루프 종료</li>
+</ol>
 
-    <ol>
-      <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
-      <li><code class="language-plaintext highlighter-rouge">mov rbx, 20</code>   ;mov 명령어로 rbx 에 20을 저장</li>
-      <li><code class="language-plaintext highlighter-rouge">add rax, rbx</code>   ;add 명령어로 rax 와 rbx 덧셈 연산 후, rax에 값을 저장</li>
-      <li><code class="language-plaintext highlighter-rouge">push rax</code>   ; rax 값을 push = stack에 rax 값을 저장</li>
-      <li><code class="language-plaintext highlighter-rouge">mov rax 0</code>   ; rax 값에 0을 저장</li>
-      <li><code class="language-plaintext highlighter-rouge">pop rax</code>   ; stack 에서 이전에 저장한 rax(30)을 rax로 복구 = stack에서 rax값을 넣기</li>
-      <li><code class="language-plaintext highlighter-rouge">cmp rax, 30</code>   ;rax값 과 30을 비교</li>
-      <li><code class="language-plaintext highlighter-rouge">je .end</code>   ;<code class="language-plaintext highlighter-rouge">cmp</code> ➔ Zero Flag(ZF) 세팅, <code class="language-plaintext highlighter-rouge">je</code> ➔ ZF가 1이면 점프 (== 같을 때 점프)</li>
-      <li><code class="language-plaintext highlighter-rouge">.loop:</code>   ;루프문</li>
-      <li><code class="language-plaintext highlighter-rouge">jmp .loop</code>   ;(틀릴 경우 무한 루프)</li>
-      <li><code class="language-plaintext highlighter-rouge">.end:</code>  ; <code class="language-plaintext highlighter-rouge">je .end</code> 에 선언한 곳</li>
-      <li><code class="language-plaintext highlighter-rouge">jmp .end</code>  ;정상 종료 무한 루프 종료</li>
-    </ol>
 
   </div>
-</details>
+</div>
 
-<details>
-<summary>최종 답안 보기</summary>
-<div>
-
-    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<div class="toggle">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-80jbg5', this)" data-label="최종 답안 보기">
+  </div>
+  <div id="toggle-80jbg5" class="toggle-body" style="display: none; max-height: 0;">
+    
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
 
 <span class="nf">section</span> <span class="nv">.text</span>
@@ -762,10 +768,11 @@ rax = 10</p>
 <span class="nl">.end:</span>
     <span class="nf">jmp</span> <span class="nv">.end</span>           <span class="c1">; 정상 종료 무한루프</span>
 
-</code></pre></div>    </div>
+</code></pre></div></div>
+
 
   </div>
-</details>
+</div>
 
 <h3 id="3-2-체크포인트">3-2. 체크포인트</h3>
 
@@ -996,11 +1003,12 @@ rax = 10</p>
     <span class="nf">jmp</span> <span class="nv">.loop</span>
 </code></pre></div></div>
 
-<details>
-<summary>미션 풀이:</summary>
-<div>
-
-    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<div class="toggle">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-fi5jnh', this)" data-label="미션 풀이:">
+  </div>
+  <div id="toggle-fi5jnh" class="toggle-body" style="display: none; max-height: 0;">
+    
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
 
 <span class="nf">section</span> <span class="nv">.text</span>
@@ -1026,18 +1034,20 @@ rax = 10</p>
 <span class="nl">equal:</span>
     <span class="c1">; rax == rbx일 때</span>
     <span class="nf">jmp</span> <span class="nv">.loop</span>
-</code></pre></div>    </div>
+</code></pre></div></div>
 
-    <p><strong>흐름 해석</strong></p>
+<p><strong>흐름 해석</strong></p>
 
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">7</code>과 <code class="language-plaintext highlighter-rouge">5</code> 비교 → 결과는 “7 &gt; 5”니까 <code class="language-plaintext highlighter-rouge">jg greater</code> 실행</li>
-      <li>프로그램은 <code class="language-plaintext highlighter-rouge">greater:</code>로 점프</li>
-      <li>거기서 <code class="language-plaintext highlighter-rouge">.loop</code>로 넘어가서 무한 대기</li>
-    </ul>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">7</code>과 <code class="language-plaintext highlighter-rouge">5</code> 비교 → 결과는 “7 &gt; 5”니까 <code class="language-plaintext highlighter-rouge">jg greater</code> 실행</li>
+  <li>프로그램은 <code class="language-plaintext highlighter-rouge">greater:</code>로 점프</li>
+  <li>거기서 <code class="language-plaintext highlighter-rouge">.loop</code>로 넘어가서 무한 대기</li>
+</ul>
+
 
   </div>
-</details>
+</div>
+
 <p><br /></p>
 
         
