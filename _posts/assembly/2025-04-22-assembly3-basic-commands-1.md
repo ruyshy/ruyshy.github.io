@@ -108,13 +108,92 @@ end_label:
 
 cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)
 
-예시:
+### 2-8. 기본 실습 문제1
+```assembly
+    rax에 10 저장
+	rbx에 20 저장
+    rcx에 5 저장
+    rax + rbx 결과를 rax에 저장
+    rax - rcx 결과를 rax에 저장
+    rax를 스택에 저장
+    rbx를 스택에 저장
+	스택에서 rbx 복구
+	스택에서 rax 복구        
+```
 
-`rax == 5` 일 때 `ZF = 1` 
+> 실습 문제1 풀기 전, 스택(Stack) 후입선출
 
-`rax > 5 or rax < 5` 일 때 `ZF = 0`
+기본 코드 골격:
+```assembly
+default rel
+global main
 
-### 2-8. 요약
+section .text
+main:
+
+    ; 여기부터 코드 작성
+
+.loop:
+    jmp .loop
+
+```
+
+.loop:은 그냥 프로그램 끝에 멈추는 곳.
+
+<br/>
+<details>
+<summary>실습 문제 풀이1</summary>
+<div markdown="1">
+
+```assembly
+default rel
+global main
+
+section .text
+main:
+    mov rax, 10        ; rax = 10
+    mov rbx, 20        ; rbx = 20
+    mov rcx, 5         ; rcx = 5
+
+    add rax, rbx       ; rax = rax + rbx (10 + 20 = 30)
+    sub rax, rcx       ; rax = rax - rcx (30 - 5 = 25)
+
+    push rax           ; 스택에 rax(25) 저장
+    push rbx           ; 스택에 rbx(20) 저장
+
+    pop rbx            ; 스택에서 rbx 복구 (20)
+    pop rax            ; 스택에서 rax 복구 (25)
+
+.loop:
+    jmp .loop          ; 프로그램 종료 대기
+```
+
+동작 흐름 다시 정리
+rax = 10
+
+rbx = 20
+
+rcx = 5
+
+add rax, rbx → rax = 30
+
+sub rax, rcx → rax = 25
+
+push rax → (25 스택 저장)
+
+push rbx → (20 스택 저장)
+
+pop rbx → (20 복구)
+
+pop rax → (25 복구)
+
+스택 동작 순서(후입선출 LIFO 구조)
+
+</div>
+</details>
+<br/>
+
+### 2-9. 요약
 
 - mov로 값 복사
 - add/sub/inc/dec로 값 변경
@@ -122,7 +201,7 @@ cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF
 - call/ret으로 함수 호출/복귀
 - cmp + je/jne/jmp로 조건 분기
 
-## 3. 기본 실습 문제
+## 3. 기본 실습 문제2
 
 ```nasm
 ; 1. rax에 10 저장
