@@ -11,3 +11,4 @@ gem "jekyll-include-cache"
 gem "jekyll-gist"
 gem "tzinfo"
 gem "tzinfo-data"
+gem 'nokogiri'

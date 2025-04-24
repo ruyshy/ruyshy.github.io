@@ -1,7 +1,6 @@
 ---
 title: "GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기"
 date: 2025-04-24
-permalink: /blog/blog13-quiz-form/
 categories: [blog]
 tags: [GitHubBlog, quiz, plugin, liquid, jekyll, javascript]
 ---
