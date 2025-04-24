@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-24T17:02:48+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-24T17:09:55+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.</p>
 
 <p>전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.</p>
 
@@ -807,7 +807,7 @@ main으로 복귀 → rax = 1234
   <li>지역 변수 저장: <code class="language-plaintext highlighter-rouge">[rbp - x]</code></li>
   <li>계산: <code class="language-plaintext highlighter-rouge">mov + add</code></li>
   <li>결과 리턴: <code class="language-plaintext highlighter-rouge">rax</code></li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="x64dbg" /><category term="함수 호출" /><category term="스택프레임" /><category term="스택 구조" /><category term="리버스엔지니어링" /><summary type="html"><![CDATA[Assembly NASM에서 함수 호출, 스택프레임 구성, RBP/RSP의 역할을 실습 코드와 함께 자세히 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기</title><link href="https://ruyshy.github.io/blog/blog-13-quiz-form/" rel="alternate" type="text/html" title="GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-13-quiz-form</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-13-quiz-form/"><![CDATA[<p>Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.</p>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="x64dbg" /><category term="함수 호출" /><category term="스택프레임" /><category term="스택 구조" /><category term="리버스엔지니어링" /><summary type="html"><![CDATA[Assembly NASM에서 함수 호출, 스택프레임 구성, RBP/RSP의 역할을 실습 코드와 함께 자세히 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기</title><link href="https://ruyshy.github.io/blog/blog13-quiz-form/" rel="alternate" type="text/html" title="GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog13-quiz-form</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog13-quiz-form/"><![CDATA[<p>Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.</p>
 
 <h2 id="quiz-form-미리보기">Quiz Form 미리보기</h2>
 
@@ -815,44 +815,44 @@ main으로 복귀 → rax = 1234
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-646088">
-  <div class="quiz-message" id="quiz-message-646088" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-644717">
+  <div class="quiz-message" id="quiz-message-644717" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-646088" onsubmit="return false;">
+  <form id="quiz-form-644717" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-646088" id="quiz-646088-0" value="1번" data-correct="false" />
-  <label for="quiz-646088-0">1번</label>
+  <input type="radio" name="quiz-answer-644717" id="quiz-644717-0" value="1번" data-correct="false" />
+  <label for="quiz-644717-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-646088" id="quiz-646088-1" value="2번" data-correct="true" />
-  <label for="quiz-646088-1">2번</label>
+  <input type="radio" name="quiz-answer-644717" id="quiz-644717-1" value="2번" data-correct="true" />
+  <label for="quiz-644717-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-646088" id="quiz-646088-2" value="3번" data-correct="false" />
-  <label for="quiz-646088-2">3번</label>
+  <input type="radio" name="quiz-answer-644717" id="quiz-644717-2" value="3번" data-correct="false" />
+  <label for="quiz-644717-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-646088" id="quiz-646088-3" value="4번" data-correct="false" />
-  <label for="quiz-646088-3">4번</label>
+  <input type="radio" name="quiz-answer-644717" id="quiz-644717-3" value="4번" data-correct="false" />
+  <label for="quiz-644717-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(646088, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(644717, false, null)">제출</button>
   </form>
-  <div id="quiz-result-646088" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-646088" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-646088', this)" data-label="해설 보기"></div>
-  <div id="toggle-646088" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-644717" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-644717" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-644717', this)" data-label="해설 보기"></div>
+  <div id="toggle-644717" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -863,26 +863,26 @@ main으로 복귀 → rax = 1234
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-485118">
-  <div class="quiz-message" id="quiz-message-485118" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-427128">
+  <div class="quiz-message" id="quiz-message-427128" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-485118" onsubmit="return false;">
+  <form id="quiz-form-427128" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-485118" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-427128" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-485118" value="test" />
+      <input type="hidden" id="quiz-text-answer-427128" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(485118, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(427128, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-485118" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-485118" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-485118', this)" data-label="해설 보기"></div>
-  <div id="toggle-485118" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-427128" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-427128" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-427128', this)" data-label="해설 보기"></div>
+  <div id="toggle-427128" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -1431,7 +1431,11 @@ test 문제 입니다.
 
 <h3 id="사용-방법">사용 방법</h3>
 
-<p><code class="language-plaintext highlighter-rouge">{% cardlink https://jekyllrb.com/ %}</code></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="link preview" /><category term="liquid plugin" /><category term="jekyll customization" /><category term="javascript" /><summary type="html"><![CDATA[Jekyll Liquid 플러그인으로 외부 링크를 카드 형태로 표시하는 방법을 소개합니다. GitHub Blog에서 링크 카드 구현하는 방법을 코드 예제와 함께 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기</title><link href="https://ruyshy.github.io/blog/blog12-toggle-plugin/" rel="alternate" type="text/html" title="GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기" /><published>2025-04-23T00:00:00+09:00</published><updated>2025-04-23T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog12-toggle-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog12-toggle-plugin/"><![CDATA[<p>Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 <code class="language-plaintext highlighter-rouge">&lt;details&gt;</code> 외에도<br />
+<p><code class="language-plaintext highlighter-rouge">{% cardlink https://jekyllrb.com/ %}</code></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="link preview" /><category term="liquid plugin" /><category term="jekyll customization" /><category term="javascript" /><summary type="html"><![CDATA[Jekyll Liquid 플러그인으로 외부 링크를 카드 형태로 표시하는 방법을 소개합니다. GitHub Blog에서 링크 카드 구현하는 방법을 코드 예제와 함께 설명합니다.]]></summary></entry><entry><title type="html">test</title><link href="https://ruyshy.github.io/blog/blog15-slide-form/" rel="alternate" type="text/html" title="test" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog15-slide-form</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog15-slide-form/"><![CDATA[<div class="slider">
+  <div class="slide">슬라이드 1</div>
+  <div class="slide">슬라이드 2</div>
+  <div class="slide">슬라이드 3</div>
+</div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><summary type="html"><![CDATA[슬라이드 1 슬라이드 2 슬라이드 3]]></summary></entry><entry><title type="html">GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기</title><link href="https://ruyshy.github.io/blog/blog12-toggle-plugin/" rel="alternate" type="text/html" title="GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기" /><published>2025-04-23T00:00:00+09:00</published><updated>2025-04-23T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog12-toggle-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog12-toggle-plugin/"><![CDATA[<p>Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 <code class="language-plaintext highlighter-rouge">&lt;details&gt;</code> 외에도<br />
 <strong>커스텀 Liquid 플러그인을 통해 더 유연하고 스타일링 가능한 Toggle UI</strong>를 구현할 수 있습니다.<br />
 이 글에서는 toggle 플러그인을 직접 만들어 접기 기능을 구현하고,<br />
 내용에 따라 class, 제목, 마크다운을 넣을 수 있도록 확장하는 방법을 소개합니다.</p>
@@ -1705,9 +1709,9 @@ test 문제 입니다.
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-pw7mme', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-scnrmy', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-pw7mme" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-scnrmy" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -1723,9 +1727,9 @@ test 문제 입니다.
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-lhgzit', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-inpotv', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-lhgzit" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-inpotv" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -1951,9 +1955,9 @@ test 문제 입니다.
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-cmrv0d', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-jw7229', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-cmrv0d" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-jw7229" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -1977,9 +1981,9 @@ test 문제 입니다.
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-79w9rb', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-3r0vh3', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-79w9rb" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-3r0vh3" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>
@@ -2013,9 +2017,9 @@ test 문제 입니다.
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-1n5q7i', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-at4vf1', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-1n5q7i" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-at4vf1" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -2039,9 +2043,9 @@ test 문제 입니다.
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-a1nrm9', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-c2yvx0', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-a1nrm9" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-c2yvx0" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
@@ -2483,9 +2487,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-hd8rek', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-o8dlpl', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-hd8rek" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-o8dlpl" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -2669,9 +2673,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-9jw095', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-k4mwnd', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-9jw095" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-k4mwnd" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
@@ -2693,9 +2697,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-oppqsk', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-wz4yj4', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-oppqsk" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-wz4yj4" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -2952,9 +2956,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ch6dhu', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-5fv2sx', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-ch6dhu" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-5fv2sx" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3999,46 +4003,4 @@ gem "tzinfo-data"
   <li>무조건 Windows API (<code class="language-plaintext highlighter-rouge">WriteFile</code>, <code class="language-plaintext highlighter-rouge">ExitProcess</code>, <code class="language-plaintext highlighter-rouge">GetStdHandle</code>, 등등) 호출하는 구조.</li>
   <li>인자는 RCX, RDX, R8, R9에 순서대로 넣는다.</li>
   <li>스택 16바이트 정렬 <strong>필수</strong>.</li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><category term="Windows Assembly" /><category term="x64dbg" /><category term="어셈블리 시작하기" /><summary type="html"><![CDATA[Windows 64bit에서 NASM을 활용한 어셈블리어 학습을 위한 기초 개념, 레지스터 구조, 메모리 구조, 조건 분기, 호출 규약 등을 한 글로 정리한 시작 가이드입니다.]]></summary></entry><entry><title type="html">GitHub Blog 목차 설정 - Jekyll 블로그 TOC 스크롤 고정 기능</title><link href="https://ruyshy.github.io/blog/blog8-toc/" rel="alternate" type="text/html" title="GitHub Blog 목차 설정 - Jekyll 블로그 TOC 스크롤 고정 기능" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog8-toc</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog8-toc/"><![CDATA[<p>Jekyll 블로그에서 <strong>글의 구조를 명확히 보여주기 위해 목차(TOC)를 추가</strong>하는 것은 매우 유용합니다.<br />
-특히 <code class="language-plaintext highlighter-rouge">minimal-mistakes</code> 테마는 <code class="language-plaintext highlighter-rouge">toc</code> 옵션 하나로 자동 생성이 가능하며,<br />
-<code class="language-plaintext highlighter-rouge">toc_sticky</code> 설정을 통해 <strong>스크롤을 따라다니는 고정 목차</strong>도 구현할 수 있습니다.</p>
-
-<h2 id="목차-설정-방법">목차 설정 방법</h2>
-
-<h3 id="목차-설정-코드">목차 설정 코드:</h3>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>toc: true          # 본문 안에 목차 표시
-toc_sticky: true   # 목차가 오른쪽에 고정되어 스크롤 따라다님
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">toc</code>는 목차, <code class="language-plaintext highlighter-rouge">toc_sticky</code>는 스크롤 따라가기</p>
-
-<h3 id="게시글-설정-예시">게시글 설정 예시:</h3>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Blog</span><span class="nv"> </span><span class="s">Start"</span>
-<span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-10</span>
-<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">GitHubBlog</span><span class="pi">]</span>
-<span class="na">toc</span><span class="pi">:</span> <span class="kc">true</span>
-<span class="na">toc_sticky</span><span class="pi">:</span> <span class="kc">true</span>
-<span class="nn">---</span>
-</code></pre></div></div>
-
-<h3 id="게시글-전체-적용-예시-_configyml">게시글 전체 적용 예시 (_config.yml):</h3>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">toc</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">comments</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="목차 설정" /><category term="TOC" /><category term="toc_sticky" /><category term="Jekyll Blog" /><summary type="html"><![CDATA[Jekyll 블로그에서 minimal-mistakes 테마를 사용해 목차(TOC)를 생성하고, 스크롤에 따라 고정되도록 설정하는 방법을 정리합니다.]]></summary></entry></feed>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><category term="Windows Assembly" /><category term="x64dbg" /><category term="어셈블리 시작하기" /><summary type="html"><![CDATA[Windows 64bit에서 NASM을 활용한 어셈블리어 학습을 위한 기초 개념, 레지스터 구조, 메모리 구조, 조건 분기, 호출 규약 등을 한 글로 정리한 시작 가이드입니다.]]></summary></entry></feed>
