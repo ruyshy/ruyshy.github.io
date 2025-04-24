@@ -343,7 +343,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#링크-카드-미리-보기">링크 카드 미리 보기</a></li><li><a href="#pluginscardlink_tagrb-추가">/plugins/cardlink_tag.rb 추가</a></li><li><a href="#사용-방법">사용 방법</a></li></ul>
+              <ul class="toc__menu"><li><a href="#링크-카드-미리-보기">링크 카드 미리 보기</a></li><li><a href="#pluginscardlink_tagrb-추가">/plugins/cardlink_tag.rb 추가</a></li><li><a href="#gemfile-해당-코드-추가">Gemfile 해당 코드 추가</a></li><li><a href="#사용-방법">사용 방법</a></li></ul>
             </nav>
           </aside>
         
@@ -411,6 +411,12 @@
 <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'cardlink'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">CardLink</span><span class="p">)</span>
 
 </code></pre></div></div>
+
+<h3 id="gemfile-해당-코드-추가">Gemfile 해당 코드 추가</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem 'nokogiri'
+</code></pre></div></div>
+
+<p>해당 코드 추가 후, 로컬에서 실행하기 위해서 bundle install 을 진행해주세요!</p>
 
 <h3 id="사용-방법">사용 방법</h3>
 
