@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
+
+    <style>
+      body { margin: 0; }
+      .reveal { font-size: 1.5rem; }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        {{ content }}
+      </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    transition: 'fade',
+    loop: false
+  });
+
+  Reveal.on('slidechanged', function(event) {
+    const current = event.indexh;
+    const total = Reveal.getTotalSlides();
+
+    const isLastSlide = current === total - 1;
+    const isManual = !Reveal.isAutoSliding();
+
+    if (isLastSlide && isManual) {
+      window.location.href = "/";
+    }
+  });
+</script>
+
+  </body>
+</html>

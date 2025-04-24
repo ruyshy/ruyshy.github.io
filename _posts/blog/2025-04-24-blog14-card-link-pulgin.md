@@ -2,7 +2,6 @@
 title: "GitHub Blog Card Link"
 description: "Jekyll Liquid 플러그인으로 외부 링크를 카드 형태로 표시하는 방법을 소개합니다. GitHub Blog에서 링크 카드 구현하는 방법을 코드 예제와 함께 설명합니다."
 date: 2025-04-24
-categories: [blog]
 tags: [GitHubBlog, link preview, liquid plugin, jekyll customization, javascript]
 ---
 
