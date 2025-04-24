@@ -18,7 +18,7 @@ var store = [{
         "teaser": null
       },{
         "title": "프레젠테이션 슬라이드",
-        "excerpt":"   Reveal.js 소개    Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!       두 번째 슬라이드    이 슬라이드는 마크다운이 아니라 HTML 형식이에요.       세 번째 슬라이드         왼쪽/오른쪽 키로 이동     터치도 지원     커스터마이징 가능     ","categories": [],
+        "excerpt":"   Reveal.js 소개    Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!       두 번째 슬라이드    이 슬라이드는 마크다운이 아니라 HTML 형식이에요.       세 번째 슬라이드         왼쪽/오른쪽 키로 이동     터치도 지원     커스터마이징 가능        ","categories": [],
         "tags": [],
         "url": "/example/slide/",
         "teaser": null
