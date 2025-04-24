@@ -100,6 +100,46 @@ robots.txt 생성 후, 깃허브 저장소에 push, 다시 사이트 맵을 제�
 
 구글에 검색해보니 잘 보이는 듯 합니다.
 
+## 포스트 색인 허용
+
+포스트 최상단에 `robots: index, follow` 추가하기
+
+### 포스트 전체 적용하기
+
+_config.yml (일부분) :
+
+```yaml
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      author_profile: true
+      sidebar:
+        nav: "main"
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      robots: index, follow
+      author_profile: true
+      toc: true
+      toc_sticky: true
+      comments: true
+      share: true
+      related: true
+      sidebar:
+        nav: "main"
+```
+
+`robots: index, follow` 해당 부분 추가하기
+
+- robots.txt로 전체 접근 허용했더라도,
+- 개별 포스트의 <meta name="robots"> 태그가 noindex면 색인 안 됨.
+- 즉, robots.txt와 robots: "index, follow"는 역할이 다름 → 둘 다 챙기는 게 안전
+
+
 ## jekyll-seo-tag 사용
 
 ### _config.yml plugin: 내용 추가
