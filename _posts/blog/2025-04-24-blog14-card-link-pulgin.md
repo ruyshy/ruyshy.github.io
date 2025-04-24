@@ -62,6 +62,13 @@ Liquid::Template.register_tag('cardlink', Jekyll::CardLink)
 
 ```
 
+### Gemfile 해당 코드 추가
+```
+gem 'nokogiri'
+```
+
+해당 코드 추가 후, 로컬에서 실행하기 위해서 bundle install 을 진행해주세요!
+
 ### 사용 방법
 
 {% raw %}`{% cardlink https://jekyllrb.com/ %}`{% endraw %}
