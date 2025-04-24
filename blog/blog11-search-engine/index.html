@@ -343,7 +343,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#검색-엔진-개요">검색 엔진 개요</a></li><li><a href="#검색-엔진-종류">검색 엔진 종류</a></li><li><a href="#google-search-console">Google Search Console</a></li><li><a href="#sitemapxml-생성">\sitemap.xml 생성</a></li><li><a href="#robotstxt-생성">\robots.txt 생성</a></li><li><a href="#jekyll-seo-tag-사용">jekyll-seo-tag 사용</a><ul><li><a href="#_configyml-plugin-내용-추가">_config.yml plugin: 내용 추가</a></li><li><a href="#gemfile-내용-추가">Gemfile 내용 추가</a></li><li><a href="#추가-진행-후">추가 진행 후</a></li></ul></li><li><a href="#추가-소유권-인증-방법2">추가 소유권 인증 방법2</a></li></ul>
+              <ul class="toc__menu"><li><a href="#검색-엔진-개요">검색 엔진 개요</a></li><li><a href="#검색-엔진-종류">검색 엔진 종류</a></li><li><a href="#google-search-console">Google Search Console</a></li><li><a href="#sitemapxml-생성">\sitemap.xml 생성</a></li><li><a href="#robotstxt-생성">\robots.txt 생성</a></li><li><a href="#포스트-색인-허용">포스트 색인 허용</a><ul><li><a href="#포스트-전체-적용하기">포스트 전체 적용하기</a></li></ul></li><li><a href="#jekyll-seo-tag-사용">jekyll-seo-tag 사용</a><ul><li><a href="#_configyml-plugin-내용-추가">_config.yml plugin: 내용 추가</a></li><li><a href="#gemfile-내용-추가">Gemfile 내용 추가</a></li><li><a href="#추가-진행-후">추가 진행 후</a></li></ul></li><li><a href="#추가-소유권-인증-방법2">추가 소유권 인증 방법2</a></li></ul>
             </nav>
           </aside>
         
@@ -438,6 +438,46 @@ Sitemap: https://ruyshy.github.io/sitemap.xml
 <p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image6.png" alt="검색엔진 등록 확인 화면" style="max-width:100%;" /></p>
 
 <p>구글에 검색해보니 잘 보이는 듯 합니다.</p>
+
+<h2 id="포스트-색인-허용">포스트 색인 허용</h2>
+
+<p>포스트 최상단에 <code class="language-plaintext highlighter-rouge">robots: index, follow</code> 추가하기</p>
+
+<h3 id="포스트-전체-적용하기">포스트 전체 적용하기</h3>
+
+<p>_config.yml (일부분) :</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
+      <span class="na">robots</span><span class="pi">:</span> <span class="s">index, follow</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">toc</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">robots: index, follow</code> 해당 부분 추가하기</p>
+
+<ul>
+  <li>robots.txt로 전체 접근 허용했더라도,</li>
+  <li>개별 포스트의 <meta name="robots" /> 태그가 noindex면 색인 안 됨.</li>
+  <li>즉, robots.txt와 robots: “index, follow”는 역할이 다름 → 둘 다 챙기는 게 안전</li>
+</ul>
 
 <h2 id="jekyll-seo-tag-사용">jekyll-seo-tag 사용</h2>
 
