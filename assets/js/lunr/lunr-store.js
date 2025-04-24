@@ -107,6 +107,12 @@ var store = [{
         "url": "/blog/blog12-toggle-plugin/",
         "teaser": null
       },{
+        "title": "Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습",
+        "excerpt":"Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다. 전 편에서 Assembly 기본 명령어 - Windows NASM 실습 가이드 에서 조건 분기문과 loop 에 대해 학습을 진행했습니다. 이번 편에서는 함수/스택 호출 구조, 스택 프레임에...","categories": ["assembly"],
+        "tags": ["assembly","nasm","x64dbg","함수 호출","스택프레임","스택 구조","리버스엔지니어링"],
+        "url": "/assembly/assembly3-basic-commands-2/",
+        "teaser": null
+      },{
         "title": "GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기",
         "excerpt":"Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다. Quiz Form 미리보기 객관식 문제 1 : 객관식 미리보기 문제입니다. 문제의 테스트용 코드 블럭 입니다. 정답은 2번 1번 2번 3번 4번 제출 문제의 해설 보기 입니다. 주관식 test? 정답은 test 제출 test 문제 입니다. Quiz Form Code...","categories": ["blog"],
         "tags": ["GitHubBlog","quiz","plugin","liquid","jekyll","javascript"],
