@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-24T15:47:22+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-24T16:59:10+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.</p>
 
 <p>전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.</p>
 
@@ -807,7 +807,7 @@ main으로 복귀 → rax = 1234
   <li>지역 변수 저장: <code class="language-plaintext highlighter-rouge">[rbp - x]</code></li>
   <li>계산: <code class="language-plaintext highlighter-rouge">mov + add</code></li>
   <li>결과 리턴: <code class="language-plaintext highlighter-rouge">rax</code></li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="x64dbg" /><category term="함수 호출" /><category term="스택프레임" /><category term="스택 구조" /><category term="리버스엔지니어링" /><summary type="html"><![CDATA[Assembly NASM에서 함수 호출, 스택프레임 구성, RBP/RSP의 역할을 실습 코드와 함께 자세히 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기</title><link href="https://ruyshy.github.io/blog/blog13-quiz-form/" rel="alternate" type="text/html" title="GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-13-quiz-form</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog13-quiz-form/"><![CDATA[<p>Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.</p>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="x64dbg" /><category term="함수 호출" /><category term="스택프레임" /><category term="스택 구조" /><category term="리버스엔지니어링" /><summary type="html"><![CDATA[Assembly NASM에서 함수 호출, 스택프레임 구성, RBP/RSP의 역할을 실습 코드와 함께 자세히 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기</title><link href="https://ruyshy.github.io/blog/blog-13-quiz-form/" rel="alternate" type="text/html" title="GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-13-quiz-form</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-13-quiz-form/"><![CDATA[<p>Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.</p>
 
 <h2 id="quiz-form-미리보기">Quiz Form 미리보기</h2>
 
@@ -815,44 +815,44 @@ main으로 복귀 → rax = 1234
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-387015">
-  <div class="quiz-message" id="quiz-message-387015" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-135809">
+  <div class="quiz-message" id="quiz-message-135809" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-387015" onsubmit="return false;">
+  <form id="quiz-form-135809" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-387015" id="quiz-387015-0" value="1번" data-correct="false" />
-  <label for="quiz-387015-0">1번</label>
+  <input type="radio" name="quiz-answer-135809" id="quiz-135809-0" value="1번" data-correct="false" />
+  <label for="quiz-135809-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-387015" id="quiz-387015-1" value="2번" data-correct="true" />
-  <label for="quiz-387015-1">2번</label>
+  <input type="radio" name="quiz-answer-135809" id="quiz-135809-1" value="2번" data-correct="true" />
+  <label for="quiz-135809-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-387015" id="quiz-387015-2" value="3번" data-correct="false" />
-  <label for="quiz-387015-2">3번</label>
+  <input type="radio" name="quiz-answer-135809" id="quiz-135809-2" value="3번" data-correct="false" />
+  <label for="quiz-135809-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-387015" id="quiz-387015-3" value="4번" data-correct="false" />
-  <label for="quiz-387015-3">4번</label>
+  <input type="radio" name="quiz-answer-135809" id="quiz-135809-3" value="4번" data-correct="false" />
+  <label for="quiz-135809-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(387015, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(135809, false, null)">제출</button>
   </form>
-  <div id="quiz-result-387015" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-387015" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-387015', this)" data-label="해설 보기"></div>
-  <div id="toggle-387015" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-135809" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-135809" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-135809', this)" data-label="해설 보기"></div>
+  <div id="toggle-135809" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -863,26 +863,26 @@ main으로 복귀 → rax = 1234
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-409597">
-  <div class="quiz-message" id="quiz-message-409597" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-577632">
+  <div class="quiz-message" id="quiz-message-577632" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-409597" onsubmit="return false;">
+  <form id="quiz-form-577632" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-409597" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-577632" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-409597" value="test" />
+      <input type="hidden" id="quiz-text-answer-577632" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(409597, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(577632, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-409597" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-409597" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-409597', this)" data-label="해설 보기"></div>
-  <div id="toggle-409597" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-577632" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-577632" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-577632', this)" data-label="해설 보기"></div>
+  <div id="toggle-577632" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -1358,7 +1358,74 @@ main으로 복귀 → rax = 1234
 test 문제 입니다.
 {% endexplanation %}
 {% endquiz %}
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="quiz" /><category term="plugin" /><category term="liquid" /><category term="jekyll" /><category term="javascript" /><summary type="html"><![CDATA[Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.]]></summary></entry><entry><title type="html">GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기</title><link href="https://ruyshy.github.io/blog/blog12-toggle-plugin/" rel="alternate" type="text/html" title="GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기" /><published>2025-04-23T00:00:00+09:00</published><updated>2025-04-23T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog12-toggle-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog12-toggle-plugin/"><![CDATA[<p>Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 <code class="language-plaintext highlighter-rouge">&lt;details&gt;</code> 외에도<br />
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="quiz" /><category term="plugin" /><category term="liquid" /><category term="jekyll" /><category term="javascript" /><summary type="html"><![CDATA[Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.]]></summary></entry><entry><title type="html">GitHub Blog Card Link</title><link href="https://ruyshy.github.io/blog/blog14-card-link-pulgin/" rel="alternate" type="text/html" title="GitHub Blog Card Link" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog14-card-link-pulgin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog14-card-link-pulgin/"><![CDATA[<p>Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하고 싶다면 이 포스트를 참고하세요. Liquid 태그 기반 커스텀 플러그인을 이용해 <strong>GitHub Blog 카드 링크</strong>, <strong>미리보기 링크 카드</strong>, <strong>OG 태그 기반 링크 프리뷰</strong>를 만드는 과정을 예제로 설명합니다.</p>
+
+<h3 id="링크-카드-미리-보기">링크 카드 미리 보기</h3>
+
+<div style="margin: 1em 0;">
+  <a href="https://jekyllrb.com/" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://jekyllrb.com/img/jekyll-og.png" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Jekyll • Simple, blog-aware, static sites</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">Transform your plain text into static websites and blogs</p>
+        <small style="color: #999;">jekyllrb.com</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<h3 id="pluginscardlink_tagrb-추가">/plugins/cardlink_tag.rb 추가</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<span class="nb">require</span> <span class="s1">'nokogiri'</span>
+<span class="nb">require</span> <span class="s1">'uri'</span>
+
+<span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">class</span> <span class="nc">CardLink</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Tag</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">markup</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
+      <span class="k">super</span>
+      <span class="vi">@url</span> <span class="o">=</span> <span class="n">markup</span><span class="p">.</span><span class="nf">strip</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">_context</span><span class="p">)</span>
+      <span class="k">begin</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="vi">@url</span><span class="p">,</span> <span class="s2">"User-Agent"</span> <span class="o">=&gt;</span> <span class="s2">"JekyllCardPreviewBot"</span><span class="p">).</span><span class="nf">read</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+
+        <span class="n">title</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">at</span><span class="p">(</span><span class="s1">'meta[property="og:title"]'</span><span class="p">)</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">[</span><span class="p">](</span><span class="s1">'content'</span><span class="p">)</span> <span class="o">||</span> <span class="vi">@url</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">at</span><span class="p">(</span><span class="s1">'meta[property="og:description"]'</span><span class="p">)</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">[</span><span class="p">](</span><span class="s1">'content'</span><span class="p">)</span> <span class="o">||</span> <span class="s2">""</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">at</span><span class="p">(</span><span class="s1">'meta[property="og:image"]'</span><span class="p">)</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">[</span><span class="p">](</span><span class="s1">'content'</span><span class="p">)</span> <span class="o">||</span> <span class="s2">""</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="vi">@url</span><span class="p">).</span><span class="nf">host</span>
+
+        <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
+        &lt;div style="margin: 1em 0;"&gt;
+          &lt;a href="</span><span class="si">#{</span><span class="vi">@url</span><span class="si">}</span><span class="sh">" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;"&gt;
+            &lt;div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"&gt;
+              </span><span class="si">#{</span><span class="n">image</span> <span class="o">!=</span> <span class="s2">""</span> <span class="p">?</span> <span class="s2">"&lt;img src=</span><span class="se">\"</span><span class="si">#{</span><span class="n">image</span><span class="si">}</span><span class="se">\"</span><span class="s2"> alt=</span><span class="se">\"</span><span class="s2">thumbnail</span><span class="se">\"</span><span class="s2"> style=</span><span class="se">\"</span><span class="s2">width: 40%; object-fit: cover;</span><span class="se">\"</span><span class="s2">&gt;"</span> <span class="p">:</span> <span class="s2">""</span><span class="si">}</span><span class="sh">
+              &lt;div style="padding: 1em; flex: 1;"&gt;
+                &lt;h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;"&gt;</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="sh">&lt;/h3&gt;
+                &lt;p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;"&gt;</span><span class="si">#{</span><span class="n">description</span><span class="si">}</span><span class="sh">&lt;/p&gt;
+                &lt;small style="color: #999;"&gt;</span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sh">&lt;/small&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+</span><span class="no">        HTML</span>
+      <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+        <span class="s2">"&lt;p style='color:red;'&gt;[cardlink error] </span><span class="si">#{</span><span class="vi">@url</span><span class="si">}</span><span class="s2"> - </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">&lt;/p&gt;"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'cardlink'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">CardLink</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="사용-방법">사용 방법</h3>
+
+<p><code class="language-plaintext highlighter-rouge">{% cardlink https://jekyllrb.com/ %}</code></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="link preview" /><category term="liquid plugin" /><category term="jekyll customization" /><category term="javascript" /><summary type="html"><![CDATA[Jekyll Liquid 플러그인으로 외부 링크를 카드 형태로 표시하는 방법을 소개합니다. GitHub Blog에서 링크 카드 구현하는 방법을 코드 예제와 함께 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기</title><link href="https://ruyshy.github.io/blog/blog12-toggle-plugin/" rel="alternate" type="text/html" title="GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기" /><published>2025-04-23T00:00:00+09:00</published><updated>2025-04-23T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog12-toggle-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog12-toggle-plugin/"><![CDATA[<p>Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 <code class="language-plaintext highlighter-rouge">&lt;details&gt;</code> 외에도<br />
 <strong>커스텀 Liquid 플러그인을 통해 더 유연하고 스타일링 가능한 Toggle UI</strong>를 구현할 수 있습니다.<br />
 이 글에서는 toggle 플러그인을 직접 만들어 접기 기능을 구현하고,<br />
 내용에 따라 class, 제목, 마크다운을 넣을 수 있도록 확장하는 방법을 소개합니다.</p>
@@ -1632,9 +1699,9 @@ test 문제 입니다.
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-xrxv3t', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-2o6cv8', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-xrxv3t" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-2o6cv8" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -1650,9 +1717,9 @@ test 문제 입니다.
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-8lii7p', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-nybkcd', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-8lii7p" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-nybkcd" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -1878,9 +1945,9 @@ test 문제 입니다.
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-vl7zx8', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-z2toc0', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-vl7zx8" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-z2toc0" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -1904,9 +1971,9 @@ test 문제 입니다.
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-5hbhbt', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-qik8ih', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-5hbhbt" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-qik8ih" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>
@@ -1940,9 +2007,9 @@ test 문제 입니다.
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-1tc8u9', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-debzqg', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-1tc8u9" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-debzqg" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -1966,9 +2033,9 @@ test 문제 입니다.
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-qst9h3', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-az0r99', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-qst9h3" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-az0r99" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
@@ -2410,9 +2477,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-wqgevk', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-i94a6b', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-wqgevk" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-i94a6b" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -2596,9 +2663,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-3whx33', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-v8d101', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-3whx33" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-v8d101" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
@@ -2620,9 +2687,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-2f9qav', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-k4ln37', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-2f9qav" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-k4ln37" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -2879,9 +2946,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-hipgad', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-dw644v', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-hipgad" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-dw644v" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3968,100 +4035,4 @@ toc_sticky: true   # 목차가 오른쪽에 고정되어 스크롤 따라다님
       <span class="na">sidebar</span><span class="pi">:</span>
         <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
 
-</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="목차 설정" /><category term="TOC" /><category term="toc_sticky" /><category term="Jekyll Blog" /><summary type="html"><![CDATA[Jekyll 블로그에서 minimal-mistakes 테마를 사용해 목차(TOC)를 생성하고, 스크롤에 따라 고정되도록 설정하는 방법을 정리합니다.]]></summary></entry><entry><title type="html">GitHub Blog 이미지 태그 플러그인 만들기 - Jekyll에서 커스텀 Liquid 태그로 이미지 처리 자동화</title><link href="https://ruyshy.github.io/blog/blog9-Image-plugin/" rel="alternate" type="text/html" title="GitHub Blog 이미지 태그 플러그인 만들기 - Jekyll에서 커스텀 Liquid 태그로 이미지 처리 자동화" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog9-Image-plugin</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog9-Image-plugin/"><![CDATA[<p>Jekyll 블로그에서 <strong>이미지를 불러오는 태그를 매번 include로 작성하기 번거롭다면</strong>,<br />
-Liquid 플러그인을 직접 만들어 <code class="language-plaintext highlighter-rouge">post 경로 기반 자동 이미지 경로 지정</code>이 가능한<br />
-<code class="language-plaintext highlighter-rouge">{% img %}</code> 커스텀 태그를 사용하는 것이 훨씬 효율적입니다.<br />
-이 글에서는 <strong>Jekyll 플러그인 구조부터 img 태그 구현까지</strong> 모든 과정을 예제로 설명합니다.</p>
-
-<h2 id="기존-방식-과-태그-플러그인-비교">기존 방식 과 태그 플러그인 비교</h2>
-
-<p>기존에 이미지 불러오는 방식:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include post-image.html name="image.png" alt="image" %}
-</code></pre></div></div>
-
-<p>플러그인 적용한 방식:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% img "image1.png", "tag image test" %}
-</code></pre></div></div>
-
-<p>or</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% img "image1.png" %}
-</code></pre></div></div>
-
-<h2 id="pluginsimg_tagrb-코드-추가">\plugins\img_tag.rb 코드 추가</h2>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
-  <span class="k">class</span> <span class="nc">ImgTag</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Tag</span>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">markup</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
-      <span class="k">super</span>
-      <span class="vi">@markup</span> <span class="o">=</span> <span class="n">markup</span><span class="p">.</span><span class="nf">strip</span>
-    <span class="k">end</span>
-
-    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-      <span class="n">args</span> <span class="o">=</span> <span class="vi">@markup</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">","</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span>
-      <span class="n">img_name</span> <span class="o">=</span> <span class="n">sanitize</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-      <span class="n">alt_text</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="n">sanitize</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">:</span> <span class="n">img_name</span>
-
-      <span class="n">page</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">registers</span><span class="p">[</span><span class="ss">:page</span><span class="p">]</span> <span class="o">||</span> <span class="p">{}</span>
-      <span class="n">page_path</span> <span class="o">=</span> <span class="n">page</span><span class="p">[</span><span class="s1">'path'</span><span class="p">]</span> <span class="o">||</span> <span class="s1">''</span>
-
-      <span class="n">parts</span> <span class="o">=</span> <span class="n">page_path</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
-
-      <span class="n">idx</span> <span class="o">=</span> <span class="n">parts</span><span class="p">.</span><span class="nf">find_index</span><span class="p">(</span><span class="s2">"_posts"</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">idx</span> <span class="o">&amp;&amp;</span> <span class="n">parts</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span>
-        <span class="n">category</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-        <span class="n">post_filename</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
-      <span class="k">else</span>
-        <span class="n">category</span> <span class="o">=</span> <span class="s2">""</span>
-        <span class="n">post_filename</span> <span class="o">=</span> <span class="s2">"unknown-post.md"</span>
-      <span class="k">end</span>
-
-      <span class="n">post_name</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">basename</span><span class="p">(</span><span class="n">post_filename</span><span class="p">,</span> <span class="no">File</span><span class="p">.</span><span class="nf">extname</span><span class="p">(</span><span class="n">post_filename</span><span class="p">))</span>
-
-      <span class="n">img_src</span> <span class="o">=</span> <span class="s2">"/assets/images/</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">post_name</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">img_name</span><span class="si">}</span><span class="s2">"</span>
-
-      <span class="sx">%(&lt;img src="</span><span class="si">#{</span><span class="n">img_src</span><span class="si">}</span><span class="sx">" alt="</span><span class="si">#{</span><span class="n">alt_text</span><span class="si">}</span><span class="sx">" style="max-width:100%;"&gt;)</span>
-    <span class="k">end</span>
-
-    <span class="kp">private</span>
-
-    <span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-      <span class="n">text</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="s1">'"'</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">gsub</span><span class="p">(</span><span class="s2">"'"</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'img'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">ImgTag</span><span class="p">)</span>
-
-</code></pre></div></div>
-
-<h2 id="주의사항">주의사항</h2>
-<p>해당 글 처럼 블로그 예시를 작성하기 위해</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {% raw %}
- {% img "test.png" %}
- {% endraw %}
-</code></pre></div></div>
-<p>liquid 문법의 raw tag를 사용해야한다.</p>
-
-<h2 id="예시-사용법">예시 사용법</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>작성</th>
-      <th>실제 결과</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">{% img "test.png" %}</code></td>
-      <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/xxx/xxx/test.png" alt="test.png" style="max-width:100%;"&gt;</code></td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">{% img "test.png", "설명" %}</code></td>
-      <td><code class="language-plaintext highlighter-rouge">&lt;img src="/assets/images/xxx/xxx/test.png" alt="설명" style="max-width:100%;"&gt;</code></td>
-    </tr>
-  </tbody>
-</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="Jekyll" /><category term="이미지 태그" /><category term="Liquid 플러그인" /><category term="커스텀 태그" /><summary type="html"><![CDATA[Jekyll 블로그에서 직접 만든 Liquid 플러그인을 통해 게시글 경로 기반으로 이미지를 자동으로 불러오는 {% img %} 커스텀 태그를 구현하는 방법을 소개합니다.]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="목차 설정" /><category term="TOC" /><category term="toc_sticky" /><category term="Jekyll Blog" /><summary type="html"><![CDATA[Jekyll 블로그에서 minimal-mistakes 테마를 사용해 목차(TOC)를 생성하고, 스크롤에 따라 고정되도록 설정하는 방법을 정리합니다.]]></summary></entry></feed>
