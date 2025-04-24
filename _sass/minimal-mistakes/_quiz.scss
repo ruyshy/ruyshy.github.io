@@ -12,6 +12,46 @@
     background-color: #162f1e;
     border-color: #52c41a;
   }
+
+  form button[type="button"] {
+    margin-top: 1em;
+    padding: 0.5em 1.2em;
+    font-size: 0.95em;
+    font-family: $monospace;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2d8cf0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    &:hover {
+      background-color: #5aaafc;
+      transform: scale(1.03);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+  
+  .quiz-result button[type="button"] {
+    background-color: #555;
+    color: #fff;
+    margin-top: 1em;
+    padding: 0.4em 1em;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #777;
+    }
+  }
+
 }
 
 .quiz-choice {
@@ -60,44 +100,6 @@
     right: 0.7em;
     top: 0.2em;
     cursor: pointer;
-  }
-  
-  .button {
-    margin-top: 1em;
-    padding: 0.5em 1.2em;
-    font-size: 0.95em;
-    font-family: $monospace;
-    font-weight: bold;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-
-    &:hover {
-      transform: scale(1.03);
-    }
-
-    &:active {
-      transform: scale(0.97);
-    }
-  }
-
-  button:first-of-type {
-    background-color: #2d8cf0;
-
-    &:hover {
-      background-color: #5aaafc;
-    }
-  }
-
-  .quiz-result button {
-    background-color: #555;
-    margin-left: 0.5em;
-
-    &:hover {
-      background-color: #777;
-    }
   }
 
 }
