@@ -107,9 +107,9 @@ var store = [{
         "url": "/blog/blog12-toggle-plugin/",
         "teaser": null
       },{
-        "title": "test",
-        "excerpt":"test quiz              mov rax, 20 mov rbx, 10 add rax, rbx                                                         20                                                          30                                                          40                                                          50                              제출                       mov rax, 20 → rax에 20이 들어간다   mov rbx, 10 → rbx에 10이 들어간다   add rax, rbx → rax = 20 + 10 = 30          ","categories": ["blog"],
-        "tags": ["test"],
-        "url": "/blog/blog13-test/",
+        "title": "GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기",
+        "excerpt":"Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다. Quiz Form 미리보기 객관식 문제 1 : 객관식 미리보기 문제입니다. 문제의 테스트용 코드 블럭 입니다. 정답은 2번 1번 2번 3번 4번 제출 문제의 해설 보기 입니다. 주관식 test? 정답은 test 제출 test 문제 입니다. Quiz Form Code...","categories": ["blog"],
+        "tags": ["GitHubBlog","quiz","plugin","liquid","jekyll","javascript"],
+        "url": "/blog/blog13-quiz-form/",
         "teaser": null
       }]
