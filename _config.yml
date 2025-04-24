@@ -333,6 +333,7 @@ defaults:
       type: posts
     values:
       layout: single
+      robots: index, follow
       author_profile: true
       toc: true
       toc_sticky: true
@@ -359,4 +360,3 @@ defaults:
       author_profile: true
       sidebar:
         nav: "main"
-        
