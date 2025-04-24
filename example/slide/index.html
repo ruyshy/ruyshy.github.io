@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>프레젠테이션 슬라이드</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
+
+    <style>
+      body { margin: 0; }
+      .reveal { font-size: 1.5rem; }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+  <h2>Reveal.js 소개</h2>
+  <p>Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!</p>
+</section>
+
+<section>
+  <h2>두 번째 슬라이드</h2>
+  <p>이 슬라이드는 마크다운이 아니라 HTML 형식이에요.</p>
+</section>
+
+<section>
+  <h2>세 번째 슬라이드</h2>
+  <ul>
+    <li>왼쪽/오른쪽 키로 이동</li>
+    <li>터치도 지원</li>
+    <li>커스터마이징 가능</li>
+  </ul>
+</section>
+
+      </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    transition: 'fade',
+    loop: false
+  });
+
+  Reveal.on('slidechanged', function(event) {
+    const current = event.indexh;
+    const total = Reveal.getTotalSlides();
+
+    const isLastSlide = current === total - 1;
+    const isManual = !Reveal.isAutoSliding();
+
+    if (isLastSlide && isManual) {
+      window.location.href = "/";
+    }
+  });
+</script>
+
+  </body>
+</html>

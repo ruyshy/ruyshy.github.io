@@ -1,0 +1,1793 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GitHub Blog Reveal.js 슬라이드 만들기 - ruyshy blog</title>
+<meta name="description" content="Jekyll 블로그에 Reveal.js를 활용한 HTML 슬라이드 프레젠테이션을 만드는 방법을 소개합니다. Liquid 플러그인과 커스텀 레이아웃으로 GitHub Pages에서 인터랙티브한 발표 슬라이드를 쉽게 구성해보세요.">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="GitHub Blog Reveal.js 슬라이드 만들기">
+<meta property="og:url" content="https://ruyshy.github.io/blog/blog15-slide/">
+
+
+  <meta property="og:description" content="Jekyll 블로그에 Reveal.js를 활용한 HTML 슬라이드 프레젠테이션을 만드는 방법을 소개합니다. Liquid 플러그인과 커스텀 레이아웃으로 GitHub Pages에서 인터랙티브한 발표 슬라이드를 쉽게 구성해보세요.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-04-24T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/blog/blog15-slide/">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://ruyshy.github.io/">
+        <img src="/assets/images/profile/github_profile_image.jpg" alt="ruyshy" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+
+      <!-- HOME -->
+      <li>
+        <a href="/" class="nav__item">
+          Home
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <li><hr class="nav-divider"></li>
+
+      <!-- CATEGORY TITLE -->
+      <li class="nav__title">Category</li>
+
+      <!-- All -->
+      <li>
+        <a href="/categories/" class="nav__item">
+          - All <span class="count">(19)</span>
+        </a>
+      </li>
+
+      <!-- Dynamic categories -->
+      
+      
+        
+        
+        <li>
+          <a href="/categories/assembly/"
+             class="nav__item">
+            - Assembly <span class="count">(4)</span>
+          </a>
+        </li>
+      
+        
+        
+        <li>
+          <a href="/categories/blog/"
+             class="nav__item">
+            - Blog <span class="count">(15)</span>
+          </a>
+        </li>
+      
+
+    </ul>
+  </nav>
+
+</div>
+
+
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="GitHub Blog Reveal.js 슬라이드 만들기">
+    <meta itemprop="description" content="Reveal.js를 사용하면 GitHub 블로그에서도 마치 PowerPoint처럼 HTML 슬라이드를 만들 수 있습니다. 이 글에서는 Jekyll 환경에서 reveal.js를 이용해 슬라이드 프레젠테이션, 인터랙티브 발표용 페이지, Jekyll 커스텀 플러그인 구현 방법까지 단계별로 설명합니다.">
+    <meta itemprop="datePublished" content="2025-04-24T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/blog/blog15-slide/" itemprop="url">GitHub Blog Reveal.js 슬라이드 만들기
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#revealjs-으로-슬라이드-만들기">reveal.js 으로 슬라이드 만들기</a><ul><li><a href="#pluginsreveal_tagrb-추가">/plugins/reveal_tag.rb 추가</a></li><li><a href="#예시-코드">예시 코드</a></li></ul></li><li><a href="#홈페이지-레이아웃-프레젠테이션-슬라이드-만들기">홈페이지 레이아웃 프레젠테이션 슬라이드 만들기</a><ul><li><a href="#_layoutsslidehtml-추가">/_layouts/slide.html 추가</a></li><li><a href="#_pagesexample_slidemd">/_pages/example_slide.md</a></li><li><a href="#reveal-js-공식-홈페이지">Reveal js 공식 홈페이지</a></li><li><a href="#reveal-설정-가능한-옵션">Reveal 설정 가능한 옵션</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>Reveal.js를 사용하면 GitHub 블로그에서도 마치 PowerPoint처럼 HTML 슬라이드를 만들 수 있습니다. 이 글에서는 Jekyll 환경에서 reveal.js를 이용해 <strong>슬라이드 프레젠테이션</strong>, <strong>인터랙티브 발표용 페이지</strong>, <strong>Jekyll 커스텀 플러그인</strong> 구현 방법까지 단계별로 설명합니다.
+<br /></p>
+
+<h2 id="revealjs-으로-슬라이드-만들기">reveal.js 으로 슬라이드 만들기</h2>
+
+<p>예시 슬라이드:</p>
+
+<div class="reveal-embedded" id="reveal1_container">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" />
+  <style>
+    #reveal1_container .reveal {
+      width: 100%;
+      height: 400px;
+      margin: 2em auto;
+      overflow: hidden;
+      position: relative;
+    }
+    #reveal1_container .custom-slide-number {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      color: white;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+  </style>
+
+  <div class="reveal" id="reveal1">
+    <div class="slides">
+      
+<section>
+<h2>Reveal.js 소개</h2>
+<p>Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!</p>
+</section>
+<section>
+<h2>두 번째 슬라이드</h2>
+<p>이 슬라이드는 마크다운이 아니라 HTML 형식이에요.</p>
+</section>
+<section>
+<h2>세 번째 슬라이드</h2>
+  <ul>
+    <li>왼쪽/오른쪽 키로 이동</li>
+    <li>터치도 지원</li>
+    <li>커스터마이징 가능</li>
+  </ul>
+</section>
+
+    </div>
+    <div class="custom-slide-number" id="reveal1_slide_number">1 / 3</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById("reveal1");
+      if (!window._revealInstances) window._revealInstances = {};
+
+      const deck = new Reveal(el, {
+        embedded: true,
+hash: false,
+slideNumber: false,
+center: false,
+controls: true,
+loop: false,
+transition: "slide"
+      });
+
+      deck.initialize().then(() => {
+        window._revealInstances["reveal1"] = deck;
+
+        const indicator = document.getElementById("reveal1_slide_number");
+        const total = 3;
+        deck.slide(0); // Always start at slide 0
+
+        const updateLabel = (index) => {
+          indicator.textContent = (index + 1) + " / " + total;
+        };
+
+        updateLabel(0);
+        deck.on("slidechanged", e => updateLabel(e.indexh));
+      });
+    });
+
+    window.goToRevealSlide = function(id, index) {
+      const instance = window._revealInstances?.[id];
+      if (instance) instance.slide(index);
+    };
+  </script>
+</div>
+
+<h3 id="pluginsreveal_tagrb-추가">/plugins/reveal_tag.rb 추가</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+    <span class="k">class</span> <span class="nc">RevealBlock</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Block</span>
+      <span class="vc">@@counter</span> <span class="o">=</span> <span class="mi">0</span>
+  
+      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">markup</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
+        <span class="k">super</span>
+        <span class="vi">@params</span> <span class="o">=</span> <span class="p">{}</span>
+  
+        <span class="n">markup</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="sr">/(\w+)=["']?(.*?)["']?(?= |$)/</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+          <span class="vi">@params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="nf">downcase</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+  
+      <span class="k">def</span> <span class="nf">to_js_bool</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">"true"</span> <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s2">"true"</span>
+        <span class="k">return</span> <span class="s2">"false"</span> <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s2">"false"</span>
+        <span class="s2">"</span><span class="se">\"</span><span class="si">#{</span><span class="n">val</span><span class="si">}</span><span class="se">\"</span><span class="s2">"</span>
+      <span class="k">end</span>
+  
+      <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="k">super</span>
+        <span class="vc">@@counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">uid</span> <span class="o">=</span> <span class="s2">"reveal</span><span class="si">#{</span><span class="vc">@@counter</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">slide_count</span> <span class="o">=</span> <span class="n">content</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="sr">/&lt;section&gt;/i</span><span class="p">).</span><span class="nf">size</span>
+  
+        <span class="n">js_options</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="s2">"embedded"</span> <span class="o">=&gt;</span> <span class="s2">"true"</span><span class="p">,</span>
+          <span class="s2">"hash"</span> <span class="o">=&gt;</span> <span class="s2">"false"</span><span class="p">,</span>
+          <span class="s2">"slideNumber"</span> <span class="o">=&gt;</span> <span class="s2">"false"</span><span class="p">,</span>
+          <span class="s2">"center"</span> <span class="o">=&gt;</span> <span class="n">to_js_bool</span><span class="p">(</span><span class="vi">@params</span><span class="p">[</span><span class="s2">"center"</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"false"</span><span class="p">),</span>
+          <span class="s2">"controls"</span> <span class="o">=&gt;</span> <span class="n">to_js_bool</span><span class="p">(</span><span class="vi">@params</span><span class="p">[</span><span class="s2">"controls"</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"true"</span><span class="p">),</span>
+          <span class="s2">"loop"</span> <span class="o">=&gt;</span> <span class="n">to_js_bool</span><span class="p">(</span><span class="vi">@params</span><span class="p">[</span><span class="s2">"loop"</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"false"</span><span class="p">),</span>
+          <span class="s2">"transition"</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="se">\"</span><span class="si">#{</span><span class="vi">@params</span><span class="p">[</span><span class="s2">"transition"</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"slide"</span><span class="si">}</span><span class="se">\"</span><span class="s2">"</span>
+        <span class="p">}.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">"</span> <span class="p">}.</span><span class="nf">join</span><span class="p">(</span><span class="s2">",</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+  
+        <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
+          &lt;div class="reveal-embedded" id="</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">_container"&gt;
+            &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css"&gt;
+            &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css"&gt;
+            &lt;style&gt;
+              #</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">_container .reveal {
+                width: 100%;
+                height: 400px;
+                margin: 2em auto;
+                overflow: hidden;
+                position: relative;
+              }
+              #</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">_container .custom-slide-number {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10;
+                color: white;
+                font-size: 0.9em;
+                font-weight: bold;
+              }
+            &lt;/style&gt;
+  
+            &lt;div class="reveal" id="</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">"&gt;
+              &lt;div class="slides"&gt;
+                </span><span class="si">#{</span><span class="n">content</span><span class="si">}</span><span class="sh">
+              &lt;/div&gt;
+              &lt;div class="custom-slide-number" id="</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">_slide_number"&gt;1 / </span><span class="si">#{</span><span class="n">slide_count</span><span class="si">}</span><span class="sh">&lt;/div&gt;
+            &lt;/div&gt;
+  
+            &lt;script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"&gt;&lt;/script&gt;
+            &lt;script&gt;
+              document.addEventListener('DOMContentLoaded', () =&gt; {
+                const el = document.getElementById("</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">");
+                if (!window._revealInstances) window._revealInstances = {};
+  
+                const deck = new Reveal(el, {
+                  </span><span class="si">#{</span><span class="n">js_options</span><span class="si">}</span><span class="sh">
+                });
+  
+                deck.initialize().then(() =&gt; {
+                  window._revealInstances["</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">"] = deck;
+  
+                  const indicator = document.getElementById("</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">_slide_number");
+                  const total = </span><span class="si">#{</span><span class="n">slide_count</span><span class="si">}</span><span class="sh">;
+                  deck.slide(0); // Always start at slide 0
+  
+                  const updateLabel = (index) =&gt; {
+                    indicator.textContent = (index + 1) + " / " + total;
+                  };
+  
+                  updateLabel(0);
+                  deck.on("slidechanged", e =&gt; updateLabel(e.indexh));
+                });
+              });
+  
+              window.goToRevealSlide = function(id, index) {
+                const instance = window._revealInstances?.[id];
+                if (instance) instance.slide(index);
+              };
+            &lt;/script&gt;
+          &lt;/div&gt;
+</span><span class="no">        HTML</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+  
+  <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s2">"reveal"</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">RevealBlock</span><span class="p">)</span>
+  
+</code></pre></div></div>
+
+<h3 id="예시-코드">예시 코드</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% reveal %}
+<span class="nt">&lt;section&gt;</span>
+<span class="nt">&lt;h2&gt;</span>Reveal.js 소개<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+<span class="nt">&lt;section&gt;</span>
+<span class="nt">&lt;h2&gt;</span>두 번째 슬라이드<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>이 슬라이드는 마크다운이 아니라 HTML 형식이에요.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+<span class="nt">&lt;section&gt;</span>
+<span class="nt">&lt;h2&gt;</span>세 번째 슬라이드<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;</span>왼쪽/오른쪽 키로 이동<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>터치도 지원<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>커스터마이징 가능<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+{% endreveal %}
+</code></pre></div></div>
+
+<h2 id="홈페이지-레이아웃-프레젠테이션-슬라이드-만들기">홈페이지 레이아웃 프레젠테이션 슬라이드 만들기</h2>
+
+<h3 id="_layoutsslidehtml-추가">/_layouts/slide.html 추가</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>GitHub Blog Reveal.js 슬라이드 만들기<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css"</span> <span class="na">id=</span><span class="s">"theme"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;style&gt;</span>
+      <span class="nt">body</span> <span class="p">{</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nc">.reveal</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5rem</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"reveal"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"slides"</span><span class="nt">&gt;</span>
+        
+
+
+
+
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"main"</span> <span class="na">role=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+  
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
+
+  
+    
+
+
+<span class="nt">&lt;div</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/Person"</span> <span class="na">class=</span><span class="s">"h-card"</span><span class="nt">&gt;</span>
+
+  
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"author__avatar"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://ruyshy.github.io/"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/profile/github_profile_image.jpg"</span> <span class="na">alt=</span><span class="s">"ruyshy"</span> <span class="na">itemprop=</span><span class="s">"image"</span> <span class="na">class=</span><span class="s">"u-photo"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"author__content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"author__name p-name"</span> <span class="na">itemprop=</span><span class="s">"name"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"u-url"</span> <span class="na">rel=</span><span class="s">"me"</span> <span class="na">href=</span><span class="s">"https://ruyshy.github.io/"</span> <span class="na">itemprop=</span><span class="s">"url"</span><span class="nt">&gt;</span>ruyshy<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/h3&gt;</span>
+    
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"author__bio p-note"</span> <span class="na">itemprop=</span><span class="s">"description"</span><span class="nt">&gt;</span>
+        
+
+      <span class="nt">&lt;/div&gt;</span>
+    
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"author__urls-wrapper"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn--inverse"</span><span class="nt">&gt;</span>팔로우<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"author__urls social-icons"</span><span class="nt">&gt;</span>
+      
+        <span class="nt">&lt;li</span> <span class="na">itemprop=</span><span class="s">"homeLocation"</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/Place"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-fw fa-map-marker-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;</span> <span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"p-locality"</span><span class="nt">&gt;</span>South Korea<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/ruyshy"</span> <span class="na">rel=</span><span class="s">"nofollow noopener noreferrer me"</span> <span class="na">itemprop=</span><span class="s">"sameAs"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-fw fa-github"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;&lt;span</span> <span class="na">class=</span><span class="s">"label"</span><span class="nt">&gt;</span>GitHub<span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <span class="nt">&lt;li&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"mailto:ruyshyttr@gmail.com"</span> <span class="na">rel=</span><span class="s">"me"</span> <span class="na">class=</span><span class="s">"u-email"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;meta</span> <span class="na">itemprop=</span><span class="s">"email"</span> <span class="na">content=</span><span class="s">"ruyshyttr@gmail.com"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-fw fa-envelope-square"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;&lt;span</span> <span class="na">class=</span><span class="s">"label"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/span&gt;</span>
+          <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <span class="c">&lt;!--
+  &lt;li&gt;
+    &lt;a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me"&gt;
+      &lt;i class="fas fa-fw" aria-hidden="true"&gt;&lt;/i&gt; Custom Social Profile Link
+    &lt;/a&gt;
+  &lt;/li&gt;
+--&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+  
+
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav__list"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav__items"</span><span class="nt">&gt;</span>
+
+      <span class="c">&lt;!-- HOME --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/"</span> <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
+          Home
+        <span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+
+      <span class="c">&lt;!-- Divider --&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"nav-divider"</span><span class="nt">&gt;&lt;/li&gt;</span>
+
+      <span class="c">&lt;!-- CATEGORY TITLE --&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav__title"</span><span class="nt">&gt;</span>Category<span class="nt">&lt;/li&gt;</span>
+
+      <span class="c">&lt;!-- All --&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/"</span> <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
+          - All <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(19)<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+
+      <span class="c">&lt;!-- Dynamic categories --&gt;</span>
+      
+      
+        
+        
+        <span class="nt">&lt;li&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/assembly/"</span>
+             <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
+            - Assembly <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(4)<span class="nt">&lt;/span&gt;</span>
+          <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+      
+        
+        
+        <span class="nt">&lt;li&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/blog/"</span>
+             <span class="na">class=</span><span class="s">"nav__item"</span><span class="nt">&gt;</span>
+            - Blog <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>(15)<span class="nt">&lt;/span&gt;</span>
+          <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+      
+
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/nav&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+
+
+
+
+
+  <span class="nt">&lt;article</span> <span class="na">class=</span><span class="s">"page"</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/CreativeWork"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">itemprop=</span><span class="s">"headline"</span> <span class="na">content=</span><span class="s">"GitHub Blog Card Link"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">itemprop=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하고 싶다면 이 포스트를 참고하세요. Liquid 태그 기반 커스텀 플러그인을 이용해 GitHub Blog 카드 링크, 미리보기 링크 카드, OG 태그 기반 링크 프리뷰를 만드는 과정을 예제로 설명합니다."</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">itemprop=</span><span class="s">"datePublished"</span> <span class="na">content=</span><span class="s">"2025-04-24T00:00:00+09:00"</span><span class="nt">&gt;</span>
+    
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page__inner-wrap"</span><span class="nt">&gt;</span>
+      
+        <span class="nt">&lt;header&gt;</span>
+          <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"page-title"</span> <span class="na">class=</span><span class="s">"page__title"</span> <span class="na">itemprop=</span><span class="s">"headline"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://ruyshy.github.io/blog/blog14-card-link-pulgin/"</span> <span class="na">itemprop=</span><span class="s">"url"</span><span class="nt">&gt;</span>GitHub Blog Card Link
+<span class="nt">&lt;/a&gt;</span>
+          <span class="nt">&lt;/h1&gt;</span>
+          
+
+
+        <span class="nt">&lt;/header&gt;</span>
+      
+
+      <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"page__content"</span> <span class="na">itemprop=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+        
+          <span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">"sidebar__right sticky"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"toc"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;header&gt;&lt;h4</span> <span class="na">class=</span><span class="s">"nav__title"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-file-alt"</span><span class="nt">&gt;&lt;/i&gt;</span> 목차<span class="nt">&lt;/h4&gt;&lt;/header&gt;</span>
+              <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"toc__menu"</span><span class="nt">&gt;&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#링크-카드-미리-보기"</span><span class="nt">&gt;</span>링크 카드 미리 보기<span class="nt">&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#pluginscardlink_tagrb-추가"</span><span class="nt">&gt;</span>/plugins/cardlink_tag.rb 추가<span class="nt">&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#gemfile-해당-코드-추가"</span><span class="nt">&gt;</span>Gemfile 해당 코드 추가<span class="nt">&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#사용-방법"</span><span class="nt">&gt;</span>사용 방법<span class="nt">&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</span>
+            <span class="nt">&lt;/nav&gt;</span>
+          <span class="nt">&lt;/aside&gt;</span>
+        
+        <span class="nt">&lt;p&gt;</span>Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하고 싶다면 이 포스트를 참고하세요. Liquid 태그 기반 커스텀 플러그인을 이용해 <span class="nt">&lt;strong&gt;</span>GitHub Blog 카드 링크<span class="nt">&lt;/strong&gt;</span>, <span class="nt">&lt;strong&gt;</span>미리보기 링크 카드<span class="nt">&lt;/strong&gt;</span>, <span class="nt">&lt;strong&gt;</span>OG 태그 기반 링크 프리뷰<span class="nt">&lt;/strong&gt;</span>를 만드는 과정을 예제로 설명합니다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"링크-카드-미리-보기"</span><span class="nt">&gt;</span>링크 카드 미리 보기<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"margin: 1em 0;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://jekyllrb.com/"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span> <span class="na">style=</span><span class="s">"text-decoration: none; color: inherit;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://jekyllrb.com/img/jekyll-og.png"</span> <span class="na">alt=</span><span class="s">"thumbnail"</span> <span class="na">style=</span><span class="s">"width: 40%; object-fit: cover;"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"padding: 1em; flex: 1;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h3</span> <span class="na">style=</span><span class="s">"margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;"</span><span class="nt">&gt;</span>Jekyll • Simple, blog-aware, static sites<span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;"</span><span class="nt">&gt;</span>Transform your plain text into static websites and blogs<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;small</span> <span class="na">style=</span><span class="s">"color: #999;"</span><span class="nt">&gt;</span>jekyllrb.com<span class="nt">&lt;/small&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"pluginscardlink_tagrb-추가"</span><span class="nt">&gt;</span>/plugins/cardlink_tag.rb 추가<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-ruby highlighter-rouge"</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;code&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nb"</span><span class="nt">&gt;</span>require<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'open-uri'<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nb"</span><span class="nt">&gt;</span>require<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'nokogiri'<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nb"</span><span class="nt">&gt;</span>require<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'uri'<span class="nt">&lt;/span&gt;</span>
+
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>module<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nn"</span><span class="nt">&gt;</span>Jekyll<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>class<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nc"</span><span class="nt">&gt;</span>CardLink<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>Liquid<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>::<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>Tag<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>def<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>initialize<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>tag_name<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>,<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>markup<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>,<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>tokens<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>super<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"vi"</span><span class="nt">&gt;</span>@url<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>markup<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>strip<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>end<span class="nt">&lt;/span&gt;</span>
+
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>def<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>render<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>_context<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>begin<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>html<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>URI<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>open<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"vi"</span><span class="nt">&gt;</span>@url<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>,<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>"User-Agent"<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="ni">&amp;gt;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>"JekyllCardPreviewBot"<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>).<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>read<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>doc<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>Nokogiri<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>::<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>html<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;</span>
+
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>title<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>doc<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>at<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'meta[property="og:title"]'<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;amp;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>[<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>](<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'content'<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>||<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"vi"</span><span class="nt">&gt;</span>@url<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>description<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>doc<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>at<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'meta[property="og:description"]'<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;amp;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>[<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>](<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'content'<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>||<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>""<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>image<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>doc<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>at<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'meta[property="og:image"]'<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;amp;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>[<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>](<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'content'<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>||<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>""<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>host<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>URI<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>parse<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"vi"</span><span class="nt">&gt;</span>@url<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>).<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>host<span class="nt">&lt;/span&gt;</span>
+
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;&amp;lt;</span>~<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sh"</span><span class="nt">&gt;</span>
+        <span class="ni">&amp;lt;</span>div style="margin: 1em 0;"<span class="ni">&amp;gt;</span>
+          <span class="ni">&amp;lt;</span>a href="<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>#{<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"vi"</span><span class="nt">&gt;</span>@url<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>}<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sh"</span><span class="nt">&gt;</span>" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;"<span class="ni">&amp;gt;</span>
+            <span class="ni">&amp;lt;</span>div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"<span class="ni">&amp;gt;</span>
+              <span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>#{<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>image<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>!=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>""<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>?<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>"<span class="ni">&amp;lt;</span>img src=<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"se"</span><span class="nt">&gt;</span>\"<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>#{<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>image<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>}<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"se"</span><span class="nt">&gt;</span>\"<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span> alt=<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"se"</span><span class="nt">&gt;</span>\"<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>thumbnail<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"se"</span><span class="nt">&gt;</span>\"<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span> style=<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"se"</span><span class="nt">&gt;</span>\"<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>width: 40%; object-fit: cover;<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"se"</span><span class="nt">&gt;</span>\"<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span><span class="ni">&amp;gt;</span>"<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>:<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>""<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>}<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sh"</span><span class="nt">&gt;</span>
+              <span class="ni">&amp;lt;</span>div style="padding: 1em; flex: 1;"<span class="ni">&amp;gt;</span>
+                <span class="ni">&amp;lt;</span>h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;"<span class="ni">&amp;gt;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>#{<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>title<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>}<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sh"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>/h3<span class="ni">&amp;gt;</span>
+                <span class="ni">&amp;lt;</span>p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;"<span class="ni">&amp;gt;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>#{<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>description<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>}<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sh"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
+                <span class="ni">&amp;lt;</span>small style="color: #999;"<span class="ni">&amp;gt;</span><span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>#{<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>host<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>}<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sh"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>/small<span class="ni">&amp;gt;</span>
+              <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+            <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+          <span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
+        <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>        HTML<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>rescue<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>=<span class="ni">&amp;gt;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>e<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span>"<span class="ni">&amp;lt;</span>p style='color:red;'<span class="ni">&amp;gt;</span>[cardlink error] <span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>#{<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"vi"</span><span class="nt">&gt;</span>@url<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>}<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span> - <span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>#{<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"n"</span><span class="nt">&gt;</span>e<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>message<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"si"</span><span class="nt">&gt;</span>}<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s2"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>"<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>end<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>end<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>end<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"k"</span><span class="nt">&gt;</span>end<span class="nt">&lt;/span&gt;</span>
+
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>Liquid<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>::<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>Template<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>.<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"nf"</span><span class="nt">&gt;</span>register_tag<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>(<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"s1"</span><span class="nt">&gt;</span>'cardlink'<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>,<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>Jekyll<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span>::<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"no"</span><span class="nt">&gt;</span>CardLink<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">"p"</span><span class="nt">&gt;</span>)<span class="nt">&lt;/span&gt;</span>
+
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"gemfile-해당-코드-추가"</span><span class="nt">&gt;</span>Gemfile 해당 코드 추가<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;code&gt;</span>gem 'nokogiri'
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>해당 코드 추가 후, 로컬에서 실행하기 위해서 bundle install 을 진행해주세요!<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"사용-방법"</span><span class="nt">&gt;</span>사용 방법<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>{% cardlink https://jekyllrb.com/ %}<span class="nt">&lt;/code&gt;&lt;/p&gt;</span>
+
+        
+      <span class="nt">&lt;/section&gt;</span>
+
+      <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"page__meta"</span><span class="nt">&gt;</span>
+        
+        
+  
+
+
+  
+
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"page__taxonomy"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;strong&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-fw fa-tags"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;</span> Tag: <span class="nt">&lt;/strong&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">"keywords"</span><span class="nt">&gt;</span>
+    
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tags/#githubblog"</span> <span class="na">class=</span><span class="s">"page__taxonomy-item p-category"</span> <span class="na">rel=</span><span class="s">"tag"</span><span class="nt">&gt;</span>GitHubBlog<span class="nt">&lt;/a&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sep"</span><span class="nt">&gt;</span>, <span class="nt">&lt;/span&gt;</span>
+    
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tags/#javascript"</span> <span class="na">class=</span><span class="s">"page__taxonomy-item p-category"</span> <span class="na">rel=</span><span class="s">"tag"</span><span class="nt">&gt;</span>javascript<span class="nt">&lt;/a&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sep"</span><span class="nt">&gt;</span>, <span class="nt">&lt;/span&gt;</span>
+    
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tags/#jekyll-customization"</span> <span class="na">class=</span><span class="s">"page__taxonomy-item p-category"</span> <span class="na">rel=</span><span class="s">"tag"</span><span class="nt">&gt;</span>jekyll customization<span class="nt">&lt;/a&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sep"</span><span class="nt">&gt;</span>, <span class="nt">&lt;/span&gt;</span>
+    
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tags/#link-preview"</span> <span class="na">class=</span><span class="s">"page__taxonomy-item p-category"</span> <span class="na">rel=</span><span class="s">"tag"</span><span class="nt">&gt;</span>link preview<span class="nt">&lt;/a&gt;&lt;span</span> <span class="na">class=</span><span class="s">"sep"</span><span class="nt">&gt;</span>, <span class="nt">&lt;/span&gt;</span>
+    
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tags/#liquid-plugin"</span> <span class="na">class=</span><span class="s">"page__taxonomy-item p-category"</span> <span class="na">rel=</span><span class="s">"tag"</span><span class="nt">&gt;</span>liquid plugin<span class="nt">&lt;/a&gt;</span>
+    
+    <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/p&gt;</span>
+
+
+
+
+  
+
+
+  
+
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"page__taxonomy"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;strong&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-fw fa-folder-open"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;</span> Category: <span class="nt">&lt;/strong&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">"keywords"</span><span class="nt">&gt;</span>
+    
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/categories/#blog"</span> <span class="na">class=</span><span class="s">"page__taxonomy-item p-category"</span> <span class="na">rel=</span><span class="s">"tag"</span><span class="nt">&gt;</span>blog<span class="nt">&lt;/a&gt;</span>
+    
+    <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/p&gt;</span>
+
+
+        
+
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"page__date"</span><span class="nt">&gt;&lt;strong&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-fw fa-calendar-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;</span> Update:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;time</span> <span class="na">class=</span><span class="s">"dt-published"</span> <span class="na">datetime=</span><span class="s">"2025-04-24T00:00:00+09:00"</span><span class="nt">&gt;</span>April 24, 2025<span class="nt">&lt;/time&gt;&lt;/p&gt;</span>
+
+      <span class="nt">&lt;/footer&gt;</span>
+
+      <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"page__share"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"page__share-title"</span><span class="nt">&gt;</span>공유하기<span class="nt">&lt;/h4&gt;</span>
+
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://twitter.com/intent/tweet?text=GitHub+Blog+Card+Link%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog14-card-link-pulgin%2F"</span> <span class="na">class=</span><span class="s">"btn btn--twitter"</span> <span class="na">onclick=</span><span class="s">"window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"</span> <span class="na">title=</span><span class="s">"공유하기 Twitter"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-fw fa-twitter"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;&lt;span&gt;</span> Twitter<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog14-card-link-pulgin%2F"</span> <span class="na">class=</span><span class="s">"btn btn--facebook"</span> <span class="na">onclick=</span><span class="s">"window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"</span> <span class="na">title=</span><span class="s">"공유하기 Facebook"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-fw fa-facebook"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;&lt;span&gt;</span> Facebook<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.linkedin.com/shareArticle?mini=true&amp;url=https://ruyshy.github.io/blog/blog14-card-link-pulgin/"</span> <span class="na">class=</span><span class="s">"btn btn--linkedin"</span> <span class="na">onclick=</span><span class="s">"window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"</span> <span class="na">title=</span><span class="s">"공유하기 LinkedIn"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-fw fa-linkedin"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;&lt;span&gt;</span> LinkedIn<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+
+
+      
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>
+    
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/blog/blog13-quiz-form/"</span> <span class="na">class=</span><span class="s">"pagination--pager"</span> <span class="na">title=</span><span class="s">"GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기"</span><span class="nt">&gt;</span>Prev<span class="nt">&lt;/a&gt;</span>
+    
+    
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/blog/blog15-slide/"</span> <span class="na">class=</span><span class="s">"pagination--pager"</span> <span class="na">title=</span><span class="s">"GitHub Blog Reveal.js 슬라이드 만들기"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;</span>
+    
+  <span class="nt">&lt;/nav&gt;</span>
+
+
+    <span class="nt">&lt;/div&gt;</span>
+
+    
+      
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page__comments"</span><span class="nt">&gt;</span>
+  
+  
+      <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"page__comments-title"</span><span class="nt">&gt;</span>Comments<span class="nt">&lt;/h4&gt;</span>
+      <span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">"utterances-comments"</span><span class="nt">&gt;&lt;/section&gt;</span>
+    
+<span class="nt">&lt;/div&gt;</span>
+
+      
+    
+  <span class="nt">&lt;/article&gt;</span>
+
+  
+  
+    
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page__related"</span><span class="nt">&gt;</span>
+  
+  <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"page__related-title"</span><span class="nt">&gt;</span>참고<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid__wrapper"</span><span class="nt">&gt;</span>
+    
+      
+      
+
+
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid__item"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;article</span> <span class="na">class=</span><span class="s">"archive__item"</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/CreativeWork"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"archive__item-title no_toc"</span> <span class="na">itemprop=</span><span class="s">"headline"</span><span class="nt">&gt;</span>
+      
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/blog/blog15-slide/"</span> <span class="na">rel=</span><span class="s">"permalink"</span><span class="nt">&gt;</span>GitHub Blog Reveal.js 슬라이드 만들기
+<span class="nt">&lt;/a&gt;</span>
+      
+    <span class="nt">&lt;/h2&gt;</span>
+    
+
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"archive__item-excerpt"</span> <span class="na">itemprop=</span><span class="s">"description"</span><span class="nt">&gt;</span>Reveal.js를 사용하면 GitHub 블로그에서도 마치 PowerPoint처럼 HTML 슬라이드를 만들 수 있습니다. 이 글에서는 Jekyll 환경에서 reveal.js를 이용해 슬라이드 프레젠테이션, 인터랙티브 발표용 페이지, Jekyll 커스텀 플러그인 구현 방법까지 단계별...<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/article&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+    
+      
+      
+
+
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid__item"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;article</span> <span class="na">class=</span><span class="s">"archive__item"</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/CreativeWork"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"archive__item-title no_toc"</span> <span class="na">itemprop=</span><span class="s">"headline"</span><span class="nt">&gt;</span>
+      
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/blog/blog13-quiz-form/"</span> <span class="na">rel=</span><span class="s">"permalink"</span><span class="nt">&gt;</span>GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기
+<span class="nt">&lt;/a&gt;</span>
+      
+    <span class="nt">&lt;/h2&gt;</span>
+    
+
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"archive__item-excerpt"</span> <span class="na">itemprop=</span><span class="s">"description"</span><span class="nt">&gt;</span>Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.
+<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/article&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+    
+      
+      
+
+
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid__item"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;article</span> <span class="na">class=</span><span class="s">"archive__item"</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/CreativeWork"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"archive__item-title no_toc"</span> <span class="na">itemprop=</span><span class="s">"headline"</span><span class="nt">&gt;</span>
+      
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/assembly/assembly3-basic-commands-2/"</span> <span class="na">rel=</span><span class="s">"permalink"</span><span class="nt">&gt;</span>Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습
+<span class="nt">&lt;/a&gt;</span>
+      
+    <span class="nt">&lt;/h2&gt;</span>
+    
+
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"archive__item-excerpt"</span> <span class="na">itemprop=</span><span class="s">"description"</span><span class="nt">&gt;</span>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
+<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/article&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+    
+      
+      
+
+
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"grid__item"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;article</span> <span class="na">class=</span><span class="s">"archive__item"</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"https://schema.org/CreativeWork"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"archive__item-title no_toc"</span> <span class="na">itemprop=</span><span class="s">"headline"</span><span class="nt">&gt;</span>
+      
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/blog/blog12-toggle-plugin/"</span> <span class="na">rel=</span><span class="s">"permalink"</span><span class="nt">&gt;</span>GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기
+<span class="nt">&lt;/a&gt;</span>
+      
+    <span class="nt">&lt;/h2&gt;</span>
+    
+
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"archive__item-excerpt"</span> <span class="na">itemprop=</span><span class="s">"description"</span><span class="nt">&gt;</span>Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 <span class="ni">&amp;lt;</span>details<span class="ni">&amp;gt;</span> 외에도
+커스텀 Liquid 플러그인을 통해 더 유연하고 스타일링 가능한 Toggle UI를 구현할 수 있습니다.
+이 글에서는 toggle 플러그인을 직접 만들어 접기 기능을 구현하고,
+내용에 따라 ...<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/article&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+    
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+  
+  
+<span class="nt">&lt;/div&gt;</span>
+
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="nx">Reveal</span><span class="p">.</span><span class="nf">initialize</span><span class="p">({</span>
+        <span class="na">hash</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">slideNumber</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">transition</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fade</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">loop</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">});</span>
+    
+      <span class="nx">Reveal</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">slidechanged</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">indexh</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">total</span> <span class="o">=</span> <span class="nx">Reveal</span><span class="p">.</span><span class="nf">getTotalSlides</span><span class="p">();</span>
+    
+        <span class="kd">const</span> <span class="nx">isLastSlide</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">===</span> <span class="nx">total</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">isManual</span> <span class="o">=</span> <span class="o">!</span><span class="nx">Reveal</span><span class="p">.</span><span class="nf">isAutoSliding</span><span class="p">();</span>
+    
+        <span class="k">if </span><span class="p">(</span><span class="nx">isLastSlide</span> <span class="o">&amp;&amp;</span> <span class="nx">isManual</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>    
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>해당 코드에 마지막 on 부분 코드에서 작업: 마지막 슬라이드에서 다음으로 넘길 시, 깃허브 블로그 홈 으로 자동으로 이동합니다.</p>
+
+<p>만약 기능을 제외하고싶다면 해당 코드를 지우시면 됩니다:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Reveal.on('slidechanged', function(event) {
+    const current = event.indexh;
+    const total = Reveal.getTotalSlides();
+
+    const isLastSlide = current === total - 1;
+    const isManual = !Reveal.isAutoSliding();
+
+    if (isLastSlide <span class="err">&amp;&amp;</span> isManual) {
+      window.location.href = "/";
+    }
+  });
+</code></pre></div></div>
+
+<h3 id="_pagesexample_slidemd">/_pages/example_slide.md</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">slide</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">프레젠테이션</span><span class="nv"> </span><span class="s">슬라이드"</span>
+<span class="na">data</span><span class="pi">:</span> <span class="s">2025-04-24</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/example/slide/</span>
+<span class="nn">---</span>
+
+<span class="nt">&lt;section&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>Reveal.js 소개<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+
+<span class="nt">&lt;section&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>두 번째 슬라이드<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;p&gt;</span>이 슬라이드는 마크다운이 아니라 HTML 형식이에요.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+
+<span class="nt">&lt;section&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>세 번째 슬라이드<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;</span>왼쪽/오른쪽 키로 이동<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>터치도 지원<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>커스터마이징 가능<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+
+<p>슬라이드 예제 사이트 :</p>
+
+<p><a href="https://ruyshy.github.io/example/slide/">https://ruyshy.github.io/example/slide/</a>
+<br /></p>
+
+<h3 id="reveal-js-공식-홈페이지">Reveal js 공식 홈페이지</h3>
+
+<div style="margin: 1em 0;">
+  <a href="https://revealjs.com/" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://revealjs.com/images/meta/reveal-og-card-1200-630.png" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">The HTML presentation framework | reveal.js</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">Documentation and demos for the open source reveal.js HTML presentation framework.</p>
+        <small style="color: #999;">revealjs.com</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<p>더 자세한 것을 알고 싶으면 공식 홈페이지에 방문하는 것을 추천합니다.</p>
+
+<h3 id="reveal-설정-가능한-옵션">Reveal 설정 가능한 옵션</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>옵션명</th>
+      <th>설명</th>
+      <th>기본값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">controls</code></td>
+      <td>좌우 슬라이드 화살표 표시</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">controlsTutorial</code></td>
+      <td>처음에 방향 화살표를 깜빡이며 튜토리얼 힌트 제공</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">controlsLayout</code></td>
+      <td>화살표 위치: <code class="language-plaintext highlighter-rouge">'edges'</code>, <code class="language-plaintext highlighter-rouge">'bottom-right'</code></td>
+      <td><code class="language-plaintext highlighter-rouge">'bottom-right'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">controlsBackArrows</code></td>
+      <td>이전 화살표 표시 방식: <code class="language-plaintext highlighter-rouge">'faded'</code>, <code class="language-plaintext highlighter-rouge">'hidden'</code>, <code class="language-plaintext highlighter-rouge">'visible'</code></td>
+      <td><code class="language-plaintext highlighter-rouge">'faded'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">progress</code></td>
+      <td>슬라이드 하단 진행 바 표시</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">slideNumber</code></td>
+      <td>슬라이드 번호 표시 (true, false, <code class="language-plaintext highlighter-rouge">"h/v"</code>, <code class="language-plaintext highlighter-rouge">"c/t"</code> 등)</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">showSlideNumber</code></td>
+      <td>슬라이드 번호 표시 시점: <code class="language-plaintext highlighter-rouge">"all"</code>, <code class="language-plaintext highlighter-rouge">"print"</code>, <code class="language-plaintext highlighter-rouge">"speaker"</code></td>
+      <td><code class="language-plaintext highlighter-rouge">"all"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hash</code></td>
+      <td>슬라이드 위치를 URL 해시로 반영</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hashOneBasedIndex</code></td>
+      <td>해시 기반 슬라이드 인덱스를 1부터 시작할지 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">respondToHashChanges</code></td>
+      <td>URL 해시 변경 시 슬라이드도 바꿀지 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">jumpToSlide</code></td>
+      <td>슬라이드 점프 단축키 <code class="language-plaintext highlighter-rouge">g</code> 키 사용 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">history</code></td>
+      <td>슬라이드 변경 시 브라우저 history 갱신</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">keyboard</code></td>
+      <td>키보드로 슬라이드 조작 가능</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">keyboardCondition</code></td>
+      <td><code class="language-plaintext highlighter-rouge">"focused"</code> 설정 시, 포커스 있을 때만 키보드 작동</td>
+      <td><code class="language-plaintext highlighter-rouge">null</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">disableLayout</code></td>
+      <td>Reveal.js의 자동 레이아웃 끄기</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">overview</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Esc</code> 키로 전체 슬라이드 보기 모드</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">center</code></td>
+      <td>슬라이드 내용을 수직 가운데 정렬</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">touch</code></td>
+      <td>터치 스와이프 네비게이션 활성화</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">loop</code></td>
+      <td>마지막 슬라이드 → 첫 슬라이드 루프 이동</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rtl</code></td>
+      <td>오른쪽→왼쪽 방향 슬라이드 전환</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">navigationMode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">"default"</code>, <code class="language-plaintext highlighter-rouge">"linear"</code>, <code class="language-plaintext highlighter-rouge">"grid"</code> 슬라이드 이동 모드</td>
+      <td><code class="language-plaintext highlighter-rouge">"default"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">shuffle</code></td>
+      <td>슬라이드 순서를 무작위로 섞기</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">fragments</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;li class="fragment"&gt;</code> 등 조각 애니메이션 작동</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">fragmentInURL</code></td>
+      <td>URL에 fragment 위치 반영 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">embedded</code></td>
+      <td>Reveal 슬라이드를 내부에 삽입할지 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">help</code></td>
+      <td><code class="language-plaintext highlighter-rouge">?</code> 키로 단축키 도움말 표시</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pause</code></td>
+      <td><code class="language-plaintext highlighter-rouge">B</code> 키로 블랙아웃 가능 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">showNotes</code></td>
+      <td>발표자 노트를 일반 사용자도 볼 수 있게</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">autoPlayMedia</code></td>
+      <td>미디어 자동 재생 제어 (<code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>, <code class="language-plaintext highlighter-rouge">null</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">null</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">preloadIframes</code></td>
+      <td>iframe 선로딩 방식 설정 (<code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>, <code class="language-plaintext highlighter-rouge">null</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">null</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">autoAnimate</code></td>
+      <td>슬라이드 자동 애니메이션 허용</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">autoAnimateEasing</code></td>
+      <td>자동 애니메이션 easing 함수</td>
+      <td><code class="language-plaintext highlighter-rouge">'ease'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">autoAnimateDuration</code></td>
+      <td>자동 애니메이션 시간 (초)</td>
+      <td><code class="language-plaintext highlighter-rouge">1.0</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">autoSlide</code></td>
+      <td>슬라이드 자동 넘김 시간 (ms), 또는 <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">autoSlideStoppable</code></td>
+      <td>사용자 입력 시 자동 넘김 중지</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mouseWheel</code></td>
+      <td>마우스 휠로 슬라이드 넘김</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">previewLinks</code></td>
+      <td>링크를 미리보기 iframe으로 표시</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">postMessage</code></td>
+      <td>부모 창에 reveal API 메시지 전송</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">postMessageEvents</code></td>
+      <td>이벤트 메시지도 전송할지 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">focusBodyOnPageVisibilityChange</code></td>
+      <td>탭 복귀 시 키보드 제어 복원</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">transition</code></td>
+      <td>슬라이드 전환 애니메이션 (<code class="language-plaintext highlighter-rouge">slide</code>, <code class="language-plaintext highlighter-rouge">fade</code>, <code class="language-plaintext highlighter-rouge">zoom</code>, …)</td>
+      <td><code class="language-plaintext highlighter-rouge">'slide'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">transitionSpeed</code></td>
+      <td>전환 속도 (<code class="language-plaintext highlighter-rouge">default</code>, <code class="language-plaintext highlighter-rouge">fast</code>, <code class="language-plaintext highlighter-rouge">slow</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">'default'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">backgroundTransition</code></td>
+      <td>배경 전환 효과</td>
+      <td><code class="language-plaintext highlighter-rouge">'fade'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pdfMaxPagesPerSlide</code></td>
+      <td>PDF 출력 시 슬라이드당 최대 페이지 수</td>
+      <td><code class="language-plaintext highlighter-rouge">Infinity</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pdfSeparateFragments</code></td>
+      <td>조각을 개별 PDF 슬라이드로 출력</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pdfPageHeightOffset</code></td>
+      <td>PDF 출력 시 슬라이드 높이 보정</td>
+      <td><code class="language-plaintext highlighter-rouge">-1</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">viewDistance</code></td>
+      <td>렌더링되는 근접 슬라이드 수</td>
+      <td><code class="language-plaintext highlighter-rouge">3</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mobileViewDistance</code></td>
+      <td>모바일에서 렌더링하는 슬라이드 수</td>
+      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">display</code></td>
+      <td>렌더링 방식 (<code class="language-plaintext highlighter-rouge">block</code>, <code class="language-plaintext highlighter-rouge">flex</code>, …)</td>
+      <td><code class="language-plaintext highlighter-rouge">'block'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hideInactiveCursor</code></td>
+      <td>비활성 상태에서 마우스 커서 숨김</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hideCursorTime</code></td>
+      <td>커서 숨기기까지 시간 (ms)</td>
+      <td><code class="language-plaintext highlighter-rouge">5000</code></td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#githubblog" class="page__taxonomy-item p-category" rel="tag">GitHubBlog</a><span class="sep">, </span>
+    
+      <a href="/tags/#jekyll-plugin" class="page__taxonomy-item p-category" rel="tag">jekyll plugin</a><span class="sep">, </span>
+    
+      <a href="/tags/#liquid-plugin" class="page__taxonomy-item p-category" rel="tag">liquid plugin</a><span class="sep">, </span>
+    
+      <a href="/tags/#reveal-js" class="page__taxonomy-item p-category" rel="tag">reveal.js</a><span class="sep">, </span>
+    
+      <a href="/tags/#slide-presentation" class="page__taxonomy-item p-category" rel="tag">slide presentation</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Category: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-24T00:00:00+09:00">April 24, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">공유하기</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Reveal.js+%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C+%EB%A7%8C%EB%93%A4%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog15-slide%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog15-slide%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog15-slide/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/blog14-card-link-pulgin/" class="pagination--pager" title="GitHub Blog Card Link">Prev</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
+      
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">참고</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog14-card-link-pulgin/" rel="permalink">GitHub Blog Card Link
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하고 싶다면 이 포스트를 참고하세요. Liquid 태그 기반 커스텀 플러그인을 이용해 GitHub Blog 카드 링크, 미리보기 링크 카드, OG 태그 기반 링크 프리뷰를 만드는 과정을 예제로 설명합니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog13-quiz-form/" rel="permalink">GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/assembly/assembly3-basic-commands-2/" rel="permalink">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog12-toggle-plugin/" rel="permalink">GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 &lt;details&gt; 외에도
+커스텀 Liquid 플러그인을 통해 더 유연하고 스타일링 가능한 Toggle UI를 구현할 수 있습니다.
+이 글에서는 toggle 플러그인을 직접 만들어 접기 기능을 구현하고,
+내용에 따라 ...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <!-- JEKYLL LIQUID TAG -->>
+    <script src="/assets/js/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
+    
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script>
+    <!-- 
+
+-->>
+
+<script src="/assets/js/quiz-handler.js"></script>
+
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'ruyshy/ruyshy.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+  </body>
+</html>

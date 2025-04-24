@@ -17,6 +17,12 @@ var store = [{
         "url": "/categories/",
         "teaser": null
       },{
+        "title": "프레젠테이션 슬라이드",
+        "excerpt":"   Reveal.js 소개    Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!       두 번째 슬라이드    이 슬라이드는 마크다운이 아니라 HTML 형식이에요.       세 번째 슬라이드         왼쪽/오른쪽 키로 이동     터치도 지원     커스터마이징 가능     ","categories": [],
+        "tags": [],
+        "url": "/example/slide/",
+        "teaser": null
+      },{
         "title": "GitHub Blog 시작하기 - Jekyll과 GitHub Pages 블로그 만들기",
         "excerpt":"GitHub Blog를 시작하려는 분들을 위한 가이드입니다. 이 글에서는 GitHub Pages, Jekyll, 그리고 인기 테마인 minimal-mistakes를 활용해 나만의 기술 블로그를 만드는 과정을 단계별로 설명합니다. Jekyll 기반 GitHub Blog 생성 https://mmistakes.github.io/minimal-mistakes/ 해당 Jekyll 테마(minimal-mistakes) 기준으로 작성 되어있습니다. 준비해야 할 준비물 개인 GitHub 계정 (https://github.com/) Visual Studio Code (https://code.visualstudio.com/) GitHub Blog 시작하기 https://github.com/mmistakes/minimal-mistakes...","categories": ["blog"],
         "tags": ["GitHub Blog","GitHub Pages","Jekyll","블로그 만들기","minimal-mistakes"],
@@ -125,9 +131,9 @@ var store = [{
         "url": "/blog/blog14-card-link-pulgin/",
         "teaser": null
       },{
-        "title": "test",
-        "excerpt":"   슬라이드 1   슬라이드 2   슬라이드 3  ","categories": ["blog"],
-        "tags": [],
-        "url": "/blog/blog15-slide-form/",
+        "title": "GitHub Blog Reveal.js 슬라이드 만들기",
+        "excerpt":"Reveal.js를 사용하면 GitHub 블로그에서도 마치 PowerPoint처럼 HTML 슬라이드를 만들 수 있습니다. 이 글에서는 Jekyll 환경에서 reveal.js를 이용해 슬라이드 프레젠테이션, 인터랙티브 발표용 페이지, Jekyll 커스텀 플러그인 구현 방법까지 단계별로 설명합니다. reveal.js 으로 슬라이드 만들기 예시 슬라이드: Reveal.js 소개 Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요! 두 번째 슬라이드 이 슬라이드는 마크다운이...","categories": ["blog"],
+        "tags": ["GitHubBlog","reveal.js","jekyll plugin","slide presentation","liquid plugin"],
+        "url": "/blog/blog15-slide/",
         "teaser": null
       }]

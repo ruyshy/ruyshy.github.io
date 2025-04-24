@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기 - ruyshy blog</title>
-<meta name="description" content="Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.">
+<meta name="description" content="Jekyll GitHub 블로그에 퀴즈 기능을 추가하는 Liquid 기반 커스텀 플러그인 구현법과 예시 코드 제공">
 
 
   <meta name="author" content="ruyshy">
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://ruyshy.github.io/blog/blog13-quiz-form/">
 
 
-  <meta property="og:description" content="Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.">
+  <meta property="og:description" content="Jekyll GitHub 블로그에 퀴즈 기능을 추가하는 Liquid 기반 커스텀 플러그인 구현법과 예시 코드 제공">
 
 
 
@@ -355,44 +355,44 @@
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-644717">
-  <div class="quiz-message" id="quiz-message-644717" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-745953">
+  <div class="quiz-message" id="quiz-message-745953" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-644717" onsubmit="return false;">
+  <form id="quiz-form-745953" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-644717" id="quiz-644717-0" value="1번" data-correct="false" />
-  <label for="quiz-644717-0">1번</label>
+  <input type="radio" name="quiz-answer-745953" id="quiz-745953-0" value="1번" data-correct="false" />
+  <label for="quiz-745953-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-644717" id="quiz-644717-1" value="2번" data-correct="true" />
-  <label for="quiz-644717-1">2번</label>
+  <input type="radio" name="quiz-answer-745953" id="quiz-745953-1" value="2번" data-correct="true" />
+  <label for="quiz-745953-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-644717" id="quiz-644717-2" value="3번" data-correct="false" />
-  <label for="quiz-644717-2">3번</label>
+  <input type="radio" name="quiz-answer-745953" id="quiz-745953-2" value="3번" data-correct="false" />
+  <label for="quiz-745953-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-644717" id="quiz-644717-3" value="4번" data-correct="false" />
-  <label for="quiz-644717-3">4번</label>
+  <input type="radio" name="quiz-answer-745953" id="quiz-745953-3" value="4번" data-correct="false" />
+  <label for="quiz-745953-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(644717, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(745953, false, null)">제출</button>
   </form>
-  <div id="quiz-result-644717" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-644717" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-644717', this)" data-label="해설 보기"></div>
-  <div id="toggle-644717" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-745953" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-745953" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-745953', this)" data-label="해설 보기"></div>
+  <div id="toggle-745953" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -403,26 +403,26 @@
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-427128">
-  <div class="quiz-message" id="quiz-message-427128" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-714484">
+  <div class="quiz-message" id="quiz-message-714484" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-427128" onsubmit="return false;">
+  <form id="quiz-form-714484" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-427128" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-714484" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-427128" value="test" />
+      <input type="hidden" id="quiz-text-answer-714484" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(427128, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(714484, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-427128" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-427128" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-427128', this)" data-label="해설 보기"></div>
-  <div id="toggle-427128" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-714484" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-714484" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-714484', this)" data-label="해설 보기"></div>
+  <div id="toggle-714484" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -1010,19 +1010,14 @@ test 문제 입니다.
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog15-slide-form/" rel="permalink">test
+        <a href="/blog/blog15-slide/" rel="permalink">GitHub Blog Reveal.js 슬라이드 만들기
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">
-  슬라이드 1
-  슬라이드 2
-  슬라이드 3
-
-</p>
+    <p class="archive__item-excerpt" itemprop="description">Reveal.js를 사용하면 GitHub 블로그에서도 마치 PowerPoint처럼 HTML 슬라이드를 만들 수 있습니다. 이 글에서는 Jekyll 환경에서 reveal.js를 이용해 슬라이드 프레젠테이션, 인터랙티브 발표용 페이지, Jekyll 커스텀 플러그인 구현 방법까지 단계별...</p>
   </article>
 </div>
 
