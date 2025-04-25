@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T12:47:41+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Google Analytics GA4 연동 가이드</title><link href="https://ruyshy.github.io/blog/blog16-google-analytics/" rel="alternate" type="text/html" title="GitHub Blog Google Analytics GA4 연동 가이드" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog16-google-analytics</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog16-google-analytics/"><![CDATA[<p>GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T13:27:06+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Google Analytics GA4 연동 가이드</title><link href="https://ruyshy.github.io/blog/blog16-google-analytics/" rel="alternate" type="text/html" title="GitHub Blog Google Analytics GA4 연동 가이드" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog16-google-analytics</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog16-google-analytics/"><![CDATA[<p>GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
 
 <h2 id="1-ga4-속성-만들기">1. <strong>GA4 속성 만들기</strong></h2>
 
@@ -905,44 +905,44 @@ main으로 복귀 → rax = 1234
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-751784">
-  <div class="quiz-message" id="quiz-message-751784" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-500735">
+  <div class="quiz-message" id="quiz-message-500735" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-751784" onsubmit="return false;">
+  <form id="quiz-form-500735" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-751784" id="quiz-751784-0" value="1번" data-correct="false" />
-  <label for="quiz-751784-0">1번</label>
+  <input type="radio" name="quiz-answer-500735" id="quiz-500735-0" value="1번" data-correct="false" />
+  <label for="quiz-500735-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-751784" id="quiz-751784-1" value="2번" data-correct="true" />
-  <label for="quiz-751784-1">2번</label>
+  <input type="radio" name="quiz-answer-500735" id="quiz-500735-1" value="2번" data-correct="true" />
+  <label for="quiz-500735-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-751784" id="quiz-751784-2" value="3번" data-correct="false" />
-  <label for="quiz-751784-2">3번</label>
+  <input type="radio" name="quiz-answer-500735" id="quiz-500735-2" value="3번" data-correct="false" />
+  <label for="quiz-500735-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-751784" id="quiz-751784-3" value="4번" data-correct="false" />
-  <label for="quiz-751784-3">4번</label>
+  <input type="radio" name="quiz-answer-500735" id="quiz-500735-3" value="4번" data-correct="false" />
+  <label for="quiz-500735-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(751784, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(500735, false, null)">제출</button>
   </form>
-  <div id="quiz-result-751784" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-751784" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-751784', this)" data-label="해설 보기"></div>
-  <div id="toggle-751784" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-500735" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-500735" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-500735', this)" data-label="해설 보기"></div>
+  <div id="toggle-500735" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -953,26 +953,26 @@ main으로 복귀 → rax = 1234
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-772767">
-  <div class="quiz-message" id="quiz-message-772767" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-254272">
+  <div class="quiz-message" id="quiz-message-254272" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-772767" onsubmit="return false;">
+  <form id="quiz-form-254272" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-772767" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-254272" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-772767" value="test" />
+      <input type="hidden" id="quiz-text-answer-254272" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(772767, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(254272, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-772767" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-772767" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-772767', this)" data-label="해설 보기"></div>
-  <div id="toggle-772767" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-254272" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-254272" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-254272', this)" data-label="해설 보기"></div>
+  <div id="toggle-254272" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -2415,9 +2415,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-k6sfu6', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-200oyb', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-k6sfu6" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-200oyb" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2433,9 +2433,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-xe3yg2', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-vstpv', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-xe3yg2" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-vstpv" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2661,9 +2661,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-olovu5', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-8bt90a', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-olovu5" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-8bt90a" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -2687,9 +2687,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-xv4cmp', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-faw7s5', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-xv4cmp" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-faw7s5" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>
@@ -2723,9 +2723,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-o6gq6m', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-s2p3wh', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-o6gq6m" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-s2p3wh" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -2749,9 +2749,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ecyubs', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-9xn85', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-ecyubs" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-9xn85" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
@@ -3193,9 +3193,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-dfagp1', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-ftzh3o', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-dfagp1" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-ftzh3o" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3379,9 +3379,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-e967ro', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-40kwqo', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-e967ro" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-40kwqo" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
@@ -3403,9 +3403,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-78l5kf', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-wc73dq', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-78l5kf" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-wc73dq" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3662,9 +3662,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-wz1t4u', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-pfyqmt', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-wz1t4u" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-pfyqmt" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
