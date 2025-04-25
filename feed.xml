@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T16:31:39+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 기본 명령어부터 익히기 : cdecl, stdcall 호출 규약 비교</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 기본 명령어부터 익히기 : cdecl, stdcall 호출 규약 비교" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T16:32:57+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다.</p>
 
 <h2 id="call-convention이란">Call Convention이란?</h2>
 
@@ -1170,44 +1170,44 @@ main으로 복귀 → rax = 1234
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-822742">
-  <div class="quiz-message" id="quiz-message-822742" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-224145">
+  <div class="quiz-message" id="quiz-message-224145" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-822742" onsubmit="return false;">
+  <form id="quiz-form-224145" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-822742" id="quiz-822742-0" value="1번" data-correct="false" />
-  <label for="quiz-822742-0">1번</label>
+  <input type="radio" name="quiz-answer-224145" id="quiz-224145-0" value="1번" data-correct="false" />
+  <label for="quiz-224145-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-822742" id="quiz-822742-1" value="2번" data-correct="true" />
-  <label for="quiz-822742-1">2번</label>
+  <input type="radio" name="quiz-answer-224145" id="quiz-224145-1" value="2번" data-correct="true" />
+  <label for="quiz-224145-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-822742" id="quiz-822742-2" value="3번" data-correct="false" />
-  <label for="quiz-822742-2">3번</label>
+  <input type="radio" name="quiz-answer-224145" id="quiz-224145-2" value="3번" data-correct="false" />
+  <label for="quiz-224145-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-822742" id="quiz-822742-3" value="4번" data-correct="false" />
-  <label for="quiz-822742-3">4번</label>
+  <input type="radio" name="quiz-answer-224145" id="quiz-224145-3" value="4번" data-correct="false" />
+  <label for="quiz-224145-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(822742, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(224145, false, null)">제출</button>
   </form>
-  <div id="quiz-result-822742" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-822742" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-822742', this)" data-label="해설 보기"></div>
-  <div id="toggle-822742" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-224145" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-224145" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-224145', this)" data-label="해설 보기"></div>
+  <div id="toggle-224145" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -1218,26 +1218,26 @@ main으로 복귀 → rax = 1234
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-432060">
-  <div class="quiz-message" id="quiz-message-432060" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-682472">
+  <div class="quiz-message" id="quiz-message-682472" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-432060" onsubmit="return false;">
+  <form id="quiz-form-682472" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-432060" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-682472" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-432060" value="test" />
+      <input type="hidden" id="quiz-text-answer-682472" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(432060, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(682472, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-432060" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-432060" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-432060', this)" data-label="해설 보기"></div>
-  <div id="toggle-432060" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-682472" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-682472" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-682472', this)" data-label="해설 보기"></div>
+  <div id="toggle-682472" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -2680,9 +2680,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-hy9brf', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-j3ar19', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-hy9brf" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-j3ar19" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2698,9 +2698,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-94rf65', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-pq5ud', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-94rf65" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-pq5ud" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2926,9 +2926,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-jdjwva', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-y7q2c4', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-jdjwva" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-y7q2c4" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -2952,9 +2952,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-4sx0tn', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-1h3ohd', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-4sx0tn" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-1h3ohd" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>
@@ -2988,9 +2988,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-4ftqqd', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-9m61cl', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-4ftqqd" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-9m61cl" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -3014,9 +3014,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-g1qqzx', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-t4u33s', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-g1qqzx" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-t4u33s" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
@@ -3458,9 +3458,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-dlp9o5', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-80zsn5', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-dlp9o5" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-80zsn5" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3644,9 +3644,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-kqt2c2', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-op8p5b', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-kqt2c2" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-op8p5b" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
@@ -3668,9 +3668,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-6f3o9e', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-r2tf7c', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-6f3o9e" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-r2tf7c" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3927,9 +3927,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-nyc6km', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-1z8l1j', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-nyc6km" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-1z8l1j" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
