@@ -125,9 +125,9 @@ var store = [{
         "url": "/blog/blog13-quiz-form/",
         "teaser": null
       },{
-        "title": "GitHub Blog Card Link",
-        "excerpt":"Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하고 싶다면 이 포스트를 참고하세요. Liquid 태그 기반 커스텀 플러그인을 이용해 GitHub Blog 카드 링크, 미리보기 링크 카드, OG 태그 기반 링크 프리뷰를 만드는 과정을 예제로 설명합니다. 링크 카드 미리 보기 Jekyll • Simple, blog-aware, static sites Transform your plain text into static...","categories": ["blog"],
-        "tags": ["GitHubBlog","link preview","liquid plugin","jekyll customization","javascript"],
+        "title": "GitHub Blog 카드 링크 플러그인 만들기",
+        "excerpt":"GitHub Pages 기반 Jekyll 블로그에서 외부 링크를 자동으로 카드 형식으로 만들어주는 링크 카드 플러그인, OG 태그 기반 미리보기 카드, Liquid 태그 확장을 구현하고 싶다면 이 글을 참고하세요. 링크 카드 미리 보기 Jekyll • Simple, blog-aware, static sites Transform your plain text into static websites and blogs jekyllrb.com /plugins/cardlink_tag.rb 추가 require...","categories": ["blog"],
+        "tags": ["GitHubBlog","link preview","liquid plugin","jekyll plugin","open graph","javascript"],
         "url": "/blog/blog14-card-link-pulgin/",
         "teaser": null
       },{

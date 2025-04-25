@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>GitHub Blog Card Link - ruyshy blog</title>
-<meta name="description" content="Jekyll Liquid 플러그인으로 외부 링크를 카드 형태로 표시하는 방법을 소개합니다. GitHub Blog에서 링크 카드 구현하는 방법을 코드 예제와 함께 설명합니다.">
+<!-- begin _includes/seo.html --><title>GitHub Blog 카드 링크 플러그인 만들기 - ruyshy blog</title>
+<meta name="description" content="Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하는 Liquid 플러그인 구현 방법을 소개합니다. OG 태그 기반 링크 미리보기를 직접 구현해보세요.">
 
 
   <meta name="author" content="ruyshy">
@@ -23,11 +23,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="GitHub Blog Card Link">
+<meta property="og:title" content="GitHub Blog 카드 링크 플러그인 만들기">
 <meta property="og:url" content="https://ruyshy.github.io/blog/blog14-card-link-pulgin/">
 
 
-  <meta property="og:description" content="Jekyll Liquid 플러그인으로 외부 링크를 카드 형태로 표시하는 방법을 소개합니다. GitHub Blog에서 링크 카드 구현하는 방법을 코드 예제와 함께 설명합니다.">
+  <meta property="og:description" content="Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하는 Liquid 플러그인 구현 방법을 소개합니다. OG 태그 기반 링크 미리보기를 직접 구현해보세요.">
 
 
 
@@ -320,8 +320,8 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="GitHub Blog Card Link">
-    <meta itemprop="description" content="Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하고 싶다면 이 포스트를 참고하세요. Liquid 태그 기반 커스텀 플러그인을 이용해 GitHub Blog 카드 링크, 미리보기 링크 카드, OG 태그 기반 링크 프리뷰를 만드는 과정을 예제로 설명합니다.">
+    <meta itemprop="headline" content="GitHub Blog 카드 링크 플러그인 만들기">
+    <meta itemprop="description" content="GitHub Pages 기반 Jekyll 블로그에서 외부 링크를 자동으로 카드 형식으로 만들어주는 링크 카드 플러그인, OG 태그 기반 미리보기 카드, Liquid 태그 확장을 구현하고 싶다면 이 글을 참고하세요.">
     <meta itemprop="datePublished" content="2025-04-24T00:00:00+09:00">
     
 
@@ -329,7 +329,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/blog/blog14-card-link-pulgin/" itemprop="url">GitHub Blog Card Link
+            <a href="https://ruyshy.github.io/blog/blog14-card-link-pulgin/" itemprop="url">GitHub Blog 카드 링크 플러그인 만들기
 </a>
           </h1>
           
@@ -347,7 +347,7 @@
             </nav>
           </aside>
         
-        <p>Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하고 싶다면 이 포스트를 참고하세요. Liquid 태그 기반 커스텀 플러그인을 이용해 <strong>GitHub Blog 카드 링크</strong>, <strong>미리보기 링크 카드</strong>, <strong>OG 태그 기반 링크 프리뷰</strong>를 만드는 과정을 예제로 설명합니다.</p>
+        <p>GitHub Pages 기반 Jekyll 블로그에서 외부 링크를 자동으로 카드 형식으로 만들어주는 <strong>링크 카드 플러그인</strong>, <strong>OG 태그 기반 미리보기 카드</strong>, <strong>Liquid 태그 확장</strong>을 구현하고 싶다면 이 글을 참고하세요.</p>
 
 <h3 id="링크-카드-미리-보기">링크 카드 미리 보기</h3>
 
@@ -441,11 +441,13 @@
     
       <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">javascript</a><span class="sep">, </span>
     
-      <a href="/tags/#jekyll-customization" class="page__taxonomy-item p-category" rel="tag">jekyll customization</a><span class="sep">, </span>
+      <a href="/tags/#jekyll-plugin" class="page__taxonomy-item p-category" rel="tag">jekyll plugin</a><span class="sep">, </span>
     
       <a href="/tags/#link-preview" class="page__taxonomy-item p-category" rel="tag">link preview</a><span class="sep">, </span>
     
-      <a href="/tags/#liquid-plugin" class="page__taxonomy-item p-category" rel="tag">liquid plugin</a>
+      <a href="/tags/#liquid-plugin" class="page__taxonomy-item p-category" rel="tag">liquid plugin</a><span class="sep">, </span>
+    
+      <a href="/tags/#open-graph" class="page__taxonomy-item p-category" rel="tag">open graph</a>
     
     </span>
   </p>
@@ -477,7 +479,7 @@
       <section class="page__share">
   <h4 class="page__share-title">공유하기</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Card+Link%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog14-card-link-pulgin%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+%EC%B9%B4%EB%93%9C+%EB%A7%81%ED%81%AC+%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8+%EB%A7%8C%EB%93%A4%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog14-card-link-pulgin%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog14-card-link-pulgin%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
