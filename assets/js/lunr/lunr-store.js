@@ -136,4 +136,10 @@ var store = [{
         "tags": ["GitHubBlog","reveal.js","jekyll plugin","slide presentation","liquid plugin"],
         "url": "/blog/blog15-slide/",
         "teaser": null
+      },{
+        "title": "GitHub Blog Google Analytics GA4 연동 가이드",
+        "excerpt":"GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 GA4 측정 ID 삽입, minimal-mistakes 테마 설정, 실시간 유입 확인, 그리고 Google Search Console 연동 방법까지 전체 과정을 상세히 다룹니다. 1. GA4 속성 만들기 Google Analytics 접속 ‘만들기’ → ‘계정 생성’ → ‘속성...","categories": ["blog"],
+        "tags": ["GitHubBlog","GoogleAnalytics","GA4","minimal-mistakes","Jekyll","SearchConsole"],
+        "url": "/blog/blog16-google-analytics/",
+        "teaser": null
       }]
