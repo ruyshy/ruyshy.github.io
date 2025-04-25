@@ -105,6 +105,9 @@ window.checkQuizAnswer = function (id, isText, correctTextAnswer = null) {
     el.className = `quiz-message quiz-message-${type}`;
     el.innerHTML = text + '<span class="quiz-message-close" onclick="this.parentNode.style.display=\'none\'">×</span>';
     el.style.display = "block";
+    setTimeout(() => {
+      el.style.display = "none";
+    }, 2000);
   };
   
   window.retryQuiz = function (id) {
@@ -343,7 +346,7 @@ end
   left: 0;
   width: 100%;
   padding: 0.6em 1em;
-  background-color: rgba(255, 77, 79, 0.9);
+  background-color: rgba(255, 77, 79, 0.7);
   color: white;
   border-radius: 4px;
   font-weight: bold;
@@ -352,7 +355,7 @@ end
   box-sizing: border-box;
 
   &.quiz-message-info {
-    background-color: rgba(24, 144, 255, 0.9);
+    background-color: rgba(24, 144, 255, 0.7);
   }
 
   .quiz-message-close {

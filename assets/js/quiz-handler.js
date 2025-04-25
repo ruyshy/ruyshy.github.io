@@ -53,6 +53,9 @@ window.checkQuizAnswer = function (id, isText, correctTextAnswer = null) {
     el.className = `quiz-message quiz-message-${type}`;
     el.innerHTML = text + '<span class="quiz-message-close" onclick="this.parentNode.style.display=\'none\'">×</span>';
     el.style.display = "block";
+    setTimeout(() => {
+      el.style.display = "none";
+    }, 2000);
   };
   
   window.retryQuiz = function (id) {
