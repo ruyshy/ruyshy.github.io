@@ -90,6 +90,5 @@ google_analytics: G-XXXXXXXXXX  # GA4의 측정 ID
 5. `웹 스트림 선택` → `데이터 스트림 선택` → `다음` 
 6. `보내기` 를 눌러 작업을 완료합니다.
 
-![image.png](image.png)
-
+{% img "image.png", "구글 애널리틱스 실시간 보고서" %}
 보고서를 설정 후, 실시간 개요 테스트를 진행한 스크린샷입니다.
