@@ -1,0 +1,1135 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈 - ruyshy blog</title>
+<meta name="description" content="NASM 어셈블리어 기본 명령어 mov, add, sub, cmp, jmp 등과 스택 조작, 함수 호출 구조를 퀴즈로 복습합니다.">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈">
+<meta property="og:url" content="https://ruyshy.github.io/assembly/assembly5-exercises2/">
+
+
+  <meta property="og:description" content="NASM 어셈블리어 기본 명령어 mov, add, sub, cmp, jmp 등과 스택 조작, 함수 호출 구조를 퀴즈로 복습합니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-04-25T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/assembly/assembly5-exercises2/">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://ruyshy.github.io/">
+        <img src="/assets/images/profile/github_profile_image.jpg" alt="ruyshy" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+
+      <!-- HOME -->
+      <li>
+        <a href="/" class="nav__item">
+          Home
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <li><hr class="nav-divider"></li>
+
+      <!-- CATEGORY TITLE -->
+      <li class="nav__title">Category</li>
+
+      <!-- All -->
+      <li>
+        <a href="/categories/" class="nav__item">
+          - All <span class="count">(24)</span>
+        </a>
+      </li>
+
+      <!-- Dynamic categories -->
+      
+      
+        
+        
+        <li>
+          <a href="/categories/assembly/"
+             class="nav__item">
+            - Assembly <span class="count">(8)</span>
+          </a>
+        </li>
+      
+        
+        
+        <li>
+          <a href="/categories/blog/"
+             class="nav__item">
+            - Blog <span class="count">(16)</span>
+          </a>
+        </li>
+      
+
+    </ul>
+  </nav>
+
+</div>
+
+
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈">
+    <meta itemprop="description" content="NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문제입니다. mov, add, cmp, jmp, push, pop, call, ret 등 핵심 명령어와 스택 동작 구조를 객관식 퀴즈 형식으로 정리했습니다.">
+    <meta itemprop="datePublished" content="2025-04-25T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/assembly/assembly5-exercises2/" itemprop="url">Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              
+            </nav>
+          </aside>
+        
+        <p>NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문제입니다. <code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">jmp</code>, <code class="language-plaintext highlighter-rouge">push</code>, <code class="language-plaintext highlighter-rouge">pop</code>, <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">ret</code> 등 핵심 명령어와 스택 동작 구조를 객관식 퀴즈 형식으로 정리했습니다.</p>
+
+<div class="quiz-box" id="quiz-box-913668">
+  <div class="quiz-message" id="quiz-message-913668" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 <code class="language-plaintext highlighter-rouge">mov</code> 명령어의 올바른 사용 예시는?</p>
+
+  </div>
+  <form id="quiz-form-913668" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-913668" id="quiz-913668-0" value="A. `mov [rax], [rbx]`" data-correct="false" />
+  <label for="quiz-913668-0">A. `mov [rax], [rbx]`</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-913668" id="quiz-913668-1" value="B. `mov rax, 1234h`" data-correct="false" />
+  <label for="quiz-913668-1">B. `mov rax, 1234h`</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-913668" id="quiz-913668-2" value="C. `mov 1234h, rax`" data-correct="false" />
+  <label for="quiz-913668-2">C. `mov 1234h, rax`</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-913668" id="quiz-913668-3" value="D. `mov rax, [rbx + rcx]`" data-correct="true" />
+  <label for="quiz-913668-3">D. `mov rax, [rbx + rcx]`</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(913668, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-913668" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-913668" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-913668', this)" data-label="해설 보기"></div>
+  <div id="toggle-913668" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">[rbx + rcx]</code>는 유효한 메모리 주소. <code class="language-plaintext highlighter-rouge">mov [mem], [mem]</code>은 금지라서 A는 틀림.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-742742">
+  <div class="quiz-message" id="quiz-message-742742" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">2.</code> <code class="language-plaintext highlighter-rouge">add rax, 5</code> 명령어 실행 후 결과로 올바른 설명은?</p>
+
+  </div>
+  <form id="quiz-form-742742" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-742742" id="quiz-742742-0" value="A. rax에 5가 저장된다" data-correct="false" />
+  <label for="quiz-742742-0">A. rax에 5가 저장된다</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-742742" id="quiz-742742-1" value="B. rax 값이 5로 교체된다" data-correct="false" />
+  <label for="quiz-742742-1">B. rax 값이 5로 교체된다</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-742742" id="quiz-742742-2" value="C. rax 값에 5가 더해진다" data-correct="true" />
+  <label for="quiz-742742-2">C. rax 값에 5가 더해진다</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-742742" id="quiz-742742-3" value="D. 5의 주소를 rax에 저장한다" data-correct="false" />
+  <label for="quiz-742742-3">D. 5의 주소를 rax에 저장한다</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(742742, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-742742" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-742742" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-742742', this)" data-label="해설 보기"></div>
+  <div id="toggle-742742" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">add</code>는 기존 값에 값을 더하는 연산. 즉, rax += 5 와 같음.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-555722">
+  <div class="quiz-message" id="quiz-message-555722" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">3.</code> <code class="language-plaintext highlighter-rouge">sub rax, 3</code> 실행 전 rax가 10이었다면, 결과는?</p>
+
+  </div>
+  <form id="quiz-form-555722" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-555722" id="quiz-555722-0" value="A. rax = 7" data-correct="true" />
+  <label for="quiz-555722-0">A. rax = 7</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-555722" id="quiz-555722-1" value="B. rax = 13" data-correct="false" />
+  <label for="quiz-555722-1">B. rax = 13</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-555722" id="quiz-555722-2" value="C. rax = -3" data-correct="false" />
+  <label for="quiz-555722-2">C. rax = -3</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-555722" id="quiz-555722-3" value="D. rax = 3" data-correct="false" />
+  <label for="quiz-555722-3">D. rax = 3</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(555722, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-555722" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-555722" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-555722', this)" data-label="해설 보기"></div>
+  <div id="toggle-555722" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">sub</code>는 뺄셈이므로 10 - 3 = 7이 됨.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-359654">
+  <div class="quiz-message" id="quiz-message-359654" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">4.</code> <code class="language-plaintext highlighter-rouge">cmp rax, rbx</code>의 의미는?</p>
+
+  </div>
+  <form id="quiz-form-359654" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-359654" id="quiz-359654-0" value="A. rax 값을 rbx로 바꿈" data-correct="false" />
+  <label for="quiz-359654-0">A. rax 값을 rbx로 바꿈</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-359654" id="quiz-359654-1" value="B. rbx 값을 rax에서 뺀 뒤 저장" data-correct="false" />
+  <label for="quiz-359654-1">B. rbx 값을 rax에서 뺀 뒤 저장</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-359654" id="quiz-359654-2" value="C. 두 값을 비교하고 플래그만 설정" data-correct="true" />
+  <label for="quiz-359654-2">C. 두 값을 비교하고 플래그만 설정</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-359654" id="quiz-359654-3" value="D. rax와 rbx를 교환" data-correct="false" />
+  <label for="quiz-359654-3">D. rax와 rbx를 교환</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(359654, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-359654" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-359654" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-359654', this)" data-label="해설 보기"></div>
+  <div id="toggle-359654" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">cmp</code>는 뺄셈을 하되 결과를 저장하지 않고 플래그만 설정해서 조건 분기 판단에 사용.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-425672">
+  <div class="quiz-message" id="quiz-message-425672" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">5.</code> 조건 분기와 가장 밀접한 관계가 있는 명령어는?</p>
+
+  </div>
+  <form id="quiz-form-425672" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-425672" id="quiz-425672-0" value="A. call" data-correct="false" />
+  <label for="quiz-425672-0">A. call</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-425672" id="quiz-425672-1" value="B. cmp" data-correct="true" />
+  <label for="quiz-425672-1">B. cmp</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-425672" id="quiz-425672-2" value="C. ret" data-correct="false" />
+  <label for="quiz-425672-2">C. ret</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-425672" id="quiz-425672-3" value="D. push" data-correct="false" />
+  <label for="quiz-425672-3">D. push</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(425672, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-425672" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-425672" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-425672', this)" data-label="해설 보기"></div>
+  <div id="toggle-425672" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> 조건 분기(jz, jne 등)는 <code class="language-plaintext highlighter-rouge">cmp</code>로 플래그 설정 후 분기.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-609264">
+  <div class="quiz-message" id="quiz-message-609264" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">6.</code> 다음 중 무조건 점프하는 명령어는?</p>
+
+  </div>
+  <form id="quiz-form-609264" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-609264" id="quiz-609264-0" value="A. je" data-correct="false" />
+  <label for="quiz-609264-0">A. je</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-609264" id="quiz-609264-1" value="B. jne" data-correct="false" />
+  <label for="quiz-609264-1">B. jne</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-609264" id="quiz-609264-2" value="C. jmp" data-correct="true" />
+  <label for="quiz-609264-2">C. jmp</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-609264" id="quiz-609264-3" value="D. jg" data-correct="false" />
+  <label for="quiz-609264-3">D. jg</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(609264, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-609264" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-609264" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-609264', this)" data-label="해설 보기"></div>
+  <div id="toggle-609264" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">jmp</code>는 조건 없이 무조건 지정한 주소로 점프함.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-858748">
+  <div class="quiz-message" id="quiz-message-858748" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">7.</code> <code class="language-plaintext highlighter-rouge">push rax</code> 수행 시 어떤 일이 일어나는가?</p>
+
+  </div>
+  <form id="quiz-form-858748" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-858748" id="quiz-858748-0" value="A. rax 값을 스택에 저장하고 RSP는 증가" data-correct="false" />
+  <label for="quiz-858748-0">A. rax 값을 스택에 저장하고 RSP는 증가</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-858748" id="quiz-858748-1" value="B. rax 값을 스택에 저장하고 RSP는 감소" data-correct="true" />
+  <label for="quiz-858748-1">B. rax 값을 스택에 저장하고 RSP는 감소</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-858748" id="quiz-858748-2" value="C. 스택에서 값을 꺼내 rax에 저장" data-correct="false" />
+  <label for="quiz-858748-2">C. 스택에서 값을 꺼내 rax에 저장</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-858748" id="quiz-858748-3" value="D. rax가 스택 포인터로 바뀜" data-correct="false" />
+  <label for="quiz-858748-3">D. rax가 스택 포인터로 바뀜</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(858748, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-858748" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-858748" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-858748', this)" data-label="해설 보기"></div>
+  <div id="toggle-858748" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> 스택은 위에서 아래로 쌓이기 때문에 push 시 RSP가 감소.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-386458">
+  <div class="quiz-message" id="quiz-message-386458" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">8.</code> <code class="language-plaintext highlighter-rouge">pop rbx</code> 수행 후 상태는?</p>
+
+  </div>
+  <form id="quiz-form-386458" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-386458" id="quiz-386458-0" value="A. rbx에 스택의 맨 위 값이 들어가고 RSP는 증가" data-correct="true" />
+  <label for="quiz-386458-0">A. rbx에 스택의 맨 위 값이 들어가고 RSP는 증가</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-386458" id="quiz-386458-1" value="B. rbx에 스택의 맨 위 값이 들어가고 RSP는 감소" data-correct="false" />
+  <label for="quiz-386458-1">B. rbx에 스택의 맨 위 값이 들어가고 RSP는 감소</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-386458" id="quiz-386458-2" value="C. rbx의 값이 스택에 들어감" data-correct="false" />
+  <label for="quiz-386458-2">C. rbx의 값이 스택에 들어감</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-386458" id="quiz-386458-3" value="D. rbx와 rsp를 교환함" data-correct="false" />
+  <label for="quiz-386458-3">D. rbx와 rsp를 교환함</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(386458, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-386458" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-386458" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-386458', this)" data-label="해설 보기"></div>
+  <div id="toggle-386458" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">pop</code>은 RSP가 가리키는 값을 꺼내고, RSP는 증가.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-811636">
+  <div class="quiz-message" id="quiz-message-811636" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">9.</code> <code class="language-plaintext highlighter-rouge">call func</code> 명령어는 어떤 동작을 수행하는가?</p>
+
+  </div>
+  <form id="quiz-form-811636" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-811636" id="quiz-811636-0" value="A. 현재 위치를 저장하고 func로 점프" data-correct="true" />
+  <label for="quiz-811636-0">A. 현재 위치를 저장하고 func로 점프</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-811636" id="quiz-811636-1" value="B. func의 결과를 rax에 저장" data-correct="false" />
+  <label for="quiz-811636-1">B. func의 결과를 rax에 저장</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-811636" id="quiz-811636-2" value="C. 함수를 종료시킴" data-correct="false" />
+  <label for="quiz-811636-2">C. 함수를 종료시킴</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-811636" id="quiz-811636-3" value="D. func를 push함" data-correct="false" />
+  <label for="quiz-811636-3">D. func를 push함</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(811636, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-811636" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-811636" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-811636', this)" data-label="해설 보기"></div>
+  <div id="toggle-811636" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">call</code>은 현재 RIP를 스택에 저장하고, 해당 함수로 점프.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-916524">
+  <div class="quiz-message" id="quiz-message-916524" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">10.</code> <code class="language-plaintext highlighter-rouge">ret</code> 명령어의 기능은?</p>
+
+  </div>
+  <form id="quiz-form-916524" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-916524" id="quiz-916524-0" value="A. rax를 초기화" data-correct="false" />
+  <label for="quiz-916524-0">A. rax를 초기화</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-916524" id="quiz-916524-1" value="B. 함수 인자를 정리" data-correct="false" />
+  <label for="quiz-916524-1">B. 함수 인자를 정리</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-916524" id="quiz-916524-2" value="C. 스택에서 return 주소를 꺼내 복귀" data-correct="true" />
+  <label for="quiz-916524-2">C. 스택에서 return 주소를 꺼내 복귀</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-916524" id="quiz-916524-3" value="D. 프로그램 종료" data-correct="false" />
+  <label for="quiz-916524-3">D. 프로그램 종료</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(916524, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-916524" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-916524" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-916524', this)" data-label="해설 보기"></div>
+  <div id="toggle-916524" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">ret</code>은 call 시 push된 RIP 값을 pop해서 해당 위치로 복귀.</p>
+  </div>
+</div>
+</div>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#assembly" class="page__taxonomy-item p-category" rel="tag">assembly</a><span class="sep">, </span>
+    
+      <a href="/tags/#call" class="page__taxonomy-item p-category" rel="tag">call</a><span class="sep">, </span>
+    
+      <a href="/tags/#nasm" class="page__taxonomy-item p-category" rel="tag">nasm</a><span class="sep">, </span>
+    
+      <a href="/tags/#pop" class="page__taxonomy-item p-category" rel="tag">pop</a><span class="sep">, </span>
+    
+      <a href="/tags/#push" class="page__taxonomy-item p-category" rel="tag">push</a><span class="sep">, </span>
+    
+      <a href="/tags/#ret" class="page__taxonomy-item p-category" rel="tag">ret</a><span class="sep">, </span>
+    
+      <a href="/tags/#x64" class="page__taxonomy-item p-category" rel="tag">x64</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%8B%A4%EC%8A%B5" class="page__taxonomy-item p-category" rel="tag">명령어 실습</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC-%ED%80%B4%EC%A6%88" class="page__taxonomy-item p-category" rel="tag">어셈블리 퀴즈</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Category: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#assembly" class="page__taxonomy-item p-category" rel="tag">assembly</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-25T00:00:00+09:00">April 25, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">공유하기</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=Assembly+%EA%B8%B0%EC%B4%88+%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C+%ED%92%80%EC%9D%B42+-+%EB%AA%85%EB%A0%B9%EC%96%B4+%EA%B0%9C%EB%85%90+%EC%A0%95%EB%A6%AC+%ED%80%B4%EC%A6%88%20https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly5-exercises2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly5-exercises2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/assembly/assembly5-exercises2/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/assembly/assembly5-exercises1/" class="pagination--pager" title="Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈">Prev</a>
+    
+    
+      <a href="/blog/blog16-google-analytics/" class="pagination--pager" title="GitHub Blog Google Analytics GA4 연동 가이드">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
+      
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">참고</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog16-google-analytics/" rel="permalink">GitHub Blog Google Analytics GA4 연동 가이드
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 GA4 측정 ID 삽입, minimal-mistakes 테마 설정, 실시간 유입 확인, 그리고 Google Search C...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/assembly/assembly5-exercises1/" rel="permalink">Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assembly(NASM) 학습 내용을 복습하는 기초 연습문제입니다. 64비트 레지스터 구분, 스택 구조 이해, 리틀 엔디안 메모리 저장 방식, 함수 호출 시 RSP/RBP 역할 등 퀴즈로 정리합니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/assembly/assembly4-practice/" rel="permalink">Assembly로 간단한 계산기 만들기: Hello World부터 사칙연산까지 실습
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assembly 언어로 Hello World 출력부터 덧셈 계산기, 사칙연산 계산기까지 NASM과 io64.inc 매크로를 활용하여 실습해봅니다. 이 예제들을 통해 PRINT_STRING, READ_INT, cmp, call, ret 등의 명령어 흐름과 스택 사용법까지 익힐 수 있...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/assembly/assembly3-basic-commands-3/" rel="permalink">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
+전 편에서 Assembly 기본 명령어 - Windows NASM 실습 가이드 에서 ...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <!-- JEKYLL LIQUID TAG -->>
+    <script src="/assets/js/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
+    
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script>
+    <!-- 
+
+-->>
+
+<script src="/assets/js/quiz-handler.js"></script>
+
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VGYDK4XE75'
+  
+  );
+</script>
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'ruyshy/ruyshy.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+  </body>
+</html>

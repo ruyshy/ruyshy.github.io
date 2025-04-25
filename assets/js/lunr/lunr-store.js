@@ -152,7 +152,13 @@ var store = [{
         "title": "Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈",
         "excerpt":"Assembly(NASM) 학습 내용을 복습하는 기초 연습문제입니다. 64비트 레지스터 구분, 스택 구조 이해, 리틀 엔디안 메모리 저장 방식, 함수 호출 시 RSP/RBP 역할 등 퀴즈로 정리합니다. 1. 다음 중 64비트 레지스터가 아닌 것은? A. RAX B. RBX C. EAX D. RDI 제출 해설: EAX는 32비트 레지스터. RAX의 하위 32비트 버전. 2....","categories": ["assembly"],
         "tags": ["assembly","nasm","x64","어셈블리 퀴즈","리틀엔디안","스택프레임","레지스터"],
-        "url": "/assembly/assembly5-exercises/",
+        "url": "/assembly/assembly5-exercises1/",
+        "teaser": null
+      },{
+        "title": "Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈",
+        "excerpt":"NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문제입니다. mov, add, cmp, jmp, push, pop, call, ret 등 핵심 명령어와 스택 동작 구조를 객관식 퀴즈 형식으로 정리했습니다. 1. 다음 중 mov 명령어의 올바른 사용 예시는? A. `mov [rax], [rbx]` B. `mov rax, 1234h` C. `mov 1234h, rax` D. `mov rax, [rbx...","categories": ["assembly"],
+        "tags": ["assembly","nasm","x64","어셈블리 퀴즈","명령어 실습","call","ret","push","pop"],
+        "url": "/assembly/assembly5-exercises2/",
         "teaser": null
       },{
         "title": "GitHub Blog Google Analytics GA4 연동 가이드",
