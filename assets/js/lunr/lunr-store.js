@@ -143,6 +143,12 @@ var store = [{
         "url": "/assembly/assembly3-basic-commands-2/",
         "teaser": null
       },{
+        "title": "Assembly로 간단한 계산기 만들기: Hello World부터 사칙연산까지 실습",
+        "excerpt":"Assembly 언어로 Hello World 출력부터 덧셈 계산기, 사칙연산 계산기까지 NASM과 io64.inc 매크로를 활용하여 실습해봅니다. 이 예제들을 통해 PRINT_STRING, READ_INT, cmp, call, ret 등의 명령어 흐름과 스택 사용법까지 익힐 수 있습니다. SASM + io64.inc 환경 기준으로 진행합니다. 예제: Hello World 출력 (x64, NASM, io64.inc) %include \"io64.inc\" ; 문자열 출력 등 유틸리티...","categories": ["assembly"],
+        "tags": ["assembly","nasm","io64","계산기","READ_INT","PRINT_STRING","기초실습"],
+        "url": "/assembly/assembly4-practice/",
+        "teaser": null
+      },{
         "title": "GitHub Blog Google Analytics GA4 연동 가이드",
         "excerpt":"GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 GA4 측정 ID 삽입, minimal-mistakes 테마 설정, 실시간 유입 확인, 그리고 Google Search Console 연동 방법까지 전체 과정을 상세히 다룹니다. 1. GA4 속성 만들기 Google Analytics 접속 ‘만들기’ → ‘계정 생성’ → ‘속성...","categories": ["blog"],
         "tags": ["GitHubBlog","GoogleAnalytics","GA4","minimal-mistakes","Jekyll","SearchConsole"],

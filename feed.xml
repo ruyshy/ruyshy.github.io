@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T16:32:57+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T17:10:52+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다.</p>
 
 <h2 id="call-convention이란">Call Convention이란?</h2>
 
@@ -263,7 +263,250 @@
 </ul>
 
 <p>즉, <code class="language-plaintext highlighter-rouge">ret</code> 다음에 <code class="language-plaintext highlighter-rouge">add esp, 8</code>이 있다면 <code class="language-plaintext highlighter-rouge">cdecl</code>
-반대로 <code class="language-plaintext highlighter-rouge">ret 8</code>이면 <code class="language-plaintext highlighter-rouge">stdcall</code>인 거 바로 파악 가능</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="call convention" /><category term="cdecl" /><category term="stdcall" /><category term="fastcall" /><category term="nasm" /><category term="stack frame" /><summary type="html"><![CDATA[cdecl과 stdcall 호출 규약(Call Convention)의 차이점을 NASM 어셈블리 코드 예제와 함께 비교 분석합니다. 함수 호출, 스택 정리 방식, 인자 전달 구조를 정확히 이해하고 리버싱에 필요한 기초를 다질 수 있습니다.]]></summary></entry><entry><title type="html">GitHub Blog Google Analytics GA4 연동 가이드</title><link href="https://ruyshy.github.io/blog/blog16-google-analytics/" rel="alternate" type="text/html" title="GitHub Blog Google Analytics GA4 연동 가이드" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog16-google-analytics</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog16-google-analytics/"><![CDATA[<p>GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
+반대로 <code class="language-plaintext highlighter-rouge">ret 8</code>이면 <code class="language-plaintext highlighter-rouge">stdcall</code>인 거 바로 파악 가능</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="call convention" /><category term="cdecl" /><category term="stdcall" /><category term="fastcall" /><category term="nasm" /><category term="stack frame" /><summary type="html"><![CDATA[cdecl과 stdcall 호출 규약(Call Convention)의 차이점을 NASM 어셈블리 코드 예제와 함께 비교 분석합니다. 함수 호출, 스택 정리 방식, 인자 전달 구조를 정확히 이해하고 리버싱에 필요한 기초를 다질 수 있습니다.]]></summary></entry><entry><title type="html">Assembly로 간단한 계산기 만들기: Hello World부터 사칙연산까지 실습</title><link href="https://ruyshy.github.io/assembly/assembly4-practice/" rel="alternate" type="text/html" title="Assembly로 간단한 계산기 만들기: Hello World부터 사칙연산까지 실습" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly4-practice</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly4-practice/"><![CDATA[<p>Assembly 언어로 Hello World 출력부터 덧셈 계산기, 사칙연산 계산기까지 NASM과 io64.inc 매크로를 활용하여 실습해봅니다. 이 예제들을 통해 <code class="language-plaintext highlighter-rouge">PRINT_STRING</code>, <code class="language-plaintext highlighter-rouge">READ_INT</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">ret</code> 등의 명령어 흐름과 스택 사용법까지 익힐 수 있습니다.</p>
+
+<p>SASM + io64.inc 환경 기준으로 진행합니다.</p>
+
+<h2 id="예제-hello-world-출력-x64-nasm-io64inc">예제: Hello World 출력 (x64, NASM, io64.inc)</h2>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">%include "io64.inc"       </span><span class="c1">; 문자열 출력 등 유틸리티 함수 포함
+</span>
+<span class="nf">section</span> <span class="nv">.data</span>
+    <span class="nf">msg</span> <span class="nv">db</span> <span class="s">"Hello, World!"</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; null-terminated 문자열 선언</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nf">global</span> <span class="nv">main</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>                <span class="c1">; 디버깅 편의상 프레임베이스 설정</span>
+    <span class="nf">PRINT_STRING</span> <span class="nv">msg</span>            <span class="c1">; 문자열 출력</span>
+    <span class="nf">NEWLINE</span>                     <span class="c1">; 줄바꿈 출력</span>
+    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>                <span class="c1">; 정상 종료 코드 0 설정</span>
+    <span class="nf">ret</span>                         <span class="c1">; 프로그램 종료</span>
+</code></pre></div></div>
+
+<h3 id="코드-설명">코드 설명</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>명령어</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PRINT_STRING msg</code></td>
+      <td><code class="language-plaintext highlighter-rouge">msg</code>에 있는 문자열 출력 (<code class="language-plaintext highlighter-rouge">db</code>로 정의된 문자열)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NEWLINE</code></td>
+      <td>줄바꿈 출력 (헬퍼 매크로에서 제공)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mov rbp, rsp</code></td>
+      <td>현재 스택 포인터를 RBP에 저장해서 스택 프레임 설정</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">xor rax, rax</code></td>
+      <td>RAX를 0으로 초기화 (프로그램 정상 종료 코드)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ret</code></td>
+      <td>호출한 곳으로 복귀 (여기선 OS에 리턴)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="간단한-덧셈-계산기-두-수-입력받아-더해서-출력">간단한 덧셈 계산기 (두 수 입력받아 더해서 출력)</h2>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">%include "io64.inc"
+</span>
+<span class="nf">section</span> <span class="nv">.data</span>
+    <span class="nf">prompt1</span> <span class="nv">db</span> <span class="err">"</span><span class="nv">Enter</span> <span class="nv">first</span> <span class="nv">number</span><span class="p">:</span> <span class="s">", 0
+    prompt2 db "</span><span class="nv">Enter</span> <span class="nv">second</span> <span class="nv">number</span><span class="p">:</span> <span class="s">", 0
+    resultMsg db "</span><span class="nv">Result</span> <span class="err">=</span> <span class="err">"</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="nf">section</span> <span class="nv">.bss</span>
+    <span class="nf">num1</span> <span class="nv">resq</span> <span class="mi">1</span>     <span class="c1">; 64비트 정수 저장 공간</span>
+    <span class="nf">num2</span> <span class="nv">resq</span> <span class="mi">1</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nf">global</span> <span class="nv">main</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>         <span class="c1">; 스택프레임 설정 (디버깅용)</span>
+
+    <span class="c1">; 첫 번째 수 입력</span>
+    <span class="nf">PRINT_STRING</span> <span class="nv">prompt1</span>
+    <span class="nf">READ_INT</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nv">num1</span><span class="p">],</span> <span class="nb">rax</span>      <span class="c1">; 입력된 정수 RAX → num1에 저장</span>
+
+    <span class="c1">; 두 번째 수 입력</span>
+    <span class="nf">PRINT_STRING</span> <span class="nv">prompt2</span>
+    <span class="nf">READ_INT</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nv">num2</span><span class="p">],</span> <span class="nb">rax</span>      <span class="c1">; 입력된 정수 RAX → num2에 저장</span>
+
+    <span class="c1">; 두 수 더하기</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num1</span><span class="p">]</span>
+    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num2</span><span class="p">]</span>
+
+    <span class="c1">; 결과 출력</span>
+    <span class="nf">PRINT_STRING</span> <span class="nv">resultMsg</span>
+    <span class="nf">PRINT_DEC</span> <span class="nb">rax</span>
+    <span class="nf">NEWLINE</span>
+
+    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
+    <span class="nf">ret</span>
+</code></pre></div></div>
+
+<h3 id="이-코드로-배우는-것">이 코드로 배우는 것</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">READ_INT</code>로 사용자 입력을 받고</li>
+  <li>메모리(<code class="language-plaintext highlighter-rouge">.bss</code> 영역)에 저장하고</li>
+  <li><code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code> 명령어로 계산하고</li>
+  <li><code class="language-plaintext highlighter-rouge">PRINT_DEC</code>로 숫자 출력까지 함</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">cmp rax, '+'</code> 으로 +, -, *, /를 체크해서 간단한 사칙연산 계산하는 프로그램을 직접 만들어보자!</p>
+
+<h2 id="간단한-사칙연산-계산기">간단한 사칙연산 계산기</h2>
+
+<div class="toggle">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-5aogca', this)" data-label="코드 보기">
+  </div>
+  <div id="toggle-5aogca" class="toggle-body" style="display: none; max-height: 0;">
+    
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">%include "io64.inc"
+</span>
+<span class="nf">section</span> <span class="nv">.data</span>
+    <span class="nf">prompt1</span>     <span class="nv">db</span> <span class="err">"</span><span class="nv">Enter</span> <span class="nv">first</span> <span class="nv">number</span><span class="p">:</span> <span class="s">", 0
+    prompt2     db "</span><span class="nv">Enter</span> <span class="nv">second</span> <span class="nv">number</span><span class="p">:</span> <span class="s">", 0
+    promptOp    db "</span><span class="nv">Enter</span> <span class="nv">operator</span> <span class="p">(</span><span class="o">+</span><span class="p">,</span> <span class="o">-</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="o">/</span><span class="p">):</span> <span class="s">", 0
+    resultMsg   db "</span><span class="nv">Result</span> <span class="err">=</span> <span class="s">", 0
+    errorMsg    db "</span><span class="nv">Unknown</span> <span class="nv">operator</span><span class="err">!"</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="nf">section</span> <span class="nv">.bss</span>
+    <span class="nf">num1</span>    <span class="nv">resq</span> <span class="mi">1</span>
+    <span class="nf">num2</span>    <span class="nv">resq</span> <span class="mi">1</span>
+    <span class="nf">op</span>      <span class="nv">resb</span> <span class="mi">2</span>     <span class="c1">; 한 문자 + null</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nf">global</span> <span class="nv">main</span>
+
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
+
+    <span class="c1">; 입력받기</span>
+    <span class="nf">PRINT_STRING</span> <span class="nv">prompt1</span>
+    <span class="nf">READ_INT</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nv">num1</span><span class="p">],</span> <span class="nb">rax</span>
+
+    <span class="nf">PRINT_STRING</span> <span class="nv">prompt2</span>
+    <span class="nf">READ_INT</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nv">num2</span><span class="p">],</span> <span class="nb">rax</span>
+
+    <span class="nf">PRINT_STRING</span> <span class="nv">promptOp</span>
+    <span class="nf">READ_CHAR</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nv">op</span><span class="p">],</span> <span class="nb">al</span>
+
+    <span class="c1">; 연산 분기</span>
+    <span class="nf">movzx</span> <span class="nb">rax</span><span class="p">,</span> <span class="kt">byte</span> <span class="p">[</span><span class="nv">op</span><span class="p">]</span>
+    <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="s">'+'</span>
+    <span class="nf">je</span> <span class="nv">do_add</span>
+    <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="s">'-'</span>
+    <span class="nf">je</span> <span class="nv">do_sub</span>
+    <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="s">'*'</span>
+    <span class="nf">je</span> <span class="nv">do_mul</span>
+    <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="s">'/'</span>
+    <span class="nf">je</span> <span class="nv">do_div</span>
+
+    <span class="c1">; 에러 처리</span>
+    <span class="nf">PRINT_STRING</span> <span class="nv">errorMsg</span>
+    <span class="nf">NEWLINE</span>
+    <span class="nf">jmp</span> <span class="nv">program_end</span>
+
+<span class="c1">; ----------------------</span>
+<span class="nl">do_add:</span>
+    <span class="nf">call</span> <span class="nv">add_func</span>
+    <span class="nf">jmp</span> <span class="nv">print_result</span>
+
+<span class="nl">do_sub:</span>
+    <span class="nf">call</span> <span class="nv">sub_func</span>
+    <span class="nf">jmp</span> <span class="nv">print_result</span>
+
+<span class="nl">do_mul:</span>
+    <span class="nf">call</span> <span class="nv">mul_func</span>
+    <span class="nf">jmp</span> <span class="nv">print_result</span>
+
+<span class="nl">do_div:</span>
+    <span class="nf">call</span> <span class="nb">di</span><span class="nv">v_func</span>
+    <span class="nf">jmp</span> <span class="nv">print_result</span>
+
+<span class="c1">; ----------------------</span>
+<span class="nl">add_func:</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num1</span><span class="p">]</span>
+    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num2</span><span class="p">]</span>
+    <span class="nf">ret</span>
+
+<span class="nl">sub_func:</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num1</span><span class="p">]</span>
+    <span class="nf">sub</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num2</span><span class="p">]</span>
+    <span class="nf">ret</span>
+
+<span class="nl">mul_func:</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num1</span><span class="p">]</span>
+    <span class="nf">imul</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num2</span><span class="p">]</span>
+    <span class="nf">ret</span>
+
+<span class="nl">div_func:</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nv">num1</span><span class="p">]</span>
+    <span class="nf">cqo</span>                 <span class="c1">; RDX:RAX로 확장</span>
+    <span class="nf">idiv</span> <span class="kt">qword</span> <span class="p">[</span><span class="nv">num2</span><span class="p">]</span>   <span class="c1">; RAX = 몫</span>
+    <span class="nf">ret</span>
+
+<span class="c1">; ----------------------</span>
+<span class="nl">print_result:</span>
+    <span class="nf">PRINT_STRING</span> <span class="nv">resultMsg</span>
+    <span class="nf">PRINT_DEC</span> <span class="nb">rax</span>
+    <span class="nf">NEWLINE</span>
+
+<span class="nl">program_end:</span>
+    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
+    <span class="nf">ret</span>
+</code></pre></div></div>
+
+
+  </div>
+</div>
+
+<h3 id="주요-포인트">주요 포인트</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>구성 요소</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">READ_CHAR</code></td>
+      <td>문자 하나만 입력받음 (<code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">movzx rax, byte [op]</code></td>
+      <td>입력된 문자를 비교하기 위해 0 확장</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">call</code> + <code class="language-plaintext highlighter-rouge">ret</code></td>
+      <td>각 연산 함수를 별도로 호출</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">div_func</code></td>
+      <td><code class="language-plaintext highlighter-rouge">idiv</code> 사용 전 반드시 <code class="language-plaintext highlighter-rouge">cqo</code> 필요 (부호 확장)</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="io64" /><category term="계산기" /><category term="READ_INT" /><category term="PRINT_STRING" /><category term="기초실습" /><summary type="html"><![CDATA[NASM 기반 Assembly에서 문자열 출력, 정수 입력, 사칙연산 계산기 구현까지 기초부터 실습합니다. io64.inc 매크로를 활용한 Hello World, 덧셈, 연산자 분기 방식까지 단계별로 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog Google Analytics GA4 연동 가이드</title><link href="https://ruyshy.github.io/blog/blog16-google-analytics/" rel="alternate" type="text/html" title="GitHub Blog Google Analytics GA4 연동 가이드" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog16-google-analytics</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog16-google-analytics/"><![CDATA[<p>GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
 
 <h2 id="1-ga4-속성-만들기">1. <strong>GA4 속성 만들기</strong></h2>
 
@@ -353,11 +596,9 @@
 </ol>
 
 <p><img src="/assets/images/blog/2025-04-25-blog16-google-analytics/image.png" alt="구글 애널리틱스 실시간 보고서" style="max-width:100%;" />
-보고서를 설정 후, 실시간 개요 테스트를 진행한 스크린샷입니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="GoogleAnalytics" /><category term="GA4" /><category term="minimal-mistakes" /><category term="Jekyll" /><category term="SearchConsole" /><summary type="html"><![CDATA[Jekyll 블로그에서 Google Analytics GA4 측정 ID를 연동하여 방문자 분석 데이터를 수집하는 방법을 설명합니다. minimal-mistakes 테마 설정부터 Search Console 연동까지 단계별 가이드 포함.]]></summary></entry><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-3</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.</p>
-
-<p>전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.</p>
-
-<p>이번 편에서는 함수/스택 호출 구조, 스택 프레임에 대해 학습을 진행할 것입니다.</p>
+보고서를 설정 후, 실시간 개요 테스트를 진행한 스크린샷입니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="GoogleAnalytics" /><category term="GA4" /><category term="minimal-mistakes" /><category term="Jekyll" /><category term="SearchConsole" /><summary type="html"><![CDATA[Jekyll 블로그에서 Google Analytics GA4 측정 ID를 연동하여 방문자 분석 데이터를 수집하는 방법을 설명합니다. minimal-mistakes 테마 설정부터 Search Console 연동까지 단계별 가이드 포함.]]></summary></entry><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-3</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
+전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.
+이번 편에서는 함수/스택 호출 구조, 스택 프레임에 대해 학습을 진행할 것입니다.</p>
 
 <h2 id="목표-요약">목표 요약</h2>
 
@@ -1170,44 +1411,44 @@ main으로 복귀 → rax = 1234
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-224145">
-  <div class="quiz-message" id="quiz-message-224145" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-782881">
+  <div class="quiz-message" id="quiz-message-782881" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-224145" onsubmit="return false;">
+  <form id="quiz-form-782881" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-224145" id="quiz-224145-0" value="1번" data-correct="false" />
-  <label for="quiz-224145-0">1번</label>
+  <input type="radio" name="quiz-answer-782881" id="quiz-782881-0" value="1번" data-correct="false" />
+  <label for="quiz-782881-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-224145" id="quiz-224145-1" value="2번" data-correct="true" />
-  <label for="quiz-224145-1">2번</label>
+  <input type="radio" name="quiz-answer-782881" id="quiz-782881-1" value="2번" data-correct="true" />
+  <label for="quiz-782881-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-224145" id="quiz-224145-2" value="3번" data-correct="false" />
-  <label for="quiz-224145-2">3번</label>
+  <input type="radio" name="quiz-answer-782881" id="quiz-782881-2" value="3번" data-correct="false" />
+  <label for="quiz-782881-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-224145" id="quiz-224145-3" value="4번" data-correct="false" />
-  <label for="quiz-224145-3">4번</label>
+  <input type="radio" name="quiz-answer-782881" id="quiz-782881-3" value="4번" data-correct="false" />
+  <label for="quiz-782881-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(224145, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(782881, false, null)">제출</button>
   </form>
-  <div id="quiz-result-224145" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-224145" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-224145', this)" data-label="해설 보기"></div>
-  <div id="toggle-224145" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-782881" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-782881" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-782881', this)" data-label="해설 보기"></div>
+  <div id="toggle-782881" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -1218,26 +1459,26 @@ main으로 복귀 → rax = 1234
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-682472">
-  <div class="quiz-message" id="quiz-message-682472" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-444309">
+  <div class="quiz-message" id="quiz-message-444309" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-682472" onsubmit="return false;">
+  <form id="quiz-form-444309" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-682472" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-444309" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-682472" value="test" />
+      <input type="hidden" id="quiz-text-answer-444309" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(682472, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(444309, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-682472" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-682472" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-682472', this)" data-label="해설 보기"></div>
-  <div id="toggle-682472" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-444309" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-444309" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-444309', this)" data-label="해설 보기"></div>
+  <div id="toggle-444309" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -2680,9 +2921,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-j3ar19', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-hjaibq', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-j3ar19" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-hjaibq" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2698,9 +2939,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-pq5ud', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-5d89vo', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-pq5ud" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-5d89vo" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2926,9 +3167,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-y7q2c4', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-mdtn61', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-y7q2c4" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-mdtn61" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -2952,9 +3193,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-1h3ohd', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-xp8rqt', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-1h3ohd" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-xp8rqt" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>
@@ -2988,9 +3229,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-9m61cl', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-lrduex', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-9m61cl" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-lrduex" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -3014,9 +3255,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-t4u33s', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-d2kmxq', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-t4u33s" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-d2kmxq" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
@@ -3458,9 +3699,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-80zsn5', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-8azp8i', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-80zsn5" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-8azp8i" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3644,9 +3885,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-op8p5b', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-mxtfbj', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-op8p5b" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-mxtfbj" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
@@ -3668,9 +3909,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-r2tf7c', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-rh6slj', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-r2tf7c" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-rh6slj" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3927,9 +4168,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-1z8l1j', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-nfadb', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-1z8l1j" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-nfadb" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3971,202 +4212,4 @@ rax = 10</p>
   </div>
 </div>
 
-<p><br /></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><category term="어셈블리 명령어" /><category term="조건 분기" /><category term="Windows Assembly" /><summary type="html"><![CDATA[Windows 64bit 기반 NASM 어셈블리에서 자주 사용하는 기본 명령어 mov, add, sub, cmp, jmp, push, pop, call, ret, 조건 분기(jg, je, jne, jl) 사용법과 실습 예제를 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog 검색엔진 등록 &amp;amp; SEO 설정 - Google Search Console 연동</title><link href="https://ruyshy.github.io/blog/blog11-search-engine/" rel="alternate" type="text/html" title="GitHub Blog 검색엔진 등록 &amp;amp; SEO 설정 - Google Search Console 연동" /><published>2025-04-22T00:00:00+09:00</published><updated>2025-04-22T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog11-search-engine</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog11-search-engine/"><![CDATA[<p>GitHub Pages에서 만든 Jekyll 블로그를 <strong>검색엔진에 노출시키기 위해서는</strong><br />
-Google Search Console 등록과 sitemap, robots.txt, 그리고 SEO 메타태그 설정이 필요합니다.<br />
-이 포스트는 GitHub 블로그의 SEO 설정을 처음부터 끝까지 따라 할 수 있도록 구성된 실전 가이드입니다.</p>
-
-<h2 id="검색-엔진-개요">검색 엔진 개요</h2>
-
-<p>월드 와이드 웹 상에 존재하는 정보와 웹 사이트를 검색하기 위한 프로그램. 웹의 정보를 긁어오는 소프트웨어는 크롤러라고 부르고, 그 행위는 크롤링이라고 부른다. 참고로 일반 검색 엔진에 안 잡히는 웹을 딥 웹이라고 한다.</p>
-
-<h2 id="검색-엔진-종류">검색 엔진 종류</h2>
-
-<p>구글, 네이버, Bing, zum, 네이트, 다음… 여러가지가 있습니다.</p>
-
-<h2 id="google-search-console">Google Search Console</h2>
-
-<p><strong>Google Search Console :</strong> <a href="https://search.google.com/search-console/welcome?utm_source=about-page">https://search.google.com/search-console/welcome?utm_source=about-page</a></p>
-
-<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image1.png" alt="Google Search Console 시작 화면" style="max-width:100%;" /></p>
-
-<p>접속 후, URL 접두어에 자기 블로그 주소를 추가 후, 계숙을 눌러줍니다.</p>
-
-<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image2.png" alt="블로그 도메인 등록 단계" style="max-width:100%;" /></p>
-
-<p>계숙 버튼을 눌러 진행을 하면 다음 화면이 나오는데, 파일을 다운로드 받고 다운 받은 파일을 깃허브 저장소 최상단 폴더에 넣어줍니다.</p>
-
-<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image3.png" alt="인증 HTML 파일 다운로드 안내" style="max-width:100%;" /></p>
-
-<p>저장소에 push를 진행하고, 배포가 완료된 후, 확인 버튼을 눌러 진행하면 다음과 같이 창이 바뀌는데, 속성으로 이동을 눌러 설정을 해주도록 합시다.</p>
-
-<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image4.png" alt="속성 확인 후 설정 화면" style="max-width:100%;" /></p>
-
-<p>Sitemap을 눌러 해당 설정 화면이 나오면 sitemap.xml을 추가해주는 작업을 진행해야 합니다. 저는 예전에 설정해둔 sitemap이 제출이 되어있긴하네요. 일단 진행해봅시다.</p>
-
-<h2 id="sitemapxml-생성">\sitemap.xml 생성</h2>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-layout: null
----
-
-<span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;urlset</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
-  <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"</span>
-  <span class="na">xmlns=</span><span class="s">"http://www.sitemaps.org/schemas/sitemap/0.9"</span><span class="nt">&gt;</span>
-  {% for post in site.posts %}
-    <span class="nt">&lt;url&gt;</span>
-      <span class="nt">&lt;loc&gt;</span>{{ site.url }}{{ post.url }}<span class="nt">&lt;/loc&gt;</span>
-      {% if post.last_modified_at == null %}
-        <span class="nt">&lt;lastmod&gt;</span>{{ post.date | date_to_xmlschema }}<span class="nt">&lt;/lastmod&gt;</span>
-      {% else %}
-        <span class="nt">&lt;lastmod&gt;</span>{{ post.last_modified_at | date_to_xmlschema }}<span class="nt">&lt;/lastmod&gt;</span>
-      {% endif %}
-
-      {% if post.sitemap.changefreq == null %}
-        <span class="nt">&lt;changefreq&gt;</span>weekly<span class="nt">&lt;/changefreq&gt;</span>
-      {% else %}
-        <span class="nt">&lt;changefreq&gt;</span>{{ post.sitemap.changefreq }}<span class="nt">&lt;/changefreq&gt;</span>
-      {% endif %}
-
-      {% if post.sitemap.priority == null %}
-          <span class="nt">&lt;priority&gt;</span>0.5<span class="nt">&lt;/priority&gt;</span>
-      {% else %}
-        <span class="nt">&lt;priority&gt;</span>{{ post.sitemap.priority }}<span class="nt">&lt;/priority&gt;</span>
-      {% endif %}
-
-    <span class="nt">&lt;/url&gt;</span>
-  {% endfor %}
-  
-<span class="nt">&lt;/urlset&gt;</span>
-</code></pre></div></div>
-
-<p>작성 후, 깃허브 저장소에 push를 진행합니다.</p>
-
-<p>깃허브 action으로 배포가 진행이 되었다면 새 사이트맵 제출을 해줍니다.</p>
-
-<p>(sitemap.xml)</p>
-
-<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image5.png" alt="sitemap.xml 제출 화면" style="max-width:100%;" /></p>
-
-<p>일단 성공적으로 제출이 진행 되었네요.</p>
-
-<h2 id="robotstxt-생성">\robots.txt 생성</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User-agent: *
-Allow: /
-Sitemap: https://ruyshy.github.io/sitemap.xml
-</code></pre></div></div>
-
-<p>robots.txt 생성 후, 깃허브 저장소에 push, 다시 사이트 맵을 제출해줍니다.</p>
-
-<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image6.png" alt="검색엔진 등록 확인 화면" style="max-width:100%;" /></p>
-
-<p>구글에 검색해보니 잘 보이는 듯 합니다.</p>
-
-<h2 id="포스트-색인-허용">포스트 색인 허용</h2>
-
-<p>포스트 최상단에 <code class="language-plaintext highlighter-rouge">robots: index, follow</code> 추가하기</p>
-
-<h3 id="포스트-전체-적용하기">포스트 전체 적용하기</h3>
-
-<p>_config.yml (일부분) :</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
-      <span class="na">robots</span><span class="pi">:</span> <span class="s">index, follow</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">toc</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">comments</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">share</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">related</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">robots: index, follow</code> 해당 부분 추가하기</p>
-
-<ul>
-  <li>robots.txt로 전체 접근 허용했더라도,</li>
-  <li>개별 포스트의 <meta name="robots" /> 태그가 noindex면 색인 안 됨.</li>
-  <li>즉, robots.txt와 robots: “index, follow”는 역할이 다름 → 둘 다 챙기는 게 안전</li>
-</ul>
-
-<h2 id="jekyll-seo-tag-사용">jekyll-seo-tag 사용</h2>
-
-<h3 id="_configyml-plugin-내용-추가">_config.yml plugin: 내용 추가</h3>
-
-<p>`  - jekyll-seo-tag` 추가하기</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Plugins (previously gems:)</span>
-<span class="na">plugins</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">jekyll-paginate</span>
-  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
-  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
-  <span class="pi">-</span> <span class="s">jekyll-gist</span>
-  <span class="pi">-</span> <span class="s">jekyll-feed</span>
-  <span class="pi">-</span> <span class="s">jekyll-include-cache</span>
-
-<span class="c1"># mimic GitHub Pages with --safe</span>
-<span class="na">whitelist</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">jekyll-paginate</span>
-  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
-  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
-  <span class="pi">-</span> <span class="s">jekyll-gist</span>
-  <span class="pi">-</span> <span class="s">jekyll-feed</span>
-  <span class="pi">-</span> <span class="s">jekyll-include-cache</span>
-</code></pre></div></div>
-
-<h3 id="gemfile-내용-추가">Gemfile 내용 추가</h3>
-<p><code class="language-plaintext highlighter-rouge">gem "jekyll-seo-tag"</code> 추가</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Gemfile
-source "https://rubygems.org"
-
-gem "jekyll", "~&gt; 4.3.2"
-gem "minimal-mistakes-jekyll"
-gem "jekyll-paginate"
-gem "jekyll-sitemap"
-gem "jekyll-seo-tag"
-gem "jekyll-feed"
-gem "jekyll-include-cache"
-gem "jekyll-gist"
-gem "tzinfo"
-gem "tzinfo-data"
-</code></pre></div></div>
-
-<h3 id="추가-진행-후">추가 진행 후</h3>
-<p>cmd 에서 해당 명령어 입력</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
-</code></pre></div></div>
-
-<h2 id="추가-소유권-인증-방법2">추가 소유권 인증 방법2</h2>
-
-<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image7.png" alt="HTML 메타태그 소유권 인증 안내" style="max-width:100%;" /></p>
-
-<p>설정 → 소유권 인증 으로 들어가보면 HTML 태그가 있습니다.</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"google-site-verification"</span> <span class="na">content=</span><span class="s">"0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<p>content 안에 있는 내용을 복사한 뒤, _config.yml 에서 <code class="language-plaintext highlighter-rouge">google-site-verification:</code> 해당 부분을 찾습니다.</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">google_site_verification </span><span class="pi">:</span> <span class="s">0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU</span>
-</code></pre></div></div>
-
-<p>위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 push 진행 → 확인을 눌러 진행.</p>
-
-<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image8.png" alt="소유권 인증 완료 알림" style="max-width:100%;" /></p>
-
-<p>인증이 완료되었네요! 굿굿</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="SEO 설정" /><category term="Google Search Console" /><category term="sitemap.xml" /><category term="jekyll-seo-tag" /><summary type="html"><![CDATA[Jekyll 기반 GitHub 블로그에서 Google Search Console 등록부터 sitemap.xml, robots.txt, jekyll-seo-tag 플러그인까지 검색 노출을 위한 설정 방법을 정리합니다.]]></summary></entry></feed>
+<p><br /></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><category term="어셈블리 명령어" /><category term="조건 분기" /><category term="Windows Assembly" /><summary type="html"><![CDATA[Windows 64bit 기반 NASM 어셈블리에서 자주 사용하는 기본 명령어 mov, add, sub, cmp, jmp, push, pop, call, ret, 조건 분기(jg, je, jne, jl) 사용법과 실습 예제를 설명합니다.]]></summary></entry></feed>
