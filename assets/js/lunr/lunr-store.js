@@ -149,6 +149,12 @@ var store = [{
         "url": "/assembly/assembly4-practice/",
         "teaser": null
       },{
+        "title": "Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈",
+        "excerpt":"Assembly(NASM) 학습 내용을 복습하는 기초 연습문제입니다. 64비트 레지스터 구분, 스택 구조 이해, 리틀 엔디안 메모리 저장 방식, 함수 호출 시 RSP/RBP 역할 등 퀴즈로 정리합니다. 1. 다음 중 64비트 레지스터가 아닌 것은? A. RAX B. RBX C. EAX D. RDI 제출 해설: EAX는 32비트 레지스터. RAX의 하위 32비트 버전. 2....","categories": ["assembly"],
+        "tags": ["assembly","nasm","x64","어셈블리 퀴즈","리틀엔디안","스택프레임","레지스터"],
+        "url": "/assembly/assembly5-exercises/",
+        "teaser": null
+      },{
         "title": "GitHub Blog Google Analytics GA4 연동 가이드",
         "excerpt":"GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 GA4 측정 ID 삽입, minimal-mistakes 테마 설정, 실시간 유입 확인, 그리고 Google Search Console 연동 방법까지 전체 과정을 상세히 다룹니다. 1. GA4 속성 만들기 Google Analytics 접속 ‘만들기’ → ‘계정 생성’ → ‘속성...","categories": ["blog"],
         "tags": ["GitHubBlog","GoogleAnalytics","GA4","minimal-mistakes","Jekyll","SearchConsole"],

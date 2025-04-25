@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T17:17:20+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-3</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T18:05:05+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-3</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
 전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.
 이번 편에서는 함수/스택 호출 구조, 스택 프레임에 대해 학습을 진행할 것입니다.</p>
 
@@ -914,9 +914,9 @@ main으로 복귀 → rax = 1234
 <h2 id="간단한-사칙연산-계산기">간단한 사칙연산 계산기</h2>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ime74z', this)" data-label="코드 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-drjx95', this)" data-label="코드 보기">
   </div>
-  <div id="toggle-ime74z" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-drjx95" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">%include "io64.inc"
 </span>
@@ -1048,7 +1048,440 @@ main으로 복귀 → rax = 1234
       <td><code class="language-plaintext highlighter-rouge">idiv</code> 사용 전 반드시 <code class="language-plaintext highlighter-rouge">cqo</code> 필요 (부호 확장)</td>
     </tr>
   </tbody>
-</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="io64" /><category term="계산기" /><category term="READ_INT" /><category term="PRINT_STRING" /><category term="기초실습" /><summary type="html"><![CDATA[NASM 기반 Assembly에서 문자열 출력, 정수 입력, 사칙연산 계산기 구현까지 기초부터 실습합니다. io64.inc 매크로를 활용한 Hello World, 덧셈, 연산자 분기 방식까지 단계별로 설명합니다.]]></summary></entry><entry><title type="html">GitHub Blog Google Analytics GA4 연동 가이드</title><link href="https://ruyshy.github.io/blog/blog16-google-analytics/" rel="alternate" type="text/html" title="GitHub Blog Google Analytics GA4 연동 가이드" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog16-google-analytics</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog16-google-analytics/"><![CDATA[<p>GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
+</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="io64" /><category term="계산기" /><category term="READ_INT" /><category term="PRINT_STRING" /><category term="기초실습" /><summary type="html"><![CDATA[NASM 기반 Assembly에서 문자열 출력, 정수 입력, 사칙연산 계산기 구현까지 기초부터 실습합니다. io64.inc 매크로를 활용한 Hello World, 덧셈, 연산자 분기 방식까지 단계별로 설명합니다.]]></summary></entry><entry><title type="html">Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈</title><link href="https://ruyshy.github.io/assembly/assembly5-exercises/" rel="alternate" type="text/html" title="Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly5-exercises</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly5-exercises/"><![CDATA[<p>Assembly(NASM) 학습 내용을 복습하는 기초 연습문제입니다. 64비트 레지스터 구분, 스택 구조 이해, 리틀 엔디안 메모리 저장 방식, 함수 호출 시 RSP/RBP 역할 등 퀴즈로 정리합니다.</p>
+
+<div class="quiz-box" id="quiz-box-922722">
+  <div class="quiz-message" id="quiz-message-922722" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 64비트 레지스터가 아닌 것은?</p>
+
+  </div>
+  <form id="quiz-form-922722" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-922722" id="quiz-922722-0" value="A. RAX" data-correct="false" />
+  <label for="quiz-922722-0">A. RAX</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-922722" id="quiz-922722-1" value="B. RBX" data-correct="false" />
+  <label for="quiz-922722-1">B. RBX</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-922722" id="quiz-922722-2" value="C. EAX" data-correct="true" />
+  <label for="quiz-922722-2">C. EAX</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-922722" id="quiz-922722-3" value="D. RDI" data-correct="false" />
+  <label for="quiz-922722-3">D. RDI</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(922722, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-922722" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-922722" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-922722', this)" data-label="해설 보기"></div>
+  <div id="toggle-922722" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong> EAX는 32비트 레지스터. RAX의 하위 32비트 버전.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-401549">
+  <div class="quiz-message" id="quiz-message-401549" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">2.</code> 스택에서 함수 호출 시 사용하는 레지스터 조합으로 올바른 것은?</p>
+
+  </div>
+  <form id="quiz-form-401549" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-401549" id="quiz-401549-0" value="A. RSP와 RBP" data-correct="true" />
+  <label for="quiz-401549-0">A. RSP와 RBP</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-401549" id="quiz-401549-1" value="B. RCX와 RDX" data-correct="false" />
+  <label for="quiz-401549-1">B. RCX와 RDX</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-401549" id="quiz-401549-2" value="C. RAX와 RBX" data-correct="false" />
+  <label for="quiz-401549-2">C. RAX와 RBX</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-401549" id="quiz-401549-3" value="D. RSI와 RDI" data-correct="false" />
+  <label for="quiz-401549-3">D. RSI와 RDI</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(401549, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-401549" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-401549" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-401549', this)" data-label="해설 보기"></div>
+  <div id="toggle-401549" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설:</strong></p>
+<ul>
+  <li><strong>RSP (Stack Pointer):</strong> 현재 스택의 top 위치</li>
+  <li><strong>RBP (Base Pointer):</strong> 함수 진입 시 기준점 (스택프레임 기준)</li>
+</ul>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-973585">
+  <div class="quiz-message" id="quiz-message-973585" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">3.</code> x86-64에서 <code class="language-plaintext highlighter-rouge">mov eax, [rbx]</code> 의미는?</p>
+
+  </div>
+  <form id="quiz-form-973585" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-973585" id="quiz-973585-0" value="A. rbx 값을 eax에 복사" data-correct="false" />
+  <label for="quiz-973585-0">A. rbx 값을 eax에 복사</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-973585" id="quiz-973585-1" value="B. 메모리 주소 rbx에 eax 저장" data-correct="false" />
+  <label for="quiz-973585-1">B. 메모리 주소 rbx에 eax 저장</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-973585" id="quiz-973585-2" value="C. rbx가 가리키는 주소의 값을 eax에 저장" data-correct="true" />
+  <label for="quiz-973585-2">C. rbx가 가리키는 주소의 값을 eax에 저장</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-973585" id="quiz-973585-3" value="D. eax가 가리키는 주소 값을 rbx에 저장" data-correct="false" />
+  <label for="quiz-973585-3">D. eax가 가리키는 주소 값을 rbx에 저장</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(973585, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-973585" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-973585" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-973585', this)" data-label="해설 보기"></div>
+  <div id="toggle-973585" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">[rbx]</code>는 <strong>rbx가 가리키는 주소의 값</strong>을 뜻해. 즉, 메모리에서 값을 읽어와 eax에 저장.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-590744">
+  <div class="quiz-message" id="quiz-message-590744" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">4.</code> 다음 중 메모리의 가장 낮은 주소에 저장되는 값은? (리틀 엔디안 기준, <code class="language-plaintext highlighter-rouge">0x12345678</code> 저장 시)</p>
+
+  </div>
+  <form id="quiz-form-590744" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-590744" id="quiz-590744-0" value="A. 0x78" data-correct="true" />
+  <label for="quiz-590744-0">A. 0x78</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-590744" id="quiz-590744-1" value="B. 0x56" data-correct="false" />
+  <label for="quiz-590744-1">B. 0x56</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-590744" id="quiz-590744-2" value="C. 0x34" data-correct="false" />
+  <label for="quiz-590744-2">C. 0x34</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-590744" id="quiz-590744-3" value="D. 0x12" data-correct="false" />
+  <label for="quiz-590744-3">D. 0x12</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(590744, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-590744" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-590744" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-590744', this)" data-label="해설 보기"></div>
+  <div id="toggle-590744" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>:
+리틀 엔디안은 <strong>하위 바이트부터 저장</strong>.
+<code class="language-plaintext highlighter-rouge">0x12345678</code> → 메모리: <code class="language-plaintext highlighter-rouge">78 56 34 12</code> (낮은 주소부터 차례대로)</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-733164">
+  <div class="quiz-message" id="quiz-message-733164" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">5.</code> 다음 중 스택 구조의 특징으로 옳은 것은?</p>
+
+  </div>
+  <form id="quiz-form-733164" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-733164" id="quiz-733164-0" value="A. FIFO" data-correct="false" />
+  <label for="quiz-733164-0">A. FIFO</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-733164" id="quiz-733164-1" value="B. 데이터가 높은 주소에서 낮은 주소로 저장됨" data-correct="true" />
+  <label for="quiz-733164-1">B. 데이터가 높은 주소에서 낮은 주소로 저장됨</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-733164" id="quiz-733164-2" value="C. 데이터를 랜덤하게 접근 가능함" data-correct="false" />
+  <label for="quiz-733164-2">C. 데이터를 랜덤하게 접근 가능함</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-733164" id="quiz-733164-3" value="D. 레지스터만 사용하는 구조임" data-correct="false" />
+  <label for="quiz-733164-3">D. 레지스터만 사용하는 구조임</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(733164, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-733164" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-733164" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-733164', this)" data-label="해설 보기"></div>
+  <div id="toggle-733164" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>: 
+스택은 <strong>높은 주소 → 낮은 주소</strong> 방향으로 push됨.
+또한 <strong>LIFO 구조</strong>지 (Last In First Out).</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-418615">
+  <div class="quiz-message" id="quiz-message-418615" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">6.</code> <code class="language-plaintext highlighter-rouge">mov [rax], rbx</code> 의미는?</p>
+
+  </div>
+  <form id="quiz-form-418615" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-418615" id="quiz-418615-0" value="A. rax의 값을 rbx에 저장" data-correct="false" />
+  <label for="quiz-418615-0">A. rax의 값을 rbx에 저장</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-418615" id="quiz-418615-1" value="B. rbx의 값을 rax가 가리키는 메모리에 저장" data-correct="true" />
+  <label for="quiz-418615-1">B. rbx의 값을 rax가 가리키는 메모리에 저장</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-418615" id="quiz-418615-2" value="C. rax와 rbx를 스왑함" data-correct="false" />
+  <label for="quiz-418615-2">C. rax와 rbx를 스왑함</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-418615" id="quiz-418615-3" value="D. rax가 가리키는 주소에 rbx 주소를 저장" data-correct="false" />
+  <label for="quiz-418615-3">D. rax가 가리키는 주소에 rbx 주소를 저장</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(418615, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-418615" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-418615" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-418615', this)" data-label="해설 보기"></div>
+  <div id="toggle-418615" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>: rbx의 값을 <strong>rax가 가리키는 메모리 주소에 저장</strong>하는 명령어.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-530740">
+  <div class="quiz-message" id="quiz-message-530740" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">7.</code> 다음 중 스택 포인터를 의미하는 레지스터는?</p>
+
+  </div>
+  <form id="quiz-form-530740" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-530740" id="quiz-530740-0" value="A. RAX" data-correct="false" />
+  <label for="quiz-530740-0">A. RAX</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-530740" id="quiz-530740-1" value="B. RBP" data-correct="false" />
+  <label for="quiz-530740-1">B. RBP</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-530740" id="quiz-530740-2" value="C. RSP" data-correct="true" />
+  <label for="quiz-530740-2">C. RSP</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-530740" id="quiz-530740-3" value="D. RCX" data-correct="false" />
+  <label for="quiz-530740-3">D. RCX</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(530740, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-530740" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-530740" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-530740', this)" data-label="해설 보기"></div>
+  <div id="toggle-530740" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>: RSP는 Stack Pointer. 함수 호출, push/pop 등에서 스택 위치 추적에 사용됌.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-122202">
+  <div class="quiz-message" id="quiz-message-122202" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">8.</code> 메모리 주소 0x1000에 <code class="language-plaintext highlighter-rouge">db 0xAA, 0xBB, 0xCC, 0xDD</code>가 저장되어 있을 때, <code class="language-plaintext highlighter-rouge">mov eax, [0x1000]</code> 수행 결과는? (리틀 엔디안)</p>
+
+  </div>
+  <form id="quiz-form-122202" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-122202" id="quiz-122202-0" value="A. 0xDDCCBBAA" data-correct="true" />
+  <label for="quiz-122202-0">A. 0xDDCCBBAA</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-122202" id="quiz-122202-1" value="B. 0xAABBCCDD" data-correct="false" />
+  <label for="quiz-122202-1">B. 0xAABBCCDD</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-122202" id="quiz-122202-2" value="C. 0xCCBBAA00" data-correct="false" />
+  <label for="quiz-122202-2">C. 0xCCBBAA00</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-122202" id="quiz-122202-3" value="D. 0xAABB0000" data-correct="false" />
+  <label for="quiz-122202-3">D. 0xAABB0000</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(122202, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-122202" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-122202" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-122202', this)" data-label="해설 보기"></div>
+  <div id="toggle-122202" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>: 메모리에 <code class="language-plaintext highlighter-rouge">AA BB CC DD</code> 순서로 저장돼도, 리틀 엔디안 읽을 때는 역순으로 결합: <code class="language-plaintext highlighter-rouge">0xDDCCBBAA</code>.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-772581">
+  <div class="quiz-message" id="quiz-message-772581" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">9.</code> 스택프레임 내에서 지역 변수를 접근할 때 보통 사용하는 기준점은?</p>
+
+  </div>
+  <form id="quiz-form-772581" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-772581" id="quiz-772581-0" value="A. RSP" data-correct="false" />
+  <label for="quiz-772581-0">A. RSP</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-772581" id="quiz-772581-1" value="B. RAX" data-correct="false" />
+  <label for="quiz-772581-1">B. RAX</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-772581" id="quiz-772581-2" value="C. RBP" data-correct="true" />
+  <label for="quiz-772581-2">C. RBP</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-772581" id="quiz-772581-3" value="D. RIP" data-correct="false" />
+  <label for="quiz-772581-3">D. RIP</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(772581, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-772581" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-772581" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-772581', this)" data-label="해설 보기"></div>
+  <div id="toggle-772581" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>: RBP는 스택 프레임의 기준점으로 사용돼서, 지역 변수는 <code class="language-plaintext highlighter-rouge">[RBP - x]</code> 방식으로 접근함.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="quiz-box" id="quiz-box-526756">
+  <div class="quiz-message" id="quiz-message-526756" style="display: none;"></div>
+  <div class="quiz-question">
+    <p><code class="language-plaintext highlighter-rouge">10.</code> 다음 중 레지스터의 역할과 설명이 올바르게 연결된 것은?</p>
+
+  </div>
+  <form id="quiz-form-526756" onsubmit="return false;">
+    <div class="quiz-choices">
+      <div class="quiz-choice">
+  <input type="radio" name="quiz-answer-526756" id="quiz-526756-0" value="A. RSP - 루프 카운터" data-correct="false" />
+  <label for="quiz-526756-0">A. RSP - 루프 카운터</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-526756" id="quiz-526756-1" value="B. RDI - 함수 반환값 저장" data-correct="false" />
+  <label for="quiz-526756-1">B. RDI - 함수 반환값 저장</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-526756" id="quiz-526756-2" value="C. RCX - 카운터 또는 루프" data-correct="true" />
+  <label for="quiz-526756-2">C. RCX - 카운터 또는 루프</label>
+</div>
+
+<div class="quiz-choice">
+  <input type="radio" name="quiz-answer-526756" id="quiz-526756-3" value="D. RAX - 스택 포인터" data-correct="false" />
+  <label for="quiz-526756-3">D. RAX - 스택 포인터</label>
+</div>
+
+      
+    </div>
+    <button type="button" onclick="window.checkQuizAnswer(526756, false, null)">제출</button>
+  </form>
+  <div id="quiz-result-526756" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-526756" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-526756', this)" data-label="해설 보기"></div>
+  <div id="toggle-526756" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>: RCX는 루프 카운터로 자주 사용됨. 반면,</p>
+<ul>
+  <li>RAX는 연산/반환값</li>
+  <li>RDI는 함수 인자</li>
+  <li>RSP는 스택 포인터</li>
+</ul>
+  </div>
+</div>
+</div>
+</div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="x64" /><category term="어셈블리 퀴즈" /><category term="리틀엔디안" /><category term="스택프레임" /><category term="레지스터" /><summary type="html"><![CDATA[64비트 NASM 어셈블리어의 레지스터, 스택 구조, 리틀 엔디안, 함수 호출 구조 등 핵심 개념을 객관식 퀴즈로 복습합니다.]]></summary></entry><entry><title type="html">GitHub Blog Google Analytics GA4 연동 가이드</title><link href="https://ruyshy.github.io/blog/blog16-google-analytics/" rel="alternate" type="text/html" title="GitHub Blog Google Analytics GA4 연동 가이드" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog16-google-analytics</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog16-google-analytics/"><![CDATA[<p>GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
 
 <h2 id="1-ga4-속성-만들기">1. <strong>GA4 속성 만들기</strong></h2>
 
@@ -1411,44 +1844,44 @@ main으로 복귀 → rax = 1234
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-375782">
-  <div class="quiz-message" id="quiz-message-375782" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-297226">
+  <div class="quiz-message" id="quiz-message-297226" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-375782" onsubmit="return false;">
+  <form id="quiz-form-297226" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-375782" id="quiz-375782-0" value="1번" data-correct="false" />
-  <label for="quiz-375782-0">1번</label>
+  <input type="radio" name="quiz-answer-297226" id="quiz-297226-0" value="1번" data-correct="false" />
+  <label for="quiz-297226-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-375782" id="quiz-375782-1" value="2번" data-correct="true" />
-  <label for="quiz-375782-1">2번</label>
+  <input type="radio" name="quiz-answer-297226" id="quiz-297226-1" value="2번" data-correct="true" />
+  <label for="quiz-297226-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-375782" id="quiz-375782-2" value="3번" data-correct="false" />
-  <label for="quiz-375782-2">3번</label>
+  <input type="radio" name="quiz-answer-297226" id="quiz-297226-2" value="3번" data-correct="false" />
+  <label for="quiz-297226-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-375782" id="quiz-375782-3" value="4번" data-correct="false" />
-  <label for="quiz-375782-3">4번</label>
+  <input type="radio" name="quiz-answer-297226" id="quiz-297226-3" value="4번" data-correct="false" />
+  <label for="quiz-297226-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(375782, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(297226, false, null)">제출</button>
   </form>
-  <div id="quiz-result-375782" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-375782" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-375782', this)" data-label="해설 보기"></div>
-  <div id="toggle-375782" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-297226" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-297226" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-297226', this)" data-label="해설 보기"></div>
+  <div id="toggle-297226" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -1459,26 +1892,26 @@ main으로 복귀 → rax = 1234
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-423603">
-  <div class="quiz-message" id="quiz-message-423603" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-305153">
+  <div class="quiz-message" id="quiz-message-305153" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-423603" onsubmit="return false;">
+  <form id="quiz-form-305153" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-423603" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-305153" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-423603" value="test" />
+      <input type="hidden" id="quiz-text-answer-305153" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(423603, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(305153, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-423603" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-423603" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-423603', this)" data-label="해설 보기"></div>
-  <div id="toggle-423603" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-305153" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-305153" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-305153', this)" data-label="해설 보기"></div>
+  <div id="toggle-305153" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -2921,9 +3354,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-zi9yqq', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-3en6ja', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-zi9yqq" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-3en6ja" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2939,9 +3372,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-7ceyet', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-79d66f', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-7ceyet" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-79d66f" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -3167,9 +3600,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-utv0ks', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-af5om7', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-utv0ks" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-af5om7" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -3193,9 +3626,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-8d01gx', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-euhy2y', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-8d01gx" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-euhy2y" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>
@@ -3229,9 +3662,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ex7unx', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-hzgpm2', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-ex7unx" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-hzgpm2" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -3255,9 +3688,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-2wkv9f', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-kztoqx', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-2wkv9f" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-kztoqx" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
@@ -3505,711 +3938,4 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 
 <p><br />
 다음 편 :<br />
-assembly <strong>기본 명령어부터 익히기</strong></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><category term="SASM" /><category term="어셈블리 실습" /><category term="Windows Assembly" /><summary type="html"><![CDATA[Windows 환경에서 NASM 어셈블리어 학습을 위한 SASM 설치부터 디버깅 실습, 레지스터 분석, 변수 선언, 엔디안까지 실습 중심으로 설명합니다.]]></summary></entry><entry><title type="html">Assembly 기본 명령어 - Windows NASM 실습 가이드</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-1/" rel="alternate" type="text/html" title="Assembly 기본 명령어 - Windows NASM 실습 가이드" /><published>2025-04-22T00:00:00+09:00</published><updated>2025-04-22T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-1</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-1/"><![CDATA[<p>NASM 기반 어셈블리를 처음 접하는 사용자라면,<br />
-<strong>가장 먼저 익혀야 할 것은 기본 명령어의 역할과 사용법</strong>입니다.<br />
-이 글에서는 <code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">jmp</code>, <code class="language-plaintext highlighter-rouge">push</code>, <code class="language-plaintext highlighter-rouge">pop</code>, <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">ret</code><br />
-같은 필수 명령어들을 <strong>Windows 64bit 기준 실습 코드</strong>와 함께 정리합니다.</p>
-
-<p>또한, <code class="language-plaintext highlighter-rouge">cmp</code> 명령어와 플래그 레지스터(Zero Flag, Sign Flag 등)의 작동 원리를<br />
-<strong>조건 분기 명령어 (<code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jne</code>, <code class="language-plaintext highlighter-rouge">jg</code>, <code class="language-plaintext highlighter-rouge">jl</code>)</strong>와 함께 다루며 실습 기반으로 설명합니다.</p>
-
-<h2 id="1-기본-명령어-리스트-windows-64bit-기준">1. 기본 명령어 리스트 (Windows 64bit 기준)</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>명령어</th>
-      <th>역할</th>
-      <th>비고</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>mov</strong></td>
-      <td>데이터 복사</td>
-      <td>레지스터, 메모리, 즉시값</td>
-    </tr>
-    <tr>
-      <td><strong>add</strong></td>
-      <td>덧셈</td>
-      <td>레지스터끼리, 값 더하기</td>
-    </tr>
-    <tr>
-      <td><strong>sub</strong></td>
-      <td>뺄셈</td>
-      <td>레지스터끼리, 값 빼기</td>
-    </tr>
-    <tr>
-      <td><strong>inc</strong></td>
-      <td>1 증가</td>
-      <td>rax 같은 레지스터 1 증가</td>
-    </tr>
-    <tr>
-      <td><strong>dec</strong></td>
-      <td>1 감소</td>
-      <td>rbx 같은 레지스터 1 감소</td>
-    </tr>
-    <tr>
-      <td><strong>push</strong></td>
-      <td>스택에 저장</td>
-      <td>rsp를 줄이고 값 저장</td>
-    </tr>
-    <tr>
-      <td><strong>pop</strong></td>
-      <td>스택에서 꺼냄</td>
-      <td>rsp를 늘리고 값 가져옴</td>
-    </tr>
-    <tr>
-      <td><strong>call</strong></td>
-      <td>함수 호출</td>
-      <td>주소 저장 + 점프</td>
-    </tr>
-    <tr>
-      <td><strong>ret</strong></td>
-      <td>복귀</td>
-      <td>스택에서 복귀 주소 꺼내서 점프</td>
-    </tr>
-    <tr>
-      <td><strong>cmp</strong></td>
-      <td>비교</td>
-      <td>플래그만 세팅 (값은 안 바뀜)</td>
-    </tr>
-    <tr>
-      <td><strong>jmp</strong></td>
-      <td>무조건 점프</td>
-      <td>그냥 이동</td>
-    </tr>
-    <tr>
-      <td><strong>je, jne</strong></td>
-      <td>조건부 점프</td>
-      <td>Zero Flag 기반 (같으면/다르면)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="2-각-명령어-설명">2. 각 명령어 설명</h2>
-
-<h3 id="2-1-mov-데이터-복사">2-1. <strong>mov</strong> (데이터 복사)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>        <span class="c1">; rax에 10 저장</span>
-<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="nb">rax</span>       <span class="c1">; rax 값을 rbx로 복사</span>
-</code></pre></div></div>
-
-<p><strong>mov</strong>는 그냥 값을 복붙 한다고 생각하면 됌</p>
-
-<h3 id="2-2-add-덧셈">2-2. <strong>add</strong> (덧셈)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
-<span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">3</span>         <span class="c1">; rax = rax + 3</span>
-</code></pre></div></div>
-
-<p><strong>add dst, src</strong> ➔ dst = dst + src</p>
-
-<h3 id="2-3-sub-뺄셈">2-3. <strong>sub</strong> (뺄셈)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
-<span class="nf">sub</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">2</span>         <span class="c1">; rax = rax - 2</span>
-</code></pre></div></div>
-
-<p><strong>sub dst, src</strong> ➔ dst = dst - src</p>
-
-<h3 id="2-4-inc--dec-1-증가--1-감소">2-4. inc / dec (1 증가 / 1 감소)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">10</span>
-<span class="nf">inc</span> <span class="nb">rcx</span>            <span class="c1">; rcx = rcx + 1</span>
-<span class="nf">dec</span> <span class="nb">rcx</span>            <span class="c1">; rcx = rcx - 1</span>
-</code></pre></div></div>
-
-<h3 id="2-5-push--pop-스택에-저장꺼내기">2-5. push / pop (스택에 저장/꺼내기)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">1234</span>
-<span class="nf">push</span> <span class="nb">rax</span>           <span class="c1">; rax를 스택에 저장</span>
-<span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">0</span>         <span class="c1">; rax를 0으로 초기화</span>
-<span class="nf">pop</span> <span class="nb">rax</span>            <span class="c1">; 스택에서 rax 복원</span>
-</code></pre></div></div>
-
-<p>push하면 rsp 줄어들고,
-pop하면 rsp 다시 올라간다.</p>
-
-<h3 id="2-6-call--ret-함수-호출--복귀">2-6. call / ret (함수 호출 / 복귀)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">call</span> <span class="nv">my_function</span>   <span class="c1">; 함수 호출 (현재 위치를 스택에 저장하고 점프)</span>
-
-<span class="c1">; ...</span>
-
-<span class="nl">my_function:</span>
-    <span class="c1">; (여기 코드 실행)</span>
-    <span class="nf">ret</span>            <span class="c1">; 스택에서 복귀주소 꺼내서 돌아감</span>
-</code></pre></div></div>
-
-<p>함수 부르기/돌아오기 핵심. 나중에 스택 프레임이라는 중요한 것을 배울 예정.</p>
-
-<h3 id="2-7-cmp--jmp--je--jne-비교-점프">2-7. cmp / jmp / je / jne (비교, 점프)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>
-<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">5</span>         <span class="c1">; rax == 5 인지 비교 (ZF 플래그 세팅)</span>
-<span class="no">je</span><span class="kd">  equ</span><span class="nb">al</span><span class="nv">_label</span>    <span class="c1">; 같으면 equal_label로 점프</span>
-<span class="nf">jne</span> <span class="nv">not_equal_label</span><span class="c1">; 다르면 not_equal_label로 점프</span>
-<span class="nf">jmp</span> <span class="nv">end_label</span>      <span class="c1">; 무조건 end_label로 점프</span>
-
-<span class="nl">equal_label:</span>
-    <span class="c1">; 여기는 rax == 5일 때 옴</span>
-    <span class="nf">jmp</span> <span class="nv">end_label</span>
-
-<span class="nl">not_equal_label:</span>
-    <span class="c1">; 여기는 rax != 5일 때 옴</span>
-
-<span class="nl">end_label:</span>
-    <span class="c1">; 프로그램 계속 진행</span>
-</code></pre></div></div>
-
-<p>cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)</p>
-
-<h3 id="2-8-기본-실습-문제1">2-8. 기본 실습 문제1</h3>
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nf">rax</span><span class="err">에</span> <span class="mi">10</span> <span class="err">저장</span>
-	<span class="nf">rbx</span><span class="err">에</span> <span class="mi">20</span> <span class="err">저장</span>
-    <span class="nf">rcx</span><span class="err">에</span> <span class="mi">5</span> <span class="err">저장</span>
-    <span class="nf">rax</span> <span class="o">+</span> <span class="nb">rbx</span> <span class="err">결과를</span> <span class="nb">rax</span><span class="err">에</span> <span class="err">저장</span>
-    <span class="nf">rax</span> <span class="o">-</span> <span class="nb">rcx</span> <span class="err">결과를</span> <span class="nb">rax</span><span class="err">에</span> <span class="err">저장</span>
-    <span class="nf">rax</span><span class="err">를</span> <span class="err">스택에</span> <span class="err">저장</span>
-    <span class="nf">rbx</span><span class="err">를</span> <span class="err">스택에</span> <span class="err">저장</span>
-	<span class="err">스택에서</span> <span class="nf">rbx</span> <span class="err">복구</span>
-	<span class="err">스택에서</span> <span class="nf">rax</span> <span class="err">복구</span>        
-</code></pre></div></div>
-
-<blockquote>
-  <p>실습 문제1 풀기 전, 스택(Stack) 후입선출</p>
-</blockquote>
-
-<p>기본 코드 골격:</p>
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
-<span class="nf">global</span> <span class="nv">main</span>
-
-<span class="nf">section</span> <span class="nv">.text</span>
-<span class="nl">main:</span>
-
-    <span class="c1">; 여기부터 코드 작성</span>
-
-<span class="nl">.loop:</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>
-
-</code></pre></div></div>
-
-<p>.loop:은 그냥 프로그램 끝에 멈추는 곳.</p>
-
-<p><br /></p>
-<div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-qxneo7', this)" data-label="실습 문제 풀이1">
-  </div>
-  <div id="toggle-qxneo7" class="toggle-body" style="display: none; max-height: 0;">
-    
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
-<span class="nf">global</span> <span class="nv">main</span>
-
-<span class="nf">section</span> <span class="nv">.text</span>
-<span class="nl">main:</span>
-    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>        <span class="c1">; rax = 10</span>
-    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">20</span>        <span class="c1">; rbx = 20</span>
-    <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">5</span>         <span class="c1">; rcx = 5</span>
-
-    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>       <span class="c1">; rax = rax + rbx (10 + 20 = 30)</span>
-    <span class="nf">sub</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rcx</span>       <span class="c1">; rax = rax - rcx (30 - 5 = 25)</span>
-
-    <span class="nf">push</span> <span class="nb">rax</span>           <span class="c1">; 스택에 rax(25) 저장</span>
-    <span class="nf">push</span> <span class="nb">rbx</span>           <span class="c1">; 스택에 rbx(20) 저장</span>
-
-    <span class="nf">pop</span> <span class="nb">rbx</span>            <span class="c1">; 스택에서 rbx 복구 (20)</span>
-    <span class="nf">pop</span> <span class="nb">rax</span>            <span class="c1">; 스택에서 rax 복구 (25)</span>
-
-<span class="nl">.loop:</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; 프로그램 종료 대기</span>
-</code></pre></div></div>
-
-<p>동작 흐름 다시 정리
-rax = 10</p>
-
-<p>rbx = 20</p>
-
-<p>rcx = 5</p>
-
-<p>add rax, rbx → rax = 30</p>
-
-<p>sub rax, rcx → rax = 25</p>
-
-<p>push rax → (25 스택 저장)</p>
-
-<p>push rbx → (20 스택 저장)</p>
-
-<p>pop rbx → (20 복구)</p>
-
-<p>pop rax → (25 복구)</p>
-
-<p>스택 동작 순서(후입선출 LIFO 구조)</p>
-
-
-  </div>
-</div>
-
-<p><br /></p>
-
-<h3 id="2-9-요약">2-9. 요약</h3>
-
-<ul>
-  <li>mov로 값 복사</li>
-  <li>add/sub/inc/dec로 값 변경</li>
-  <li>push/pop으로 스택 저장/복구</li>
-  <li>call/ret으로 함수 호출/복귀</li>
-  <li>cmp + je/jne/jmp로 조건 분기</li>
-</ul>
-
-<h2 id="3-기본-실습-문제2">3. 기본 실습 문제2</h2>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">; 1. rax에 10 저장</span>
-<span class="c1">; 2. rbx에 20 저장</span>
-<span class="c1">; 3. rax와 rbx를 더해서 rax에 저장</span>
-<span class="c1">; 4. rax 값을 스택에 push</span>
-<span class="c1">; 5. rax를 0으로 만든 뒤</span>
-<span class="c1">; 6. 스택에서 rax 값을 pop해서 복구</span>
-<span class="c1">; 7. rax == 30 이면 끝나는 루프</span>
-</code></pre></div></div>
-
-<h3 id="3-1-기본-실습-문제-풀기-전-알아두기">3-1. 기본 실습 문제 풀기 전 알아두기</h3>
-
-<ol>
-  <li>
-    <p>기본 실습 문제 풀기 기본 환경 코드:</p>
-
-    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">default</span> <span class="nv">rel</span>
- <span class="nf">global</span> <span class="nv">main</span>
-    
- <span class="nf">section</span> <span class="nv">.text</span>
- <span class="nl">main:</span>
-     <span class="c1">; 여기에 코드 작성</span>
- <span class="nl">.end:</span>
-     <span class="nf">jmp</span> <span class="nv">.end</span>   <span class="c1">; 무한 루프 (프로그램 강제 정지용)</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Assembly에서 “루프(반복)” 만들기
-    <ol>
-      <li>Assembly에서는 루프라는 걸 따로 지원하지 않는다.</li>
-      <li><strong>“명령어 점프(jmp)” + “조건 비교(cmp + je/jne 등)”</strong> ➔ 이걸 조합해서 <strong>수동으로 루프를 만든다.</strong></li>
-    </ol>
-  </li>
-  <li>루프 기본 패턴
-    <ol>
-      <li>
-        <p>무한 루프 (종료 조건 없음)</p>
-
-        <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nl">.loop:</span>
-     <span class="c1">; (여기에 반복할 코드)</span>
-     <span class="nf">jmp</span> <span class="nv">.loop</span>
-</code></pre></div>        </div>
-
-        <ol>
-          <li><code class="language-plaintext highlighter-rouge">.loop:</code> 이라는 레이블(이름표)을 붙이고</li>
-          <li>다시 <code class="language-plaintext highlighter-rouge">.loop</code>로 <code class="language-plaintext highlighter-rouge">jmp</code>해서 영원히 돌아오는 구조</li>
-          <li>C로 치면 <code class="language-plaintext highlighter-rouge">while (1) { }</code> 와 같음.</li>
-        </ol>
-      </li>
-    </ol>
-  </li>
-  <li>
-    <p>카운터 기반 루프 (조건부 반복)</p>
-
-    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">5</span>        <span class="c1">; 반복할 횟수 5회</span>
-    
- <span class="nl">.loop:</span>
-     <span class="c1">; (여기에 반복할 코드)</span>
-    
-     <span class="nf">dec</span> <span class="nb">rcx</span>        <span class="c1">; rcx = rcx - 1</span>
-     <span class="nf">cmp</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">0</span>
-     <span class="nf">jne</span> <span class="nv">.loop</span>      <span class="c1">; rcx != 0 이면 다시 반복</span>
-</code></pre></div>    </div>
-
-    <ol>
-      <li><code class="language-plaintext highlighter-rouge">rcx</code>에 반복 횟수를 세팅하고</li>
-      <li><code class="language-plaintext highlighter-rouge">dec</code>로 하나 줄이고</li>
-      <li><code class="language-plaintext highlighter-rouge">cmp</code>로 0이 됐는지 비교</li>
-      <li><code class="language-plaintext highlighter-rouge">jne</code>로 0이 아니면 다시 <code class="language-plaintext highlighter-rouge">.loop</code>로 점프</li>
-      <li>
-        <p>C로 치면:</p>
-
-        <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">int</span> <span class="nv">i</span> <span class="err">=</span> <span class="mi">5</span><span class="c1">;</span>
- <span class="nf">while</span> <span class="p">(</span><span class="nv">i</span><span class="o">--</span><span class="p">)</span> <span class="err">{</span>
-     <span class="o">//</span> <span class="err">반복</span>
- <span class="err">}</span>
-</code></pre></div>        </div>
-      </li>
-    </ol>
-  </li>
-  <li>
-    <p>루프 만들 때 필요한 명령어</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>명령어</th>
-          <th>역할</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>jmp label</strong></td>
-          <td>무조건 점프</td>
-        </tr>
-        <tr>
-          <td><strong>cmp dst, src</strong></td>
-          <td>비교 후 플래그 설정</td>
-        </tr>
-        <tr>
-          <td><strong>je label</strong></td>
-          <td>같으면 점프 (ZF = 1)</td>
-        </tr>
-        <tr>
-          <td><strong>jne label</strong></td>
-          <td>다르면 점프 (ZF = 0)</td>
-        </tr>
-        <tr>
-          <td><strong>dec reg</strong></td>
-          <td>1 감소</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ol>
-
-<h3 id="3-2-문제-풀이">3-2. 문제 풀이</h3>
-
-<p>먼저 3-1-a 에 기본 코드를 토대로 기본 실습 문제를 진행 해보자.</p>
-
-<p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
-
-<div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-j77cq9', this)" data-label="한 줄씩 풀이 보기">
-  </div>
-  <div id="toggle-j77cq9" class="toggle-body" style="display: none; max-height: 0;">
-    
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">mov rbx, 20</code>   ;mov 명령어로 rbx 에 20을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">add rax, rbx</code>   ;add 명령어로 rax 와 rbx 덧셈 연산 후, rax에 값을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">push rax</code>   ; rax 값을 push = stack에 rax 값을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">mov rax 0</code>   ; rax 값에 0을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">pop rax</code>   ; stack 에서 이전에 저장한 rax(30)을 rax로 복구 = stack에서 rax값을 넣기</li>
-  <li><code class="language-plaintext highlighter-rouge">cmp rax, 30</code>   ;rax값 과 30을 비교</li>
-  <li><code class="language-plaintext highlighter-rouge">je .end</code>   ;<code class="language-plaintext highlighter-rouge">cmp</code> ➔ Zero Flag(ZF) 세팅, <code class="language-plaintext highlighter-rouge">je</code> ➔ ZF가 1이면 점프 (== 같을 때 점프)</li>
-  <li><code class="language-plaintext highlighter-rouge">.loop:</code>   ;루프문</li>
-  <li><code class="language-plaintext highlighter-rouge">jmp .loop</code>   ;(틀릴 경우 무한 루프)</li>
-  <li><code class="language-plaintext highlighter-rouge">.end:</code>  ; <code class="language-plaintext highlighter-rouge">je .end</code> 에 선언한 곳</li>
-  <li><code class="language-plaintext highlighter-rouge">jmp .end</code>  ;정상 종료 무한 루프 종료</li>
-</ol>
-
-
-  </div>
-</div>
-
-<div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-vwzqhv', this)" data-label="최종 답안 보기">
-  </div>
-  <div id="toggle-vwzqhv" class="toggle-body" style="display: none; max-height: 0;">
-    
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
-<span class="nf">global</span> <span class="nv">main</span>
-
-<span class="nf">section</span> <span class="nv">.text</span>
-<span class="nl">main:</span>
-    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>        <span class="c1">; 1. rax = 10</span>
-    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">20</span>        <span class="c1">; 2. rbx = 20</span>
-    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>       <span class="c1">; 3. rax = rax + rbx</span>
-    <span class="nf">push</span> <span class="nb">rax</span>           <span class="c1">; 4. 스택에 저장</span>
-    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">0</span>         <span class="c1">; 5. rax 초기화</span>
-    <span class="nf">pop</span> <span class="nb">rax</span>            <span class="c1">; 6. 스택에서 복구</span>
-    <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">30</span>        <span class="c1">; 7. 30과 비교</span>
-    <span class="nf">je</span> <span class="nv">.end</span>            <span class="c1">; 같으면 끝</span>
-<span class="nl">.loop:</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; (틀릴 경우 무한루프)</span>
-
-<span class="nl">.end:</span>
-    <span class="nf">jmp</span> <span class="nv">.end</span>           <span class="c1">; 정상 종료 무한루프</span>
-
-</code></pre></div></div>
-
-
-  </div>
-</div>
-
-<h3 id="3-2-체크포인트">3-2. 체크포인트</h3>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">push</code>, <code class="language-plaintext highlighter-rouge">pop</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jmp</code> 명령어 사용</li>
-  <li>스택 쓰고 복구하는 흐름 익힘</li>
-  <li>cmp/je 조건 분기 맛보기</li>
-</ul>
-
-<h2 id="4-조건-분기-명령어">4. 조건 분기 명령어</h2>
-
-<p><strong>조건 분기 명령어란?</strong></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">cmp</code> 명령어로 <strong>두 값을 비교</strong>한 다음</li>
-  <li>플래그 레지스터(<code class="language-plaintext highlighter-rouge">ZF</code>, <code class="language-plaintext highlighter-rouge">SF</code>, <code class="language-plaintext highlighter-rouge">CF</code>, <code class="language-plaintext highlighter-rouge">OF</code> 등)에 결과가 저장.</li>
-  <li>이 플래그를 보고 <strong>조건에 맞으면 점프(jmp)</strong> 하는 구조.</li>
-</ul>
-
-<p><strong>조건 분기 명령어 핵심 3단계</strong></p>
-
-<ul>
-  <li><strong>cmp dst, src</strong>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">dst - src</code>를 “계산만” 하고</li>
-      <li><strong>값은 버리고 플래그만 세팅</strong>한다.</li>
-    </ul>
-  </li>
-  <li><strong>플래그 레지스터 값 설정</strong>
-    <ul>
-      <li>Zero Flag(ZF), Sign Flag(SF), Carry Flag(CF), Overflow Flag(OF) 설정</li>
-    </ul>
-  </li>
-  <li><strong>je, jne, jg, jl 등 분기 명령어로 점프</strong></li>
-</ul>
-
-<p>자주 쓰는 조건 분기 명령어</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>명령어</th>
-      <th>의미</th>
-      <th>조건</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>je</strong></td>
-      <td>Jump if Equal</td>
-      <td>ZF == 1 (같으면)</td>
-    </tr>
-    <tr>
-      <td><strong>jne</strong></td>
-      <td>Jump if Not Equal</td>
-      <td>ZF == 0 (다르면)</td>
-    </tr>
-    <tr>
-      <td><strong>jg</strong></td>
-      <td>Jump if Greater</td>
-      <td>(SF == OF) &amp;&amp; (ZF == 0) (크면)</td>
-    </tr>
-    <tr>
-      <td><strong>jge</strong></td>
-      <td>Jump if Greater or Equal</td>
-      <td>SF == OF (크거나 같으면)</td>
-    </tr>
-    <tr>
-      <td><strong>jl</strong></td>
-      <td>Jump if Less</td>
-      <td>SF != OF (작으면)</td>
-    </tr>
-    <tr>
-      <td><strong>jle</strong></td>
-      <td>Jump if Less or Equal</td>
-      <td>(SF != OF)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Assembly에서는 거의 <strong>je, jne, jg, jl</strong>만 쓴다고 보면 됌.</p>
-
-<h3 id="4-1-예제-1-je-같으면-점프">4-1. 예제 1: je (같으면 점프)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>
-<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">10</span>
-<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>    <span class="c1">; rax == rbx 비교</span>
-<span class="no">je</span><span class="kd">  equ</span><span class="nb">al</span><span class="nv">_label</span> <span class="c1">; 같으면 equal_label로 점프</span>
-<span class="nf">jmp</span> <span class="nv">end_label</span>
-
-<span class="nl">equal_label:</span>
-    <span class="c1">; 여기 도착</span>
-    <span class="c1">; rax == rbx 일 때만</span>
-
-<span class="nl">end_label:</span>
-    <span class="c1">; 프로그램 종료</span>
-</code></pre></div></div>
-
-<p>rax == rbx이면 <code class="language-plaintext highlighter-rouge">equal_label</code>로 점프!</p>
-
-<h3 id="4-2-예제-2-jne-다르면-점프">4-2. 예제 2: jne (다르면 점프)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">10</span>
-<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">5</span>
-<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>
-<span class="nf">jne</span> <span class="nv">not_equal_label</span>
-<span class="nf">jmp</span> <span class="nv">end_label</span>
-
-<span class="nl">not_equal_label:</span>
-    <span class="c1">; rax != rbx일 때 오는 곳</span>
-
-<span class="nl">end_label:</span>
-    <span class="c1">; 프로그램 종료</span>
-</code></pre></div></div>
-
-<p>rax != rbx이면 <code class="language-plaintext highlighter-rouge">not_equal_label</code>로 점프!</p>
-
-<h3 id="4-3-예제-3-jg--jl-크거나-작을-때-점프">4-3. 예제 3: jg / jl (크거나 작을 때 점프)</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">20</span>
-<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">10</span>
-<span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>
-<span class="nf">jg</span> <span class="nv">greater_label</span>
-<span class="nf">jl</span> <span class="nv">less_label</span>
-<span class="nf">jmp</span> <span class="nv">end_label</span>
-
-<span class="nl">greater_label:</span>
-    <span class="c1">; rax &gt; rbx</span>
-    <span class="nf">jmp</span> <span class="nv">end_label</span>
-
-<span class="nl">less_label:</span>
-    <span class="c1">; rax &lt; rbx</span>
-    <span class="nf">jmp</span> <span class="nv">end_label</span>
-
-<span class="nl">end_label:</span>
-    <span class="c1">; 프로그램 종료</span>
-</code></pre></div></div>
-
-<p>rax &gt; rbx이면 <code class="language-plaintext highlighter-rouge">greater_label</code>,</p>
-
-<p>rax &lt; rbx이면 <code class="language-plaintext highlighter-rouge">less_label</code> 로 간다.</p>
-
-<h3 id="4-4-cmp가-뭘-하는지-한-번-더-강조">4-4. cmp가 뭘 하는지 한 번 더 강조</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>
-</code></pre></div></div>
-
-<p>→ 실제로는 <code class="language-plaintext highlighter-rouge">rax - rbx</code>를 계산</p>
-
-<p>→ 그 결과에 따라 <strong>Zero/Sign/Carry/Overflow</strong> 플래그를 조정</p>
-
-<p>→ 그리고 분기 명령어(<code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jg</code>, <code class="language-plaintext highlighter-rouge">jl</code> 등)가 이 플래그를 보는 거야.</p>
-
-<blockquote>
-  <p>즉, cmp는 “비교만 하고 아무것도 저장하지 않는다.”</p>
-
-  <p><strong>플래그 세팅만 한다.</strong></p>
-
-</blockquote>
-
-<h3 id="4-5-요약">4-5. 요약</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>플래그</th>
-      <th>의미</th>
-      <th>영향 받는 분기</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>ZF (Zero Flag)</strong></td>
-      <td>두 값이 같으면 세팅</td>
-      <td>je, jne</td>
-    </tr>
-    <tr>
-      <td><strong>SF (Sign Flag)</strong></td>
-      <td>결과가 음수면 세팅</td>
-      <td>jg, jl</td>
-    </tr>
-    <tr>
-      <td><strong>OF (Overflow Flag)</strong></td>
-      <td>오버플로우 발생 여부</td>
-      <td>jg, jl</td>
-    </tr>
-    <tr>
-      <td><strong>CF (Carry Flag)</strong></td>
-      <td>자리 올림/내림 발생 여부</td>
-      <td>(unsigned 비교에 사용)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>signed/unsigned 구분이 있는데, 일단 지금은 <strong>정수 부호 있는(signed) 비교</strong>만 다룬다.</p>
-
-<h3 id="4-6-미션">4-6. 미션</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">; 1. rax에 7 저장</span>
-<span class="c1">; 2. rbx에 5 저장</span>
-<span class="c1">; 3. cmp로 비교</span>
-<span class="c1">; 4. 크면 "greater", 작으면 "less" 레이블로 점프</span>
-<span class="c1">; 5. 둘 다 아니면 "equal" 레이블로 점프</span>
-</code></pre></div></div>
-
-<p>기본 코드:</p>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
-<span class="nf">global</span> <span class="nv">main</span>
-
-<span class="nf">section</span> <span class="nv">.text</span>
-<span class="nl">main:</span>
-    <span class="c1">; 여기부터 네 코드</span>
-
-<span class="nl">.loop:</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; 프로그램 끝 (무한 대기)</span>
-
-<span class="nl">greater:</span>
-    <span class="c1">; 여기는 rax &gt; rbx 일 때 오는 곳</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>
-
-<span class="nl">less:</span>
-    <span class="c1">; 여기는 rax &lt; rbx 일 때 오는 곳</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>
-
-<span class="nl">equal:</span>
-    <span class="c1">; 여기는 rax == rbx 일 때 오는 곳</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>
-</code></pre></div></div>
-
-<div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-egs4hk', this)" data-label="미션 풀이:">
-  </div>
-  <div id="toggle-egs4hk" class="toggle-body" style="display: none; max-height: 0;">
-    
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
-<span class="nf">global</span> <span class="nv">main</span>
-
-<span class="nf">section</span> <span class="nv">.text</span>
-<span class="nl">main:</span>
-    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">7</span>         <span class="c1">; rax = 7</span>
-    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="mi">5</span>         <span class="c1">; rbx = 5</span>
-    <span class="nf">cmp</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rbx</span>       <span class="c1">; rax - rbx 비교 (7 - 5)</span>
-    <span class="nf">jg</span> <span class="nv">greater</span>         <span class="c1">; rax &gt; rbx 이면 greater로 점프</span>
-    <span class="nf">jl</span> <span class="nv">less</span>            <span class="c1">; rax &lt; rbx 이면 less로 점프</span>
-    <span class="no">je</span><span class="kd"> equ</span><span class="nb">al</span>           <span class="c1">; rax == rbx 이면 equal로 점프</span>
-
-<span class="nl">.loop:</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>          <span class="c1">; 프로그램 끝 (무한 대기)</span>
-
-<span class="nl">greater:</span>
-    <span class="c1">; rax &gt; rbx일 때</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>
-
-<span class="nl">less:</span>
-    <span class="c1">; rax &lt; rbx일 때</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>
-
-<span class="nl">equal:</span>
-    <span class="c1">; rax == rbx일 때</span>
-    <span class="nf">jmp</span> <span class="nv">.loop</span>
-</code></pre></div></div>
-
-<p><strong>흐름 해석</strong></p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">7</code>과 <code class="language-plaintext highlighter-rouge">5</code> 비교 → 결과는 “7 &gt; 5”니까 <code class="language-plaintext highlighter-rouge">jg greater</code> 실행</li>
-  <li>프로그램은 <code class="language-plaintext highlighter-rouge">greater:</code>로 점프</li>
-  <li>거기서 <code class="language-plaintext highlighter-rouge">.loop</code>로 넘어가서 무한 대기</li>
-</ul>
-
-
-  </div>
-</div>
-
-<p><br /></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><category term="어셈블리 명령어" /><category term="조건 분기" /><category term="Windows Assembly" /><summary type="html"><![CDATA[Windows 64bit 기반 NASM 어셈블리에서 자주 사용하는 기본 명령어 mov, add, sub, cmp, jmp, push, pop, call, ret, 조건 분기(jg, je, jne, jl) 사용법과 실습 예제를 설명합니다.]]></summary></entry></feed>
+assembly <strong>기본 명령어부터 익히기</strong></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="nasm" /><category term="assembly" /><category term="SASM" /><category term="어셈블리 실습" /><category term="Windows Assembly" /><summary type="html"><![CDATA[Windows 환경에서 NASM 어셈블리어 학습을 위한 SASM 설치부터 디버깅 실습, 레지스터 분석, 변수 선언, 엔디안까지 실습 중심으로 설명합니다.]]></summary></entry></feed>
