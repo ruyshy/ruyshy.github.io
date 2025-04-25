@@ -116,7 +116,7 @@ var store = [{
         "title": "Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습",
         "excerpt":"Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다. 전 편에서 Assembly 기본 명령어 - Windows NASM 실습 가이드 에서 조건 분기문과 loop 에 대해 학습을 진행했습니다. 이번 편에서는 함수/스택 호출 구조, 스택 프레임에...","categories": ["assembly"],
         "tags": ["assembly","nasm","x64dbg","함수 호출","스택프레임","스택 구조","리버스엔지니어링"],
-        "url": "/assembly/assembly3-basic-commands-2/",
+        "url": "/assembly/assembly3-basic-commands-3/",
         "teaser": null
       },{
         "title": "GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기",
@@ -135,6 +135,12 @@ var store = [{
         "excerpt":"Reveal.js를 사용하면 GitHub 블로그에서도 마치 PowerPoint처럼 HTML 슬라이드를 만들 수 있습니다. 이 글에서는 Jekyll 환경에서 reveal.js를 이용해 슬라이드 프레젠테이션, 인터랙티브 발표용 페이지, Jekyll 커스텀 플러그인 구현 방법까지 단계별로 설명합니다. reveal.js 으로 슬라이드 만들기 예시 슬라이드: Reveal.js 소개 Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요! 두 번째 슬라이드 이 슬라이드는 마크다운이...","categories": ["blog"],
         "tags": ["GitHubBlog","reveal.js","jekyll plugin","slide presentation","liquid plugin"],
         "url": "/blog/blog15-slide/",
+        "teaser": null
+      },{
+        "title": "Assembly 기본 명령어부터 익히기 : cdecl, stdcall 호출 규약 비교",
+        "excerpt":"NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다. Call Convention이란? 함수를 어떻게 호출하고 인자를 어떻게 전달하고, 누가 스택을 정리하는지를 정한 약속. C/C++ 컴파일러가 어셈블리로 함수 호출을 만들 때 이 규칙을...","categories": ["assembly"],
+        "tags": ["assembly","call convention","cdecl","stdcall","fastcall","nasm","stack frame"],
+        "url": "/assembly/assembly3-basic-commands-2/",
         "teaser": null
       },{
         "title": "GitHub Blog Google Analytics GA4 연동 가이드",

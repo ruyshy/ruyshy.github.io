@@ -1,4 +1,269 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T13:27:06+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog Google Analytics GA4 연동 가이드</title><link href="https://ruyshy.github.io/blog/blog16-google-analytics/" rel="alternate" type="text/html" title="GitHub Blog Google Analytics GA4 연동 가이드" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog16-google-analytics</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog16-google-analytics/"><![CDATA[<p>GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-25T16:31:39+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 기본 명령어부터 익히기 : cdecl, stdcall 호출 규약 비교</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 기본 명령어부터 익히기 : cdecl, stdcall 호출 규약 비교" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다.</p>
+
+<h2 id="call-convention이란">Call Convention이란?</h2>
+
+<p>함수를 <strong>어떻게 호출하고 인자를 어떻게 전달하고, 누가 스택을 정리하는지</strong>를 정한 <strong>약속</strong>.</p>
+
+<p>C/C++ 컴파일러가 어셈블리로 함수 호출을 만들 때 이 규칙을 따른다고 보면 됨.</p>
+
+<h2 id="대표적인-호출-규칙-비교">대표적인 호출 규칙 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>규칙</th>
+      <th>인자 전달 방식</th>
+      <th>스택 정리 주체</th>
+      <th>특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>cdecl</strong></td>
+      <td>스택 (오른쪽 → 왼쪽)</td>
+      <td>호출자 (caller)</td>
+      <td>GCC에서 기본</td>
+    </tr>
+    <tr>
+      <td><strong>stdcall</strong></td>
+      <td>스택 (오른쪽 → 왼쪽)</td>
+      <td>피호출자 (callee)</td>
+      <td>Windows API 기본</td>
+    </tr>
+    <tr>
+      <td><strong>fastcall</strong></td>
+      <td>일부 인자는 레지스터로 전달</td>
+      <td>피호출자</td>
+      <td><code class="language-plaintext highlighter-rouge">ecx</code>, <code class="language-plaintext highlighter-rouge">edx</code> 사용</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="1-cdecl-caller-cleanup">1. cdecl (Caller Cleanup)</h2>
+
+<p><strong>cdecl</strong>은 가장 널리 사용되는 호출 규약으로, 특히 <strong>GCC</strong>에서 기본적으로 사용.</p>
+
+<p>특징:</p>
+
+<ul>
+  <li><strong>인자 전달:</strong> 스택을 통해 오른쪽에서 왼쪽으로 전달 (즉, 첫 번째 인자가 <strong>마지막</strong>에 푸시됨)</li>
+  <li><strong>스택 정리:</strong> <strong>호출자</strong> (caller)가 스택을 정리함</li>
+  <li><strong>리턴 값:</strong> <code class="language-plaintext highlighter-rouge">eax</code> 레지스터로 리턴 값을 반환</li>
+</ul>
+
+<p>호출부 (caller):</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">push</span> <span class="mi">2</span>        <span class="c1">; 인자 2</span>
+<span class="nf">push</span> <span class="mi">1</span>        <span class="c1">; 인자 1</span>
+<span class="nf">call</span> <span class="nv">my_func</span>  <span class="c1">; 함수 호출</span>
+<span class="nf">add</span> <span class="nb">esp</span><span class="p">,</span> <span class="mi">8</span>    <span class="c1">; 호출자가 스택을 정리 (2개 인자 * 4바이트)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>push 2, push 1</strong>: 함수의 인자를 스택에 푸시합니다. 여기서 중요한 점은 <strong>오른쪽에서 왼쪽</strong> 순서로 인자가 푸시된다는 것입니다.</li>
+  <li><strong>call my_func</strong>: <code class="language-plaintext highlighter-rouge">call</code> 명령어로 함수 호출을 합니다. 이때 <strong>리턴 주소</strong>도 스택에 푸시됩니다.</li>
+  <li><strong>add esp, 8</strong>: <code class="language-plaintext highlighter-rouge">add esp, 8</code>로 호출자가 스택을 정리합니다. 즉, 함수 호출 후 2개의 인자를 제거합니다. 여기서 <code class="language-plaintext highlighter-rouge">8</code>은 인자 두 개(<code class="language-plaintext highlighter-rouge">4바이트</code>씩)입니다.</li>
+</ul>
+
+<p>함수부 (callee):</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">my_func:</span>
+    <span class="nf">push</span> <span class="nb">ebp</span>            <span class="c1">; 이전의 프레임 포인터를 스택에 푸시</span>
+    <span class="nf">mov</span> <span class="nb">ebp</span><span class="p">,</span> <span class="nb">esp</span>        <span class="c1">; 현재 스택 포인터를 ebp에 저장 (프레임 포인터 설정)</span>
+    <span class="nf">mov</span> <span class="nb">eax</span><span class="p">,</span> <span class="p">[</span><span class="nb">ebp</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span>    <span class="c1">; 인자 1 (첫 번째 인자는 ebp+8 위치에)</span>
+    <span class="nf">mov</span> <span class="nb">ebx</span><span class="p">,</span> <span class="p">[</span><span class="nb">ebp</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span>   <span class="c1">; 인자 2 (두 번째 인자는 ebp+12 위치에)</span>
+    <span class="nf">add</span> <span class="nb">eax</span><span class="p">,</span> <span class="nb">ebx</span>        <span class="c1">; 인자들을 더함</span>
+    <span class="nf">pop</span> <span class="nb">ebp</span>             <span class="c1">; 원래의 ebp 값 복원</span>
+    <span class="nf">ret</span>                 <span class="c1">; 반환 (esp는 호출자에 의해 정리되었으므로 추가 정리 없이 바로 리턴)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>push ebp, mov ebp, esp</strong>: 함수가 호출될 때마다 새로운 스택 프레임을 설정합니다. 이를 통해 함수의 <strong>로컬 변수</strong>와 <strong>인자</strong>에 접근할 수 있습니다.</li>
+  <li><strong>mov eax, [ebp+8], mov ebx, [ebp+12]</strong>: <code class="language-plaintext highlighter-rouge">ebp</code>를 기준으로 인자들을 읽습니다. 첫 번째 인자는 <code class="language-plaintext highlighter-rouge">ebp+8</code>에, 두 번째 인자는 <code class="language-plaintext highlighter-rouge">ebp+12</code>에 있습니다.</li>
+  <li><strong>ret</strong>: <code class="language-plaintext highlighter-rouge">ret</code> 명령어는 호출한 함수로 돌아가지만, 호출자가 <strong>스택을 정리</strong>하는 규칙에 따라 추가적인 <code class="language-plaintext highlighter-rouge">esp</code> 조작이 없습니다.</li>
+</ul>
+
+<p>요약:</p>
+
+<ul>
+  <li><strong>caller가 스택 정리</strong>하는 방식</li>
+  <li><strong>인자 순서</strong>는 오른쪽 → 왼쪽</li>
+  <li>함수 호출 후 스택을 직접 정리해야 함 (<code class="language-plaintext highlighter-rouge">add esp, 8</code>)</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="예시-1-cdecl">예시 1: cdecl</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">; 호출부</span>
+<span class="nf">push</span> <span class="mi">2</span>        <span class="c1">; 인자 2</span>
+<span class="nf">push</span> <span class="mi">1</span>        <span class="c1">; 인자 1</span>
+<span class="nf">call</span> <span class="nv">my_func</span>
+<span class="nf">add</span> <span class="nb">esp</span><span class="p">,</span> <span class="mi">8</span>    <span class="c1">; caller가 스택 정리</span>
+
+<span class="c1">; 함수부</span>
+<span class="nl">my_func:</span>
+    <span class="nf">push</span> <span class="nb">ebp</span>
+    <span class="nf">mov</span> <span class="nb">ebp</span><span class="p">,</span> <span class="nb">esp</span>
+    <span class="nf">mov</span> <span class="nb">eax</span><span class="p">,</span> <span class="p">[</span><span class="nb">ebp</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span> <span class="c1">; 인자 1</span>
+    <span class="nf">mov</span> <span class="nb">ebx</span><span class="p">,</span> <span class="p">[</span><span class="nb">ebp</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span> <span class="c1">; 인자 2</span>
+    <span class="nf">add</span> <span class="nb">eax</span><span class="p">,</span> <span class="nb">ebx</span>
+    <span class="nf">pop</span> <span class="nb">ebp</span>
+    <span class="nf">ret</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">cdecl</code>은 call 후 <strong>호출한 쪽에서 <code class="language-plaintext highlighter-rouge">add esp, ...</code>로 스택 정리</strong>해야 함!</p>
+
+<h2 id="2-stdcall-callee-cleanup">2. stdcall (Callee Cleanup)</h2>
+
+<p><strong>stdcall</strong>은 <strong>Windows API</strong>에서 주로 사용되는 호출 규약으로, <strong>스택 정리</strong>가 <strong>피호출자</strong>(callee) 쪽에서 이루어집니다.</p>
+
+<p>특징:</p>
+
+<ul>
+  <li><strong>인자 전달:</strong> 스택을 통해 오른쪽에서 왼쪽으로 전달 (cdecl과 동일)</li>
+  <li><strong>스택 정리:</strong> <strong>피호출자</strong> (callee)가 스택을 정리함</li>
+  <li><strong>리턴 값:</strong> <code class="language-plaintext highlighter-rouge">eax</code> 레지스터로 리턴 값을 반환</li>
+</ul>
+
+<p>호출부 (caller):</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">push</span> <span class="mi">2</span>        <span class="c1">; 인자 2</span>
+<span class="nf">push</span> <span class="mi">1</span>        <span class="c1">; 인자 1</span>
+<span class="nf">call</span> <span class="nv">my_func</span>  <span class="c1">; 함수 호출</span>
+<span class="c1">; 호출부에서는 스택 정리 없음</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>push 2, push 1</strong>: <code class="language-plaintext highlighter-rouge">cdecl</code>과 마찬가지로 인자들을 오른쪽 → 왼쪽 순서로 푸시합니다.</li>
+  <li><strong>call my_func</strong>: <code class="language-plaintext highlighter-rouge">call</code> 명령어로 함수 호출을 합니다. <code class="language-plaintext highlighter-rouge">ret</code> 명령어가 호출될 때 피호출자가 스택을 정리하기 때문에, 호출부에서는 별도의 스택 정리 명령어가 필요 없습니다.</li>
+</ul>
+
+<p>함수부 (callee):</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">my_func:</span>
+    <span class="nf">push</span> <span class="nb">ebp</span>            <span class="c1">; 이전의 프레임 포인터를 스택에 푸시</span>
+    <span class="nf">mov</span> <span class="nb">ebp</span><span class="p">,</span> <span class="nb">esp</span>        <span class="c1">; 현재 스택 포인터를 ebp에 저장 (프레임 포인터 설정)</span>
+    <span class="nf">mov</span> <span class="nb">eax</span><span class="p">,</span> <span class="p">[</span><span class="nb">ebp</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span>    <span class="c1">; 인자 1 (첫 번째 인자는 ebp+8 위치에)</span>
+    <span class="nf">mov</span> <span class="nb">ebx</span><span class="p">,</span> <span class="p">[</span><span class="nb">ebp</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span>   <span class="c1">; 인자 2 (두 번째 인자는 ebp+12 위치에)</span>
+    <span class="nf">add</span> <span class="nb">eax</span><span class="p">,</span> <span class="nb">ebx</span>        <span class="c1">; 인자들을 더함</span>
+    <span class="nf">pop</span> <span class="nb">ebp</span>             <span class="c1">; 원래의 ebp 값 복원</span>
+    <span class="nf">ret</span> <span class="mi">8</span>               <span class="c1">; callee가 스택 정리 (2개 인자 * 4바이트)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>push ebp, mov ebp, esp</strong>: 함수가 호출될 때마다 스택 프레임을 설정합니다.</li>
+  <li><strong>mov eax, [ebp+8], mov ebx, [ebp+12]</strong>: 인자들은 <code class="language-plaintext highlighter-rouge">ebp+8</code>과 <code class="language-plaintext highlighter-rouge">ebp+12</code>에서 읽어옵니다.</li>
+  <li><strong>ret 8</strong>: <code class="language-plaintext highlighter-rouge">stdcall</code>의 핵심! 함수가 끝날 때 <code class="language-plaintext highlighter-rouge">ret 8</code>을 사용하여 <strong>스택을 정리</strong>합니다. 호출자는 더 이상 스택을 정리할 필요가 없으며, 피호출자 함수가 <strong>인자 크기만큼 스택을 정리</strong>합니다.</li>
+</ul>
+
+<p>요약:</p>
+
+<ul>
+  <li><strong>callee가 스택 정리</strong>하는 방식</li>
+  <li><strong>인자 순서</strong>는 오른쪽 → 왼쪽</li>
+  <li>함수 호출 후 <strong>ret 8</strong>을 사용하여 피호출자가 스택을 정리</li>
+</ul>
+
+<h3 id="예시-2-stdcall">예시 2: stdcall</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">; 호출부</span>
+<span class="nf">push</span> <span class="mi">2</span>
+<span class="nf">push</span> <span class="mi">1</span>
+<span class="nf">call</span> <span class="nv">my_func</span>    <span class="c1">; 스택 정리 없음!</span>
+
+<span class="c1">; 함수부</span>
+<span class="nl">my_func:</span>
+    <span class="nf">push</span> <span class="nb">ebp</span>
+    <span class="nf">mov</span> <span class="nb">ebp</span><span class="p">,</span> <span class="nb">esp</span>
+    <span class="nf">mov</span> <span class="nb">eax</span><span class="p">,</span> <span class="p">[</span><span class="nb">ebp</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span>
+    <span class="nf">mov</span> <span class="nb">ebx</span><span class="p">,</span> <span class="p">[</span><span class="nb">ebp</span><span class="o">+</span><span class="mi">12</span><span class="p">]</span>
+    <span class="nf">add</span> <span class="nb">eax</span><span class="p">,</span> <span class="nb">ebx</span>
+    <span class="nf">pop</span> <span class="nb">ebp</span>
+    <span class="nf">ret</span> <span class="mi">8</span>        <span class="c1">; callee가 2개(4+4)의 인자 정리</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">stdcall</code>은 함수 끝에서 <code class="language-plaintext highlighter-rouge">ret 8</code> 같은 식으로 <strong>callee가 스택 정리</strong>를 한다!</p>
+
+<h2 id="간단한-비교">간단한 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th><strong>cdecl</strong></th>
+      <th><strong>stdcall</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>인자 전달</strong></td>
+      <td>스택 (오른쪽 → 왼쪽)</td>
+      <td>스택 (오른쪽 → 왼쪽)</td>
+    </tr>
+    <tr>
+      <td><strong>스택 정리</strong></td>
+      <td>호출자 (caller)</td>
+      <td>피호출자 (callee)</td>
+    </tr>
+    <tr>
+      <td><strong>리턴 값</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">eax</code>로 반환</td>
+      <td><code class="language-plaintext highlighter-rouge">eax</code>로 반환</td>
+    </tr>
+    <tr>
+      <td><strong>호출 후 스택 정리</strong></td>
+      <td>호출자가 <code class="language-plaintext highlighter-rouge">add esp, ...</code>로 정리</td>
+      <td><code class="language-plaintext highlighter-rouge">ret 8</code>을 사용하여 피호출자가 정리</td>
+    </tr>
+    <tr>
+      <td><strong>주로 사용되는 곳</strong></td>
+      <td><strong>GCC</strong>에서 기본, Unix 시스템</td>
+      <td><strong>Windows API</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h3 id="fastcall-간단-설명-x86-한정">fastcall 간단 설명 (x86 한정)</h3>
+
+<ul>
+  <li>인자 1개는 <code class="language-plaintext highlighter-rouge">ecx</code>, 2번째는 <code class="language-plaintext highlighter-rouge">edx</code>에 저장</li>
+  <li>나머지는 스택</li>
+  <li>스택은 callee가 정리</li>
+</ul>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">; 호출부</span>
+<span class="nf">mov</span> <span class="nb">ecx</span><span class="p">,</span> <span class="mi">1</span>
+<span class="nf">mov</span> <span class="nb">edx</span><span class="p">,</span> <span class="mi">2</span>
+<span class="nf">call</span> <span class="nv">my_func</span>
+</code></pre></div></div>
+
+<p>이건 직접 보기보다 <strong>x64dbg로 디컴파일된 함수</strong> 보면 레지스터에 인자 들어간 거 관찰해보면 느낌 잡힐 거임.</p>
+
+<h3 id="64비트에서는">64비트에서는?</h3>
+
+<blockquote>
+  <p>x64에서는 규칙이 통일됨 (Windows 기준):</p>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">rcx</code>, <code class="language-plaintext highlighter-rouge">rdx</code>, <code class="language-plaintext highlighter-rouge">r8</code>, <code class="language-plaintext highlighter-rouge">r9</code> → 인자 전달</li>
+    <li>스택 정리는 호출자(caller)</li>
+    <li><strong>cdecl 변형</strong></li>
+  </ul>
+</blockquote>
+
+<h2 id="누가-스택을-정리하느냐--흐름-복구에-매우-중요">누가 스택을 정리하느냐 → 흐름 복구에 매우 중요</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cdecl</code>: 호출부에서 <code class="language-plaintext highlighter-rouge">add esp, ...</code> 직접 해줌</li>
+  <li><code class="language-plaintext highlighter-rouge">stdcall</code>: 함수 끝에서 <code class="language-plaintext highlighter-rouge">ret N</code>으로 자동 정리</li>
+  <li><code class="language-plaintext highlighter-rouge">fastcall</code>: 레지스터 인자 외에 스택에 들어간 애만 <code class="language-plaintext highlighter-rouge">ret N</code></li>
+</ul>
+
+<p>즉, <code class="language-plaintext highlighter-rouge">ret</code> 다음에 <code class="language-plaintext highlighter-rouge">add esp, 8</code>이 있다면 <code class="language-plaintext highlighter-rouge">cdecl</code>
+반대로 <code class="language-plaintext highlighter-rouge">ret 8</code>이면 <code class="language-plaintext highlighter-rouge">stdcall</code>인 거 바로 파악 가능</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="call convention" /><category term="cdecl" /><category term="stdcall" /><category term="fastcall" /><category term="nasm" /><category term="stack frame" /><summary type="html"><![CDATA[cdecl과 stdcall 호출 규약(Call Convention)의 차이점을 NASM 어셈블리 코드 예제와 함께 비교 분석합니다. 함수 호출, 스택 정리 방식, 인자 전달 구조를 정확히 이해하고 리버싱에 필요한 기초를 다질 수 있습니다.]]></summary></entry><entry><title type="html">GitHub Blog Google Analytics GA4 연동 가이드</title><link href="https://ruyshy.github.io/blog/blog16-google-analytics/" rel="alternate" type="text/html" title="GitHub Blog Google Analytics GA4 연동 가이드" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog16-google-analytics</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog16-google-analytics/"><![CDATA[<p>GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
 
 <h2 id="1-ga4-속성-만들기">1. <strong>GA4 속성 만들기</strong></h2>
 
@@ -88,7 +353,7 @@
 </ol>
 
 <p><img src="/assets/images/blog/2025-04-25-blog16-google-analytics/image.png" alt="구글 애널리틱스 실시간 보고서" style="max-width:100%;" />
-보고서를 설정 후, 실시간 개요 테스트를 진행한 스크린샷입니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="GoogleAnalytics" /><category term="GA4" /><category term="minimal-mistakes" /><category term="Jekyll" /><category term="SearchConsole" /><summary type="html"><![CDATA[Jekyll 블로그에서 Google Analytics GA4 측정 ID를 연동하여 방문자 분석 데이터를 수집하는 방법을 설명합니다. minimal-mistakes 테마 설정부터 Search Console 연동까지 단계별 가이드 포함.]]></summary></entry><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-2/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.</p>
+보고서를 설정 후, 실시간 개요 테스트를 진행한 스크린샷입니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="GoogleAnalytics" /><category term="GA4" /><category term="minimal-mistakes" /><category term="Jekyll" /><category term="SearchConsole" /><summary type="html"><![CDATA[Jekyll 블로그에서 Google Analytics GA4 측정 ID를 연동하여 방문자 분석 데이터를 수집하는 방법을 설명합니다. minimal-mistakes 테마 설정부터 Search Console 연동까지 단계별 가이드 포함.]]></summary></entry><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-24T00:00:00+09:00</published><updated>2025-04-24T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-3</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.</p>
 
 <p>전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.</p>
 
@@ -905,44 +1170,44 @@ main으로 복귀 → rax = 1234
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-500735">
-  <div class="quiz-message" id="quiz-message-500735" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-822742">
+  <div class="quiz-message" id="quiz-message-822742" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-500735" onsubmit="return false;">
+  <form id="quiz-form-822742" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-500735" id="quiz-500735-0" value="1번" data-correct="false" />
-  <label for="quiz-500735-0">1번</label>
+  <input type="radio" name="quiz-answer-822742" id="quiz-822742-0" value="1번" data-correct="false" />
+  <label for="quiz-822742-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-500735" id="quiz-500735-1" value="2번" data-correct="true" />
-  <label for="quiz-500735-1">2번</label>
+  <input type="radio" name="quiz-answer-822742" id="quiz-822742-1" value="2번" data-correct="true" />
+  <label for="quiz-822742-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-500735" id="quiz-500735-2" value="3번" data-correct="false" />
-  <label for="quiz-500735-2">3번</label>
+  <input type="radio" name="quiz-answer-822742" id="quiz-822742-2" value="3번" data-correct="false" />
+  <label for="quiz-822742-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-500735" id="quiz-500735-3" value="4번" data-correct="false" />
-  <label for="quiz-500735-3">4번</label>
+  <input type="radio" name="quiz-answer-822742" id="quiz-822742-3" value="4번" data-correct="false" />
+  <label for="quiz-822742-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(500735, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(822742, false, null)">제출</button>
   </form>
-  <div id="quiz-result-500735" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-500735" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-500735', this)" data-label="해설 보기"></div>
-  <div id="toggle-500735" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-822742" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-822742" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-822742', this)" data-label="해설 보기"></div>
+  <div id="toggle-822742" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -953,26 +1218,26 @@ main으로 복귀 → rax = 1234
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-254272">
-  <div class="quiz-message" id="quiz-message-254272" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-432060">
+  <div class="quiz-message" id="quiz-message-432060" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-254272" onsubmit="return false;">
+  <form id="quiz-form-432060" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-254272" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-432060" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-254272" value="test" />
+      <input type="hidden" id="quiz-text-answer-432060" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(254272, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(432060, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-254272" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-254272" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-254272', this)" data-label="해설 보기"></div>
-  <div id="toggle-254272" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-432060" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-432060" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-432060', this)" data-label="해설 보기"></div>
+  <div id="toggle-432060" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -2415,9 +2680,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-200oyb', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-hy9brf', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-200oyb" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-hy9brf" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2433,9 +2698,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-vstpv', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-94rf65', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-vstpv" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-94rf65" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
@@ -2661,9 +2926,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-8bt90a', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-jdjwva', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-8bt90a" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-jdjwva" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -2687,9 +2952,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-faw7s5', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-4sx0tn', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-faw7s5" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-4sx0tn" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>
@@ -2723,9 +2988,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-s2p3wh', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-4ftqqd', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-s2p3wh" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-4ftqqd" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -2749,9 +3014,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-9xn85', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-g1qqzx', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-9xn85" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-g1qqzx" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
@@ -3193,9 +3458,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ftzh3o', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-dlp9o5', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-ftzh3o" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-dlp9o5" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3379,9 +3644,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-40kwqo', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-kqt2c2', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-40kwqo" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-kqt2c2" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
@@ -3403,9 +3668,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-wc73dq', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-6f3o9e', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-wc73dq" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-6f3o9e" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3662,9 +3927,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-pfyqmt', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-nyc6km', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-pfyqmt" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-nyc6km" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -3904,120 +4169,4 @@ gem "tzinfo-data"
 
 <p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image8.png" alt="소유권 인증 완료 알림" style="max-width:100%;" /></p>
 
-<p>인증이 완료되었네요! 굿굿</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="SEO 설정" /><category term="Google Search Console" /><category term="sitemap.xml" /><category term="jekyll-seo-tag" /><summary type="html"><![CDATA[Jekyll 기반 GitHub 블로그에서 Google Search Console 등록부터 sitemap.xml, robots.txt, jekyll-seo-tag 플러그인까지 검색 노출을 위한 설정 방법을 정리합니다.]]></summary></entry><entry><title type="html">GitHub Blog 코드 복사 버튼 추가 - Jekyll에서 Copy 버튼 구현</title><link href="https://ruyshy.github.io/blog/blog10-code-block-copy-button/" rel="alternate" type="text/html" title="GitHub Blog 코드 복사 버튼 추가 - Jekyll에서 Copy 버튼 구현" /><published>2025-04-21T00:00:00+09:00</published><updated>2025-04-21T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog10-code-block-copy-button</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog10-code-block-copy-button/"><![CDATA[<p>Jekyll 블로그에서 <strong>코드블럭에 복사 버튼을 추가</strong>하고 싶다면,<br />
-<code class="language-plaintext highlighter-rouge">clipboard.js</code>를 활용해 <code class="language-plaintext highlighter-rouge">div.highlighter-rouge</code> 안에 Copy 버튼을 삽입하면 됩니다.<br />
-이 글에서는 <strong>복사 기능 구현 → 복사 후 텍스트 변경 → 로컬 대체까지</strong><br />
-완벽하게 적용하는 법을 단계별로 설명합니다.</p>
-
-<h2 id="code-block-copy-button-추가">code block copy button 추가</h2>
-
-<h3 id="includecode-block_customhtml-추가">\include\code-block_custom.html 추가</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script&gt;</span>
-<span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">div.highlighter-rouge</span><span class="dl">'</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">block</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
-    <span class="nx">button</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">copy-button</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Copy</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">button</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">button</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0.25em</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">button</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0.25em</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">block</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">relative</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">block</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
-  <span class="p">});</span>
-
-  <span class="kd">var</span> <span class="nx">clipboard</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClipboardJS</span><span class="p">(</span><span class="dl">'</span><span class="s1">.copy-button</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">target</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">trigger</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">trigger</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">pre</span><span class="dl">'</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-
-  <span class="nx">clipboard</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">originalText</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">textContent</span><span class="p">;</span>
-    <span class="nx">e</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Copied!</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nf">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">e</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">originalText</span><span class="p">;</span>
-    <span class="p">},</span> <span class="mi">1500</span><span class="p">);</span>
-    <span class="nx">e</span><span class="p">.</span><span class="nf">clearSelection</span><span class="p">();</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</code></pre></div></div>
-
-<ul>
-  <li>복사 성공하면 버튼이 1.5초 동안 <code class="language-plaintext highlighter-rouge">"Copied!"</code>로 변하고</li>
-  <li>다시 <code class="language-plaintext highlighter-rouge">"Copy"</code>로 자동 복구됨.</li>
-  <li>오류나면 콘솔에 에러도 출력되게 함.</li>
-  <li>local로 하고 싶을 때, https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js 해당 파일을 Ctrl+S로 저장 후, /assets/js/vendor/ 해당 경로에 clipboard.min.js 옮긴 후, 맨 위 줄 아래처럼 변경하면 local로 진행 가능!</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;script src="/assets/js/vendor/clipboard.min.js"&gt;&lt;/script&gt;</code></li>
-</ul>
-
-<h3 id="_layoutsdefaulthtml-코드에-추가">_layouts\default.html 코드에 추가</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
----
-
-<span class="cp">&lt;!doctype html&gt;</span>
-
-{% include copyright.html %}
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"{{ site.locale | replace: "</span><span class="na">_</span><span class="err">",</span> <span class="err">"</span><span class="na">-</span><span class="err">"</span> <span class="err">|</span> <span class="na">default:</span> <span class="err">"</span><span class="na">en</span><span class="err">"</span> <span class="err">}}"</span> <span class="na">class=</span><span class="s">"no-js"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    {% include head.html %}
-    {% include head/custom.html %}
-  <span class="nt">&lt;/head&gt;</span>
-
-  <span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}"</span> <span class="na">dir=</span><span class="s">"{% if site.rtl %}rtl{% else %}ltr{% endif %}"</span><span class="nt">&gt;</span>
-    {% include_cached skip-links.html %}
-    {% include_cached masthead.html %}
-
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"initial-content"</span><span class="nt">&gt;</span>
-      {{ content }}
-      {% include after-content.html %}
-    <span class="nt">&lt;/div&gt;</span>
-
-    {% if site.search == true %}
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-content"</span><span class="nt">&gt;</span>
-        {% include_cached search/search_form.html %}
-      <span class="nt">&lt;/div&gt;</span>
-    {% endif %}
-
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span> <span class="na">class=</span><span class="s">"page__footer"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;footer&gt;</span>
-        {% include footer/custom.html %}
-        {% include_cached footer.html %}
-      <span class="nt">&lt;/footer&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-		<span class="c">&lt;!-- 여기 추가 --&gt;</span>
-    {% include code-block_custom.html %}
-    
-
-    {% include scripts.html %}
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-
-</code></pre></div></div>
-
-<h3 id="_sassminimal-mistakes_buttonsscss-코드에-추가">_sass\minimal-mistakes_buttons.scss 코드에 추가</h3>
-
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.copy-button</span> <span class="p">{</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="mh">#444</span><span class="p">;</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="mh">#fff</span><span class="p">;</span>
-  <span class="nl">border</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="mi">.3em</span> <span class="m">0</span><span class="mi">.7em</span><span class="p">;</span>
-  <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.7em</span><span class="p">;</span>
-  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
-  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
-  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="mi">.8</span><span class="p">;</span>
-  <span class="nl">transition</span><span class="p">:</span> <span class="n">all</span> <span class="m">0</span><span class="mi">.2s</span> <span class="n">ease</span><span class="p">;</span>
-  <span class="nl">z-index</span><span class="p">:</span> <span class="m">2</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nc">.copy-button</span><span class="nd">:hover</span> <span class="p">{</span>
-  <span class="nl">background</span><span class="p">:</span> <span class="mh">#666</span><span class="p">;</span>
-  <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-</code></pre></div></div>
-
-<p>버튼이 훨씬 부드럽고 모던하게 변함.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="코드 복사" /><category term="clipboard.js" /><category term="Jekyll Copy 버튼" /><category term="Code block" /><summary type="html"><![CDATA[Jekyll 블로그 코드블럭에 'Copy' 버튼을 추가하고 clipboard.js를 활용하여 복사 기능과 복사 후 메시지를 구현하는 방법을 정리합니다.]]></summary></entry></feed>
+<p>인증이 완료되었네요! 굿굿</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="SEO 설정" /><category term="Google Search Console" /><category term="sitemap.xml" /><category term="jekyll-seo-tag" /><summary type="html"><![CDATA[Jekyll 기반 GitHub 블로그에서 Google Search Console 등록부터 sitemap.xml, robots.txt, jekyll-seo-tag 플러그인까지 검색 노출을 위한 설정 방법을 정리합니다.]]></summary></entry></feed>

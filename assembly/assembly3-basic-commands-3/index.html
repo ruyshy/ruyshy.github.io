@@ -1,0 +1,1519 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습 - ruyshy blog</title>
+<meta name="description" content="Assembly NASM에서 함수 호출, 스택프레임 구성, RBP/RSP의 역할을 실습 코드와 함께 자세히 설명합니다.">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습">
+<meta property="og:url" content="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/">
+
+
+  <meta property="og:description" content="Assembly NASM에서 함수 호출, 스택프레임 구성, RBP/RSP의 역할을 실습 코드와 함께 자세히 설명합니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-04-24T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://ruyshy.github.io/">
+        <img src="/assets/images/profile/github_profile_image.jpg" alt="ruyshy" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+
+      <!-- HOME -->
+      <li>
+        <a href="/" class="nav__item">
+          Home
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <li><hr class="nav-divider"></li>
+
+      <!-- CATEGORY TITLE -->
+      <li class="nav__title">Category</li>
+
+      <!-- All -->
+      <li>
+        <a href="/categories/" class="nav__item">
+          - All <span class="count">(21)</span>
+        </a>
+      </li>
+
+      <!-- Dynamic categories -->
+      
+      
+        
+        
+        <li>
+          <a href="/categories/assembly/"
+             class="nav__item">
+            - Assembly <span class="count">(5)</span>
+          </a>
+        </li>
+      
+        
+        
+        <li>
+          <a href="/categories/blog/"
+             class="nav__item">
+            - Blog <span class="count">(16)</span>
+          </a>
+        </li>
+      
+
+    </ul>
+  </nav>
+
+</div>
+
+
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습">
+    <meta itemprop="description" content="Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.">
+    <meta itemprop="datePublished" content="2025-04-24T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" itemprop="url">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#목표-요약">목표 요약</a></li><li><a href="#함수-호출의-흐름-핵심">함수 호출의 흐름 핵심</a></li><li><a href="#스택프레임-기본">스택프레임 기본</a><ul><li><a href="#함수-진입-시-하는-일">함수 진입 시 하는 일</a></li><li><a href="#함수-종료-시-하는-일">함수 종료 시 하는 일</a></li><li><a href="#예제-함수-1개-호출하고-돌아오기">예제: 함수 1개 호출하고 돌아오기</a></li><li><a href="#해설-정리">해설 정리</a></li></ul></li><li><a href="#rax-vs-rax-값-vs-주소">rax vs [rax] (값 vs 주소)</a><ul><li><a href="#비유">비유</a></li><li><a href="#예제-1-rax는-값-그-자체">예제 1: rax는 “값 그 자체”</a></li><li><a href="#예제-2-rax는-rax가-가리키는-주소의-메모리-값">예제 2: [rax]는 “rax가 가리키는 주소의 메모리 값”</a></li><li><a href="#예제-시각화">예제 시각화</a></li><li><a href="#실수-포인트-정리">실수 포인트 정리</a></li><li><a href="#rax-vs-rax-비교-요약">rax vs [rax] 비교 요약</a></li><li><a href="#스택프레임과-연관-깊은-레지스터-설명">스택프레임과 연관 깊은 레지스터 설명</a></li><li><a href="#그림으로-보는-스택프레임-구조">그림으로 보는 스택프레임 구조</a></li><li><a href="#rsp-vs-rbp의-역할-차이">rsp vs rbp의 역할 차이</a></li><li><a href="#실제-예제-함수-호출-시-스택-상태-변화">실제 예제: 함수 호출 시 스택 상태 변화</a></li><li><a href="#이-코드의-스택-동작">이 코드의 스택 동작</a></li><li><a href="#중요한-포인트-요약">중요한 포인트 요약</a></li><li><a href="#예시-상황-정리-함수-하나-호출했을-때">예시 상황 정리: 함수 하나 호출했을 때</a></li><li><a href="#스택-시각화-예시-함수-실행-중일-때">스택 시각화 예시 (함수 실행 중일 때)</a></li><li><a href="#핵심">핵심</a></li></ul></li><li><a href="#함수-a-안에서-함수-b를-호출하면-스택이-어떻게-생기는가">함수 A 안에서 함수 B를 호출하면 스택이 어떻게 생기는가?</a><ul><li><a href="#호출-흐름-예시">호출 흐름 예시</a></li><li><a href="#호출-전-상태-main-진입-직후">호출 전 상태 (main 진입 직후)</a></li><li><a href="#funca-진입-직후-call-funca-직후">funcA 진입 직후 (call funcA 직후)</a></li><li><a href="#funcb-진입-후-call-funcb-직후">funcB 진입 후 (call funcB 직후)</a></li><li><a href="#각-함수의-스택프레임-구조-funcb-기준">각 함수의 스택프레임 구조 funcB() 기준</a></li><li><a href="#실행-순서-요약">실행 순서 요약</a></li><li><a href="#요약">요약</a></li><li><a href="#호출-트리-메모리-흐름">호출 트리 메모리 흐름</a></li></ul></li><li><a href="#지역-변수-알아보기">지역 변수 알아보기</a><ul><li><a href="#목표-요약-1">목표 요약</a></li><li><a href="#실습-흐름">실습 흐름</a></li><li><a href="#실습-코드-windows-x64-기준">실습 코드 (Windows x64 기준)</a></li><li><a href="#체크포인트">체크포인트</a></li><li><a href="#지역-변수끼리-연산-작업-해보기">지역 변수끼리 연산 작업 해보기</a><ul><li><a href="#실습-코드">실습 코드</a></li><li><a href="#설명">설명</a></li></ul></li><li><a href="#핵심-포인트">핵심 포인트</a></li><li><a href="#함수에-인자를-받아-연산-작업-해보기">함수에 인자를 받아 연산 작업 해보기</a><ul><li><a href="#실습-코드-1">실습 코드</a></li><li><a href="#포인트-복습">포인트 복습</a></li></ul></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.</p>
+
+<p>전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.</p>
+
+<p>이번 편에서는 함수/스택 호출 구조, 스택 프레임에 대해 학습을 진행할 것입니다.</p>
+
+<h2 id="목표-요약">목표 요약</h2>
+
+<blockquote>
+  <p>Assembly에서 함수 호출이란?
+우리가 C처럼 func(); 이라고 부르면,
+실제로는 스택에 복귀 주소를 저장한 뒤 함수로 점프하고,</p>
+
+  <p>끝나면 <strong>복귀 주소로 돌아오는 것(ret)</strong>.</p>
+
+</blockquote>
+
+<h2 id="함수-호출의-흐름-핵심">함수 호출의 흐름 핵심</h2>
+
+<p><strong>call = “복귀주소 push + jump”</strong></p>
+
+<p><strong>ret = “복귀주소 pop + jump”</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>명령어</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">call func</code></td>
+      <td>현재 명령 다음 주소를 스택에 push 후, <code class="language-plaintext highlighter-rouge">func:</code>로 jump</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ret</code></td>
+      <td>스택에서 복귀 주소를 꺼내 jump</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="스택프레임-기본">스택프레임 기본</h2>
+
+<p>함수를 호출하면, 그 함수만의 “작업 공간”이 필요, 그래서 <strong>스택을 이용해 아래와 같은 프레임을 구성함</strong>.</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span> <span class="err">높은</span> <span class="err">주소</span> <span class="p">]</span>
+<span class="o">|</span> <span class="err">인자들</span> <span class="p">(</span><span class="nf">rcx</span><span class="p">,</span> <span class="nb">rdx</span> <span class="nv">...</span> <span class="err">넘는</span> <span class="err">부분</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">|</span> <span class="err">복귀</span> <span class="err">주소</span> <span class="p">(</span><span class="nf">return</span> <span class="nv">address</span><span class="p">)</span>     <span class="o">|</span> <span class="err">←</span> <span class="nv">call</span><span class="err">이</span> <span class="err">자동으로</span> <span class="nv">push</span>
+<span class="o">|</span> <span class="err">이전</span> <span class="nf">RBP</span>                        <span class="o">|</span> <span class="err">←</span> <span class="nv">push</span> <span class="nb">rbp</span>
+<span class="o">|</span> <span class="err">지역</span> <span class="err">변수들</span>                    <span class="o">|</span> <span class="err">←</span> <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nv">xx</span>
+<span class="p">[</span> <span class="err">낮은</span> <span class="err">주소</span> <span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="함수-진입-시-하는-일">함수 진입 시 하는 일</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">push</span> <span class="nb">rbp</span>         <span class="c1">; 이전 스택프레임 저장</span>
+<span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>     <span class="c1">; 현재 rsp를 기준점으로 저장</span>
+<span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">16</span>      <span class="c1">; 지역 변수 공간 확보</span>
+</code></pre></div></div>
+
+<h3 id="함수-종료-시-하는-일">함수 종료 시 하는 일</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>     <span class="c1">; 스택 원복</span>
+<span class="nf">pop</span> <span class="nb">rbp</span>          <span class="c1">; 이전 프레임 복구</span>
+<span class="nf">ret</span>              <span class="c1">; 복귀 주소로 jump</span>
+</code></pre></div></div>
+
+<h3 id="예제-함수-1개-호출하고-돌아오기">예제: 함수 1개 호출하고 돌아오기</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">global</span> <span class="nv">main</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nl">main:</span>
+    <span class="nf">call</span> <span class="nv">my_func</span>        <span class="c1">; 함수 호출</span>
+    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
+    <span class="nf">ret</span>                 <span class="c1">; 종료</span>
+<span class="nl">my_func:</span>
+    <span class="c1">; [1] 스택프레임 구성</span>
+    <span class="nf">push</span> <span class="nb">rbp</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">16</span>         <span class="c1">; 지역 변수 공간 확보</span>
+
+    <span class="c1">; [2] 함수 본문</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">1234</span>       <span class="c1">; rax에 값 저장</span>
+
+    <span class="c1">; [3] 스택프레임 해제 후 복귀</span>
+    <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>
+    <span class="nf">pop</span> <span class="nb">rbp</span>
+    <span class="nf">ret</span>
+</code></pre></div></div>
+
+<h3 id="해설-정리">해설 정리</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>코드</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">call my_func</code></td>
+      <td>복귀주소 push + 함수로 jump</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">push rbp / mov rbp, rsp</code></td>
+      <td>이전 스택프레임 저장 + 현재 시작점 설정</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sub rsp, 16</code></td>
+      <td>지역 변수 공간 16바이트 확보</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mov rax, 1234</code></td>
+      <td>함수 내용 수행</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mov rsp, rbp / pop rbp / ret</code></td>
+      <td>복귀</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이 구조가 <strong>모든 C 함수의 Assembly 번역 형태의 뼈대.</strong></p>
+
+<h2 id="rax-vs-rax-값-vs-주소">rax vs [rax] (값 vs 주소)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>표현</th>
+      <th>의미</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rax</code></td>
+      <td>rax라는 <strong>레지스터에 들어있는 값</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">mov rbx, rax</code> → rbx에 rax 값 복사</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[rax]</code></td>
+      <td>rax에 들어있는 <strong>주소의 메모리에서 값을 읽는다</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">mov rbx, [rax]</code> → rax가 가리키는 주소에 있는 값을 읽어서 rbx에 저장</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="비유">비유</h3>
+
+<p>c언어:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">;</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>C 표현</th>
+      <th>Assembly 대응 개념</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ptr</code></td>
+      <td><code class="language-plaintext highlighter-rouge">rax</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">*ptr</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[rax]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">val</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[주소]</code> (상수 주소 직접 접근)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="예제-1-rax는-값-그-자체">예제 1: rax는 “값 그 자체”</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">1234</span>
+<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="nb">rax</span>      <span class="c1">; rbx = 1234</span>
+</code></pre></div></div>
+
+<ul>
+  <li>여기서 <code class="language-plaintext highlighter-rouge">rax</code>는 그냥 정수 <code class="language-plaintext highlighter-rouge">1234</code> 그 자체</li>
+  <li>rbx는 이제 1234가 들어간다</li>
+</ul>
+
+<h3 id="예제-2-rax는-rax가-가리키는-주소의-메모리-값">예제 2: <code class="language-plaintext highlighter-rouge">[rax]</code>는 “rax가 가리키는 주소의 메모리 값”</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="nv">some_data</span>  <span class="c1">; rax = 주소값</span>
+<span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="p">[</span><span class="nb">rax</span><span class="p">]</span>      <span class="c1">; rbx = [주소] → 메모리에서 읽은 값</span>
+</code></pre></div></div>
+
+<h3 id="예제-시각화">예제 시각화</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">section</span> <span class="nv">.data</span>
+<span class="nf">my_value</span> <span class="nv">dq</span> <span class="mh">0xDEADBEEFCAFEBABE</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="nv">my_value</span>   <span class="c1">; rax = 주소</span>
+    <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="p">[</span><span class="nb">rax</span><span class="p">]</span>      <span class="c1">; rbx = 메모리[주소]에 있는 실제 값</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>이름</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rax</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0x601020</code> (주소값)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[rax]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0xDEADBEEFCAFEBABE</code> (그 주소에 있는 진짜 데이터)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="실수-포인트-정리">실수 포인트 정리</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>상황</th>
+      <th>실수</th>
+      <th>올바른 사용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>값을 저장할 때</td>
+      <td><code class="language-plaintext highlighter-rouge">mov rbx, rax</code> → OK</td>
+      <td>복사</td>
+    </tr>
+    <tr>
+      <td>주소를 참조할 때</td>
+      <td><code class="language-plaintext highlighter-rouge">mov rbx, [rax]</code></td>
+      <td><strong>rax가 주소여야 함!</strong></td>
+    </tr>
+    <tr>
+      <td>값을 저장할 주소 지정할 때</td>
+      <td><code class="language-plaintext highlighter-rouge">mov [rax], rbx</code></td>
+      <td>rbx의 값을 메모리에 저장</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">[]</code> 안에 있으면 “주소를 참조해서 메모리에 접근한다”는 뜻</p>
+
+<h3 id="rax-vs-rax-비교-요약">rax vs [rax] 비교 요약</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>표현</th>
+      <th>의미</th>
+      <th>유형</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rax</code></td>
+      <td>레지스터에 저장된 값 (정수 등)</td>
+      <td>직접값</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[rax]</code></td>
+      <td>rax가 가리키는 메모리 주소에서 읽은 값</td>
+      <td>간접 참조 (pointer dereference)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="스택프레임과-연관-깊은-레지스터-설명">스택프레임과 연관 깊은 레지스터 설명</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>레지스터</th>
+      <th>이름</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rsp</code></td>
+      <td>Stack Pointer</td>
+      <td><strong>현재 스택의 꼭대기 주소</strong>를 가리킴</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rbp</code></td>
+      <td>Base Pointer</td>
+      <td><strong>현재 함수의 스택 기준점</strong> (스택프레임 기준선)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>스택은 “아래로 자람” (즉, 주소가 <strong>감소</strong> 함)</p>
+
+<p>→ 데이터를 push하면</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">rsp</code>가 작아지고</strong>,</p>
+
+<p>→ pop하면</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">rsp</code>가 커짐</strong></p>
+
+<h3 id="그림으로-보는-스택프레임-구조">그림으로 보는 스택프레임 구조</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">←</span> <span class="nf">stack</span> <span class="nv">grows</span> <span class="nv">downward</span> <span class="p">(</span><span class="err">주소</span> <span class="err">감소</span><span class="p">)</span>
+<span class="p">[</span><span class="nf">rbp</span> <span class="o">+</span> <span class="mi">16</span><span class="p">]</span> <span class="err">←</span> <span class="mi">2</span><span class="err">번째</span> <span class="err">인자</span> <span class="p">(</span><span class="nv">Windows</span> <span class="nv">x64</span> <span class="err">기준</span><span class="p">)</span>
+<span class="p">[</span><span class="nf">rbp</span> <span class="o">+</span> <span class="mi">8</span><span class="p">]</span>  <span class="err">←</span> <span class="mi">1</span><span class="err">번째</span> <span class="err">인자</span> <span class="p">(</span><span class="err">또는</span> <span class="nv">return</span> <span class="nv">address</span><span class="p">)</span>
+<span class="p">[</span><span class="nf">rbp</span><span class="p">]</span>      <span class="err">←</span> <span class="err">이전</span> <span class="err">함수의</span> <span class="nb">RBP</span> <span class="p">(</span><span class="nv">push</span> <span class="nb">rbp</span><span class="p">)</span>
+<span class="p">[</span><span class="nf">rbp</span> <span class="o">-</span> <span class="mi">8</span><span class="p">]</span>  <span class="err">←</span> <span class="err">지역</span> <span class="err">변수</span> <span class="mi">1</span>
+<span class="p">[</span><span class="nf">rbp</span> <span class="o">-</span> <span class="mi">16</span><span class="p">]</span> <span class="err">←</span> <span class="err">지역</span> <span class="err">변수</span> <span class="mi">2</span>
+<span class="nf">...</span>
+</code></pre></div></div>
+
+<p>이렇게 <code class="language-plaintext highlighter-rouge">rbp</code> 기준으로 <strong>양수는 인자 / 음수는 지역 변수</strong>로 접근한다.</p>
+
+<h3 id="rsp-vs-rbp의-역할-차이"><code class="language-plaintext highlighter-rouge">rsp</code> vs <code class="language-plaintext highlighter-rouge">rbp</code>의 역할 차이</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th><code class="language-plaintext highlighter-rouge">rsp</code></th>
+      <th><code class="language-plaintext highlighter-rouge">rbp</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>용도</td>
+      <td>실제 스택 포인터 (push/pop용)</td>
+      <td>고정된 기준점</td>
+    </tr>
+    <tr>
+      <td>변함 여부</td>
+      <td>자주 바뀜</td>
+      <td>함수 내내 고정됨</td>
+    </tr>
+    <tr>
+      <td>용도</td>
+      <td>연산, push/pop 직접 사용</td>
+      <td>지역 변수 / 인자 접근용</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="실제-예제-함수-호출-시-스택-상태-변화">실제 예제: 함수 호출 시 스택 상태 변화</h3>
+
+<p>C언어:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">my_func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>컴파일된 Assembly (간소화):</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">my_func:</span>
+    <span class="nf">push</span> <span class="nb">rbp</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">8</span>       <span class="c1">; int a 공간 확보</span>
+
+    <span class="nf">mov</span> <span class="kt">dword</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">123</span>
+
+    <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>
+    <span class="nf">pop</span> <span class="nb">rbp</span>
+    <span class="nf">ret</span>
+</code></pre></div></div>
+
+<h3 id="이-코드의-스택-동작">이 코드의 스택 동작</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">push rbp</code> → 이전 프레임 기준 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">mov rbp, rsp</code> → 현재 기준점으로 세팅</li>
+  <li><code class="language-plaintext highlighter-rouge">sub rsp, 8</code> → 스택 공간 8바이트 확보 → <code class="language-plaintext highlighter-rouge">rsp</code> 내려감</li>
+  <li><code class="language-plaintext highlighter-rouge">rbp - 4</code> 위치에 값 저장 (지역 변수)</li>
+  <li>함수 끝 → <code class="language-plaintext highlighter-rouge">mov rsp, rbp</code>로 스택 정리 → <code class="language-plaintext highlighter-rouge">rsp</code> 되돌림</li>
+  <li><code class="language-plaintext highlighter-rouge">pop rbp</code>로 이전 프레임 복원</li>
+  <li><code class="language-plaintext highlighter-rouge">ret</code>으로 복귀</li>
+</ul>
+
+<p>이 구조를 통해 함수 안에서 <strong>지역변수/인자 접근, 복귀</strong> 모두 깔끔하게 처리된다.</p>
+
+<h3 id="중요한-포인트-요약">중요한 포인트 요약</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rsp</code>는 push/pop 할 때 계속 움직인다.</li>
+  <li><code class="language-plaintext highlighter-rouge">rbp</code>는 함수 안에서 고정된 기준점 역할을 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">rbp - x</code>는 지역 변수, <code class="language-plaintext highlighter-rouge">rbp + x</code>는 인자 접근</li>
+  <li>함수 끝날 땐 <code class="language-plaintext highlighter-rouge">mov rsp, rbp</code>로 스택 초기화 후 <code class="language-plaintext highlighter-rouge">pop rbp</code>, <code class="language-plaintext highlighter-rouge">ret</code></li>
+</ul>
+
+<h3 id="예시-상황-정리-함수-하나-호출했을-때">예시 상황 정리: 함수 하나 호출했을 때</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">main:</span>
+    <span class="nf">call</span> <span class="nv">my_func</span>     <span class="c1">; call → [return address] push</span>
+
+<span class="nl">my_func:</span>
+    <span class="nf">push</span> <span class="nb">rbp</span>         <span class="c1">; 이전 rbp push</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>     <span class="c1">; 현재 rsp 기준 잡기</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">8</span>       <span class="c1">; 지역 변수 공간 확보</span>
+
+    <span class="c1">; 실행 중...</span>
+    
+    <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>     <span class="c1">; 스택 복구</span>
+    <span class="nf">pop</span> <span class="nb">rbp</span>          <span class="c1">; 이전 프레임 복구</span>
+    <span class="nf">ret</span>              <span class="c1">; return address로 복귀</span>
+</code></pre></div></div>
+
+<h3 id="스택-시각화-예시-함수-실행-중일-때">스택 시각화 예시 (함수 실행 중일 때)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>주소</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rsp →</td>
+      <td>지역 변수 (rbp - 8)</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td>rbp →</td>
+      <td>이전 함수의 rbp</td>
+    </tr>
+    <tr>
+      <td>rbp + 8</td>
+      <td>return address</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="핵심">핵심</h3>
+
+<blockquote>
+  <p>rsp는 실제 스택의 top이고,</p>
+
+  <p><code class="language-plaintext highlighter-rouge">rbp</code>는 <strong>기준점을 잡기 위한 고정된 위치</strong>다.</p>
+
+</blockquote>
+
+<p>함수를 호출할 때마다 이 기준을 만들고,</p>
+
+<p>함수 끝날 때마다 그 기준을 제거한다.</p>
+
+<h2 id="함수-a-안에서-함수-b를-호출하면-스택이-어떻게-생기는가">함수 A 안에서 함수 B를 호출하면 스택이 어떻게 생기는가?</h2>
+
+<p>상황: main() → funcA() → funcB() 를 순차적으로 호출할 때</p>
+
+<p>→ 각 함수의 <strong>스택프레임</strong>, <strong>복귀주소</strong>, <strong>rbp/rsp 변화</strong> 까지 전체 흐름을 살펴보자.</p>
+
+<h3 id="호출-흐름-예시">호출 흐름 예시</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">main:</span>
+    <span class="nf">call</span> <span class="nv">funcA</span>
+
+<span class="nl">funcA:</span>
+    <span class="nf">push</span> <span class="nb">rbp</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">16</span>
+    <span class="nf">call</span> <span class="nv">funcB</span>
+    <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>
+    <span class="nf">pop</span> <span class="nb">rbp</span>
+    <span class="nf">ret</span>
+
+<span class="nl">funcB:</span>
+    <span class="nf">push</span> <span class="nb">rbp</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">16</span>
+    <span class="c1">; do stuff...</span>
+    <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>
+    <span class="nf">pop</span> <span class="nb">rbp</span>
+    <span class="nf">ret</span>
+</code></pre></div></div>
+
+<h3 id="호출-전-상태-main-진입-직후">호출 전 상태 (main 진입 직후)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">메모리</span>
+<span class="err">↓</span>
+
+<span class="p">[</span> <span class="nf">return</span> <span class="nv">addr</span> <span class="nv">for</span> <span class="nv">OS</span> <span class="p">]</span>  <span class="c1">; ← main 복귀 주소</span>
+<span class="p">[</span> <span class="nf">...</span> <span class="nv">main</span> <span class="err">지역</span> <span class="err">변수</span> <span class="nv">...</span> <span class="p">]</span>
+<span class="err">↑</span>
+<span class="nf">rsp</span><span class="p">,</span> <span class="nb">rbp</span> <span class="p">(</span><span class="nv">main</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="funca-진입-직후-call-funca-직후">funcA 진입 직후 (call funcA 직후)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">메모리</span>
+<span class="err">↓</span>
+
+<span class="p">[</span> <span class="nf">return</span> <span class="nv">addr</span> <span class="nv">for</span> <span class="nv">OS</span> <span class="p">]</span>      <span class="c1">; main 복귀 주소</span>
+<span class="p">[</span> <span class="nf">return</span> <span class="nv">addr</span> <span class="nv">to</span> <span class="nv">main</span> <span class="p">]</span>     <span class="c1">; call funcA가 push한 주소</span>
+<span class="p">[</span> <span class="nf">old</span> <span class="nb">rbp</span> <span class="nv">of</span> <span class="nv">main</span> <span class="p">]</span>         <span class="c1">; push rbp</span>
+<span class="p">[</span> <span class="nf">funcA</span> <span class="err">지역</span> <span class="err">변수</span> <span class="p">(</span><span class="mi">16</span><span class="nv">B</span><span class="p">)</span> <span class="p">]</span>   <span class="c1">; sub rsp, 16</span>
+<span class="err">↑</span>
+<span class="nf">rsp</span>
+<span class="err">↑</span>
+<span class="nf">rbp</span> <span class="p">(</span><span class="nv">funcA</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="funcb-진입-후-call-funcb-직후">funcB 진입 후 (call funcB 직후)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">메모리</span>
+<span class="err">↓</span>
+
+<span class="p">[</span> <span class="nf">return</span> <span class="nv">addr</span> <span class="nv">for</span> <span class="nv">OS</span> <span class="p">]</span>      <span class="c1">; main 복귀 주소</span>
+<span class="p">[</span> <span class="nf">return</span> <span class="nv">addr</span> <span class="nv">to</span> <span class="nv">main</span> <span class="p">]</span>     <span class="c1">; call funcA</span>
+<span class="p">[</span> <span class="nf">old</span> <span class="nb">rbp</span> <span class="nv">of</span> <span class="nv">main</span> <span class="p">]</span>         <span class="c1">; main의 기준점</span>
+<span class="p">[</span> <span class="nf">funcA</span> <span class="err">지역</span> <span class="err">변수</span> <span class="p">]</span>         <span class="c1">; 16바이트</span>
+<span class="p">[</span> <span class="nf">return</span> <span class="nv">addr</span> <span class="nv">to</span> <span class="nv">funcA</span> <span class="p">]</span>    <span class="c1">; call funcB</span>
+<span class="p">[</span> <span class="nf">old</span> <span class="nb">rbp</span> <span class="nv">of</span> <span class="nv">funcA</span> <span class="p">]</span>        <span class="c1">; funcA의 기준점</span>
+<span class="p">[</span> <span class="nf">funcB</span> <span class="err">지역</span> <span class="err">변수</span> <span class="p">(</span><span class="mi">16</span><span class="nv">B</span><span class="p">)</span> <span class="p">]</span>   <span class="c1">; sub rsp, 16</span>
+<span class="err">↑</span>
+<span class="nf">rsp</span>
+<span class="err">↑</span>
+<span class="nf">rbp</span> <span class="p">(</span><span class="nv">funcB</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이걸 보면 <strong>스택이 함수가 호출될 때마다 아래로 “겹겹이 쌓이고”</strong>, <strong>함수가 끝날 때마다 거꾸로 벗겨지며(pop) <code class="language-plaintext highlighter-rouge">ret</code>을 통해 위의 복귀 주소로 이동.</strong></p>
+
+<h3 id="각-함수의-스택프레임-구조-funcb-기준">각 함수의 스택프레임 구조 funcB() 기준</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nf">rbp</span> <span class="o">+</span> <span class="mi">16</span><span class="p">]</span> <span class="p">:</span> <span class="mi">2</span><span class="err">번째</span> <span class="err">인자</span> <span class="p">(</span><span class="err">있다면</span><span class="p">)</span>
+<span class="p">[</span><span class="nf">rbp</span> <span class="o">+</span> <span class="mi">8</span><span class="p">]</span>  <span class="p">:</span> <span class="mi">1</span><span class="err">번째</span> <span class="err">인자</span> <span class="o">/</span> <span class="nv">return</span> <span class="nv">address</span>
+<span class="p">[</span><span class="nf">rbp</span><span class="p">]</span>      <span class="p">:</span> <span class="err">이전</span> <span class="nb">rbp</span>
+<span class="p">[</span><span class="nf">rbp</span> <span class="o">-</span> <span class="mi">8</span><span class="p">]</span>  <span class="p">:</span> <span class="err">지역</span> <span class="err">변수</span>
+<span class="p">[</span><span class="nf">rbp</span> <span class="o">-</span> <span class="mi">16</span><span class="p">]</span> <span class="p">:</span> <span class="nv">...</span>
+</code></pre></div></div>
+
+<h3 id="실행-순서-요약">실행 순서 요약</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>스택에 push되는 순서</th>
+      <th>왜 push됨?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">main</code> → <code class="language-plaintext highlighter-rouge">funcA</code></td>
+      <td><code class="language-plaintext highlighter-rouge">call funcA</code> → 복귀주소 push</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">funcA</code> → <code class="language-plaintext highlighter-rouge">funcB</code></td>
+      <td><code class="language-plaintext highlighter-rouge">call funcB</code> → 복귀주소 push</td>
+    </tr>
+    <tr>
+      <td>각 함수 진입 시 <code class="language-plaintext highlighter-rouge">rbp</code></td>
+      <td><code class="language-plaintext highlighter-rouge">push rbp</code></td>
+    </tr>
+    <tr>
+      <td>지역 변수 공간 확보</td>
+      <td><code class="language-plaintext highlighter-rouge">sub rsp, N</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>각 함수가 끝나면:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">mov rsp, rbp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">pop rbp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ret</code> → 스택에 있는 복귀주소로 점프</li>
+</ol>
+
+<h3 id="요약">요약</h3>
+
+<ul>
+  <li>호출할 때마다 <strong>스택에 복귀주소가 쌓인다</strong></li>
+  <li>함수마다 <strong>독립된 스택프레임</strong>이 생긴다</li>
+  <li><code class="language-plaintext highlighter-rouge">rbp</code>는 <strong>기준선</strong>, <code class="language-plaintext highlighter-rouge">rsp</code>는 <strong>현재 스택 위치</strong></li>
+  <li>함수가 끝나면, 스택이 <strong>이전 상태로 복구되고</strong>, 복귀주소로 <strong>jump(ret)</strong> 한다</li>
+</ul>
+
+<h3 id="호출-트리-메모리-흐름">호출 트리 메모리 흐름</h3>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">main</span><span class="w">
+  </span><span class="err">└──</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">funcA</span><span class="w">
+          </span><span class="err">└──</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">funcB</span><span class="w">
+</span></code></pre></div></div>
+
+<p>스택 구조:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ return to OS     ] ← main 복귀주소
+[ return to main   ] ← call funcA
+[ rbp (main)       ] ← 돌아갈 main 주소
+[ funcA locals     ] ← funcA 주소
+[ return to funcA  ] ← call funcB
+[ rbp (funcA)      ] ← 돌아갈 funcA 주소
+[ funcB locals     ] ← funcB 주소
+</code></pre></div></div>
+
+<h2 id="지역-변수-알아보기">지역 변수 알아보기</h2>
+
+<h3 id="목표-요약-1">목표 요약</h3>
+
+<ul>
+  <li>함수 내부에서 스택 공간 확보</li>
+  <li><code class="language-plaintext highlighter-rouge">mov [rbp - 8], 1234</code> 로 지역 변수 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">mov rax, [rbp - 8]</code> 으로 값 읽어서 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">main</code>에서 rax를 보고 확인</li>
+</ul>
+
+<h3 id="실습-흐름">실습 흐름</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main
+ └── call my_func
+      └── [rbp - 8]에 1234 저장
+      └── rax에 불러와서 리턴
+main으로 복귀 → rax = 1234
+</code></pre></div></div>
+
+<h3 id="실습-코드-windows-x64-기준">실습 코드 (Windows x64 기준)</h3>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">section</span> <span class="nv">.text</span>
+<span class="nf">global</span> <span class="nv">main</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span><span class="c1">; for correct debugging</span>
+    <span class="nf">call</span> <span class="nv">my_func</span>        <span class="c1">; my_func 실행</span>
+    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
+    <span class="nf">ret</span>                 <span class="c1">; 종료      </span>
+		
+<span class="nl">my_func:</span>
+    <span class="nf">push</span> <span class="nb">rbp</span>            <span class="c1">; 이전 프레임 저장</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>        <span class="c1">; 현재 프레임 기준 설정</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">16</span>         <span class="c1">; 지역 변수 공간 확보 (16B)</span>
+
+    <span class="nf">mov</span> <span class="kt">qword</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">1234</span>  <span class="c1">; 지역 변수에 값 저장</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">8</span><span class="p">]</span>         <span class="c1">; 지역 변수에서 값 읽기</span>
+
+    <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>        <span class="c1">; 스택 복구</span>
+    <span class="nf">pop</span> <span class="nb">rbp</span>             <span class="c1">; 이전 프레임 복구</span>
+    <span class="nf">ret</span>                 <span class="c1">; 복귀</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>코드</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sub rsp, 16</code></td>
+      <td>지역 변수 2개 분량 확보 (정렬 맞춤용으로 넉넉히 잡음)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mov [rbp - 8], 1234</code></td>
+      <td>지역 변수 1에 1234 저장</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mov rax, [rbp - 8]</code></td>
+      <td>지역 변수에서 값을 읽어서 rax에 저장</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ret</code></td>
+      <td>main으로 복귀 시 rax에 1234가 들어있음</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="체크포인트">체크포인트</h3>
+
+<ul>
+  <li>지역 변수는 항상 <code class="language-plaintext highlighter-rouge">[rbp - N]</code></li>
+  <li>함수 종료 전에 <strong>반드시 <code class="language-plaintext highlighter-rouge">rsp</code>, <code class="language-plaintext highlighter-rouge">rbp</code> 복구</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">rax</code>는 리턴값으로 쓰일 수 있다</li>
+</ul>
+
+<h3 id="지역-변수끼리-연산-작업-해보기">지역 변수끼리 연산 작업 해보기</h3>
+
+<h4 id="실습-코드">실습 코드</h4>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">section</span> <span class="nv">.text</span>
+<span class="nf">global</span> <span class="nv">main</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span><span class="c1">; for correct debugging</span>
+    <span class="nf">call</span> <span class="nv">my_func</span>        <span class="c1">; my_func 실행</span>
+    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
+    <span class="nf">ret</span>                 <span class="c1">; 종료</span>
+
+<span class="nl">my_func:</span>
+    <span class="nf">push</span> <span class="nb">rbp</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">32</span>         <span class="c1">; 지역변수 3개 = 24B + 정렬 여유분</span>
+
+    <span class="c1">; a = 123</span>
+    <span class="nf">mov</span> <span class="kt">qword</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">123</span>
+
+    <span class="c1">; b = 456</span>
+    <span class="nf">mov</span> <span class="kt">qword</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">16</span><span class="p">],</span> <span class="mi">456</span>
+
+    <span class="c1">; c = a + b</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">8</span><span class="p">]</span>      <span class="c1">; rax = a</span>
+    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">16</span><span class="p">]</span>     <span class="c1">; rax = a + b</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">24</span><span class="p">],</span> <span class="nb">rax</span>     <span class="c1">; c = rax</span>
+
+    <span class="c1">; 리턴값 = c</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">24</span><span class="p">]</span>
+
+    <span class="c1">; 스택 원복</span>
+    <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>
+    <span class="nf">pop</span> <span class="nb">rbp</span>
+    <span class="nf">ret</span>
+</code></pre></div></div>
+
+<h4 id="설명">설명</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>주소</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[rbp - 8]</code></td>
+      <td>지역 변수 a = 123</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[rbp - 16]</code></td>
+      <td>지역 변수 b = 456</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[rbp - 24]</code></td>
+      <td>지역 변수 c = a + b</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="핵심-포인트">핵심 포인트</h3>
+
+<ul>
+  <li><strong>스택은 아래로 증가</strong>하니까, 다음 변수는 -8, -16, -24 순</li>
+  <li><strong>mov [rbp - x], 값</strong> → 지역 변수 저장</li>
+  <li><strong>mov rax, [rbp - x]</strong> → 지역 변수 불러오기</li>
+  <li><strong>add rax, [rbp - y]</strong> → 지역 변수끼리 연산 가능</li>
+  <li><strong>rax는 리턴용으로 자주 사용됨</strong></li>
+</ul>
+
+<h3 id="함수에-인자를-받아-연산-작업-해보기">함수에 인자를 받아 연산 작업 해보기</h3>
+
+<h4 id="실습-코드-1">실습 코드</h4>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">section</span> <span class="nv">.text</span>
+<span class="nf">global</span> <span class="nv">main</span>
+<span class="nl">main:</span>
+    <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">123</span>         <span class="c1">; 첫 번째 인자 a</span>
+    <span class="nf">mov</span> <span class="nb">rdx</span><span class="p">,</span> <span class="mi">456</span>         <span class="c1">; 두 번째 인자 b</span>
+    <span class="nf">call</span> <span class="nv">add_func</span>        <span class="c1">; rax ← a + b</span>
+    <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
+    <span class="nf">ret</span>
+    
+<span class="nl">add_func:</span>
+    <span class="nf">push</span> <span class="nb">rbp</span>
+    <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
+    <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">32</span>          <span class="c1">; 지역변수 3개: a, b, result</span>
+
+    <span class="c1">; rcx → [rbp - 8] (a 저장)</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">8</span><span class="p">],</span> <span class="nb">rcx</span>
+
+    <span class="c1">; rdx → [rbp - 16] (b 저장)</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">16</span><span class="p">],</span> <span class="nb">rdx</span>
+
+    <span class="c1">; 계산: result = a + b</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">8</span><span class="p">]</span>    <span class="c1">; rax = a</span>
+    <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">16</span><span class="p">]</span>   <span class="c1">; rax += b</span>
+    <span class="nf">mov</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">24</span><span class="p">],</span> <span class="nb">rax</span>   <span class="c1">; result = rax</span>
+
+    <span class="c1">; 리턴값</span>
+    <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="p">[</span><span class="nb">rbp</span> <span class="o">-</span> <span class="mi">24</span><span class="p">]</span>
+
+    <span class="c1">; 정리 후 복귀</span>
+    <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>
+    <span class="nf">pop</span> <span class="nb">rbp</span>
+    <span class="nf">ret</span>
+</code></pre></div></div>
+
+<h4 id="포인트-복습">포인트 복습</h4>
+
+<ul>
+  <li>인자 전달: Windows 64bit → <code class="language-plaintext highlighter-rouge">rcx</code>, <code class="language-plaintext highlighter-rouge">rdx</code>, …</li>
+  <li>지역 변수 저장: <code class="language-plaintext highlighter-rouge">[rbp - x]</code></li>
+  <li>계산: <code class="language-plaintext highlighter-rouge">mov + add</code></li>
+  <li>결과 리턴: <code class="language-plaintext highlighter-rouge">rax</code></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#assembly" class="page__taxonomy-item p-category" rel="tag">assembly</a><span class="sep">, </span>
+    
+      <a href="/tags/#nasm" class="page__taxonomy-item p-category" rel="tag">nasm</a><span class="sep">, </span>
+    
+      <a href="/tags/#x64dbg" class="page__taxonomy-item p-category" rel="tag">x64dbg</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EB%A6%AC%EB%B2%84%EC%8A%A4%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81" class="page__taxonomy-item p-category" rel="tag">리버스엔지니어링</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%8A%A4%ED%83%9D-%EA%B5%AC%EC%A1%B0" class="page__taxonomy-item p-category" rel="tag">스택 구조</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%8A%A4%ED%83%9D%ED%94%84%EB%A0%88%EC%9E%84" class="page__taxonomy-item p-category" rel="tag">스택프레임</a><span class="sep">, </span>
+    
+      <a href="/tags/#%ED%95%A8%EC%88%98-%ED%98%B8%EC%B6%9C" class="page__taxonomy-item p-category" rel="tag">함수 호출</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Category: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#assembly" class="page__taxonomy-item p-category" rel="tag">assembly</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-24T00:00:00+09:00">April 24, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">공유하기</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=Assembly+%ED%95%A8%EC%88%98+%ED%98%B8%EC%B6%9C+%EA%B5%AC%EC%A1%B0%EC%99%80+%EC%8A%A4%ED%83%9D%ED%94%84%EB%A0%88%EC%9E%84+%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0+-+Windows+NASM+%EC%8B%A4%EC%8A%B5%20https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly3-basic-commands-3%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fassembly%2Fassembly3-basic-commands-3%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/blog12-toggle-plugin/" class="pagination--pager" title="GitHub Blog Toggle 플러그인 설정 - Jekyll에서 접기 UI 구현하기">Prev</a>
+    
+    
+      <a href="/blog/blog13-quiz-form/" class="pagination--pager" title="GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
+      
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">참고</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog16-google-analytics/" rel="permalink">GitHub Blog Google Analytics GA4 연동 가이드
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 GA4 측정 ID 삽입, minimal-mistakes 테마 설정, 실시간 유입 확인, 그리고 Google Search C...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/assembly/assembly3-basic-commands-2/" rel="permalink">Assembly 기본 명령어부터 익히기 : cdecl, stdcall 호출 규약 비교
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog15-slide/" rel="permalink">GitHub Blog Reveal.js 슬라이드 만들기
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Reveal.js를 사용하면 GitHub 블로그에서도 마치 PowerPoint처럼 HTML 슬라이드를 만들 수 있습니다. 이 글에서는 Jekyll 환경에서 reveal.js를 이용해 슬라이드 프레젠테이션, 인터랙티브 발표용 페이지, Jekyll 커스텀 플러그인 구현 방법까지 단계별...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog14-card-link-pulgin/" rel="permalink">GitHub Blog 카드 링크 플러그인 만들기
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Pages 기반 Jekyll 블로그에서 외부 링크를 자동으로 카드 형식으로 만들어주는 링크 카드 플러그인, OG 태그 기반 미리보기 카드, Liquid 태그 확장을 구현하고 싶다면 이 글을 참고하세요.
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <!-- JEKYLL LIQUID TAG -->>
+    <script src="/assets/js/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
+    
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script>
+    <!-- 
+
+-->>
+
+<script src="/assets/js/quiz-handler.js"></script>
+
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VGYDK4XE75'
+  
+  );
+</script>
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'ruyshy/ruyshy.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+  </body>
+</html>
