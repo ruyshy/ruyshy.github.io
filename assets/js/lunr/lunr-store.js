@@ -113,10 +113,10 @@ var store = [{
         "url": "/blog/blog12-toggle-plugin/",
         "teaser": null
       },{
-        "title": "Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습",
-        "excerpt":"Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다. 전 편에서 Assembly 기본 명령어 - Windows NASM 실습 가이드 에서 조건 분기문과 loop 에 대해 학습을 진행했습니다. 이번 편에서는 함수/스택 호출 구조, 스택 프레임에...","categories": ["assembly"],
-        "tags": ["assembly","nasm","x64dbg","함수 호출","스택프레임","스택 구조","리버스엔지니어링"],
-        "url": "/assembly/assembly3-basic-commands-3/",
+        "title": "Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해",
+        "excerpt":"NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다. Call Convention이란? 함수를 어떻게 호출하고 인자를 어떻게 전달하고, 누가 스택을 정리하는지를 정한 약속. C/C++ 컴파일러가 어셈블리로 함수 호출을 만들 때 이 규칙을...","categories": ["assembly"],
+        "tags": ["assembly","call convention","cdecl","stdcall","fastcall","nasm","stack frame"],
+        "url": "/assembly/assembly3-basic-commands-2/",
         "teaser": null
       },{
         "title": "GitHub Blog Quiz Form - Liquid 플러그인으로 퀴즈 기능 구현하기",
@@ -137,10 +137,10 @@ var store = [{
         "url": "/blog/blog15-slide/",
         "teaser": null
       },{
-        "title": "Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해",
-        "excerpt":"NASM 기반 Windows 어셈블리 실습에서 흔히 등장하는 cdecl, stdcall 호출 규약(Call Convention)에 대해 다룹니다. 함수 호출 시 스택 구조, 인자 전달 방식, 복귀 흐름 분석은 리버싱과 디버깅에 핵심입니다. Call Convention이란? 함수를 어떻게 호출하고 인자를 어떻게 전달하고, 누가 스택을 정리하는지를 정한 약속. C/C++ 컴파일러가 어셈블리로 함수 호출을 만들 때 이 규칙을...","categories": ["assembly"],
-        "tags": ["assembly","call convention","cdecl","stdcall","fastcall","nasm","stack frame"],
-        "url": "/assembly/assembly3-basic-commands-2/",
+        "title": "Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습",
+        "excerpt":"Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다. 전 편에서 Assembly 기본 명령어 - Windows NASM 실습 가이드 에서 조건 분기문과 loop 에 대해 학습을 진행했습니다. 이번 편에서는 함수/스택 호출 구조, 스택 프레임에...","categories": ["assembly"],
+        "tags": ["assembly","nasm","x64dbg","함수 호출","스택프레임","스택 구조","리버스엔지니어링"],
+        "url": "/assembly/assembly3-basic-commands-3/",
         "teaser": null
       },{
         "title": "Assembly로 간단한 계산기 만들기: Hello World부터 사칙연산까지 실습",
