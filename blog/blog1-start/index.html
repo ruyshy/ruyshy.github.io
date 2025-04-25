@@ -343,7 +343,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#jekyll-기반-github-blog-생성">Jekyll 기반 GitHub Blog 생성</a></li><li><a href="#준비해야-할-준비물">준비해야 할 준비물</a></li><li><a href="#github-blog-시작하기">GitHub Blog 시작하기</a></li></ul>
+              <ul class="toc__menu"><li><a href="#jekyll-기반-github-blog-생성">Jekyll 기반 GitHub Blog 생성</a></li><li><a href="#준비해야-할-준비물">준비해야 할 준비물</a></li><li><a href="#github-blog-시작하기">GitHub Blog 시작하기</a></li><li><a href="#blog-post-작성-방법">Blog Post 작성 방법</a></li><li><a href="#github-blog-기본-설정-설명-_configyml">GitHub Blog 기본 설정 설명 (_config.yml)</a><ul><li><a href="#프로필-설정">프로필 설정</a><ul><li><a href="#links-항목의-구조">links: 항목의 구조</a></li></ul></li><li><a href="#default-설정">default 설정</a></li></ul></li><li><a href="#plugins-설정">plugins 설정</a><ul><li><a href="#별도-설정들">별도 설정들</a><ul><li><a href="#thema">Thema</a></li><li><a href="#깃허브-블로그-댓글">깃허브 블로그 댓글</a></li><li><a href="#추가-내용">추가 내용</a></li></ul></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -409,7 +409,7 @@
 
 <p>다음으로 자신의 블로그 홈페이지(<a href="https://ruyshy.github.io/">https://ruyshy.github.io/</a>)를 들어가서 정상적으로 만들어졌는지 확인합니다. 제 블로그는 이미 작성이 되어있기 때문에 저와 다르게 보이긴 해도 블로그에 접속하실 수 있습니다.</p>
 
-<h1 id="blog-post-작성-방법">Blog Post 작성 방법</h1>
+<h2 id="blog-post-작성-방법">Blog Post 작성 방법</h2>
 
 <p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-repo-add-file.png" alt="github-blog-repo-add-file" style="max-width:100%;" /></p>
 
@@ -461,6 +461,284 @@
 <p>Posts를 눌러 작성이 된 내용이 뛰워지는 것을 확인할 수 있습니다.</p>
 
 <p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-first-post-create.png" alt="github-blog-first-post-create" style="max-width:100%;" /></p>
+
+<h2 id="github-blog-기본-설정-설명-_configyml">GitHub Blog 기본 설정 설명 (<code class="language-plaintext highlighter-rouge">_config.yml</code>)</h2>
+
+<h3 id="프로필-설정">프로필 설정</h3>
+
+<p><code class="language-plaintext highlighter-rouge">author:</code> 해당 코드에서 설정을 진행 해주면 됩니다!</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>설명</th>
+      <th>예시 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>작성자의 이름 또는 닉네임을 지정합니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">"ruyshy"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">avatar</code></td>
+      <td>프로필 이미지 경로입니다. <code class="language-plaintext highlighter-rouge">/assets/images/...</code> 또는 외부 URL도 가능.</td>
+      <td><code class="language-plaintext highlighter-rouge">"/assets/images/profile/github_profile_image.jpg"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bio</code></td>
+      <td>간단한 자기소개 텍스트입니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">"백엔드 개발자이자 블로거"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">location</code></td>
+      <td>거주지 또는 활동 지역 정보를 입력합니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">"South Korea"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">email</code></td>
+      <td>이메일 주소입니다. 보통 연락처 용도로 사용됩니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">"ruyshyttr@gmail.com"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">links</code></td>
+      <td>외부 링크 목록을 구성할 수 있는 배열입니다.</td>
+      <td>아래 참고 (하단에 자세히 설명)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="links-항목의-구조"><code class="language-plaintext highlighter-rouge">links:</code> 항목의 구조</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>하위 속성</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">label</code></td>
+      <td>표시될 이름 (예: GitHub, Email 등)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">icon</code></td>
+      <td>Font Awesome 아이콘 클래스</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">url</code></td>
+      <td>연결할 외부 링크 주소 (mailto:도 가능)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="default-설정">default 설정</h3>
+
+<p>Jekyll 블로그의 _config.yml 파일에서 defaults: 섹션은 파일의 경로(path)와 유형(type)에 따라 자동으로 기본값(values)을 설정하는 기능입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>옵션 명</th>
+      <th>설명</th>
+      <th>예시 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scope.path</code></td>
+      <td>이 default 설정이 적용될 경로 (상대 경로 기준). 비워두면 전체 적용</td>
+      <td><code class="language-plaintext highlighter-rouge">""</code>, <code class="language-plaintext highlighter-rouge">"_posts/blog"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scope.type</code></td>
+      <td>콘텐츠 타입. 보통 <code class="language-plaintext highlighter-rouge">posts</code>, <code class="language-plaintext highlighter-rouge">pages</code>, <code class="language-plaintext highlighter-rouge">drafts</code> 등을 지정</td>
+      <td><code class="language-plaintext highlighter-rouge">"posts"</code>, <code class="language-plaintext highlighter-rouge">"pages"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.layout</code></td>
+      <td>적용할 레이아웃 템플릿 지정. <code class="language-plaintext highlighter-rouge">_layouts/</code> 폴더의 파일명에서 <code class="language-plaintext highlighter-rouge">.html</code> 제외하고 작성</td>
+      <td><code class="language-plaintext highlighter-rouge">"single"</code>, <code class="language-plaintext highlighter-rouge">"default"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.title</code></td>
+      <td>기본 제목. 개별 포스트에서 설정하지 않으면 이 값이 사용됨</td>
+      <td><code class="language-plaintext highlighter-rouge">"기본 제목"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.permalink</code></td>
+      <td>기본 URL 구조를 지정. 글의 URL 커스터마이징에 사용</td>
+      <td><code class="language-plaintext highlighter-rouge">"/:categories/:title/"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.categories</code></td>
+      <td>글의 카테고리 설정. 배열로 지정 가능</td>
+      <td><code class="language-plaintext highlighter-rouge">[blog]</code>, <code class="language-plaintext highlighter-rouge">[assembly]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.tags</code></td>
+      <td>기본 태그 설정. 배열 형태로 사용 가능</td>
+      <td><code class="language-plaintext highlighter-rouge">[jekyll, ruby]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.author_profile</code></td>
+      <td>프로필 박스 출력 여부 (Minimal Mistakes 테마에서 사용)</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.sidebar.nav</code></td>
+      <td>사용할 사이드바 메뉴 지정. <code class="language-plaintext highlighter-rouge">_data/navigation.yml</code>에서 정의한 키와 일치해야 함</td>
+      <td><code class="language-plaintext highlighter-rouge">"main"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.comments</code></td>
+      <td>댓글 기능 사용 여부. Utterances, Disqus 등 설정에 따라 작동</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.share</code></td>
+      <td>SNS 공유 버튼 표시 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.related</code></td>
+      <td>관련 포스트 영역 표시 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.robots</code></td>
+      <td>SEO 메타 태그 설정. <code class="language-plaintext highlighter-rouge">"noindex, nofollow"</code> 등도 설정 가능</td>
+      <td><code class="language-plaintext highlighter-rouge">"index, follow"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.toc</code></td>
+      <td>목차 표시 여부 (Table of Contents)</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.toc_sticky</code></td>
+      <td>스크롤해도 목차가 고정되도록 설정</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.classes</code></td>
+      <td>레이아웃에 custom CSS class를 적용할 수 있음</td>
+      <td><code class="language-plaintext highlighter-rouge">"wide"</code>, <code class="language-plaintext highlighter-rouge">"narrow"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.read_time</code></td>
+      <td>예상 읽기 시간 표시 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.exclude</code></td>
+      <td>특정 키워드/파일을 기본 설정에서 제외할 수 있음</td>
+      <td><code class="language-plaintext highlighter-rouge">["drafts", "secret.md"]</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="plugins-설정">plugins 설정</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>설정 이름</th>
+      <th>설명</th>
+      <th>예시 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">plugins</code></td>
+      <td>Jekyll에서 사용할 플러그인 목록입니다. 로컬 서버나 GitHub Action으로 빌드할 때 작동합니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">["jekyll-feed", "jekyll-seo-tag"]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">whitelist</code></td>
+      <td>(이전 이름: <code class="language-plaintext highlighter-rouge">safe_plugins</code>) GitHub Pages에서 사용이 허용된 플러그인만 명시적으로 지정합니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">["jekyll-seo-tag"]</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="별도-설정들">별도 설정들</h3>
+
+<p><code class="language-plaintext highlighter-rouge">timezone:</code> 해당 속성을 사용할 시,
+Gemfile 에서 아래 코드를 추가해줘야 합니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem "tzinfo"
+gem "tzinfo-data"
+</code></pre></div></div>
+
+<p>timezone 설정할 때, 아래 링크에서 선택할 수 있습니다. 저는 <code class="language-plaintext highlighter-rouge">Asia/Seoul</code> 을 사용 중입니다.</p>
+
+<div style="margin: 1em 0;">
+  <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Timezone-boundary-builder_release_2023d.png/1200px-Timezone-boundary-builder_release_2023d.png" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">List of tz database time zones - Wikipedia</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;"></p>
+        <small style="color: #999;">en.wikipedia.org</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<h4 id="thema">Thema</h4>
+
+<div style="margin: 1em 0;">
+  <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://mmistakes.github.io/minimal-mistakes/assets/images/site-logo.png" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Quick-Start Guide</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">How to quickly install and setup Minimal Mistakes for use with GitHub Pages.</p>
+        <small style="color: #999;">mmistakes.github.io</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<p>해당 사이트에 설명이 자세히 나와있습니다!</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># theme                  : "minimal-mistakes-jekyll"</span>
+<span class="na">remote_theme             </span><span class="pi">:</span> <span class="s2">"</span><span class="s">mmistakes/minimal-mistakes"</span>
+<span class="na">minimal_mistakes_skin    </span><span class="pi">:</span> <span class="s2">"</span><span class="s">dark"</span> <span class="c1"># "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"</span>
+</code></pre></div></div>
+
+<p>Gem 기반 테마로 설치하려면: <code class="language-plaintext highlighter-rouge">theme:</code> 속성을 사용합니다.
+Gemfile에 <code class="language-plaintext highlighter-rouge">gem "minimal-mistakes-jekyll"</code> 추가해줘야 합니다.</p>
+
+<p><br /></p>
+
+<p>원격 테마로 설치하려면: <code class="language-plaintext highlighter-rouge">remote_theme:</code> 속성을 사용합니다.
+<code class="language-plaintext highlighter-rouge">minimal_mistakes_skin</code> 속성에서 테마를 선택하실 수 있습니다.</p>
+
+<h4 id="깃허브-블로그-댓글">깃허브 블로그 댓글</h4>
+
+<p><code class="language-plaintext highlighter-rouge">comments:</code> 해당 속성은 <a href="https://ruyshy.github.io/blog/blog6-comment/">깃허브 블로그 댓글 설정</a> 에서 다룹니다.</p>
+
+<h4 id="추가-내용">추가 내용</h4>
+
+<div style="margin: 1em 0;">
+  <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://mmistakes.github.io/minimal-mistakes/assets/images/site-logo.png" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Quick-Start Guide</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">How to quickly install and setup Minimal Mistakes for use with GitHub Pages.</p>
+        <small style="color: #999;">mmistakes.github.io</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<p>저와 같은 깃허브 블로그 테마를 선택하셨다면, 해당 <code class="language-plaintext highlighter-rouge">minimal-mistakes</code> 위에 해당하는 테마 가이드 사이트에서 더 많은 것을 배우고 설정할 수 있습니다!</p>
 
         
       </section>
