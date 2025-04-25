@@ -35,8 +35,8 @@ module Jekyll
   
         <<~HTML
           <div class="reveal-embedded" id="#{uid}_container">
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css">
+            <link rel="stylesheet" href="/assets/js/reveal/reveal.css">
+            <link rel="stylesheet" href="/assets/js/reveal/reveal_black.css">
             <style>
               ##{uid}_container .reveal {
                 width: 100%;
@@ -64,7 +64,7 @@ module Jekyll
               <div class="custom-slide-number" id="#{uid}_slide_number">1 / #{slide_count}</div>
             </div>
   
-            <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+            <script src="/assets/js/reveal/reveal.js"></script>
             <script>
               document.addEventListener('DOMContentLoaded', () => {
                 const el = document.getElementById("#{uid}");
