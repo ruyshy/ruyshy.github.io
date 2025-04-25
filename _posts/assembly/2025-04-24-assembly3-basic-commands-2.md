@@ -1,7 +1,7 @@
 ---
 title: "Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해"
 description: "cdecl과 stdcall 호출 규약(Call Convention)의 차이점을 NASM 어셈블리 코드 예제와 함께 비교 분석합니다. 함수 호출, 스택 정리 방식, 인자 전달 구조를 정확히 이해하고 리버싱에 필요한 기초를 다질 수 있습니다."
-date: 2025-04-25
+date: 2025-04-24
 tags: [assembly, call convention, cdecl, stdcall, fastcall, nasm, stack frame]
 ---
 

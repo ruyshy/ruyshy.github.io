@@ -1,7 +1,7 @@
 ---
 title: "Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습"
 description: "Assembly NASM에서 함수 호출, 스택프레임 구성, RBP/RSP의 역할을 실습 코드와 함께 자세히 설명합니다."
-date: 2025-04-24
+date: 2025-04-25
 tags: [assembly, nasm, x64dbg, 함수 호출, 스택프레임, 스택 구조, 리버스엔지니어링]
 ---
 
