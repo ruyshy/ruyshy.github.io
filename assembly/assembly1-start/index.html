@@ -357,7 +357,7 @@
 
 <h4 id="시작하기-앞-서-학습할-사이트-목록-입니다">시작하기 앞 서, 학습할 사이트 목록 입니다.</h4>
 
-<p>드림 해커 : https://dreamhack.io/ </p>
+<p>드림 해커 : https://dreamhack.io/</p>
 
 <p>CrackMe : https://crackmy.app/</p>
 
@@ -403,41 +403,20 @@
 <h2 id="공부-순서-추천"><strong>공부 순서 추천</strong></h2>
 
 <ul>
-  <li>
-    <p><strong>레지스터랑 메모리 구조 이해</strong></p>
-
-    <p>(eax, esp, ebp 같은 거 감 잡기)</p>
-  </li>
-  <li>
-    <p><strong>기본 명령어부터 익히기</strong></p>
-
-    <p>(mov, add, sub, cmp, jmp, call, ret)</p>
-  </li>
-  <li>
-    <p><strong>함수 호출 규칙(Call Convention)</strong></p>
-
-    <p>(stdcall, cdecl 이런 거)</p>
-  </li>
-  <li>
-    <p><strong>스택과 함수 호출 분석</strong></p>
-
-    <p>(push, pop으로 스택 프레임 조작하는 것 보기)</p>
-  </li>
-  <li>
-    <p><strong>조건 분기(Conditional Jump)</strong></p>
-
-    <p>(cmp, je, jne, jg, jl 등 분기 흐름 익히기)</p>
-  </li>
-  <li>
-    <p><strong>간단한 프로그램 작성</strong></p>
-
-    <p>(Hello World 출력 Assembly 버전)</p>
-  </li>
-  <li>
-    <p><strong>디버거로 어셈블리 흐름 읽는 연습</strong></p>
-
-    <p>(x64dbg로 한 줄 한 줄 따라가며 이해)</p>
-  </li>
+  <li><strong>레지스터랑 메모리 구조 이해</strong>
+(eax, esp, ebp 같은 거 감 잡기)</li>
+  <li><strong>기본 명령어부터 익히기</strong>
+(mov, add, sub, cmp, jmp, call, ret)</li>
+  <li><strong>함수 호출 규칙(Call Convention)</strong>
+(stdcall, cdecl 이런 거)</li>
+  <li><strong>스택과 함수 호출 분석</strong>
+(push, pop으로 스택 프레임 조작하는 것 보기)</li>
+  <li><strong>조건 분기(Conditional Jump)</strong>
+(cmp, je, jne, jg, jl 등 분기 흐름 익히기)</li>
+  <li><strong>간단한 프로그램 작성</strong>
+(Hello World 출력 Assembly 버전)</li>
+  <li><strong>디버거로 어셈블리 흐름 읽는 연습</strong>
+(x64dbg로 한 줄 한 줄 따라가며 이해)</li>
 </ul>
 
 <h1 id="1-레지스터랑-메모리-구조-이해"><strong>1. 레지스터랑 메모리 구조 이해</strong></h1>
@@ -745,7 +724,9 @@
 <p><img src="/assets/images/assembly/2025-04-18-assembly1-start/image1.png" alt="image1" style="max-width: 100%;" /></p>
 
 <ul>
-  <li>*EAX/RAX (Accumulator Register, 누산기 레지스터)**산술, 논리 연산을 담당하는 레지스터로, 함수의 반환 값이 이 레지스터에 저장된다.
+  <li>
+    <p>*EAX/RAX (Accumulator Register, 누산기 레지스터)**산술, 논리 연산을 담당하는 레지스터로, 함수의 반환 값이 이 레지스터에 저장된다.</p>
+
     <ul>
       <li><strong>EAX 레지스터의 종류</strong></li>
       <li>RAX: 64비트 (x86-64 아키텍처에서 확장된 EAX)</li>
@@ -755,7 +736,9 @@
       <li>AL: AX의 하위 8비트</li>
     </ul>
   </li>
-  <li>*EBX/RBX (Base Register, 베이스 레지스터)**메모리 주소를 저장하기 위해 사용되는 레지스터.종종 배열이나 문자열과 같은 데이터 구조에 접근하기 위한 기준 포인터로 사용된다.
+  <li>
+    <p>*EBX/RBX (Base Register, 베이스 레지스터)**메모리 주소를 저장하기 위해 사용되는 레지스터.종종 배열이나 문자열과 같은 데이터 구조에 접근하기 위한 기준 포인터로 사용된다.</p>
+
     <ul>
       <li><strong>EBX 레지스터의 종류</strong></li>
       <li>RBX: 64비트 (x86-64 아키텍처에서 확장된 EBX)</li>
@@ -765,7 +748,9 @@
       <li>BL: BX의 하위 8비트</li>
     </ul>
   </li>
-  <li>*ECX/RCX (Count Register, 카운트 레지스터)**반복 작업에서 카운터 역할을 수행하는 레지스터이다.loop 명령어 사용 시 레지스터의 값을 하나씩 감소 시키며, 0이 될 때 까지 반복 작업을 수행한다.
+  <li>
+    <p>*ECX/RCX (Count Register, 카운트 레지스터)**반복 작업에서 카운터 역할을 수행하는 레지스터이다.loop 명령어 사용 시 레지스터의 값을 하나씩 감소 시키며, 0이 될 때 까지 반복 작업을 수행한다.</p>
+
     <ul>
       <li><strong>ECX 레지스터의 종류</strong></li>
       <li>RCX: 64비트 (x86-64 아키텍처에서 확장된 ECX)</li>
@@ -775,7 +760,9 @@
       <li>CL: CX의 하위 8비트</li>
     </ul>
   </li>
-  <li>*EDX/RDX (Data Register, 데이터 레지스터)**EAX 레지스터와 함께 사용하여 큰 수를 연산을 하거나, 그 결과를 저장할 수 있는 레지스터이다.64bit 더블 워드 연산을 수행할 때에도 사용 가능하다. (div, mul)
+  <li>
+    <p>*EDX/RDX (Data Register, 데이터 레지스터)**EAX 레지스터와 함께 사용하여 큰 수를 연산을 하거나, 그 결과를 저장할 수 있는 레지스터이다.64bit 더블 워드 연산을 수행할 때에도 사용 가능하다. (div, mul)</p>
+
     <ul>
       <li><strong>EDX 레지스터의 종류</strong></li>
       <li>RDX: 64비트 (x86-64 아키텍처에서 확장된 EDX)</li>
@@ -785,7 +772,9 @@
       <li>DL: DX의 하위 8비트</li>
     </ul>
   </li>
-  <li>*ESI/RSI (Source Index, 소스 인덱스 레지스터)**데이터 복사, 문자열 연산, 입력/출력 처리 등의 작업에서 소스 데이터의 주소를 가리키는 데 사용된다.
+  <li>
+    <p>*ESI/RSI (Source Index, 소스 인덱스 레지스터)**데이터 복사, 문자열 연산, 입력/출력 처리 등의 작업에서 소스 데이터의 주소를 가리키는 데 사용된다.</p>
+
     <ul>
       <li><strong>ESI 레지스터의 종류</strong></li>
       <li>RSI: 64비트 (x86-64 아키텍처에서 확장된 ESI)</li>
@@ -793,7 +782,9 @@
       <li>SI: 16비트의 ESI 레지스터 하위 부분</li>
     </ul>
   </li>
-  <li>*EDI/RDI (Destination Index, 목적지 인덱스 레지스터)**데이터 복사, 문자열 처리, 배열 조작 등의 작업에서 목적지 데이터의 메모리 주소를 가리키는데 사용된다.
+  <li>
+    <p>*EDI/RDI (Destination Index, 목적지 인덱스 레지스터)**데이터 복사, 문자열 처리, 배열 조작 등의 작업에서 목적지 데이터의 메모리 주소를 가리키는데 사용된다.</p>
+
     <ul>
       <li><strong>EDI 레지스터의 종류</strong></li>
       <li>RDI: 64비트 (x86-64 아키텍처에서 확장된 EDI)</li>
@@ -801,7 +792,9 @@
       <li>DI: 16비트의 EDI 레지스터 하위 부분</li>
     </ul>
   </li>
-  <li>*ESP/RSP (Stack Pointer, 스택 포인터 레지스터)**프로그램의 스택 메모리 내에서, 현재 스택 최상단 주소를 저장하는 레지스터이다.함수 호출, 지역 변수 관리, 함수 내 데이터 저장 및 복구 등의 작업에서 필수적으로 사용된다.
+  <li>
+    <p>*ESP/RSP (Stack Pointer, 스택 포인터 레지스터)**프로그램의 스택 메모리 내에서, 현재 스택 최상단 주소를 저장하는 레지스터이다.함수 호출, 지역 변수 관리, 함수 내 데이터 저장 및 복구 등의 작업에서 필수적으로 사용된다.</p>
+
     <ul>
       <li><strong>ESP 레지스터의 종류</strong></li>
       <li>RSP: 64비트 (x86-64 아키텍처에서 확장된 ESP)</li>
@@ -809,7 +802,9 @@
       <li>SP: 16비트의 ESP 레지스터 하위 부분.</li>
     </ul>
   </li>
-  <li>*EBP/RBP (Base Pointer, 베이스 포인터 레지스터)**함수 내의 지역 변수와 인자에 일관되고, 쉽게 접근하기 위해 사용되는 포인터 역할 레지스터이다.스택 내에서 접근할 부분의 메모리 주소를 저장한다.
+  <li>
+    <p>*EBP/RBP (Base Pointer, 베이스 포인터 레지스터)**함수 내의 지역 변수와 인자에 일관되고, 쉽게 접근하기 위해 사용되는 포인터 역할 레지스터이다.스택 내에서 접근할 부분의 메모리 주소를 저장한다.</p>
+
     <ul>
       <li><strong>EBP 레지스터의 종류</strong></li>
       <li>RBP: 64비트 (x86-64 아키텍처에서 확장된 EBP).</li>
@@ -817,7 +812,8 @@
       <li>BP: 16비트의 EBP 레지스터 하위 부분.</li>
     </ul>
   </li>
-  <li>*EIP/RIP (Instruction Pointer, 명령 포인터)**다음에 실행될 명령의 메모리 주소를 저장한다.
+  <li>
+    <p>*EIP/RIP (Instruction Pointer, 명령 포인터)**다음에 실행될 명령의 메모리 주소를 저장한다.</p>
     <ul>
       <li><strong>EIP 레지스터의 종류</strong></li>
       <li>RIP: 64비트 (x86-64 아키텍처)</li>
@@ -832,7 +828,6 @@
   <p>윈도우에서는 리눅스처럼 syscall 직접 안 씀.</p>
 
   <p>➔ 대신, <strong>Windows API</strong>를 “함수 호출” 방식으로 사용.</p>
-
 </blockquote>
 
 <p><strong>예시:</strong></p>
@@ -897,7 +892,6 @@
 
 <blockquote>
   <p>왜 16바이트 정렬? ➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
-
 </blockquote>
 
 <h2 id="메모리-구조-이해"><strong>메모리 구조 이해</strong></h2>

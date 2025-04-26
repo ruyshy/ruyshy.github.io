@@ -506,6 +506,7 @@ Sitemap: https://ruyshy.github.io/sitemap.xml
 </code></pre></div></div>
 
 <h3 id="gemfile-내용-추가">Gemfile 내용 추가</h3>
+
 <p><code class="language-plaintext highlighter-rouge">gem "jekyll-seo-tag"</code> 추가</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Gemfile
@@ -524,7 +525,9 @@ gem "tzinfo-data"
 </code></pre></div></div>
 
 <h3 id="추가-진행-후">추가 진행 후</h3>
+
 <p>cmd 에서 해당 명령어 입력</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
 </code></pre></div></div>
 
@@ -534,12 +537,15 @@ gem "tzinfo-data"
 
 <p>설정 → 소유권 인증 으로 들어가보면 HTML 태그가 있습니다.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"google-site-verification"</span> <span class="na">content=</span><span class="s">"0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU"</span> <span class="nt">/&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span>
+  <span class="na">name=</span><span class="s">"google-site-verification"</span>
+  <span class="na">content=</span><span class="s">"0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU"</span>
+<span class="nt">/&gt;</span>
 </code></pre></div></div>
 
 <p>content 안에 있는 내용을 복사한 뒤, _config.yml 에서 <code class="language-plaintext highlighter-rouge">google-site-verification:</code> 해당 부분을 찾습니다.</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">google_site_verification </span><span class="pi">:</span> <span class="s">0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">google_site_verification</span><span class="pi">:</span> <span class="s">0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU</span>
 </code></pre></div></div>
 
 <p>위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 push 진행 → 확인을 눌러 진행.</p>
@@ -547,7 +553,6 @@ gem "tzinfo-data"
 <p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image8.png" alt="소유권 인증 완료 알림" style="max-width:100%;" /></p>
 
 <p>인증이 완료되었네요! 굿굿</p>
-
 
         
       </section>

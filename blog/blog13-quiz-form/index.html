@@ -356,44 +356,45 @@
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-238517">
-  <div class="quiz-message" id="quiz-message-238517" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-915495">
+  <div class="quiz-message" id="quiz-message-915495" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-238517" onsubmit="return false;">
+  <form id="quiz-form-915495" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-238517" id="quiz-238517-0" value="1번" data-correct="false" />
-  <label for="quiz-238517-0">1번</label>
+  <input type="radio" name="quiz-answer-915495" id="quiz-915495-0" value="1번" data-correct="false" />
+  <label for="quiz-915495-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-238517" id="quiz-238517-1" value="2번" data-correct="true" />
-  <label for="quiz-238517-1">2번</label>
+  <input type="radio" name="quiz-answer-915495" id="quiz-915495-1" value="2번" data-correct="true" />
+  <label for="quiz-915495-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-238517" id="quiz-238517-2" value="3번" data-correct="false" />
-  <label for="quiz-238517-2">3번</label>
+  <input type="radio" name="quiz-answer-915495" id="quiz-915495-2" value="3번" data-correct="false" />
+  <label for="quiz-915495-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-238517" id="quiz-238517-3" value="4번" data-correct="false" />
-  <label for="quiz-238517-3">4번</label>
+  <input type="radio" name="quiz-answer-915495" id="quiz-915495-3" value="4번" data-correct="false" />
+  <label for="quiz-915495-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(238517, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(915495, false, null)">제출</button>
   </form>
-  <div id="quiz-result-238517" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-238517" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-238517', this)" data-label="해설 보기"></div>
-  <div id="toggle-238517" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-915495" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-915495" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-915495', this)" data-label="해설 보기"></div>
+  <div id="toggle-915495" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -404,26 +405,26 @@
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-568939">
-  <div class="quiz-message" id="quiz-message-568939" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-321351">
+  <div class="quiz-message" id="quiz-message-321351" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-568939" onsubmit="return false;">
+  <form id="quiz-form-321351" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-568939" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-321351" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-568939" value="test" />
+      <input type="hidden" id="quiz-text-answer-321351" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(568939, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(321351, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-568939" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-568939" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-568939', this)" data-label="해설 보기"></div>
-  <div id="toggle-568939" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-321351" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-321351" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-321351', this)" data-label="해설 보기"></div>
+  <div id="toggle-321351" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -437,81 +438,89 @@
 <h3 id="assetsjsquiz-handlerjs-추가">\assets\js\quiz-handler.js 추가</h3>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">checkQuizAnswer</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">isText</span><span class="p">,</span> <span class="nx">correctTextAnswer</span> <span class="o">=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-form-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-result-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-box-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">explanationToggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-explanation-toggle-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-  
-    <span class="kd">const</span> <span class="nx">selected</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="s2">`input[name='quiz-answer-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">']:checked`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">textInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-text-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-  
-    <span class="k">if </span><span class="p">(</span><span class="nx">isText</span> <span class="o">&amp;&amp;</span> <span class="nx">textInput</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">userAnswer</span> <span class="o">=</span> <span class="nx">textInput</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span>
-      <span class="k">if </span><span class="p">(</span><span class="nx">userAnswer</span> <span class="o">===</span> <span class="dl">""</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">정답을 입력해주세요!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">);</span>
-      <span class="p">}</span>
-  
-      <span class="k">if </span><span class="p">(</span><span class="nx">userAnswer</span> <span class="o">===</span> <span class="nx">correctTextAnswer</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">✅ &lt;strong&gt;정답입니다!&lt;/strong&gt;&lt;br&gt;&lt;br&gt;</span><span class="dl">"</span><span class="p">;</span>
-        <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
-        <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">explanationToggle</span><span class="p">);</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">❌ 오답입니다</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="k">return</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-form-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-result-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-box-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">explanationToggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span>
+    <span class="s2">`quiz-explanation-toggle-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">selected</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span>
+    <span class="s2">`input[name='quiz-answer-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">']:checked`</span>
+  <span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">textInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-text-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">isText</span> <span class="o">&amp;&amp;</span> <span class="nx">textInput</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">userAnswer</span> <span class="o">=</span> <span class="nx">textInput</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">userAnswer</span> <span class="o">===</span> <span class="dl">""</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">정답을 입력해주세요!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">}</span>
-  
-    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">정답을 선택해주세요!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">);</span>
-    <span class="p">}</span>
-  
-    <span class="k">if </span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">correct</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">userAnswer</span> <span class="o">===</span> <span class="nx">correctTextAnswer</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
       <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">✅ &lt;strong&gt;정답입니다!&lt;/strong&gt;&lt;br&gt;&lt;br&gt;</span><span class="dl">"</span><span class="p">;</span>
       <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
       <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">explanationToggle</span><span class="p">);</span>
-      <span class="nx">form</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">i</span> <span class="o">=&gt;</span> <span class="nx">i</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">);</span>
-  
-      <span class="kd">const</span> <span class="nx">retryBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
-      <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">;</span>
-      <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">다시 풀기</span><span class="dl">"</span><span class="p">;</span>
-      <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">1em</span><span class="dl">"</span><span class="p">;</span>
-      <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nf">retryQuiz</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-      <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">retryBtn</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
       <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">❌ 오답입니다</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">}</span>
-  <span class="p">};</span>
-  
-  <span class="nb">window</span><span class="p">.</span><span class="nx">showMessage</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s2">`quiz-message quiz-message-</span><span class="p">${</span><span class="nx">type</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&lt;span class="quiz-message-close" onclick="this.parentNode.style.display=</span><span class="se">\'</span><span class="s1">none</span><span class="se">\'</span><span class="s1">"&gt;×&lt;/span&gt;</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
-    <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
-    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
-  <span class="p">};</span>
-  
-  <span class="nb">window</span><span class="p">.</span><span class="nx">retryQuiz</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-form-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-result-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-box-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">explanationToggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-explanation-toggle-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-  
-    <span class="nx">form</span><span class="p">.</span><span class="nf">reset</span><span class="p">();</span>
-    <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
-    <span class="nx">message</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">정답을 선택해주세요!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">correct</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">✅ &lt;strong&gt;정답입니다!&lt;/strong&gt;&lt;br&gt;&lt;br&gt;</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">explanationToggle</span><span class="p">);</span>
+    <span class="nx">form</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">).</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">i</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">));</span>
+
+    <span class="kd">const</span> <span class="nx">retryBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">다시 풀기</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">1em</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nf">retryQuiz</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">retryBtn</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
-  
-    <span class="kd">const</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">inputs</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="nx">input</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">);</span>
-  <span class="p">};</span>
+    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">❌ 오답입니다</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">showMessage</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s2">`quiz-message quiz-message-</span><span class="p">${</span><span class="nx">type</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span>
+    <span class="nx">text</span> <span class="o">+</span>
+    <span class="dl">'</span><span class="s1">&lt;span class="quiz-message-close" onclick="this.parentNode.style.display=</span><span class="se">\'</span><span class="s1">none</span><span class="se">\'</span><span class="s1">"&gt;×&lt;/span&gt;</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">retryQuiz</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-form-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-result-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-box-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">explanationToggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span>
+    <span class="s2">`quiz-explanation-toggle-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">);</span>
+
+  <span class="nx">form</span><span class="p">.</span><span class="nf">reset</span><span class="p">();</span>
+  <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="nx">message</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">inputs</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">input</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">));</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
 <p><br /></p>
@@ -568,6 +577,9 @@
 
     <span class="k">def</span> <span class="nf">build_choices_html</span><span class="p">(</span><span class="n">choices_raw</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
       <span class="n">text_answer</span> <span class="o">=</span> <span class="kp">nil</span>
+      <span class="n">site</span> <span class="o">=</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">sites</span><span class="p">.</span><span class="nf">first</span>
+      <span class="n">converter</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">find_converter_instance</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">Markdown</span><span class="p">)</span>
+
       <span class="n">html</span> <span class="o">=</span> <span class="n">choices_raw</span><span class="p">.</span><span class="nf">lines</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">).</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">l</span><span class="o">|</span> <span class="n">l</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span> <span class="p">}.</span><span class="nf">map</span><span class="p">.</span><span class="nf">with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="p">,</span> <span class="n">idx</span><span class="o">|</span>
         <span class="k">if</span> <span class="n">line</span> <span class="o">=~</span> <span class="sr">/^\-\s*\[text:\s*(.+?)\]/</span>
           <span class="n">text_answer</span> <span class="o">=</span> <span class="vg">$1</span><span class="p">.</span><span class="nf">strip</span>
@@ -580,16 +592,22 @@
           <span class="n">label</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="s1">'-'</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">strip</span>
           <span class="n">correct</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s2">"[correct]"</span><span class="p">)</span>
           <span class="n">clean_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/\s*\[correct\]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+          <span class="n">clean_label_html</span> <span class="o">=</span> <span class="n">converter</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="n">clean_label</span><span class="p">).</span><span class="nf">strip</span>
+          <span class="n">clean_label_html</span> <span class="o">=</span> <span class="n">clean_label_html</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^&lt;p&gt;/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/&lt;\/p&gt;$/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+
+
           <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
             &lt;div class="quiz-choice"&gt;
               &lt;input type="radio" name="quiz-answer-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">" id="quiz-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">-</span><span class="si">#{</span><span class="n">idx</span><span class="si">}</span><span class="sh">" value="</span><span class="si">#{</span><span class="n">clean_label</span><span class="si">}</span><span class="sh">" data-correct="</span><span class="si">#{</span><span class="n">correct</span><span class="si">}</span><span class="sh">"&gt;
-              &lt;label for="quiz-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">-</span><span class="si">#{</span><span class="n">idx</span><span class="si">}</span><span class="sh">"&gt;</span><span class="si">#{</span><span class="n">clean_label</span><span class="si">}</span><span class="sh">&lt;/label&gt;
+              &lt;label for="quiz-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">-</span><span class="si">#{</span><span class="n">idx</span><span class="si">}</span><span class="sh">"&gt;</span><span class="si">#{</span><span class="n">clean_label_html</span><span class="si">}</span><span class="sh">&lt;/label&gt;
             &lt;/div&gt;
 </span><span class="no">          HTML</span>
         <span class="k">end</span>
       <span class="k">end</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
       <span class="p">[</span><span class="n">html</span><span class="p">,</span> <span class="n">text_answer</span><span class="p">]</span>
     <span class="k">end</span>
+
 
     <span class="k">def</span> <span class="nf">build_explanation_toggle_html</span><span class="p">(</span><span class="n">explanation_html</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
       <span class="n">toggle_id</span> <span class="o">=</span> <span class="s2">"toggle-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">"</span>
@@ -638,7 +656,6 @@
   <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'quiz'</span><span class="p">,</span> <span class="no">QuizBlock</span><span class="p">)</span>
   <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'explanation'</span><span class="p">,</span> <span class="no">ExplanationBlock</span><span class="p">)</span>
 <span class="k">end</span>
-
 </code></pre></div></div>
 
 <p><br /></p>
@@ -682,7 +699,7 @@
       <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">0</span><span class="mi">.97</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
-  
+
   <span class="nc">.quiz-result</span> <span class="nt">button</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"button"</span><span class="o">]</span> <span class="p">{</span>
     <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#555</span><span class="p">;</span>
     <span class="nl">color</span><span class="p">:</span> <span class="mh">#fff</span><span class="p">;</span>
@@ -698,7 +715,6 @@
       <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#777</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
-
 <span class="p">}</span>
 
 <span class="nc">.quiz-choice</span> <span class="p">{</span>
@@ -717,7 +733,7 @@
     <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
     <span class="nl">transition</span><span class="p">:</span> <span class="n">color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="n">ease</span><span class="p">;</span>
     <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-    
+
     <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
       <span class="nl">color</span><span class="p">:</span> <span class="mh">#9ecaff</span><span class="p">;</span>
     <span class="p">}</span>
@@ -748,7 +764,6 @@
     <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.2em</span><span class="p">;</span>
     <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
   <span class="p">}</span>
-
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -760,7 +775,7 @@
 
 <h5 id="_layoutsdefaulthtml-에서">_layouts\default.html 에서</h5>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;script src="/assets/js/quiz-handler.js"&gt;&lt;/script&gt;</code>  추가</p>
+<p><code class="language-plaintext highlighter-rouge">&lt;script src="/assets/js/quiz-handler.js"&gt;&lt;/script&gt;</code> 추가</p>
 
 <p>예시:</p>
 
@@ -813,7 +828,7 @@
 <h5 id="_includesquiz-formhtml-추가">_includes\quiz-form.html 추가</h5>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.use_quiz %}
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/quiz-handler.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/quiz-handler.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 {% endif %}
 </code></pre></div></div>
 
@@ -876,11 +891,14 @@
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% quiz ”
 문제 1 : 객관식 미리보기 문제입니다.
+
 <span class="p">```</span><span class="nl">
 </span>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 <span class="p">```</span>
+
 " %}
-<span class="p">-</span> 1번
+<span class="p">
+-</span> 1번
 <span class="p">-</span> 2번 [correct]
 <span class="p">-</span> 3번
 <span class="p">-</span> 4번
@@ -896,7 +914,8 @@
 <h4 id="주관식-예시">주관식 예시:</h4>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% quiz "test? 정답은 test" %}
-<span class="p">-</span> [text: test]
+<span class="p">
+-</span> [text: test]
 
 {% explanation %}
 test 문제 입니다.

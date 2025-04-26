@@ -360,7 +360,7 @@
 <span class="nt">&lt;div</span> <span class="na">markdown=</span><span class="s">"1"</span><span class="nt">&gt;</span>
 
 <span class="p">```</span><span class="nl">markdown
-</span>  코드
+</span>코드
 <span class="p">```</span>
 
 -- 내용 --
@@ -371,6 +371,7 @@
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/details&gt;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h3 id="기본-토글">기본 토글:</h3>
@@ -379,7 +380,7 @@
 <summary>toggle 펼쳐보기</summary>
 <div>
 
-    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>코드
 </code></pre></div>    </div>
 
     <p>– 내용 –</p>
@@ -407,15 +408,15 @@
           <span class="vi">@extra_class</span> <span class="o">=</span> <span class="s2">""</span>
         <span class="k">end</span>
       <span class="k">end</span>
-  
+
       <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
         <span class="n">site</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">registers</span><span class="p">[</span><span class="ss">:site</span><span class="p">]</span>
         <span class="n">converter</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">find_converter_instance</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">Markdown</span><span class="p">)</span>
         <span class="n">content</span> <span class="o">=</span> <span class="n">converter</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="k">super</span><span class="p">)</span>
-      
+
         <span class="nb">id</span> <span class="o">=</span> <span class="s2">"toggle-</span><span class="si">#{</span><span class="nb">rand</span><span class="p">(</span><span class="mi">36</span><span class="o">**</span><span class="mi">6</span><span class="p">).</span><span class="nf">to_s</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">label</span> <span class="o">=</span> <span class="vi">@label</span><span class="p">.</span><span class="nf">strip</span>
-      
+
         <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
           &lt;div class="toggle"&gt;
             &lt;div class="toggle-label </span><span class="si">#{</span><span class="vi">@extra_class</span><span class="si">}</span><span class="sh">" onclick="toggleTextContent('</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">', this)" data-label="</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sh">"&gt;
@@ -425,48 +426,50 @@
             &lt;/div&gt;
           &lt;/div&gt;
 </span><span class="no">        HTML</span>
-      <span class="k">end</span>      
+      <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span>
-  
+
   <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">ToggleText</span><span class="p">)</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h2 id="_includestoggle-scripthtml-추가">_includes\toggle-script.html 추가</h2>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">DOMContentLoaded</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.toggle-label</span><span class="dl">'</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">labelEl</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="kd">const</span> <span class="nx">baseText</span> <span class="o">=</span> <span class="nx">labelEl</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">label</span><span class="p">;</span>
-            <span class="nx">labelEl</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">▶ </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">baseText</span><span class="p">;</span>
-          <span class="p">});</span>
-    <span class="p">});</span>
-    
-    <span class="kd">function</span> <span class="nf">toggleTextContent</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">labelEl</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-      <span class="kd">const</span> <span class="nx">isExpanded</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">expanded</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">DOMContentLoaded</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.toggle-label</span><span class="dl">"</span><span class="p">).</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">labelEl</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="kd">const</span> <span class="nx">baseText</span> <span class="o">=</span> <span class="nx">labelEl</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">label</span><span class="p">;</span>
-    
-      <span class="nx">labelEl</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isExpanded</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">▶ </span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">▼ </span><span class="dl">'</span><span class="p">)</span> <span class="o">+</span> <span class="nx">baseText</span><span class="p">;</span>
-    
-      <span class="k">if </span><span class="p">(</span><span class="nx">isExpanded</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">expanded</span><span class="dl">'</span><span class="p">);</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxHeight</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0px</span><span class="dl">'</span><span class="p">;</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">expanded</span><span class="dl">'</span><span class="p">);</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxHeight</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>    
+      <span class="nx">labelEl</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">▶ </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">baseText</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="kd">function</span> <span class="nf">toggleTextContent</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">labelEl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">isExpanded</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="dl">"</span><span class="s2">expanded</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">baseText</span> <span class="o">=</span> <span class="nx">labelEl</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">label</span><span class="p">;</span>
+
+    <span class="nx">labelEl</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isExpanded</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">▶ </span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">▼ </span><span class="dl">"</span><span class="p">)</span> <span class="o">+</span> <span class="nx">baseText</span><span class="p">;</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">isExpanded</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">expanded</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxHeight</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">0px</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">expanded</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxHeight</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h2 id="_layoutsdefaulthtml-수정">_layouts\default.html 수정</h2>
 
-<p><code class="language-plaintext highlighter-rouge">{% include toggle-script.html %}</code>  해당 코드 추가해줘야 함.</p>
+<p><code class="language-plaintext highlighter-rouge">{% include toggle-script.html %}</code> 해당 코드 추가해줘야 함.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 ---
@@ -507,6 +510,7 @@
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h2 id="_sassminimal-mistakes_customscss-추가">_sass\minimal-mistakes_custom.scss 추가</h2>
@@ -519,7 +523,7 @@
   <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
   <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
   <span class="na">user-select</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="mh">#FFF</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="mh">#fff</span><span class="p">;</span>
   <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5em</span><span class="p">;</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
   <span class="nl">transition</span><span class="p">:</span> <span class="n">all</span> <span class="m">0</span><span class="mi">.2s</span> <span class="n">ease</span><span class="p">;</span>
@@ -528,9 +532,9 @@
 <span class="p">}</span>
 
 <span class="nc">.toggle-label</span><span class="nd">:hover</span> <span class="p">{</span>
-  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>  
+  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
   <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#333333</span><span class="p">;</span>
-  <span class="nl">box-shadow</span><span class="p">:</span> <span class="nb">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">3px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.1</span><span class="p">);</span>
+  <span class="nl">box-shadow</span><span class="p">:</span> <span class="nb">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">3px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.1</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nc">.toggle-label.h1</span><span class="o">,</span>
@@ -540,16 +544,25 @@
   <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span> <span class="o">!</span><span class="n">important</span><span class="p">;</span>
   <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.3em</span> <span class="o">!</span><span class="n">important</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nc">.toggle-label.h1</span> <span class="p">{</span> <span class="k">@extend</span> <span class="nt">h1</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.toggle-label.h2</span> <span class="p">{</span> <span class="k">@extend</span> <span class="nt">h2</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.toggle-label.h3</span> <span class="p">{</span> <span class="k">@extend</span> <span class="nt">h3</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.toggle-label.h4</span> <span class="p">{</span> <span class="k">@extend</span> <span class="nt">h4</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.toggle-label.h1</span> <span class="p">{</span>
+  <span class="k">@extend</span> <span class="nt">h1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.toggle-label.h2</span> <span class="p">{</span>
+  <span class="k">@extend</span> <span class="nt">h2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.toggle-label.h3</span> <span class="p">{</span>
+  <span class="k">@extend</span> <span class="nt">h3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.toggle-label.h4</span> <span class="p">{</span>
+  <span class="k">@extend</span> <span class="nt">h4</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h2 id="_sassminimal-mistakesscss-수정">_sass\minimal-mistakes.scss 수정</h2>
 
-<p><code class="language-plaintext highlighter-rouge">@import "minimal-mistakes/custom";</code>  해당 코드 추가해줘야 함.</p>
+<p><code class="language-plaintext highlighter-rouge">@import "minimal-mistakes/custom";</code> 해당 코드 추가해줘야 함.</p>
 
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Copyright comment */</span>
 <span class="k">@import</span> <span class="s2">"minimal-mistakes/copyright"</span><span class="p">;</span>
@@ -592,6 +605,7 @@
 <span class="k">@import</span> <span class="s2">"minimal-mistakes/sidebar"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"minimal-mistakes/print"</span><span class="p">;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h3 id="toggle-tag-사용법">toggle tag 사용법</h3>
@@ -599,10 +613,12 @@
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% toggle 클릭해서 보기1 %}
 
 이 안에 접히는 내용이 들어갑니다.
+
 <span class="p">```</span><span class="nl">
 </span>  코드 내용
 <span class="p">```</span>
-<span class="p">-</span> 리스트도 가능
+<span class="p">
+-</span> 리스트도 가능
 <span class="p">-</span> 코드도 가능
 
 {% endtoggle %}
@@ -610,10 +626,12 @@
 {% toggle 클릭해서 보기2 class="h3" %}
 
 이 안에 접히는 내용이 들어갑니다.
+
 <span class="p">```</span><span class="nl">
 </span>  코드 내용
 <span class="p">```</span>
-<span class="p">-</span> 리스트도 가능
+<span class="p">
+-</span> 리스트도 가능
 <span class="p">-</span> 코드도 가능
 
 {% endtoggle %}
@@ -622,13 +640,15 @@
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ucv7l1', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-9injz1', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-ucv7l1" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-9injz1" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>코드 내용
 </code></pre></div></div>
+
 <ul>
   <li>리스트도 가능</li>
   <li>코드도 가능</li>
@@ -640,13 +660,15 @@
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-6ib76j', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-og8e5s', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-6ib76j" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-og8e5s" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>코드 내용
 </code></pre></div></div>
+
 <ul>
   <li>리스트도 가능</li>
   <li>코드도 가능</li>

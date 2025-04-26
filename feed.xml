@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-27T00:07:42+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-3</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
-전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-04-27T00:20:18+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습</title><link href="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/" rel="alternate" type="text/html" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly3-basic-commands-3</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly3-basic-commands-3/"><![CDATA[<p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
+전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해 학습을 진행했습니다.
 이번 편에서는 함수/스택 호출 구조, 스택 프레임에 대해 학습을 진행할 것입니다.</p>
 
 <h2 id="목표-요약">목표 요약</h2>
@@ -10,7 +10,6 @@
 실제로는 스택에 복귀 주소를 저장한 뒤 함수로 점프하고,</p>
 
   <p>끝나면 <strong>복귀 주소로 돌아오는 것(ret)</strong>.</p>
-
 </blockquote>
 
 <h2 id="함수-호출의-흐름-핵심">함수 호출의 흐름 핵심</h2>
@@ -413,7 +412,7 @@
     <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">8</span>       <span class="c1">; 지역 변수 공간 확보</span>
 
     <span class="c1">; 실행 중...</span>
-    
+
     <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>     <span class="c1">; 스택 복구</span>
     <span class="nf">pop</span> <span class="nb">rbp</span>          <span class="c1">; 이전 프레임 복구</span>
     <span class="nf">ret</span>              <span class="c1">; return address로 복귀</span>
@@ -454,7 +453,6 @@
   <p>rsp는 실제 스택의 top이고,</p>
 
   <p><code class="language-plaintext highlighter-rouge">rbp</code>는 <strong>기준점을 잡기 위한 고정된 위치</strong>다.</p>
-
 </blockquote>
 
 <p>함수를 호출할 때마다 이 기준을 만들고,</p>
@@ -638,8 +636,8 @@ main으로 복귀 → rax = 1234
     <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span><span class="c1">; for correct debugging</span>
     <span class="nf">call</span> <span class="nv">my_func</span>        <span class="c1">; my_func 실행</span>
     <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
-    <span class="nf">ret</span>                 <span class="c1">; 종료      </span>
-		
+    <span class="nf">ret</span>                 <span class="c1">; 종료</span>
+
 <span class="nl">my_func:</span>
     <span class="nf">push</span> <span class="nb">rbp</span>            <span class="c1">; 이전 프레임 저장</span>
     <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>        <span class="c1">; 현재 프레임 기준 설정</span>
@@ -772,7 +770,7 @@ main으로 복귀 → rax = 1234
     <span class="nf">call</span> <span class="nv">add_func</span>        <span class="c1">; rax ← a + b</span>
     <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
     <span class="nf">ret</span>
-    
+
 <span class="nl">add_func:</span>
     <span class="nf">push</span> <span class="nb">rbp</span>
     <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>
@@ -914,9 +912,9 @@ main으로 복귀 → rax = 1234
 <h2 id="간단한-사칙연산-계산기">간단한 사칙연산 계산기</h2>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-1a9e23', this)" data-label="코드 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-kve6j9', this)" data-label="코드 보기">
   </div>
-  <div id="toggle-1a9e23" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-kve6j9" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">%include "io64.inc"
 </span>
@@ -1050,85 +1048,86 @@ main으로 복귀 → rax = 1234
   </tbody>
 </table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="io64" /><category term="계산기" /><category term="READ_INT" /><category term="PRINT_STRING" /><category term="기초실습" /><summary type="html"><![CDATA[NASM 기반 Assembly에서 문자열 출력, 정수 입력, 사칙연산 계산기 구현까지 기초부터 실습합니다. io64.inc 매크로를 활용한 Hello World, 덧셈, 연산자 분기 방식까지 단계별로 설명합니다.]]></summary></entry><entry><title type="html">Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈</title><link href="https://ruyshy.github.io/assembly/assembly5-exercises1/" rel="alternate" type="text/html" title="Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly5-exercises1</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly5-exercises1/"><![CDATA[<p>Assembly(NASM) 학습 내용을 복습하는 기초 연습문제입니다. 64비트 레지스터 구분, 스택 구조 이해, 리틀 엔디안 메모리 저장 방식, 함수 호출 시 RSP/RBP 역할 등 퀴즈로 정리합니다.</p>
 
-<div class="quiz-box" id="quiz-box-863950">
-  <div class="quiz-message" id="quiz-message-863950" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-164817">
+  <div class="quiz-message" id="quiz-message-164817" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 64비트 레지스터가 아닌 것은?</p>
 
   </div>
-  <form id="quiz-form-863950" onsubmit="return false;">
+  <form id="quiz-form-164817" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-863950" id="quiz-863950-0" value="A. RAX" data-correct="false" />
-  <label for="quiz-863950-0">A. RAX</label>
+  <input type="radio" name="quiz-answer-164817" id="quiz-164817-0" value="RAX" data-correct="false" />
+  <label for="quiz-164817-0">RAX</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-863950" id="quiz-863950-1" value="B. RBX" data-correct="false" />
-  <label for="quiz-863950-1">B. RBX</label>
+  <input type="radio" name="quiz-answer-164817" id="quiz-164817-1" value="RBX" data-correct="false" />
+  <label for="quiz-164817-1">RBX</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-863950" id="quiz-863950-2" value="C. EAX" data-correct="true" />
-  <label for="quiz-863950-2">C. EAX</label>
+  <input type="radio" name="quiz-answer-164817" id="quiz-164817-2" value="EAX" data-correct="true" />
+  <label for="quiz-164817-2">EAX</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-863950" id="quiz-863950-3" value="D. RDI" data-correct="false" />
-  <label for="quiz-863950-3">D. RDI</label>
+  <input type="radio" name="quiz-answer-164817" id="quiz-164817-3" value="RDI" data-correct="false" />
+  <label for="quiz-164817-3">RDI</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(863950, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(164817, false, null)">제출</button>
   </form>
-  <div id="quiz-result-863950" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-863950" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-863950', this)" data-label="해설 보기"></div>
-  <div id="toggle-863950" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-164817" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-164817" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-164817', this)" data-label="해설 보기"></div>
+  <div id="toggle-164817" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> EAX는 32비트 레지스터. RAX의 하위 32비트 버전.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-754109">
-  <div class="quiz-message" id="quiz-message-754109" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-107793">
+  <div class="quiz-message" id="quiz-message-107793" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">2.</code> 스택에서 함수 호출 시 사용하는 레지스터 조합으로 올바른 것은?</p>
 
   </div>
-  <form id="quiz-form-754109" onsubmit="return false;">
+  <form id="quiz-form-107793" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-754109" id="quiz-754109-0" value="A. RSP와 RBP" data-correct="true" />
-  <label for="quiz-754109-0">A. RSP와 RBP</label>
+  <input type="radio" name="quiz-answer-107793" id="quiz-107793-0" value="RSP와 RBP" data-correct="true" />
+  <label for="quiz-107793-0">RSP와 RBP</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-754109" id="quiz-754109-1" value="B. RCX와 RDX" data-correct="false" />
-  <label for="quiz-754109-1">B. RCX와 RDX</label>
+  <input type="radio" name="quiz-answer-107793" id="quiz-107793-1" value="RCX와 RDX" data-correct="false" />
+  <label for="quiz-107793-1">RCX와 RDX</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-754109" id="quiz-754109-2" value="C. RAX와 RBX" data-correct="false" />
-  <label for="quiz-754109-2">C. RAX와 RBX</label>
+  <input type="radio" name="quiz-answer-107793" id="quiz-107793-2" value="RAX와 RBX" data-correct="false" />
+  <label for="quiz-107793-2">RAX와 RBX</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-754109" id="quiz-754109-3" value="D. RSI와 RDI" data-correct="false" />
-  <label for="quiz-754109-3">D. RSI와 RDI</label>
+  <input type="radio" name="quiz-answer-107793" id="quiz-107793-3" value="RSI와 RDI" data-correct="false" />
+  <label for="quiz-107793-3">RSI와 RDI</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(754109, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(107793, false, null)">제출</button>
   </form>
-  <div id="quiz-result-754109" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-754109" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-754109', this)" data-label="해설 보기"></div>
-  <div id="toggle-754109" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-107793" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-107793" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-107793', this)" data-label="해설 보기"></div>
+  <div id="toggle-107793" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong></p>
+
 <ul>
   <li><strong>RSP (Stack Pointer):</strong> 현재 스택의 top 위치</li>
   <li><strong>RBP (Base Pointer):</strong> 함수 진입 시 기준점 (스택프레임 기준)</li>
@@ -1138,84 +1137,84 @@ main으로 복귀 → rax = 1234
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-739911">
-  <div class="quiz-message" id="quiz-message-739911" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-414735">
+  <div class="quiz-message" id="quiz-message-414735" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">3.</code> x86-64에서 <code class="language-plaintext highlighter-rouge">mov eax, [rbx]</code> 의미는?</p>
 
   </div>
-  <form id="quiz-form-739911" onsubmit="return false;">
+  <form id="quiz-form-414735" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-739911" id="quiz-739911-0" value="A. rbx 값을 eax에 복사" data-correct="false" />
-  <label for="quiz-739911-0">A. rbx 값을 eax에 복사</label>
+  <input type="radio" name="quiz-answer-414735" id="quiz-414735-0" value="rbx 값을 eax에 복사" data-correct="false" />
+  <label for="quiz-414735-0">rbx 값을 eax에 복사</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-739911" id="quiz-739911-1" value="B. 메모리 주소 rbx에 eax 저장" data-correct="false" />
-  <label for="quiz-739911-1">B. 메모리 주소 rbx에 eax 저장</label>
+  <input type="radio" name="quiz-answer-414735" id="quiz-414735-1" value="메모리 주소 rbx에 eax 저장" data-correct="false" />
+  <label for="quiz-414735-1">메모리 주소 rbx에 eax 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-739911" id="quiz-739911-2" value="C. rbx가 가리키는 주소의 값을 eax에 저장" data-correct="true" />
-  <label for="quiz-739911-2">C. rbx가 가리키는 주소의 값을 eax에 저장</label>
+  <input type="radio" name="quiz-answer-414735" id="quiz-414735-2" value="rbx가 가리키는 주소의 값을 eax에 저장" data-correct="true" />
+  <label for="quiz-414735-2">rbx가 가리키는 주소의 값을 eax에 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-739911" id="quiz-739911-3" value="D. eax가 가리키는 주소 값을 rbx에 저장" data-correct="false" />
-  <label for="quiz-739911-3">D. eax가 가리키는 주소 값을 rbx에 저장</label>
+  <input type="radio" name="quiz-answer-414735" id="quiz-414735-3" value="eax가 가리키는 주소 값을 rbx에 저장" data-correct="false" />
+  <label for="quiz-414735-3">eax가 가리키는 주소 값을 rbx에 저장</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(739911, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(414735, false, null)">제출</button>
   </form>
-  <div id="quiz-result-739911" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-739911" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-739911', this)" data-label="해설 보기"></div>
-  <div id="toggle-739911" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-414735" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-414735" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-414735', this)" data-label="해설 보기"></div>
+  <div id="toggle-414735" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">[rbx]</code>는 <strong>rbx가 가리키는 주소의 값</strong>을 뜻해. 즉, 메모리에서 값을 읽어와 eax에 저장.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-146822">
-  <div class="quiz-message" id="quiz-message-146822" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-954937">
+  <div class="quiz-message" id="quiz-message-954937" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">4.</code> 다음 중 메모리의 가장 낮은 주소에 저장되는 값은? (리틀 엔디안 기준, <code class="language-plaintext highlighter-rouge">0x12345678</code> 저장 시)</p>
 
   </div>
-  <form id="quiz-form-146822" onsubmit="return false;">
+  <form id="quiz-form-954937" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-146822" id="quiz-146822-0" value="A. 0x78" data-correct="true" />
-  <label for="quiz-146822-0">A. 0x78</label>
+  <input type="radio" name="quiz-answer-954937" id="quiz-954937-0" value="0x78" data-correct="true" />
+  <label for="quiz-954937-0">0x78</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-146822" id="quiz-146822-1" value="B. 0x56" data-correct="false" />
-  <label for="quiz-146822-1">B. 0x56</label>
+  <input type="radio" name="quiz-answer-954937" id="quiz-954937-1" value="0x56" data-correct="false" />
+  <label for="quiz-954937-1">0x56</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-146822" id="quiz-146822-2" value="C. 0x34" data-correct="false" />
-  <label for="quiz-146822-2">C. 0x34</label>
+  <input type="radio" name="quiz-answer-954937" id="quiz-954937-2" value="0x34" data-correct="false" />
+  <label for="quiz-954937-2">0x34</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-146822" id="quiz-146822-3" value="D. 0x12" data-correct="false" />
-  <label for="quiz-146822-3">D. 0x12</label>
+  <input type="radio" name="quiz-answer-954937" id="quiz-954937-3" value="0x12" data-correct="false" />
+  <label for="quiz-954937-3">0x12</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(146822, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(954937, false, null)">제출</button>
   </form>
-  <div id="quiz-result-146822" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-146822" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-146822', this)" data-label="해설 보기"></div>
-  <div id="toggle-146822" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-954937" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-954937" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-954937', this)" data-label="해설 보기"></div>
+  <div id="toggle-954937" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>:
 리틀 엔디안은 <strong>하위 바이트부터 저장</strong>.
 <code class="language-plaintext highlighter-rouge">0x12345678</code> → 메모리: <code class="language-plaintext highlighter-rouge">78 56 34 12</code> (낮은 주소부터 차례대로)</p>
@@ -1224,43 +1223,43 @@ main으로 복귀 → rax = 1234
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-212511">
-  <div class="quiz-message" id="quiz-message-212511" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-237839">
+  <div class="quiz-message" id="quiz-message-237839" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">5.</code> 다음 중 스택 구조의 특징으로 옳은 것은?</p>
 
   </div>
-  <form id="quiz-form-212511" onsubmit="return false;">
+  <form id="quiz-form-237839" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-212511" id="quiz-212511-0" value="A. FIFO" data-correct="false" />
-  <label for="quiz-212511-0">A. FIFO</label>
+  <input type="radio" name="quiz-answer-237839" id="quiz-237839-0" value="FIFO" data-correct="false" />
+  <label for="quiz-237839-0">FIFO</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-212511" id="quiz-212511-1" value="B. 데이터가 높은 주소에서 낮은 주소로 저장됨" data-correct="true" />
-  <label for="quiz-212511-1">B. 데이터가 높은 주소에서 낮은 주소로 저장됨</label>
+  <input type="radio" name="quiz-answer-237839" id="quiz-237839-1" value="데이터가 높은 주소에서 낮은 주소로 저장됨" data-correct="true" />
+  <label for="quiz-237839-1">데이터가 높은 주소에서 낮은 주소로 저장됨</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-212511" id="quiz-212511-2" value="C. 데이터를 랜덤하게 접근 가능함" data-correct="false" />
-  <label for="quiz-212511-2">C. 데이터를 랜덤하게 접근 가능함</label>
+  <input type="radio" name="quiz-answer-237839" id="quiz-237839-2" value="데이터를 랜덤하게 접근 가능함" data-correct="false" />
+  <label for="quiz-237839-2">데이터를 랜덤하게 접근 가능함</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-212511" id="quiz-212511-3" value="D. 레지스터만 사용하는 구조임" data-correct="false" />
-  <label for="quiz-212511-3">D. 레지스터만 사용하는 구조임</label>
+  <input type="radio" name="quiz-answer-237839" id="quiz-237839-3" value="레지스터만 사용하는 구조임" data-correct="false" />
+  <label for="quiz-237839-3">레지스터만 사용하는 구조임</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(212511, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(237839, false, null)">제출</button>
   </form>
-  <div id="quiz-result-212511" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-212511" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-212511', this)" data-label="해설 보기"></div>
-  <div id="toggle-212511" class="toggle-body" style="display: none; max-height: 0;">
-    <p><strong>해설</strong>: 
+  <div id="quiz-result-237839" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-237839" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-237839', this)" data-label="해설 보기"></div>
+  <div id="toggle-237839" class="toggle-body" style="display: none; max-height: 0;">
+    <p><strong>해설</strong>:
 스택은 <strong>높은 주소 → 낮은 주소</strong> 방향으로 push됨.
 또한 <strong>LIFO 구조</strong>지 (Last In First Out).</p>
   </div>
@@ -1268,211 +1267,212 @@ main으로 복귀 → rax = 1234
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-908833">
-  <div class="quiz-message" id="quiz-message-908833" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-920541">
+  <div class="quiz-message" id="quiz-message-920541" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">6.</code> <code class="language-plaintext highlighter-rouge">mov [rax], rbx</code> 의미는?</p>
 
   </div>
-  <form id="quiz-form-908833" onsubmit="return false;">
+  <form id="quiz-form-920541" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-908833" id="quiz-908833-0" value="A. rax의 값을 rbx에 저장" data-correct="false" />
-  <label for="quiz-908833-0">A. rax의 값을 rbx에 저장</label>
+  <input type="radio" name="quiz-answer-920541" id="quiz-920541-0" value="rax의 값을 rbx에 저장" data-correct="false" />
+  <label for="quiz-920541-0">rax의 값을 rbx에 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-908833" id="quiz-908833-1" value="B. rbx의 값을 rax가 가리키는 메모리에 저장" data-correct="true" />
-  <label for="quiz-908833-1">B. rbx의 값을 rax가 가리키는 메모리에 저장</label>
+  <input type="radio" name="quiz-answer-920541" id="quiz-920541-1" value="rbx의 값을 rax가 가리키는 메모리에 저장" data-correct="true" />
+  <label for="quiz-920541-1">rbx의 값을 rax가 가리키는 메모리에 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-908833" id="quiz-908833-2" value="C. rax와 rbx를 스왑함" data-correct="false" />
-  <label for="quiz-908833-2">C. rax와 rbx를 스왑함</label>
+  <input type="radio" name="quiz-answer-920541" id="quiz-920541-2" value="rax와 rbx를 스왑함" data-correct="false" />
+  <label for="quiz-920541-2">rax와 rbx를 스왑함</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-908833" id="quiz-908833-3" value="D. rax가 가리키는 주소에 rbx 주소를 저장" data-correct="false" />
-  <label for="quiz-908833-3">D. rax가 가리키는 주소에 rbx 주소를 저장</label>
+  <input type="radio" name="quiz-answer-920541" id="quiz-920541-3" value="rax가 가리키는 주소에 rbx 주소를 저장" data-correct="false" />
+  <label for="quiz-920541-3">rax가 가리키는 주소에 rbx 주소를 저장</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(908833, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(920541, false, null)">제출</button>
   </form>
-  <div id="quiz-result-908833" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-908833" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-908833', this)" data-label="해설 보기"></div>
-  <div id="toggle-908833" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-920541" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-920541" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-920541', this)" data-label="해설 보기"></div>
+  <div id="toggle-920541" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: rbx의 값을 <strong>rax가 가리키는 메모리 주소에 저장</strong>하는 명령어.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-934015">
-  <div class="quiz-message" id="quiz-message-934015" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-999427">
+  <div class="quiz-message" id="quiz-message-999427" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">7.</code> 다음 중 스택 포인터를 의미하는 레지스터는?</p>
 
   </div>
-  <form id="quiz-form-934015" onsubmit="return false;">
+  <form id="quiz-form-999427" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-934015" id="quiz-934015-0" value="A. RAX" data-correct="false" />
-  <label for="quiz-934015-0">A. RAX</label>
+  <input type="radio" name="quiz-answer-999427" id="quiz-999427-0" value="RAX" data-correct="false" />
+  <label for="quiz-999427-0">RAX</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-934015" id="quiz-934015-1" value="B. RBP" data-correct="false" />
-  <label for="quiz-934015-1">B. RBP</label>
+  <input type="radio" name="quiz-answer-999427" id="quiz-999427-1" value="RBP" data-correct="false" />
+  <label for="quiz-999427-1">RBP</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-934015" id="quiz-934015-2" value="C. RSP" data-correct="true" />
-  <label for="quiz-934015-2">C. RSP</label>
+  <input type="radio" name="quiz-answer-999427" id="quiz-999427-2" value="RSP" data-correct="true" />
+  <label for="quiz-999427-2">RSP</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-934015" id="quiz-934015-3" value="D. RCX" data-correct="false" />
-  <label for="quiz-934015-3">D. RCX</label>
+  <input type="radio" name="quiz-answer-999427" id="quiz-999427-3" value="RCX" data-correct="false" />
+  <label for="quiz-999427-3">RCX</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(934015, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(999427, false, null)">제출</button>
   </form>
-  <div id="quiz-result-934015" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-934015" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-934015', this)" data-label="해설 보기"></div>
-  <div id="toggle-934015" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-999427" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-999427" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-999427', this)" data-label="해설 보기"></div>
+  <div id="toggle-999427" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: RSP는 Stack Pointer. 함수 호출, push/pop 등에서 스택 위치 추적에 사용됌.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-628891">
-  <div class="quiz-message" id="quiz-message-628891" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-480744">
+  <div class="quiz-message" id="quiz-message-480744" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">8.</code> 메모리 주소 0x1000에 <code class="language-plaintext highlighter-rouge">db 0xAA, 0xBB, 0xCC, 0xDD</code>가 저장되어 있을 때, <code class="language-plaintext highlighter-rouge">mov eax, [0x1000]</code> 수행 결과는? (리틀 엔디안)</p>
 
   </div>
-  <form id="quiz-form-628891" onsubmit="return false;">
+  <form id="quiz-form-480744" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-628891" id="quiz-628891-0" value="A. 0xDDCCBBAA" data-correct="true" />
-  <label for="quiz-628891-0">A. 0xDDCCBBAA</label>
+  <input type="radio" name="quiz-answer-480744" id="quiz-480744-0" value="0xDDCCBBAA" data-correct="true" />
+  <label for="quiz-480744-0">0xDDCCBBAA</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-628891" id="quiz-628891-1" value="B. 0xAABBCCDD" data-correct="false" />
-  <label for="quiz-628891-1">B. 0xAABBCCDD</label>
+  <input type="radio" name="quiz-answer-480744" id="quiz-480744-1" value="0xAABBCCDD" data-correct="false" />
+  <label for="quiz-480744-1">0xAABBCCDD</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-628891" id="quiz-628891-2" value="C. 0xCCBBAA00" data-correct="false" />
-  <label for="quiz-628891-2">C. 0xCCBBAA00</label>
+  <input type="radio" name="quiz-answer-480744" id="quiz-480744-2" value="0xCCBBAA00" data-correct="false" />
+  <label for="quiz-480744-2">0xCCBBAA00</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-628891" id="quiz-628891-3" value="D. 0xAABB0000" data-correct="false" />
-  <label for="quiz-628891-3">D. 0xAABB0000</label>
+  <input type="radio" name="quiz-answer-480744" id="quiz-480744-3" value="0xAABB0000" data-correct="false" />
+  <label for="quiz-480744-3">0xAABB0000</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(628891, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(480744, false, null)">제출</button>
   </form>
-  <div id="quiz-result-628891" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-628891" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-628891', this)" data-label="해설 보기"></div>
-  <div id="toggle-628891" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-480744" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-480744" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-480744', this)" data-label="해설 보기"></div>
+  <div id="toggle-480744" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: 메모리에 <code class="language-plaintext highlighter-rouge">AA BB CC DD</code> 순서로 저장돼도, 리틀 엔디안 읽을 때는 역순으로 결합: <code class="language-plaintext highlighter-rouge">0xDDCCBBAA</code>.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-736934">
-  <div class="quiz-message" id="quiz-message-736934" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-134719">
+  <div class="quiz-message" id="quiz-message-134719" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">9.</code> 스택프레임 내에서 지역 변수를 접근할 때 보통 사용하는 기준점은?</p>
 
   </div>
-  <form id="quiz-form-736934" onsubmit="return false;">
+  <form id="quiz-form-134719" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-736934" id="quiz-736934-0" value="A. RSP" data-correct="false" />
-  <label for="quiz-736934-0">A. RSP</label>
+  <input type="radio" name="quiz-answer-134719" id="quiz-134719-0" value="RSP" data-correct="false" />
+  <label for="quiz-134719-0">RSP</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-736934" id="quiz-736934-1" value="B. RAX" data-correct="false" />
-  <label for="quiz-736934-1">B. RAX</label>
+  <input type="radio" name="quiz-answer-134719" id="quiz-134719-1" value="RAX" data-correct="false" />
+  <label for="quiz-134719-1">RAX</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-736934" id="quiz-736934-2" value="C. RBP" data-correct="true" />
-  <label for="quiz-736934-2">C. RBP</label>
+  <input type="radio" name="quiz-answer-134719" id="quiz-134719-2" value="RBP" data-correct="true" />
+  <label for="quiz-134719-2">RBP</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-736934" id="quiz-736934-3" value="D. RIP" data-correct="false" />
-  <label for="quiz-736934-3">D. RIP</label>
+  <input type="radio" name="quiz-answer-134719" id="quiz-134719-3" value="RIP" data-correct="false" />
+  <label for="quiz-134719-3">RIP</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(736934, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(134719, false, null)">제출</button>
   </form>
-  <div id="quiz-result-736934" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-736934" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-736934', this)" data-label="해설 보기"></div>
-  <div id="toggle-736934" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-134719" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-134719" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-134719', this)" data-label="해설 보기"></div>
+  <div id="toggle-134719" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: RBP는 스택 프레임의 기준점으로 사용돼서, 지역 변수는 <code class="language-plaintext highlighter-rouge">[RBP - x]</code> 방식으로 접근함.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-913163">
-  <div class="quiz-message" id="quiz-message-913163" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-206400">
+  <div class="quiz-message" id="quiz-message-206400" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">10.</code> 다음 중 레지스터의 역할과 설명이 올바르게 연결된 것은?</p>
 
   </div>
-  <form id="quiz-form-913163" onsubmit="return false;">
+  <form id="quiz-form-206400" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-913163" id="quiz-913163-0" value="A. RSP - 루프 카운터" data-correct="false" />
-  <label for="quiz-913163-0">A. RSP - 루프 카운터</label>
+  <input type="radio" name="quiz-answer-206400" id="quiz-206400-0" value="RSP - 루프 카운터" data-correct="false" />
+  <label for="quiz-206400-0">RSP - 루프 카운터</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-913163" id="quiz-913163-1" value="B. RDI - 함수 반환값 저장" data-correct="false" />
-  <label for="quiz-913163-1">B. RDI - 함수 반환값 저장</label>
+  <input type="radio" name="quiz-answer-206400" id="quiz-206400-1" value="RDI - 함수 반환값 저장" data-correct="false" />
+  <label for="quiz-206400-1">RDI - 함수 반환값 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-913163" id="quiz-913163-2" value="C. RCX - 카운터 또는 루프" data-correct="true" />
-  <label for="quiz-913163-2">C. RCX - 카운터 또는 루프</label>
+  <input type="radio" name="quiz-answer-206400" id="quiz-206400-2" value="RCX - 카운터 또는 루프" data-correct="true" />
+  <label for="quiz-206400-2">RCX - 카운터 또는 루프</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-913163" id="quiz-913163-3" value="D. RAX - 스택 포인터" data-correct="false" />
-  <label for="quiz-913163-3">D. RAX - 스택 포인터</label>
+  <input type="radio" name="quiz-answer-206400" id="quiz-206400-3" value="RAX - 스택 포인터" data-correct="false" />
+  <label for="quiz-206400-3">RAX - 스택 포인터</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(913163, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(206400, false, null)">제출</button>
   </form>
-  <div id="quiz-result-913163" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-913163" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-913163', this)" data-label="해설 보기"></div>
-  <div id="toggle-913163" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-206400" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-206400" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-206400', this)" data-label="해설 보기"></div>
+  <div id="toggle-206400" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: RCX는 루프 카운터로 자주 사용됨. 반면,</p>
+
 <ul>
   <li>RAX는 연산/반환값</li>
   <li>RDI는 함수 인자</li>
@@ -1483,420 +1483,420 @@ main으로 복귀 → rax = 1234
 </div>
 </div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="assembly" /><category term="nasm" /><category term="x64" /><category term="어셈블리 퀴즈" /><category term="리틀엔디안" /><category term="스택프레임" /><category term="레지스터" /><summary type="html"><![CDATA[64비트 NASM 어셈블리어의 레지스터, 스택 구조, 리틀 엔디안, 함수 호출 구조 등 핵심 개념을 객관식 퀴즈로 복습합니다.]]></summary></entry><entry><title type="html">Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈</title><link href="https://ruyshy.github.io/assembly/assembly5-exercises2/" rel="alternate" type="text/html" title="Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈" /><published>2025-04-25T00:00:00+09:00</published><updated>2025-04-25T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly5-exercises2</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly5-exercises2/"><![CDATA[<p>NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문제입니다. <code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">jmp</code>, <code class="language-plaintext highlighter-rouge">push</code>, <code class="language-plaintext highlighter-rouge">pop</code>, <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">ret</code> 등 핵심 명령어와 스택 동작 구조를 객관식 퀴즈 형식으로 정리했습니다.</p>
 
-<div class="quiz-box" id="quiz-box-113212">
-  <div class="quiz-message" id="quiz-message-113212" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-677528">
+  <div class="quiz-message" id="quiz-message-677528" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 <code class="language-plaintext highlighter-rouge">mov</code> 명령어의 올바른 사용 예시는?</p>
 
   </div>
-  <form id="quiz-form-113212" onsubmit="return false;">
+  <form id="quiz-form-677528" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-113212" id="quiz-113212-0" value="A. `mov [rax], [rbx]`" data-correct="false" />
-  <label for="quiz-113212-0">A. `mov [rax], [rbx]`</label>
+  <input type="radio" name="quiz-answer-677528" id="quiz-677528-0" value="`mov [rax], [rbx]`" data-correct="false" />
+  <label for="quiz-677528-0"><code class="language-plaintext highlighter-rouge">mov [rax], [rbx]</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-113212" id="quiz-113212-1" value="B. `mov rax, 1234h`" data-correct="false" />
-  <label for="quiz-113212-1">B. `mov rax, 1234h`</label>
+  <input type="radio" name="quiz-answer-677528" id="quiz-677528-1" value="`mov rax, 1234h`" data-correct="false" />
+  <label for="quiz-677528-1"><code class="language-plaintext highlighter-rouge">mov rax, 1234h</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-113212" id="quiz-113212-2" value="C. `mov 1234h, rax`" data-correct="false" />
-  <label for="quiz-113212-2">C. `mov 1234h, rax`</label>
+  <input type="radio" name="quiz-answer-677528" id="quiz-677528-2" value="`mov 1234h, rax`" data-correct="false" />
+  <label for="quiz-677528-2"><code class="language-plaintext highlighter-rouge">mov 1234h, rax</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-113212" id="quiz-113212-3" value="D. `mov rax, [rbx + rcx]`" data-correct="true" />
-  <label for="quiz-113212-3">D. `mov rax, [rbx + rcx]`</label>
+  <input type="radio" name="quiz-answer-677528" id="quiz-677528-3" value="`mov rax, [rbx + rcx]`" data-correct="true" />
+  <label for="quiz-677528-3"><code class="language-plaintext highlighter-rouge">mov rax, [rbx + rcx]</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(113212, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(677528, false, null)">제출</button>
   </form>
-  <div id="quiz-result-113212" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-113212" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-113212', this)" data-label="해설 보기"></div>
-  <div id="toggle-113212" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-677528" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-677528" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-677528', this)" data-label="해설 보기"></div>
+  <div id="toggle-677528" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">[rbx + rcx]</code>는 유효한 메모리 주소. <code class="language-plaintext highlighter-rouge">mov [mem], [mem]</code>은 금지라서 A는 틀림.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-431144">
-  <div class="quiz-message" id="quiz-message-431144" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-532754">
+  <div class="quiz-message" id="quiz-message-532754" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">2.</code> <code class="language-plaintext highlighter-rouge">add rax, 5</code> 명령어 실행 후 결과로 올바른 설명은?</p>
 
   </div>
-  <form id="quiz-form-431144" onsubmit="return false;">
+  <form id="quiz-form-532754" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-431144" id="quiz-431144-0" value="A. rax에 5가 저장된다" data-correct="false" />
-  <label for="quiz-431144-0">A. rax에 5가 저장된다</label>
+  <input type="radio" name="quiz-answer-532754" id="quiz-532754-0" value="rax에 5가 저장된다" data-correct="false" />
+  <label for="quiz-532754-0">rax에 5가 저장된다</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-431144" id="quiz-431144-1" value="B. rax 값이 5로 교체된다" data-correct="false" />
-  <label for="quiz-431144-1">B. rax 값이 5로 교체된다</label>
+  <input type="radio" name="quiz-answer-532754" id="quiz-532754-1" value="rax 값이 5로 교체된다" data-correct="false" />
+  <label for="quiz-532754-1">rax 값이 5로 교체된다</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-431144" id="quiz-431144-2" value="C. rax 값에 5가 더해진다" data-correct="true" />
-  <label for="quiz-431144-2">C. rax 값에 5가 더해진다</label>
+  <input type="radio" name="quiz-answer-532754" id="quiz-532754-2" value="rax 값에 5가 더해진다" data-correct="true" />
+  <label for="quiz-532754-2">rax 값에 5가 더해진다</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-431144" id="quiz-431144-3" value="D. 5의 주소를 rax에 저장한다" data-correct="false" />
-  <label for="quiz-431144-3">D. 5의 주소를 rax에 저장한다</label>
+  <input type="radio" name="quiz-answer-532754" id="quiz-532754-3" value="5의 주소를 rax에 저장한다" data-correct="false" />
+  <label for="quiz-532754-3">5의 주소를 rax에 저장한다</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(431144, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(532754, false, null)">제출</button>
   </form>
-  <div id="quiz-result-431144" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-431144" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-431144', this)" data-label="해설 보기"></div>
-  <div id="toggle-431144" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-532754" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-532754" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-532754', this)" data-label="해설 보기"></div>
+  <div id="toggle-532754" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">add</code>는 기존 값에 값을 더하는 연산. 즉, rax += 5 와 같음.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-420470">
-  <div class="quiz-message" id="quiz-message-420470" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-288977">
+  <div class="quiz-message" id="quiz-message-288977" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">3.</code> <code class="language-plaintext highlighter-rouge">sub rax, 3</code> 실행 전 rax가 10이었다면, 결과는?</p>
 
   </div>
-  <form id="quiz-form-420470" onsubmit="return false;">
+  <form id="quiz-form-288977" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-420470" id="quiz-420470-0" value="A. rax = 7" data-correct="true" />
-  <label for="quiz-420470-0">A. rax = 7</label>
+  <input type="radio" name="quiz-answer-288977" id="quiz-288977-0" value="rax = 7" data-correct="true" />
+  <label for="quiz-288977-0">rax = 7</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-420470" id="quiz-420470-1" value="B. rax = 13" data-correct="false" />
-  <label for="quiz-420470-1">B. rax = 13</label>
+  <input type="radio" name="quiz-answer-288977" id="quiz-288977-1" value="rax = 13" data-correct="false" />
+  <label for="quiz-288977-1">rax = 13</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-420470" id="quiz-420470-2" value="C. rax = -3" data-correct="false" />
-  <label for="quiz-420470-2">C. rax = -3</label>
+  <input type="radio" name="quiz-answer-288977" id="quiz-288977-2" value="rax = -3" data-correct="false" />
+  <label for="quiz-288977-2">rax = -3</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-420470" id="quiz-420470-3" value="D. rax = 3" data-correct="false" />
-  <label for="quiz-420470-3">D. rax = 3</label>
+  <input type="radio" name="quiz-answer-288977" id="quiz-288977-3" value="rax = 3" data-correct="false" />
+  <label for="quiz-288977-3">rax = 3</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(420470, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(288977, false, null)">제출</button>
   </form>
-  <div id="quiz-result-420470" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-420470" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-420470', this)" data-label="해설 보기"></div>
-  <div id="toggle-420470" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-288977" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-288977" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-288977', this)" data-label="해설 보기"></div>
+  <div id="toggle-288977" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">sub</code>는 뺄셈이므로 10 - 3 = 7이 됨.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-986134">
-  <div class="quiz-message" id="quiz-message-986134" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-215825">
+  <div class="quiz-message" id="quiz-message-215825" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">4.</code> <code class="language-plaintext highlighter-rouge">cmp rax, rbx</code>의 의미는?</p>
 
   </div>
-  <form id="quiz-form-986134" onsubmit="return false;">
+  <form id="quiz-form-215825" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-986134" id="quiz-986134-0" value="A. rax 값을 rbx로 바꿈" data-correct="false" />
-  <label for="quiz-986134-0">A. rax 값을 rbx로 바꿈</label>
+  <input type="radio" name="quiz-answer-215825" id="quiz-215825-0" value="rax 값을 rbx로 바꿈" data-correct="false" />
+  <label for="quiz-215825-0">rax 값을 rbx로 바꿈</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-986134" id="quiz-986134-1" value="B. rbx 값을 rax에서 뺀 뒤 저장" data-correct="false" />
-  <label for="quiz-986134-1">B. rbx 값을 rax에서 뺀 뒤 저장</label>
+  <input type="radio" name="quiz-answer-215825" id="quiz-215825-1" value="rbx 값을 rax에서 뺀 뒤 저장" data-correct="false" />
+  <label for="quiz-215825-1">rbx 값을 rax에서 뺀 뒤 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-986134" id="quiz-986134-2" value="C. 두 값을 비교하고 플래그만 설정" data-correct="true" />
-  <label for="quiz-986134-2">C. 두 값을 비교하고 플래그만 설정</label>
+  <input type="radio" name="quiz-answer-215825" id="quiz-215825-2" value="두 값을 비교하고 플래그만 설정" data-correct="true" />
+  <label for="quiz-215825-2">두 값을 비교하고 플래그만 설정</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-986134" id="quiz-986134-3" value="D. rax와 rbx를 교환" data-correct="false" />
-  <label for="quiz-986134-3">D. rax와 rbx를 교환</label>
+  <input type="radio" name="quiz-answer-215825" id="quiz-215825-3" value="rax와 rbx를 교환" data-correct="false" />
+  <label for="quiz-215825-3">rax와 rbx를 교환</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(986134, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(215825, false, null)">제출</button>
   </form>
-  <div id="quiz-result-986134" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-986134" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-986134', this)" data-label="해설 보기"></div>
-  <div id="toggle-986134" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-215825" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-215825" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-215825', this)" data-label="해설 보기"></div>
+  <div id="toggle-215825" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">cmp</code>는 뺄셈을 하되 결과를 저장하지 않고 플래그만 설정해서 조건 분기 판단에 사용.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-159351">
-  <div class="quiz-message" id="quiz-message-159351" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-598247">
+  <div class="quiz-message" id="quiz-message-598247" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">5.</code> 조건 분기와 가장 밀접한 관계가 있는 명령어는?</p>
 
   </div>
-  <form id="quiz-form-159351" onsubmit="return false;">
+  <form id="quiz-form-598247" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-159351" id="quiz-159351-0" value="A. call" data-correct="false" />
-  <label for="quiz-159351-0">A. call</label>
+  <input type="radio" name="quiz-answer-598247" id="quiz-598247-0" value="call" data-correct="false" />
+  <label for="quiz-598247-0">call</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-159351" id="quiz-159351-1" value="B. cmp" data-correct="true" />
-  <label for="quiz-159351-1">B. cmp</label>
+  <input type="radio" name="quiz-answer-598247" id="quiz-598247-1" value="cmp" data-correct="true" />
+  <label for="quiz-598247-1">cmp</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-159351" id="quiz-159351-2" value="C. ret" data-correct="false" />
-  <label for="quiz-159351-2">C. ret</label>
+  <input type="radio" name="quiz-answer-598247" id="quiz-598247-2" value="ret" data-correct="false" />
+  <label for="quiz-598247-2">ret</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-159351" id="quiz-159351-3" value="D. push" data-correct="false" />
-  <label for="quiz-159351-3">D. push</label>
+  <input type="radio" name="quiz-answer-598247" id="quiz-598247-3" value="push" data-correct="false" />
+  <label for="quiz-598247-3">push</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(159351, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(598247, false, null)">제출</button>
   </form>
-  <div id="quiz-result-159351" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-159351" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-159351', this)" data-label="해설 보기"></div>
-  <div id="toggle-159351" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-598247" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-598247" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-598247', this)" data-label="해설 보기"></div>
+  <div id="toggle-598247" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> 조건 분기(jz, jne 등)는 <code class="language-plaintext highlighter-rouge">cmp</code>로 플래그 설정 후 분기.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-787804">
-  <div class="quiz-message" id="quiz-message-787804" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-755126">
+  <div class="quiz-message" id="quiz-message-755126" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">6.</code> 다음 중 무조건 점프하는 명령어는?</p>
 
   </div>
-  <form id="quiz-form-787804" onsubmit="return false;">
+  <form id="quiz-form-755126" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-787804" id="quiz-787804-0" value="A. je" data-correct="false" />
-  <label for="quiz-787804-0">A. je</label>
+  <input type="radio" name="quiz-answer-755126" id="quiz-755126-0" value="je" data-correct="false" />
+  <label for="quiz-755126-0">je</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-787804" id="quiz-787804-1" value="B. jne" data-correct="false" />
-  <label for="quiz-787804-1">B. jne</label>
+  <input type="radio" name="quiz-answer-755126" id="quiz-755126-1" value="jne" data-correct="false" />
+  <label for="quiz-755126-1">jne</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-787804" id="quiz-787804-2" value="C. jmp" data-correct="true" />
-  <label for="quiz-787804-2">C. jmp</label>
+  <input type="radio" name="quiz-answer-755126" id="quiz-755126-2" value="jmp" data-correct="true" />
+  <label for="quiz-755126-2">jmp</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-787804" id="quiz-787804-3" value="D. jg" data-correct="false" />
-  <label for="quiz-787804-3">D. jg</label>
+  <input type="radio" name="quiz-answer-755126" id="quiz-755126-3" value="jg" data-correct="false" />
+  <label for="quiz-755126-3">jg</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(787804, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(755126, false, null)">제출</button>
   </form>
-  <div id="quiz-result-787804" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-787804" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-787804', this)" data-label="해설 보기"></div>
-  <div id="toggle-787804" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-755126" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-755126" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-755126', this)" data-label="해설 보기"></div>
+  <div id="toggle-755126" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">jmp</code>는 조건 없이 무조건 지정한 주소로 점프함.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-237119">
-  <div class="quiz-message" id="quiz-message-237119" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-303611">
+  <div class="quiz-message" id="quiz-message-303611" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">7.</code> <code class="language-plaintext highlighter-rouge">push rax</code> 수행 시 어떤 일이 일어나는가?</p>
 
   </div>
-  <form id="quiz-form-237119" onsubmit="return false;">
+  <form id="quiz-form-303611" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-237119" id="quiz-237119-0" value="A. rax 값을 스택에 저장하고 RSP는 증가" data-correct="false" />
-  <label for="quiz-237119-0">A. rax 값을 스택에 저장하고 RSP는 증가</label>
+  <input type="radio" name="quiz-answer-303611" id="quiz-303611-0" value="rax 값을 스택에 저장하고 RSP는 증가" data-correct="false" />
+  <label for="quiz-303611-0">rax 값을 스택에 저장하고 RSP는 증가</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-237119" id="quiz-237119-1" value="B. rax 값을 스택에 저장하고 RSP는 감소" data-correct="true" />
-  <label for="quiz-237119-1">B. rax 값을 스택에 저장하고 RSP는 감소</label>
+  <input type="radio" name="quiz-answer-303611" id="quiz-303611-1" value="rax 값을 스택에 저장하고 RSP는 감소" data-correct="true" />
+  <label for="quiz-303611-1">rax 값을 스택에 저장하고 RSP는 감소</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-237119" id="quiz-237119-2" value="C. 스택에서 값을 꺼내 rax에 저장" data-correct="false" />
-  <label for="quiz-237119-2">C. 스택에서 값을 꺼내 rax에 저장</label>
+  <input type="radio" name="quiz-answer-303611" id="quiz-303611-2" value="스택에서 값을 꺼내 rax에 저장" data-correct="false" />
+  <label for="quiz-303611-2">스택에서 값을 꺼내 rax에 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-237119" id="quiz-237119-3" value="D. rax가 스택 포인터로 바뀜" data-correct="false" />
-  <label for="quiz-237119-3">D. rax가 스택 포인터로 바뀜</label>
+  <input type="radio" name="quiz-answer-303611" id="quiz-303611-3" value="rax가 스택 포인터로 바뀜" data-correct="false" />
+  <label for="quiz-303611-3">rax가 스택 포인터로 바뀜</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(237119, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(303611, false, null)">제출</button>
   </form>
-  <div id="quiz-result-237119" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-237119" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-237119', this)" data-label="해설 보기"></div>
-  <div id="toggle-237119" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-303611" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-303611" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-303611', this)" data-label="해설 보기"></div>
+  <div id="toggle-303611" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> 스택은 위에서 아래로 쌓이기 때문에 push 시 RSP가 감소.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-820883">
-  <div class="quiz-message" id="quiz-message-820883" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-421972">
+  <div class="quiz-message" id="quiz-message-421972" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">8.</code> <code class="language-plaintext highlighter-rouge">pop rbx</code> 수행 후 상태는?</p>
 
   </div>
-  <form id="quiz-form-820883" onsubmit="return false;">
+  <form id="quiz-form-421972" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-820883" id="quiz-820883-0" value="A. rbx에 스택의 맨 위 값이 들어가고 RSP는 증가" data-correct="true" />
-  <label for="quiz-820883-0">A. rbx에 스택의 맨 위 값이 들어가고 RSP는 증가</label>
+  <input type="radio" name="quiz-answer-421972" id="quiz-421972-0" value="rbx에 스택의 맨 위 값이 들어가고 RSP는 증가" data-correct="true" />
+  <label for="quiz-421972-0">rbx에 스택의 맨 위 값이 들어가고 RSP는 증가</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-820883" id="quiz-820883-1" value="B. rbx에 스택의 맨 위 값이 들어가고 RSP는 감소" data-correct="false" />
-  <label for="quiz-820883-1">B. rbx에 스택의 맨 위 값이 들어가고 RSP는 감소</label>
+  <input type="radio" name="quiz-answer-421972" id="quiz-421972-1" value="rbx에 스택의 맨 위 값이 들어가고 RSP는 감소" data-correct="false" />
+  <label for="quiz-421972-1">rbx에 스택의 맨 위 값이 들어가고 RSP는 감소</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-820883" id="quiz-820883-2" value="C. rbx의 값이 스택에 들어감" data-correct="false" />
-  <label for="quiz-820883-2">C. rbx의 값이 스택에 들어감</label>
+  <input type="radio" name="quiz-answer-421972" id="quiz-421972-2" value="rbx의 값이 스택에 들어감" data-correct="false" />
+  <label for="quiz-421972-2">rbx의 값이 스택에 들어감</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-820883" id="quiz-820883-3" value="D. rbx와 rsp를 교환함" data-correct="false" />
-  <label for="quiz-820883-3">D. rbx와 rsp를 교환함</label>
+  <input type="radio" name="quiz-answer-421972" id="quiz-421972-3" value="rbx와 rsp를 교환함" data-correct="false" />
+  <label for="quiz-421972-3">rbx와 rsp를 교환함</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(820883, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(421972, false, null)">제출</button>
   </form>
-  <div id="quiz-result-820883" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-820883" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-820883', this)" data-label="해설 보기"></div>
-  <div id="toggle-820883" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-421972" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-421972" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-421972', this)" data-label="해설 보기"></div>
+  <div id="toggle-421972" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">pop</code>은 RSP가 가리키는 값을 꺼내고, RSP는 증가.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-964934">
-  <div class="quiz-message" id="quiz-message-964934" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-203862">
+  <div class="quiz-message" id="quiz-message-203862" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">9.</code> <code class="language-plaintext highlighter-rouge">call func</code> 명령어는 어떤 동작을 수행하는가?</p>
 
   </div>
-  <form id="quiz-form-964934" onsubmit="return false;">
+  <form id="quiz-form-203862" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-964934" id="quiz-964934-0" value="A. 현재 위치를 저장하고 func로 점프" data-correct="true" />
-  <label for="quiz-964934-0">A. 현재 위치를 저장하고 func로 점프</label>
+  <input type="radio" name="quiz-answer-203862" id="quiz-203862-0" value="현재 위치를 저장하고 func로 점프" data-correct="true" />
+  <label for="quiz-203862-0">현재 위치를 저장하고 func로 점프</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-964934" id="quiz-964934-1" value="B. func의 결과를 rax에 저장" data-correct="false" />
-  <label for="quiz-964934-1">B. func의 결과를 rax에 저장</label>
+  <input type="radio" name="quiz-answer-203862" id="quiz-203862-1" value="func의 결과를 rax에 저장" data-correct="false" />
+  <label for="quiz-203862-1">func의 결과를 rax에 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-964934" id="quiz-964934-2" value="C. 함수를 종료시킴" data-correct="false" />
-  <label for="quiz-964934-2">C. 함수를 종료시킴</label>
+  <input type="radio" name="quiz-answer-203862" id="quiz-203862-2" value="함수를 종료시킴" data-correct="false" />
+  <label for="quiz-203862-2">함수를 종료시킴</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-964934" id="quiz-964934-3" value="D. func를 push함" data-correct="false" />
-  <label for="quiz-964934-3">D. func를 push함</label>
+  <input type="radio" name="quiz-answer-203862" id="quiz-203862-3" value="func를 push함" data-correct="false" />
+  <label for="quiz-203862-3">func를 push함</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(964934, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(203862, false, null)">제출</button>
   </form>
-  <div id="quiz-result-964934" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-964934" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-964934', this)" data-label="해설 보기"></div>
-  <div id="toggle-964934" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-203862" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-203862" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-203862', this)" data-label="해설 보기"></div>
+  <div id="toggle-203862" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">call</code>은 현재 RIP를 스택에 저장하고, 해당 함수로 점프.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-792888">
-  <div class="quiz-message" id="quiz-message-792888" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-526735">
+  <div class="quiz-message" id="quiz-message-526735" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">10.</code> <code class="language-plaintext highlighter-rouge">ret</code> 명령어의 기능은?</p>
 
   </div>
-  <form id="quiz-form-792888" onsubmit="return false;">
+  <form id="quiz-form-526735" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-792888" id="quiz-792888-0" value="A. rax를 초기화" data-correct="false" />
-  <label for="quiz-792888-0">A. rax를 초기화</label>
+  <input type="radio" name="quiz-answer-526735" id="quiz-526735-0" value="rax를 초기화" data-correct="false" />
+  <label for="quiz-526735-0">rax를 초기화</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-792888" id="quiz-792888-1" value="B. 함수 인자를 정리" data-correct="false" />
-  <label for="quiz-792888-1">B. 함수 인자를 정리</label>
+  <input type="radio" name="quiz-answer-526735" id="quiz-526735-1" value="함수 인자를 정리" data-correct="false" />
+  <label for="quiz-526735-1">함수 인자를 정리</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-792888" id="quiz-792888-2" value="C. 스택에서 return 주소를 꺼내 복귀" data-correct="true" />
-  <label for="quiz-792888-2">C. 스택에서 return 주소를 꺼내 복귀</label>
+  <input type="radio" name="quiz-answer-526735" id="quiz-526735-2" value="스택에서 return 주소를 꺼내 복귀" data-correct="true" />
+  <label for="quiz-526735-2">스택에서 return 주소를 꺼내 복귀</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-792888" id="quiz-792888-3" value="D. 프로그램 종료" data-correct="false" />
-  <label for="quiz-792888-3">D. 프로그램 종료</label>
+  <input type="radio" name="quiz-answer-526735" id="quiz-526735-3" value="프로그램 종료" data-correct="false" />
+  <label for="quiz-526735-3">프로그램 종료</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(792888, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(526735, false, null)">제출</button>
   </form>
-  <div id="quiz-result-792888" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-792888" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-792888', this)" data-label="해설 보기"></div>
-  <div id="toggle-792888" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-526735" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-526735" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-526735', this)" data-label="해설 보기"></div>
+  <div id="toggle-526735" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">ret</code>은 call 시 push된 RIP 값을 pop해서 해당 위치로 복귀.</p>
   </div>
 </div>
@@ -1916,20 +1916,22 @@ main으로 복귀 → rax = 1234
 
 <p>(1) <code class="language-plaintext highlighter-rouge">_config.yml</code>에 <code class="language-plaintext highlighter-rouge">analytics:</code> 설정 추가</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">provider </span><span class="pi">:</span> <span class="s">google</span>
-<span class="na">google_analytics</span><span class="pi">:</span> <span class="s">G-XXXXXXXXXX</span>  <span class="c1"># GA4의 측정 ID</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">provider</span><span class="pi">:</span> <span class="s">google</span>
+<span class="na">google_analytics</span><span class="pi">:</span> <span class="s">G-XXXXXXXXXX</span> <span class="c1"># GA4의 측정 ID</span>
 </code></pre></div></div>
 
 <blockquote>
   <p><strong>주의:</strong> minimal-mistakes 테마 같은 경우 이 설정을 자동으로 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>에 삽입해줌</p>
-
 </blockquote>
 
 <h3 id="2-1-코드-수정">2-1. 코드 수정</h3>
 
 <h4 id="_includesgooglehtml">/_includes/google.html</h4>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script
+  </span><span class="na">async</span>
+  <span class="na">src=</span><span class="s">"https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"</span>
+<span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span>
   <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">||</span> <span class="p">[];</span>
   <span class="kd">function</span> <span class="nf">gtag</span><span class="p">(){</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);}</span>
@@ -1938,7 +1940,6 @@ main으로 복귀 → rax = 1234
   
   <span class="p">);</span>
 <span class="nt">&lt;/script&gt;</span>
-
 </code></pre></div></div>
 
 <p>해당 코드를 추가해줍니다.</p>
@@ -2239,13 +2240,13 @@ main으로 복귀 → rax = 1234
 
 <blockquote>
   <p>x64에서는 규칙이 통일됨 (Windows 기준):</p>
-
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">rcx</code>, <code class="language-plaintext highlighter-rouge">rdx</code>, <code class="language-plaintext highlighter-rouge">r8</code>, <code class="language-plaintext highlighter-rouge">r9</code> → 인자 전달</li>
-    <li>스택 정리는 호출자(caller)</li>
-    <li><strong>cdecl 변형</strong></li>
-  </ul>
 </blockquote>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rcx</code>, <code class="language-plaintext highlighter-rouge">rdx</code>, <code class="language-plaintext highlighter-rouge">r8</code>, <code class="language-plaintext highlighter-rouge">r9</code> → 인자 전달</li>
+  <li>스택 정리는 호출자(caller)</li>
+  <li><strong>cdecl 변형</strong></li>
+</ul>
 
 <h2 id="누가-스택을-정리하느냐--흐름-복구에-매우-중요">누가 스택을 정리하느냐 → 흐름 복구에 매우 중요</h2>
 
@@ -2264,44 +2265,45 @@ main으로 복귀 → rax = 1234
 
 <h3 id="객관식">객관식</h3>
 
-<div class="quiz-box" id="quiz-box-238517">
-  <div class="quiz-message" id="quiz-message-238517" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-915495">
+  <div class="quiz-message" id="quiz-message-915495" style="display: none;"></div>
   <div class="quiz-question">
     <p>문제 1 : 객관식 미리보기 문제입니다.</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 </code></pre></div></div>
 
   </div>
-  <form id="quiz-form-238517" onsubmit="return false;">
+  <form id="quiz-form-915495" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-238517" id="quiz-238517-0" value="1번" data-correct="false" />
-  <label for="quiz-238517-0">1번</label>
+  <input type="radio" name="quiz-answer-915495" id="quiz-915495-0" value="1번" data-correct="false" />
+  <label for="quiz-915495-0">1번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-238517" id="quiz-238517-1" value="2번" data-correct="true" />
-  <label for="quiz-238517-1">2번</label>
+  <input type="radio" name="quiz-answer-915495" id="quiz-915495-1" value="2번" data-correct="true" />
+  <label for="quiz-915495-1">2번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-238517" id="quiz-238517-2" value="3번" data-correct="false" />
-  <label for="quiz-238517-2">3번</label>
+  <input type="radio" name="quiz-answer-915495" id="quiz-915495-2" value="3번" data-correct="false" />
+  <label for="quiz-915495-2">3번</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-238517" id="quiz-238517-3" value="4번" data-correct="false" />
-  <label for="quiz-238517-3">4번</label>
+  <input type="radio" name="quiz-answer-915495" id="quiz-915495-3" value="4번" data-correct="false" />
+  <label for="quiz-915495-3">4번</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(238517, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(915495, false, null)">제출</button>
   </form>
-  <div id="quiz-result-238517" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-238517" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-238517', this)" data-label="해설 보기"></div>
-  <div id="toggle-238517" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-915495" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-915495" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-915495', this)" data-label="해설 보기"></div>
+  <div id="toggle-915495" class="toggle-body" style="display: none; max-height: 0;">
     <p>문제의 해설 보기 입니다.</p>
   </div>
 </div>
@@ -2312,26 +2314,26 @@ main으로 복귀 → rax = 1234
 
 <h3 id="주관식">주관식</h3>
 
-<div class="quiz-box" id="quiz-box-568939">
-  <div class="quiz-message" id="quiz-message-568939" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-321351">
+  <div class="quiz-message" id="quiz-message-321351" style="display: none;"></div>
   <div class="quiz-question">
     <p>test? 정답은 test</p>
 
   </div>
-  <form id="quiz-form-568939" onsubmit="return false;">
+  <form id="quiz-form-321351" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-text-input">
-  <input type="text" id="quiz-text-568939" placeholder="정답을 입력하세요" />
+  <input type="text" id="quiz-text-321351" placeholder="정답을 입력하세요" />
 </div>
 
-      <input type="hidden" id="quiz-text-answer-568939" value="test" />
+      <input type="hidden" id="quiz-text-answer-321351" value="test" />
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(568939, true, 'test')">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(321351, true, 'test')">제출</button>
   </form>
-  <div id="quiz-result-568939" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-568939" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-568939', this)" data-label="해설 보기"></div>
-  <div id="toggle-568939" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-321351" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-321351" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-321351', this)" data-label="해설 보기"></div>
+  <div id="toggle-321351" class="toggle-body" style="display: none; max-height: 0;">
     <p>test 문제 입니다.</p>
   </div>
 </div>
@@ -2345,81 +2347,89 @@ main으로 복귀 → rax = 1234
 <h3 id="assetsjsquiz-handlerjs-추가">\assets\js\quiz-handler.js 추가</h3>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">checkQuizAnswer</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">isText</span><span class="p">,</span> <span class="nx">correctTextAnswer</span> <span class="o">=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-form-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-result-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-box-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">explanationToggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-explanation-toggle-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-  
-    <span class="kd">const</span> <span class="nx">selected</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="s2">`input[name='quiz-answer-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">']:checked`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">textInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-text-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-  
-    <span class="k">if </span><span class="p">(</span><span class="nx">isText</span> <span class="o">&amp;&amp;</span> <span class="nx">textInput</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">userAnswer</span> <span class="o">=</span> <span class="nx">textInput</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span>
-      <span class="k">if </span><span class="p">(</span><span class="nx">userAnswer</span> <span class="o">===</span> <span class="dl">""</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">정답을 입력해주세요!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">);</span>
-      <span class="p">}</span>
-  
-      <span class="k">if </span><span class="p">(</span><span class="nx">userAnswer</span> <span class="o">===</span> <span class="nx">correctTextAnswer</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">✅ &lt;strong&gt;정답입니다!&lt;/strong&gt;&lt;br&gt;&lt;br&gt;</span><span class="dl">"</span><span class="p">;</span>
-        <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
-        <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">explanationToggle</span><span class="p">);</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">❌ 오답입니다</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="k">return</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-form-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-result-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-box-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">explanationToggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span>
+    <span class="s2">`quiz-explanation-toggle-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">selected</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span>
+    <span class="s2">`input[name='quiz-answer-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">']:checked`</span>
+  <span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">textInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-text-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">isText</span> <span class="o">&amp;&amp;</span> <span class="nx">textInput</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">userAnswer</span> <span class="o">=</span> <span class="nx">textInput</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">userAnswer</span> <span class="o">===</span> <span class="dl">""</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">정답을 입력해주세요!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">}</span>
-  
-    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">정답을 선택해주세요!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">);</span>
-    <span class="p">}</span>
-  
-    <span class="k">if </span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">correct</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">userAnswer</span> <span class="o">===</span> <span class="nx">correctTextAnswer</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
       <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">✅ &lt;strong&gt;정답입니다!&lt;/strong&gt;&lt;br&gt;&lt;br&gt;</span><span class="dl">"</span><span class="p">;</span>
       <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
       <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">explanationToggle</span><span class="p">);</span>
-      <span class="nx">form</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">i</span> <span class="o">=&gt;</span> <span class="nx">i</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">);</span>
-  
-      <span class="kd">const</span> <span class="nx">retryBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
-      <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">;</span>
-      <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">다시 풀기</span><span class="dl">"</span><span class="p">;</span>
-      <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">1em</span><span class="dl">"</span><span class="p">;</span>
-      <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nf">retryQuiz</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-      <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">retryBtn</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
       <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">❌ 오답입니다</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">}</span>
-  <span class="p">};</span>
-  
-  <span class="nb">window</span><span class="p">.</span><span class="nx">showMessage</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s2">`quiz-message quiz-message-</span><span class="p">${</span><span class="nx">type</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&lt;span class="quiz-message-close" onclick="this.parentNode.style.display=</span><span class="se">\'</span><span class="s1">none</span><span class="se">\'</span><span class="s1">"&gt;×&lt;/span&gt;</span><span class="dl">'</span><span class="p">;</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
-    <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
-    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
-  <span class="p">};</span>
-  
-  <span class="nb">window</span><span class="p">.</span><span class="nx">retryQuiz</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-form-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-result-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-box-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">explanationToggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-explanation-toggle-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-  
-    <span class="nx">form</span><span class="p">.</span><span class="nf">reset</span><span class="p">();</span>
-    <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
-    <span class="nx">message</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">정답을 선택해주세요!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">correct</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">✅ &lt;strong&gt;정답입니다!&lt;/strong&gt;&lt;br&gt;&lt;br&gt;</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">explanationToggle</span><span class="p">);</span>
+    <span class="nx">form</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">).</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">i</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">));</span>
+
+    <span class="kd">const</span> <span class="nx">retryBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">다시 풀기</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">marginTop</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">1em</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">retryBtn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nf">retryQuiz</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">retryBtn</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
-  
-    <span class="kd">const</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">inputs</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="nx">input</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">);</span>
-  <span class="p">};</span>
+    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nf">showMessage</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="dl">"</span><span class="s2">❌ 오답입니다</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">showMessage</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s2">`quiz-message quiz-message-</span><span class="p">${</span><span class="nx">type</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span>
+    <span class="nx">text</span> <span class="o">+</span>
+    <span class="dl">'</span><span class="s1">&lt;span class="quiz-message-close" onclick="this.parentNode.style.display=</span><span class="se">\'</span><span class="s1">none</span><span class="se">\'</span><span class="s1">"&gt;×&lt;/span&gt;</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">retryQuiz</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-form-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-result-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-message-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="s2">`quiz-box-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">explanationToggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span>
+    <span class="s2">`quiz-explanation-toggle-</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span>
+  <span class="p">);</span>
+
+  <span class="nx">form</span><span class="p">.</span><span class="nf">reset</span><span class="p">();</span>
+  <span class="nx">result</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="nx">message</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">quiz-correct</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">explanationToggle</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">inputs</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">inputs</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">input</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">));</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
 <p><br /></p>
@@ -2476,6 +2486,9 @@ main으로 복귀 → rax = 1234
 
     <span class="k">def</span> <span class="nf">build_choices_html</span><span class="p">(</span><span class="n">choices_raw</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
       <span class="n">text_answer</span> <span class="o">=</span> <span class="kp">nil</span>
+      <span class="n">site</span> <span class="o">=</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">sites</span><span class="p">.</span><span class="nf">first</span>
+      <span class="n">converter</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">find_converter_instance</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">Markdown</span><span class="p">)</span>
+
       <span class="n">html</span> <span class="o">=</span> <span class="n">choices_raw</span><span class="p">.</span><span class="nf">lines</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">).</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">l</span><span class="o">|</span> <span class="n">l</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span> <span class="p">}.</span><span class="nf">map</span><span class="p">.</span><span class="nf">with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="p">,</span> <span class="n">idx</span><span class="o">|</span>
         <span class="k">if</span> <span class="n">line</span> <span class="o">=~</span> <span class="sr">/^\-\s*\[text:\s*(.+?)\]/</span>
           <span class="n">text_answer</span> <span class="o">=</span> <span class="vg">$1</span><span class="p">.</span><span class="nf">strip</span>
@@ -2488,16 +2501,22 @@ main으로 복귀 → rax = 1234
           <span class="n">label</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="s1">'-'</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">strip</span>
           <span class="n">correct</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s2">"[correct]"</span><span class="p">)</span>
           <span class="n">clean_label</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/\s*\[correct\]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+          <span class="n">clean_label_html</span> <span class="o">=</span> <span class="n">converter</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="n">clean_label</span><span class="p">).</span><span class="nf">strip</span>
+          <span class="n">clean_label_html</span> <span class="o">=</span> <span class="n">clean_label_html</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^&lt;p&gt;/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/&lt;\/p&gt;$/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+
+
           <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
             &lt;div class="quiz-choice"&gt;
               &lt;input type="radio" name="quiz-answer-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">" id="quiz-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">-</span><span class="si">#{</span><span class="n">idx</span><span class="si">}</span><span class="sh">" value="</span><span class="si">#{</span><span class="n">clean_label</span><span class="si">}</span><span class="sh">" data-correct="</span><span class="si">#{</span><span class="n">correct</span><span class="si">}</span><span class="sh">"&gt;
-              &lt;label for="quiz-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">-</span><span class="si">#{</span><span class="n">idx</span><span class="si">}</span><span class="sh">"&gt;</span><span class="si">#{</span><span class="n">clean_label</span><span class="si">}</span><span class="sh">&lt;/label&gt;
+              &lt;label for="quiz-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">-</span><span class="si">#{</span><span class="n">idx</span><span class="si">}</span><span class="sh">"&gt;</span><span class="si">#{</span><span class="n">clean_label_html</span><span class="si">}</span><span class="sh">&lt;/label&gt;
             &lt;/div&gt;
 </span><span class="no">          HTML</span>
         <span class="k">end</span>
       <span class="k">end</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
       <span class="p">[</span><span class="n">html</span><span class="p">,</span> <span class="n">text_answer</span><span class="p">]</span>
     <span class="k">end</span>
+
 
     <span class="k">def</span> <span class="nf">build_explanation_toggle_html</span><span class="p">(</span><span class="n">explanation_html</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
       <span class="n">toggle_id</span> <span class="o">=</span> <span class="s2">"toggle-</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">"</span>
@@ -2546,7 +2565,6 @@ main으로 복귀 → rax = 1234
   <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'quiz'</span><span class="p">,</span> <span class="no">QuizBlock</span><span class="p">)</span>
   <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'explanation'</span><span class="p">,</span> <span class="no">ExplanationBlock</span><span class="p">)</span>
 <span class="k">end</span>
-
 </code></pre></div></div>
 
 <p><br /></p>
@@ -2590,7 +2608,7 @@ main으로 복귀 → rax = 1234
       <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">0</span><span class="mi">.97</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
-  
+
   <span class="nc">.quiz-result</span> <span class="nt">button</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"button"</span><span class="o">]</span> <span class="p">{</span>
     <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#555</span><span class="p">;</span>
     <span class="nl">color</span><span class="p">:</span> <span class="mh">#fff</span><span class="p">;</span>
@@ -2606,7 +2624,6 @@ main으로 복귀 → rax = 1234
       <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#777</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
-
 <span class="p">}</span>
 
 <span class="nc">.quiz-choice</span> <span class="p">{</span>
@@ -2625,7 +2642,7 @@ main으로 복귀 → rax = 1234
     <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
     <span class="nl">transition</span><span class="p">:</span> <span class="n">color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="n">ease</span><span class="p">;</span>
     <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-    
+
     <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
       <span class="nl">color</span><span class="p">:</span> <span class="mh">#9ecaff</span><span class="p">;</span>
     <span class="p">}</span>
@@ -2656,7 +2673,6 @@ main으로 복귀 → rax = 1234
     <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.2em</span><span class="p">;</span>
     <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
   <span class="p">}</span>
-
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -2668,7 +2684,7 @@ main으로 복귀 → rax = 1234
 
 <h5 id="_layoutsdefaulthtml-에서">_layouts\default.html 에서</h5>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;script src="/assets/js/quiz-handler.js"&gt;&lt;/script&gt;</code>  추가</p>
+<p><code class="language-plaintext highlighter-rouge">&lt;script src="/assets/js/quiz-handler.js"&gt;&lt;/script&gt;</code> 추가</p>
 
 <p>예시:</p>
 
@@ -2721,7 +2737,7 @@ main으로 복귀 → rax = 1234
 <h5 id="_includesquiz-formhtml-추가">_includes\quiz-form.html 추가</h5>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.use_quiz %}
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/quiz-handler.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/quiz-handler.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 {% endif %}
 </code></pre></div></div>
 
@@ -2784,11 +2800,14 @@ main으로 복귀 → rax = 1234
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% quiz ”
 문제 1 : 객관식 미리보기 문제입니다.
+
 <span class="p">```</span><span class="nl">
 </span>문제의 테스트용 코드 블럭 입니다. 정답은 2번
 <span class="p">```</span>
+
 " %}
-<span class="p">-</span> 1번
+<span class="p">
+-</span> 1번
 <span class="p">-</span> 2번 [correct]
 <span class="p">-</span> 3번
 <span class="p">-</span> 4번
@@ -2804,7 +2823,8 @@ main으로 복귀 → rax = 1234
 <h4 id="주관식-예시">주관식 예시:</h4>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% quiz "test? 정답은 test" %}
-<span class="p">-</span> [text: test]
+<span class="p">
+-</span> [text: test]
 
 {% explanation %}
 test 문제 입니다.
@@ -2876,6 +2896,7 @@ test 문제 입니다.
 </code></pre></div></div>
 
 <h3 id="gemfile-해당-코드-추가">Gemfile 해당 코드 추가</h3>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem 'nokogiri'
 </code></pre></div></div>
 
@@ -2916,6 +2937,7 @@ test 문제 입니다.
   <div class="reveal" id="reveal1">
     <div class="slides">
       
+
 <section>
 <h2>Reveal.js 소개</h2>
 <p>Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!</p>
@@ -2981,28 +3003,28 @@ transition: "slide"
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
     <span class="k">class</span> <span class="nc">RevealBlock</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Block</span>
       <span class="vc">@@counter</span> <span class="o">=</span> <span class="mi">0</span>
-  
+
       <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">markup</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
         <span class="k">super</span>
         <span class="vi">@params</span> <span class="o">=</span> <span class="p">{}</span>
-  
+
         <span class="n">markup</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="sr">/(\w+)=["']?(.*?)["']?(?= |$)/</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
           <span class="vi">@params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="nf">downcase</span>
         <span class="k">end</span>
       <span class="k">end</span>
-  
+
       <span class="k">def</span> <span class="nf">to_js_bool</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
         <span class="k">return</span> <span class="s2">"true"</span> <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s2">"true"</span>
         <span class="k">return</span> <span class="s2">"false"</span> <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s2">"false"</span>
         <span class="s2">"</span><span class="se">\"</span><span class="si">#{</span><span class="n">val</span><span class="si">}</span><span class="se">\"</span><span class="s2">"</span>
       <span class="k">end</span>
-  
+
       <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
         <span class="n">content</span> <span class="o">=</span> <span class="k">super</span>
         <span class="vc">@@counter</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">uid</span> <span class="o">=</span> <span class="s2">"reveal</span><span class="si">#{</span><span class="vc">@@counter</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">slide_count</span> <span class="o">=</span> <span class="n">content</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="sr">/&lt;section&gt;/i</span><span class="p">).</span><span class="nf">size</span>
-  
+
         <span class="n">js_options</span> <span class="o">=</span> <span class="p">{</span>
           <span class="s2">"embedded"</span> <span class="o">=&gt;</span> <span class="s2">"true"</span><span class="p">,</span>
           <span class="s2">"hash"</span> <span class="o">=&gt;</span> <span class="s2">"false"</span><span class="p">,</span>
@@ -3012,7 +3034,7 @@ transition: "slide"
           <span class="s2">"loop"</span> <span class="o">=&gt;</span> <span class="n">to_js_bool</span><span class="p">(</span><span class="vi">@params</span><span class="p">[</span><span class="s2">"loop"</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"false"</span><span class="p">),</span>
           <span class="s2">"transition"</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="se">\"</span><span class="si">#{</span><span class="vi">@params</span><span class="p">[</span><span class="s2">"transition"</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"slide"</span><span class="si">}</span><span class="se">\"</span><span class="s2">"</span>
         <span class="p">}.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">"</span> <span class="p">}.</span><span class="nf">join</span><span class="p">(</span><span class="s2">",</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-  
+
         <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
           &lt;div class="reveal-embedded" id="</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">_container"&gt;
             &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css"&gt;
@@ -3036,40 +3058,40 @@ transition: "slide"
                 font-weight: bold;
               }
             &lt;/style&gt;
-  
+
             &lt;div class="reveal" id="</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">"&gt;
               &lt;div class="slides"&gt;
                 </span><span class="si">#{</span><span class="n">content</span><span class="si">}</span><span class="sh">
               &lt;/div&gt;
               &lt;div class="custom-slide-number" id="</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">_slide_number"&gt;1 / </span><span class="si">#{</span><span class="n">slide_count</span><span class="si">}</span><span class="sh">&lt;/div&gt;
             &lt;/div&gt;
-  
+
             &lt;script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"&gt;&lt;/script&gt;
             &lt;script&gt;
               document.addEventListener('DOMContentLoaded', () =&gt; {
                 const el = document.getElementById("</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">");
                 if (!window._revealInstances) window._revealInstances = {};
-  
+
                 const deck = new Reveal(el, {
                   </span><span class="si">#{</span><span class="n">js_options</span><span class="si">}</span><span class="sh">
                 });
-  
+
                 deck.initialize().then(() =&gt; {
                   window._revealInstances["</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">"] = deck;
-  
+
                   const indicator = document.getElementById("</span><span class="si">#{</span><span class="n">uid</span><span class="si">}</span><span class="sh">_slide_number");
                   const total = </span><span class="si">#{</span><span class="n">slide_count</span><span class="si">}</span><span class="sh">;
                   deck.slide(0); // Always start at slide 0
-  
+
                   const updateLabel = (index) =&gt; {
                     indicator.textContent = (index + 1) + " / " + total;
                   };
-  
+
                   updateLabel(0);
                   deck.on("slidechanged", e =&gt; updateLabel(e.indexh));
                 });
               });
-  
+
               window.goToRevealSlide = function(id, index) {
                 const instance = window._revealInstances?.[id];
                 if (instance) instance.slide(index);
@@ -3080,14 +3102,15 @@ transition: "slide"
       <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span>
-  
+
   <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s2">"reveal"</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">RevealBlock</span><span class="p">)</span>
-  
+
 </code></pre></div></div>
 
 <h3 id="예시-코드">예시 코드</h3>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% reveal %}
+
 <span class="nt">&lt;section&gt;</span>
 <span class="nt">&lt;h2&gt;</span>Reveal.js 소개<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;p&gt;</span>Jekyll 블로그에서 슬라이드 프레젠테이션을 할 수 있어요!<span class="nt">&lt;/p&gt;</span>
@@ -3111,26 +3134,35 @@ transition: "slide"
 
 <h3 id="_layoutsslidehtml-추가">/_layouts/slide.html 추가</h3>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;title&gt;</span>{{ page.title }}<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
 
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css"</span> <span class="na">id=</span><span class="s">"theme"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span>
+      <span class="na">rel=</span><span class="s">"stylesheet"</span>
+      <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css"</span>
+    <span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span>
+      <span class="na">rel=</span><span class="s">"stylesheet"</span>
+      <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css"</span>
+      <span class="na">id=</span><span class="s">"theme"</span>
+    <span class="nt">/&gt;</span>
 
     <span class="nt">&lt;style&gt;</span>
-      <span class="nt">body</span> <span class="p">{</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
-      <span class="nc">.reveal</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5rem</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nt">body</span> <span class="p">{</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nc">.reveal</span> <span class="p">{</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5rem</span><span class="p">;</span>
+      <span class="p">}</span>
     <span class="nt">&lt;/style&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"reveal"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"slides"</span><span class="nt">&gt;</span>
-        {{ content }}
-      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"slides"</span><span class="nt">&gt;</span>{{ content }}<span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
@@ -3138,24 +3170,25 @@ transition: "slide"
       <span class="nx">Reveal</span><span class="p">.</span><span class="nf">initialize</span><span class="p">({</span>
         <span class="na">hash</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="na">slideNumber</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="na">transition</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fade</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">loop</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="na">transition</span><span class="p">:</span> <span class="dl">"</span><span class="s2">fade</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">loop</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
       <span class="p">});</span>
-    
-      <span class="nx">Reveal</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">slidechanged</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+
+      <span class="nx">Reveal</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">slidechanged</span><span class="dl">"</span><span class="p">,</span> <span class="nf">function </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">const</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">indexh</span><span class="p">;</span>
         <span class="kd">const</span> <span class="nx">total</span> <span class="o">=</span> <span class="nx">Reveal</span><span class="p">.</span><span class="nf">getTotalSlides</span><span class="p">();</span>
-    
+
         <span class="kd">const</span> <span class="nx">isLastSlide</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">===</span> <span class="nx">total</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
         <span class="kd">const</span> <span class="nx">isManual</span> <span class="o">=</span> <span class="o">!</span><span class="nx">Reveal</span><span class="p">.</span><span class="nf">isAutoSliding</span><span class="p">();</span>
-    
+
         <span class="k">if </span><span class="p">(</span><span class="nx">isLastSlide</span> <span class="o">&amp;&amp;</span> <span class="nx">isManual</span><span class="p">)</span> <span class="p">{</span>
           <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">;</span>
         <span class="p">}</span>
       <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>    
+    <span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
+
 </code></pre></div></div>
 
 <p><br /></p>
@@ -3164,17 +3197,10 @@ transition: "slide"
 
 <p>만약 기능을 제외하고싶다면 해당 코드를 지우시면 됩니다:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Reveal.on('slidechanged', function(event) {
-    const current = event.indexh;
-    const total = Reveal.getTotalSlides();
-
-    const isLastSlide = current === total - 1;
-    const isManual = !Reveal.isAutoSliding();
-
-    if (isLastSlide <span class="err">&amp;&amp;</span> isManual) {
-      window.location.href = "/";
-    }
-  });
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Reveal.on('slidechanged', function(event) { const current = event.indexh; const
+total = Reveal.getTotalSlides(); const isLastSlide = current === total - 1;
+const isManual = !Reveal.isAutoSliding(); if (isLastSlide <span class="err">&amp;&amp;</span> isManual) {
+window.location.href = "/"; } });
 </code></pre></div></div>
 
 <p>저는 해당 코드를 local에서 사용하기 위해 해당 코드 파일을 다운 받아 해당 링크들을 파일로 대체 했습니다!
@@ -3515,7 +3541,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <span class="nt">&lt;div</span> <span class="na">markdown=</span><span class="s">"1"</span><span class="nt">&gt;</span>
 
 <span class="p">```</span><span class="nl">markdown
-</span>  코드
+</span>코드
 <span class="p">```</span>
 
 -- 내용 --
@@ -3526,6 +3552,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/details&gt;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h3 id="기본-토글">기본 토글:</h3>
@@ -3534,7 +3561,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <summary>toggle 펼쳐보기</summary>
 <div>
 
-    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>코드
 </code></pre></div>    </div>
 
     <p>– 내용 –</p>
@@ -3562,15 +3589,15 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
           <span class="vi">@extra_class</span> <span class="o">=</span> <span class="s2">""</span>
         <span class="k">end</span>
       <span class="k">end</span>
-  
+
       <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
         <span class="n">site</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">registers</span><span class="p">[</span><span class="ss">:site</span><span class="p">]</span>
         <span class="n">converter</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">find_converter_instance</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">Markdown</span><span class="p">)</span>
         <span class="n">content</span> <span class="o">=</span> <span class="n">converter</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="k">super</span><span class="p">)</span>
-      
+
         <span class="nb">id</span> <span class="o">=</span> <span class="s2">"toggle-</span><span class="si">#{</span><span class="nb">rand</span><span class="p">(</span><span class="mi">36</span><span class="o">**</span><span class="mi">6</span><span class="p">).</span><span class="nf">to_s</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">label</span> <span class="o">=</span> <span class="vi">@label</span><span class="p">.</span><span class="nf">strip</span>
-      
+
         <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
           &lt;div class="toggle"&gt;
             &lt;div class="toggle-label </span><span class="si">#{</span><span class="vi">@extra_class</span><span class="si">}</span><span class="sh">" onclick="toggleTextContent('</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="sh">', this)" data-label="</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sh">"&gt;
@@ -3580,48 +3607,50 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
             &lt;/div&gt;
           &lt;/div&gt;
 </span><span class="no">        HTML</span>
-      <span class="k">end</span>      
+      <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span>
-  
+
   <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">ToggleText</span><span class="p">)</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h2 id="_includestoggle-scripthtml-추가">_includes\toggle-script.html 추가</h2>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">DOMContentLoaded</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.toggle-label</span><span class="dl">'</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">labelEl</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="kd">const</span> <span class="nx">baseText</span> <span class="o">=</span> <span class="nx">labelEl</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">label</span><span class="p">;</span>
-            <span class="nx">labelEl</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">▶ </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">baseText</span><span class="p">;</span>
-          <span class="p">});</span>
-    <span class="p">});</span>
-    
-    <span class="kd">function</span> <span class="nf">toggleTextContent</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">labelEl</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-      <span class="kd">const</span> <span class="nx">isExpanded</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">expanded</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">DOMContentLoaded</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nf">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.toggle-label</span><span class="dl">"</span><span class="p">).</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">labelEl</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="kd">const</span> <span class="nx">baseText</span> <span class="o">=</span> <span class="nx">labelEl</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">label</span><span class="p">;</span>
-    
-      <span class="nx">labelEl</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isExpanded</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">▶ </span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">▼ </span><span class="dl">'</span><span class="p">)</span> <span class="o">+</span> <span class="nx">baseText</span><span class="p">;</span>
-    
-      <span class="k">if </span><span class="p">(</span><span class="nx">isExpanded</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">expanded</span><span class="dl">'</span><span class="p">);</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxHeight</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0px</span><span class="dl">'</span><span class="p">;</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">expanded</span><span class="dl">'</span><span class="p">);</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
-        <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxHeight</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">px</span><span class="dl">'</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>    
+      <span class="nx">labelEl</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">▶ </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">baseText</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="kd">function</span> <span class="nf">toggleTextContent</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">labelEl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">isExpanded</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="dl">"</span><span class="s2">expanded</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">baseText</span> <span class="o">=</span> <span class="nx">labelEl</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">label</span><span class="p">;</span>
+
+    <span class="nx">labelEl</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isExpanded</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">▶ </span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">▼ </span><span class="dl">"</span><span class="p">)</span> <span class="o">+</span> <span class="nx">baseText</span><span class="p">;</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">isExpanded</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="dl">"</span><span class="s2">expanded</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxHeight</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">0px</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">expanded</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">maxHeight</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h2 id="_layoutsdefaulthtml-수정">_layouts\default.html 수정</h2>
 
-<p><code class="language-plaintext highlighter-rouge">{% include toggle-script.html %}</code>  해당 코드 추가해줘야 함.</p>
+<p><code class="language-plaintext highlighter-rouge">{% include toggle-script.html %}</code> 해당 코드 추가해줘야 함.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 ---
@@ -3662,6 +3691,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h2 id="_sassminimal-mistakes_customscss-추가">_sass\minimal-mistakes_custom.scss 추가</h2>
@@ -3674,7 +3704,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
   <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
   <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
   <span class="na">user-select</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="mh">#FFF</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="mh">#fff</span><span class="p">;</span>
   <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5em</span><span class="p">;</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
   <span class="nl">transition</span><span class="p">:</span> <span class="n">all</span> <span class="m">0</span><span class="mi">.2s</span> <span class="n">ease</span><span class="p">;</span>
@@ -3683,9 +3713,9 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <span class="p">}</span>
 
 <span class="nc">.toggle-label</span><span class="nd">:hover</span> <span class="p">{</span>
-  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>  
+  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
   <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#333333</span><span class="p">;</span>
-  <span class="nl">box-shadow</span><span class="p">:</span> <span class="nb">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">3px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="mi">.1</span><span class="p">);</span>
+  <span class="nl">box-shadow</span><span class="p">:</span> <span class="nb">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">3px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.1</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nc">.toggle-label.h1</span><span class="o">,</span>
@@ -3695,16 +3725,25 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
   <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span> <span class="o">!</span><span class="n">important</span><span class="p">;</span>
   <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.3em</span> <span class="o">!</span><span class="n">important</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nc">.toggle-label.h1</span> <span class="p">{</span> <span class="k">@extend</span> <span class="nt">h1</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.toggle-label.h2</span> <span class="p">{</span> <span class="k">@extend</span> <span class="nt">h2</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.toggle-label.h3</span> <span class="p">{</span> <span class="k">@extend</span> <span class="nt">h3</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.toggle-label.h4</span> <span class="p">{</span> <span class="k">@extend</span> <span class="nt">h4</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.toggle-label.h1</span> <span class="p">{</span>
+  <span class="k">@extend</span> <span class="nt">h1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.toggle-label.h2</span> <span class="p">{</span>
+  <span class="k">@extend</span> <span class="nt">h2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.toggle-label.h3</span> <span class="p">{</span>
+  <span class="k">@extend</span> <span class="nt">h3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.toggle-label.h4</span> <span class="p">{</span>
+  <span class="k">@extend</span> <span class="nt">h4</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h2 id="_sassminimal-mistakesscss-수정">_sass\minimal-mistakes.scss 수정</h2>
 
-<p><code class="language-plaintext highlighter-rouge">@import "minimal-mistakes/custom";</code>  해당 코드 추가해줘야 함.</p>
+<p><code class="language-plaintext highlighter-rouge">@import "minimal-mistakes/custom";</code> 해당 코드 추가해줘야 함.</p>
 
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Copyright comment */</span>
 <span class="k">@import</span> <span class="s2">"minimal-mistakes/copyright"</span><span class="p">;</span>
@@ -3747,6 +3786,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <span class="k">@import</span> <span class="s2">"minimal-mistakes/sidebar"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"minimal-mistakes/print"</span><span class="p">;</span>
 </code></pre></div></div>
+
 <p><br /></p>
 
 <h3 id="toggle-tag-사용법">toggle tag 사용법</h3>
@@ -3754,10 +3794,12 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% toggle 클릭해서 보기1 %}
 
 이 안에 접히는 내용이 들어갑니다.
+
 <span class="p">```</span><span class="nl">
 </span>  코드 내용
 <span class="p">```</span>
-<span class="p">-</span> 리스트도 가능
+<span class="p">
+-</span> 리스트도 가능
 <span class="p">-</span> 코드도 가능
 
 {% endtoggle %}
@@ -3765,10 +3807,12 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 {% toggle 클릭해서 보기2 class="h3" %}
 
 이 안에 접히는 내용이 들어갑니다.
+
 <span class="p">```</span><span class="nl">
 </span>  코드 내용
 <span class="p">```</span>
-<span class="p">-</span> 리스트도 가능
+<span class="p">
+-</span> 리스트도 가능
 <span class="p">-</span> 코드도 가능
 
 {% endtoggle %}
@@ -3777,13 +3821,15 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ucv7l1', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-9injz1', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-ucv7l1" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-9injz1" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>코드 내용
 </code></pre></div></div>
+
 <ul>
   <li>리스트도 가능</li>
   <li>코드도 가능</li>
@@ -3795,13 +3841,15 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-6ib76j', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-og8e5s', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-6ib76j" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-og8e5s" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  코드 내용
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>코드 내용
 </code></pre></div></div>
+
 <ul>
   <li>리스트도 가능</li>
   <li>코드도 가능</li>

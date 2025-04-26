@@ -322,7 +322,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습">
-    <meta itemprop="description" content="Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.전 편에서 Assembly 기본 명령어 - Windows NASM 실습 가이드 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.이번 편에서는 함수/스택 호출 구조, 스택 프레임에 대해 학습을 진행할 것입니다.">
+    <meta itemprop="description" content="Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.전 편에서 Assembly 기본 명령어 - Windows NASM 실습 가이드 에서 조건 분기문과 loop 에 대해 학습을 진행했습니다.이번 편에서는 함수/스택 호출 구조, 스택 프레임에 대해 학습을 진행할 것입니다.">
     <meta itemprop="datePublished" content="2025-04-25T00:00:00+09:00">
     
 
@@ -349,7 +349,7 @@
           </aside>
         
         <p>Assembly 실습 시 자주 등장하는 함수 호출 구조, 스택프레임 구성 방식, RBP와 RSP의 역할, 그리고 지역 변수 접근 방법까지 NASM 기반 Windows 환경에서 상세하게 실습합니다.
-전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해  학습을 진행했습니다.
+전 편에서 <strong>Assembly 기본 명령어 - Windows NASM 실습 가이드</strong> 에서 조건 분기문과 loop 에 대해 학습을 진행했습니다.
 이번 편에서는 함수/스택 호출 구조, 스택 프레임에 대해 학습을 진행할 것입니다.</p>
 
 <h2 id="목표-요약">목표 요약</h2>
@@ -360,7 +360,6 @@
 실제로는 스택에 복귀 주소를 저장한 뒤 함수로 점프하고,</p>
 
   <p>끝나면 <strong>복귀 주소로 돌아오는 것(ret)</strong>.</p>
-
 </blockquote>
 
 <h2 id="함수-호출의-흐름-핵심">함수 호출의 흐름 핵심</h2>
@@ -763,7 +762,7 @@
     <span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span> <span class="mi">8</span>       <span class="c1">; 지역 변수 공간 확보</span>
 
     <span class="c1">; 실행 중...</span>
-    
+
     <span class="nf">mov</span> <span class="nb">rsp</span><span class="p">,</span> <span class="nb">rbp</span>     <span class="c1">; 스택 복구</span>
     <span class="nf">pop</span> <span class="nb">rbp</span>          <span class="c1">; 이전 프레임 복구</span>
     <span class="nf">ret</span>              <span class="c1">; return address로 복귀</span>
@@ -804,7 +803,6 @@
   <p>rsp는 실제 스택의 top이고,</p>
 
   <p><code class="language-plaintext highlighter-rouge">rbp</code>는 <strong>기준점을 잡기 위한 고정된 위치</strong>다.</p>
-
 </blockquote>
 
 <p>함수를 호출할 때마다 이 기준을 만들고,</p>
@@ -988,8 +986,8 @@ main으로 복귀 → rax = 1234
     <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span><span class="c1">; for correct debugging</span>
     <span class="nf">call</span> <span class="nv">my_func</span>        <span class="c1">; my_func 실행</span>
     <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
-    <span class="nf">ret</span>                 <span class="c1">; 종료      </span>
-		
+    <span class="nf">ret</span>                 <span class="c1">; 종료</span>
+
 <span class="nl">my_func:</span>
     <span class="nf">push</span> <span class="nb">rbp</span>            <span class="c1">; 이전 프레임 저장</span>
     <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>        <span class="c1">; 현재 프레임 기준 설정</span>
@@ -1122,7 +1120,7 @@ main으로 복귀 → rax = 1234
     <span class="nf">call</span> <span class="nv">add_func</span>        <span class="c1">; rax ← a + b</span>
     <span class="nf">xor</span> <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>
     <span class="nf">ret</span>
-    
+
 <span class="nl">add_func:</span>
     <span class="nf">push</span> <span class="nb">rbp</span>
     <span class="nf">mov</span> <span class="nb">rbp</span><span class="p">,</span> <span class="nb">rsp</span>

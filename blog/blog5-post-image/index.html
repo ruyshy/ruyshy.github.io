@@ -322,7 +322,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="GitHub Blog 이미지 경로 설정 - Jekyll 블로그 이미지 관리법">
-    <meta itemprop="description" content="Jekyll 기반 GitHub 블로그에서 이미지를 체계적으로 관리하고 싶다면,게시글 별 이미지 폴더 구조를 사용하는 것이 좋습니다. 이 글에서는 post-image.html 인클루드를 만들어, 자동으로 포스트 경로에 맞는 이미지 경로를 지정하는 방법을 소개합니다.">
+    <meta itemprop="description" content="Jekyll 기반 GitHub 블로그에서 이미지를 체계적으로 관리하고 싶다면,게시글 별 이미지 폴더 구조를 사용하는 것이 좋습니다.이 글에서는 post-image.html 인클루드를 만들어,자동으로 포스트 경로에 맞는 이미지 경로를 지정하는 방법을 소개합니다.">
     <meta itemprop="datePublished" content="2025-04-16T00:00:00+09:00">
     
 
@@ -349,8 +349,8 @@
           </aside>
         
         <p>Jekyll 기반 GitHub 블로그에서 이미지를 체계적으로 관리하고 싶다면,<br />
-<strong>게시글 별 이미지 폴더 구조</strong>를 사용하는 것이 좋습니다. <br />
-이 글에서는 <code class="language-plaintext highlighter-rouge">post-image.html</code> 인클루드를 만들어, <br />
+<strong>게시글 별 이미지 폴더 구조</strong>를 사용하는 것이 좋습니다.<br />
+이 글에서는 <code class="language-plaintext highlighter-rouge">post-image.html</code> 인클루드를 만들어,<br />
 자동으로 포스트 경로에 맞는 이미지 경로를 지정하는 방법을 소개합니다.</p>
 
 <h2 id="github-blog-image-path-설정하기">GitHub Blog Image Path 설정하기</h2>
@@ -359,11 +359,14 @@
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c">&lt;!-- post-image.html --&gt;</span>
-{% assign parts = page.path | split: '/' %}
-{% assign category = parts[1] %}
-{% assign slug = parts[2] | remove: '.md' %}
+{% assign parts = page.path | split: '/' %} {% assign category = parts[1] %} {%
+assign slug = parts[2] | remove: '.md' %}
 
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/{{ category }}/{{ slug }}/{{ include.name }}"</span> <span class="na">alt=</span><span class="s">"{{ include.alt | default: include.name }}"</span> <span class="na">style=</span><span class="s">"max-width: 100%;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;img</span>
+  <span class="na">src=</span><span class="s">"/assets/images/{{ category }}/{{ slug }}/{{ include.name }}"</span>
+  <span class="na">alt=</span><span class="s">"{{ include.alt | default: include.name }}"</span>
+  <span class="na">style=</span><span class="s">"max-width: 100%;"</span>
+<span class="nt">/&gt;</span>
 
 </code></pre></div></div>
 
@@ -373,7 +376,7 @@
   <li><code class="language-plaintext highlighter-rouge">\_posts\blog\2025-04-10-blog-start.md</code> 라는 포스트가 있습니다.</li>
   <li><code class="language-plaintext highlighter-rouge">\assets\images\2025-04-10-blog-start</code> 폴더를 생성합니다.</li>
   <li>이 폴더에 게시글에 넣을 이미지를 저장합니다.</li>
-  <li>예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다. <br />
+  <li>예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.<br />
 (현재 blog라는 카테고리를 사용중, 다음 작성글에서 카테고리를 다룰 예정입니다.)</li>
 </ol>
 
@@ -394,6 +397,7 @@
 <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Blog</span><span class="nv"> </span><span class="s">Start"</span>
 <span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-10</span>
 <span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">GitHubBlog</span><span class="pi">]</span>
+
 <span class="nn">---</span>
 
 <span class="gh"># jekyll 테마 GitHub Blog 시작하기</span>

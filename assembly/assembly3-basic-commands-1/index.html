@@ -509,6 +509,7 @@ pop하면 rsp 다시 올라간다.</p>
 <p>cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)</p>
 
 <h3 id="2-8-기본-실습-문제1">2-8. 기본 실습 문제1</h3>
+
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nf">rax</span><span class="err">에</span> <span class="mi">10</span> <span class="err">저장</span>
 	<span class="nf">rbx</span><span class="err">에</span> <span class="mi">20</span> <span class="err">저장</span>
     <span class="nf">rcx</span><span class="err">에</span> <span class="mi">5</span> <span class="err">저장</span>
@@ -517,7 +518,7 @@ pop하면 rsp 다시 올라간다.</p>
     <span class="nf">rax</span><span class="err">를</span> <span class="err">스택에</span> <span class="err">저장</span>
     <span class="nf">rbx</span><span class="err">를</span> <span class="err">스택에</span> <span class="err">저장</span>
 	<span class="err">스택에서</span> <span class="nf">rbx</span> <span class="err">복구</span>
-	<span class="err">스택에서</span> <span class="nf">rax</span> <span class="err">복구</span>        
+	<span class="err">스택에서</span> <span class="nf">rax</span> <span class="err">복구</span>
 </code></pre></div></div>
 
 <blockquote>
@@ -525,6 +526,7 @@ pop하면 rsp 다시 올라간다.</p>
 </blockquote>
 
 <p>기본 코드 골격:</p>
+
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
 
@@ -542,9 +544,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-lciuwe', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-alsgtw', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-lciuwe" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-alsgtw" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -622,14 +624,14 @@ rax = 10</p>
   <li>
     <p>기본 실습 문제 풀기 기본 환경 코드:</p>
 
-    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">default</span> <span class="nv">rel</span>
- <span class="nf">global</span> <span class="nv">main</span>
-    
- <span class="nf">section</span> <span class="nv">.text</span>
- <span class="nl">main:</span>
-     <span class="c1">; 여기에 코드 작성</span>
- <span class="nl">.end:</span>
-     <span class="nf">jmp</span> <span class="nv">.end</span>   <span class="c1">; 무한 루프 (프로그램 강제 정지용)</span>
+    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
+<span class="nf">global</span> <span class="nv">main</span>
+
+<span class="nf">section</span> <span class="nv">.text</span>
+<span class="nl">main:</span>
+    <span class="c1">; 여기에 코드 작성</span>
+<span class="nl">.end:</span>
+    <span class="nf">jmp</span> <span class="nv">.end</span>   <span class="c1">; 무한 루프 (프로그램 강제 정지용)</span>
 </code></pre></div>    </div>
   </li>
   <li>Assembly에서 “루프(반복)” 만들기
@@ -643,9 +645,9 @@ rax = 10</p>
       <li>
         <p>무한 루프 (종료 조건 없음)</p>
 
-        <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nl">.loop:</span>
-     <span class="c1">; (여기에 반복할 코드)</span>
-     <span class="nf">jmp</span> <span class="nv">.loop</span>
+        <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">.loop:</span>
+    <span class="c1">; (여기에 반복할 코드)</span>
+    <span class="nf">jmp</span> <span class="nv">.loop</span>
 </code></pre></div>        </div>
 
         <ol>
@@ -659,14 +661,14 @@ rax = 10</p>
   <li>
     <p>카운터 기반 루프 (조건부 반복)</p>
 
-    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">5</span>        <span class="c1">; 반복할 횟수 5회</span>
-    
- <span class="nl">.loop:</span>
-     <span class="c1">; (여기에 반복할 코드)</span>
-    
-     <span class="nf">dec</span> <span class="nb">rcx</span>        <span class="c1">; rcx = rcx - 1</span>
-     <span class="nf">cmp</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">0</span>
-     <span class="nf">jne</span> <span class="nv">.loop</span>      <span class="c1">; rcx != 0 이면 다시 반복</span>
+    <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">5</span>        <span class="c1">; 반복할 횟수 5회</span>
+
+<span class="nl">.loop:</span>
+    <span class="c1">; (여기에 반복할 코드)</span>
+
+    <span class="nf">dec</span> <span class="nb">rcx</span>        <span class="c1">; rcx = rcx - 1</span>
+    <span class="nf">cmp</span> <span class="nb">rcx</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="nf">jne</span> <span class="nv">.loop</span>      <span class="c1">; rcx != 0 이면 다시 반복</span>
 </code></pre></div>    </div>
 
     <ol>
@@ -677,10 +679,10 @@ rax = 10</p>
       <li>
         <p>C로 치면:</p>
 
-        <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nf">int</span> <span class="nv">i</span> <span class="err">=</span> <span class="mi">5</span><span class="c1">;</span>
- <span class="nf">while</span> <span class="p">(</span><span class="nv">i</span><span class="o">--</span><span class="p">)</span> <span class="err">{</span>
-     <span class="o">//</span> <span class="err">반복</span>
- <span class="err">}</span>
+        <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">int</span> <span class="nv">i</span> <span class="err">=</span> <span class="mi">5</span><span class="c1">;</span>
+<span class="nf">while</span> <span class="p">(</span><span class="nv">i</span><span class="o">--</span><span class="p">)</span> <span class="err">{</span>
+    <span class="o">//</span> <span class="err">반복</span>
+<span class="err">}</span>
 </code></pre></div>        </div>
       </li>
     </ol>
@@ -728,23 +730,23 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-rl0kr4', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-hqcwcq', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-rl0kr4" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-hqcwcq" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
-  <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code>   ;mov 명렁어로 rax 에 10을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">mov rbx, 20</code>   ;mov 명령어로 rbx 에 20을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">add rax, rbx</code>   ;add 명령어로 rax 와 rbx 덧셈 연산 후, rax에 값을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">push rax</code>   ; rax 값을 push = stack에 rax 값을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">mov rax 0</code>   ; rax 값에 0을 저장</li>
-  <li><code class="language-plaintext highlighter-rouge">pop rax</code>   ; stack 에서 이전에 저장한 rax(30)을 rax로 복구 = stack에서 rax값을 넣기</li>
-  <li><code class="language-plaintext highlighter-rouge">cmp rax, 30</code>   ;rax값 과 30을 비교</li>
-  <li><code class="language-plaintext highlighter-rouge">je .end</code>   ;<code class="language-plaintext highlighter-rouge">cmp</code> ➔ Zero Flag(ZF) 세팅, <code class="language-plaintext highlighter-rouge">je</code> ➔ ZF가 1이면 점프 (== 같을 때 점프)</li>
-  <li><code class="language-plaintext highlighter-rouge">.loop:</code>   ;루프문</li>
-  <li><code class="language-plaintext highlighter-rouge">jmp .loop</code>   ;(틀릴 경우 무한 루프)</li>
-  <li><code class="language-plaintext highlighter-rouge">.end:</code>  ; <code class="language-plaintext highlighter-rouge">je .end</code> 에 선언한 곳</li>
-  <li><code class="language-plaintext highlighter-rouge">jmp .end</code>  ;정상 종료 무한 루프 종료</li>
+  <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code> ;mov 명렁어로 rax 에 10을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">mov rbx, 20</code> ;mov 명령어로 rbx 에 20을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">add rax, rbx</code> ;add 명령어로 rax 와 rbx 덧셈 연산 후, rax에 값을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">push rax</code> ; rax 값을 push = stack에 rax 값을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">mov rax 0</code> ; rax 값에 0을 저장</li>
+  <li><code class="language-plaintext highlighter-rouge">pop rax</code> ; stack 에서 이전에 저장한 rax(30)을 rax로 복구 = stack에서 rax값을 넣기</li>
+  <li><code class="language-plaintext highlighter-rouge">cmp rax, 30</code> ;rax값 과 30을 비교</li>
+  <li><code class="language-plaintext highlighter-rouge">je .end</code> ;<code class="language-plaintext highlighter-rouge">cmp</code> ➔ Zero Flag(ZF) 세팅, <code class="language-plaintext highlighter-rouge">je</code> ➔ ZF가 1이면 점프 (== 같을 때 점프)</li>
+  <li><code class="language-plaintext highlighter-rouge">.loop:</code> ;루프문</li>
+  <li><code class="language-plaintext highlighter-rouge">jmp .loop</code> ;(틀릴 경우 무한 루프)</li>
+  <li><code class="language-plaintext highlighter-rouge">.end:</code> ; <code class="language-plaintext highlighter-rouge">je .end</code> 에 선언한 곳</li>
+  <li><code class="language-plaintext highlighter-rouge">jmp .end</code> ;정상 종료 무한 루프 종료</li>
 </ol>
 
 
@@ -752,9 +754,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-y4h1d8', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-1i9ixz', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-y4h1d8" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-1i9ixz" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -937,7 +939,6 @@ rax = 10</p>
   <p>즉, cmp는 “비교만 하고 아무것도 저장하지 않는다.”</p>
 
   <p><strong>플래그 세팅만 한다.</strong></p>
-
 </blockquote>
 
 <h3 id="4-5-요약">4-5. 요약</h3>
@@ -1011,9 +1012,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-zy68y2', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-nbw8d7', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-zy68y2" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-nbw8d7" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>

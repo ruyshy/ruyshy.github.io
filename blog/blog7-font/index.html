@@ -359,7 +359,7 @@ Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
 
 <h2 id="_sassminimal-mistakes_variablesscss-추가">_sass\minimal-mistakes_variables.scss 추가</h2>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$dongle</span><span class="p">:</span> <span class="s1">'Dongle'</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$dongle</span><span class="p">:</span> <span class="s2">"Dongle"</span><span class="o">,</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 </code></pre></div></div>
 
 <h3 id="수정해야-할-부분">수정해야 할 부분:</h3>
@@ -378,7 +378,7 @@ Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
 
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* system typefaces */</span>
 <span class="nv">$serif</span><span class="p">:</span> <span class="n">Dongle</span><span class="o">,</span> <span class="n">Georgia</span><span class="o">,</span> <span class="n">Times</span><span class="o">,</span> <span class="nb">serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$sans-serif</span><span class="p">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Dongle"</span><span class="o">,</span><span class="s2">"Roboto"</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span>
+<span class="nv">$sans-serif</span><span class="p">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="s2">"Dongle"</span><span class="o">,</span> <span class="s2">"Roboto"</span><span class="o">,</span> <span class="s2">"Segoe UI"</span><span class="o">,</span>
   <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="s2">"Lucida Grande"</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="nb">sans-serif</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 <span class="nv">$monospace</span><span class="p">:</span> <span class="n">Monaco</span><span class="o">,</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">"Lucida Console"</span><span class="o">,</span> <span class="nb">monospace</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 
@@ -392,11 +392,11 @@ Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다.</p>
 <h2 id="assetscssmainscss-추가">\assets\css\main.scss 추가</h2>
 
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@font-face</span> <span class="p">{</span>
-    <span class="nl">font-family</span><span class="p">:</span> <span class="s1">'Dongle'</span><span class="p">;</span>
-    <span class="nl">src</span><span class="p">:</span> <span class="sx">url('/assets/fonts/Dongle-Regular.ttf')</span> <span class="nf">format</span><span class="p">(</span><span class="s1">'truetype'</span><span class="p">);</span>
-    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
-    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
-  <span class="p">}</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="s2">"Dongle"</span><span class="p">;</span>
+  <span class="nl">src</span><span class="p">:</span> <span class="sx">url("/assets/fonts/Dongle-Regular.ttf")</span> <span class="nf">format</span><span class="p">(</span><span class="s2">"truetype"</span><span class="p">);</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+  <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p>저는 기본 폰트가 더 이뻐 보이더라고요. 저는 그래서 다시 기본 폰트로 복구 했습니다.</p>

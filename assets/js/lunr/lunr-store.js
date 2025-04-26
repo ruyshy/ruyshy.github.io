@@ -60,13 +60,13 @@ var store = [{
         "teaser": null
       },{
         "title": "GitHub Blog 폰트 설정 - Jekyll SCSS로 커스텀 폰트 적용하기",
-        "excerpt":"GitHub Pages 기반 Jekyll 블로그에서 폰트를 커스터마이징하고 싶다면, _variables.scss, main.scss, 그리고 @font-face를 수정해 구글 폰트 적용이 가능합니다. 이 글에서는 Dongle 폰트를 기준으로 minimal-mistakes 테마에서의 적용 과정을 단계별로 설명합니다. https://fonts.google.com/ 저는 폰트를 다운 받아서 진행했습니다. Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다. _sass\\minimal-mistakes_variables.scss 추가 $dongle: 'Dongle', -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif !default; 수정해야 할...","categories": ["blog"],
+        "excerpt":"GitHub Pages 기반 Jekyll 블로그에서 폰트를 커스터마이징하고 싶다면, _variables.scss, main.scss, 그리고 @font-face를 수정해 구글 폰트 적용이 가능합니다. 이 글에서는 Dongle 폰트를 기준으로 minimal-mistakes 테마에서의 적용 과정을 단계별로 설명합니다. https://fonts.google.com/ 저는 폰트를 다운 받아서 진행했습니다. Dongle Font(Dongle-Regular.ttf)를 사용하고 있습니다. _sass\\minimal-mistakes_variables.scss 추가 $dongle: \"Dongle\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif !default; 수정해야 할...","categories": ["blog"],
         "tags": ["GitHub Blog","폰트 설정","Jekyll 폰트 적용","SCSS","구글 폰트"],
         "url": "/blog/blog7-font/",
         "teaser": null
       },{
         "title": "Assembly 시작하기 - Windows 64bit NASM 어셈블리 입문 가이드",
-        "excerpt":"Windows 64bit 기반 NASM 어셈블리를 처음 공부한다면, 이 글에서 레지스터 구조 → 명령어 구조 → 메모리 → 호출 규약 → 실전 흐름까지 한 번에 정리해드릴게요. x64dbg로 디버깅을 하면서 구조를 시각화해보고, 어떻게 동작하는지를 정확히 이해하는 데 큰 도움이 될 겁니다. 시작하기 앞 서, 학습할 사이트 목록 입니다. 드림 해커 : https://dreamhack.io/  CrackMe...","categories": ["assembly"],
+        "excerpt":"Windows 64bit 기반 NASM 어셈블리를 처음 공부한다면, 이 글에서 레지스터 구조 → 명령어 구조 → 메모리 → 호출 규약 → 실전 흐름까지 한 번에 정리해드릴게요. x64dbg로 디버깅을 하면서 구조를 시각화해보고, 어떻게 동작하는지를 정확히 이해하는 데 큰 도움이 될 겁니다. 시작하기 앞 서, 학습할 사이트 목록 입니다. 드림 해커 : https://dreamhack.io/ CrackMe...","categories": ["assembly"],
         "tags": ["nasm","assembly","Windows Assembly","x64dbg","어셈블리 시작하기"],
         "url": "/assembly/assembly1-start/",
         "teaser": null
@@ -84,7 +84,7 @@ var store = [{
         "teaser": null
       },{
         "title": "GitHub Blog 코드 복사 버튼 추가 - Jekyll에서 Copy 버튼 구현",
-        "excerpt":"Jekyll 블로그에서 코드블럭에 복사 버튼을 추가하고 싶다면, clipboard.js를 활용해 div.highlighter-rouge 안에 Copy 버튼을 삽입하면 됩니다. 이 글에서는 복사 기능 구현 → 복사 후 텍스트 변경 → 로컬 대체까지 완벽하게 적용하는 법을 단계별로 설명합니다. code block copy button 추가 \\include\\code-block_custom.html 추가 &lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js\"&gt;&lt;/script&gt; &lt;script&gt; document.addEventListener('DOMContentLoaded', function() { document.querySelectorAll('div.highlighter-rouge').forEach(function(block) { var button...","categories": ["blog"],
+        "excerpt":"Jekyll 블로그에서 코드블럭에 복사 버튼을 추가하고 싶다면, clipboard.js를 활용해 div.highlighter-rouge 안에 Copy 버튼을 삽입하면 됩니다. 이 글에서는 복사 기능 구현 → 복사 후 텍스트 변경 → 로컬 대체까지 완벽하게 적용하는 법을 단계별로 설명합니다. code block copy button 추가 \\include\\code-block_custom.html 추가 &lt;script src=\"https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js\"&gt;&lt;/script&gt; &lt;script&gt; document.addEventListener(\"DOMContentLoaded\", function () { document .querySelectorAll(\"div.highlighter-rouge\") .forEach(function...","categories": ["blog"],
         "tags": ["GitHub Blog","코드 복사","clipboard.js","Jekyll Copy 버튼","Code block"],
         "url": "/blog/blog10-code-block-copy-button/",
         "teaser": null
@@ -150,13 +150,13 @@ var store = [{
         "teaser": null
       },{
         "title": "Assembly 기초 연습문제 풀이1 - NASM 기반 개념 정리 퀴즈",
-        "excerpt":"Assembly(NASM) 학습 내용을 복습하는 기초 연습문제입니다. 64비트 레지스터 구분, 스택 구조 이해, 리틀 엔디안 메모리 저장 방식, 함수 호출 시 RSP/RBP 역할 등 퀴즈로 정리합니다. 1. 다음 중 64비트 레지스터가 아닌 것은? A. RAX B. RBX C. EAX D. RDI 제출 해설: EAX는 32비트 레지스터. RAX의 하위 32비트 버전. 2....","categories": ["assembly"],
+        "excerpt":"Assembly(NASM) 학습 내용을 복습하는 기초 연습문제입니다. 64비트 레지스터 구분, 스택 구조 이해, 리틀 엔디안 메모리 저장 방식, 함수 호출 시 RSP/RBP 역할 등 퀴즈로 정리합니다. 1. 다음 중 64비트 레지스터가 아닌 것은? RAX RBX EAX RDI 제출 해설: EAX는 32비트 레지스터. RAX의 하위 32비트 버전. 2. 스택에서 함수 호출 시...","categories": ["assembly"],
         "tags": ["assembly","nasm","x64","어셈블리 퀴즈","리틀엔디안","스택프레임","레지스터"],
         "url": "/assembly/assembly5-exercises1/",
         "teaser": null
       },{
         "title": "Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈",
-        "excerpt":"NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문제입니다. mov, add, cmp, jmp, push, pop, call, ret 등 핵심 명령어와 스택 동작 구조를 객관식 퀴즈 형식으로 정리했습니다. 1. 다음 중 mov 명령어의 올바른 사용 예시는? A. `mov [rax], [rbx]` B. `mov rax, 1234h` C. `mov 1234h, rax` D. `mov rax, [rbx...","categories": ["assembly"],
+        "excerpt":"NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문제입니다. mov, add, cmp, jmp, push, pop, call, ret 등 핵심 명령어와 스택 동작 구조를 객관식 퀴즈 형식으로 정리했습니다. 1. 다음 중 mov 명령어의 올바른 사용 예시는? mov [rax], [rbx] mov rax, 1234h mov 1234h, rax mov rax, [rbx + rcx] 제출 해설:...","categories": ["assembly"],
         "tags": ["assembly","nasm","x64","어셈블리 퀴즈","명령어 실습","call","ret","push","pop"],
         "url": "/assembly/assembly5-exercises2/",
         "teaser": null

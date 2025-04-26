@@ -363,20 +363,22 @@
 
 <p>(1) <code class="language-plaintext highlighter-rouge">_config.yml</code>에 <code class="language-plaintext highlighter-rouge">analytics:</code> 설정 추가</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">provider </span><span class="pi">:</span> <span class="s">google</span>
-<span class="na">google_analytics</span><span class="pi">:</span> <span class="s">G-XXXXXXXXXX</span>  <span class="c1"># GA4의 측정 ID</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">provider</span><span class="pi">:</span> <span class="s">google</span>
+<span class="na">google_analytics</span><span class="pi">:</span> <span class="s">G-XXXXXXXXXX</span> <span class="c1"># GA4의 측정 ID</span>
 </code></pre></div></div>
 
 <blockquote>
   <p><strong>주의:</strong> minimal-mistakes 테마 같은 경우 이 설정을 자동으로 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>에 삽입해줌</p>
-
 </blockquote>
 
 <h3 id="2-1-코드-수정">2-1. 코드 수정</h3>
 
 <h4 id="_includesgooglehtml">/_includes/google.html</h4>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script
+  </span><span class="na">async</span>
+  <span class="na">src=</span><span class="s">"https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"</span>
+<span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span>
   <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">||</span> <span class="p">[];</span>
   <span class="kd">function</span> <span class="nf">gtag</span><span class="p">(){</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);}</span>
@@ -385,7 +387,6 @@
   
   <span class="p">);</span>
 <span class="nt">&lt;/script&gt;</span>
-
 </code></pre></div></div>
 
 <p>해당 코드를 추가해줍니다.</p>
