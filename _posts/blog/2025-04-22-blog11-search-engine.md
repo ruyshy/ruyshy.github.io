@@ -2,13 +2,13 @@
 title: "GitHub Blog 검색엔진 등록 & SEO 설정 - Google Search Console 연동"
 description: "Jekyll 기반 GitHub 블로그에서 Google Search Console 등록부터 sitemap.xml, robots.txt, jekyll-seo-tag 플러그인까지 검색 노출을 위한 설정 방법을 정리합니다."
 date: 2025-04-22
-tags: [GitHub Blog, SEO 설정, Google Search Console, sitemap.xml, jekyll-seo-tag]
+tags:
+  [GitHub Blog, SEO 설정, Google Search Console, sitemap.xml, jekyll-seo-tag]
 ---
 
 GitHub Pages에서 만든 Jekyll 블로그를 **검색엔진에 노출시키기 위해서는**  
 Google Search Console 등록과 sitemap, robots.txt, 그리고 SEO 메타태그 설정이 필요합니다.  
 이 포스트는 GitHub 블로그의 SEO 설정을 처음부터 끝까지 따라 할 수 있도록 구성된 실전 가이드입니다.
-
 
 ## 검색 엔진 개요
 
@@ -106,7 +106,7 @@ robots.txt 생성 후, 깃허브 저장소에 push, 다시 사이트 맵을 제�
 
 ### 포스트 전체 적용하기
 
-_config.yml (일부분) :
+\_config.yml (일부분) :
 
 ```yaml
 defaults:
@@ -139,10 +139,9 @@ defaults:
 - 개별 포스트의 <meta name="robots"> 태그가 noindex면 색인 안 됨.
 - 즉, robots.txt와 robots: "index, follow"는 역할이 다름 → 둘 다 챙기는 게 안전
 
-
 ## jekyll-seo-tag 사용
 
-### _config.yml plugin: 내용 추가
+### \_config.yml plugin: 내용 추가
 
 `  - jekyll-seo-tag` 추가하기
 
@@ -167,6 +166,7 @@ whitelist:
 ```
 
 ### Gemfile 내용 추가
+
 `gem "jekyll-seo-tag"` 추가
 
 ```
@@ -186,11 +186,12 @@ gem "tzinfo-data"
 ```
 
 ### 추가 진행 후
+
 cmd 에서 해당 명령어 입력
+
 ```bash
 bundle install
 ```
-
 
 ## 추가 소유권 인증 방법2
 
@@ -199,13 +200,16 @@ bundle install
 설정 → 소유권 인증 으로 들어가보면 HTML 태그가 있습니다.
 
 ```html
-<meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+<meta
+  name="google-site-verification"
+  content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU"
+/>
 ```
 
-content 안에 있는 내용을 복사한 뒤, _config.yml 에서 `google-site-verification:` 해당 부분을 찾습니다.
+content 안에 있는 내용을 복사한 뒤, \_config.yml 에서 `google-site-verification:` 해당 부분을 찾습니다.
 
 ```yaml
-google_site_verification : 0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU
+google_site_verification: 0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU
 ```
 
 위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 push 진행 → 확인을 눌러 진행.
@@ -213,4 +217,3 @@ google_site_verification : 0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU
 {% img "image8.png", "소유권 인증 완료 알림" %}
 
 인증이 완료되었네요! 굿굿
-

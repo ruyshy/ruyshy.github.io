@@ -10,7 +10,6 @@ Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 `<details>` �
 이 글에서는 toggle 플러그인을 직접 만들어 접기 기능을 구현하고,  
 내용에 따라 class, 제목, 마크다운을 넣을 수 있도록 확장하는 방법을 소개합니다.
 
-
 ## Markdown 기본 Toggle 사용 방법
 
 ````markdown
@@ -19,7 +18,7 @@ Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 `<details>` �
 <div markdown="1">
 
 ```markdown
-  코드
+코드
 ```
 
 -- 내용 --
@@ -30,6 +29,7 @@ Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 `<details>` �
 </div>
 </details>
 ````
+
 <br/>
 
 ### 기본 토글:
@@ -39,7 +39,7 @@ Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 `<details>` �
 <div markdown="1">
 
 ```markdown
-  코드
+코드
 ```
 
 -- 내용 --
@@ -66,15 +66,15 @@ module Jekyll
           @extra_class = ""
         end
       end
-  
+
       def render(context)
         site = context.registers[:site]
         converter = site.find_converter_instance(Jekyll::Converters::Markdown)
         content = converter.convert(super)
-      
+
         id = "toggle-#{rand(36**6).to_s(36)}"
         label = @label.strip
-      
+
         <<~HTML
           <div class="toggle">
             <div class="toggle-label #{@extra_class}" onclick="toggleTextContent('#{id}', this)" data-label="#{label}">
@@ -84,49 +84,51 @@ module Jekyll
             </div>
           </div>
         HTML
-      end      
+      end
     end
   end
-  
+
   Liquid::Template.register_tag('toggle', Jekyll::ToggleText)
 ```
+
 <br/>
 
 ## \_includes\toggle-script.html 추가
 
 ```html
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll('.toggle-label').forEach(labelEl => {
-            const baseText = labelEl.dataset.label;
-            labelEl.textContent = '▶ ' + baseText;
-          });
-    });
-    
-    function toggleTextContent(id, labelEl) {
-      const content = document.getElementById(id);
-      const isExpanded = content.classList.contains('expanded');
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".toggle-label").forEach((labelEl) => {
       const baseText = labelEl.dataset.label;
-    
-      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
-    
-      if (isExpanded) {
-        content.classList.remove('expanded');
-        content.style.maxHeight = '0px';
-        content.style.display = 'none';
-      } else {
-        content.classList.add('expanded');
-        content.style.display = 'block';
-        content.style.maxHeight = content.scrollHeight + 'px';
-      }
-    }    
+      labelEl.textContent = "▶ " + baseText;
+    });
+  });
+
+  function toggleTextContent(id, labelEl) {
+    const content = document.getElementById(id);
+    const isExpanded = content.classList.contains("expanded");
+    const baseText = labelEl.dataset.label;
+
+    labelEl.textContent = (isExpanded ? "▶ " : "▼ ") + baseText;
+
+    if (isExpanded) {
+      content.classList.remove("expanded");
+      content.style.maxHeight = "0px";
+      content.style.display = "none";
+    } else {
+      content.classList.add("expanded");
+      content.style.display = "block";
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  }
 </script>
 ```
+
 <br/>
 
 ## \_layouts\default.html 수정
 
-`{% raw %}{% include toggle-script.html %}{% endraw %}`  해당 코드 추가해줘야 함.
+`{% raw %}{% include toggle-script.html %}{% endraw %}` 해당 코드 추가해줘야 함.
 
 ```html
 ---
@@ -168,9 +170,10 @@ module Jekyll
   </body>
 </html>{% endraw %}
 ```
+
 <br/>
 
-## \_sass\minimal-mistakes\_custom.scss 추가
+## \_sass\minimal-mistakes_custom.scss 추가
 
 ```scss
 // toggle
@@ -181,7 +184,7 @@ module Jekyll
   display: inline-block;
   cursor: pointer;
   user-select: none;
-  color: #FFF;
+  color: #fff;
   margin-bottom: 0.5em;
   display: inline-block;
   transition: all 0.2s ease;
@@ -190,9 +193,9 @@ module Jekyll
 }
 
 .toggle-label:hover {
-  cursor: pointer;  
+  cursor: pointer;
   background-color: #333333;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .toggle-label.h1,
@@ -202,16 +205,25 @@ module Jekyll
   margin-top: 0 !important;
   margin-bottom: 0.3em !important;
 }
-.toggle-label.h1 { @extend h1; }
-.toggle-label.h2 { @extend h2; }
-.toggle-label.h3 { @extend h3; }
-.toggle-label.h4 { @extend h4; }
+.toggle-label.h1 {
+  @extend h1;
+}
+.toggle-label.h2 {
+  @extend h2;
+}
+.toggle-label.h3 {
+  @extend h3;
+}
+.toggle-label.h4 {
+  @extend h4;
+}
 ```
+
 <br/>
 
 ## \_sass\minimal-mistakes.scss 수정
 
-`@import "minimal-mistakes/custom";`  해당 코드 추가해줘야 함.
+`@import "minimal-mistakes/custom";` 해당 코드 추가해줘야 함.
 
 ```scss
 /* Copyright comment */
@@ -255,6 +267,7 @@ module Jekyll
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
 ```
+
 <br/>
 
 ### toggle tag 사용법
@@ -263,9 +276,11 @@ module Jekyll
 {% raw %}{% toggle 클릭해서 보기1 %}
 
 이 안에 접히는 내용이 들어갑니다.
+
 ```
   코드 내용
 ```
+
 - 리스트도 가능
 - 코드도 가능
 
@@ -274,9 +289,11 @@ module Jekyll
 {% toggle 클릭해서 보기2 class="h3" %}
 
 이 안에 접히는 내용이 들어갑니다.
+
 ```
   코드 내용
 ```
+
 - 리스트도 가능
 - 코드도 가능
 
@@ -288,20 +305,24 @@ module Jekyll
 {% toggle 클릭해서 보기1 %}
 
 이 안에 접히는 내용이 들어갑니다.
+
 ```markdown
-  코드 내용
+코드 내용
 ```
+
 - 리스트도 가능
 - 코드도 가능
 
-{% endtoggle %}   
-<----------------------------------------------------------------->   
-{% toggle 클릭해서 보기2 class="h3" %}   
+{% endtoggle %}  
+<----------------------------------------------------------------->  
+{% toggle 클릭해서 보기2 class="h3" %}
 
-이 안에 접히는 내용이 들어갑니다.   
+이 안에 접히는 내용이 들어갑니다.
+
 ```markdown
-  코드 내용
+코드 내용
 ```
+
 - 리스트도 가능
 - 코드도 가능
 

@@ -2,11 +2,11 @@
 title: "GitHub Blog Google Analytics GA4 연동 가이드"
 description: "Jekyll 블로그에서 Google Analytics GA4 측정 ID를 연동하여 방문자 분석 데이터를 수집하는 방법을 설명합니다. minimal-mistakes 테마 설정부터 Search Console 연동까지 단계별 가이드 포함."
 date: 2025-04-25
-tags: [GitHubBlog, GoogleAnalytics, GA4, minimal-mistakes, Jekyll, SearchConsole]
+tags:
+  [GitHubBlog, GoogleAnalytics, GA4, minimal-mistakes, Jekyll, SearchConsole]
 ---
 
 GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 **GA4 측정 ID 삽입**, **minimal-mistakes 테마 설정**, **실시간 유입 확인**, 그리고 **Google Search Console 연동 방법**까지 전체 과정을 상세히 다룹니다.
-
 
 ## 1. **GA4 속성 만들기**
 
@@ -20,19 +20,21 @@ GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면,
 (1) `_config.yml`에 `analytics:` 설정 추가
 
 ```yaml
-provider : google
-google_analytics: G-XXXXXXXXXX  # GA4의 측정 ID
+provider: google
+google_analytics: G-XXXXXXXXXX # GA4의 측정 ID
 ```
 
 > **주의:** minimal-mistakes 테마 같은 경우 이 설정을 자동으로 `<head>`에 삽입해줌
-> 
 
 ### 2-1. 코드 수정
 
-#### /_includes/google.html
+#### /\_includes/google.html
 
 ```html
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tracking_id }}"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tracking_id }}"
+></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -41,7 +43,6 @@ google_analytics: G-XXXXXXXXXX  # GA4의 측정 ID
   {% if site.analytics.google.anonymize_ip == true %}, { 'anonymize_ip': true }{% endif %}
   );
 </script>
-
 ```
 
 해당 코드를 추가해줍니다.
@@ -78,16 +79,16 @@ google_analytics: G-XXXXXXXXXX  # GA4의 측정 ID
 
 ### 3-1. 직접 테스트 진행하는 방법
 
-1. 속성 설정 탭에 `데이터 수집 및 수정` → `데이터 스트림` → `등록한 스트림 클릭` 
+1. 속성 설정 탭에 `데이터 수집 및 수정` → `데이터 스트림` → `등록한 스트림 클릭`
 2. 해당 속성의 웹 스트림 세부정부가 표시됩니다. 아래로 내려 `Google 태그` 탭에서 `태그 설정 구성` → `설치 안내` → `웹사이트 테스트(선택사항):` → 테스트 버튼을 눌러 확인해 주세요!
 
 ## 4. Google Search Console 연동
 
-1. 속성 설정 탭에 `제품 링크` → `Serach Console 링크` → `연결` 
+1. 속성 설정 탭에 `제품 링크` → `Serach Console 링크` → `연결`
 2. Search Console과 연결하기 창이 표시됩니다.
 3. 1단계인, `Search Console 속성 선택` 에서 계정 선택 클릭
 4. 등록한 깃허브 블로그 홈페이지와 속성 유형은 URL 프리픽스로 되어있습니다. 해당되는 것을 선택 후, 확인을 클릭 → 다음
-5. `웹 스트림 선택` → `데이터 스트림 선택` → `다음` 
+5. `웹 스트림 선택` → `데이터 스트림 선택` → `다음`
 6. `보내기` 를 눌러 작업을 완료합니다.
 
 {% img "image.png", "구글 애널리틱스 실시간 보고서" %}

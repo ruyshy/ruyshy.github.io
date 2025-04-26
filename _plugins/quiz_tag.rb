@@ -48,6 +48,9 @@ module Jekyll
 
     def build_choices_html(choices_raw, id)
       text_answer = nil
+      site = Jekyll.sites.first
+      converter = site.find_converter_instance(Jekyll::Converters::Markdown)
+    
       html = choices_raw.lines.map(&:strip).select { |l| l.start_with?('-') }.map.with_index do |line, idx|
         if line =~ /^\-\s*\[text:\s*(.+?)\]/
           text_answer = $1.strip
@@ -60,16 +63,22 @@ module Jekyll
           label = line.sub('-', '').strip
           correct = label.include?("[correct]")
           clean_label = label.sub(/\s*\[correct\]/, '')
+          clean_label_html = converter.convert(clean_label).strip
+          clean_label_html = clean_label_html.sub(/^<p>/, '').sub(/<\/p>$/, '')
+          
+    
           <<~HTML
             <div class="quiz-choice">
               <input type="radio" name="quiz-answer-#{id}" id="quiz-#{id}-#{idx}" value="#{clean_label}" data-correct="#{correct}">
-              <label for="quiz-#{id}-#{idx}">#{clean_label}</label>
+              <label for="quiz-#{id}-#{idx}">#{clean_label_html}</label>
             </div>
           HTML
         end
       end.join("\n")
+    
       [html, text_answer]
     end
+    
 
     def build_explanation_toggle_html(explanation_html, id)
       toggle_id = "toggle-#{id}"

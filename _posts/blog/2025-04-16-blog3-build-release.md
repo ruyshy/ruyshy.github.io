@@ -5,11 +5,10 @@ date: 2025-04-16
 tags: [GitHub Blog, Jekyll, GitHub Actions, 블로그 자동 배포, CI/CD]
 ---
 
-GitHub 블로그를 운영하면서 **자동 배포**를 설정하고 싶다면,   
-`GitHub Actions`를 사용한 CI/CD 환경이 필요합니다.   
+GitHub 블로그를 운영하면서 **자동 배포**를 설정하고 싶다면,  
+`GitHub Actions`를 사용한 CI/CD 환경이 필요합니다.  
 이 글에서는 Jekyll로 작성한 블로그를 GitHub 서버에서 자동으로 빌드하고  
 `gh-pages` 브랜치로 배포하는 워크플로우를 설정하는 방법을 정리합니다.
-
 
 ## GitHub에 Action기능 알아보기
 
@@ -19,13 +18,13 @@ GitHub Actions는 **CI/CD(지속적 통합/배포)**를 위한 자동화된 작�
 
 ## GitHub Actions 개념 정리
 
-| 용어 | 설명 |
-| --- | --- |
-| **Workflow** | 자동화 작업의 전체 흐름 (YAML 파일로 설정) |
-| **Job** | Workflow 내에서 실행되는 작업 단위 |
-| **Step** | Job 안에서 실행되는 세부 명령 |
-| **Action** | 재사용 가능한 명령 묶음 (남이 만든 것도 쉽게 사용 가능) |
-| **Runner** | GitHub 서버 or 네가 직접 설정한 컴퓨터에서 실행됨 |
+| 용어         | 설명                                                    |
+| ------------ | ------------------------------------------------------- |
+| **Workflow** | 자동화 작업의 전체 흐름 (YAML 파일로 설정)              |
+| **Job**      | Workflow 내에서 실행되는 작업 단위                      |
+| **Step**     | Job 안에서 실행되는 세부 명령                           |
+| **Action**   | 재사용 가능한 명령 묶음 (남이 만든 것도 쉽게 사용 가능) |
+| **Runner**   | GitHub 서버 or 네가 직접 설정한 컴퓨터에서 실행됨       |
 
 ## GitHub Workflow 생성 방법
 
@@ -64,7 +63,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: "3.3"
 
       - name: Install dependencies
         run: |
@@ -76,7 +75,6 @@ jobs:
 
       - name: Build Jekyll site
         run: JEKYLL_ENV=production bundle exec jekyll build --future
-
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -98,11 +96,10 @@ jobs:
 {% img "github-blog-repo-build-setting.png", "github-blog-repo-build-setting" %}
 
 > Build and deployment
-> 
+>
 > Source 설정을 Deploy from a branch 으로 변경
-> 
+>
 > Branch 설정을 gh-pages 으로 변경
-
 
 ## 사용할 수 있는 곳
 
@@ -115,33 +112,35 @@ jobs:
 ## 위 코드 주의점 및 확인해야 할 부분
 
 1. 워크플로우 파일 위치 확인
-    1. `deploy.yml` 으로 설정했다면, 워크플로우 파일이 반드시 **`.github/workflows/`** 폴더 안에 있어야 함.
-    
-    ```markdown
-    .github/
-      workflows/
-        deploy.yml ← 여기에 있어야 작동함!  
-    ```
-    
+
+   1. `deploy.yml` 으로 설정했다면, 워크플로우 파일이 반드시 **`.github/workflows/`** 폴더 안에 있어야 함.
+
+   ```markdown
+   .github/
+   workflows/
+   deploy.yml ← 여기에 있어야 작동함!
+   ```
+
 2. `ph-pages` 브랜치로 **푸시가 실제로 있었는지**
-    1. GitHub Action은 `on: push` 조건에 따라 실행됩니다. `ph-pages` 브랜치에 push해야만 작동합니다.
-        1. GitHub Desktop을 사용하는 경우, 커밋 후에 **실제로 push까지 완료했는지 확인**하세요.
-        2. 파일만 수정하고 커밋하지 않으면 작동하지 않습니다.
-        3. `git push origin ph-pages` 명령이 실행된 상태여야 합니다.
+   1. GitHub Action은 `on: push` 조건에 따라 실행됩니다. `ph-pages` 브랜치에 push해야만 작동합니다.
+      1. GitHub Desktop을 사용하는 경우, 커밋 후에 **실제로 push까지 완료했는지 확인**하세요.
+      2. 파일만 수정하고 커밋하지 않으면 작동하지 않습니다.
+      3. `git push origin ph-pages` 명령이 실행된 상태여야 합니다.
 3. `.jekyll-cache`나 `_site`가 Git으로 추적되고 있는지
-    1. 이건 종종 문제가 되진 않지만, 만약 `_site/`가 git에 들어있고 `.gitignore` 안 되어 있으면 충돌 생길 수 있음.
-    2. `.gitignore`에 아래 내용이 있는지 확인:
-    
-    ```markdown
-    _site/
-    .jekyll-cache/
-    ```
+
+   1. 이건 종종 문제가 되진 않지만, 만약 `_site/`가 git에 들어있고 `.gitignore` 안 되어 있으면 충돌 생길 수 있음.
+   2. `.gitignore`에 아래 내용이 있는지 확인:
+
+   ```markdown
+   \_site/
+   .jekyll-cache/
+   ```
 
 4. GitHub 페이지 설정 확인
-    1. `gh-pages` 브랜치를 페이지 소스로 지정했는지?
-        1. [Repository → Settings → Pages](https://github.com/%EC%82%AC%EC%9A%A9%EC%9E%90%EB%AA%85/%EB%A0%88%ED%8F%AC%EB%AA%85/settings/pages) 에 가서
-        2. **Source**: `gh-pages` 선택
-        3. **Folder**: `/ (root)` 또는 `/docs` 말고 `/`로 돼야 함
+   1. `gh-pages` 브랜치를 페이지 소스로 지정했는지?
+      1. [Repository → Settings → Pages](https://github.com/%EC%82%AC%EC%9A%A9%EC%9E%90%EB%AA%85/%EB%A0%88%ED%8F%AC%EB%AA%85/settings/pages) 에 가서
+      2. **Source**: `gh-pages` 선택
+      3. **Folder**: `/ (root)` 또는 `/docs` 말고 `/`로 돼야 함
 
 push 없이도 수동 실행 가능하게 하려면 아래처럼 수정:
 
@@ -151,7 +150,6 @@ on:
     branches:
       - ph-pages
   workflow_dispatch: # 수동 실행 가능
-
 ```
 
 `workflow_dispatch:`가 있을 때, GitHub UI 상에서 "Run workflow" 버튼이 생성됩니다.

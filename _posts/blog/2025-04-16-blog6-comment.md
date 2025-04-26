@@ -10,7 +10,6 @@ GitHub의 이슈 기능을 활용하는 `Utterances`가 가장 간단하면서�
 이 글에서는 minimal-mistakes 테마를 기준으로,  
 **Utterances 댓글 시스템을 설정하고 `_config.yml`과 블로그 포스트에 적용하는 방법**을 설명합니다.
 
-
 ## 1. GitHub 저장소 설정
 
 Utterances는 댓글을 저장할 **issue 기반 저장소**가 필요합니다.
@@ -24,11 +23,10 @@ Utterances는 댓글을 저장할 **issue 기반 저장소**가 필요합니다.
 [https://utteranc.es/](https://utteranc.es/) 접속 후 아래 순서대로 진행:
 
 1. **Install Utterances** 클릭 : [https://github.com/apps/utterances](https://github.com/apps/utterances)
-    
+
 {% img "utterances-git-hub-install.png", "utterances-git-hub-install" %}
-    
+
     [https://www.notion.so](https://www.notion.so)
-    
 
 위와 같이 Only select repositories 선택 → 설치할 저장소 선택
 
@@ -42,35 +40,35 @@ Jekyll 블로그에서 Utterances는 보통 post.html 같은 레이아웃 파일
 
 ```yaml
 # Site Settings
-locale                   : "ko-KR"
-rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "ruyshy blog"
-title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Jaehyeok Choi"
-description              : ""
-url                      : "https://ruyshy.github.io"
-baseurl                  : ""
-repository               : "ruyshy/ruyshy.github.io"
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-breadcrumbs              : # true, false (default)
-words_per_minute         : 200
-enable_copy_code_button  : # true, false (default)
-copyright                : # "copyright" name, defaults to site.title
-copyright_url            : # "copyright" URL, defaults to site.url
+locale: "ko-KR"
+rtl: # true, false (default) # turns direction of the page into right to left for RTL languages
+title: "ruyshy blog"
+title_separator: "-"
+subtitle: # site tagline that appears below site title in masthead
+name: "Jaehyeok Choi"
+description: ""
+url: "https://ruyshy.github.io"
+baseurl: ""
+repository: "ruyshy/ruyshy.github.io"
+teaser: # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo: # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+masthead_title: # overrides the website title displayed in the masthead, use " " for no title
+breadcrumbs: # true, false (default)
+words_per_minute: 200
+enable_copy_code_button: # true, false (default)
+copyright: # "copyright" name, defaults to site.title
+copyright_url: # "copyright" URL, defaults to site.url
 comments:
-  provider               : "utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  provider: "utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname: # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
+    server: # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
+    appid:
+    num_posts: # 5 (default)
+    colorscheme: # "light" (default), "dark"
   utterances:
     theme: "github-dark"
     issue_term: "pathname"
@@ -105,7 +103,7 @@ defaults:
 
 {% img "github-blog-comments.png", "github-blog-comments" %}
 
-위 처럼 블로그에서 test comment를 작성 했을 때, 
+위 처럼 블로그에서 test comment를 작성 했을 때,
 
 {% img "github-blog-comment-issues.png", "github-blog-comment-issues" %}
 

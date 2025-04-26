@@ -7,7 +7,6 @@ tags: [GitHubBlog, quiz, plugin, liquid, jekyll, javascript]
 
 Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.
 
-
 ## Quiz Form 미리보기
 
 <br/>
@@ -17,10 +16,13 @@ Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기
 {% quiz
 ”
 문제 1 : 객관식 미리보기 문제입니다.
+
 ```
 문제의 테스트용 코드 블럭 입니다. 정답은 2번
 ```
+
 " %}
+
 - 1번
 - 2번 [correct]
 - 3번
@@ -36,6 +38,7 @@ Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기
 ### 주관식
 
 {% quiz "test? 정답은 test" %}
+
 - [text: test]
 
 {% explanation %}
@@ -51,81 +54,89 @@ test 문제 입니다.
 
 ```jsx
 window.checkQuizAnswer = function (id, isText, correctTextAnswer = null) {
-    const form = document.getElementById(`quiz-form-${id}`);
-    const result = document.getElementById(`quiz-result-${id}`);
-    const box = document.getElementById(`quiz-box-${id}`);
-    const message = document.getElementById(`quiz-message-${id}`);
-    const explanationToggle = document.getElementById(`quiz-explanation-toggle-${id}`);
-  
-    const selected = form.querySelector(`input[name='quiz-answer-${id}']:checked`);
-    const textInput = document.getElementById(`quiz-text-${id}`);
-  
-    if (isText && textInput) {
-      const userAnswer = textInput.value.trim();
-      if (userAnswer === "") {
-        return window.showMessage(id, "정답을 입력해주세요!", "info");
-      }
-  
-      if (userAnswer === correctTextAnswer) {
-        box.classList.add("quiz-correct");
-        result.innerHTML = "✅ <strong>정답입니다!</strong><br><br>";
-        explanationToggle.style.display = "block";
-        result.appendChild(explanationToggle);
-      } else {
-        return window.showMessage(id, "❌ 오답입니다", "error");
-      }
-      return;
+  const form = document.getElementById(`quiz-form-${id}`);
+  const result = document.getElementById(`quiz-result-${id}`);
+  const box = document.getElementById(`quiz-box-${id}`);
+  const message = document.getElementById(`quiz-message-${id}`);
+  const explanationToggle = document.getElementById(
+    `quiz-explanation-toggle-${id}`
+  );
+
+  const selected = form.querySelector(
+    `input[name='quiz-answer-${id}']:checked`
+  );
+  const textInput = document.getElementById(`quiz-text-${id}`);
+
+  if (isText && textInput) {
+    const userAnswer = textInput.value.trim();
+    if (userAnswer === "") {
+      return window.showMessage(id, "정답을 입력해주세요!", "info");
     }
-  
-    if (!selected) {
-      return window.showMessage(id, "정답을 선택해주세요!", "info");
-    }
-  
-    if (selected.dataset.correct === "true") {
+
+    if (userAnswer === correctTextAnswer) {
       box.classList.add("quiz-correct");
       result.innerHTML = "✅ <strong>정답입니다!</strong><br><br>";
       explanationToggle.style.display = "block";
       result.appendChild(explanationToggle);
-      form.querySelectorAll("input").forEach(i => i.disabled = true);
-  
-      const retryBtn = document.createElement("button");
-      retryBtn.type = "button";
-      retryBtn.innerText = "다시 풀기";
-      retryBtn.style.marginTop = "1em";
-      retryBtn.onclick = () => window.retryQuiz(id);
-      result.appendChild(retryBtn);
     } else {
-      box.classList.remove("quiz-correct");
       return window.showMessage(id, "❌ 오답입니다", "error");
     }
-  };
-  
-  window.showMessage = function (id, text, type) {
-    const el = document.getElementById(`quiz-message-${id}`);
-    el.className = `quiz-message quiz-message-${type}`;
-    el.innerHTML = text + '<span class="quiz-message-close" onclick="this.parentNode.style.display=\'none\'">×</span>';
-    el.style.display = "block";
-    setTimeout(() => {
-      el.style.display = "none";
-    }, 2000);
-  };
-  
-  window.retryQuiz = function (id) {
-    const form = document.getElementById(`quiz-form-${id}`);
-    const result = document.getElementById(`quiz-result-${id}`);
-    const message = document.getElementById(`quiz-message-${id}`);
-    const box = document.getElementById(`quiz-box-${id}`);
-    const explanationToggle = document.getElementById(`quiz-explanation-toggle-${id}`);
-  
-    form.reset();
-    result.innerHTML = "";
-    message.style.display = "none";
+    return;
+  }
+
+  if (!selected) {
+    return window.showMessage(id, "정답을 선택해주세요!", "info");
+  }
+
+  if (selected.dataset.correct === "true") {
+    box.classList.add("quiz-correct");
+    result.innerHTML = "✅ <strong>정답입니다!</strong><br><br>";
+    explanationToggle.style.display = "block";
+    result.appendChild(explanationToggle);
+    form.querySelectorAll("input").forEach((i) => (i.disabled = true));
+
+    const retryBtn = document.createElement("button");
+    retryBtn.type = "button";
+    retryBtn.innerText = "다시 풀기";
+    retryBtn.style.marginTop = "1em";
+    retryBtn.onclick = () => window.retryQuiz(id);
+    result.appendChild(retryBtn);
+  } else {
     box.classList.remove("quiz-correct");
-    explanationToggle.style.display = "none";
-  
-    const inputs = form.querySelectorAll("input");
-    inputs.forEach(input => input.disabled = false);
-  };
+    return window.showMessage(id, "❌ 오답입니다", "error");
+  }
+};
+
+window.showMessage = function (id, text, type) {
+  const el = document.getElementById(`quiz-message-${id}`);
+  el.className = `quiz-message quiz-message-${type}`;
+  el.innerHTML =
+    text +
+    '<span class="quiz-message-close" onclick="this.parentNode.style.display=\'none\'">×</span>';
+  el.style.display = "block";
+  setTimeout(() => {
+    el.style.display = "none";
+  }, 2000);
+};
+
+window.retryQuiz = function (id) {
+  const form = document.getElementById(`quiz-form-${id}`);
+  const result = document.getElementById(`quiz-result-${id}`);
+  const message = document.getElementById(`quiz-message-${id}`);
+  const box = document.getElementById(`quiz-box-${id}`);
+  const explanationToggle = document.getElementById(
+    `quiz-explanation-toggle-${id}`
+  );
+
+  form.reset();
+  result.innerHTML = "";
+  message.style.display = "none";
+  box.classList.remove("quiz-correct");
+  explanationToggle.style.display = "none";
+
+  const inputs = form.querySelectorAll("input");
+  inputs.forEach((input) => (input.disabled = false));
+};
 ```
 
 <br/>
@@ -183,6 +194,9 @@ module Jekyll
 
     def build_choices_html(choices_raw, id)
       text_answer = nil
+      site = Jekyll.sites.first
+      converter = site.find_converter_instance(Jekyll::Converters::Markdown)
+
       html = choices_raw.lines.map(&:strip).select { |l| l.start_with?('-') }.map.with_index do |line, idx|
         if line =~ /^\-\s*\[text:\s*(.+?)\]/
           text_answer = $1.strip
@@ -195,16 +209,22 @@ module Jekyll
           label = line.sub('-', '').strip
           correct = label.include?("[correct]")
           clean_label = label.sub(/\s*\[correct\]/, '')
+          clean_label_html = converter.convert(clean_label).strip
+          clean_label_html = clean_label_html.sub(/^<p>/, '').sub(/<\/p>$/, '')
+
+
           <<~HTML
             <div class="quiz-choice">
               <input type="radio" name="quiz-answer-#{id}" id="quiz-#{id}-#{idx}" value="#{clean_label}" data-correct="#{correct}">
-              <label for="quiz-#{id}-#{idx}">#{clean_label}</label>
+              <label for="quiz-#{id}-#{idx}">#{clean_label_html}</label>
             </div>
           HTML
         end
       end.join("\n")
+
       [html, text_answer]
     end
+
 
     def build_explanation_toggle_html(explanation_html, id)
       toggle_id = "toggle-#{id}"
@@ -253,12 +273,11 @@ module Jekyll
   Liquid::Template.register_tag('quiz', QuizBlock)
   Liquid::Template.register_tag('explanation', ExplanationBlock)
 end
-
 ```
 
 <br/>
 
-### \_sass\minimal-mistakes\_quiz.scss
+### \_sass\minimal-mistakes_quiz.scss
 
 ```scss
 .quiz-box {
@@ -298,7 +317,7 @@ end
       transform: scale(0.97);
     }
   }
-  
+
   .quiz-result button[type="button"] {
     background-color: #555;
     color: #fff;
@@ -314,7 +333,6 @@ end
       background-color: #777;
     }
   }
-
 }
 
 .quiz-choice {
@@ -333,7 +351,7 @@ end
     cursor: pointer;
     transition: color 0.2s ease;
     margin: 0;
-    
+
     &:hover {
       color: #9ecaff;
     }
@@ -364,7 +382,6 @@ end
     top: 0.2em;
     cursor: pointer;
   }
-
 }
 ```
 
@@ -376,7 +393,7 @@ end
 
 ##### \_layouts\default.html 에서
 
-`<script src="/assets/js/quiz-handler.js"></script>`  추가
+`<script src="/assets/js/quiz-handler.js"></script>` 추가
 
 예시:
 
@@ -431,11 +448,11 @@ end
 
 ```html
 {% raw %}{% if page.use_quiz %}
-  <script src="/assets/js/quiz-handler.js"></script>
+<script src="/assets/js/quiz-handler.js"></script>
 {% endif %}{% endraw %}
 ```
 
-#####  \_layouts\default.html 에서
+##### \_layouts\default.html 에서
 
 `{% raw %}{% include quiz-form.html %}{% endraw %}` 추가
 
@@ -496,10 +513,13 @@ end
 ````markdown
 {% raw %}{% quiz ”
 문제 1 : 객관식 미리보기 문제입니다.
+
 ```
 문제의 테스트용 코드 블럭 입니다. 정답은 2번
 ```
+
 " %}
+
 - 1번
 - 2번 [correct]
 - 3번
@@ -517,6 +537,7 @@ end
 
 ```markdown
 {% raw %}{% quiz "test? 정답은 test" %}
+
 - [text: test]
 
 {% explanation %}

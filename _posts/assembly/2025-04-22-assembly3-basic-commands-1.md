@@ -13,23 +13,22 @@ NASM 기반 어셈블리를 처음 접하는 사용자라면,
 또한, `cmp` 명령어와 플래그 레지스터(Zero Flag, Sign Flag 등)의 작동 원리를  
 **조건 분기 명령어 (`je`, `jne`, `jg`, `jl`)**와 함께 다루며 실습 기반으로 설명합니다.
 
-
 ## 1. 기본 명령어 리스트 (Windows 64bit 기준)
 
-| 명령어 | 역할 | 비고 |
-| --- | --- | --- |
-| **mov** | 데이터 복사 | 레지스터, 메모리, 즉시값 |
-| **add** | 덧셈 | 레지스터끼리, 값 더하기 |
-| **sub** | 뺄셈 | 레지스터끼리, 값 빼기 |
-| **inc** | 1 증가 | rax 같은 레지스터 1 증가 |
-| **dec** | 1 감소 | rbx 같은 레지스터 1 감소 |
-| **push** | 스택에 저장 | rsp를 줄이고 값 저장 |
-| **pop** | 스택에서 꺼냄 | rsp를 늘리고 값 가져옴 |
-| **call** | 함수 호출 | 주소 저장 + 점프 |
-| **ret** | 복귀 | 스택에서 복귀 주소 꺼내서 점프 |
-| **cmp** | 비교 | 플래그만 세팅 (값은 안 바뀜) |
-| **jmp** | 무조건 점프 | 그냥 이동 |
-| **je, jne** | 조건부 점프 | Zero Flag 기반 (같으면/다르면) |
+| 명령어      | 역할          | 비고                           |
+| ----------- | ------------- | ------------------------------ |
+| **mov**     | 데이터 복사   | 레지스터, 메모리, 즉시값       |
+| **add**     | 덧셈          | 레지스터끼리, 값 더하기        |
+| **sub**     | 뺄셈          | 레지스터끼리, 값 빼기          |
+| **inc**     | 1 증가        | rax 같은 레지스터 1 증가       |
+| **dec**     | 1 감소        | rbx 같은 레지스터 1 감소       |
+| **push**    | 스택에 저장   | rsp를 줄이고 값 저장           |
+| **pop**     | 스택에서 꺼냄 | rsp를 늘리고 값 가져옴         |
+| **call**    | 함수 호출     | 주소 저장 + 점프               |
+| **ret**     | 복귀          | 스택에서 복귀 주소 꺼내서 점프 |
+| **cmp**     | 비교          | 플래그만 세팅 (값은 안 바뀜)   |
+| **jmp**     | 무조건 점프   | 그냥 이동                      |
+| **je, jne** | 조건부 점프   | Zero Flag 기반 (같으면/다르면) |
 
 ## 2. 각 명령어 설명
 
@@ -117,6 +116,7 @@ end_label:
 cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)
 
 ### 2-8. 기본 실습 문제1
+
 ```nasm
     rax에 10 저장
 	rbx에 20 저장
@@ -126,12 +126,13 @@ cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF
     rax를 스택에 저장
     rbx를 스택에 저장
 	스택에서 rbx 복구
-	스택에서 rax 복구        
+	스택에서 rax 복구
 ```
 
 > 실습 문제1 풀기 전, 스택(Stack) 후입선출
 
 기본 코드 골격:
+
 ```nasm
 default rel
 global main
@@ -221,69 +222,68 @@ pop rax → (25 복구)
 ### 3-1. 기본 실습 문제 풀기 전 알아두기
 
 1. 기본 실습 문제 풀기 기본 환경 코드:
-    
-    ```nasm
-    default rel
-    global main
-    
-    section .text
-    main:
-        ; 여기에 코드 작성
-    .end:
-        jmp .end   ; 무한 루프 (프로그램 강제 정지용)
-    ```
-    
+
+   ```nasm
+   default rel
+   global main
+
+   section .text
+   main:
+       ; 여기에 코드 작성
+   .end:
+       jmp .end   ; 무한 루프 (프로그램 강제 정지용)
+   ```
+
 2. Assembly에서 "루프(반복)" 만들기
-    1. Assembly에서는 루프라는 걸 따로 지원하지 않는다.
-    2. **"명령어 점프(jmp)" + "조건 비교(cmp + je/jne 등)"** ➔ 이걸 조합해서 **수동으로 루프를 만든다.**
+   1. Assembly에서는 루프라는 걸 따로 지원하지 않는다.
+   2. **"명령어 점프(jmp)" + "조건 비교(cmp + je/jne 등)"** ➔ 이걸 조합해서 **수동으로 루프를 만든다.**
 3. 루프 기본 패턴
-    1. 무한 루프 (종료 조건 없음)
-        
-        ```nasm
-        .loop:
-            ; (여기에 반복할 코드)
-            jmp .loop
-        ```
-        
-        1. `.loop:` 이라는 레이블(이름표)을 붙이고
-        2. 다시 `.loop`로 `jmp`해서 영원히 돌아오는 구조
-        3. C로 치면 `while (1) { }` 와 같음.
+   1. 무한 루프 (종료 조건 없음)
+
+      ```nasm
+      .loop:
+          ; (여기에 반복할 코드)
+          jmp .loop
+      ```
+
+      1. `.loop:` 이라는 레이블(이름표)을 붙이고
+      2. 다시 `.loop`로 `jmp`해서 영원히 돌아오는 구조
+      3. C로 치면 `while (1) { }` 와 같음.
 4. 카운터 기반 루프 (조건부 반복)
-    
-    ```nasm
-    mov rcx, 5        ; 반복할 횟수 5회
-    
-    .loop:
-        ; (여기에 반복할 코드)
-    
-        dec rcx        ; rcx = rcx - 1
-        cmp rcx, 0
-        jne .loop      ; rcx != 0 이면 다시 반복
-    ```
-    
-    1. `rcx`에 반복 횟수를 세팅하고
-    2. `dec`로 하나 줄이고
-    3. `cmp`로 0이 됐는지 비교
-    4. `jne`로 0이 아니면 다시 `.loop`로 점프
-    5. C로 치면:
-        
-        ```nasm
-        int i = 5;
-        while (i--) {
-            // 반복
-        }
-        ```
-        
+
+   ```nasm
+   mov rcx, 5        ; 반복할 횟수 5회
+
+   .loop:
+       ; (여기에 반복할 코드)
+
+       dec rcx        ; rcx = rcx - 1
+       cmp rcx, 0
+       jne .loop      ; rcx != 0 이면 다시 반복
+   ```
+
+   1. `rcx`에 반복 횟수를 세팅하고
+   2. `dec`로 하나 줄이고
+   3. `cmp`로 0이 됐는지 비교
+   4. `jne`로 0이 아니면 다시 `.loop`로 점프
+   5. C로 치면:
+
+      ```nasm
+      int i = 5;
+      while (i--) {
+          // 반복
+      }
+      ```
+
 5. 루프 만들 때 필요한 명령어
-    
-    
-    | 명령어 | 역할 |
-    | --- | --- |
-    | **jmp label** | 무조건 점프 |
-    | **cmp dst, src** | 비교 후 플래그 설정 |
-    | **je label** | 같으면 점프 (ZF = 1) |
-    | **jne label** | 다르면 점프 (ZF = 0) |
-    | **dec reg** | 1 감소 |
+
+   | 명령어           | 역할                 |
+   | ---------------- | -------------------- |
+   | **jmp label**    | 무조건 점프          |
+   | **cmp dst, src** | 비교 후 플래그 설정  |
+   | **je label**     | 같으면 점프 (ZF = 1) |
+   | **jne label**    | 다르면 점프 (ZF = 0) |
+   | **dec reg**      | 1 감소               |
 
 ### 3-2. 문제 풀이
 
@@ -291,21 +291,20 @@ pop rax → (25 복구)
 
 진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.
 
-
 {% toggle 한 줄씩 풀이 보기 %}
 
-1. `mov rax, 10`   ;mov 명렁어로 rax 에 10을 저장
-2. `mov rbx, 20`   ;mov 명령어로 rbx 에 20을 저장
-3. `add rax, rbx`   ;add 명령어로 rax 와 rbx 덧셈 연산 후, rax에 값을 저장
-4. `push rax`   ; rax 값을 push = stack에 rax 값을 저장
-5. `mov rax 0`   ; rax 값에 0을 저장
-6. `pop rax`   ; stack 에서 이전에 저장한 rax(30)을 rax로 복구 = stack에서 rax값을 넣기
-7. `cmp rax, 30`   ;rax값 과 30을 비교
-8. `je .end`   ;`cmp` ➔ Zero Flag(ZF) 세팅, `je` ➔ ZF가 1이면 점프 (== 같을 때 점프)
-9. `.loop:`   ;루프문
-10. `jmp .loop`   ;(틀릴 경우 무한 루프)
-11. `.end:`  ; `je .end` 에 선언한 곳
-12. `jmp .end`  ;정상 종료 무한 루프 종료
+1. `mov rax, 10` ;mov 명렁어로 rax 에 10을 저장
+2. `mov rbx, 20` ;mov 명령어로 rbx 에 20을 저장
+3. `add rax, rbx` ;add 명령어로 rax 와 rbx 덧셈 연산 후, rax에 값을 저장
+4. `push rax` ; rax 값을 push = stack에 rax 값을 저장
+5. `mov rax 0` ; rax 값에 0을 저장
+6. `pop rax` ; stack 에서 이전에 저장한 rax(30)을 rax로 복구 = stack에서 rax값을 넣기
+7. `cmp rax, 30` ;rax값 과 30을 비교
+8. `je .end` ;`cmp` ➔ Zero Flag(ZF) 세팅, `je` ➔ ZF가 1이면 점프 (== 같을 때 점프)
+9. `.loop:` ;루프문
+10. `jmp .loop` ;(틀릴 경우 무한 루프)
+11. `.end:` ; `je .end` 에 선언한 곳
+12. `jmp .end` ;정상 종료 무한 루프 종료
 
 {% endtoggle %}
 
@@ -352,22 +351,22 @@ main:
 **조건 분기 명령어 핵심 3단계**
 
 - **cmp dst, src**
-    - `dst - src`를 "계산만" 하고
-    - **값은 버리고 플래그만 세팅**한다.
+  - `dst - src`를 "계산만" 하고
+  - **값은 버리고 플래그만 세팅**한다.
 - **플래그 레지스터 값 설정**
-    - Zero Flag(ZF), Sign Flag(SF), Carry Flag(CF), Overflow Flag(OF) 설정
+  - Zero Flag(ZF), Sign Flag(SF), Carry Flag(CF), Overflow Flag(OF) 설정
 - **je, jne, jg, jl 등 분기 명령어로 점프**
 
 자주 쓰는 조건 분기 명령어
 
-| 명령어 | 의미 | 조건 |
-| --- | --- | --- |
-| **je** | Jump if Equal | ZF == 1 (같으면) |
-| **jne** | Jump if Not Equal | ZF == 0 (다르면) |
-| **jg** | Jump if Greater | (SF == OF) && (ZF == 0) (크면) |
-| **jge** | Jump if Greater or Equal | SF == OF (크거나 같으면) |
-| **jl** | Jump if Less | SF != OF (작으면) |
-| **jle** | Jump if Less or Equal | (SF != OF) |
+| 명령어  | 의미                     | 조건                           |
+| ------- | ------------------------ | ------------------------------ |
+| **je**  | Jump if Equal            | ZF == 1 (같으면)               |
+| **jne** | Jump if Not Equal        | ZF == 0 (다르면)               |
+| **jg**  | Jump if Greater          | (SF == OF) && (ZF == 0) (크면) |
+| **jge** | Jump if Greater or Equal | SF == OF (크거나 같으면)       |
+| **jl**  | Jump if Less             | SF != OF (작으면)              |
+| **jle** | Jump if Less or Equal    | (SF != OF)                     |
 
 Assembly에서는 거의 **je, jne, jg, jl**만 쓴다고 보면 됌.
 
@@ -447,19 +446,17 @@ cmp rax, rbx
 → 그리고 분기 명령어(`je`, `jg`, `jl` 등)가 이 플래그를 보는 거야.
 
 > 즉, cmp는 "비교만 하고 아무것도 저장하지 않는다."
-> 
-> 
+>
 > **플래그 세팅만 한다.**
-> 
 
 ### 4-5. 요약
 
-| 플래그 | 의미 | 영향 받는 분기 |
-| --- | --- | --- |
-| **ZF (Zero Flag)** | 두 값이 같으면 세팅 | je, jne |
-| **SF (Sign Flag)** | 결과가 음수면 세팅 | jg, jl |
-| **OF (Overflow Flag)** | 오버플로우 발생 여부 | jg, jl |
-| **CF (Carry Flag)** | 자리 올림/내림 발생 여부 | (unsigned 비교에 사용) |
+| 플래그                 | 의미                     | 영향 받는 분기         |
+| ---------------------- | ------------------------ | ---------------------- |
+| **ZF (Zero Flag)**     | 두 값이 같으면 세팅      | je, jne                |
+| **SF (Sign Flag)**     | 결과가 음수면 세팅       | jg, jl                 |
+| **OF (Overflow Flag)** | 오버플로우 발생 여부     | jg, jl                 |
+| **CF (Carry Flag)**    | 자리 올림/내림 발생 여부 | (unsigned 비교에 사용) |
 
 signed/unsigned 구분이 있는데, 일단 지금은 **정수 부호 있는(signed) 비교**만 다룬다.
 
@@ -498,7 +495,6 @@ equal:
     ; 여기는 rax == rbx 일 때 오는 곳
     jmp .loop
 ```
-
 
 {% toggle 미션 풀이: %}
 

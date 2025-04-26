@@ -6,32 +6,35 @@ tags: [GitHub Blog, 이미지 경로 설정, post-image, Jekyll 이미지 관리
 ---
 
 Jekyll 기반 GitHub 블로그에서 이미지를 체계적으로 관리하고 싶다면,  
-**게시글 별 이미지 폴더 구조**를 사용하는 것이 좋습니다.   
-이 글에서는 `post-image.html` 인클루드를 만들어,   
+**게시글 별 이미지 폴더 구조**를 사용하는 것이 좋습니다.  
+이 글에서는 `post-image.html` 인클루드를 만들어,  
 자동으로 포스트 경로에 맞는 이미지 경로를 지정하는 방법을 소개합니다.
 
 ## GitHub Blog Image Path 설정하기
 
-.\_include\ 해당 경로에 post-image.html 생성합니다. 
+.\_include\ 해당 경로에 post-image.html 생성합니다.
 
 ```html
 {% raw %}
 <!-- post-image.html -->
-{% assign parts = page.path | split: '/' %}
-{% assign category = parts[1] %}
-{% assign slug = parts[2] | remove: '.md' %}
+{% assign parts = page.path | split: '/' %} {% assign category = parts[1] %} {%
+assign slug = parts[2] | remove: '.md' %}
 
-<img src="/assets/images/{{ category }}/{{ slug }}/{{ include.name }}" alt="{{ include.alt | default: include.name }}" style="max-width: 100%;">
+<img
+  src="/assets/images/{{ category }}/{{ slug }}/{{ include.name }}"
+  alt="{{ include.alt | default: include.name }}"
+  style="max-width: 100%;"
+/>
 {% endraw %}
 ```
 
 예시:
 
-1. `\_posts\blog\2025-04-10-blog-start.md` 라는 포스트가 있습니다.   
-2. `\assets\images\2025-04-10-blog-start` 폴더를 생성합니다.   
-3. 이 폴더에 게시글에 넣을 이미지를 저장합니다.   
-4. 예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.   
-(현재 blog라는 카테고리를 사용중, 다음 작성글에서 카테고리를 다룰 예정입니다.)   
+1. `\_posts\blog\2025-04-10-blog-start.md` 라는 포스트가 있습니다.
+2. `\assets\images\2025-04-10-blog-start` 폴더를 생성합니다.
+3. 이 폴더에 게시글에 넣을 이미지를 저장합니다.
+4. 예를 들어 ImageName.png라는 이미지 파일을 넣은 후, 아래 코드를 포스트에 작성하면 이미지가 표시됩니다.  
+   (현재 blog라는 카테고리를 사용중, 다음 작성글에서 카테고리를 다룰 예정입니다.)
 
 ```markdown
 {% raw %}{% include post-image.html name="ImageName.png" alt="image" %}{% endraw %}
@@ -39,9 +42,9 @@ Jekyll 기반 GitHub 블로그에서 이미지를 체계적으로 관리하고 �
 
 ### Image Path 설정 장점 요약
 
-1. 폴더명만 보면 어떤 글에 쓰였는지 바로 보임.   
-2. Markdown에서도 포스트 경로 = 이미지 경로 연상하기 쉬움   
-3. 나중에 썸네일 자동 생성이나 포스트 삭제 시 이미지 관리도 편함   
+1. 폴더명만 보면 어떤 글에 쓰였는지 바로 보임.
+2. Markdown에서도 포스트 경로 = 이미지 경로 연상하기 쉬움
+3. 나중에 썸네일 자동 생성이나 포스트 삭제 시 이미지 관리도 편함
 
 ### GitHub Blog 시작하기 Post 예시 코드
 
@@ -50,6 +53,7 @@ Jekyll 기반 GitHub 블로그에서 이미지를 체계적으로 관리하고 �
 title: "GitHub Blog Start"
 date: 2025-04-10
 tags: [GitHubBlog]
+
 ---
 
 # jekyll 테마 GitHub Blog 시작하기

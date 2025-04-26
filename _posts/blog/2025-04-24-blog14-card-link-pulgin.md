@@ -2,11 +2,18 @@
 title: "GitHub Blog 카드 링크 플러그인 만들기"
 description: "Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으로 표시하는 Liquid 플러그인 구현 방법을 소개합니다. OG 태그 기반 링크 미리보기를 직접 구현해보세요."
 date: 2025-04-24
-tags: [GitHubBlog, link preview, liquid plugin, jekyll plugin, open graph, javascript]
+tags:
+  [
+    GitHubBlog,
+    link preview,
+    liquid plugin,
+    jekyll plugin,
+    open graph,
+    javascript,
+  ]
 ---
 
 GitHub Pages 기반 Jekyll 블로그에서 외부 링크를 자동으로 카드 형식으로 만들어주는 **링크 카드 플러그인**, **OG 태그 기반 미리보기 카드**, **Liquid 태그 확장**을 구현하고 싶다면 이 글을 참고하세요.
-
 
 ### 링크 카드 미리 보기
 
@@ -62,6 +69,7 @@ Liquid::Template.register_tag('cardlink', Jekyll::CardLink)
 ```
 
 ### Gemfile 해당 코드 추가
+
 ```
 gem 'nokogiri'
 ```

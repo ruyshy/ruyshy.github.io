@@ -10,7 +10,6 @@ Jekyll 블로그에서 **코드블럭에 복사 버튼을 추가**하고 싶다�
 이 글에서는 **복사 기능 구현 → 복사 후 텍스트 변경 → 로컬 대체까지**  
 완벽하게 적용하는 법을 단계별로 설명합니다.
 
-
 ## code block copy button 추가
 
 ### \include\code-block_custom.html 추가
@@ -18,40 +17,42 @@ Jekyll 블로그에서 **코드블럭에 복사 버튼을 추가**하고 싶다�
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
-    var button = document.createElement('button');
-    button.className = 'copy-button';
-    button.textContent = 'Copy';
-    button.style.position = 'absolute';
-    button.style.top = '0.25em';
-    button.style.right = '0.25em';
-    block.style.position = 'relative';
-    block.appendChild(button);
-  });
+  document.addEventListener("DOMContentLoaded", function () {
+    document
+      .querySelectorAll("div.highlighter-rouge")
+      .forEach(function (block) {
+        var button = document.createElement("button");
+        button.className = "copy-button";
+        button.textContent = "Copy";
+        button.style.position = "absolute";
+        button.style.top = "0.25em";
+        button.style.right = "0.25em";
+        block.style.position = "relative";
+        block.appendChild(button);
+      });
 
-  var clipboard = new ClipboardJS('.copy-button', {
-    target: function(trigger) {
-      return trigger.parentElement.querySelector('pre');
-    }
-  });
+    var clipboard = new ClipboardJS(".copy-button", {
+      target: function (trigger) {
+        return trigger.parentElement.querySelector("pre");
+      },
+    });
 
-  clipboard.on('success', function(e) {
-    var originalText = e.trigger.textContent;
-    e.trigger.textContent = 'Copied!';
-    setTimeout(function() {
-      e.trigger.textContent = originalText;
-    }, 1500);
-    e.clearSelection();
+    clipboard.on("success", function (e) {
+      var originalText = e.trigger.textContent;
+      e.trigger.textContent = "Copied!";
+      setTimeout(function () {
+        e.trigger.textContent = originalText;
+      }, 1500);
+      e.clearSelection();
+    });
   });
-});
 </script>
 ```
 
 - 복사 성공하면 버튼이 1.5초 동안 `"Copied!"`로 변하고
 - 다시 `"Copy"`로 자동 복구됨.
 - 오류나면 콘솔에 에러도 출력되게 함.
-- local로 하고 싶을 때, https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js 해당 파일을 Ctrl+S로 저장 후, /assets/js/vendor/ 해당 경로에 clipboard.min.js 옮긴 후, 맨 위 줄 아래처럼 변경하면 local로 진행 가능! 
+- local로 하고 싶을 때, https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js 해당 파일을 Ctrl+S로 저장 후, /assets/js/vendor/ 해당 경로에 clipboard.min.js 옮긴 후, 맨 위 줄 아래처럼 변경하면 local로 진행 가능!
 - `<script src="/assets/js/vendor/clipboard.min.js"></script>`
 
 ### \_layouts\default.html 코드에 추가
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 		<!-- 여기 추가 -->
     {% include code-block_custom.html %}
-    
+
 
     {% include scripts.html %}
   </body>
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endraw %}
 ```
 
-### \_sass\minimal-mistakes\_buttons.scss 코드에 추가
+### \_sass\minimal-mistakes_buttons.scss 코드에 추가
 
 ```scss
 .copy-button {
@@ -120,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
   background: #666;
   opacity: 1;
 }
-
 ```
 
 버튼이 훨씬 부드럽고 모던하게 변함.
