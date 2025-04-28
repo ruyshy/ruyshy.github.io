@@ -120,7 +120,7 @@
                 href="/categories/"
                 
                 
-              >category</a>
+              >Category</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -269,54 +269,85 @@
   <nav class="nav__list">
     <ul class="nav__items">
 
-      <!-- HOME -->
-      <li>
-        <a href="/" class="nav__item">
-          Home
-        </a>
-      </li>
-
-      <!-- Divider -->
+      <li class="nav__title">Category</li>
       <li><hr class="nav-divider"></li>
 
-      <!-- CATEGORY TITLE -->
-      <li class="nav__title">Category</li>
-
-      <!-- All -->
       <li>
         <a href="/categories/" class="nav__item">
-          - All <span class="count">(27)</span>
+          ALL <span class="count">(28)</span>
         </a>
       </li>
 
-      <!-- Dynamic categories -->
       
       
         
-        
-        <li>
-          <a href="/categories/assembly/"
-             class="nav__item">
-            - Assembly <span class="count">(11)</span>
-          </a>
-        </li>
+  
+    <li class="nav__item-toggle">
+      <input type="checkbox" id="toggle-security" class="nav__toggle" hidden checked>
+
+      <label for="toggle-security" class="nav__subtitle">
+        <span class="nav__arrow"></span> Security
+      </label>
+
       
-        
-        
-        <li>
-          <a href="/categories/blog/"
-             class="nav__item">
-            - Blog <span class="count">(16)</span>
-          </a>
-        </li>
+        <ul class="nav__subitems">
+          
+  
+    <li>
+      
+      
+      <a href="/categories/assembly/" class="nav__item">
+        - Assembly
+        <span class="count">
+          (11)
+        </span>
+      </a>
+    </li>
+
+  
+
+  
+    <li>
+      
+      
+      <a href="/categories/reversing_engineering/" class="nav__item">
+        - Reversing Engineering
+        <span class="count">
+          (0)
+        </span>
+      </a>
+    </li>
+
+  
+
+
+        </ul>
+      
+    </li>
+
+  
+
+  
+    <li>
+      
+      
+      <a href="/categories/blog/" class="nav__item">
+        - Blog
+        <span class="count">
+          (17)
+        </span>
+      </a>
+    </li>
+
+  
+
+
       
 
     </ul>
   </nav>
 
 </div>
-
-
 
 
 
@@ -544,9 +575,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-898yde', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-h3m61p', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-898yde" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-h3m61p" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -730,9 +761,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-cg4og1', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-4dpcu3', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-cg4og1" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-4dpcu3" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code> ;mov 명렁어로 rax 에 10을 저장</li>
@@ -754,9 +785,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-g34kr4', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-z39be7', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-g34kr4" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-z39be7" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -1012,9 +1043,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-a0z55o', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-xhxcyk', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-a0z55o" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-xhxcyk" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -1166,6 +1197,28 @@ rax = 10</p>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/blog/blog-17-category2/" rel="permalink">GitHub Blog 카테고리 사이드바 설정 방법 - 상위/하위 카테고리 구현
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog에서 카테고리를 상위/하위 트리 구조로 표현하고 싶다면 이 글을 참고하세요. Liquid 템플릿 수정, sidebar.html/sidebar-items.html 추가, _navigation.scss 스타일 커스터마이징을 통해 GitHub 블로그 카테고리 트리 구...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/assembly/assembly7-x64-dbg-guide/" rel="permalink">초보자를 위한 x64dbg 실습 흐름 가이드 - Windows 어셈블리 디버깅 입문
 </a>
       
@@ -1221,28 +1274,6 @@ rax = 10</p>
 
     <p class="archive__item-excerpt" itemprop="description">NASM 어셈블리어에서 조건 분기(jmp, je, jne, jl, jg), 함수 호출 구조(call, ret), 스택프레임과 지역 변수 접근 방식을 복습하는 퀴즈입니다. 기본 명령어 흐름을 명확히 이해하는 데 도움이 됩니다.
 </p>
-  </article>
-</div>
-
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/blog16-google-analytics/" rel="permalink">GitHub Blog Google Analytics GA4 연동 가이드
-</a>
-      
-    </h2>
-    
-
-
-    <p class="archive__item-excerpt" itemprop="description">GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 GA4 측정 ID 삽입, minimal-mistakes 테마 설정, 실시간 유입 확인, 그리고 Google Search C...</p>
   </article>
 </div>
 

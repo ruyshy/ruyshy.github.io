@@ -118,7 +118,7 @@
                 href="/categories/"
                 
                 
-              >category</a>
+              >Category</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -265,54 +265,85 @@
   <nav class="nav__list">
     <ul class="nav__items">
 
-      <!-- HOME -->
-      <li>
-        <a href="/" class="nav__item">
-          Home
-        </a>
-      </li>
-
-      <!-- Divider -->
+      <li class="nav__title">Category</li>
       <li><hr class="nav-divider"></li>
 
-      <!-- CATEGORY TITLE -->
-      <li class="nav__title">Category</li>
-
-      <!-- All -->
       <li>
         <a href="/categories/" class="nav__item">
-          - All <span class="count">(27)</span>
+          ALL <span class="count">(28)</span>
         </a>
       </li>
 
-      <!-- Dynamic categories -->
       
       
         
-        
-        <li>
-          <a href="/categories/assembly/"
-             class="nav__item">
-            - Assembly <span class="count">(11)</span>
-          </a>
-        </li>
+  
+    <li class="nav__item-toggle">
+      <input type="checkbox" id="toggle-security" class="nav__toggle" hidden checked>
+
+      <label for="toggle-security" class="nav__subtitle">
+        <span class="nav__arrow"></span> Security
+      </label>
+
       
-        
-        
-        <li>
-          <a href="/categories/blog/"
-             class="nav__item">
-            - Blog <span class="count">(16)</span>
-          </a>
-        </li>
+        <ul class="nav__subitems">
+          
+  
+    <li>
+      
+      
+      <a href="/categories/assembly/" class="nav__item">
+        - Assembly
+        <span class="count">
+          (11)
+        </span>
+      </a>
+    </li>
+
+  
+
+  
+    <li>
+      
+      
+      <a href="/categories/reversing_engineering/" class="nav__item">
+        - Reversing Engineering
+        <span class="count">
+          (0)
+        </span>
+      </a>
+    </li>
+
+  
+
+
+        </ul>
+      
+    </li>
+
+  
+
+  
+    <li>
+      
+      
+      <a href="/categories/blog/" class="nav__item">
+        - Blog
+        <span class="count">
+          (17)
+        </span>
+      </a>
+    </li>
+
+  
+
+
       
 
     </ul>
   </nav>
 
 </div>
-
-
 
 
 
@@ -332,6 +363,29 @@
 
 
 
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog3-build-release/" rel="permalink">GitHub Blog 빌드 &amp; 릴리즈 자동화 - GitHub Actions로 Jekyll 배포하기
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub 블로그를 운영하면서 자동 배포를 설정하고 싶다면,
+GitHub Actions를 사용한 CI/CD 환경이 필요합니다.
+이 글에서는 Jekyll로 작성한 블로그를 GitHub 서버에서 자동으로 빌드하고
+gh-pages 브랜치로 배포하는 워크플로우를 설정하는 방법을 정리합니다.
+</p>
+  </article>
+</div>
 
 
 

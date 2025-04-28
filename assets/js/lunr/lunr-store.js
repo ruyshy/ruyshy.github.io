@@ -23,6 +23,12 @@ var store = [{
         "url": "/example/slide/",
         "teaser": null
       },{
+        "title": "Reversing Engineering",
+        "excerpt":" ","categories": [],
+        "tags": [],
+        "url": "/categories/reversing_engineering/",
+        "teaser": null
+      },{
         "title": "GitHub Blog 시작하기 - Jekyll과 GitHub Pages 블로그 만들기",
         "excerpt":"GitHub Blog를 시작하려는 분들을 위한 가이드입니다. 이 글에서는 GitHub Pages, Jekyll, 그리고 인기 테마인 minimal-mistakes를 활용해 나만의 기술 블로그를 만드는 과정을 단계별로 설명합니다. Jekyll 기반 GitHub Blog 생성 https://mmistakes.github.io/minimal-mistakes/ 해당 Jekyll 테마(minimal-mistakes) 기준으로 작성 되어있습니다. 준비해야 할 준비물 개인 GitHub 계정 (https://github.com/) Visual Studio Code (https://code.visualstudio.com/) GitHub Blog 시작하기 https://github.com/mmistakes/minimal-mistakes...","categories": ["blog"],
         "tags": ["GitHub Blog","GitHub Pages","Jekyll","블로그 만들기","minimal-mistakes"],
@@ -183,5 +189,11 @@ var store = [{
         "excerpt":"x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator« 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다. x64에서 실행해볼 예제 Visual Studio 2015 C++로 작성되어있습니다. #include &lt;iostream&gt; int main() { std::cout &lt;&lt; \"Hello World!\" &lt;&lt; std::endl; return 0; } 빌드 환경 :...","categories": ["assembly"],
         "tags": ["x64dbg","디버깅 실습","reversing","assembly","entrypoint 분석","메모리 검색","함수 추적"],
         "url": "/assembly/assembly7-x64-dbg-guide/",
+        "teaser": null
+      },{
+        "title": "GitHub Blog 카테고리 사이드바 설정 방법 - 상위/하위 카테고리 구현",
+        "excerpt":"GitHub Blog에서 카테고리를 상위/하위 트리 구조로 표현하고 싶다면 이 글을 참고하세요. Liquid 템플릿 수정, sidebar.html/sidebar-items.html 추가, _navigation.scss 스타일 커스터마이징을 통해 GitHub 블로그 카테고리 트리 구성을 완성하는 방법을 자세히 정리했습니다. 이전에 다루었던 Cateory 업데이트 글입니다. Category 상위목록/하위목록을 만들어보자. _include/sidebar.html {% if page.author_profile or layout.author_profile or page.sidebar %} &lt;div class=\"sidebar sticky\"&gt; {%...","categories": ["blog"],
+        "tags": ["GitHubBlog","Liquid","sidebar","카테고리 설정","Jekyll 커스터마이징","navigation","SCSS"],
+        "url": "/blog/blog-17-category2/",
         "teaser": null
       }]
