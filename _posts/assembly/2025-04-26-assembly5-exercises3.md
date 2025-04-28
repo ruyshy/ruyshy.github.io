@@ -1,7 +1,7 @@
 ---
 title: "Assembly 조건 분기와 스택프레임 연습문제 풀이3 - NASM 실습 퀴즈"
 description: "Assembly NASM 기반으로 조건 분기 명령어(jmp, je, jne, jl, jg)와 함수 호출 구조(call, ret) 및 스택프레임 접근을 객관식, 단답형 퀴즈로 복습합니다."
-date: 2025-04-28
+date: 2025-04-26
 tags: [assembly, nasm, 조건 분기, call ret 구조, 스택프레임, x64, reversing, 어셈블리어]
 ---
 
@@ -130,7 +130,7 @@ NASM 어셈블리어에서 조건 분기(jmp, je, jne, jl, jg), 함수 호출 �
 {% endquiz %}
 
 {% quiz "
-`10.` [단답형] 함수 호출 시 push되는 레지스터 이름은 무엇인가? (프로그램 카운터 역할)
+`10.` [단답형] 함수 호출 시 push되는 레지스터 이름은 무엇인가? (프로그램 카운터 역할, 대문자로 입력)
 " %}
 
 -[text: RIP]
@@ -169,7 +169,7 @@ NASM 어셈블리어에서 조건 분기(jmp, je, jne, jl, jg), 함수 호출 �
 {% endquiz %}
 
 {% quiz "
-`13.` [단답형] 메모리 주소 계산 표현식 [rbx+rcx*4] 에서 rcx는 무엇으로 해석되는가? (1단어)
+`13.` [단답형] 메모리 주소 계산 표현식 [rbx+rcx*4] 에서 rcx는 무엇으로 해석되는가? (1단어, 소문자로 입력)
 " %}
 
 - [text: index]
