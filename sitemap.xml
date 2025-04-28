@@ -4,9 +4,25 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
+      <loc>https://ruyshy.github.io/assembly/assembly6-x64-dbg/</loc>
+      
+        <lastmod>2025-04-26T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
       <loc>https://ruyshy.github.io/assembly/assembly5-exercises3/</loc>
       
-        <lastmod>2025-04-28T00:00:00+09:00</lastmod>
+        <lastmod>2025-04-26T00:00:00+09:00</lastmod>
       
 
       

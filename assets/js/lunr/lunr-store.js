@@ -172,4 +172,10 @@ var store = [{
         "tags": ["assembly","nasm","조건 분기","call ret 구조","스택프레임","x64","reversing","어셈블리어"],
         "url": "/assembly/assembly5-exercises3/",
         "teaser": null
+      },{
+        "title": "x64dbg 기본 사용법과 디버깅 흐름 이해하기 - Windows 어셈블리 디버거 입문",
+        "excerpt":"Windows에서 어셈블리 디버깅을 배울 때 가장 많이 쓰는 도구인 x64dbg를 소개합니다. x64dbg의 설치 방법, 기본 인터페이스 구성, Breakpoint 설정, Step 실행(F7, F8), 레지스터/메모리/스택 분석 방법을 기초부터 정리합니다. x64dbg란? x64dbg는 Windows용 오픈소스 디버거. x64(64비트), x86(32비트) 프로그램을 역분석, 디버깅할 수 있음. 쉽게 말하면, “프로그램 내부에서 무슨 일이 일어나는지 실시간으로 볼 수 있게...","categories": ["assembly"],
+        "tags": ["x64dbg","디버깅","reversing","assembly","windows 디버거","스택 분석","메모리 분석"],
+        "url": "/assembly/assembly6-x64-dbg/",
+        "teaser": null
       }]
