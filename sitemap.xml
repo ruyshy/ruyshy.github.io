@@ -4,6 +4,22 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
+      <loc>https://ruyshy.github.io/assembly/assembly5-exercises3/</loc>
+      
+        <lastmod>2025-04-28T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
       <loc>https://ruyshy.github.io/blog/blog16-google-analytics/</loc>
       
         <lastmod>2025-04-25T00:00:00+09:00</lastmod>
