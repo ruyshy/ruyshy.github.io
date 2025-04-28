@@ -139,6 +139,43 @@ defaults:
 - 개별 포스트의 <meta name="robots"> 태그가 noindex면 색인 안 됨.
 - 즉, robots.txt와 robots: "index, follow"는 역할이 다름 → 둘 다 챙기는 게 안전
 
+## 수동으로 인덱싱 요청하기
+
+{% img "search-console-indexing1.png","서치 콘솔 수동 인덱싱 방법 이미지1" %}
+
+저의 경우 하위 사이트인 https://ruyshy.github.io/blog/blog1-start/ 을 입력한 곳에 색인 생성 요청할 사이트를 넣어주시면 됩니다.
+
+{% img "search-console-indexing2.png","서치 콘솔 수동 인덱싱 방법 이미지2" %}
+
+저는 예전에 색인 생성 요청을 완료를 진행해서 등록되어있는 사진입니다.
+
+1. 상단 검색창에 다음 입력 후 Enter
+2. "요청되지 않음" → "색인 생성 요청" 버튼 클릭
+3. blog2, blog3, ... 반복
+
+> 실제로 인덱싱되면 24시간 내에 검색에 나타나기 시작
+> 
+
+저의 경우 하위 사이트 목록
+
+```
+https://ruyshy.github.io/blog/blog1-start/
+https://ruyshy.github.io/blog/blog2-local-server/
+https://ruyshy.github.io/blog/blog3-build-release/
+https://ruyshy.github.io/blog/blog4-category/
+https://ruyshy.github.io/blog/blog5-post-image/
+https://ruyshy.github.io/blog/blog6-comment/
+https://ruyshy.github.io/blog/blog7-font/
+https://ruyshy.github.io/blog/blog8-toc/
+https://ruyshy.github.io/blog/blog9-Image-plugin/
+https://ruyshy.github.io/blog/blog10-code-block-copy-button/
+https://ruyshy.github.io/blog/blog11-search-engine/
+https://ruyshy.github.io/blog/blog12-toggle-plugin/
+```
+
+수동으로 해당 리스트들을 등록했습니다.
+
+
 ## jekyll-seo-tag 사용
 
 ### \_config.yml plugin: 내용 추가
