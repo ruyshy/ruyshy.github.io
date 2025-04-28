@@ -1,3 +1,166 @@
+---
+title: "GitHub Blog 카테고리 사이드바 설정 방법 - 상위/하위 카테고리 구현"
+description: "GitHub 블로그에서 Liquid와 Sass를 이용해 카테고리 목록을 트리 형태(상위/하위)로 구성하고, sidebar.html, sidebar-items.html, _navigation.scss를 수정하는 방법을 단계별로 설명합니다."
+date: 2025-04-28
+tags: [GitHubBlog, Liquid, sidebar, 카테고리 설정, Jekyll 커스터마이징, navigation, SCSS]
+---
+
+GitHub Blog에서 카테고리를 상위/하위 트리 구조로 표현하고 싶다면 이 글을 참고하세요. Liquid 템플릿 수정, sidebar.html/sidebar-items.html 추가, _navigation.scss 스타일 커스터마이징을 통해 **GitHub 블로그 카테고리 트리 구성**을 완성하는 방법을 자세히 정리했습니다.
+
+이전에 다루었던 Cateory 업데이트 글입니다.
+
+
+### Category 상위목록/하위목록을 만들어보자.
+
+#### _include/sidebar.html
+
+```html
+{% raw %}{% if page.author_profile or layout.author_profile or page.sidebar %}
+<div class="sidebar sticky">
+
+  {% if page.author_profile or layout.author_profile %}
+    {% include author-profile.html %}
+  {% endif %}
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+
+      <li class="nav__title">Category</li>
+      <li><hr class="nav-divider"></li>
+
+      <li>
+        <a href="{{ '/categories/' | relative_url }}" class="nav__item{% if page.url == '/categories/' %} active{% endif %}">
+          ALL <span class="count">({{ site.posts | size }})</span>
+        </a>
+      </li>
+
+      {% assign category_nav = site.data.navigation.main | where: "title", "Category" | first %}
+      {% if category_nav %}
+        {% include sidebar-items.html items=category_nav.children %}
+      {% endif %}
+
+    </ul>
+  </nav>
+
+</div>
+{% endif %}{% endraw %}
+
+```
+
+#### _include/sidebar-items.html 추가하기
+
+```html
+{% raw %}{% for item in include.items %}
+  {% if item.sub_title %}
+    <li class="nav__item-toggle">
+      <input type="checkbox" id="toggle-{{ item.sub_title | slugify }}" class="nav__toggle" hidden checked>
+
+      <label for="toggle-{{ item.sub_title | slugify }}" class="nav__subtitle">
+        <span class="nav__arrow"></span> {{ item.sub_title }}
+      </label>
+
+      {% if item.children %}
+        <ul class="nav__subitems">
+          {% include sidebar-items.html items=item.children %}
+        </ul>
+      {% endif %}
+    </li>
+
+  {% elsif item.title %}
+    <li>
+      {% assign category_name = item.url | split: '/' | last %}
+      {% assign category_posts = site.categories[category_name] %}
+      <a href="{{ item.url | relative_url }}" class="nav__item{% if page.url == item.url %} active{% endif %}">
+        - {{ item.title }}
+        <span class="count">
+          ({% if category_posts %}{{ category_posts | size }}{% else %}0{% endif %})
+        </span>
+      </a>
+    </li>
+
+  {% endif %}
+{% endfor %}{% endraw %}
+```
+
+#### _sass/minimal-mistakes/_navigation.scss
+
+##### 추가해야 할 부분
+
+```scss
+   .nav__subtitle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 0.25em;
+    font-size: $type-size-5;
+    color: #ccc;
+  
+    .nav__arrow {
+      margin-right: 0.4em;
+      transition: transform 0.2s ease;
+    }
+  }
+  
+  .nav__item-toggle {
+    .nav__toggle {
+      &:checked + .nav__subtitle .nav__arrow::before {
+        content: "▼"; /* 펼친 상태 */
+      }
+      & + .nav__subtitle .nav__arrow::before {
+        content: "▶"; /* 접힌 상태 */
+      }
+      &:checked + .nav__subtitle + .nav__subitems {
+        max-height: 1000px;
+        opacity: 1;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+      }
+    }
+  }
+  
+  .nav__subitems {
+    list-style: none;
+    padding-left: 0.25em;
+    margin-top: 0.5em;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  
+    li {
+
+      a.nav__item {
+        display: block;
+        font-size: $type-size-4;
+        transition: color 0.2s ease, padding-left 0.2s ease; 
+      }
+    }
+  }
+```
+
+##### 수정해야 할 부분
+
+기존 코드:
+
+```scss
+  input[type="checkbox"],
+  label {
+    display: none;
+  }
+```
+
+수정 코드:
+
+```scss
+  input[type="checkbox"] {
+    display: none;
+  }
+```
+
+##### _navigation.scss 전체 코드
+
+{% toggle 전체 코드 보기 %}
+
+```scss
 /* ==========================================================================
    NAVIGATION
    ========================================================================== */
@@ -622,3 +785,13 @@
     padding-inline-start: 3.25rem;
   }
 }
+```
+
+{% endtoggle %}
+
+#### 적용된 예시 스크린샷
+
+{% img "cateory-preview-image.png", "category image" %}
+
+> 스타일을 바꾸고 싶다면, _navigation.scss 을 수정하도록 하자!
+>

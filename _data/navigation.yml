@@ -1,12 +1,16 @@
-# main links
 main:
   - title: "Home"
     url: /
-  - title: "category"
+
+  - title: "Category"
     url: /categories/
     children:
-    - title: "Assembly"
-      url: /categories/assembly/
-    - title: "Blog"
-      url: /categories/blog/
-      
+      - sub_title: "Security"
+        children:
+          - title: "Assembly"
+            url: /categories/assembly/
+          - title: "Reversing Engineering"
+            url: /categories/reversing_engineering/
+
+      - title: "Blog"
+        url: /categories/blog/

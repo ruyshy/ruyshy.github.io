@@ -8,43 +8,22 @@
   <nav class="nav__list">
     <ul class="nav__items">
 
-      <!-- HOME -->
-      <li>
-        <a href="{{ '/' | relative_url }}" class="nav__item{% if page.url == '/' %} active{% endif %}">
-          Home
-        </a>
-      </li>
-
-      <!-- Divider -->
+      <li class="nav__title">Category</li>
       <li><hr class="nav-divider"></li>
 
-      <!-- CATEGORY TITLE -->
-      <li class="nav__title">Category</li>
-
-      <!-- All -->
       <li>
         <a href="{{ '/categories/' | relative_url }}" class="nav__item{% if page.url == '/categories/' %} active{% endif %}">
-          - All <span class="count">({{ site.posts | size }})</span>
+          ALL <span class="count">({{ site.posts | size }})</span>
         </a>
       </li>
 
-      <!-- Dynamic categories -->
-      {% assign sorted_categories = site.categories | sort %}
-      {% for category in sorted_categories %}
-        {% assign cat_name = category[0] %}
-        {% assign cat_posts = category[1] %}
-        <li>
-          <a href="{{ '/categories/' | append: cat_name | append: '/' | relative_url }}"
-             class="nav__item{% if page.url == '/categories/' | append: cat_name | append: '/' %} active{% endif %}">
-            - {{ cat_name | capitalize }} <span class="count">({{ cat_posts | size }})</span>
-          </a>
-        </li>
-      {% endfor %}
+      {% assign category_nav = site.data.navigation.main | where: "title", "Category" | first %}
+      {% if category_nav %}
+        {% include sidebar-items.html items=category_nav.children %}
+      {% endif %}
 
     </ul>
   </nav>
 
 </div>
-
-
 {% endif %}

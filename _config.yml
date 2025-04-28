@@ -350,3 +350,12 @@ defaults:
       author_profile: true
       sidebar:
         nav: "main"
+
+  - scope:
+      path: "_posts/reversing_engineering"
+      type: posts
+    values:
+      categories: [reversing_engineering]
+      author_profile: true
+      sidebar:
+        nav: "main"
