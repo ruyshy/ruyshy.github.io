@@ -375,7 +375,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#검색-엔진-개요">검색 엔진 개요</a></li><li><a href="#검색-엔진-종류">검색 엔진 종류</a></li><li><a href="#google-search-console">Google Search Console</a></li><li><a href="#sitemapxml-생성">\sitemap.xml 생성</a></li><li><a href="#robotstxt-생성">\robots.txt 생성</a></li><li><a href="#포스트-색인-허용">포스트 색인 허용</a><ul><li><a href="#포스트-전체-적용하기">포스트 전체 적용하기</a></li></ul></li><li><a href="#jekyll-seo-tag-사용">jekyll-seo-tag 사용</a><ul><li><a href="#_configyml-plugin-내용-추가">_config.yml plugin: 내용 추가</a></li><li><a href="#gemfile-내용-추가">Gemfile 내용 추가</a></li><li><a href="#추가-진행-후">추가 진행 후</a></li></ul></li><li><a href="#추가-소유권-인증-방법2">추가 소유권 인증 방법2</a></li></ul>
+              <ul class="toc__menu"><li><a href="#검색-엔진-개요">검색 엔진 개요</a></li><li><a href="#검색-엔진-종류">검색 엔진 종류</a></li><li><a href="#google-search-console">Google Search Console</a></li><li><a href="#sitemapxml-생성">\sitemap.xml 생성</a></li><li><a href="#robotstxt-생성">\robots.txt 생성</a></li><li><a href="#포스트-색인-허용">포스트 색인 허용</a><ul><li><a href="#포스트-전체-적용하기">포스트 전체 적용하기</a></li></ul></li><li><a href="#수동으로-인덱싱-요청하기">수동으로 인덱싱 요청하기</a></li><li><a href="#jekyll-seo-tag-사용">jekyll-seo-tag 사용</a><ul><li><a href="#_configyml-plugin-내용-추가">_config.yml plugin: 내용 추가</a></li><li><a href="#gemfile-내용-추가">Gemfile 내용 추가</a></li><li><a href="#추가-진행-후">추가 진행 후</a></li></ul></li><li><a href="#추가-소유권-인증-방법2">추가 소유권 인증 방법2</a></li></ul>
             </nav>
           </aside>
         
@@ -510,6 +510,45 @@ Sitemap: https://ruyshy.github.io/sitemap.xml
   <li>개별 포스트의 <meta name="robots" /> 태그가 noindex면 색인 안 됨.</li>
   <li>즉, robots.txt와 robots: “index, follow”는 역할이 다름 → 둘 다 챙기는 게 안전</li>
 </ul>
+
+<h2 id="수동으로-인덱싱-요청하기">수동으로 인덱싱 요청하기</h2>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/search-console-indexing1.png" alt="서치 콘솔 수동 인덱싱 방법 이미지1" style="max-width:100%;" /></p>
+
+<p>저의 경우 하위 사이트인 https://ruyshy.github.io/blog/blog1-start/ 을 입력한 곳에 색인 생성 요청할 사이트를 넣어주시면 됩니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/search-console-indexing2.png" alt="서치 콘솔 수동 인덱싱 방법 이미지2" style="max-width:100%;" /></p>
+
+<p>저는 예전에 색인 생성 요청을 완료를 진행해서 등록되어있는 사진입니다.</p>
+
+<ol>
+  <li>상단 검색창에 다음 입력 후 Enter</li>
+  <li>“요청되지 않음” → “색인 생성 요청” 버튼 클릭</li>
+  <li>blog2, blog3, … 반복</li>
+</ol>
+
+<blockquote>
+  <p>실제로 인덱싱되면 24시간 내에 검색에 나타나기 시작</p>
+
+</blockquote>
+
+<p>저의 경우 하위 사이트 목록</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://ruyshy.github.io/blog/blog1-start/
+https://ruyshy.github.io/blog/blog2-local-server/
+https://ruyshy.github.io/blog/blog3-build-release/
+https://ruyshy.github.io/blog/blog4-category/
+https://ruyshy.github.io/blog/blog5-post-image/
+https://ruyshy.github.io/blog/blog6-comment/
+https://ruyshy.github.io/blog/blog7-font/
+https://ruyshy.github.io/blog/blog8-toc/
+https://ruyshy.github.io/blog/blog9-Image-plugin/
+https://ruyshy.github.io/blog/blog10-code-block-copy-button/
+https://ruyshy.github.io/blog/blog11-search-engine/
+https://ruyshy.github.io/blog/blog12-toggle-plugin/
+</code></pre></div></div>
+
+<p>수동으로 해당 리스트들을 등록했습니다.</p>
 
 <h2 id="jekyll-seo-tag-사용">jekyll-seo-tag 사용</h2>
 
