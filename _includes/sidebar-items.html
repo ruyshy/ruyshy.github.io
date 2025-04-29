@@ -19,7 +19,7 @@
       {% assign category_name = item.url | split: '/' | last %}
       {% assign category_posts = site.categories[category_name] %}
       <a href="{{ item.url | relative_url }}" class="nav__item{% if page.url == item.url %} active{% endif %}">
-        - {{ item.title }}
+        {{ item.title }}
         <span class="count">
           ({% if category_posts %}{{ category_posts | size }}{% else %}0{% endif %})
         </span>

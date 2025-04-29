@@ -4,12 +4,13 @@
   {% if page.author_profile or layout.author_profile %}
     {% include author-profile.html %}
   {% endif %}
+  
+  <li><hr class="nav-divider"></li>
 
   <nav class="nav__list">
     <ul class="nav__items">
 
       <li class="nav__title">Category</li>
-      <li><hr class="nav-divider"></li>
 
       <li>
         <a href="{{ '/categories/' | relative_url }}" class="nav__item{% if page.url == '/categories/' %} active{% endif %}">
@@ -21,7 +22,9 @@
       {% if category_nav %}
         {% include sidebar-items.html items=category_nav.children %}
       {% endif %}
-
+      
+      <li><hr class="nav-divider"></li>
+    
     </ul>
   </nav>
 
