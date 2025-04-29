@@ -5,12 +5,12 @@ date: 2025-04-27
 tags: [x64dbg, 디버깅 실습, reversing, assembly, entrypoint 분석, 메모리 검색, 함수 추적]
 ---
 
-x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator<< 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
+`x64dbg`를 이용해 `Windows C++` 프로그램을 디버깅하는 실습을 진행합니다. `EntryPoint`(진입점) 분석, `main` 함수 추적, `Az` 메모리 문자열 검색, `operator<<` 호출 추적까지 단계별로 상세히 따라가는 `x64dbg` 초보자 가이드입니다.
 
 
 ## x64에서 실행해볼 예제
 
-Visual Studio 2015 C++로 작성되어있습니다.
+`Visual Studio 2015 C++`로 작성되어있습니다.
 
 ```cpp
 #include <iostream>
@@ -22,20 +22,20 @@ int main()
 }
 ```
 
-빌드 환경 : x64, Release
+빌드 환경 : `x64`, `Release`
 
 파일 다운로드 링크 : [hello_world_x64.exe](https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe)
 
 ## X64dbg 예제 파일 실행
 
-저희는 x64 기준으로 진행할 예정이니, x64dbg를 실행해줍니다.
+저희는 `x64` 기준으로 진행할 예정이니, `x64dbg`를 실행해줍니다.
 
-1. 메뉴 → File → Open 을 통해 실행할 예제파일을 선택해줍니다. 혹은, 실행할 예제 파일을 x64dbg 창에 드래그하여 열어줍니다.
+1. `Menu` → `File` → `Open` 을 통해 실행할 예제파일을 선택해줍니다. 혹은, 실행할 예제 파일을 `x64dbg` 창에 드래그하여 열어줍니다.
     
 {& img "x64dbg_hello_world_open.png","x64dbg 프로그램 실행화면" &}
     
 2. 열어준 직 후, 타이틀을 확인해보면 `모듈:ntdll.dll` 을 확인할 수 있습니다.
-일단 ntdll.dll 시스템 중단점에서 멈춘걸 풀어줘야하니 설정→환경설정에 들어가 줍니다.
+일단 `ntdll.dll` 시스템 중단점에서 멈춘걸 풀어줘야하니 설정→환경설정에 들어가 줍니다.
     
 {% img "x64dbg_setting.png", "x64dbg 설정 화면" %}
     
@@ -44,14 +44,14 @@ int main()
     
 {% img "xdbg_hello_world_entry_point.png", "x64dbg entry point 화면" %}
     
-1.  이제 재실행을 해본 결과 entry point 부분에서 디버깅이 된 것을 확인해 볼 수 있습니다.
-2. 프로그램의 main 함수를 바로 실행하는게 아닌, main 함수 실행을 위한 코드를 컴파일러가 entry point에 넣어놨기 때문이다. (현재 `EntryPoint`에서 CRT 초기화 루틴(mainCRTStartup)에 있음)
+1.  이제 재실행을 해본 결과 `entry point` 부분에서 디버깅이 된 것을 확인해 볼 수 있습니다.
+2. 프로그램의 `main` 함수를 바로 실행하는게 아닌, `main` 함수 실행을 위한 코드를 컴파일러가 `entry point`에 넣어놨기 때문이다. (현재 `EntryPoint`에서 `CRT` 초기화 루틴(`mainCRTStartup`)에 있음)
 
 ### EntryPoint
 
 **`EntryPoint = EXE가 처음으로 실행하는 어셈블리 주소`**
 
-- **EntryPoint**는 OS(Windows)가 프로그램을 실행할 때 가장 먼저 점프하는 코드 지점이다.
+- **EntryPoint**는 `OS(Windows)`가 프로그램을 실행할 때 가장 먼저 점프하는 코드 지점이다.
 - **바로 main() 함수로 가지 않는다!**
 - 대신 C 런타임(CRT)을 초기화하는 코드부터 실행된다.
     - 예: 메모리 초기화, 전역 변수 세팅, 표준 입출력 스트림 설정 등.
@@ -79,7 +79,7 @@ main() → main 코드
 
 #### mainCRTStartup 설명
 
-> mainCRTStartup은 실제 사용자 코드(main)를 호출하기 전에, C 런타임 초기화 작업을 해주는 함수입니다. 예를 들어, 전역 객체 초기화, 입출력 스트림 설정 등을 담당합니다.
+> `mainCRTStartup`은 실제 사용자 코드(`main`)를 호출하기 전에, `C` 런타임 초기화 작업을 해주는 함수입니다. 예를 들어, 전역 객체 초기화, 입출력 스트림 설정 등을 담당합니다.
 > 
 
 ### 이제 해야 할 것
@@ -90,7 +90,7 @@ main() → main 코드
 
 #### 1. 현재 위치에서 **F8** 몇 번 눌러가면서 내려가보자.
 
-- **F8**: "Step Over" = 한 줄 한 줄 실행하면서 흐름 보기
+- **F8**: `"Step Over"` = 한 줄 한 줄 실행하면서 흐름 보기
 - 지금 코드를 보면 `sub rsp, 28h` 이런거 나오는데, 계속 F8 누르면…
 
 #### 2. `call` 명령어 만나면
@@ -102,8 +102,8 @@ main() → main 코드
 
 | 기능 | 단축키 | 설명 |
 | --- | --- | --- |
-| Step Over | F8 | 함수 호출은 건너뛰고 다음 명령어로 이동 |
-| Step Into | F7 | 함수 호출 안으로 직접 들어가기 |
+| `Step Over` | F8 | 함수 호출은 건너뛰고 다음 명령어로 이동 |
+| `Step Into` | F7 | 함수 호출 안으로 직접 들어가기 |
 
 {% img "xdbg64_hello_world_main_find.png", "x64dbg main함수 찾기" %}
 
@@ -160,9 +160,9 @@ main() → main 코드
     - `operator<<` 함수(스트림 출력 연산자)를 하나 클릭
 2. 왼쪽(호출자 목록)을 본다
     - 호출 주소 `00007FF640E6101A` | FF15 68200000            | call qword ptr ds:[<public: class std:: | 를 확인
-3. 주소가 main 함수 시작주소 범위(`0x7FF640E61000 ~ 0x7FF640E611D8`)에 있으면
+3. 주소가 `main` 함수 시작주소 범위(`0x7FF640E61000 ~ 0x7FF640E611D8`)에 있으면
     
-    = 이 호출자는 main 함수 안의 코드다!
+    = 이 호출자는 `main` 함수 안의 코드다!
     
 
 ## 추가 내용

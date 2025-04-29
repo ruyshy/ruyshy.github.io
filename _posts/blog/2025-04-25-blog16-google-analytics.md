@@ -6,14 +6,14 @@ tags:
   [GitHubBlog, GoogleAnalytics, GA4, minimal-mistakes, Jekyll, SearchConsole]
 ---
 
-GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 **GA4 측정 ID 삽입**, **minimal-mistakes 테마 설정**, **실시간 유입 확인**, 그리고 **Google Search Console 연동 방법**까지 전체 과정을 상세히 다룹니다.
+GitHub Pages 기반 `Jekyll` 블로그에서 방문자 추적을 하고 싶다면, `Google Analytics GA4`를 연동하는 것이 필수입니다. 이 글에서는 **GA4 측정 ID 삽입**, **minimal-mistakes 테마 설정**, **실시간 유입 확인**, 그리고 **Google Search Console 연동 방법**까지 전체 과정을 상세히 다룹니다.
 
 ## 1. **GA4 속성 만들기**
 
 1. [Google Analytics](https://analytics.google.com/) 접속
 2. ‘만들기’ → ‘계정 생성’ → ‘속성 만들기’ 진행
 3. 웹 스트림 URL에 `https://yourname.github.io` 입력
-4. 완료 후 "측정 ID (G-XXXXXXX)" 확인
+4. 완료 후 "측정 `ID (G-XXXXXXX)`" 확인
 
 ## **2. Jekyll 블로그에 코드 삽입**
 
@@ -24,7 +24,7 @@ provider: google
 google_analytics: G-XXXXXXXXXX # GA4의 측정 ID
 ```
 
-> **주의:** minimal-mistakes 테마 같은 경우 이 설정을 자동으로 `<head>`에 삽입해줌
+> **주의:** `minimal-mistakes` 테마 같은 경우 이 설정을 자동으로 `<head>`에 삽입해줌
 
 ### 2-1. 코드 수정
 
@@ -67,7 +67,7 @@ google_analytics: G-XXXXXXXXXX # GA4의 측정 ID
 ```
 
 **구글 애널리틱스 “구버전 (Universal Analytics, UA)”** 추적 코드
-이런 형태는 **UA-XXXXXXX** 형식의 ID에서 쓰이던 것입니다.
+이런 형태는 **UA-XXXXXXX** 형식의 `ID`에서 쓰이던 것입니다.
 2023년 7월 이후로 **완전히 종료된 API** 라서 데이터도 수집이 안된다고 합니다.
 
 `_config.yml` 에서 `anonymize_ip:` 저는 이 옵션을 사용하지 않기 때문에 위에 코드로 대체 했습니다.

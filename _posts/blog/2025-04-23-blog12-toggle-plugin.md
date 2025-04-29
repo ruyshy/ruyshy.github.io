@@ -5,7 +5,7 @@ date: 2025-04-23
 tags: [GitHub Blog, toggle 플러그인, Liquid 태그, 접기 기능, Jekyll UI 구성]
 ---
 
-Jekyll 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 `<details>` 외에도  
+`Jekyll` 블로그에 접이식 콘텐츠를 넣고 싶다면 기본 `<details>` 외에도  
 **커스텀 Liquid 플러그인을 통해 더 유연하고 스타일링 가능한 Toggle UI**를 구현할 수 있습니다.  
 이 글에서는 toggle 플러그인을 직접 만들어 접기 기능을 구현하고,  
 내용에 따라 class, 제목, 마크다운을 넣을 수 있도록 확장하는 방법을 소개합니다.

@@ -7,7 +7,7 @@ tags: [GitHub Blog, Jekyll, GitHub Actions, 블로그 자동 배포, CI/CD]
 
 GitHub 블로그를 운영하면서 **자동 배포**를 설정하고 싶다면,  
 `GitHub Actions`를 사용한 CI/CD 환경이 필요합니다.  
-이 글에서는 Jekyll로 작성한 블로그를 GitHub 서버에서 자동으로 빌드하고  
+이 글에서는 `Jekyll`로 작성한 블로그를 GitHub 서버에서 자동으로 빌드하고  
 `gh-pages` 브랜치로 배포하는 워크플로우를 설정하는 방법을 정리합니다.
 
 ## GitHub에 Action기능 알아보기
@@ -30,11 +30,11 @@ GitHub Actions는 **CI/CD(지속적 통합/배포)**를 위한 자동화된 작�
 
 {% img "github-blog-actions-click.png", "github-blog-actions-click" %}
 
-Action을 생성할 저장소에 들어가 Action을 눌러 Action페이지로 이동합니다.
+Action을 생성할 저장소에 들어가 Actions을 눌러 Actions페이지로 이동합니다.
 
 {% img "github-blog-new-workflow.png", "github-blog-new-workflow" %}
 
-New workflow을 눌러 .yml을 작성해줍니다.
+New workflow을 눌러 `.yml`을 작성해줍니다.
 
 ## 현재 Blog Workflow
 
@@ -87,8 +87,8 @@ jobs:
 ## 코드 진행 설명
 
 - `ph-pages` 브랜치에 푸시하면,
-- GitHub 서버에서 자동으로 Ruby 세팅하고,
-- Jekyll로 블로그 빌드하고,
+- GitHub 서버에서 자동으로 `Ruby` 세팅하고,
+- `Jekyll`로 블로그 빌드하고,
 - 결과물(`_site` 폴더)을 `gh-pages` 브랜치로 배포함.
 
 ## GitHub 설정
@@ -99,15 +99,15 @@ jobs:
 >
 > Source 설정을 Deploy from a branch 으로 변경
 >
-> Branch 설정을 gh-pages 으로 변경
+> `Branch` 설정을 `gh-pages` 으로 변경
 
 ## 사용할 수 있는 곳
 
-- 블로그 자동 배포 (Jekyll, Hugo 등)
+- 블로그 자동 배포 (`Jekyll`, `Hugo` 등)
 - 코드 테스트 자동 실행
 - PR 올릴 때 자동으로 포맷 검사
 - 릴리즈 빌드 자동 생성
-- 정적 웹사이트 자동 배포 (React, Vue 등)
+- 정적 웹사이트 자동 배포 (`React`, `Vue` 등)
 
 ## 위 코드 주의점 및 확인해야 할 부분
 
@@ -142,7 +142,7 @@ jobs:
       2. **Source**: `gh-pages` 선택
       3. **Folder**: `/ (root)` 또는 `/docs` 말고 `/`로 돼야 함
 
-push 없이도 수동 실행 가능하게 하려면 아래처럼 수정:
+**push** 없이도 수동 실행 가능하게 하려면 아래처럼 수정:
 
 ```yaml
 on:
@@ -152,4 +152,4 @@ on:
   workflow_dispatch: # 수동 실행 가능
 ```
 
-`workflow_dispatch:`가 있을 때, GitHub UI 상에서 "Run workflow" 버튼이 생성됩니다.
+`workflow_dispatch:`가 있을 때, GitHub UI 상에서 **"Run workflow"** 버튼이 생성됩니다.

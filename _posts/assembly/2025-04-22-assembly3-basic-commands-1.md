@@ -5,12 +5,12 @@ date: 2025-04-22
 tags: [nasm, assembly, 어셈블리 명령어, 조건 분기, Windows Assembly]
 ---
 
-NASM 기반 어셈블리를 처음 접하는 사용자라면,  
+`NASM` 기반 어셈블리를 처음 접하는 사용자라면,  
 **가장 먼저 익혀야 할 것은 기본 명령어의 역할과 사용법**입니다.  
 이 글에서는 `mov`, `add`, `sub`, `cmp`, `jmp`, `push`, `pop`, `call`, `ret`  
 같은 필수 명령어들을 **Windows 64bit 기준 실습 코드**와 함께 정리합니다.
 
-또한, `cmp` 명령어와 플래그 레지스터(Zero Flag, Sign Flag 등)의 작동 원리를  
+또한, `cmp` 명령어와 플래그 레지스터(`Zero Flag`, `Sign Flag` 등)의 작동 원리를  
 **조건 분기 명령어 (`je`, `jne`, `jg`, `jl`)**와 함께 다루며 실습 기반으로 설명합니다.
 
 ## 1. 기본 명령어 리스트 (Windows 64bit 기준)
@@ -39,7 +39,7 @@ mov rax, 10        ; rax에 10 저장
 mov rbx, rax       ; rax 값을 rbx로 복사
 ```
 
-**mov**는 그냥 값을 복붙 한다고 생각하면 됌
+**`mov`**는 그냥 값을 복붙 한다고 생각하면 됌
 
 ### 2-2. **add** (덧셈)
 
@@ -48,7 +48,7 @@ mov rax, 5
 add rax, 3         ; rax = rax + 3
 ```
 
-**add dst, src** ➔ dst = dst + src
+**`add dst, src`** ➔ dst = dst + src
 
 ### 2-3. **sub** (뺄셈)
 
@@ -57,7 +57,7 @@ mov rax, 5
 sub rax, 2         ; rax = rax - 2
 ```
 
-**sub dst, src** ➔ dst = dst - src
+**`sub dst, src`** ➔ dst = dst - src
 
 ### 2-4. inc / dec (1 증가 / 1 감소)
 
@@ -76,8 +76,8 @@ mov rax, 0         ; rax를 0으로 초기화
 pop rax            ; 스택에서 rax 복원
 ```
 
-push하면 rsp 줄어들고,
-pop하면 rsp 다시 올라간다.
+`push`하면 `rsp` 줄어들고,
+`pop`하면 `rsp` 다시 올라간다.
 
 ### 2-6. call / ret (함수 호출 / 복귀)
 
@@ -113,7 +113,7 @@ end_label:
     ; 프로그램 계속 진행
 ```
 
-cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)
+`cmp`는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (`ZF`, `SF`, `CF` 등)
 
 ### 2-8. 기본 실습 문제1
 
@@ -176,23 +176,23 @@ main:
 ```
 
 동작 흐름 다시 정리
-rax = 10
+`rax` = 10
 
-rbx = 20
+`rbx` = 20
 
-rcx = 5
+`rcx` = 5
 
-add rax, rbx → rax = 30
+`add rax, rbx` → `rax` = 30
 
-sub rax, rcx → rax = 25
+`sub rax, rcx` → `rax` = 25
 
-push rax → (25 스택 저장)
+`push rax` → (25 스택 저장)
 
-push rbx → (20 스택 저장)
+`push rbx` → (20 스택 저장)
 
-pop rbx → (20 복구)
+`pop rbx` → (20 복구)
 
-pop rax → (25 복구)
+`pop rax` → (25 복구)
 
 스택 동작 순서(후입선출 LIFO 구조)
 
@@ -201,11 +201,11 @@ pop rax → (25 복구)
 
 ### 2-9. 요약
 
-- mov로 값 복사
-- add/sub/inc/dec로 값 변경
-- push/pop으로 스택 저장/복구
-- call/ret으로 함수 호출/복귀
-- cmp + je/jne/jmp로 조건 분기
+- `mov`로 값 복사
+- `add`/`sub`/`inc`/`dec`로 값 변경
+- `push`/`pop`으로 스택 저장/복구
+- `call`/`ret`으로 함수 호출/복귀
+- `cmp` + `je`/`jne`/`jmp`로 조건 분기
 
 ## 3. 기본 실습 문제2
 
@@ -338,7 +338,7 @@ main:
 
 - `mov`, `add`, `push`, `pop`, `cmp`, `je`, `jmp` 명령어 사용
 - 스택 쓰고 복구하는 흐름 익힘
-- cmp/je 조건 분기 맛보기
+- `cmp`/`je` 조건 분기 맛보기
 
 ## 4. 조건 분기 명령어
 
@@ -354,21 +354,21 @@ main:
   - `dst - src`를 "계산만" 하고
   - **값은 버리고 플래그만 세팅**한다.
 - **플래그 레지스터 값 설정**
-  - Zero Flag(ZF), Sign Flag(SF), Carry Flag(CF), Overflow Flag(OF) 설정
+  - `Zero Flag(ZF)`, `Sign Flag(SF)`, `Carry Flag(CF)`, `Overflow Flag(OF)` 설정
 - **je, jne, jg, jl 등 분기 명령어로 점프**
 
 자주 쓰는 조건 분기 명령어
 
 | 명령어  | 의미                     | 조건                           |
 | ------- | ------------------------ | ------------------------------ |
-| **je**  | Jump if Equal            | ZF == 1 (같으면)               |
-| **jne** | Jump if Not Equal        | ZF == 0 (다르면)               |
-| **jg**  | Jump if Greater          | (SF == OF) && (ZF == 0) (크면) |
-| **jge** | Jump if Greater or Equal | SF == OF (크거나 같으면)       |
-| **jl**  | Jump if Less             | SF != OF (작으면)              |
-| **jle** | Jump if Less or Equal    | (SF != OF)                     |
+| **`je`**  | Jump if Equal            | ZF == 1 (같으면)               |
+| **`jne`** | Jump if Not Equal        | ZF == 0 (다르면)               |
+| **`jg`**  | Jump if Greater          | (SF == OF) && (ZF == 0) (크면) |
+| **`jge`** | Jump if Greater or Equal | SF == OF (크거나 같으면)       |
+| **`jl`**  | Jump if Less             | SF != OF (작으면)              |
+| **`jle`** | Jump if Less or Equal    | (SF != OF)                     |
 
-Assembly에서는 거의 **je, jne, jg, jl**만 쓴다고 보면 됌.
+Assembly에서는 거의 **`je`, `jne`, `jg`, `jl`**만 쓴다고 보면 됌.
 
 ### 4-1. 예제 1: je (같으면 점프)
 
@@ -405,7 +405,7 @@ end_label:
     ; 프로그램 종료
 ```
 
-rax != rbx이면 `not_equal_label`로 점프!
+`rax` != `rbx`이면 `not_equal_label`로 점프!
 
 ### 4-3. 예제 3: jg / jl (크거나 작을 때 점프)
 
@@ -429,9 +429,9 @@ end_label:
     ; 프로그램 종료
 ```
 
-rax > rbx이면 `greater_label`,
+`rax` > `rbx`이면 `greater_label`,
 
-rax < rbx이면 `less_label` 로 간다.
+`rax` < `rbx`이면 `less_label` 로 간다.
 
 ### 4-4. cmp가 뭘 하는지 한 번 더 강조
 
@@ -445,7 +445,7 @@ cmp rax, rbx
 
 → 그리고 분기 명령어(`je`, `jg`, `jl` 등)가 이 플래그를 보는 거야.
 
-> 즉, cmp는 "비교만 하고 아무것도 저장하지 않는다."
+> 즉, `cmp`는 "비교만 하고 아무것도 저장하지 않는다."
 >
 > **플래그 세팅만 한다.**
 
@@ -458,7 +458,7 @@ cmp rax, rbx
 | **OF (Overflow Flag)** | 오버플로우 발생 여부     | jg, jl                 |
 | **CF (Carry Flag)**    | 자리 올림/내림 발생 여부 | (unsigned 비교에 사용) |
 
-signed/unsigned 구분이 있는데, 일단 지금은 **정수 부호 있는(signed) 비교**만 다룬다.
+`signed/unsigned` 구분이 있는데, 일단 지금은 **정수 부호 있는(signed) 비교**만 다룬다.
 
 ### 4-6. 미션
 

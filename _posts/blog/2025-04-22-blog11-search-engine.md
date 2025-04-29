@@ -6,9 +6,9 @@ tags:
   [GitHub Blog, SEO 설정, Google Search Console, sitemap.xml, jekyll-seo-tag]
 ---
 
-GitHub Pages에서 만든 Jekyll 블로그를 **검색엔진에 노출시키기 위해서는**  
-Google Search Console 등록과 sitemap, robots.txt, 그리고 SEO 메타태그 설정이 필요합니다.  
-이 포스트는 GitHub 블로그의 SEO 설정을 처음부터 끝까지 따라 할 수 있도록 구성된 실전 가이드입니다.
+GitHub Pages에서 만든 `Jekyll` 블로그를 **검색엔진에 노출시키기 위해서는**  
+`Google Search Console` 등록과 `sitemap`, `robots.txt`, 그리고 `SEO` 메타태그 설정이 필요합니다.  
+이 포스트는 GitHub 블로그의 `SEO` 설정을 처음부터 끝까지 따라 할 수 있도록 구성된 실전 가이드입니다.
 
 ## 검색 엔진 개요
 
@@ -32,11 +32,11 @@ Google Search Console 등록과 sitemap, robots.txt, 그리고 SEO 메타태그 
 
 {% img "image3.png", "인증 HTML 파일 다운로드 안내" %}
 
-저장소에 push를 진행하고, 배포가 완료된 후, 확인 버튼을 눌러 진행하면 다음과 같이 창이 바뀌는데, 속성으로 이동을 눌러 설정을 해주도록 합시다.
+저장소에 `push`를 진행하고, 배포가 완료된 후, 확인 버튼을 눌러 진행하면 다음과 같이 창이 바뀌는데, 속성으로 이동을 눌러 설정을 해주도록 합시다.
 
 {% img "image4.png", "속성 확인 후 설정 화면" %}
 
-Sitemap을 눌러 해당 설정 화면이 나오면 sitemap.xml을 추가해주는 작업을 진행해야 합니다. 저는 예전에 설정해둔 sitemap이 제출이 되어있긴하네요. 일단 진행해봅시다.
+Sitemap을 눌러 해당 설정 화면이 나오면 `sitemap.xml`을 추가해주는 작업을 진행해야 합니다. 저는 예전에 설정해둔 sitemap이 제출이 되어있긴하네요. 일단 진행해봅시다.
 
 ## \sitemap.xml 생성
 
@@ -76,7 +76,7 @@ layout: null
 </urlset>
 ```
 
-작성 후, 깃허브 저장소에 push를 진행합니다.
+작성 후, 깃허브 저장소에 `push`를 진행합니다.
 
 깃허브 action으로 배포가 진행이 되었다면 새 사이트맵 제출을 해줍니다.
 
@@ -94,7 +94,7 @@ Allow: /
 Sitemap: https://ruyshy.github.io/sitemap.xml
 ```
 
-robots.txt 생성 후, 깃허브 저장소에 push, 다시 사이트 맵을 제출해줍니다.
+`robots.txt` 생성 후, 깃허브 저장소에 `push`, 다시 사이트 맵을 제출해줍니다.
 
 {% img "image6.png", "검색엔진 등록 확인 화면" %}
 
@@ -135,9 +135,9 @@ defaults:
 
 `robots: index, follow` 해당 부분 추가하기
 
-- robots.txt로 전체 접근 허용했더라도,
-- 개별 포스트의 <meta name="robots"> 태그가 noindex면 색인 안 됨.
-- 즉, robots.txt와 robots: "index, follow"는 역할이 다름 → 둘 다 챙기는 게 안전
+- `robots.txt`로 전체 접근 허용했더라도,
+- 개별 포스트의 `<meta name="robots">` 태그가 noindex면 색인 안 됨.
+- 즉, `robots.txt`와 `robots: "index, follow"`는 역할이 다름 → 둘 다 챙기는 게 안전
 
 ## 수동으로 인덱싱 요청하기
 
@@ -157,6 +157,8 @@ defaults:
 > 
 
 저의 경우 하위 사이트 목록
+
+예시:
 
 ```
 https://ruyshy.github.io/blog/blog1-start/
@@ -234,7 +236,7 @@ bundle install
 
 {% img "image7.png", "HTML 메타태그 소유권 인증 안내" %}
 
-설정 → 소유권 인증 으로 들어가보면 HTML 태그가 있습니다.
+설정 → 소유권 인증 으로 들어가보면 `HTML` 태그가 있습니다.
 
 ```html
 <meta
@@ -249,7 +251,7 @@ content 안에 있는 내용을 복사한 뒤, \_config.yml 에서 `google-site-
 google_site_verification: 0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU
 ```
 
-위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 push 진행 → 확인을 눌러 진행.
+위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 `push` 진행 → 확인을 눌러 진행.
 
 {% img "image8.png", "소유권 인증 완료 알림" %}
 

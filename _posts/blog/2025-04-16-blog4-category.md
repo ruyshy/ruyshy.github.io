@@ -13,7 +13,7 @@ tags:
   ]
 ---
 
-Jekyll 기반 GitHub 블로그를 카테고리별로 나눠서 정리하고 싶다면,  
+`Jekyll` 기반 GitHub 블로그를 카테고리별로 나눠서 정리하고 싶다면,  
 `_data/navigation.yml`, `_includes/sidebar.html`, `_config.yml` 설정이 핵심입니다.  
 이 포스트에서는 **minimal-mistakes 테마** 기준으로  
 **카테고리를 생성하고 사이드바에 자동으로 표시하는 설정법**을 순차적으로 설명합니다.
@@ -152,7 +152,7 @@ taxonomy: assembly
 margin-left: 5px; }
 ```
 
-.count 부분을 추가해줍니다. (css 스타일 설정 카테고리 옆에 숫자)
+`.count` 부분을 추가해줍니다. (`css` 스타일 설정 카테고리 옆에 숫자)
 
 ### .\_config.yml 해당 파일을 편집을 진행합니다.
 
@@ -209,7 +209,7 @@ defaults:
         nav: "main"
 ```
 
-현재 저의 defaults: 코드입니다.
+현재 저의 `defaults:` 코드입니다.
 
 주목해야 할 부분
 
@@ -254,4 +254,4 @@ values:
 
 해당 카테고리를 설정한 assembly, blog 부분입니다.
 
-“\_post/assembly” 경로에 설정에서 values: categories : [assembly] 이 값이 있으면 해당 경로에 Post는 자동으로 카테고리가 설정 됩니다.
+“\_post/assembly” 경로에 설정에서 `values: categories : [assembly]` 이 값이 있으면 해당 경로에 Post는 자동으로 카테고리가 설정 됩니다.

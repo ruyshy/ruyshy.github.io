@@ -5,7 +5,7 @@ date: 2025-04-28
 tags: [GitHubBlog, Liquid, sidebar, 카테고리 설정, Jekyll 커스터마이징, navigation, SCSS]
 ---
 
-GitHub Blog에서 카테고리를 상위/하위 트리 구조로 표현하고 싶다면 이 글을 참고하세요. Liquid 템플릿 수정, sidebar.html/sidebar-items.html 추가, _navigation.scss 스타일 커스터마이징을 통해 **GitHub 블로그 카테고리 트리 구성**을 완성하는 방법을 자세히 정리했습니다.
+GitHub Blog에서 카테고리를 상위/하위 트리 구조로 표현하고 싶다면 이 글을 참고하세요. `Liquid` 템플릿 수정, `sidebar.html/sidebar-items.html` 추가, `_navigation.scss` 스타일 커스터마이징을 통해 **GitHub 블로그 카테고리 트리 구성**을 완성하는 방법을 자세히 정리했습니다.
 
 이전에 다루었던 Cateory 업데이트 글입니다.
 
@@ -793,5 +793,5 @@ GitHub Blog에서 카테고리를 상위/하위 트리 구조로 표현하고 �
 
 {% img "cateory-preview-image.png", "category image" %}
 
-> 스타일을 바꾸고 싶다면, _navigation.scss 을 수정하도록 하자!
+> 스타일을 바꾸고 싶다면, `_navigation.scss` 을 수정하도록 하자!
 >

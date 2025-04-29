@@ -5,7 +5,7 @@ date: 2025-04-21
 tags: [GitHub Blog, 코드 복사, clipboard.js, Jekyll Copy 버튼, Code block]
 ---
 
-Jekyll 블로그에서 **코드블럭에 복사 버튼을 추가**하고 싶다면,  
+`Jekyll` 블로그에서 **코드블럭에 복사 버튼을 추가**하고 싶다면,  
 `clipboard.js`를 활용해 `div.highlighter-rouge` 안에 Copy 버튼을 삽입하면 됩니다.  
 이 글에서는 **복사 기능 구현 → 복사 후 텍스트 변경 → 로컬 대체까지**  
 완벽하게 적용하는 법을 단계별로 설명합니다.
@@ -52,8 +52,8 @@ Jekyll 블로그에서 **코드블럭에 복사 버튼을 추가**하고 싶다�
 - 복사 성공하면 버튼이 1.5초 동안 `"Copied!"`로 변하고
 - 다시 `"Copy"`로 자동 복구됨.
 - 오류나면 콘솔에 에러도 출력되게 함.
-- local로 하고 싶을 때, https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js 해당 파일을 Ctrl+S로 저장 후, /assets/js/vendor/ 해당 경로에 clipboard.min.js 옮긴 후, 맨 위 줄 아래처럼 변경하면 local로 진행 가능!
-- `<script src="/assets/js/vendor/clipboard.min.js"></script>`
+- local로 하고 싶을 때, https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js 해당 파일을 Ctrl+S로 저장 후, /assets/js/ 해당 경로에 clipboard.min.js 옮긴 후, 맨 위 줄 아래처럼 변경하면 local로 진행 가능!
+- `<script src="/assets/js/clipboard.min.js"></script>`
 
 ### \_layouts\default.html 코드에 추가
 
@@ -123,4 +123,4 @@ Jekyll 블로그에서 **코드블럭에 복사 버튼을 추가**하고 싶다�
 }
 ```
 
-버튼이 훨씬 부드럽고 모던하게 변함.
+버튼이 훨씬 부드럽고 모던하게 변함. 추가적으로 자기 자신의 UI의 알맞게 변형해서 쓰면 좋을 것 같습니다.

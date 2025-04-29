@@ -25,24 +25,24 @@ NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문
 `2.` `add rax, 5` 명령어 실행 후 결과로 올바른 설명은?
 " %}
 
-- rax에 5가 저장된다
-- rax 값이 5로 교체된다
-- rax 값에 5가 더해진다 [correct]
-- 5의 주소를 rax에 저장한다
+- `rax`에 5가 저장된다
+- `rax` 값이 5로 교체된다
+- `rax` 값에 5가 더해진다 [correct]
+- 5의 주소를 `rax`에 저장한다
 
 {% explanation %}
-**해설:** `add`는 기존 값에 값을 더하는 연산. 즉, rax += 5 와 같음.
+**해설:** `add`는 기존 값에 값을 더하는 연산. 즉, `rax` += 5 와 같음.
 {% endexplanation %}
 {% endquiz %}
 
 {% quiz "
-`3.` `sub rax, 3` 실행 전 rax가 10이었다면, 결과는?
+`3.` `sub rax, 3` 실행 전 `rax`가 10이었다면, 결과는?
 " %}
 
-- rax = 7 [correct]
-- rax = 13
-- rax = -3
-- rax = 3
+- `rax` = 7 [correct]
+- `rax` = 13
+- `rax` = -3
+- `rax` = 3
 
 {% explanation %}
 **해설:** `sub`는 뺄셈이므로 10 - 3 = 7이 됨.
@@ -53,10 +53,10 @@ NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문
 `4.` `cmp rax, rbx`의 의미는?
 " %}
 
-- rax 값을 rbx로 바꿈
-- rbx 값을 rax에서 뺀 뒤 저장
+- `rax` 값을 `rbx`로 바꿈
+- `rbx` 값을 `rax`에서 뺀 뒤 저장
 - 두 값을 비교하고 플래그만 설정 [correct]
-- rax와 rbx를 교환
+- `rax`와 `rbx`를 교환
 
 {% explanation %}
 **해설:** `cmp`는 뺄셈을 하되 결과를 저장하지 않고 플래그만 설정해서 조건 분기 판단에 사용.
@@ -67,13 +67,13 @@ NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문
 `5.` 조건 분기와 가장 밀접한 관계가 있는 명령어는?
 " %}
 
-- call
-- cmp [correct]
-- ret
-- push
+- `call`
+- `cmp` [correct]
+- `ret`
+- `push`
 
 {% explanation %}
-**해설:** 조건 분기(jz, jne 등)는 `cmp`로 플래그 설정 후 분기.
+**해설:** 조건 분기(`jz`, `jne` 등)는 `cmp`로 플래그 설정 후 분기.
 {% endexplanation %}
 {% endquiz %}
 
@@ -81,10 +81,10 @@ NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문
 `6.` 다음 중 무조건 점프하는 명령어는?
 " %}
 
-- je
-- jne
-- jmp [correct]
-- jg
+- `je`
+- `jne`
+- `jmp` [correct]
+- `jg`
 
 {% explanation %}
 **해설:** `jmp`는 조건 없이 무조건 지정한 주소로 점프함.
@@ -95,13 +95,13 @@ NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문
 `7.` `push rax` 수행 시 어떤 일이 일어나는가?
 " %}
 
-- rax 값을 스택에 저장하고 RSP는 증가
-- rax 값을 스택에 저장하고 RSP는 감소 [correct]
-- 스택에서 값을 꺼내 rax에 저장
-- rax가 스택 포인터로 바뀜
+- `rax` 값을 스택에 저장하고 `RSP`는 증가
+- `rax` 값을 스택에 저장하고 `RSP`는 감소 [correct]
+- 스택에서 값을 꺼내 `rax`에 저장
+- `rax`가 스택 포인터로 바뀜
 
 {% explanation %}
-**해설:** 스택은 위에서 아래로 쌓이기 때문에 push 시 RSP가 감소.
+**해설:** 스택은 위에서 아래로 쌓이기 때문에 `push` 시 `RSP`가 감소.
 {% endexplanation %}
 {% endquiz %}
 
@@ -109,13 +109,13 @@ NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문
 `8.` `pop rbx` 수행 후 상태는?
 " %}
 
-- rbx에 스택의 맨 위 값이 들어가고 RSP는 증가 [correct]
-- rbx에 스택의 맨 위 값이 들어가고 RSP는 감소
-- rbx의 값이 스택에 들어감
-- rbx와 rsp를 교환함
+- `rbx`에 스택의 맨 위 값이 들어가고 `RSP`는 증가 [correct]
+- `rbx`에 스택의 맨 위 값이 들어가고 `RSP`는 감소
+- `rbx`의 값이 스택에 들어감
+- `rbx`와 `rsp`를 교환함
 
 {% explanation %}
-**해설:** `pop`은 RSP가 가리키는 값을 꺼내고, RSP는 증가.
+**해설:** `pop`은 `RSP`가 가리키는 값을 꺼내고, `RSP`는 증가.
 {% endexplanation %}
 {% endquiz %}
 
@@ -123,13 +123,13 @@ NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문
 `9.` `call func` 명령어는 어떤 동작을 수행하는가?
 " %}
 
-- 현재 위치를 저장하고 func로 점프 [correct]
-- func의 결과를 rax에 저장
+- 현재 위치를 저장하고 `func`로 점프 [correct]
+- `func`의 결과를 `rax`에 저장
 - 함수를 종료시킴
-- func를 push함
+- `func`를 `push`함
 
 {% explanation %}
-**해설:** `call`은 현재 RIP를 스택에 저장하고, 해당 함수로 점프.
+**해설:** `call`은 현재 `RIP`를 스택에 저장하고, 해당 함수로 점프.
 {% endexplanation %}
 {% endquiz %}
 
@@ -139,10 +139,10 @@ NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문
 
 - rax를 초기화
 - 함수 인자를 정리
-- 스택에서 return 주소를 꺼내 복귀 [correct]
+- 스택에서 `return` 주소를 꺼내 복귀 [correct]
 - 프로그램 종료
 
 {% explanation %}
-**해설:** `ret`은 call 시 push된 RIP 값을 pop해서 해당 위치로 복귀.
+**해설:** `ret`은 `call` 시 `push`된 `RIP` 값을 `pop`해서 해당 위치로 복귀.
 {% endexplanation %}
 {% endquiz %}

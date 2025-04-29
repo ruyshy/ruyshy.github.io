@@ -13,7 +13,7 @@ tags:
   ]
 ---
 
-GitHub Pages 기반 Jekyll 블로그에서 외부 링크를 자동으로 카드 형식으로 만들어주는 **링크 카드 플러그인**, **OG 태그 기반 미리보기 카드**, **Liquid 태그 확장**을 구현하고 싶다면 이 글을 참고하세요.
+GitHub Pages 기반 `Jekyll` 블로그에서 외부 링크를 자동으로 카드 형식으로 만들어주는 **링크 카드 플러그인**, **OG 태그 기반 미리보기 카드**, **Liquid 태그 확장**을 구현하고 싶다면 이 글을 참고하세요.
 
 ### 링크 카드 미리 보기
 
@@ -74,7 +74,7 @@ Liquid::Template.register_tag('cardlink', Jekyll::CardLink)
 gem 'nokogiri'
 ```
 
-해당 코드 추가 후, 로컬에서 실행하기 위해서 bundle install 을 진행해주세요!
+해당 코드 추가 후, 로컬에서 실행하기 위해서 `bundle install` 을 진행해주세요!
 
 ### 사용 방법
 

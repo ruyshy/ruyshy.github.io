@@ -5,7 +5,7 @@ date: 2025-04-16
 tags: [GitHub Blog, 댓글 시스템, Utterances, Jekyll, GitHub Comments]
 ---
 
-Jekyll 블로그에 **댓글 기능을 추가**하고 싶다면,  
+`Jekyll` 블로그에 **댓글 기능을 추가**하고 싶다면,  
 GitHub의 이슈 기능을 활용하는 `Utterances`가 가장 간단하면서도 강력한 선택입니다.  
 이 글에서는 minimal-mistakes 테마를 기준으로,  
 **Utterances 댓글 시스템을 설정하고 `_config.yml`과 블로그 포스트에 적용하는 방법**을 설명합니다.
@@ -16,7 +16,7 @@ Utterances는 댓글을 저장할 **issue 기반 저장소**가 필요합니다.
 
 - 예: `your-username/your-blog-repo`
 - 이 저장소의 **issue 탭이 열려 있어야 함**
-- 댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 repo를 만들어도 됨.
+- 댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 `repo`를 만들어도 됨.
 
 ## 2. Utterances 앱 설치
 
@@ -32,9 +32,9 @@ Utterances는 댓글을 저장할 **issue 기반 저장소**가 필요합니다.
 
 ## 3. `_config.yml` 수정
 
-Jekyll 블로그에서 Utterances는 보통 post.html 같은 레이아웃 파일에 삽입함.
+`Jekyll` 블로그에서 `Utterances`는 보통 `post.html` 같은 레이아웃 파일에 삽입함.
 
-이전에 minimal-mistakes 테마 사용하고 있을 때 아래와 같이 수정을 진행합니다.
+이전에 `minimal-mistakes` 테마 사용하고 있을 때 아래와 같이 수정을 진행합니다.
 
 #Site Settings 부분:
 
@@ -78,7 +78,7 @@ comments:
 
 주요 옵션:
 
-- `repo`: 댓글을 저장할 GitHub repo (예: `ruyshy2/ruyshy2.github.io`)
+- `repo`: 댓글을 저장할 GitHub `repo` (예: `ruyshy2/ruyshy2.github.io`)
 - `issue-term`: 댓글을 연결할 기준 (`pathname`, `url`, `title`, `og:title` 등)
 - `theme`: 댓글창 테마 (`github-light`, `github-dark`, `preferred-color-scheme`, etc)
 
@@ -99,7 +99,7 @@ defaults:
         nav: "main"
 ```
 
-저는 comments: 부분을 이렇게 설정을 진행했습니다.
+저는 `comments:` 부분을 이렇게 설정을 진행했습니다.
 
 {% img "github-blog-comments.png", "github-blog-comments" %}
 
@@ -107,4 +107,4 @@ defaults:
 
 {% img "github-blog-comment-issues.png", "github-blog-comment-issues" %}
 
-해당 저장소 Issues에 생성을 확인할 수 있습니다.
+해당 저장소 `Issues`에 생성을 확인할 수 있습니다.

@@ -5,7 +5,7 @@ date: 2025-04-24
 tags: [GitHubBlog, quiz, plugin, liquid, jekyll, javascript]
 ---
 
-Jekyll 블로그에서 Liquid 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.
+`Jekyll` 블로그에서 `Liquid` 플러그인으로 퀴즈(객관식/주관식) 기능을 구현하고 인터랙티브한 문제 출제를 만드는 방법을 소개합니다.
 
 ## Quiz Form 미리보기
 
@@ -502,7 +502,7 @@ end
 </html>{% endraw %}
 ```
 
-사용할 때, 작성할 포스트 최상단 YAML에서 `use_quiz: true` 추가해야 사용 가능
+사용할 때, 작성할 포스트 최상단 `YAML`에서 `use_quiz: true` 추가해야 사용 가능
 
 <br/>
 
