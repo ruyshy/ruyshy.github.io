@@ -202,4 +202,10 @@ var store = [{
         "tags": ["GitHubBlog","Notion","markdown","Jekyll","블로그 포스트 작성","마크다운 변환","front-matter"],
         "url": "/blog/blog-18-notion-post/",
         "teaser": null
+      },{
+        "title": "Disassembly란? 실행파일을 Assembly로 분석하는 방법",
+        "excerpt":"실행파일을 어셈블리 코드로 분석하고 싶다면 이 포스트를 참고하세요. Disassembly 기본 개념, C++ → Assembly 흐름, Visual Studio로 디스어셈블리 실습, 스택/레지스터 동작 구조까지 예제를 통해 쉽게 정리합니다. DisAssembly 알아보기 Disassembly(디스어셈블리)는 기계어(binary 실행 파일)를 사람이 읽을 수 있는 어셈블리어(assembly code)로 다시 풀어보는 것 을 말함. 조금 더 풀어서 쉽게: 컴퓨터는 0과 1(바이너리,...","categories": ["reversing_engineering","assembly"],
+        "tags": ["assembly","disassembly","x64dbg","VisualStudio","어셈블리 분석","리버스엔지니어링"],
+        "url": "/reversing_engineering/assembly/reversing1-disassembly1/",
+        "teaser": null
       }]
