@@ -196,4 +196,10 @@ var store = [{
         "tags": ["GitHubBlog","Liquid","sidebar","카테고리 설정","Jekyll 커스터마이징","navigation","SCSS"],
         "url": "/blog/blog-17-category2/",
         "teaser": null
+      },{
+        "title": "GitHub Blog에 Notion으로 글 작성하고 업로드하는 방법",
+        "excerpt":"GitHub Blog에 글을 올릴 때 Notion을 활용하고 싶다면 이 포스트를 참고하세요. Notion Markdown 내보내기, Front Matter 설정, GitHub 블로그 포스트 등록까지 전체 과정을 쉽게 설명합니다. GitHub Blog post Notion으로 작성 저는 notion 에서 문서를 작성한 뒤, 블로그에 옮기는 작업을 진행하여 글을 써왔습니다. 과정: Notion 작성 → Markdown 내보내기 → Front...","categories": ["blog"],
+        "tags": ["GitHubBlog","Notion","markdown","Jekyll","블로그 포스트 작성","마크다운 변환","front-matter"],
+        "url": "/blog/blog-18-notion-post/",
+        "teaser": null
       }]
