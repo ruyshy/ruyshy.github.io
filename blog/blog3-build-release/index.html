@@ -381,7 +381,7 @@
         
         <p>GitHub 블로그를 운영하면서 <strong>자동 배포</strong>를 설정하고 싶다면,<br />
 <code class="language-plaintext highlighter-rouge">GitHub Actions</code>를 사용한 CI/CD 환경이 필요합니다.<br />
-이 글에서는 Jekyll로 작성한 블로그를 GitHub 서버에서 자동으로 빌드하고<br />
+이 글에서는 <code class="language-plaintext highlighter-rouge">Jekyll</code>로 작성한 블로그를 GitHub 서버에서 자동으로 빌드하고<br />
 <code class="language-plaintext highlighter-rouge">gh-pages</code> 브랜치로 배포하는 워크플로우를 설정하는 방법을 정리합니다.</p>
 
 <h2 id="github에-action기능-알아보기">GitHub에 Action기능 알아보기</h2>
@@ -427,11 +427,11 @@
 
 <p><img src="/assets/images/blog/2025-04-16-blog3-build-release/github-blog-actions-click.png" alt="github-blog-actions-click" style="max-width:100%;" /></p>
 
-<p>Action을 생성할 저장소에 들어가 Action을 눌러 Action페이지로 이동합니다.</p>
+<p>Action을 생성할 저장소에 들어가 Actions을 눌러 Actions페이지로 이동합니다.</p>
 
 <p><img src="/assets/images/blog/2025-04-16-blog3-build-release/github-blog-new-workflow.png" alt="github-blog-new-workflow" style="max-width:100%;" /></p>
 
-<p>New workflow을 눌러 .yml을 작성해줍니다.</p>
+<p>New workflow을 눌러 <code class="language-plaintext highlighter-rouge">.yml</code>을 작성해줍니다.</p>
 
 <h2 id="현재-blog-workflow">현재 Blog Workflow</h2>
 
@@ -484,8 +484,8 @@
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">ph-pages</code> 브랜치에 푸시하면,</li>
-  <li>GitHub 서버에서 자동으로 Ruby 세팅하고,</li>
-  <li>Jekyll로 블로그 빌드하고,</li>
+  <li>GitHub 서버에서 자동으로 <code class="language-plaintext highlighter-rouge">Ruby</code> 세팅하고,</li>
+  <li><code class="language-plaintext highlighter-rouge">Jekyll</code>로 블로그 빌드하고,</li>
   <li>결과물(<code class="language-plaintext highlighter-rouge">_site</code> 폴더)을 <code class="language-plaintext highlighter-rouge">gh-pages</code> 브랜치로 배포함.</li>
 </ul>
 
@@ -498,17 +498,17 @@
 
   <p>Source 설정을 Deploy from a branch 으로 변경</p>
 
-  <p>Branch 설정을 gh-pages 으로 변경</p>
+  <p><code class="language-plaintext highlighter-rouge">Branch</code> 설정을 <code class="language-plaintext highlighter-rouge">gh-pages</code> 으로 변경</p>
 </blockquote>
 
 <h2 id="사용할-수-있는-곳">사용할 수 있는 곳</h2>
 
 <ul>
-  <li>블로그 자동 배포 (Jekyll, Hugo 등)</li>
+  <li>블로그 자동 배포 (<code class="language-plaintext highlighter-rouge">Jekyll</code>, <code class="language-plaintext highlighter-rouge">Hugo</code> 등)</li>
   <li>코드 테스트 자동 실행</li>
   <li>PR 올릴 때 자동으로 포맷 검사</li>
   <li>릴리즈 빌드 자동 생성</li>
-  <li>정적 웹사이트 자동 배포 (React, Vue 등)</li>
+  <li>정적 웹사이트 자동 배포 (<code class="language-plaintext highlighter-rouge">React</code>, <code class="language-plaintext highlighter-rouge">Vue</code> 등)</li>
 </ul>
 
 <h2 id="위-코드-주의점-및-확인해야-할-부분">위 코드 주의점 및 확인해야 할 부분</h2>
@@ -562,7 +562,7 @@ deploy.yml ← 여기에 있어야 작동함!
   </li>
 </ol>
 
-<p>push 없이도 수동 실행 가능하게 하려면 아래처럼 수정:</p>
+<p><strong>push</strong> 없이도 수동 실행 가능하게 하려면 아래처럼 수정:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">on</span><span class="pi">:</span>
   <span class="na">push</span><span class="pi">:</span>
@@ -571,7 +571,7 @@ deploy.yml ← 여기에 있어야 작동함!
   <span class="na">workflow_dispatch</span><span class="pi">:</span> <span class="c1"># 수동 실행 가능</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">workflow_dispatch:</code>가 있을 때, GitHub UI 상에서 “Run workflow” 버튼이 생성됩니다.</p>
+<p><code class="language-plaintext highlighter-rouge">workflow_dispatch:</code>가 있을 때, GitHub UI 상에서 <strong>“Run workflow”</strong> 버튼이 생성됩니다.</p>
 
         
       </section>
@@ -710,7 +710,7 @@ deploy.yml ← 여기에 있어야 작동함!
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator« 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
+    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator&lt;&lt; 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
 </p>
   </article>
 </div>

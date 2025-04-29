@@ -379,9 +379,9 @@
             </nav>
           </aside>
         
-        <p>GitHub Pages에서 만든 Jekyll 블로그를 <strong>검색엔진에 노출시키기 위해서는</strong><br />
-Google Search Console 등록과 sitemap, robots.txt, 그리고 SEO 메타태그 설정이 필요합니다.<br />
-이 포스트는 GitHub 블로그의 SEO 설정을 처음부터 끝까지 따라 할 수 있도록 구성된 실전 가이드입니다.</p>
+        <p>GitHub Pages에서 만든 <code class="language-plaintext highlighter-rouge">Jekyll</code> 블로그를 <strong>검색엔진에 노출시키기 위해서는</strong><br />
+<code class="language-plaintext highlighter-rouge">Google Search Console</code> 등록과 <code class="language-plaintext highlighter-rouge">sitemap</code>, <code class="language-plaintext highlighter-rouge">robots.txt</code>, 그리고 <code class="language-plaintext highlighter-rouge">SEO</code> 메타태그 설정이 필요합니다.<br />
+이 포스트는 GitHub 블로그의 <code class="language-plaintext highlighter-rouge">SEO</code> 설정을 처음부터 끝까지 따라 할 수 있도록 구성된 실전 가이드입니다.</p>
 
 <h2 id="검색-엔진-개요">검색 엔진 개요</h2>
 
@@ -405,11 +405,11 @@ Google Search Console 등록과 sitemap, robots.txt, 그리고 SEO 메타태그 
 
 <p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image3.png" alt="인증 HTML 파일 다운로드 안내" style="max-width:100%;" /></p>
 
-<p>저장소에 push를 진행하고, 배포가 완료된 후, 확인 버튼을 눌러 진행하면 다음과 같이 창이 바뀌는데, 속성으로 이동을 눌러 설정을 해주도록 합시다.</p>
+<p>저장소에 <code class="language-plaintext highlighter-rouge">push</code>를 진행하고, 배포가 완료된 후, 확인 버튼을 눌러 진행하면 다음과 같이 창이 바뀌는데, 속성으로 이동을 눌러 설정을 해주도록 합시다.</p>
 
 <p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image4.png" alt="속성 확인 후 설정 화면" style="max-width:100%;" /></p>
 
-<p>Sitemap을 눌러 해당 설정 화면이 나오면 sitemap.xml을 추가해주는 작업을 진행해야 합니다. 저는 예전에 설정해둔 sitemap이 제출이 되어있긴하네요. 일단 진행해봅시다.</p>
+<p>Sitemap을 눌러 해당 설정 화면이 나오면 <code class="language-plaintext highlighter-rouge">sitemap.xml</code>을 추가해주는 작업을 진행해야 합니다. 저는 예전에 설정해둔 sitemap이 제출이 되어있긴하네요. 일단 진행해봅시다.</p>
 
 <h2 id="sitemapxml-생성">\sitemap.xml 생성</h2>
 
@@ -448,7 +448,7 @@ layout: null
 <span class="nt">&lt;/urlset&gt;</span>
 </code></pre></div></div>
 
-<p>작성 후, 깃허브 저장소에 push를 진행합니다.</p>
+<p>작성 후, 깃허브 저장소에 <code class="language-plaintext highlighter-rouge">push</code>를 진행합니다.</p>
 
 <p>깃허브 action으로 배포가 진행이 되었다면 새 사이트맵 제출을 해줍니다.</p>
 
@@ -465,7 +465,7 @@ Allow: /
 Sitemap: https://ruyshy.github.io/sitemap.xml
 </code></pre></div></div>
 
-<p>robots.txt 생성 후, 깃허브 저장소에 push, 다시 사이트 맵을 제출해줍니다.</p>
+<p><code class="language-plaintext highlighter-rouge">robots.txt</code> 생성 후, 깃허브 저장소에 <code class="language-plaintext highlighter-rouge">push</code>, 다시 사이트 맵을 제출해줍니다.</p>
 
 <p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image6.png" alt="검색엔진 등록 확인 화면" style="max-width:100%;" /></p>
 
@@ -506,9 +506,9 @@ Sitemap: https://ruyshy.github.io/sitemap.xml
 <p><code class="language-plaintext highlighter-rouge">robots: index, follow</code> 해당 부분 추가하기</p>
 
 <ul>
-  <li>robots.txt로 전체 접근 허용했더라도,</li>
-  <li>개별 포스트의 <meta name="robots" /> 태그가 noindex면 색인 안 됨.</li>
-  <li>즉, robots.txt와 robots: “index, follow”는 역할이 다름 → 둘 다 챙기는 게 안전</li>
+  <li><code class="language-plaintext highlighter-rouge">robots.txt</code>로 전체 접근 허용했더라도,</li>
+  <li>개별 포스트의 <code class="language-plaintext highlighter-rouge">&lt;meta name="robots"&gt;</code> 태그가 noindex면 색인 안 됨.</li>
+  <li>즉, <code class="language-plaintext highlighter-rouge">robots.txt</code>와 <code class="language-plaintext highlighter-rouge">robots: "index, follow"</code>는 역할이 다름 → 둘 다 챙기는 게 안전</li>
 </ul>
 
 <h2 id="수동으로-인덱싱-요청하기">수동으로 인덱싱 요청하기</h2>
@@ -533,6 +533,8 @@ Sitemap: https://ruyshy.github.io/sitemap.xml
 </blockquote>
 
 <p>저의 경우 하위 사이트 목록</p>
+
+<p>예시:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://ruyshy.github.io/blog/blog1-start/
 https://ruyshy.github.io/blog/blog2-local-server/
@@ -605,7 +607,7 @@ gem "tzinfo-data"
 
 <p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image7.png" alt="HTML 메타태그 소유권 인증 안내" style="max-width:100%;" /></p>
 
-<p>설정 → 소유권 인증 으로 들어가보면 HTML 태그가 있습니다.</p>
+<p>설정 → 소유권 인증 으로 들어가보면 <code class="language-plaintext highlighter-rouge">HTML</code> 태그가 있습니다.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span>
   <span class="na">name=</span><span class="s">"google-site-verification"</span>
@@ -618,7 +620,7 @@ gem "tzinfo-data"
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">google_site_verification</span><span class="pi">:</span> <span class="s">0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU</span>
 </code></pre></div></div>
 
-<p>위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 push 진행 → 확인을 눌러 진행.</p>
+<p>위와 같이 content에 있는 내용을 추가해줍니다. 추가 후, 깃허브 저장소에 <code class="language-plaintext highlighter-rouge">push</code> 진행 → 확인을 눌러 진행.</p>
 
 <p><img src="/assets/images/blog/2025-04-22-blog11-search-engine/image8.png" alt="소유권 인증 완료 알림" style="max-width:100%;" /></p>
 
@@ -761,7 +763,7 @@ gem "tzinfo-data"
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator« 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
+    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator&lt;&lt; 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
 </p>
   </article>
 </div>

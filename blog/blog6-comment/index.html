@@ -379,7 +379,7 @@
             </nav>
           </aside>
         
-        <p>Jekyll 블로그에 <strong>댓글 기능을 추가</strong>하고 싶다면,<br />
+        <p><code class="language-plaintext highlighter-rouge">Jekyll</code> 블로그에 <strong>댓글 기능을 추가</strong>하고 싶다면,<br />
 GitHub의 이슈 기능을 활용하는 <code class="language-plaintext highlighter-rouge">Utterances</code>가 가장 간단하면서도 강력한 선택입니다.<br />
 이 글에서는 minimal-mistakes 테마를 기준으로,<br />
 <strong>Utterances 댓글 시스템을 설정하고 <code class="language-plaintext highlighter-rouge">_config.yml</code>과 블로그 포스트에 적용하는 방법</strong>을 설명합니다.</p>
@@ -391,7 +391,7 @@ GitHub의 이슈 기능을 활용하는 <code class="language-plaintext highligh
 <ul>
   <li>예: <code class="language-plaintext highlighter-rouge">your-username/your-blog-repo</code></li>
   <li>이 저장소의 <strong>issue 탭이 열려 있어야 함</strong></li>
-  <li>댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 repo를 만들어도 됨.</li>
+  <li>댓글 저장용 저장소는 블로그 repo와 동일하게 해도 되고, 별도 <code class="language-plaintext highlighter-rouge">repo</code>를 만들어도 됨.</li>
 </ul>
 
 <h2 id="2-utterances-앱-설치">2. Utterances 앱 설치</h2>
@@ -411,9 +411,9 @@ GitHub의 이슈 기능을 활용하는 <code class="language-plaintext highligh
 
 <h2 id="3-_configyml-수정">3. <code class="language-plaintext highlighter-rouge">_config.yml</code> 수정</h2>
 
-<p>Jekyll 블로그에서 Utterances는 보통 post.html 같은 레이아웃 파일에 삽입함.</p>
+<p><code class="language-plaintext highlighter-rouge">Jekyll</code> 블로그에서 <code class="language-plaintext highlighter-rouge">Utterances</code>는 보통 <code class="language-plaintext highlighter-rouge">post.html</code> 같은 레이아웃 파일에 삽입함.</p>
 
-<p>이전에 minimal-mistakes 테마 사용하고 있을 때 아래와 같이 수정을 진행합니다.</p>
+<p>이전에 <code class="language-plaintext highlighter-rouge">minimal-mistakes</code> 테마 사용하고 있을 때 아래와 같이 수정을 진행합니다.</p>
 
 <p>#Site Settings 부분:</p>
 
@@ -457,7 +457,7 @@ GitHub의 이슈 기능을 활용하는 <code class="language-plaintext highligh
 <p>주요 옵션:</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">repo</code>: 댓글을 저장할 GitHub repo (예: <code class="language-plaintext highlighter-rouge">ruyshy2/ruyshy2.github.io</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">repo</code>: 댓글을 저장할 GitHub <code class="language-plaintext highlighter-rouge">repo</code> (예: <code class="language-plaintext highlighter-rouge">ruyshy2/ruyshy2.github.io</code>)</li>
   <li><code class="language-plaintext highlighter-rouge">issue-term</code>: 댓글을 연결할 기준 (<code class="language-plaintext highlighter-rouge">pathname</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">og:title</code> 등)</li>
   <li><code class="language-plaintext highlighter-rouge">theme</code>: 댓글창 테마 (<code class="language-plaintext highlighter-rouge">github-light</code>, <code class="language-plaintext highlighter-rouge">github-dark</code>, <code class="language-plaintext highlighter-rouge">preferred-color-scheme</code>, etc)</li>
 </ul>
@@ -478,7 +478,7 @@ GitHub의 이슈 기능을 활용하는 <code class="language-plaintext highligh
         <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
 </code></pre></div></div>
 
-<p>저는 comments: 부분을 이렇게 설정을 진행했습니다.</p>
+<p>저는 <code class="language-plaintext highlighter-rouge">comments:</code> 부분을 이렇게 설정을 진행했습니다.</p>
 
 <p><img src="/assets/images/blog/2025-04-16-blog6-comment/github-blog-comments.png" alt="github-blog-comments" style="max-width:100%;" /></p>
 
@@ -486,7 +486,7 @@ GitHub의 이슈 기능을 활용하는 <code class="language-plaintext highligh
 
 <p><img src="/assets/images/blog/2025-04-16-blog6-comment/github-blog-comment-issues.png" alt="github-blog-comment-issues" style="max-width:100%;" /></p>
 
-<p>해당 저장소 Issues에 생성을 확인할 수 있습니다.</p>
+<p>해당 저장소 <code class="language-plaintext highlighter-rouge">Issues</code>에 생성을 확인할 수 있습니다.</p>
 
         
       </section>
@@ -625,7 +625,7 @@ GitHub의 이슈 기능을 활용하는 <code class="language-plaintext highligh
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator« 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
+    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator&lt;&lt; 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
 </p>
   </article>
 </div>

@@ -186,7 +186,7 @@ var store = [{
         "teaser": null
       },{
         "title": "초보자를 위한 x64dbg 실습 흐름 가이드 - Windows 어셈블리 디버깅 입문",
-        "excerpt":"x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator« 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다. x64에서 실행해볼 예제 Visual Studio 2015 C++로 작성되어있습니다. #include &lt;iostream&gt; int main() { std::cout &lt;&lt; \"Hello World!\" &lt;&lt; std::endl; return 0; } 빌드 환경 :...","categories": ["assembly"],
+        "excerpt":"x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator&lt;&lt; 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다. x64에서 실행해볼 예제 Visual Studio 2015 C++로 작성되어있습니다. #include &lt;iostream&gt; int main() { std::cout &lt;&lt; \"Hello World!\" &lt;&lt; std::endl; return 0; } 빌드 환경...","categories": ["assembly"],
         "tags": ["x64dbg","디버깅 실습","reversing","assembly","entrypoint 분석","메모리 검색","함수 추적"],
         "url": "/assembly/assembly7-x64-dbg-guide/",
         "teaser": null

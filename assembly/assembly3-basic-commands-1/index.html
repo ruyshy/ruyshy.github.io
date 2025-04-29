@@ -379,12 +379,12 @@
             </nav>
           </aside>
         
-        <p>NASM 기반 어셈블리를 처음 접하는 사용자라면,<br />
+        <p><code class="language-plaintext highlighter-rouge">NASM</code> 기반 어셈블리를 처음 접하는 사용자라면,<br />
 <strong>가장 먼저 익혀야 할 것은 기본 명령어의 역할과 사용법</strong>입니다.<br />
 이 글에서는 <code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">jmp</code>, <code class="language-plaintext highlighter-rouge">push</code>, <code class="language-plaintext highlighter-rouge">pop</code>, <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">ret</code><br />
 같은 필수 명령어들을 <strong>Windows 64bit 기준 실습 코드</strong>와 함께 정리합니다.</p>
 
-<p>또한, <code class="language-plaintext highlighter-rouge">cmp</code> 명령어와 플래그 레지스터(Zero Flag, Sign Flag 등)의 작동 원리를<br />
+<p>또한, <code class="language-plaintext highlighter-rouge">cmp</code> 명령어와 플래그 레지스터(<code class="language-plaintext highlighter-rouge">Zero Flag</code>, <code class="language-plaintext highlighter-rouge">Sign Flag</code> 등)의 작동 원리를<br />
 <strong>조건 분기 명령어 (<code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jne</code>, <code class="language-plaintext highlighter-rouge">jg</code>, <code class="language-plaintext highlighter-rouge">jl</code>)</strong>와 함께 다루며 실습 기반으로 설명합니다.</p>
 
 <h2 id="1-기본-명령어-리스트-windows-64bit-기준">1. 기본 명령어 리스트 (Windows 64bit 기준)</h2>
@@ -469,7 +469,7 @@
 <span class="nf">mov</span> <span class="nb">rbx</span><span class="p">,</span> <span class="nb">rax</span>       <span class="c1">; rax 값을 rbx로 복사</span>
 </code></pre></div></div>
 
-<p><strong>mov</strong>는 그냥 값을 복붙 한다고 생각하면 됌</p>
+<p><strong><code class="language-plaintext highlighter-rouge">mov</code></strong>는 그냥 값을 복붙 한다고 생각하면 됌</p>
 
 <h3 id="2-2-add-덧셈">2-2. <strong>add</strong> (덧셈)</h3>
 
@@ -477,7 +477,7 @@
 <span class="nf">add</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">3</span>         <span class="c1">; rax = rax + 3</span>
 </code></pre></div></div>
 
-<p><strong>add dst, src</strong> ➔ dst = dst + src</p>
+<p><strong><code class="language-plaintext highlighter-rouge">add dst, src</code></strong> ➔ dst = dst + src</p>
 
 <h3 id="2-3-sub-뺄셈">2-3. <strong>sub</strong> (뺄셈)</h3>
 
@@ -485,7 +485,7 @@
 <span class="nf">sub</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">2</span>         <span class="c1">; rax = rax - 2</span>
 </code></pre></div></div>
 
-<p><strong>sub dst, src</strong> ➔ dst = dst - src</p>
+<p><strong><code class="language-plaintext highlighter-rouge">sub dst, src</code></strong> ➔ dst = dst - src</p>
 
 <h3 id="2-4-inc--dec-1-증가--1-감소">2-4. inc / dec (1 증가 / 1 감소)</h3>
 
@@ -502,8 +502,8 @@
 <span class="nf">pop</span> <span class="nb">rax</span>            <span class="c1">; 스택에서 rax 복원</span>
 </code></pre></div></div>
 
-<p>push하면 rsp 줄어들고,
-pop하면 rsp 다시 올라간다.</p>
+<p><code class="language-plaintext highlighter-rouge">push</code>하면 <code class="language-plaintext highlighter-rouge">rsp</code> 줄어들고,
+<code class="language-plaintext highlighter-rouge">pop</code>하면 <code class="language-plaintext highlighter-rouge">rsp</code> 다시 올라간다.</p>
 
 <h3 id="2-6-call--ret-함수-호출--복귀">2-6. call / ret (함수 호출 / 복귀)</h3>
 
@@ -537,7 +537,7 @@ pop하면 rsp 다시 올라간다.</p>
     <span class="c1">; 프로그램 계속 진행</span>
 </code></pre></div></div>
 
-<p>cmp는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (ZF, SF, CF 등)</p>
+<p><code class="language-plaintext highlighter-rouge">cmp</code>는 값 자체를 안 바꿈! 플래그 레지스터만 조정한다. (<code class="language-plaintext highlighter-rouge">ZF</code>, <code class="language-plaintext highlighter-rouge">SF</code>, <code class="language-plaintext highlighter-rouge">CF</code> 등)</p>
 
 <h3 id="2-8-기본-실습-문제1">2-8. 기본 실습 문제1</h3>
 
@@ -575,9 +575,9 @@ pop하면 rsp 다시 올라간다.</p>
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-qhu9h7', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-wv2ffj', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-qhu9h7" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-wv2ffj" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -602,23 +602,23 @@ pop하면 rsp 다시 올라간다.</p>
 </code></pre></div></div>
 
 <p>동작 흐름 다시 정리
-rax = 10</p>
+<code class="language-plaintext highlighter-rouge">rax</code> = 10</p>
 
-<p>rbx = 20</p>
+<p><code class="language-plaintext highlighter-rouge">rbx</code> = 20</p>
 
-<p>rcx = 5</p>
+<p><code class="language-plaintext highlighter-rouge">rcx</code> = 5</p>
 
-<p>add rax, rbx → rax = 30</p>
+<p><code class="language-plaintext highlighter-rouge">add rax, rbx</code> → <code class="language-plaintext highlighter-rouge">rax</code> = 30</p>
 
-<p>sub rax, rcx → rax = 25</p>
+<p><code class="language-plaintext highlighter-rouge">sub rax, rcx</code> → <code class="language-plaintext highlighter-rouge">rax</code> = 25</p>
 
-<p>push rax → (25 스택 저장)</p>
+<p><code class="language-plaintext highlighter-rouge">push rax</code> → (25 스택 저장)</p>
 
-<p>push rbx → (20 스택 저장)</p>
+<p><code class="language-plaintext highlighter-rouge">push rbx</code> → (20 스택 저장)</p>
 
-<p>pop rbx → (20 복구)</p>
+<p><code class="language-plaintext highlighter-rouge">pop rbx</code> → (20 복구)</p>
 
-<p>pop rax → (25 복구)</p>
+<p><code class="language-plaintext highlighter-rouge">pop rax</code> → (25 복구)</p>
 
 <p>스택 동작 순서(후입선출 LIFO 구조)</p>
 
@@ -631,11 +631,11 @@ rax = 10</p>
 <h3 id="2-9-요약">2-9. 요약</h3>
 
 <ul>
-  <li>mov로 값 복사</li>
-  <li>add/sub/inc/dec로 값 변경</li>
-  <li>push/pop으로 스택 저장/복구</li>
-  <li>call/ret으로 함수 호출/복귀</li>
-  <li>cmp + je/jne/jmp로 조건 분기</li>
+  <li><code class="language-plaintext highlighter-rouge">mov</code>로 값 복사</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code>/<code class="language-plaintext highlighter-rouge">sub</code>/<code class="language-plaintext highlighter-rouge">inc</code>/<code class="language-plaintext highlighter-rouge">dec</code>로 값 변경</li>
+  <li><code class="language-plaintext highlighter-rouge">push</code>/<code class="language-plaintext highlighter-rouge">pop</code>으로 스택 저장/복구</li>
+  <li><code class="language-plaintext highlighter-rouge">call</code>/<code class="language-plaintext highlighter-rouge">ret</code>으로 함수 호출/복귀</li>
+  <li><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">je</code>/<code class="language-plaintext highlighter-rouge">jne</code>/<code class="language-plaintext highlighter-rouge">jmp</code>로 조건 분기</li>
 </ul>
 
 <h2 id="3-기본-실습-문제2">3. 기본 실습 문제2</h2>
@@ -761,9 +761,9 @@ rax = 10</p>
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-mi9p9y', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-19101j', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-mi9p9y" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-19101j" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code> ;mov 명렁어로 rax 에 10을 저장</li>
@@ -785,9 +785,9 @@ rax = 10</p>
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ga8k38', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-hcsrp2', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-ga8k38" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-hcsrp2" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -819,7 +819,7 @@ rax = 10</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">push</code>, <code class="language-plaintext highlighter-rouge">pop</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jmp</code> 명령어 사용</li>
   <li>스택 쓰고 복구하는 흐름 익힘</li>
-  <li>cmp/je 조건 분기 맛보기</li>
+  <li><code class="language-plaintext highlighter-rouge">cmp</code>/<code class="language-plaintext highlighter-rouge">je</code> 조건 분기 맛보기</li>
 </ul>
 
 <h2 id="4-조건-분기-명령어">4. 조건 분기 명령어</h2>
@@ -843,7 +843,7 @@ rax = 10</p>
   </li>
   <li><strong>플래그 레지스터 값 설정</strong>
     <ul>
-      <li>Zero Flag(ZF), Sign Flag(SF), Carry Flag(CF), Overflow Flag(OF) 설정</li>
+      <li><code class="language-plaintext highlighter-rouge">Zero Flag(ZF)</code>, <code class="language-plaintext highlighter-rouge">Sign Flag(SF)</code>, <code class="language-plaintext highlighter-rouge">Carry Flag(CF)</code>, <code class="language-plaintext highlighter-rouge">Overflow Flag(OF)</code> 설정</li>
     </ul>
   </li>
   <li><strong>je, jne, jg, jl 등 분기 명령어로 점프</strong></li>
@@ -861,39 +861,39 @@ rax = 10</p>
   </thead>
   <tbody>
     <tr>
-      <td><strong>je</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">je</code></strong></td>
       <td>Jump if Equal</td>
       <td>ZF == 1 (같으면)</td>
     </tr>
     <tr>
-      <td><strong>jne</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">jne</code></strong></td>
       <td>Jump if Not Equal</td>
       <td>ZF == 0 (다르면)</td>
     </tr>
     <tr>
-      <td><strong>jg</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">jg</code></strong></td>
       <td>Jump if Greater</td>
       <td>(SF == OF) &amp;&amp; (ZF == 0) (크면)</td>
     </tr>
     <tr>
-      <td><strong>jge</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">jge</code></strong></td>
       <td>Jump if Greater or Equal</td>
       <td>SF == OF (크거나 같으면)</td>
     </tr>
     <tr>
-      <td><strong>jl</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">jl</code></strong></td>
       <td>Jump if Less</td>
       <td>SF != OF (작으면)</td>
     </tr>
     <tr>
-      <td><strong>jle</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">jle</code></strong></td>
       <td>Jump if Less or Equal</td>
       <td>(SF != OF)</td>
     </tr>
   </tbody>
 </table>
 
-<p>Assembly에서는 거의 <strong>je, jne, jg, jl</strong>만 쓴다고 보면 됌.</p>
+<p>Assembly에서는 거의 <strong><code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jne</code>, <code class="language-plaintext highlighter-rouge">jg</code>, <code class="language-plaintext highlighter-rouge">jl</code></strong>만 쓴다고 보면 됌.</p>
 
 <h3 id="4-1-예제-1-je-같으면-점프">4-1. 예제 1: je (같으면 점프)</h3>
 
@@ -928,7 +928,7 @@ rax = 10</p>
     <span class="c1">; 프로그램 종료</span>
 </code></pre></div></div>
 
-<p>rax != rbx이면 <code class="language-plaintext highlighter-rouge">not_equal_label</code>로 점프!</p>
+<p><code class="language-plaintext highlighter-rouge">rax</code> != <code class="language-plaintext highlighter-rouge">rbx</code>이면 <code class="language-plaintext highlighter-rouge">not_equal_label</code>로 점프!</p>
 
 <h3 id="4-3-예제-3-jg--jl-크거나-작을-때-점프">4-3. 예제 3: jg / jl (크거나 작을 때 점프)</h3>
 
@@ -951,9 +951,9 @@ rax = 10</p>
     <span class="c1">; 프로그램 종료</span>
 </code></pre></div></div>
 
-<p>rax &gt; rbx이면 <code class="language-plaintext highlighter-rouge">greater_label</code>,</p>
+<p><code class="language-plaintext highlighter-rouge">rax</code> &gt; <code class="language-plaintext highlighter-rouge">rbx</code>이면 <code class="language-plaintext highlighter-rouge">greater_label</code>,</p>
 
-<p>rax &lt; rbx이면 <code class="language-plaintext highlighter-rouge">less_label</code> 로 간다.</p>
+<p><code class="language-plaintext highlighter-rouge">rax</code> &lt; <code class="language-plaintext highlighter-rouge">rbx</code>이면 <code class="language-plaintext highlighter-rouge">less_label</code> 로 간다.</p>
 
 <h3 id="4-4-cmp가-뭘-하는지-한-번-더-강조">4-4. cmp가 뭘 하는지 한 번 더 강조</h3>
 
@@ -967,7 +967,7 @@ rax = 10</p>
 <p>→ 그리고 분기 명령어(<code class="language-plaintext highlighter-rouge">je</code>, <code class="language-plaintext highlighter-rouge">jg</code>, <code class="language-plaintext highlighter-rouge">jl</code> 등)가 이 플래그를 보는 거야.</p>
 
 <blockquote>
-  <p>즉, cmp는 “비교만 하고 아무것도 저장하지 않는다.”</p>
+  <p>즉, <code class="language-plaintext highlighter-rouge">cmp</code>는 “비교만 하고 아무것도 저장하지 않는다.”</p>
 
   <p><strong>플래그 세팅만 한다.</strong></p>
 </blockquote>
@@ -1006,7 +1006,7 @@ rax = 10</p>
   </tbody>
 </table>
 
-<p>signed/unsigned 구분이 있는데, 일단 지금은 <strong>정수 부호 있는(signed) 비교</strong>만 다룬다.</p>
+<p><code class="language-plaintext highlighter-rouge">signed/unsigned</code> 구분이 있는데, 일단 지금은 <strong>정수 부호 있는(signed) 비교</strong>만 다룬다.</p>
 
 <h3 id="4-6-미션">4-6. 미션</h3>
 
@@ -1043,9 +1043,9 @@ rax = 10</p>
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-g1ytjz', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-g5qnti', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-g1ytjz" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-g5qnti" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -1226,7 +1226,7 @@ rax = 10</p>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator« 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
+    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator&lt;&lt; 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
 </p>
   </article>
 </div>

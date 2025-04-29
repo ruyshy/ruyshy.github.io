@@ -379,11 +379,11 @@
             </nav>
           </aside>
         
-        <p>Windows 64bit 기반 NASM 어셈블리를 처음 공부한다면,<br />
+        <p><code class="language-plaintext highlighter-rouge">Windows 64bit</code> 기반 <code class="language-plaintext highlighter-rouge">NASM</code> 어셈블리를 처음 공부한다면,<br />
 이 글에서 <strong>레지스터 구조 → 명령어 구조 → 메모리 → 호출 규약 → 실전 흐름까지</strong><br />
 한 번에 정리해드릴게요.</p>
 
-<p>x64dbg로 디버깅을 하면서 구조를 시각화해보고,<br />
+<p><code class="language-plaintext highlighter-rouge">x64dbg</code>로 디버깅을 하면서 구조를 시각화해보고,<br />
 어떻게 동작하는지를 정확히 이해하는 데 큰 도움이 될 겁니다.</p>
 
 <h4 id="시작하기-앞-서-학습할-사이트-목록-입니다">시작하기 앞 서, 학습할 사이트 목록 입니다.</h4>
@@ -856,7 +856,7 @@
 <h2 id="windows-64bit-assembly-기본-구조"><strong>Windows 64bit Assembly 기본 구조</strong></h2>
 
 <blockquote>
-  <p>윈도우에서는 리눅스처럼 syscall 직접 안 씀.</p>
+  <p>윈도우에서는 리눅스처럼 <code class="language-plaintext highlighter-rouge">syscall</code> 직접 안 씀.</p>
 
   <p>➔ 대신, <strong>Windows API</strong>를 “함수 호출” 방식으로 사용.</p>
 </blockquote>
@@ -916,13 +916,13 @@
 <h2 id="함수-호출할-때-필요한-기본"><strong>함수 호출할 때 필요한 기본</strong></h2>
 
 <ul>
-  <li>함수 호출 전 인자를 RCX, RDX, R8, R9에 셋팅</li>
+  <li>함수 호출 전 인자를 <code class="language-plaintext highlighter-rouge">RCX</code>, <code class="language-plaintext highlighter-rouge">RDX</code>, <code class="language-plaintext highlighter-rouge">R8</code>, <code class="language-plaintext highlighter-rouge">R9</code>에 셋팅</li>
   <li>호출할 때 <code class="language-plaintext highlighter-rouge">call 함수이름</code></li>
   <li>스택은 항상 <strong>16바이트 정렬</strong> 되어야 함 (중요!)</li>
 </ul>
 
 <blockquote>
-  <p>왜 16바이트 정렬? ➔ 성능 최적화 + AVX 같은 명령어 호환성 때문</p>
+  <p>왜 16바이트 정렬? ➔ 성능 최적화 + <code class="language-plaintext highlighter-rouge">AVX</code> 같은 명령어 호환성 때문</p>
 </blockquote>
 
 <h2 id="메모리-구조-이해"><strong>메모리 구조 이해</strong></h2>
@@ -1003,7 +1003,7 @@
   <li>속도: 레지스터 » 캐시 » 메모리(RAM)</li>
 </ul>
 
-<p>그래서 Assembly 코드는 <strong>“레지스터를 최대한 많이 쓰고”</strong>, <strong>“필요할 때만 메모리 접근”</strong> 하려 함.</p>
+<p>그래서 <code class="language-plaintext highlighter-rouge">Assembly</code> 코드는 <strong>“레지스터를 최대한 많이 쓰고”</strong>, <strong>“필요할 때만 메모리 접근”</strong> 하려 함.</p>
 
 <h2 id="실행-흐름-예제"><strong>실행 흐름 예제</strong></h2>
 
@@ -1018,7 +1018,7 @@
 <ul>
   <li><code class="language-plaintext highlighter-rouge">eax = 5</code></li>
   <li><code class="language-plaintext highlighter-rouge">ebx = 10</code></li>
-  <li><code class="language-plaintext highlighter-rouge">eax = eax + ebx</code> → 결과 15가 eax에 들어감</li>
+  <li><code class="language-plaintext highlighter-rouge">eax = eax + ebx</code> → 결과 15가 <code class="language-plaintext highlighter-rouge">eax</code>에 들어감</li>
 </ul>
 
 <h2 id="운영체제-차이-요약"><strong>운영체제 차이 요약</strong></h2>
@@ -1060,7 +1060,7 @@
 <ul>
   <li>Windows에서는 syscall 사용 안 함.</li>
   <li>무조건 Windows API (<code class="language-plaintext highlighter-rouge">WriteFile</code>, <code class="language-plaintext highlighter-rouge">ExitProcess</code>, <code class="language-plaintext highlighter-rouge">GetStdHandle</code>, 등등) 호출하는 구조.</li>
-  <li>인자는 RCX, RDX, R8, R9에 순서대로 넣는다.</li>
+  <li>인자는 <code class="language-plaintext highlighter-rouge">RCX</code>, <code class="language-plaintext highlighter-rouge">RDX</code>, <code class="language-plaintext highlighter-rouge">R8</code>, <code class="language-plaintext highlighter-rouge">R9</code>에 순서대로 넣는다.</li>
   <li>스택 16바이트 정렬 <strong>필수</strong>.</li>
 </ul>
 
@@ -1201,7 +1201,7 @@
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator« 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
+    <p class="archive__item-excerpt" itemprop="description">x64dbg를 이용해 Windows C++ 프로그램을 디버깅하는 실습을 진행합니다. EntryPoint(진입점) 분석, main 함수 추적, Az 메모리 문자열 검색, operator&lt;&lt; 호출 추적까지 단계별로 상세히 따라가는 x64dbg 초보자 가이드입니다.
 </p>
   </article>
 </div>
