@@ -27,6 +27,8 @@ C++의 조건문과 반복문이 디스어셈블리에서 어떻게 구현되는
 
 그리고 C++ 코드 작성 후, 디버깅 시작해서 `compare` 함수 안에 Breakpoint 걸고, **“Disassembly 보기"**로
 
+---
+
 ## 2. C++ 코드 작성 (if문)
 
 ```cpp
@@ -171,6 +173,8 @@ jle else
 - **`a > b` → `cmp a, b` + `jle` (less or equal 이면 else로 jump)**
 - **`return 1`은 `mov eax, 1`**
 - **`return 0`은 `xor eax, eax` (빠른 0 세팅 방식)**
+
+---
 
 ## 3. C++ 코드 작성 (for문)
 
