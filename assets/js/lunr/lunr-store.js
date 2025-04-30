@@ -214,4 +214,10 @@ var store = [{
         "tags": ["assembly","disassembly","VisualStudio","조건문 어셈블리","루프 구조","cmp","jmp","x64 디버깅"],
         "url": "/reversing_engineering/assembly/reversing1-disassembly2/",
         "teaser": null
+      },{
+        "title": "Disassembly 함수 호출 및 재귀 분석: C++ → 어셈블리 흐름 정복",
+        "excerpt":"C++에서 함수 호출과 재귀 함수는 어셈블리에서 어떻게 나타날까요? 이 포스트에서는 call, ret, ecx, eax, rsp를 통해 함수 호출과 재귀 구조가 어떻게 구현되는지를 디스어셈블리로 명확히 분석합니다. 스택 프레임의 변화를 이해하면 리버싱 실력이 한층 더 올라갑니다. 1. C++ 코드 작성 (함수 호출의 내부 구조 분석) #include &lt;iostream&gt; int square(int x) { return...","categories": ["reversing_engineering","assembly"],
+        "tags": ["assembly","disassembly","함수호출","재귀분석","ecx","eax","call","ret","스택프레임","리버스엔지니어링"],
+        "url": "/reversing_engineering/assembly/reversing1-disassembly3/",
+        "teaser": null
       }]
