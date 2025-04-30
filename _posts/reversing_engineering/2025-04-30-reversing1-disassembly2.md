@@ -2,6 +2,7 @@
 title: "Disassembly 실전 분석편: if문과 for문 C++ → Assembly 흐름 이해"
 description: "조건문과 반복문이 C++에서 어셈블리로 어떻게 번역되는지 Visual Studio와 x64 디스어셈블리 창에서 직접 분석하며 흐름을 파악합니다. cmp, jmp, jge, add 등 핵심 명령어를 예제로 익혀보세요."
 date: 2025-04-30
+categories: [reversing_engineering, assembly]
 tags:
   [
     assembly,
