@@ -54,6 +54,8 @@ Assembly 코드 (Human semi-readable)
 
 > Disassembly = 실행파일을 Assembly 코드로 변환해 읽는 것
 
+---
+
 **disassembly 첫 걸음인 만큼 최대한 간단한 구성으로 진행하겠습니다.**
 
 ## 1. C++ 아주 간단한 코드 작성
@@ -78,6 +80,8 @@ int main()
 - `add` 함수는 그냥 두 숫자를 더하는 함수.
 - `main`은 `add(10, 20)`을 호출하고 결과를 출력하는 코드.
 
+---
+
 ## 2. Visual Studio 설정
 
 **※ 꼭 이렇게 설정해줘야 함!**
@@ -91,6 +95,8 @@ int main()
 **최적화 끄는 방법:**
 
 - 프로젝트 속성 → C/C++ → 최적화 → "최적화 안 함 (/Od)"
+
+---
 
 ## 3. Breakpoint 걸고 디스어셈블리 보기
 
@@ -108,6 +114,8 @@ int main()
    {% img "visual_studio_assembly_code_release_disassembly.png","visual_studio_assembly_code_release_disassembly" %}
 
 3. 위와 같이 디스어셈블리 창이 생기며, 위와 같은 과정을 거쳤을 때, 저와 비슷한 어셈블리어가 표시됩니다.
+
+---
 
 ## 4. 나오는 Assembly (Disassembly) 예시
 
