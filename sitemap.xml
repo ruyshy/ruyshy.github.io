@@ -4,6 +4,22 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
+      <loc>https://ruyshy.github.io/reversing_engineering/reversing1-disassembly2/</loc>
+      
+        <lastmod>2025-04-30T00:00:00+09:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
       <loc>https://ruyshy.github.io/reversing_engineering/assembly/reversing1-disassembly1/</loc>
       
         <lastmod>2025-04-29T00:00:00+09:00</lastmod>
