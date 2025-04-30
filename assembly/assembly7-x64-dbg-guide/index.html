@@ -275,7 +275,7 @@
 
       <li>
         <a href="/categories/" class="nav__item">
-          ALL <span class="count">(32)</span>
+          ALL <span class="count">(33)</span>
         </a>
       </li>
 
@@ -335,7 +335,7 @@
       <a href="/categories/blog/" class="nav__item">
         Blog
         <span class="count">
-          (18)
+          (19)
         </span>
       </a>
     </li>
@@ -378,7 +378,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#x64에서-실행해볼-예제">x64에서 실행해볼 예제</a></li><li><a href="#x64dbg-예제-파일-실행">X64dbg 예제 파일 실행</a><ul><li><a href="#entrypoint">EntryPoint</a></li></ul></li><li><a href="#x64dbg에서-main-함수를-찾아보자">x64dbg에서 main 함수를 찾아보자.</a><ul><li><a href="#main-함수를-찾는-전략">main 함수를 찾는 전략</a><ul><li><a href="#maincrtstartup-설명">mainCRTStartup 설명</a></li></ul></li><li><a href="#이제-해야-할-것">이제 해야 할 것</a></li><li><a href="#내려가면서-찾아보기">내려가면서 찾아보기</a><ul><li><a href="#1-현재-위치에서-f8-몇-번-눌러가면서-내려가보자">1. 현재 위치에서 F8 몇 번 눌러가면서 내려가보자.</a></li><li><a href="#2-call-명령어-만나면">2. call 명령어 만나면</a></li></ul></li><li><a href="#x64dbg-az로-문자열-검색해서-main-찾기">x64dbg Az로 문자열 검색해서 main 찾기</a></li><li><a href="#x64-모듈간-호출-찾기로-main-찾기">X64 모듈간 호출 찾기로 main 찾기</a></li></ul></li><li><a href="#구체적-흐름">구체적 흐름</a></li><li><a href="#추가-내용">추가 내용</a></li></ul>
+              <ul class="toc__menu"><li><a href="#x64에서-실행해볼-예제">x64에서 실행해볼 예제</a></li><li><a href="#실행-예제-파일-링크">실행 예제 파일 링크</a></li><li><a href="#x64dbg-예제-파일-실행">X64dbg 예제 파일 실행</a><ul><li><a href="#entrypoint">EntryPoint</a></li></ul></li><li><a href="#x64dbg에서-main-함수를-찾아보자">x64dbg에서 main 함수를 찾아보자.</a><ul><li><a href="#main-함수를-찾는-전략">main 함수를 찾는 전략</a><ul><li><a href="#maincrtstartup-설명">mainCRTStartup 설명</a></li></ul></li><li><a href="#이제-해야-할-것">이제 해야 할 것</a></li><li><a href="#내려가면서-찾아보기">내려가면서 찾아보기</a><ul><li><a href="#1-현재-위치에서-f8-몇-번-눌러가면서-내려가보자">1. 현재 위치에서 F8 몇 번 눌러가면서 내려가보자.</a></li><li><a href="#2-call-명령어-만나면">2. call 명령어 만나면</a></li></ul></li><li><a href="#x64dbg-az로-문자열-검색해서-main-찾기">x64dbg Az로 문자열 검색해서 main 찾기</a></li><li><a href="#x64-모듈간-호출-찾기로-main-찾기">X64 모듈간 호출 찾기로 main 찾기</a></li></ul></li><li><a href="#구체적-흐름">구체적 흐름</a></li><li><a href="#추가-내용">추가 내용</a></li></ul>
             </nav>
           </aside>
         
@@ -399,7 +399,13 @@
 
 <p>빌드 환경 : <code class="language-plaintext highlighter-rouge">x64</code>, <code class="language-plaintext highlighter-rouge">Release</code></p>
 
-<p>파일 다운로드 링크 : <a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe">hello_world_x64.exe</a></p>
+<hr />
+
+<h2 id="실행-예제-파일-링크">실행 예제 파일 링크</h2>
+
+<p>파일 다운로드 링크 : <a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.zip">hello_world_x64.zip</a></p>
+
+<hr />
 
 <h2 id="x64dbg-예제-파일-실행">X64dbg 예제 파일 실행</h2>
 
@@ -468,7 +474,6 @@
 
 <blockquote>
   <p><code class="language-plaintext highlighter-rouge">mainCRTStartup</code>은 실제 사용자 코드(<code class="language-plaintext highlighter-rouge">main</code>)를 호출하기 전에, <code class="language-plaintext highlighter-rouge">C</code> 런타임 초기화 작업을 해주는 함수입니다. 예를 들어, 전역 객체 초기화, 입출력 스트림 설정 등을 담당합니다.</p>
-
 </blockquote>
 
 <h3 id="이제-해야-할-것">이제 해야 할 것</h3>
@@ -553,6 +558,7 @@
 <p>그래서 cout 그 자체가 아니라, <strong><code class="language-plaintext highlighter-rouge">operator&lt;&lt;(std::ostream&amp;, const char*)</code></strong> 같은 오버로드 함수를 호출하는 구조.</p>
 
 <p><strong>즉</strong>,</p>
+
 <ul>
   <li><code class="language-plaintext highlighter-rouge">cout</code> 변수를 찾는 게 아니라</li>
   <li><code class="language-plaintext highlighter-rouge">cout</code>이 호출하는 함수 (<code class="language-plaintext highlighter-rouge">operator&lt;&lt;</code>) 를 찾고 →</li>
@@ -613,7 +619,6 @@
 
 <blockquote>
   <p>더 공부하고 싶다면: <a href="https://x64dbg.com/">x64dbg 공식 사이트</a></p>
-
 </blockquote>
 
 <div style="margin: 1em 0;">
@@ -791,14 +796,16 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/reversing_engineering/assembly/reversing1-disassembly1/" rel="permalink">Disassembly란? 실행파일을 Assembly로 분석하는 방법
+        <a href="/blog/blog-19-file-upload/" rel="permalink">GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">실행파일을 어셈블리 코드로 분석하고 싶다면 이 포스트를 참고하세요. Disassembly 기본 개념, C++ → Assembly 흐름, Visual Studio로 디스어셈블리 실습, 스택/레지스터 동작 구조까지 예제를 통해 쉽게 정리합니다.
+    <p class="archive__item-excerpt" itemprop="description">GitHub 블로그에 .exe 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다.
+이 포스트에서는 그러한 경고를 완화하거나 피할 수 있는 여러 가지 방법을 정리했습니다.
+실제 .zip 방식 테스트도 함께 제공하니 참고해보세요!
 </p>
   </article>
 </div>
@@ -814,14 +821,14 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog-18-notion-post/" rel="permalink">GitHub Blog에 Notion으로 글 작성하고 업로드하는 방법
+        <a href="/reversing_engineering/assembly/reversing1-disassembly1/" rel="permalink">Disassembly란? 실행파일을 Assembly로 분석하는 방법
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">GitHub Blog에 글을 올릴 때 Notion을 활용하고 싶다면 이 포스트를 참고하세요. Notion Markdown 내보내기, Front Matter 설정, GitHub 블로그 포스트 등록까지 전체 과정을 쉽게 설명합니다.
+    <p class="archive__item-excerpt" itemprop="description">실행파일을 어셈블리 코드로 분석하고 싶다면 이 포스트를 참고하세요. Disassembly 기본 개념, C++ → Assembly 흐름, Visual Studio로 디스어셈블리 실습, 스택/레지스터 동작 구조까지 예제를 통해 쉽게 정리합니다.
 </p>
   </article>
 </div>

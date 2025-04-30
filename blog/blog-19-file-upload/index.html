@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>GitHub Blog에 Notion으로 글 작성하고 업로드하는 방법 - ruyshy blog</title>
-<meta name="description" content="Notion에서 Markdown 파일로 내보내기한 후, GitHub 블로그에 포스트로 등록하는 전체 과정을 설명합니다. Front Matter 설정, 마크다운 내보내기, 포스트 업로드까지 단계별로 다룹니다.">
+<!-- begin _includes/seo.html --><title>GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기 - ruyshy blog</title>
+<meta name="description" content="GitHub 블로그에서 .exe 실행 파일을 업로드할 때 보안 경고 없이 안전하게 배포하는 방법을 소개합니다. ZIP 압축, 확장자 우회, 다운로드 안내문 등 실용적인 우회 방법도 함께 설명합니다.">
 
 
   <meta name="author" content="ruyshy">
@@ -23,30 +23,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="GitHub Blog에 Notion으로 글 작성하고 업로드하는 방법">
-<meta property="og:url" content="https://ruyshy.github.io/blog/blog-18-notion-post/">
+<meta property="og:title" content="GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기">
+<meta property="og:url" content="https://ruyshy.github.io/blog/blog-19-file-upload/">
 
 
-  <meta property="og:description" content="Notion에서 Markdown 파일로 내보내기한 후, GitHub 블로그에 포스트로 등록하는 전체 과정을 설명합니다. Front Matter 설정, 마크다운 내보내기, 포스트 업로드까지 단계별로 다룹니다.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2025-04-29T00:00:00+09:00">
+  <meta property="og:description" content="GitHub 블로그에서 .exe 실행 파일을 업로드할 때 보안 경고 없이 안전하게 배포하는 방법을 소개합니다. ZIP 압축, 확장자 우회, 다운로드 안내문 등 실용적인 우회 방법도 함께 설명합니다.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2025-04-30T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://ruyshy.github.io/blog/blog-18-notion-post/">
+
+<link rel="canonical" href="https://ruyshy.github.io/blog/blog-19-file-upload/">
 
 
 
@@ -355,16 +355,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="GitHub Blog에 Notion으로 글 작성하고 업로드하는 방법">
-    <meta itemprop="description" content="GitHub Blog에 글을 올릴 때 Notion을 활용하고 싶다면 이 포스트를 참고하세요. Notion Markdown 내보내기, Front Matter 설정, GitHub 블로그 포스트 등록까지 전체 과정을 쉽게 설명합니다.">
-    <meta itemprop="datePublished" content="2025-04-29T00:00:00+09:00">
+    <meta itemprop="headline" content="GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기">
+    <meta itemprop="description" content="GitHub 블로그에 .exe 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다.이 포스트에서는 그러한 경고를 완화하거나 피할 수 있는 여러 가지 방법을 정리했습니다.실제 .zip 방식 테스트도 함께 제공하니 참고해보세요!">
+    <meta itemprop="datePublished" content="2025-04-30T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/blog/blog-18-notion-post/" itemprop="url">GitHub Blog에 Notion으로 글 작성하고 업로드하는 방법
+            <a href="https://ruyshy.github.io/blog/blog-19-file-upload/" itemprop="url">GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기
 </a>
           </h1>
           
@@ -378,156 +378,116 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#github-blog-post-notion으로-작성">GitHub Blog post Notion으로 작성</a></li><li><a href="#front-matter">Front Matter</a><ul><li><a href="#주요-속성-설명">주요 속성 설명</a></li><li><a href="#front-matter-요약">Front Matter 요약</a></li></ul></li><li><a href="#notion--markdown-생성-방법">Notion → Markdown 생성 방법</a><ul><li><a href="#생산성을-높이기-위한-고민">생산성을 높이기 위한 고민</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#해결-또는-완화-방법">해결 또는 완화 방법</a><ul><li><a href="#1-압축-파일로-배포-추천">1. 압축 파일로 배포 (추천)</a></li><li><a href="#2-파일-이름-변경-부가-효과">2. 파일 이름 변경 (부가 효과)</a></li><li><a href="#3-https-사용-확인">3. HTTPS 사용 확인</a></li><li><a href="#4-브라우저-다운로드-설명-추가">4. 브라우저 다운로드 설명 추가</a></li><li><a href="#5-디지털-서명코드-사인-사용-고급">5. 디지털 서명(코드 사인) 사용 (고급)</a></li></ul></li><li><a href="#요약">요약</a></li><li><a href="#테스트">테스트</a></li></ul>
             </nav>
           </aside>
         
-        <p>GitHub Blog에 글을 올릴 때 Notion을 활용하고 싶다면 이 포스트를 참고하세요. <strong>Notion Markdown 내보내기</strong>, <strong>Front Matter 설정</strong>, <strong>GitHub 블로그 포스트 등록</strong>까지 전체 과정을 쉽게 설명합니다.</p>
+        <p>GitHub 블로그에 <code class="language-plaintext highlighter-rouge">.exe</code> 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다.<br />
+이 포스트에서는 그러한 경고를 완화하거나 피할 수 있는 여러 가지 방법을 정리했습니다.<br />
+실제 <code class="language-plaintext highlighter-rouge">.zip</code> 방식 테스트도 함께 제공하니 참고해보세요!</p>
 
-<h2 id="github-blog-post-notion으로-작성">GitHub Blog post Notion으로 작성</h2>
+<p>assets\files\example\assembly\hello_world_x64.exe 상대경로에 업로드가 되어있습니다.</p>
 
-<p>저는 notion 에서 문서를 작성한 뒤, 블로그에 옮기는 작업을 진행하여 글을 써왔습니다.</p>
+<p>GitHub에서도 업로드가 되어있어야 다운로드가 가능합니다!</p>
 
-<p><img src="/assets/images/blog/2025-04-29-blog-18-notion-post/GitHub-Blog-Notion-Post1.png" alt="GitHub-Blog-Notion-Post1" style="max-width:100%;" /></p>
+<p>로컬에서도 테스트 할 수 있습니다. 예시:</p>
 
-<p>과정:</p>
+<p>http://localhost:4000/assets/files/example/assembly/hello_world_x64.exe</p>
 
-<div class="language-mathematica highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">Notion</span><span class="w"> </span><span class="err">작성</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nv">Markdown</span><span class="w"> </span><span class="err">내보내기</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nb">Front</span><span class="w"> </span><span class="nv">Matter</span><span class="w"> </span><span class="err">추가</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="o">_</span><span class="nv">posts</span><span class="err">에</span><span class="w"> </span><span class="err">넣기</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nv">Push</span><span class="w">
-</span></code></pre></div></div>
+<p>업로드 경로 링크 :</p>
 
-<p>이번 게시글에서 알아볼 내용</p>
+<p><a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe">https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe</a></p>
 
-<ul>
-  <li>Front Matter</li>
-  <li>Notion → Markdown 내보내기</li>
-</ul>
+<p><img src="/assets/images/blog/2025-04-29-blog-19-file-upload/image.png" alt="image.png" style="max-width:100%;" /></p>
 
-<h2 id="front-matter">Front Matter</h2>
+<p>해당 이미지 처럼 .exe 파일을 다운로드 할 때, 크롬에서 뜨는 메세지 스크린샷</p>
 
-<p><strong>Front Matter</strong>는 <strong>Markdown 파일 맨 위</strong>에 적는 <strong>“메타데이터 영역”</strong></p>
+<p>Windows에서 <code class="language-plaintext highlighter-rouge">.exe</code> 파일을 다운로드할 때 <strong>“의심스러운 파일”</strong>이라는 경고가 뜨는 이유는 브라우저(특히 Chrome, Edge 등)나 OS가 <strong>디지털 서명(Signing Certificate)</strong> 없는 실행 파일을 보안 위험 요소로 간주하기 때문입니다. 이건 블로그 설정만으로는 <strong>완전히 막을 수 없습니다</strong>, 하지만 아래와 같은 우회적/간접적 방법들이 있습니다:</p>
 
-<p>Jekyll이나 Hugo 같은 정적 사이트 생성기(SSG)는 <strong>Markdown 파일을 그냥 읽는 게 아니라</strong>,이 Front Matter를 먼저 읽고 <strong>글의 정보(제목, 날짜, 카테고리, 레이아웃 등)를 파악</strong></p>
+<h2 id="해결-또는-완화-방법">해결 또는 완화 방법</h2>
 
-<p>여태 익숙하게 사용했었지만, 좀 자세히 알아보는 시간을 가져볼까 합니다.</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">글</span><span class="nv"> </span><span class="s">제목"</span>
-<span class="na">date</span><span class="pi">:</span> <span class="s">2025-04-29</span>
-<span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">blog</span><span class="pi">]</span>
-<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">notion</span><span class="pi">,</span> <span class="nv">markdown</span><span class="pi">]</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
-<span class="nn">---</span>
-</code></pre></div></div>
+<h3 id="1-압축-파일로-배포-추천">1. <strong>압축 파일로 배포 (추천)</strong></h3>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">---</code> 로 시작하고, <code class="language-plaintext highlighter-rouge">---</code> 로 끝남.</li>
-  <li>그 사이에 <strong>키: 값</strong> 형태로 메타데이터를 적음.</li>
-  <li><strong>YAML 문법</strong>을 사용함.</li>
+  <li><code class="language-plaintext highlighter-rouge">hello_world_x64.exe</code> → <code class="language-plaintext highlighter-rouge">hello_world_x64.zip</code> 으로 압축</li>
+  <li><code class="language-plaintext highlighter-rouge">.exe</code> 파일이 직접 노출되지 않으므로 브라우저 보안 경고가 거의 사라짐</li>
+  <li>GitHub Pages에서도 MIME-type 문제 없이 다운로드됨</li>
 </ul>
 
-<h3 id="주요-속성-설명">주요 속성 설명</h3>
+<h3 id="2-파일-이름-변경-부가-효과">2. <strong>파일 이름 변경 (부가 효과)</strong></h3>
+
+<ul>
+  <li>예: <code class="language-plaintext highlighter-rouge">hello_world_x64.safe</code> 또는 <code class="language-plaintext highlighter-rouge">hello_world_x64.dat</code>로 이름 변경 → 다운로드 후 사용자에게 <code class="language-plaintext highlighter-rouge">.exe</code>로 바꾸라고 안내</li>
+  <li>일부 브라우저 필터는 <code class="language-plaintext highlighter-rouge">.exe</code> 확장자만으로 차단함</li>
+</ul>
+
+<h3 id="3-https-사용-확인">3. <strong>HTTPS 사용 확인</strong></h3>
+
+<ul>
+  <li>GitHub Pages는 기본 HTTPS라서 괜찮지만, custom domain 사용 시 <code class="language-plaintext highlighter-rouge">https://</code>가 아니면 경고 메시지가 더 강해질 수 있음</li>
+</ul>
+
+<h3 id="4-브라우저-다운로드-설명-추가">4. <strong>브라우저 다운로드 설명 추가</strong></h3>
+
+<ul>
+  <li>포스트에 다운로드 전에 이런 문구를 넣을 수 있음:</li>
+</ul>
+
+<blockquote>
+  <p>⚠️ Windows에서는 .exe 파일 다운로드 시 보안 경고가 표시될 수 있습니다. 안전한 파일이며, 소스코드도 함께 제공됩니다.</p>
+</blockquote>
+
+<h3 id="5-디지털-서명코드-사인-사용-고급">5. <strong>디지털 서명(코드 사인) 사용 (고급)</strong></h3>
+
+<ul>
+  <li>진짜 근본적인 해결책</li>
+  <li><code class="language-plaintext highlighter-rouge">.exe</code> 파일에 <strong>코드 서명 인증서</strong>를 붙이면 대부분의 브라우저/OS가 신뢰</li>
+  <li>하지만 개인 개발자 입장에서 비용(1년에 최소 $100 이상) 및 번거로움이 커서 비현실적일 수 있음</li>
+</ul>
+
+<h2 id="요약">요약</h2>
 
 <table>
   <thead>
     <tr>
-      <th>항목</th>
-      <th>설명</th>
-      <th>예시</th>
+      <th>방법</th>
+      <th>효과</th>
+      <th>추천도</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">title</code></td>
-      <td>글 제목</td>
-      <td><code class="language-plaintext highlighter-rouge">"Notion으로 GitHub Blog 쓰기"</code></td>
+      <td><code class="language-plaintext highlighter-rouge">.zip</code>으로 압축해서 제공</td>
+      <td>경고 방지</td>
+      <td>⭐⭐⭐⭐</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">date</code></td>
-      <td>글 작성/게시 날짜 (yyyy-mm-dd 형식)</td>
-      <td><code class="language-plaintext highlighter-rouge">2025-04-29</code></td>
+      <td>확장자 숨기기 (예: <code class="language-plaintext highlighter-rouge">.safe</code>)</td>
+      <td>브라우저 회피</td>
+      <td>⭐⭐</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">categories</code></td>
-      <td>글이 속할 카테고리 (폴더처럼)</td>
-      <td><code class="language-plaintext highlighter-rouge">[blog]</code></td>
+      <td>디지털 서명 인증서 적용</td>
+      <td>완전한 해결</td>
+      <td>⭐ (비용 부담 큼)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">tags</code></td>
-      <td>글에 달 태그들 (검색, 분류 용도)</td>
-      <td><code class="language-plaintext highlighter-rouge">[notion, markdown]</code></td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">layout</code></td>
-      <td>사용할 레이아웃(보통 <code class="language-plaintext highlighter-rouge">post</code> 또는 <code class="language-plaintext highlighter-rouge">single</code>)</td>
-      <td><code class="language-plaintext highlighter-rouge">post</code></td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">author</code></td>
-      <td>작성자 이름 (설정해놓은 경우)</td>
-      <td><code class="language-plaintext highlighter-rouge">ruyshy2</code></td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">toc</code></td>
-      <td>글에 목차(Table of Contents)를 넣을지</td>
-      <td><code class="language-plaintext highlighter-rouge">true</code></td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">comments</code></td>
-      <td>댓글 기능 켤지</td>
-      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td>다운로드 안내문 추가</td>
+      <td>사용자 신뢰</td>
+      <td>⭐⭐⭐</td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="front-matter-요약">Front Matter 요약</h3>
+<h2 id="테스트">테스트</h2>
 
-<ul>
-  <li>Front Matter = <strong>글 정보</strong>를 알려주는 영역</li>
-  <li>반드시 맨 위에 <code class="language-plaintext highlighter-rouge">---</code>로 감싸서 작성</li>
-  <li>Jekyll 같은 시스템이 글을 정리하는 데 필수</li>
-</ul>
+<p>기존의 exe 파일 링크 :</p>
 
-<h2 id="notion--markdown-생성-방법">Notion → Markdown 생성 방법</h2>
+<p><a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe">https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe</a></p>
 
-<p><img src="/assets/images/blog/2025-04-29-blog-18-notion-post/GitHub-Blog-Notion-Post2.png" alt="GitHub-Blog-Notion-Post2" style="max-width:100%;" /></p>
+<p>exe 파일을 압축한 파일(.zip) 링크:</p>
 
-<p>Notion 오른쪽 상단 위에 보면 공유와 여러 아이콘이 있는데 … 아이콘을 클릭합니다.</p>
-
-<p>아래에 여러 메뉴들이 줄줄이 나오는데 내보내기를 클릭하여 파일을 저장합니다.</p>
-
-<p>아마 이미지를 포함한 압축 파일로 저장되며, GitHub에 옮기는 작업은 수동으로 진행합니다..</p>
-
-<p>.md 파일을 드래그하여 옮기고, assets/images/blog/게시글파일이름 경로 생성 후, 이미지를 옮기고
-markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업으로 변환해줍니다.</p>
-
-<p>예시:</p>
-
-<p>markdown:</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">GitHub-Blog-Notion-Post.png</span><span class="p">](</span><span class="sx">GitHub-Blog-Notion-Post.png</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>에서</p>
-
-<p>liquid:</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% img "GitHub-Blog-Notion-Post.png","GitHub-Blog-Notion-Post" %}
-</code></pre></div></div>
-
-<p>으로 변환</p>
-
-<p><br /></p>
-
-<h3 id="생산성을-높이기-위한-고민">생산성을 높이기 위한 고민</h3>
-
-<p>앞으로 어떻게 하면 더 효율적으로 작업할 수 있을지 여러 방면으로 고민하고 있습니다.</p>
-
-<p>몇 가지 아이디어가 떠오르긴 했지만, 보다 충분한 자료를 수집하고 생각을 정리한 뒤에 방향을 확정하려 합니다.</p>
-
-<ul>
-  <li>Notion과 GitHub를 연동하는 방법</li>
-  <li>Notion에서 내보낸 <code class="language-plaintext highlighter-rouge">.md</code> 파일을 Python으로 변환하는 방법</li>
-  <li>Visual Studio Code용 확장 프로그램(Extension)을 직접 제작해 활용하는 방법</li>
-  <li>혹은, 현재처럼 Notion의 내보내기 기능을 그대로 활용하는 방법</li>
-</ul>
+<p><a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.zip">https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.zip</a></p>
 
         
       </section>
@@ -544,19 +504,19 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#front-matter" class="page__taxonomy-item p-category" rel="tag">front-matter</a><span class="sep">, </span>
+      <a href="/tags/#exe-%EB%B3%B4%EC%95%88%EA%B2%BD%EA%B3%A0" class="page__taxonomy-item p-category" rel="tag">exe 보안경고</a><span class="sep">, </span>
     
-      <a href="/tags/#githubblog" class="page__taxonomy-item p-category" rel="tag">GitHubBlog</a><span class="sep">, </span>
+      <a href="/tags/#github-pages" class="page__taxonomy-item p-category" rel="tag">GitHub Pages</a><span class="sep">, </span>
     
-      <a href="/tags/#jekyll" class="page__taxonomy-item p-category" rel="tag">Jekyll</a><span class="sep">, </span>
+      <a href="/tags/#zip" class="page__taxonomy-item p-category" rel="tag">zip</a><span class="sep">, </span>
     
-      <a href="/tags/#markdown" class="page__taxonomy-item p-category" rel="tag">markdown</a><span class="sep">, </span>
+      <a href="/tags/#%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C" class="page__taxonomy-item p-category" rel="tag">다운로드</a><span class="sep">, </span>
     
-      <a href="/tags/#notion" class="page__taxonomy-item p-category" rel="tag">Notion</a><span class="sep">, </span>
+      <a href="/tags/#%EB%B8%94%EB%A1%9C%EA%B7%B8-%ED%8C%81" class="page__taxonomy-item p-category" rel="tag">블로그 팁</a><span class="sep">, </span>
     
-      <a href="/tags/#%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4-%EB%B3%80%ED%99%98" class="page__taxonomy-item p-category" rel="tag">마크다운 변환</a><span class="sep">, </span>
+      <a href="/tags/#%EC%BD%94%EB%93%9C%EC%84%9C%EB%AA%85" class="page__taxonomy-item p-category" rel="tag">코드서명</a><span class="sep">, </span>
     
-      <a href="/tags/#%EB%B8%94%EB%A1%9C%EA%B7%B8-%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1" class="page__taxonomy-item p-category" rel="tag">블로그 포스트 작성</a>
+      <a href="/tags/#%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C" class="page__taxonomy-item p-category" rel="tag">파일 업로드</a>
     
     </span>
   </p>
@@ -581,28 +541,28 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-29T00:00:00+09:00">April 29, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-30T00:00:00+09:00">April 30, 2025</time></p>
 
       </footer>
 
       <section class="page__share">
   <h4 class="page__share-title">공유하기</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog%EC%97%90+Notion%EC%9C%BC%EB%A1%9C+%EA%B8%80+%EC%9E%91%EC%84%B1%ED%95%98%EA%B3%A0+%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94+%EB%B0%A9%EB%B2%95%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog-18-notion-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog%EC%97%90%EC%84%9C+.exe+%ED%8C%8C%EC%9D%BC+%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C+%EC%97%85%EB%A1%9C%EB%93%9C+%EB%B0%8F+%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%ED%95%98%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog-19-file-upload%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog-18-notion-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog-19-file-upload%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog-18-notion-post/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog-19-file-upload/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/blog-17-category2/" class="pagination--pager" title="GitHub Blog 카테고리 사이드바 설정 방법 - 상위/하위 카테고리 구현">Prev</a>
+      <a href="/reversing_engineering/assembly/reversing1-disassembly1/" class="pagination--pager" title="Disassembly란? 실행파일을 Assembly로 분석하는 방법">Prev</a>
     
     
-      <a href="/reversing_engineering/assembly/reversing1-disassembly1/" class="pagination--pager" title="Disassembly란? 실행파일을 Assembly로 분석하는 방법">Next</a>
+      <a href="/reversing_engineering/assembly/reversing1-disassembly2/" class="pagination--pager" title="Disassembly 실전 분석편: if문과 for문 C++ → Assembly 흐름 이해">Next</a>
     
   </nav>
 
@@ -690,16 +650,14 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/blog-19-file-upload/" rel="permalink">GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기
+        <a href="/reversing_engineering/assembly/reversing1-disassembly1/" rel="permalink">Disassembly란? 실행파일을 Assembly로 분석하는 방법
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">GitHub 블로그에 .exe 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다.
-이 포스트에서는 그러한 경고를 완화하거나 피할 수 있는 여러 가지 방법을 정리했습니다.
-실제 .zip 방식 테스트도 함께 제공하니 참고해보세요!
+    <p class="archive__item-excerpt" itemprop="description">실행파일을 어셈블리 코드로 분석하고 싶다면 이 포스트를 참고하세요. Disassembly 기본 개념, C++ → Assembly 흐름, Visual Studio로 디스어셈블리 실습, 스택/레지스터 동작 구조까지 예제를 통해 쉽게 정리합니다.
 </p>
   </article>
 </div>
@@ -715,14 +673,14 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/reversing_engineering/assembly/reversing1-disassembly1/" rel="permalink">Disassembly란? 실행파일을 Assembly로 분석하는 방법
+        <a href="/blog/blog-18-notion-post/" rel="permalink">GitHub Blog에 Notion으로 글 작성하고 업로드하는 방법
 </a>
       
     </h2>
     
 
 
-    <p class="archive__item-excerpt" itemprop="description">실행파일을 어셈블리 코드로 분석하고 싶다면 이 포스트를 참고하세요. Disassembly 기본 개념, C++ → Assembly 흐름, Visual Studio로 디스어셈블리 실습, 스택/레지스터 동작 구조까지 예제를 통해 쉽게 정리합니다.
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog에 글을 올릴 때 Notion을 활용하고 싶다면 이 포스트를 참고하세요. Notion Markdown 내보내기, Front Matter 설정, GitHub 블로그 포스트 등록까지 전체 과정을 쉽게 설명합니다.
 </p>
   </article>
 </div>

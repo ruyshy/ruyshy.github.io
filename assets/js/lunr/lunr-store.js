@@ -209,6 +209,12 @@ var store = [{
         "url": "/reversing_engineering/assembly/reversing1-disassembly1/",
         "teaser": null
       },{
+        "title": "GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기",
+        "excerpt":"GitHub 블로그에 .exe 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다. 이 포스트에서는 그러한 경고를 완화하거나 피할 수 있는 여러 가지 방법을 정리했습니다. 실제 .zip 방식 테스트도 함께 제공하니 참고해보세요! assets\\files\\example\\assembly\\hello_world_x64.exe 상대경로에 업로드가 되어있습니다. GitHub에서도 업로드가 되어있어야 다운로드가 가능합니다! 로컬에서도 테스트 할 수 있습니다. 예시: http://localhost:4000/assets/files/example/assembly/hello_world_x64.exe 업로드 경로 링크 :...","categories": ["blog"],
+        "tags": ["GitHub Pages","파일 업로드","다운로드","exe 보안경고","zip","코드서명","블로그 팁"],
+        "url": "/blog/blog-19-file-upload/",
+        "teaser": null
+      },{
         "title": "Disassembly 실전 분석편: if문과 for문 C++ → Assembly 흐름 이해",
         "excerpt":"C++의 조건문과 반복문이 디스어셈블리에서 어떻게 구현되는지 궁금하신가요? 이 포스트에서는 Visual Studio 디버거를 활용해 if문, for문을 실제 실행파일 수준에서 분석하고, cmp, jmp, jge, add 등의 핵심 명령어 패턴을 정확히 짚어드립니다. 1. Visual Studio 설정 (이전이랑 동일) 빌드 모드: Release 플랫폼: x64 최적화: 끄기 (/Od) 그리고 C++ 코드 작성 후, 디버깅 시작해서...","categories": ["reversing_engineering","assembly"],
         "tags": ["assembly","disassembly","VisualStudio","조건문 어셈블리","루프 구조","cmp","jmp","x64 디버깅"],
