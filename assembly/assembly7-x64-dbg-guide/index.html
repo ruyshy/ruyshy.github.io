@@ -123,6 +123,11 @@
               >Category</a>
             </li></ul>
         
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">toggle menu</span>
           <div class="navicon"></div>
@@ -144,9 +149,7 @@
 <div id="main" role="main">
   
 <div class="sidebar sticky">
-
-  
-    
+   
 
 
 <div itemscope itemtype="https://schema.org/Person" class="h-card">
@@ -263,24 +266,23 @@
     </ul>
   </div>
 </div>
+ 
 
-  
-  
-  <li><hr class="nav-divider"></li>
+  <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
     <ul class="nav__items">
-
       <li class="nav__title">Category</li>
 
       <li>
-        <a href="/categories/" class="nav__item">
+        <a
+          href="/categories/"
+          class="nav__item"
+        >
           ALL <span class="count">(33)</span>
         </a>
       </li>
 
-      
-      
         
   
     <li class="nav__item-toggle">
@@ -342,14 +344,29 @@
 
   
 
+ 
 
-      
-      
-      <li><hr class="nav-divider"></li>
-    
+      <li><hr class="nav-divider" /></li>
     </ul>
-  </nav>
 
+    <div class="sidebar__search">
+      <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
+        <div class="search-block">
+          <select id="search-type">
+            <option value="title">제목</option>
+            <option value="tag">태그</option>
+            <option value="both">제목 + 태그</option>
+          </select>
+        </div>
+        <div class="search-block">
+          <input type="text" id="search-query" placeholder="검색어 입력" />
+        </div>
+        <div class="search-block">
+          <button type="submit"><i class="fa fa-search"></i> 검색</button>
+        </div>
+      </form>
+    </div>
+  </nav>
 </div>
 
 
@@ -845,6 +862,17 @@
     </div>
 
     
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
 
     <div id="footer" class="page__footer">
       <footer>
@@ -883,9 +911,14 @@
 
       </footer>
     </div>
+    
+    <html lang="ko-KR" class="no-js">
+    <head>
 
-    <!-- JEKYLL LIQUID TAG -->>
-    <script src="/assets/js/clipboard.min.js"></script>
+    </head>
+    
+    <!-- JEKYLL LIQUID TAG --> 
+     <script src="/assets/js/clipboard.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
@@ -914,8 +947,8 @@ document.addEventListener('DOMContentLoaded', function() {
     e.clearSelection();
   });
 });
-</script>
-    <script>
+</script> 
+     <script>
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.toggle-label').forEach(labelEl => {
             const baseText = labelEl.dataset.label;
@@ -940,12 +973,21 @@ document.addEventListener('DOMContentLoaded', function() {
         content.style.maxHeight = content.scrollHeight + 'px';
       }
     }    
-</script>
-    <!-- 
+</script> 
+     <!-- 
 
 -->>
 
 <script src="/assets/js/quiz-handler.js"></script>
+
+
+     <!-- lunr search script -->
+<script src="/assets/js/sidebar-search.js"></script>
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/search.js"></script>
+
+</html>
 
 
     
@@ -953,6 +995,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
 
 
 
