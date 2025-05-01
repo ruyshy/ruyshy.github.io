@@ -1,7 +1,8 @@
 main:
   - title: "Home"
     url: /
-
+  - title: "Tags"
+    url: /tags/
   - title: "Category"
     url: /categories/
     children:
