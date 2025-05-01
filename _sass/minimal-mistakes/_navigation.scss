@@ -495,27 +495,45 @@
    =============================== */
 
    .nav__subtitle {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-top: 0.25em;
+    display: inline-block;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.4em 0.8em;
     font-size: $type-size-5;
-    color: #ccc;
+    font-weight: bold;
+    color: white;
+    background-color: mix(white, #000, 20%);
+    border: 1px solid $gray;
+    border-radius: 0.5em;
+    margin: 0.25em 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
   
     .nav__arrow {
       margin-right: 0.4em;
+      font-weight: bold;
+      font-size: $type-size-3;
       transition: transform 0.2s ease;
     }
+  
+    &:hover {
+      background-color: $primary-color;
+      color: white;
+    }
   }
+  
   
   .nav__item-toggle {
     .nav__toggle {
       &:checked + .nav__subtitle .nav__arrow::before {
-        content: "▼"; /* 펼친 상태 */
+        content: "–";
       }
+
       & + .nav__subtitle .nav__arrow::before {
-        content: "▶"; /* 접힌 상태 */
+        content: "+";
       }
+  
       &:checked + .nav__subtitle + .nav__subitems {
         max-height: 1000px;
         opacity: 1;
@@ -545,7 +563,7 @@
   
   .count {
     font-weight: normal;
-    color: #888;
+    color: $base04;
     margin-left: 5px;
   }
 
