@@ -214,7 +214,7 @@
 
     &:before {
       @supports (pointer-events: none) {
-        content: '';
+        content: "";
         position: fixed;
         top: 0;
         inset-inline-start: 0;
@@ -345,5 +345,66 @@
   @include breakpoint($x-large) {
     width: initial;
     margin-inline-end: initial;
+  }
+}
+
+.sidebar__search {
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  margin-top: 1em;
+  vertical-align: top;
+  @include breakpoint($x-large) {
+    width: initial;
+    margin-inline-end: initial;
+  }
+
+  .search-block {
+    margin-bottom: 0.6em;
+
+    select,
+    input,
+    button {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      height: 2.2em;
+      font-size: 0.9em;
+      font-family: inherit;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid $border-color;
+    }
+
+    select {
+      appearance: none;
+      padding: 0 0.6em;
+      background-color: $background-color;
+      color: inherit;
+    }
+
+    input {
+      padding: 0 0.6em;
+      background-color: $background-color;
+      color: inherit;
+    }
+
+    button {
+      background-color: $primary-color;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4em;
+
+      i {
+        font-size: 0.9em;
+      }
+
+      &:hover {
+        background-color: mix($primary-color, black, 80%);
+      }
+    }
   }
 }
