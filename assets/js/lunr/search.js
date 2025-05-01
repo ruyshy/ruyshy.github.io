@@ -55,7 +55,6 @@
         const keyword = lower.replace("tags:", "").trim();
         match = tags.includes(keyword);
       } else {
-        // 제목 + 본문 + 태그 + 카테고리 전체 검색
         match =
           title.includes(lower) ||
           excerpt.includes(lower) ||

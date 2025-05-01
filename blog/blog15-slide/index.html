@@ -117,19 +117,25 @@
               >Home</a>
             </li><li class="masthead__menu-item">
               <a
+                href="/tags/"
+                
+                
+              >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a
                 href="/categories/"
                 
                 
               >Category</a>
             </li></ul>
         
-        <button class="search__toggle" type="button">
+        <!-- <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
           <i class="fas fa-search"></i>
-        </button>
+        </button> -->
         
         <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">toggle menu</span>
+          <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
         </button>
         <ul class="hidden-links hidden"></ul>
@@ -149,7 +155,8 @@
 <div id="main" role="main">
   
 <div class="sidebar sticky">
-   
+  
+    
 
 
 <div itemscope itemtype="https://schema.org/Person" class="h-card">
@@ -175,7 +182,7 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">팔로우</button>
+    <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
         <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
@@ -266,23 +273,26 @@
     </ul>
   </div>
 </div>
- 
+
+  
 
   <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
-    <ul class="nav__items">
-      <li class="nav__title">Category</li>
+    <input type="checkbox" id="sidebar-cat-toggle" />
+    <label for="sidebar-cat-toggle" class="nav__subtitle">
+      <span class="nav__arrow"></span> Category
+    </label>
 
+    <ul class="nav__items">
       <li>
-        <a
-          href="/categories/"
-          class="nav__item"
-        >
+        <a href="/categories/" class="nav__item category-button">
           ALL <span class="count">(33)</span>
         </a>
       </li>
 
+      
+      
         
   
     <li class="nav__item-toggle">
@@ -299,28 +309,22 @@
     <li>
       
       
-      <a href="/categories/assembly/" class="nav__item">
+      <a href="/categories/assembly/" class="nav__item category-button">
         Assembly
-        <span class="count">
-          (14)
-        </span>
+        <span class="count">(14)</span>
       </a>
     </li>
-
   
 
   
     <li>
       
       
-      <a href="/categories/reversing_engineering/" class="nav__item">
+      <a href="/categories/reversing_engineering/" class="nav__item category-button">
         Reversing Engineering
-        <span class="count">
-          (3)
-        </span>
+        <span class="count">(3)</span>
       </a>
     </li>
-
   
 
 
@@ -334,17 +338,15 @@
     <li>
       
       
-      <a href="/categories/blog/" class="nav__item">
+      <a href="/categories/blog/" class="nav__item category-button">
         Blog
-        <span class="count">
-          (19)
-        </span>
+        <span class="count">(19)</span>
       </a>
     </li>
-
   
 
- 
+
+      
 
       <li><hr class="nav-divider" /></li>
     </ul>
@@ -353,16 +355,16 @@
       <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
         <div class="search-block">
           <select id="search-type">
-            <option value="title">제목</option>
-            <option value="tag">태그</option>
-            <option value="both">제목 + 태그</option>
+            <option value="title">Title</option>
+            <option value="tag">Tag</option>
+            <option value="both">Title + Tag</option>
           </select>
         </div>
         <div class="search-block">
-          <input type="text" id="search-query" placeholder="검색어 입력" />
+          <input type="text" id="search-query" placeholder="Search input" />
         </div>
         <div class="search-block">
-          <button type="submit"><i class="fa fa-search"></i> 검색</button>
+          <button type="submit"><i class="fa fa-search"></i> Search</button>
         </div>
       </form>
     </div>
@@ -394,7 +396,7 @@
         
           <aside class="sidebar__right sticky">
             <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
               <ul class="toc__menu"><li><a href="#revealjs-으로-슬라이드-만들기">reveal.js 으로 슬라이드 만들기</a><ul><li><a href="#pluginsreveal_tagrb-추가">/plugins/reveal_tag.rb 추가</a></li><li><a href="#예시-코드">예시 코드</a></li></ul></li><li><a href="#홈페이지-레이아웃-프레젠테이션-슬라이드-만들기">홈페이지 레이아웃 프레젠테이션 슬라이드 만들기</a><ul><li><a href="#_layoutsslidehtml-추가">/_layouts/slide.html 추가</a></li><li><a href="#_pagesexample_slidemd">/_pages/example_slide.md</a></li><li><a href="#reveal-js-공식-홈페이지">Reveal js 공식 홈페이지</a></li><li><a href="#reveal-설정-가능한-옵션">Reveal 설정 가능한 옵션</a></li></ul></li></ul>
             </nav>
           </aside>
@@ -1038,7 +1040,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
   
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
       <a href="/tags/#githubblog" class="page__taxonomy-item p-category" rel="tag">GitHubBlog</a><span class="sep">, </span>
@@ -1063,7 +1065,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
   
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Category: </strong>
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
       <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
@@ -1074,25 +1076,25 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-24T00:00:00+09:00">April 24, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-04-24T00:00:00+09:00">April 24, 2025</time></p>
 
       </footer>
 
       <section class="page__share">
-  <h4 class="page__share-title">공유하기</h4>
+  <h4 class="page__share-title">Share on</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Reveal.js+%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C+%EB%A7%8C%EB%93%A4%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog15-slide%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Reveal.js+%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C+%EB%A7%8C%EB%93%A4%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog15-slide%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog15-slide%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog15-slide%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog15-slide/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog15-slide/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/blog14-card-link-pulgin/" class="pagination--pager" title="GitHub Blog 카드 링크 플러그인 만들기">Prev</a>
+      <a href="/blog/blog14-card-link-pulgin/" class="pagination--pager" title="GitHub Blog 카드 링크 플러그인 만들기">Previous</a>
     
     
       <a href="/assembly/assembly3-basic-commands-3/" class="pagination--pager" title="Assembly 함수 호출 구조와 스택프레임 이해하기 - Windows NASM 실습">Next</a>
@@ -1107,7 +1109,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
         <div class="page__comments">
   
   
-      <h4 class="page__comments-title">Comments</h4>
+      <h4 class="page__comments-title">Leave a comment</h4>
       <section id="utterances-comments"></section>
     
 </div>
@@ -1121,7 +1123,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
     
 <div class="page__related">
   
-  <h2 class="page__related-title">참고</h2>
+  <h2 class="page__related-title">You may also enjoy</h2>
   <div class="grid__wrapper">
     
       
@@ -1237,7 +1239,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
     <label class="sr-only" for="search">
       Enter your search term...
     </label>
-    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
   </form>
   <div id="results" class="results"></div></div>
 
@@ -1252,7 +1254,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
         <div class="page__footer-follow">
   <ul class="social-icons">
     
-      <li><strong>팔로우:</strong></li>
+      <li><strong>Follow:</strong></li>
     
 
     
@@ -1272,7 +1274,7 @@ https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css</p>
     
 
     
-      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
     
   </ul>
 </div>

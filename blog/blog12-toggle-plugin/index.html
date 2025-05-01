@@ -117,19 +117,25 @@
               >Home</a>
             </li><li class="masthead__menu-item">
               <a
+                href="/tags/"
+                
+                
+              >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a
                 href="/categories/"
                 
                 
               >Category</a>
             </li></ul>
         
-        <button class="search__toggle" type="button">
+        <!-- <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
           <i class="fas fa-search"></i>
-        </button>
+        </button> -->
         
         <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">toggle menu</span>
+          <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
         </button>
         <ul class="hidden-links hidden"></ul>
@@ -149,7 +155,8 @@
 <div id="main" role="main">
   
 <div class="sidebar sticky">
-   
+  
+    
 
 
 <div itemscope itemtype="https://schema.org/Person" class="h-card">
@@ -175,7 +182,7 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">팔로우</button>
+    <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
         <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
@@ -266,23 +273,26 @@
     </ul>
   </div>
 </div>
- 
+
+  
 
   <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
-    <ul class="nav__items">
-      <li class="nav__title">Category</li>
+    <input type="checkbox" id="sidebar-cat-toggle" />
+    <label for="sidebar-cat-toggle" class="nav__subtitle">
+      <span class="nav__arrow"></span> Category
+    </label>
 
+    <ul class="nav__items">
       <li>
-        <a
-          href="/categories/"
-          class="nav__item"
-        >
+        <a href="/categories/" class="nav__item category-button">
           ALL <span class="count">(33)</span>
         </a>
       </li>
 
+      
+      
         
   
     <li class="nav__item-toggle">
@@ -299,28 +309,22 @@
     <li>
       
       
-      <a href="/categories/assembly/" class="nav__item">
+      <a href="/categories/assembly/" class="nav__item category-button">
         Assembly
-        <span class="count">
-          (14)
-        </span>
+        <span class="count">(14)</span>
       </a>
     </li>
-
   
 
   
     <li>
       
       
-      <a href="/categories/reversing_engineering/" class="nav__item">
+      <a href="/categories/reversing_engineering/" class="nav__item category-button">
         Reversing Engineering
-        <span class="count">
-          (3)
-        </span>
+        <span class="count">(3)</span>
       </a>
     </li>
-
   
 
 
@@ -334,17 +338,15 @@
     <li>
       
       
-      <a href="/categories/blog/" class="nav__item">
+      <a href="/categories/blog/" class="nav__item category-button">
         Blog
-        <span class="count">
-          (19)
-        </span>
+        <span class="count">(19)</span>
       </a>
     </li>
-
   
 
- 
+
+      
 
       <li><hr class="nav-divider" /></li>
     </ul>
@@ -353,16 +355,16 @@
       <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
         <div class="search-block">
           <select id="search-type">
-            <option value="title">제목</option>
-            <option value="tag">태그</option>
-            <option value="both">제목 + 태그</option>
+            <option value="title">Title</option>
+            <option value="tag">Tag</option>
+            <option value="both">Title + Tag</option>
           </select>
         </div>
         <div class="search-block">
-          <input type="text" id="search-query" placeholder="검색어 입력" />
+          <input type="text" id="search-query" placeholder="Search input" />
         </div>
         <div class="search-block">
-          <button type="submit"><i class="fa fa-search"></i> 검색</button>
+          <button type="submit"><i class="fa fa-search"></i> Search</button>
         </div>
       </form>
     </div>
@@ -394,7 +396,7 @@
         
           <aside class="sidebar__right sticky">
             <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 목차</h4></header>
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
               <ul class="toc__menu"><li><a href="#markdown-기본-toggle-사용-방법">Markdown 기본 Toggle 사용 방법</a><ul><li><a href="#기본-토글">기본 토글:</a></li></ul></li><li><a href="#_pluginstoggle_tagrb-추가">_plugins\toggle_tag.rb 추가</a></li><li><a href="#_includestoggle-scripthtml-추가">_includes\toggle-script.html 추가</a></li><li><a href="#_layoutsdefaulthtml-수정">_layouts\default.html 수정</a></li><li><a href="#_sassminimal-mistakes_customscss-추가">_sass\minimal-mistakes_custom.scss 추가</a></li><li><a href="#_sassminimal-mistakesscss-수정">_sass\minimal-mistakes.scss 수정</a><ul><li><a href="#toggle-tag-사용법">toggle tag 사용법</a></li></ul></li></ul>
             </nav>
           </aside>
@@ -691,9 +693,9 @@
 <p>토글 태그:</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-f8bwk7', this)" data-label="클릭해서 보기1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-vxb513', this)" data-label="클릭해서 보기1">
   </div>
-  <div id="toggle-f8bwk7" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-vxb513" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 
@@ -711,9 +713,9 @@
 
 <p>&lt;—————————————————————–&gt;</p>
 <div class="toggle">
-  <div class="toggle-label h3" onclick="toggleTextContent('toggle-sqxt3s', this)" data-label="클릭해서 보기2">
+  <div class="toggle-label h3" onclick="toggleTextContent('toggle-80wjfq', this)" data-label="클릭해서 보기2">
   </div>
-  <div id="toggle-sqxt3s" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-80wjfq" class="toggle-body" style="display: none; max-height: 0;">
     
 <p>이 안에 접히는 내용이 들어갑니다.</p>
 
@@ -742,7 +744,7 @@
   
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tag: </strong>
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
       <a href="/tags/#github-blog" class="page__taxonomy-item p-category" rel="tag">GitHub Blog</a><span class="sep">, </span>
@@ -767,7 +769,7 @@
   
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Category: </strong>
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
       <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
@@ -778,25 +780,25 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Update:</strong> <time class="dt-published" datetime="2025-04-23T00:00:00+09:00">April 23, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-04-23T00:00:00+09:00">April 23, 2025</time></p>
 
       </footer>
 
       <section class="page__share">
-  <h4 class="page__share-title">공유하기</h4>
+  <h4 class="page__share-title">Share on</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Toggle+%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8+%EC%84%A4%EC%A0%95+-+Jekyll%EC%97%90%EC%84%9C+%EC%A0%91%EA%B8%B0+UI+%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog12-toggle-plugin%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Toggle+%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8+%EC%84%A4%EC%A0%95+-+Jekyll%EC%97%90%EC%84%9C+%EC%A0%91%EA%B8%B0+UI+%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog12-toggle-plugin%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog12-toggle-plugin%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2Fblog12-toggle-plugin%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog12-toggle-plugin/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/blog12-toggle-plugin/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/blog11-search-engine/" class="pagination--pager" title="GitHub Blog 검색엔진 등록 &amp; SEO 설정 - Google Search Console 연동">Prev</a>
+      <a href="/blog/blog11-search-engine/" class="pagination--pager" title="GitHub Blog 검색엔진 등록 &amp; SEO 설정 - Google Search Console 연동">Previous</a>
     
     
       <a href="/assembly/assembly3-basic-commands-2/" class="pagination--pager" title="Assembly 호출 규약 비교: cdecl vs stdcall - 스택 정리 방식과 호출 흐름 이해">Next</a>
@@ -811,7 +813,7 @@
         <div class="page__comments">
   
   
-      <h4 class="page__comments-title">Comments</h4>
+      <h4 class="page__comments-title">Leave a comment</h4>
       <section id="utterances-comments"></section>
     
 </div>
@@ -825,7 +827,7 @@
     
 <div class="page__related">
   
-  <h2 class="page__related-title">참고</h2>
+  <h2 class="page__related-title">You may also enjoy</h2>
   <div class="grid__wrapper">
     
       
@@ -941,7 +943,7 @@
     <label class="sr-only" for="search">
       Enter your search term...
     </label>
-    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
   </form>
   <div id="results" class="results"></div></div>
 
@@ -956,7 +958,7 @@
         <div class="page__footer-follow">
   <ul class="social-icons">
     
-      <li><strong>팔로우:</strong></li>
+      <li><strong>Follow:</strong></li>
     
 
     
@@ -976,7 +978,7 @@
     
 
     
-      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
     
   </ul>
 </div>

@@ -117,19 +117,25 @@
               >Home</a>
             </li><li class="masthead__menu-item">
               <a
+                href="/tags/"
+                
+                
+              >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a
                 href="/categories/"
                 
                 
               >Category</a>
             </li></ul>
         
-        <button class="search__toggle" type="button">
+        <!-- <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
           <i class="fas fa-search"></i>
-        </button>
+        </button> -->
         
         <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">toggle menu</span>
+          <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
         </button>
         <ul class="hidden-links hidden"></ul>
@@ -147,7 +153,8 @@
 <div id="main" role="main">
   
 <div class="sidebar sticky">
-   
+  
+    
 
 
 <div itemscope itemtype="https://schema.org/Person" class="h-card">
@@ -173,7 +180,7 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">팔로우</button>
+    <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
         <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
@@ -264,23 +271,26 @@
     </ul>
   </div>
 </div>
- 
+
+  
 
   <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
-    <ul class="nav__items">
-      <li class="nav__title">Category</li>
+    <input type="checkbox" id="sidebar-cat-toggle" />
+    <label for="sidebar-cat-toggle" class="nav__subtitle">
+      <span class="nav__arrow"></span> Category
+    </label>
 
+    <ul class="nav__items">
       <li>
-        <a
-          href="/categories/"
-          class="nav__item"
-        >
+        <a href="/categories/" class="nav__item category-button">
           ALL <span class="count">(33)</span>
         </a>
       </li>
 
+      
+      
         
   
     <li class="nav__item-toggle">
@@ -297,28 +307,22 @@
     <li>
       
       
-      <a href="/categories/assembly/" class="nav__item">
+      <a href="/categories/assembly/" class="nav__item category-button">
         Assembly
-        <span class="count">
-          (14)
-        </span>
+        <span class="count">(14)</span>
       </a>
     </li>
-
   
 
   
     <li>
       
       
-      <a href="/categories/reversing_engineering/" class="nav__item">
+      <a href="/categories/reversing_engineering/" class="nav__item category-button">
         Reversing Engineering
-        <span class="count">
-          (3)
-        </span>
+        <span class="count">(3)</span>
       </a>
     </li>
-
   
 
 
@@ -332,17 +336,15 @@
     <li>
       
       
-      <a href="/categories/blog/" class="nav__item">
+      <a href="/categories/blog/" class="nav__item category-button">
         Blog
-        <span class="count">
-          (19)
-        </span>
+        <span class="count">(19)</span>
       </a>
     </li>
-
   
 
- 
+
+      
 
       <li><hr class="nav-divider" /></li>
     </ul>
@@ -351,16 +353,16 @@
       <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
         <div class="search-block">
           <select id="search-type">
-            <option value="title">제목</option>
-            <option value="tag">태그</option>
-            <option value="both">제목 + 태그</option>
+            <option value="title">Title</option>
+            <option value="tag">Tag</option>
+            <option value="both">Title + Tag</option>
           </select>
         </div>
         <div class="search-block">
-          <input type="text" id="search-query" placeholder="검색어 입력" />
+          <input type="text" id="search-query" placeholder="Search input" />
         </div>
         <div class="search-block">
-          <button type="submit"><i class="fa fa-search"></i> 검색</button>
+          <button type="submit"><i class="fa fa-search"></i> Search</button>
         </div>
       </form>
     </div>
@@ -375,7 +377,7 @@
     
     
 
-<h3 class="archive__subtitle">최근 포스트</h3>
+<h3 class="archive__subtitle">Recent posts</h3>
 
 
 
@@ -496,7 +498,7 @@
     
     
       
-        <li><a href="/page2/">Prev</a></li>
+        <li><a href="/page2/">Previous</a></li>
       
     
 
@@ -579,7 +581,7 @@
     <label class="sr-only" for="search">
       Enter your search term...
     </label>
-    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
   </form>
   <div id="results" class="results"></div></div>
 
@@ -594,7 +596,7 @@
         <div class="page__footer-follow">
   <ul class="social-icons">
     
-      <li><strong>팔로우:</strong></li>
+      <li><strong>Follow:</strong></li>
     
 
     
@@ -614,7 +616,7 @@
     
 
     
-      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
     
   </ul>
 </div>
