@@ -369,9 +369,9 @@
       display: block;
       height: 2.2em;
       font-size: 0.9em;
-      font-family: inherit;
+      font-family: $inherit;
       box-sizing: border-box;
-      border-radius: 4px;
+      border-radius: $border-radius;
       border: 1px solid $border-color;
     }
 
@@ -390,7 +390,7 @@
 
     button {
       background-color: $primary-color;
-      color: #fff;
+      color: $base07;
       border: none;
       cursor: pointer;
       display: flex;
@@ -406,5 +406,35 @@
         background-color: mix($primary-color, black, 80%);
       }
     }
+  }
+}
+
+.category-button {
+  display: inline-block;
+  width: 100%;
+  padding: 0.4em 0.8em;
+  font-size: $type-size-5;
+  color: white;
+  background-color: mix(white, #000, 20%);
+  border: 1px solid $gray;
+  border-radius: 0.5em;
+  margin: 0.25em 0;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  .count {
+    font-weight: normal;
+    margin-left: 0.4em;
+    color: $base04;
   }
 }
