@@ -1,32 +1,47 @@
 {% if page.author_profile or layout.author_profile or page.sidebar %}
 <div class="sidebar sticky">
+  {% if page.author_profile or layout.author_profile %} {% include
+  author-profile.html %} {% endif %}
 
-  {% if page.author_profile or layout.author_profile %}
-    {% include author-profile.html %}
-  {% endif %}
-  
-  <li><hr class="nav-divider"></li>
+  <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
     <ul class="nav__items">
-
       <li class="nav__title">Category</li>
 
       <li>
-        <a href="{{ '/categories/' | relative_url }}" class="nav__item{% if page.url == '/categories/' %} active{% endif %}">
+        <a
+          href="{{ '/categories/' | relative_url }}"
+          class="nav__item{% if page.url == '/categories/' %} active{% endif %}"
+        >
           ALL <span class="count">({{ site.posts | size }})</span>
         </a>
       </li>
 
-      {% assign category_nav = site.data.navigation.main | where: "title", "Category" | first %}
-      {% if category_nav %}
-        {% include sidebar-items.html items=category_nav.children %}
-      {% endif %}
-      
-      <li><hr class="nav-divider"></li>
-    
-    </ul>
-  </nav>
+      {% assign category_nav = site.data.navigation.main | where: "title",
+      "Category" | first %} {% if category_nav %} {% include sidebar-items.html
+      items=category_nav.children %} {% endif %}
 
+      <li><hr class="nav-divider" /></li>
+    </ul>
+
+    <div class="sidebar__search">
+      <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
+        <div class="search-block">
+          <select id="search-type">
+            <option value="title">제목</option>
+            <option value="tag">태그</option>
+            <option value="both">제목 + 태그</option>
+          </select>
+        </div>
+        <div class="search-block">
+          <input type="text" id="search-query" placeholder="검색어 입력" />
+        </div>
+        <div class="search-block">
+          <button type="submit"><i class="fa fa-search"></i> 검색</button>
+        </div>
+      </form>
+    </div>
+  </nav>
 </div>
 {% endif %}
