@@ -10,7 +10,8 @@ module Jekyll
         next if seen.include?(tag)
         seen.add(tag)
 
-        site.pages << TagPage.new(site, site.source, File.join('tags', tag), tag)
+        dir = File.join('tags', Jekyll::Utils.slugify(tag))
+        site.pages << TagPage.new(site, site.source, dir, tag)
       end
     end
   end
