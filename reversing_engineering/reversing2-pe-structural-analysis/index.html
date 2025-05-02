@@ -1,0 +1,1362 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>PE 구조 분석 완전 정복 - ruyshy blog</title>
+<meta name="description" content="Windows 실행파일(EXE, DLL)의 핵심 구조인 PE(Portable Executable) 포맷을 DOS Header부터 Section, RVA 변환까지 전체 흐름으로 정리한 리버싱 초보자 필수 가이드입니다.">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="PE 구조 분석 완전 정복">
+<meta property="og:url" content="https://ruyshy.github.io/reversing_engineering/reversing2-pe-structural-analysis/">
+
+
+  <meta property="og:description" content="Windows 실행파일(EXE, DLL)의 핵심 구조인 PE(Portable Executable) 포맷을 DOS Header부터 Section, RVA 변환까지 전체 흐름으로 정리한 리버싱 초보자 필수 가이드입니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-05-02T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/reversing_engineering/reversing2-pe-structural-analysis/">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/tags/"
+                
+                
+              >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >Category</a>
+            </li></ul>
+        
+        <!-- <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button> -->
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://ruyshy.github.io/">
+        <img src="/assets/images/profile/github_profile_image.jpg" alt="ruyshy" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <li><hr class="nav-divider" /></li>
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+      <li class="nav__title">Category</li>
+      <a
+      href="/categories/"
+      class="nav__item"
+    >
+    ALL <span class="count">(36)</span>
+  </a>
+</li>
+
+  
+  
+<li class="nav__item-toggle">
+  <input
+    type="checkbox"
+    id="toggle-security"
+    class="nav__toggle"
+    hidden
+    checked
+  />
+
+  <label for="toggle-security" class="nav__subtitle">
+    <span class="nav__arrow"></span> Security
+  </label>
+
+  
+  <ul class="nav__subitems">
+     
+<li>
+   
+  <a
+    href="/categories/assembly/"
+    class="nav__item"
+  >
+    Assembly
+    <span class="count">
+      (14)
+    </span>
+  </a>
+</li>
+  
+<li>
+   
+  <a
+    href="/categories/reversing_engineering/"
+    class="nav__item"
+  >
+    Reversing Engineering
+    <span class="count">
+      (4)
+    </span>
+  </a>
+</li>
+ 
+
+  </ul>
+  
+</li>
+
+  
+<li>
+   
+  <a
+    href="/categories/blog/"
+    class="nav__item"
+  >
+    Blog
+    <span class="count">
+      (21)
+    </span>
+  </a>
+</li>
+ 
+
+ 
+ 
+ <li><hr class="nav-divider" /></li>
+
+    <div class="sidebar__search">
+      <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
+        <div class="search-block">
+          <select id="search-type">
+            <option value="title">Title</option>
+            <option value="tag">Tag</option>
+            <option value="both">Title + Tag</option>
+          </select>
+        </div>
+        <div class="search-block">
+          <input type="text" id="search-query" placeholder="Search input" />
+        </div>
+        <div class="search-block">
+          <button type="submit"><i class="fa fa-search"></i> Search</button>
+        </div>
+      </form>
+    </div>
+  </nav>
+</div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="PE 구조 분석 완전 정복">
+    <meta itemprop="description" content="Windows 실행파일이 어떻게 구성되어 있고, 어떤 순서로 메모리에 로딩되는지 궁금하셨나요?이 글에서는 PE 구조의 전반적인 구성과 주요 필드들의 역할, RVA 변환 방식까지 하나씩 정리해봅니다.">
+    <meta itemprop="datePublished" content="2025-05-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/reversing_engineering/reversing2-pe-structural-analysis/" itemprop="url">PE 구조 분석 완전 정복
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#pe-파일이란">PE 파일이란?</a></li><li><a href="#pe-파일을-실행할-때-무슨-일이-벌어지냐면">PE 파일을 실행할 때 무슨 일이 벌어지냐면…</a></li><li><a href="#pe-파일은-어떤-정보들로-되어-있을까">PE 파일은 어떤 정보들로 되어 있을까?</a></li><li><a href="#pe-구조-전체-개요-전체-흐름">PE 구조 전체 개요 (전체 흐름)</a><ul><li><a href="#1-dos-header-image_dos_header">1. DOS Header (IMAGE_DOS_HEADER)</a></li><li><a href="#2-dos-stub-program">2. DOS Stub Program</a></li><li><a href="#3-pe-signature">3. PE Signature</a></li><li><a href="#4-coff-file-header-image_file_header">4. COFF File Header (IMAGE_FILE_HEADER)</a></li><li><a href="#5-optional-header-image_optional_header">5. Optional Header (IMAGE_OPTIONAL_HEADER)</a><ul><li><a href="#51-standard-fields">5.1. Standard Fields</a></li><li><a href="#52-windows-specific-fields">5.2. Windows-Specific Fields</a></li><li><a href="#53-data-directories-image_data_directory">5.3. Data Directories (IMAGE_DATA_DIRECTORY[])</a></li></ul></li><li><a href="#6-section-header-table-image_section_header">6. Section Header Table (IMAGE_SECTION_HEADER)</a></li><li><a href="#7-section-data">7. Section Data</a></li><li><a href="#pe-로딩-시-주요-흐름">PE 로딩 시 주요 흐름</a></li><li><a href="#실행-과정-요약-memory-상-시나리오">실행 과정 요약 (Memory 상 시나리오)</a></li><li><a href="#pe-파일은-왜-이렇게-복잡하게-나뉘어-있을까">PE 파일은 왜 이렇게 복잡하게 나뉘어 있을까?</a></li><li><a href="#쉽게-기억하는-요령">쉽게 기억하는 요령</a></li><li><a href="#참고-자료--구조체-이름">참고 자료 / 구조체 이름</a></li><li><a href="#pe-구조-분석-시-유용한-도구">PE 구조 분석 시 유용한 도구</a></li></ul></li><li><a href="#pe-파일-분석에서-핵심이-되는-두-가지-중요한-개념">PE 파일 분석에서 핵심이 되는 두 가지 중요한 개념</a><ul><li><a href="#1-각-구조체의-메모리-정렬-방식-alignment">1. 각 구조체의 메모리 정렬 방식 (Alignment)</a><ul><li><a href="#filealignment-디스크-상-정렬">FileAlignment (디스크 상 정렬)</a></li><li><a href="#sectionalignment-메모리-정렬">SectionAlignment (메모리 정렬)</a></li><li><a href="#예시">예시</a></li></ul></li><li><a href="#2-rva--file-offset-변환법">2. RVA ↔ File Offset 변환법</a><ul><li><a href="#변환-공식">변환 공식</a></li><li><a href="#변환-순서-정리">변환 순서 정리</a></li><li><a href="#예제">예제</a></li><li><a href="#코드로-구현-c-스타일">코드로 구현 (C++ 스타일)</a></li><li><a href="#참고-구조체-alignment">참고 구조체 Alignment</a></li></ul></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>Windows 실행파일이 어떻게 구성되어 있고, 어떤 순서로 메모리에 로딩되는지 궁금하셨나요?<br />
+이 글에서는 PE 구조의 전반적인 구성과 주요 필드들의 역할, RVA 변환 방식까지 하나씩 정리해봅니다.</p>
+
+<h2 id="pe-파일이란">PE 파일이란?</h2>
+
+<p><strong>PE 파일</strong>은 쉽게 말해 <strong>Windows에서 실행되는 모든 실행파일(EXE), 라이브러리(DLL)</strong>의 <strong>설계도</strong>.</p>
+
+<p>마치 레고 블록을 조립하려면 블록의 종류와 순서를 알려주는 설명서가 필요하듯,</p>
+
+<p><strong>Windows 운영체제도 PE 구조를 보고 프로그램을 메모리에 어떻게 배치할지 결정.</strong></p>
+
+<p>리버싱에서 <strong>PE 구조(Portable Executable Format)</strong> 는 가장 기본이자 핵심.</p>
+
+<p>Windows에서 실행되는 .exe, .dll파일은 전부 이 포맷을 따르기 때문에, 구조를 이해해야 분석이 가능.</p>
+
+<h2 id="pe-파일을-실행할-때-무슨-일이-벌어지냐면">PE 파일을 실행할 때 무슨 일이 벌어지냐면…</h2>
+
+<ul>
+  <li>어떤 <code class="language-plaintext highlighter-rouge">.exe</code> 파일을 더블 클릭.</li>
+  <li>Windows는 그 파일의 <strong>MZ</strong> 라는 마법 같은 시작 문자를 보고 “오! 이건 실행파일이네?” 라고 판단.</li>
+  <li>그 다음에는 “진짜 실행정보는 어디 있지?” 하고 <strong>e_lfanew</strong> 필드를 보고, 본격적인 PE 구조로 점프.</li>
+  <li>거기서부터 운영체제가 코드를 메모리에 어떻게 배치하고, 어느 DLL을 불러오고, 어디서 실행을 시작해야 하는지를 쫙 읽음.</li>
+</ul>
+
+<h2 id="pe-파일은-어떤-정보들로-되어-있을까">PE 파일은 어떤 정보들로 되어 있을까?</h2>
+
+<p>우리가 책을 볼 때도 표지 → 목차 → 본문 → 부록 이런 순서가 있듯이, PE 파일도 순서가 있음.</p>
+
+<h2 id="pe-구조-전체-개요-전체-흐름">PE 구조 전체 개요 (전체 흐름)</h2>
+
+<div class="language-mathematica highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">┌────────────────────────────┐</span><span class="w">
+</span><span class="err">│</span><span class="w"> </span><span class="nv">MS</span><span class="o">-</span><span class="nv">DOS</span><span class="w"> </span><span class="nv">Header</span><span class="w">              </span><span class="err">│</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="nv">MZ</span><span class="w"> </span><span class="nb">Signature</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="nv">x4D</span><span class="w"> </span><span class="m">0</span><span class="nv">x5A</span><span class="p">)</span><span class="w">
+</span><span class="err">├────────────────────────────┤</span><span class="w">
+</span><span class="err">│</span><span class="w"> </span><span class="nv">DOS</span><span class="w"> </span><span class="nb">Stub</span><span class="w"> </span><span class="nv">Program</span><span class="w">           </span><span class="err">│</span><span class="w">
+</span><span class="err">├────────────────────────────┤</span><span class="w">
+</span><span class="err">│</span><span class="w"> </span><span class="nv">PE</span><span class="w"> </span><span class="nb">Signature</span><span class="w">               </span><span class="err">│</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="s">"PE\0\0"</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="nv">x50</span><span class="w"> </span><span class="m">0</span><span class="nv">x45</span><span class="w"> </span><span class="m">0</span><span class="nv">x00</span><span class="w"> </span><span class="m">0</span><span class="nv">x00</span><span class="p">)</span><span class="w">
+</span><span class="err">├────────────────────────────┤</span><span class="w">
+</span><span class="err">│</span><span class="w"> </span><span class="nv">COFF</span><span class="w"> </span><span class="nb">File</span><span class="w"> </span><span class="nv">Header</span><span class="w">           </span><span class="err">│</span><span class="w">
+</span><span class="err">├────────────────────────────┤</span><span class="w">
+</span><span class="err">│</span><span class="w"> </span><span class="nb">Optional</span><span class="w"> </span><span class="nv">Header</span><span class="w">            </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">├─</span><span class="w"> </span><span class="nv">Standard</span><span class="w"> </span><span class="nv">Fields</span><span class="w">        </span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">├─</span><span class="w"> </span><span class="nv">Windows</span><span class="o">-</span><span class="nv">Specific</span><span class="w"> </span><span class="nv">Fields</span><span class="err">│</span><span class="w">
+</span><span class="err">│</span><span class="w">  </span><span class="err">└─</span><span class="w"> </span><span class="nv">Data</span><span class="w"> </span><span class="nv">Directories</span><span class="w">       </span><span class="err">│</span><span class="w">
+</span><span class="err">├────────────────────────────┤</span><span class="w">
+</span><span class="err">│</span><span class="w"> </span><span class="nv">Section</span><span class="w"> </span><span class="nv">Headers</span><span class="w"> </span><span class="p">(</span><span class="o">.</span><span class="nv">text</span><span class="w"> </span><span class="err">등</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w">
+</span><span class="err">├────────────────────────────┤</span><span class="w">
+</span><span class="err">│</span><span class="w"> </span><span class="nv">Section</span><span class="w"> </span><span class="nv">Bodies</span><span class="w"> </span><span class="p">(</span><span class="o">.</span><span class="nv">text</span><span class="w"> </span><span class="err">등</span><span class="p">)</span><span class="w">  </span><span class="err">│</span><span class="w">
+</span><span class="err">└────────────────────────────┘</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="1-dos-header-image_dos_header">1. DOS Header (IMAGE_DOS_HEADER)</h3>
+
+<ul>
+  <li>Signature: <code class="language-plaintext highlighter-rouge">MZ</code> (0x5A4D)</li>
+  <li>주요 필드:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">e_lfanew</code>: PE 헤더의 오프셋 (PE Signature 위치)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>용도:</strong> 오래된 MS-DOS 호환을 위한 Stub 실행 코드 포함</p>
+
+<p><strong>디버깅 팁:</strong> PE 파싱 시 <code class="language-plaintext highlighter-rouge">e_lfanew</code>를 통해 PE Signature로 점프</p>
+
+<p><strong>추가 설명: 표지 같은 느낌</strong></p>
+
+<ul>
+  <li>맨 앞 2바이트는 <code class="language-plaintext highlighter-rouge">MZ</code> → DOS 시절부터 내려온 “이건 실행파일이다”의 표시</li>
+  <li>그 안에는 <code class="language-plaintext highlighter-rouge">e_lfanew</code>라는 중요한 주소가 있음 → “PE 구조는 여기부터 시작해!”라고 알려주는 지표</li>
+</ul>
+
+<hr />
+
+<h3 id="2-dos-stub-program">2. DOS Stub Program</h3>
+
+<ul>
+  <li>짧은 x86 코드로 “This program cannot be run in DOS mode” 출력</li>
+  <li>용량: 일반적으로 수십 바이트</li>
+</ul>
+
+<p><strong>추가 설명: 옛날 코드 조각</strong></p>
+
+<ul>
+  <li>
+    <p>DOS에서는 실행이 안 되니까 이런 메시지가 나와:</p>
+
+    <p>👉 <code class="language-plaintext highlighter-rouge">"This program cannot be run in DOS mode"</code></p>
+  </li>
+</ul>
+
+<p>이건 사실 지금은 의미 없고 그냥 관습적으로 들어있음.</p>
+
+<hr />
+
+<h3 id="3-pe-signature">3. PE Signature</h3>
+
+<ul>
+  <li>값: <code class="language-plaintext highlighter-rouge">"PE\0\0"</code> (4바이트)</li>
+  <li>위치: <code class="language-plaintext highlighter-rouge">e_lfanew</code>에서 지정됨</li>
+</ul>
+
+<p><strong>추가 설명:</strong></p>
+
+<p>딱 <code class="language-plaintext highlighter-rouge">"PE\0\0”</code>(50 45 00 00)이라는 서명이 있음</p>
+
+<p>→ 이거 보면 “이건 진짜 Windows용 실행 파일이다!” 라고 확신함</p>
+
+<hr />
+
+<h3 id="4-coff-file-header-image_file_header">4. COFF File Header (IMAGE_FILE_HEADER)</h3>
+
+<p>주요 필드:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Machine</code>: CPU 아키텍처 (예: x86: 0x014c, x64: 0x8664)</li>
+  <li><code class="language-plaintext highlighter-rouge">NumberOfSections</code>: 섹션 수</li>
+  <li><code class="language-plaintext highlighter-rouge">TimeDateStamp</code>: 빌드 타임스탬프</li>
+  <li><code class="language-plaintext highlighter-rouge">PointerToSymbolTable</code>: 디버깅용 심볼 테이블 (보통 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">SizeOfOptionalHeader</code>: Optional Header의 크기</li>
+  <li><code class="language-plaintext highlighter-rouge">Characteristics</code>: 실행파일 속성 (DLL인지, 실행파일인지 등)</li>
+</ul>
+
+<p><strong>추가 설명: 요약 정보</strong></p>
+
+<ul>
+  <li>CPU 종류 (32비트? 64비트?)</li>
+  <li>섹션이 몇 개?</li>
+  <li>언제 빌드된 파일이야?</li>
+  <li>실행파일이야? DLL이야? 드라이버야?</li>
+</ul>
+
+<p>한마디로 “이 파일은 어떤 환경에서 실행되는 어떤 프로그램이다”라는 기본 정보.</p>
+
+<hr />
+
+<h3 id="5-optional-header-image_optional_header">5. Optional Header (IMAGE_OPTIONAL_HEADER)</h3>
+
+<h4 id="51-standard-fields">5.1. Standard Fields</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Magic</code>: PE32 (0x10b), PE32+ (0x20b)</li>
+  <li><code class="language-plaintext highlighter-rouge">AddressOfEntryPoint</code>: 시작 함수 주소 (RVA)</li>
+  <li><code class="language-plaintext highlighter-rouge">BaseOfCode</code>, <code class="language-plaintext highlighter-rouge">BaseOfData</code>: 코드/데이터 시작 위치</li>
+</ul>
+
+<h4 id="52-windows-specific-fields">5.2. Windows-Specific Fields</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ImageBase</code>: 가상 메모리에서 매핑될 기본 주소</li>
+  <li><code class="language-plaintext highlighter-rouge">SectionAlignment</code>: 메모리에서 섹션 정렬 기준</li>
+  <li><code class="language-plaintext highlighter-rouge">FileAlignment</code>: 디스크에서 섹션 정렬 기준</li>
+  <li><code class="language-plaintext highlighter-rouge">SizeOfImage</code>: 전체 이미지의 크기 (메모리 기준)</li>
+  <li><code class="language-plaintext highlighter-rouge">Subsystem</code>: GUI, CUI 여부</li>
+</ul>
+
+<h4 id="53-data-directories-image_data_directory">5.3. Data Directories (IMAGE_DATA_DIRECTORY[])</h4>
+
+<p>총 16개 엔트리:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>인덱스</th>
+      <th>이름</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Export Table</td>
+      <td>DLL 내보내기 함수 테이블</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Import Table</td>
+      <td>외부 DLL 로딩 함수 테이블</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Resource Table</td>
+      <td>아이콘, 다이얼로그, 문자열 등</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Exception Table</td>
+      <td>SEH 정보 (x64)</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Certificate Table</td>
+      <td>디지털 서명</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Base Relocation</td>
+      <td>재배치 정보</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Debug Directory</td>
+      <td>디버그 심볼 정보</td>
+    </tr>
+    <tr>
+      <td>7~15</td>
+      <td>TLS, Load Config 등</td>
+      <td>Thread Local Storage 등</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>추가 설명: 필수</strong></p>
+
+<p>이건 정말 중요한 부분! Windows가 이걸 보고 “이 프로그램은 이렇게 실행하면 되겠다”고 결정함.</p>
+
+<p>여기엔 이런 것들이 있다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EntryPoint</td>
+      <td>실행 시작 주소 (<code class="language-plaintext highlighter-rouge">main()</code> 같은 곳)</td>
+    </tr>
+    <tr>
+      <td>ImageBase</td>
+      <td>이 파일이 메모리에 올라갈 기본 주소 (예: 0x400000)</td>
+    </tr>
+    <tr>
+      <td>SizeOfImage</td>
+      <td>전체 프로그램이 차지할 메모리 크기</td>
+    </tr>
+    <tr>
+      <td>Subsystem</td>
+      <td>GUI인지, 콘솔인지 등</td>
+    </tr>
+    <tr>
+      <td>DLL 필요 여부</td>
+      <td>Import Table 참고해서 DLL 호출</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>추가 설명: Data Directories (길잡이)</strong></p>
+
+<ul>
+  <li>여긴 “중요한 테이블이 어디에 있는지” 알려주는 지도.</li>
+</ul>
+
+<p>예:</p>
+
+<ul>
+  <li>Import Table → “이 프로그램이 불러오는 DLL 리스트”</li>
+  <li>Export Table → “이 DLL이 외부에 제공하는 함수들”</li>
+  <li>Resource Table → 아이콘, 문자열, 메뉴 같은 GUI 요소</li>
+  <li>Relocation Table → 메모리 위치가 바뀔 경우 주소 보정용</li>
+</ul>
+
+<hr />
+
+<h3 id="6-section-header-table-image_section_header">6. Section Header Table (IMAGE_SECTION_HEADER)</h3>
+
+<p>각 섹션에 대한 메타데이터 배열</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.text</code>: 코드</li>
+  <li><code class="language-plaintext highlighter-rouge">.data</code>: 초기화된 전역변수</li>
+  <li><code class="language-plaintext highlighter-rouge">.rdata</code>: 읽기 전용 데이터 (예: 상수 문자열)</li>
+  <li><code class="language-plaintext highlighter-rouge">.bss</code> (표시되지 않음): 초기화되지 않은 전역변수</li>
+  <li><code class="language-plaintext highlighter-rouge">.rsrc</code>: 리소스 정보</li>
+  <li><code class="language-plaintext highlighter-rouge">.reloc</code>: 재배치 테이블</li>
+</ul>
+
+<p>각 헤더에는:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Name</code>: 섹션 이름</li>
+  <li><code class="language-plaintext highlighter-rouge">VirtualAddress</code>: 메모리 상 RVA</li>
+  <li><code class="language-plaintext highlighter-rouge">SizeOfRawData</code>: 디스크에 저장된 크기</li>
+  <li><code class="language-plaintext highlighter-rouge">PointerToRawData</code>: 실제 파일 오프셋</li>
+  <li><code class="language-plaintext highlighter-rouge">Characteristics</code>: 코드/데이터/읽기쓰기 속성</li>
+</ul>
+
+<p><strong>추가 설명:</strong> 
+이제부터는 <strong>진짜 컨텐츠</strong>를 설명함.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.text</code> : 코드가 담긴 부분 (컴파일된 함수들)</li>
+  <li><code class="language-plaintext highlighter-rouge">.data</code> : 전역 변수</li>
+  <li><code class="language-plaintext highlighter-rouge">.rdata</code> : 읽기 전용 데이터</li>
+  <li><code class="language-plaintext highlighter-rouge">.rsrc</code> : 리소스(아이콘, UI 등)</li>
+</ul>
+
+<p>이 표에 “이 섹션은 어디서부터 시작되고, 크기가 얼마며, 메모리상 주소는 어디야”라는 내용이 나옴.</p>
+
+<hr />
+
+<h3 id="7-section-data">7. Section Data</h3>
+
+<ul>
+  <li>실제 코드, 데이터, 리소스 등이 이 영역에 위치</li>
+  <li>파일상에서는 <code class="language-plaintext highlighter-rouge">PointerToRawData</code> 오프셋부터</li>
+  <li>메모리에서는 <code class="language-plaintext highlighter-rouge">VirtualAddress</code> 기준으로 매핑됨</li>
+</ul>
+
+<p><strong>추가 설명:</strong>
+파일의 마지막에는 <strong>실제 코드, 데이터, 리소스</strong>들이 쭉 들어있어. 이 부분은 메모리에 로딩돼서 실행되는 내용.</p>
+
+<hr />
+
+<h3 id="pe-로딩-시-주요-흐름">PE 로딩 시 주요 흐름</h3>
+
+<ul>
+  <li>OS Loader가 <code class="language-plaintext highlighter-rouge">ImageBase</code>에 PE 파일 로딩</li>
+  <li>SectionAlignment 기준으로 섹션 재배치</li>
+  <li><code class="language-plaintext highlighter-rouge">AddressOfEntryPoint</code>로 제어 이동</li>
+  <li>Import Table 파싱 → DLL 로딩 &amp; IAT 구성</li>
+  <li>Relocation Table 적용 (필요 시)</li>
+  <li>TLS 실행, <code class="language-plaintext highlighter-rouge">mainCRTStartup</code> 등 실행</li>
+</ul>
+
+<hr />
+
+<h3 id="실행-과정-요약-memory-상-시나리오">실행 과정 요약 (Memory 상 시나리오)</h3>
+
+<ol>
+  <li>OS가 PE 구조를 읽고 <code class="language-plaintext highlighter-rouge">.text</code>, <code class="language-plaintext highlighter-rouge">.data</code>, <code class="language-plaintext highlighter-rouge">.rsrc</code> 등의 섹션을 메모리에 올림.</li>
+  <li>DLL이 필요하면 Import Table 참고해서 미리 로딩.</li>
+  <li>만약 메모리 기본 주소(<code class="language-plaintext highlighter-rouge">ImageBase</code>)에 이미 다른 앱이 있으면 Relocation Table로 주소 보정.</li>
+  <li>모든 준비가 끝나면 <code class="language-plaintext highlighter-rouge">EntryPoint</code>에 점프해서 코드 실행 시작!</li>
+</ol>
+
+<hr />
+
+<h3 id="pe-파일은-왜-이렇게-복잡하게-나뉘어-있을까">PE 파일은 왜 이렇게 복잡하게 나뉘어 있을까?</h3>
+
+<ul>
+  <li><strong>모듈화</strong>: OS가 필요한 것만 빠르게 읽고 실행</li>
+  <li><strong>이식성</strong>: EXE, DLL, SYS 같은 다양한 용도에 공통 포맷 사용</li>
+  <li><strong>확장성</strong>: 리소스, 서명, 디버깅 정보 등 추가해도 구조 유지</li>
+  <li><strong>보안</strong>: 코드와 데이터, 리소스를 명확히 분리 가능</li>
+</ul>
+
+<hr />
+
+<h3 id="쉽게-기억하는-요령">쉽게 기억하는 요령</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">MZ</span> <span class="err">→</span> <span class="nt">DOS</span> <span class="nt">헤더</span>
+<span class="nt">e_lfanew</span> <span class="err">→</span> <span class="nt">PE</span> <span class="nt">위치</span>
+<span class="nt">PE</span> <span class="err">→</span> <span class="nt">진짜</span> <span class="nt">헤더</span> <span class="nt">시작</span>
+<span class="nt">COFF</span> <span class="err">→</span> <span class="nt">기본</span> <span class="nt">요약</span>
+<span class="nt">Optional</span> <span class="err">→</span> <span class="nt">실행</span> <span class="nt">정보</span>
+<span class="nt">Section</span> <span class="err">→</span> <span class="nt">실제</span> <span class="nt">코드들</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="참고-자료--구조체-이름">참고 자료 / 구조체 이름</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">IMAGE_DOS_HEADER</code></li>
+  <li><code class="language-plaintext highlighter-rouge">IMAGE_NT_HEADERS</code> (Signature + FileHeader + OptionalHeader)</li>
+  <li><code class="language-plaintext highlighter-rouge">IMAGE_FILE_HEADER</code></li>
+  <li><code class="language-plaintext highlighter-rouge">IMAGE_OPTIONAL_HEADER</code></li>
+  <li><code class="language-plaintext highlighter-rouge">IMAGE_SECTION_HEADER</code></li>
+  <li><code class="language-plaintext highlighter-rouge">IMAGE_DATA_DIRECTORY</code></li>
+  <li><code class="language-plaintext highlighter-rouge">IMAGE_IMPORT_DESCRIPTOR</code>, <code class="language-plaintext highlighter-rouge">IMAGE_EXPORT_DIRECTORY</code> 등은 개별 테이블에 해당</li>
+</ul>
+
+<hr />
+
+<h3 id="pe-구조-분석-시-유용한-도구">PE 구조 분석 시 유용한 도구</h3>
+
+<ul>
+  <li><strong>CFF Explorer</strong></li>
+  <li><strong>PE-bear</strong></li>
+  <li><strong>x64dbg + Scylla</strong></li>
+  <li><strong>IDA / Ghidra</strong></li>
+  <li><strong>dumpbin /headers /imports /exports</strong></li>
+  <li><strong>WinDbg + !lmi / !dh 등</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="pe-파일-분석에서-핵심이-되는-두-가지-중요한-개념">PE 파일 분석에서 핵심이 되는 <strong>두 가지 중요한 개념</strong></h2>
+
+<h3 id="1-각-구조체의-메모리-정렬-방식-alignment">1. 각 구조체의 메모리 정렬 방식 (Alignment)</h3>
+
+<p>PE 파일은 <strong>파일에서는 FileAlignment 단위로 정렬</strong>되고, <strong>메모리에서는 SectionAlignment 단위로 정렬</strong>.</p>
+
+<h4 id="filealignment-디스크-상-정렬">FileAlignment (디스크 상 정렬)</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Optional Header</code>에 있음 (<code class="language-plaintext highlighter-rouge">FileAlignment</code>)</li>
+  <li>보통 <strong>0x200 (512바이트)</strong> 또는 0x1000 (4096바이트)</li>
+  <li>각 섹션의 <code class="language-plaintext highlighter-rouge">SizeOfRawData</code>는 이 단위로 정렬됨</li>
+</ul>
+
+<h4 id="sectionalignment-메모리-정렬">SectionAlignment (메모리 정렬)</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Optional Header</code>에 있음 (<code class="language-plaintext highlighter-rouge">SectionAlignment</code>)</li>
+  <li>보통 <strong>0x1000 (4KB)</strong></li>
+  <li>메모리상에서 섹션들의 <code class="language-plaintext highlighter-rouge">VirtualAddress</code>는 이 단위로 정렬됨</li>
+</ul>
+
+<h4 id="예시">예시</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FileAlignment</td>
+      <td>0x200</td>
+    </tr>
+    <tr>
+      <td>SectionAlignment</td>
+      <td>0x1000</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.text</code> Size</td>
+      <td>0x123</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.data</code> Size</td>
+      <td>0x430</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>→ 디스크에서는 0x200 단위로 반올림 → <code class="language-plaintext highlighter-rouge">.text</code>는 0x200, <code class="language-plaintext highlighter-rouge">.data</code>는 0x600</p>
+
+<p>→ 메모리에서는 0x1000 단위로 반올림 → <code class="language-plaintext highlighter-rouge">.text</code>는 0x1000, <code class="language-plaintext highlighter-rouge">.data</code>는 0x1000</p>
+
+<h3 id="2-rva--file-offset-변환법">2. RVA ↔ File Offset 변환법</h3>
+
+<p>PE에서는 주소가 두 가지로 표현:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>종류</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>RVA</strong> (Relative Virtual Address)</td>
+      <td>베이스 주소 기준 상대 가상주소 (예: EntryPoint 등 대부분 이걸로 표시됨)</td>
+    </tr>
+    <tr>
+      <td><strong>File Offset</strong></td>
+      <td>실제 파일 내 위치 (디스크 오프셋)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="변환-공식">변환 공식</h4>
+
+<p><strong>FileOffset = RVA - VirtualAddress + PointerToRawData</strong></p>
+
+<p>단, 이 변환은 “어느 섹션에 속하는 RVA냐?”에 따라 다름.</p>
+
+<h4 id="변환-순서-정리">변환 순서 정리</h4>
+
+<ul>
+  <li>모든 섹션 헤더를 순회하며:
+    <ul>
+      <li>해당 섹션의 <code class="language-plaintext highlighter-rouge">VirtualAddress ≤ RVA &lt; VirtualAddress + VirtualSize</code>인지 검사</li>
+    </ul>
+  </li>
+  <li>
+    <p>맞는 섹션이 있다면:</p>
+
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">FileOffset</span> <span class="o">=</span> <span class="n">RVA</span> <span class="o">-</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">PointerToRawData</span>
+</code></pre></div>    </div>
+  </li>
+  <li>못 찾으면 → 잘못된 RVA일 가능성</li>
+</ul>
+
+<h4 id="예제">예제</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>섹션: .text
+  VirtualAddress     = 0x1000
+  PointerToRawData   = 0x400
+  VirtualSize        = 0x600
+  SizeOfRawData      = 0x600
+
+EntryPoint = 0x1100 (RVA)
+</code></pre></div></div>
+
+<p>→<code class="language-plaintext highlighter-rouge">.text</code>안에 있음 (0x1000 ≤ 0x1100 &lt; 0x1600)</p>
+
+<p>→ FileOffset = 0x1100 - 0x1000 + 0x400 = 0x500</p>
+
+<h4 id="코드로-구현-c-스타일">코드로 구현 (C++ 스타일)</h4>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DWORD</span> <span class="nf">RvaToOffset</span><span class="p">(</span><span class="n">DWORD</span> <span class="n">rva</span><span class="p">,</span> <span class="n">PIMAGE_NT_HEADERS</span> <span class="n">nt</span><span class="p">,</span> <span class="n">PIMAGE_SECTION_HEADER</span> <span class="n">sections</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num_sections</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_sections</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">DWORD</span> <span class="n">va</span>      <span class="o">=</span> <span class="n">sections</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">VirtualAddress</span><span class="p">;</span>
+        <span class="n">DWORD</span> <span class="n">vsize</span>   <span class="o">=</span> <span class="n">sections</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Misc</span><span class="p">.</span><span class="n">VirtualSize</span><span class="p">;</span>
+        <span class="n">DWORD</span> <span class="n">rawptr</span>  <span class="o">=</span> <span class="n">sections</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">PointerToRawData</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">rva</span> <span class="o">&gt;=</span> <span class="n">va</span> <span class="o">&amp;&amp;</span> <span class="n">rva</span> <span class="o">&lt;</span> <span class="n">va</span> <span class="o">+</span> <span class="n">vsize</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">rva</span> <span class="o">-</span> <span class="n">va</span> <span class="o">+</span> <span class="n">rawptr</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 실패</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="참고-구조체-alignment">참고 구조체 Alignment</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>구조체</th>
+      <th>Alignment 정보</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IMAGE_DOS_HEADER</td>
+      <td>고정 위치 (0x0)</td>
+    </tr>
+    <tr>
+      <td>IMAGE_NT_HEADERS</td>
+      <td><code class="language-plaintext highlighter-rouge">e_lfanew</code>부터</td>
+    </tr>
+    <tr>
+      <td>IMAGE_FILE_HEADER</td>
+      <td>20 bytes</td>
+    </tr>
+    <tr>
+      <td>IMAGE_OPTIONAL_HEADER</td>
+      <td>224 bytes (PE32), 240 bytes (PE32+)</td>
+    </tr>
+    <tr>
+      <td>IMAGE_SECTION_HEADER</td>
+      <td>40 bytes/섹션</td>
+    </tr>
+    <tr>
+      <td>IMAGE_IMPORT_DESCRIPTOR</td>
+      <td>20 bytes</td>
+    </tr>
+    <tr>
+      <td>IMAGE_EXPORT_DIRECTORY</td>
+      <td>40 bytes</td>
+    </tr>
+    <tr>
+      <td>IMAGE_DATA_DIRECTORY</td>
+      <td>8 bytes × 16개</td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#executable-format" class="page__taxonomy-item p-category" rel="tag">executable format</a><span class="sep">, </span>
+    
+      <a href="/tags/#pe%ED%8C%8C%EC%9D%BC" class="page__taxonomy-item p-category" rel="tag">pe파일</a><span class="sep">, </span>
+    
+      <a href="/tags/#windows-%EA%B5%AC%EC%A1%B0" class="page__taxonomy-item p-category" rel="tag">windows 구조</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EB%A6%AC%EB%B2%84%EC%8B%B1" class="page__taxonomy-item p-category" rel="tag">리버싱</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EB%B0%94%EC%9D%B4%EB%84%88%EB%A6%AC-%EB%B6%84%EC%84%9D" class="page__taxonomy-item p-category" rel="tag">바이너리 분석</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#reversing-engineering" class="page__taxonomy-item p-category" rel="tag">reversing_engineering</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-05-02T00:00:00+09:00">May 2, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">Share on</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=PE+%EA%B5%AC%EC%A1%B0+%EB%B6%84%EC%84%9D+%EC%99%84%EC%A0%84+%EC%A0%95%EB%B3%B5%20https%3A%2F%2Fruyshy.github.io%2Freversing_engineering%2Freversing2-pe-structural-analysis%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Freversing_engineering%2Freversing2-pe-structural-analysis%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/reversing_engineering/reversing2-pe-structural-analysis/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/blog-21-search/" class="pagination--pager" title="GitHub 블로그에 Lunr 기반 커스텀 검색창 만들기">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
+      
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You may also enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog-21-search/" rel="permalink">GitHub 블로그에 Lunr 기반 커스텀 검색창 만들기
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Pages 블로그에 사용자 정의 검색창을 추가하고 싶으셨나요?
+이 포스트에서는 minimal-mistakes 테마를 기반으로 Lunr.js를 활용해 상단과 사이드바에 검색창을 구현하고, 제목 및 태그 기준의 검색 기능을 설정하는 방법을 단계별로 안내합니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/blog-20-tag/" rel="permalink">GitHub 블로그에 태그 기능 추가 및 자동 생성 방법
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Jekyll 기반의 GitHub 블로그에서 태그(tag)를 활용하면 각 포스트를 키워드로 분류하고 관련된 글끼리 연결할 수 있습니다.
+이 글에서는 /tags/태그명/ 형식의 태그별 아카이브 페이지를 자동으로 생성하는 방법과 그 설정 과정을 단계별로 정리해봅니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/assembly/reversing1-disassembly3/" rel="permalink">Disassembly 함수 호출 및 재귀 분석: C++ → 어셈블리 흐름 정복
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">C++에서 함수 호출과 재귀 함수는 어셈블리에서 어떻게 나타날까요?
+이 포스트에서는 call, ret, ecx, eax, rsp를 통해 함수 호출과 재귀 구조가 어떻게 구현되는지를 디스어셈블리로 명확히 분석합니다.
+스택 프레임의 변화를 이해하면 리버싱 실력이 한층 더 올라갑니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/assembly/reversing1-disassembly2/" rel="permalink">Disassembly 실전 분석편: if문과 for문 C++ → Assembly 흐름 이해
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">C++의 조건문과 반복문이 디스어셈블리에서 어떻게 구현되는지 궁금하신가요?
+이 포스트에서는 Visual Studio 디버거를 활용해 if문, for문을 실제 실행파일 수준에서 분석하고, cmp, jmp, jge, add 등의 핵심 명령어 패턴을 정확히 짚어드립니다.
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+    
+    <!-- JEKYLL LIQUID TAG --> 
+<script src="/assets/js/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script> 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
+    
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script> 
+<!-- 
+
+-->>
+
+<script src="/assets/js/quiz-handler.js"></script>
+
+
+<!-- lunr search script -->
+<script src="/assets/js/sidebar-search.js"></script>
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/search.js"></script>
+
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VGYDK4XE75'
+  
+  );
+</script>
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'ruyshy/ruyshy.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+  </body>
+</html>
