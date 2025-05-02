@@ -1,17 +1,10 @@
-<html lang="{{ site.locale | replace: "_", "-" | default: "en" }}" class="no-js">
-    <head>
+<!-- JEKYLL LIQUID TAG --> 
+{% include custom_code-block_custom.html %} 
+{%include custom_toggle-script.html %} 
+{% include custom_quiz-form.html %}
 
-    </head>
-    
-    <!-- JEKYLL LIQUID TAG --> 
-     {% include custom_code-block_custom.html %} 
-     {%include custom_toggle-script.html %} 
-     {% include custom_quiz-form.html %}
-
-     <!-- lunr search script -->
+<!-- lunr search script -->
 <script src="{{ '/assets/js/sidebar-search.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/lunr/lunr.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/lunr/lunr-store.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/lunr/search.js' | relative_url }}"></script>
-
-</html>
