@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-05-02T17:16:09+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub 블로그에 태그 기능 추가 및 자동 생성 방법</title><link href="https://ruyshy.github.io/blog/blog-20-tag/" rel="alternate" type="text/html" title="GitHub 블로그에 태그 기능 추가 및 자동 생성 방법" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-20-tag</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-20-tag/"><![CDATA[<p>Jekyll 기반의 GitHub 블로그에서 태그(tag)를 활용하면 각 포스트를 키워드로 분류하고 관련된 글끼리 연결할 수 있습니다.<br />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-05-02T17:43:29+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub 블로그에 태그 기능 추가 및 자동 생성 방법</title><link href="https://ruyshy.github.io/blog/blog-20-tag/" rel="alternate" type="text/html" title="GitHub 블로그에 태그 기능 추가 및 자동 생성 방법" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-20-tag</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-20-tag/"><![CDATA[<p>Jekyll 기반의 GitHub 블로그에서 태그(tag)를 활용하면 각 포스트를 키워드로 분류하고 관련된 글끼리 연결할 수 있습니다.<br />
 이 글에서는 <code class="language-plaintext highlighter-rouge">/tags/태그명/</code> 형식의 태그별 아카이브 페이지를 자동으로 생성하는 방법과 그 설정 과정을 단계별로 정리해봅니다.</p>
 
 <h2 id="태그tag란">태그(tag)란?</h2>
@@ -260,9 +260,9 @@
 <p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code>  해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-5vnwoo', this)" data-label="sidebar.html 전체 코드">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-6soms5', this)" data-label="sidebar.html 전체 코드">
   </div>
-  <div id="toggle-5vnwoo" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-6soms5" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
@@ -1206,7 +1206,189 @@ EntryPoint = 0x1100 (RVA)
       <td>8 bytes × 16개</td>
     </tr>
   </tbody>
-</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="pe파일" /><category term="executable format" /><category term="windows 구조" /><category term="리버싱" /><category term="바이너리 분석" /><summary type="html"><![CDATA[Windows 실행파일(EXE, DLL)의 핵심 구조인 PE(Portable Executable) 포맷을 DOS Header부터 Section, RVA 변환까지 전체 흐름으로 정리한 리버싱 초보자 필수 가이드입니다.]]></summary></entry><entry><title type="html">GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기</title><link href="https://ruyshy.github.io/blog/blog-19-file-upload/" rel="alternate" type="text/html" title="GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기" /><published>2025-04-30T00:00:00+09:00</published><updated>2025-04-30T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-19-file-upload</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-19-file-upload/"><![CDATA[<p>GitHub 블로그에 <code class="language-plaintext highlighter-rouge">.exe</code> 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다.<br />
+</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="pe파일" /><category term="executable format" /><category term="windows 구조" /><category term="리버싱" /><category term="바이너리 분석" /><summary type="html"><![CDATA[Windows 실행파일(EXE, DLL)의 핵심 구조인 PE(Portable Executable) 포맷을 DOS Header부터 Section, RVA 변환까지 전체 흐름으로 정리한 리버싱 초보자 필수 가이드입니다.]]></summary></entry><entry><title type="html">리버싱 엔지니어링 기초 정리</title><link href="https://ruyshy.github.io/reversing_engineering/reversing3-basic/" rel="alternate" type="text/html" title="리버싱 엔지니어링 기초 정리" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/reversing3-basic</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/reversing3-basic/"><![CDATA[<p>리버싱(Reverse Engineering)은 소스코드 없이 프로그램을 분석해 동작 원리를 파악하는 기술입니다.<br />
+이 글에서는 정적/동적 분석 방식의 차이와 리버싱 목적, 필요한 배경지식까지 처음 배우는 사람도 이해할 수 있게 정리합니다.</p>
+
+<h2 id="리버싱-엔지니어링-reverse-engineering이란">리버싱 엔지니어링 (Reverse Engineering)이란?</h2>
+
+<p><strong>정의:</strong> 완성된 소프트웨어(특히 바이너리 파일)를 분석하여, 그 <strong>동작 원리</strong>, <strong>구조</strong>, <strong>원래의 코드 또는 설계 의도</strong> 를 <strong>거꾸로 추론해내는 과정.</strong></p>
+
+<h2 id="왜-하는가-목적">왜 하는가? (목적)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>목적</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>보안 분석</strong></td>
+      <td>악성코드 분석, 백도어 탐지, 보안 취약점 확인</td>
+    </tr>
+    <tr>
+      <td><strong>디버깅</strong></td>
+      <td>소스코드 없이 오류 원인 파악, 버그 수정</td>
+    </tr>
+    <tr>
+      <td><strong>크랙 방지</strong></td>
+      <td>소프트웨어 정품 인증 우회 여부 분석</td>
+    </tr>
+    <tr>
+      <td><strong>학습/연구</strong></td>
+      <td>OS 내부 구조, 서드파티 프로그램의 동작 이해</td>
+    </tr>
+    <tr>
+      <td><strong>호환성 확보</strong></td>
+      <td>오래된 시스템에 맞는 드라이버 제작 등</td>
+    </tr>
+    <tr>
+      <td><strong>소스코드 복구</strong></td>
+      <td>유실된 소스의 재구성 시도</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="어떻게-하는가-분석-방법">어떻게 하는가? (분석 방법)</h2>
+
+<p>리버싱은 크게 <strong>두 가지 방식</strong>으로 있음:</p>
+
+<ol>
+  <li>
+    <p><strong>정적 분석 (Static Analysis)</strong></p>
+
+    <p>→ 프로그램을 실행하지 않고 구조, 코드 흐름을 분석</p>
+
+    <p>→ 예: 디스어셈블리, 디컴파일, PE 헤더 분석 등</p>
+  </li>
+  <li>
+    <p><strong>동적 분석 (Dynamic Analysis)</strong></p>
+
+    <p>→ 프로그램을 실행시키고 실시간 동작을 추적</p>
+
+    <p>→ 예: 디버깅, 메모리/레지스터 모니터링, API 호출 추적 등</p>
+  </li>
+</ol>
+
+<p>이 두 가지 방식은 <strong>서로 보완적.</strong></p>
+
+<h3 id="정적-분석-static-analysis">정적 분석 (Static Analysis)</h3>
+
+<p><strong>정의:</strong> 프로그램을 실행하지 않고, 바이너리 또는 소스코드를 분석하여 동작을 파악하는 기법</p>
+
+<p>방법:</p>
+
+<ul>
+  <li>디스어셈블러로 기계어 → 어셈블리어 확인 (ex. Ghidra, IDA)</li>
+  <li>문자열 추출, PE 구조 분석, 함수 호출 흐름 추정 등</li>
+</ul>
+
+<p>장점:</p>
+
+<ul>
+  <li>실행 없이도 분석 가능 (안전)</li>
+  <li>코드 흐름 전체를 미리 볼 수 있음</li>
+  <li>악성 행위를 사전에 탐지 가능</li>
+</ul>
+
+<p>단점:</p>
+
+<ul>
+  <li>난독화나 암호화된 코드에 약함</li>
+  <li>실제 런타임 조건을 완전히 알 수 없음</li>
+</ul>
+
+<h3 id="동적-분석-dynamic-analysis">동적 분석 (Dynamic Analysis)</h3>
+
+<p>정의: 프로그램을 직접 실행하면서, 그 <strong>실행 흐름과 메모리 변화</strong> 등을 관찰하여 분석하는 기법</p>
+
+<p>방법:</p>
+
+<ul>
+  <li>디버거 사용 (x64dbg 등)</li>
+  <li>API 호출 추적, 메모리/레지스터 변화 확인</li>
+  <li>실행 조건에 따른 분기 탐색</li>
+</ul>
+
+<p>장점:</p>
+
+<ul>
+  <li>실제 동작을 보며 분석 가능 (조건부 실행 확인)</li>
+  <li>복잡한 로직을 실행하면서 해석 가능</li>
+</ul>
+
+<p>단점:</p>
+
+<ul>
+  <li>악성 코드 실행 위험</li>
+  <li>코드 전부를 보지 못할 수 있음 (조건이 맞지 않으면 일부만 실행됨)</li>
+</ul>
+
+<h3 id="주요-차이점-비교표">주요 차이점 비교표</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>정적 분석</th>
+      <th>동적 분석</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>실행 여부</td>
+      <td>실행 안 함</td>
+      <td>실행함</td>
+    </tr>
+    <tr>
+      <td>도구</td>
+      <td>IDA, Ghidra 등</td>
+      <td>x64dbg, OllyDbg 등</td>
+    </tr>
+    <tr>
+      <td>분석 대상</td>
+      <td>코드/바이너리</td>
+      <td>실행 중인 프로그램</td>
+    </tr>
+    <tr>
+      <td>위험성</td>
+      <td>낮음</td>
+      <td>악성코드 실행 위험 있음</td>
+    </tr>
+    <tr>
+      <td>난독화 대응</td>
+      <td>약함</td>
+      <td>일부 우회 가능</td>
+    </tr>
+    <tr>
+      <td>실행 흐름 파악</td>
+      <td>어려움</td>
+      <td>용이함</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>정적 분석으로 전체 구조 파악 → 동적 분석으로 구체 흐름 확인</p>
+
+<p><strong>실전에서는 둘을 함께 써야</strong> 가장 효과적.</p>
+
+<h4 id="비유로-설명하면">비유로 설명하면….</h4>
+
+<blockquote>
+  <p>정적 분석은 “지도 보면서 전체 루트 파악”
+동적 분석은 “차 타고 직접 도로 달리는 느낌”</p>
+
+</blockquote>
+
+<h2 id="리버싱이-필요한-전제-지식">리버싱이 필요한 전제 지식</h2>
+
+<ul>
+  <li>어셈블리어(x86/x64)</li>
+  <li>컴파일 과정과 실행 파일 구조 (특히 PE, ELF)</li>
+  <li>디버거 및 분석 도구 사용법</li>
+  <li>운영체제의 기본 구조 (메모리, 스택, 프로세스 등)</li>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="reverse engineering" /><category term="정적분석" /><category term="동적분석" /><category term="x64dbg" /><category term="ghidra" /><category term="IDA" /><category term="리버싱 기초" /><summary type="html"><![CDATA[리버스 엔지니어링의 정의부터 정적/동적 분석의 차이, 활용 목적, 필수 도구와 사전 지식까지 한눈에 정리한 입문자를 위한 가이드입니다.]]></summary></entry><entry><title type="html">GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기</title><link href="https://ruyshy.github.io/blog/blog-19-file-upload/" rel="alternate" type="text/html" title="GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기" /><published>2025-04-30T00:00:00+09:00</published><updated>2025-04-30T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-19-file-upload</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-19-file-upload/"><![CDATA[<p>GitHub 블로그에 <code class="language-plaintext highlighter-rouge">.exe</code> 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다.<br />
 이 포스트에서는 그러한 경고를 완화하거나 피할 수 있는 여러 가지 방법을 정리했습니다.<br />
 실제 <code class="language-plaintext highlighter-rouge">.zip</code> 방식 테스트도 함께 제공하니 참고해보세요!</p>
 
@@ -1518,84 +1700,84 @@ EntryPoint = 0x1100 (RVA)
 
 <h3 id="3-1-분석-퀴즈-disassembly-보기-전에-예상해보자">3-1. 분석 퀴즈 (Disassembly 보기 전에 예상해보자!)</h3>
 
-<div class="quiz-box" id="quiz-box-393698">
-  <div class="quiz-message" id="quiz-message-393698" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-287266">
+  <div class="quiz-message" id="quiz-message-287266" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 C++의 <code class="language-plaintext highlighter-rouge">for (int i = 0; i &lt; 10; ++i)</code> 루프가 어셈블리 코드로 번역될 때 <strong>반드시 포함되는 흐름</strong>이 아닌 것은?</p>
 
   </div>
-  <form id="quiz-form-393698" onsubmit="return false;">
+  <form id="quiz-form-287266" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-393698" id="quiz-393698-0" value="조건 검사 후 점프 명령 (`jl`, `jg` 등)" data-correct="false" />
-  <label for="quiz-393698-0">조건 검사 후 점프 명령 (<code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">jg</code> 등)</label>
+  <input type="radio" name="quiz-answer-287266" id="quiz-287266-0" value="조건 검사 후 점프 명령 (`jl`, `jg` 등)" data-correct="false" />
+  <label for="quiz-287266-0">조건 검사 후 점프 명령 (<code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">jg</code> 등)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-393698" id="quiz-393698-1" value="증가 연산자 (`inc`, `add`)" data-correct="false" />
-  <label for="quiz-393698-1">증가 연산자 (<code class="language-plaintext highlighter-rouge">inc</code>, <code class="language-plaintext highlighter-rouge">add</code>)</label>
+  <input type="radio" name="quiz-answer-287266" id="quiz-287266-1" value="증가 연산자 (`inc`, `add`)" data-correct="false" />
+  <label for="quiz-287266-1">증가 연산자 (<code class="language-plaintext highlighter-rouge">inc</code>, <code class="language-plaintext highlighter-rouge">add</code>)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-393698" id="quiz-393698-2" value="함수 호출 명령 (`call`)" data-correct="true" />
-  <label for="quiz-393698-2">함수 호출 명령 (<code class="language-plaintext highlighter-rouge">call</code>)</label>
+  <input type="radio" name="quiz-answer-287266" id="quiz-287266-2" value="함수 호출 명령 (`call`)" data-correct="true" />
+  <label for="quiz-287266-2">함수 호출 명령 (<code class="language-plaintext highlighter-rouge">call</code>)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-393698" id="quiz-393698-3" value="무조건 점프 명령 (`jmp`)" data-correct="false" />
-  <label for="quiz-393698-3">무조건 점프 명령 (<code class="language-plaintext highlighter-rouge">jmp</code>)</label>
+  <input type="radio" name="quiz-answer-287266" id="quiz-287266-3" value="무조건 점프 명령 (`jmp`)" data-correct="false" />
+  <label for="quiz-287266-3">무조건 점프 명령 (<code class="language-plaintext highlighter-rouge">jmp</code>)</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(393698, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(287266, false, null)">제출</button>
   </form>
-  <div id="quiz-result-393698" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-393698" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-393698', this)" data-label="해설 보기"></div>
-  <div id="toggle-393698" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-287266" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-287266" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-287266', this)" data-label="해설 보기"></div>
+  <div id="toggle-287266" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: 함수 호출이 없는 경우 <code class="language-plaintext highlighter-rouge">call</code> 명령은 포함되지 않는다. 루프에서는 비교(<code class="language-plaintext highlighter-rouge">cmp</code>), 조건 분기(<code class="language-plaintext highlighter-rouge">jl</code>), 루프 변수 증가(<code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">inc</code>), 루프 반복을 위한 <code class="language-plaintext highlighter-rouge">jmp</code>는 일반적으로 포함된다.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-475955">
-  <div class="quiz-message" id="quiz-message-475955" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-309798">
+  <div class="quiz-message" id="quiz-message-309798" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">2.</code> C++의 <code class="language-plaintext highlighter-rouge">sum += i;</code> 같은 연산이 어셈블리어에서 <strong>보통 어떤 명령어</strong>로 나타나는가?</p>
 
   </div>
-  <form id="quiz-form-475955" onsubmit="return false;">
+  <form id="quiz-form-309798" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-475955" id="quiz-475955-0" value="`mov`" data-correct="false" />
-  <label for="quiz-475955-0"><code class="language-plaintext highlighter-rouge">mov</code></label>
+  <input type="radio" name="quiz-answer-309798" id="quiz-309798-0" value="`mov`" data-correct="false" />
+  <label for="quiz-309798-0"><code class="language-plaintext highlighter-rouge">mov</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-475955" id="quiz-475955-1" value="`cmp`" data-correct="false" />
-  <label for="quiz-475955-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
+  <input type="radio" name="quiz-answer-309798" id="quiz-309798-1" value="`cmp`" data-correct="false" />
+  <label for="quiz-309798-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-475955" id="quiz-475955-2" value="`add`" data-correct="true" />
-  <label for="quiz-475955-2"><code class="language-plaintext highlighter-rouge">add</code></label>
+  <input type="radio" name="quiz-answer-309798" id="quiz-309798-2" value="`add`" data-correct="true" />
+  <label for="quiz-309798-2"><code class="language-plaintext highlighter-rouge">add</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-475955" id="quiz-475955-3" value="`jmp`" data-correct="false" />
-  <label for="quiz-475955-3"><code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-309798" id="quiz-309798-3" value="`jmp`" data-correct="false" />
+  <label for="quiz-309798-3"><code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(475955, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(309798, false, null)">제출</button>
   </form>
-  <div id="quiz-result-475955" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-475955" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-475955', this)" data-label="해설 보기"></div>
-  <div id="toggle-475955" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-309798" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-309798" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-309798', this)" data-label="해설 보기"></div>
+  <div id="toggle-309798" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">sum += i</code>는 덧셈 연산이므로 <code class="language-plaintext highlighter-rouge">add</code> 명령어로 나타난다.</p>
 
 <ul>
@@ -1608,42 +1790,42 @@ EntryPoint = 0x1100 (RVA)
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-925362">
-  <div class="quiz-message" id="quiz-message-925362" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-891501">
+  <div class="quiz-message" id="quiz-message-891501" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">3.</code> C++의 조건문 <code class="language-plaintext highlighter-rouge">i &lt; 5</code>는 어셈블리어에서 보통 어떤 두 개의 명령어 조합으로 표현되는가?</p>
 
   </div>
-  <form id="quiz-form-925362" onsubmit="return false;">
+  <form id="quiz-form-891501" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-925362" id="quiz-925362-0" value="`cmp` + `call`" data-correct="false" />
-  <label for="quiz-925362-0"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">call</code></label>
+  <input type="radio" name="quiz-answer-891501" id="quiz-891501-0" value="`cmp` + `call`" data-correct="false" />
+  <label for="quiz-891501-0"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">call</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-925362" id="quiz-925362-1" value="`mov` + `jmp`" data-correct="false" />
-  <label for="quiz-925362-1"><code class="language-plaintext highlighter-rouge">mov</code> + <code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-891501" id="quiz-891501-1" value="`mov` + `jmp`" data-correct="false" />
+  <label for="quiz-891501-1"><code class="language-plaintext highlighter-rouge">mov</code> + <code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-925362" id="quiz-925362-2" value="`cmp` + `jl`" data-correct="true" />
-  <label for="quiz-925362-2"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">jl</code></label>
+  <input type="radio" name="quiz-answer-891501" id="quiz-891501-2" value="`cmp` + `jl`" data-correct="true" />
+  <label for="quiz-891501-2"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">jl</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-925362" id="quiz-925362-3" value="`test` + `jne`" data-correct="false" />
-  <label for="quiz-925362-3"><code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">jne</code></label>
+  <input type="radio" name="quiz-answer-891501" id="quiz-891501-3" value="`test` + `jne`" data-correct="false" />
+  <label for="quiz-891501-3"><code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">jne</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(925362, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(891501, false, null)">제출</button>
   </form>
-  <div id="quiz-result-925362" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-925362" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-925362', this)" data-label="해설 보기"></div>
-  <div id="toggle-925362" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-891501" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-891501" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-891501', this)" data-label="해설 보기"></div>
+  <div id="toggle-891501" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">i &lt; 5</code>는 <code class="language-plaintext highlighter-rouge">cmp i, 5</code>로 비교하고, 조건이 참일 경우 <code class="language-plaintext highlighter-rouge">jl target</code>으로 분기한다.</p>
 
 <p><code class="language-plaintext highlighter-rouge">jl</code>은 “Jump if Less” (signed 비교 기준).</p>
@@ -2698,9 +2880,9 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
 <h5 id="_navigationscss-전체-코드">_navigation.scss 전체 코드</h5>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-6sjpat', this)" data-label="전체 코드 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-fj1obr', this)" data-label="전체 코드 보기">
   </div>
-  <div id="toggle-6sjpat" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-fj1obr" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* ==========================================================================
    NAVIGATION
@@ -3339,254 +3521,4 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
 <blockquote>
   <p>스타일을 바꾸고 싶다면, <code class="language-plaintext highlighter-rouge">_navigation.scss</code> 을 수정하도록 하자!</p>
 
-</blockquote>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="Liquid" /><category term="sidebar" /><category term="카테고리 설정" /><category term="Jekyll 커스터마이징" /><category term="navigation" /><category term="SCSS" /><summary type="html"><![CDATA[GitHub 블로그에서 Liquid와 Sass를 이용해 카테고리 목록을 트리 형태(상위/하위)로 구성하고, sidebar.html, sidebar-items.html, _navigation.scss를 수정하는 방법을 단계별로 설명합니다.]]></summary></entry><entry><title type="html">초보자를 위한 x64dbg 실습 흐름 가이드 - Windows 어셈블리 디버깅 입문</title><link href="https://ruyshy.github.io/assembly/assembly7-x64-dbg-guide/" rel="alternate" type="text/html" title="초보자를 위한 x64dbg 실습 흐름 가이드 - Windows 어셈블리 디버깅 입문" /><published>2025-04-27T00:00:00+09:00</published><updated>2025-04-27T00:00:00+09:00</updated><id>https://ruyshy.github.io/assembly/assembly7-x64-dbg-guide</id><content type="html" xml:base="https://ruyshy.github.io/assembly/assembly7-x64-dbg-guide/"><![CDATA[<p><code class="language-plaintext highlighter-rouge">x64dbg</code>를 이용해 <code class="language-plaintext highlighter-rouge">Windows C++</code> 프로그램을 디버깅하는 실습을 진행합니다. <code class="language-plaintext highlighter-rouge">EntryPoint</code>(진입점) 분석, <code class="language-plaintext highlighter-rouge">main</code> 함수 추적, <code class="language-plaintext highlighter-rouge">Az</code> 메모리 문자열 검색, <code class="language-plaintext highlighter-rouge">operator&lt;&lt;</code> 호출 추적까지 단계별로 상세히 따라가는 <code class="language-plaintext highlighter-rouge">x64dbg</code> 초보자 가이드입니다.</p>
-
-<h2 id="x64에서-실행해볼-예제">x64에서 실행해볼 예제</h2>
-
-<p><code class="language-plaintext highlighter-rouge">Visual Studio 2015 C++</code>로 작성되어있습니다.</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hello World!"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>빌드 환경 : <code class="language-plaintext highlighter-rouge">x64</code>, <code class="language-plaintext highlighter-rouge">Release</code></p>
-
-<hr />
-
-<h2 id="실행-예제-파일-링크">실행 예제 파일 링크</h2>
-
-<p>파일 다운로드 링크 : <a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.zip">hello_world_x64.zip</a></p>
-
-<hr />
-
-<h2 id="x64dbg-예제-파일-실행">X64dbg 예제 파일 실행</h2>
-
-<p>저희는 <code class="language-plaintext highlighter-rouge">x64</code> 기준으로 진행할 예정이니, <code class="language-plaintext highlighter-rouge">x64dbg</code>를 실행해줍니다.</p>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">Menu</code> → <code class="language-plaintext highlighter-rouge">File</code> → <code class="language-plaintext highlighter-rouge">Open</code> 을 통해 실행할 예제파일을 선택해줍니다. 혹은, 실행할 예제 파일을 <code class="language-plaintext highlighter-rouge">x64dbg</code> 창에 드래그하여 열어줍니다.</li>
-</ol>
-
-<p>{&amp; img “x64dbg_hello_world_open.png”,”x64dbg 프로그램 실행화면” &amp;}</p>
-
-<ol>
-  <li>열어준 직 후, 타이틀을 확인해보면 <code class="language-plaintext highlighter-rouge">모듈:ntdll.dll</code> 을 확인할 수 있습니다.
-일단 <code class="language-plaintext highlighter-rouge">ntdll.dll</code> 시스템 중단점에서 멈춘걸 풀어줘야하니 설정→환경설정에 들어가 줍니다.</li>
-</ol>
-
-<p><img src="/assets/images/assembly/2025-04-27-assembly7-x64-dbg-guide/x64dbg_setting.png" alt="x64dbg 설정 화면" style="max-width:100%;" /></p>
-
-<ol>
-  <li>지금 시스템 중단점에 체크 되어있는 부분을 해제해줘야 합니다. 체크를 해제 하고 저장을 눌러줍니다.
-그 이후, 다시 시작을 눌러 재실행을 해줍시다. 그렇게 재실행을 하게되면 시작지점에서 멈추게 됩니다.</li>
-</ol>
-
-<p><img src="/assets/images/assembly/2025-04-27-assembly7-x64-dbg-guide/xdbg_hello_world_entry_point.png" alt="x64dbg entry point 화면" style="max-width:100%;" /></p>
-
-<ol>
-  <li>이제 재실행을 해본 결과 <code class="language-plaintext highlighter-rouge">entry point</code> 부분에서 디버깅이 된 것을 확인해 볼 수 있습니다.</li>
-  <li>프로그램의 <code class="language-plaintext highlighter-rouge">main</code> 함수를 바로 실행하는게 아닌, <code class="language-plaintext highlighter-rouge">main</code> 함수 실행을 위한 코드를 컴파일러가 <code class="language-plaintext highlighter-rouge">entry point</code>에 넣어놨기 때문이다. (현재 <code class="language-plaintext highlighter-rouge">EntryPoint</code>에서 <code class="language-plaintext highlighter-rouge">CRT</code> 초기화 루틴(<code class="language-plaintext highlighter-rouge">mainCRTStartup</code>)에 있음)</li>
-</ol>
-
-<h3 id="entrypoint">EntryPoint</h3>
-
-<p><strong><code class="language-plaintext highlighter-rouge">EntryPoint = EXE가 처음으로 실행하는 어셈블리 주소</code></strong></p>
-
-<ul>
-  <li><strong>EntryPoint</strong>는 <code class="language-plaintext highlighter-rouge">OS(Windows)</code>가 프로그램을 실행할 때 가장 먼저 점프하는 코드 지점이다.</li>
-  <li><strong>바로 main() 함수로 가지 않는다!</strong></li>
-  <li>대신 C 런타임(CRT)을 초기화하는 코드부터 실행된다.
-    <ul>
-      <li>예: 메모리 초기화, 전역 변수 세팅, 표준 입출력 스트림 설정 등.</li>
-    </ul>
-  </li>
-  <li>이 초기화가 끝난 다음에야 비로소 <code class="language-plaintext highlighter-rouge">main()</code> 함수가 호출된다.</li>
-</ul>
-
-<p><br /></p>
-
-<h2 id="x64dbg에서-main-함수를-찾아보자">x64dbg에서 main 함수를 찾아보자.</h2>
-
-<h3 id="main-함수를-찾는-전략">main 함수를 찾는 전략</h3>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">EntryPoint</span> <span class="p">(</span><span class="n">ex</span><span class="o">:</span> <span class="n">_startCRTStartup</span><span class="p">)</span>
-    <span class="err">↓</span>
-<span class="n">crt0Startup</span>
-    <span class="err">↓</span>
-<span class="n">WinMainCRTStartup</span>
-    <span class="err">↓</span>
-<span class="n">mainCRTStartup</span>
-    <span class="err">↓</span>
-<span class="n">main</span><span class="p">()</span> <span class="err">→</span> <span class="n">main</span> <span class="err">코드</span>
-</code></pre></div></div>
-
-<p>즉, <strong>CRT 스타트업 코드</strong>를 거쳐서 <code class="language-plaintext highlighter-rouge">main()</code> 함수로 진입!</p>
-
-<h4 id="maincrtstartup-설명">mainCRTStartup 설명</h4>
-
-<blockquote>
-  <p><code class="language-plaintext highlighter-rouge">mainCRTStartup</code>은 실제 사용자 코드(<code class="language-plaintext highlighter-rouge">main</code>)를 호출하기 전에, <code class="language-plaintext highlighter-rouge">C</code> 런타임 초기화 작업을 해주는 함수입니다. 예를 들어, 전역 객체 초기화, 입출력 스트림 설정 등을 담당합니다.</p>
-</blockquote>
-
-<h3 id="이제-해야-할-것">이제 해야 할 것</h3>
-
-<p><code class="language-plaintext highlighter-rouge">mainCRTStartup</code> → 내부를 쭉 따라가야 <strong>네 <code class="language-plaintext highlighter-rouge">main()</code></strong> 함수 호출 지점을 찾을 수 있다.</p>
-
-<h3 id="내려가면서-찾아보기">내려가면서 찾아보기</h3>
-
-<h4 id="1-현재-위치에서-f8-몇-번-눌러가면서-내려가보자">1. 현재 위치에서 <strong>F8</strong> 몇 번 눌러가면서 내려가보자.</h4>
-
-<ul>
-  <li><strong>F8</strong>: <code class="language-plaintext highlighter-rouge">"Step Over"</code> = 한 줄 한 줄 실행하면서 흐름 보기</li>
-  <li>지금 코드를 보면 <code class="language-plaintext highlighter-rouge">sub rsp, 28h</code> 이런거 나오는데, 계속 F8 누르면…</li>
-</ul>
-
-<h4 id="2-call-명령어-만나면">2. <code class="language-plaintext highlighter-rouge">call</code> 명령어 만나면</h4>
-
-<ul>
-  <li>예를 들어 <code class="language-plaintext highlighter-rouge">call qword ptr ds:[주소]</code> 나오는 부분</li>
-  <li>그럼 <strong>그 call을 “F7” (Step Into)</strong> 로 따라 들어가!</li>
-</ul>
-
-<p>실습 전 <strong>Step Over (F8) / Step Into (F7)</strong> 설명</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>기능</th>
-      <th>단축키</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Step Over</code></td>
-      <td>F8</td>
-      <td>함수 호출은 건너뛰고 다음 명령어로 이동</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Step Into</code></td>
-      <td>F7</td>
-      <td>함수 호출 안으로 직접 들어가기</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><img src="/assets/images/assembly/2025-04-27-assembly7-x64-dbg-guide/xdbg64_hello_world_main_find.png" alt="x64dbg main함수 찾기" style="max-width:100%;" /></p>
-
-<h3 id="x64dbg-az로-문자열-검색해서-main-찾기">x64dbg Az로 문자열 검색해서 main 찾기</h3>
-
-<p><img src="/assets/images/assembly/2025-04-27-assembly7-x64-dbg-guide/x64dbg_Az.png" alt="x64dbg Az" style="max-width:100%;" /></p>
-
-<p>위 빨간색 박스로 표시된 <code class="language-plaintext highlighter-rouge">Az</code> 버튼을 클릭하여 위와 같은 화면으로 이동합니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">"Hello World!"</code> 문자열이 표시된 <code class="language-plaintext highlighter-rouge">0x00007FF640E6111A</code> 주소를 클릭하면, 해당 문자열이 사용되는 코드 위치로 이동할 수 있습니다.</p>
-
-<p>그 후,</p>
-
-<p><code class="language-plaintext highlighter-rouge">00007FF640E61126 | FF15 7C1F0000 | call qword ptr ds:[&lt;public: __int64 __c |</code></p>
-
-<p>명령어를 실행해보면, 실제로 cmd 창에 <code class="language-plaintext highlighter-rouge">"Hello World!"</code> 문자열이 출력되는 것을 확인할 수 있습니다.</p>
-
-<p><img src="/assets/images/assembly/2025-04-27-assembly7-x64-dbg-guide/cmd_result.png" alt="cmd result" style="max-width:100%;" /></p>
-
-<p>이를 통해, 프로그램의 <code class="language-plaintext highlighter-rouge">main</code> 함수는 다음 범위에 걸쳐 있다는 것을 알 수 있습니다:</p>
-
-<ul>
-  <li>시작 주소: <code class="language-plaintext highlighter-rouge">00007FF640E61000 | 48:83EC 28 | sub rsp,28 | main.cpp:4</code></li>
-  <li>종료 주소: <code class="language-plaintext highlighter-rouge">00007FF640E611D8 | C3 | ret</code></li>
-</ul>
-
-<p>즉, <code class="language-plaintext highlighter-rouge">0x00007FF640E61000</code>부터 <code class="language-plaintext highlighter-rouge">0x00007FF640E611D8</code>까지가 <code class="language-plaintext highlighter-rouge">main</code> 함수 코드 블록임을 확인할 수 있습니다.</p>
-
-<h3 id="x64-모듈간-호출-찾기로-main-찾기">X64 모듈간 호출 찾기로 main 찾기</h3>
-
-<p><img src="/assets/images/assembly/2025-04-27-assembly7-x64-dbg-guide/x64_module_find.png" alt="x64dbg 모듈간 호출 찾기" style="max-width:100%;" /></p>
-
-<p>위 빨간색 박스로 표시된 <code class="language-plaintext highlighter-rouge">모듈간 호출 찾기</code> 버튼을 클릭하여 위와 같은 화면으로 이동합니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">std::cout</code>은 보통 <strong>operator«</strong> (스트림 연산자) 호출을 통해 사용.</p>
-
-<p>그래서 cout 그 자체가 아니라, <strong><code class="language-plaintext highlighter-rouge">operator&lt;&lt;(std::ostream&amp;, const char*)</code></strong> 같은 오버로드 함수를 호출하는 구조.</p>
-
-<p><strong>즉</strong>,</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">cout</code> 변수를 찾는 게 아니라</li>
-  <li><code class="language-plaintext highlighter-rouge">cout</code>이 호출하는 함수 (<code class="language-plaintext highlighter-rouge">operator&lt;&lt;</code>) 를 찾고 →</li>
-  <li>
-    <p><strong>그 operator« 을 누가 호출했는지 추적</strong>해야 <strong>main</strong>을 찾을 수 있음.</p>
-  </li>
-  <li>오른쪽에서 <strong><code class="language-plaintext highlighter-rouge">std::operator&lt;&lt;</code> 관련 함수</strong>를 찾는다.
-    <ul>
-      <li>(<code class="language-plaintext highlighter-rouge">&lt;&lt;</code> 오버로딩 함수가 보일거임)</li>
-      <li>예를 들면 이름이 대충 <code class="language-plaintext highlighter-rouge">basic_ostream&lt;char, char_traits&lt;char&gt;&gt;::operator&lt;&lt;</code> 이런 거.</li>
-    </ul>
-  </li>
-  <li>그 <code class="language-plaintext highlighter-rouge">operator&lt;&lt;</code>을 <strong>왼쪽 창</strong>에서 보면
-    <ul>
-      <li><strong>누가 이 함수를 call했는지</strong> 호출자(Callers)가 보여.</li>
-    </ul>
-  </li>
-  <li>그 호출자 중에
-    <ul>
-      <li>만약 <strong><code class="language-plaintext highlighter-rouge">main</code> 근처 주소</strong>(<code class="language-plaintext highlighter-rouge">0x7FF64...</code>)가 있으면</li>
-      <li>그게 네가 찾는 <strong>main 함수 내부 호출</strong>이다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="구체적-흐름">구체적 흐름</h2>
-
-<ol>
-  <li>오른쪽(피호출자 목록)에서
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">operator&lt;&lt;</code> 함수(스트림 출력 연산자)를 하나 클릭</li>
-    </ul>
-  </li>
-  <li>왼쪽(호출자 목록)을 본다
-    <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>호출 주소 <code class="language-plaintext highlighter-rouge">00007FF640E6101A</code></td>
-              <td>FF15 68200000</td>
-              <td>call qword ptr ds:[&lt;public: class std::</td>
-              <td>를 확인</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>주소가 <code class="language-plaintext highlighter-rouge">main</code> 함수 시작주소 범위(<code class="language-plaintext highlighter-rouge">0x7FF640E61000 ~ 0x7FF640E611D8</code>)에 있으면</p>
-
-    <p>= 이 호출자는 <code class="language-plaintext highlighter-rouge">main</code> 함수 안의 코드다!</p>
-  </li>
-</ol>
-
-<h2 id="추가-내용">추가 내용</h2>
-
-<blockquote>
-  <p>더 공부하고 싶다면: <a href="https://x64dbg.com/">x64dbg 공식 사이트</a></p>
-</blockquote>
-
-<div style="margin: 1em 0;">
-  <a href="https://x64dbg.com/" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
-    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      
-      <div style="padding: 1em; flex: 1;">
-        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">https://x64dbg.com/</h3>
-        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;"></p>
-        <small style="color: #999;">x64dbg.com</small>
-      </div>
-    </div>
-  </a>
-</div>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="assembly" /><category term="x64dbg" /><category term="디버깅 실습" /><category term="reversing" /><category term="assembly" /><category term="entrypoint 분석" /><category term="메모리 검색" /><category term="함수 추적" /><summary type="html"><![CDATA[x64dbg로 Hello World C++ 프로그램을 디버깅하면서 EntryPoint, main 함수 추적, 메모리 검색(Az 기능)과 모듈 호출 분석 방법을 단계별 실습합니다.]]></summary></entry></feed>
+</blockquote>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="Liquid" /><category term="sidebar" /><category term="카테고리 설정" /><category term="Jekyll 커스터마이징" /><category term="navigation" /><category term="SCSS" /><summary type="html"><![CDATA[GitHub 블로그에서 Liquid와 Sass를 이용해 카테고리 목록을 트리 형태(상위/하위)로 구성하고, sidebar.html, sidebar-items.html, _navigation.scss를 수정하는 방법을 단계별로 설명합니다.]]></summary></entry></feed>
