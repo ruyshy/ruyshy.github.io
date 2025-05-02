@@ -83,7 +83,7 @@ Windows에서 실행되는 .exe, .dll파일은 전부 이 포맷을 따르기 �
 
 - DOS에서는 실행이 안 되니까 이런 메시지가 나와:
     
-    👉 `"This program cannot be run in DOS mode"`
+    `"This program cannot be run in DOS mode"`
     
 
 이건 사실 지금은 의미 없고 그냥 관습적으로 들어있음.
