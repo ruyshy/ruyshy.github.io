@@ -2,8 +2,7 @@
 title: "GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기"
 description: "GitHub 블로그에서 .exe 실행 파일을 업로드할 때 보안 경고 없이 안전하게 배포하는 방법을 소개합니다. ZIP 압축, 확장자 우회, 다운로드 안내문 등 실용적인 우회 방법도 함께 설명합니다."
 date: 2025-04-30
-tags:
-  [GitHub Pages, 파일 업로드, 다운로드, exe 보안경고, zip, 코드서명, 블로그 팁]
+tags: [GitHub Pages, 파일 업로드, 다운로드, exe 보안경고, zip, 코드서명, 블로그 팁]
 ---
 
 GitHub 블로그에 `.exe` 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다.  
