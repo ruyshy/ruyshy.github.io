@@ -1,27 +1,36 @@
-{% for item in include.items %}
-  {% if item.sub_title %}
-    <li class="nav__item-toggle">
-      <input type="checkbox" id="toggle-{{ item.sub_title | slugify }}" class="nav__toggle" hidden checked>
+{% for item in include.items %} {% if item.sub_title %}
+<li class="nav__item-toggle">
+  <input
+    type="checkbox"
+    id="toggle-{{ item.sub_title | slugify }}"
+    class="nav__toggle"
+    hidden
+    checked
+  />
 
-      <label for="toggle-{{ item.sub_title | slugify }}" class="nav__subtitle">
-        <span class="nav__arrow"></span> {{ item.sub_title }}
-      </label>
+  <label for="toggle-{{ item.sub_title | slugify }}" class="nav__subtitle">
+    <span class="nav__arrow"></span> {{ item.sub_title }}
+  </label>
 
-      {% if item.children %}
-        <ul class="nav__subitems">
-          {% include sidebar-items.html items=item.children %}
-        </ul>
-      {% endif %}
-    </li>
-
-  {% elsif item.title %}
-    <li>
-      {% assign category_name = item.url | split: '/' | last %}
-      {% assign category_posts = site.categories[category_name] %}
-      <a href="{{ item.url | relative_url }}" class="nav__item category-button{% if page.url == item.url %} active{% endif %}">
-        {{ item.title }}
-        <span class="count">({% if category_posts %}{{ category_posts | size }}{% else %}0{% endif %})</span>
-      </a>
-    </li>
+  {% if item.children %}
+  <ul class="nav__subitems">
+    {% include sidebar-items.html items=item.children %}
+  </ul>
   {% endif %}
-{% endfor %}
+</li>
+
+{% elsif item.title %}
+<li>
+  {% assign category_name = item.url | split: '/' | last %} {% assign
+  category_posts = site.categories[category_name] %}
+  <a
+    href="{{ item.url | relative_url }}"
+    class="nav__item{% if page.url == item.url %} active{% endif %}"
+  >
+    {{ item.title }}
+    <span class="count">
+      ({% if category_posts %}{{ category_posts | size }}{% else %}0{% endif %})
+    </span>
+  </a>
+</li>
+{% endif %} {% endfor %}

@@ -437,7 +437,7 @@
 
 .nav__list .nav__items {
   margin: 0;
-  font-size: 1.0rem;
+  font-size: 1rem;
 
   a {
     color: inherit;
@@ -494,78 +494,61 @@
    Sidebar Navigation toggle
    =============================== */
 
-   .nav__subtitle {
-    display: inline-block;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0.4em 0.8em;
-    font-size: $type-size-5;
-    font-weight: bold;
-    color: white;
-    background-color: mix(white, #000, 20%);
-    border: 1px solid $gray;
-    border-radius: 0.5em;
-    margin: 0.25em 0;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  
-    .nav__arrow {
-      margin-right: 0.4em;
-      font-weight: bold;
-      font-size: $type-size-3;
-      transition: transform 0.2s ease;
-    }
-  
-    &:hover {
-      background-color: $primary-color;
-      color: white;
-    }
-  }
-  
-  
-  .nav__item-toggle {
-    .nav__toggle {
-      &:checked + .nav__subtitle .nav__arrow::before {
-        content: "–";
-      }
+.nav__subtitle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0.25em;
 
-      & + .nav__subtitle .nav__arrow::before {
-        content: "+";
-      }
-  
-      &:checked + .nav__subtitle + .nav__subitems {
-        max-height: 1000px;
-        opacity: 1;
-        transition: max-height 0.4s ease, opacity 0.3s ease;
-      }
-    }
-  }
-  
-  .nav__subitems {
-    list-style: none;
-    padding-left: 0.25em;
-    margin-top: 0.5em;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-  
-    li {
+  font-size: $type-size-5;
 
-      a.nav__item {
-        display: block;
-        font-size: $type-size-4;
-        transition: color 0.2s ease, padding-left 0.2s ease; 
-      }
+  .nav__arrow {
+    margin-right: 0.4em;
+    transition: transform 0.2s ease;
+  }
+}
+
+.nav__item-toggle {
+  .nav__toggle {
+    &:checked + .nav__subtitle .nav__arrow::before {
+      content: "▼";
+    }
+
+    & + .nav__subtitle .nav__arrow::before {
+      content: "▶";
+    }
+
+    &:checked + .nav__subtitle + .nav__subitems {
+      max-height: 1000px;
+      opacity: 1;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
     }
   }
-  
-  .count {
-    font-weight: normal;
-    color: $base04;
-    margin-left: 5px;
+}
+
+.nav__subitems {
+  list-style: none;
+  padding-left: 0.25em;
+  margin-top: 0.5em;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+
+  li {
+    a.nav__item {
+      display: block;
+      font-size: $type-size-4;
+      transition: color 0.2s ease, padding-left 0.2s ease;
+    }
   }
+}
+
+.count {
+  font-weight: normal;
+  color: $base04;
+  margin-left: 5px;
+}
 
 /*
      Table of contents navigation

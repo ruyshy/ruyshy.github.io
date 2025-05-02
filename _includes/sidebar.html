@@ -7,25 +7,18 @@
   <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
-    <input type="checkbox" id="sidebar-cat-toggle" />
-    <label for="sidebar-cat-toggle" class="nav__subtitle">
-      <span class="nav__arrow"></span> Category
-    </label>
-
     <ul class="nav__items">
-      <li>
-        <a href="{{ '/categories/' | relative_url }}" class="nav__item category-button{% if page.url == '/categories/' %} active{% endif %}">
-          ALL <span class="count">({{ site.posts | size }})</span>
-        </a>
-      </li>
-
-      {% assign category_nav = site.data.navigation.main | where: "title", "Category" | first %}
-      {% if category_nav %}
-        {% include sidebar-items.html items=category_nav.children %}
-      {% endif %}
-
-      <li><hr class="nav-divider" /></li>
-    </ul>
+      <li class="nav__title">Category</li>
+      <a
+      href="{{ '/categories/' | relative_url }}"
+      class="nav__item{% if page.url == '/categories/' %} active{% endif %}"
+    >
+    ALL <span class="count">({{ site.posts | size }})</span>
+  </a>
+</li>
+{% assign category_nav = site.data.navigation.main | where: "title",
+"Category" | first %} {% if category_nav %} {% include sidebar-items.html
+items=category_nav.children %} {% endif %}
 
     <div class="sidebar__search">
       <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
