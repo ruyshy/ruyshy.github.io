@@ -16,9 +16,12 @@
     ALL <span class="count">({{ site.posts | size }})</span>
   </a>
 </li>
-{% assign category_nav = site.data.navigation.main | where: "title",
-"Category" | first %} {% if category_nav %} {% include sidebar-items.html
-items=category_nav.children %} {% endif %}
+{% assign category_nav = site.data.navigation.main | where: "title","Category" | first %}
+ {% if category_nav %} 
+ {% include sidebar-items.html items=category_nav.children %}
+ {% endif %}
+ 
+ <li><hr class="nav-divider" /></li>
 
     <div class="sidebar__search">
       <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
