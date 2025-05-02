@@ -279,77 +279,78 @@
   <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
-    <input type="checkbox" id="sidebar-cat-toggle" />
-    <label for="sidebar-cat-toggle" class="nav__subtitle">
-      <span class="nav__arrow"></span> Category
-    </label>
-
     <ul class="nav__items">
-      <li>
-        <a href="/categories/" class="nav__item category-button">
-          ALL <span class="count">(33)</span>
-        </a>
-      </li>
+      <li class="nav__title">Category</li>
+      <a
+      href="/categories/"
+      class="nav__item"
+    >
+    ALL <span class="count">(33)</span>
+  </a>
+</li>
+   
+<li class="nav__item-toggle">
+  <input
+    type="checkbox"
+    id="toggle-security"
+    class="nav__toggle"
+    hidden
+    checked
+  />
 
-      
-      
-        
-  
-    <li class="nav__item-toggle">
-      <input type="checkbox" id="toggle-security" class="nav__toggle" hidden checked>
-
-      <label for="toggle-security" class="nav__subtitle">
-        <span class="nav__arrow"></span> Security
-      </label>
-
-      
-        <ul class="nav__subitems">
-          
-  
-    <li>
-      
-      
-      <a href="/categories/assembly/" class="nav__item category-button">
-        Assembly
-        <span class="count">(14)</span>
-      </a>
-    </li>
-  
+  <label for="toggle-security" class="nav__subtitle">
+    <span class="nav__arrow"></span> Security
+  </label>
 
   
-    <li>
-      
-      
-      <a href="/categories/reversing_engineering/" class="nav__item category-button">
-        Reversing Engineering
-        <span class="count">(3)</span>
-      </a>
-    </li>
+  <ul class="nav__subitems">
+     
+<li>
+   
+  <a
+    href="/categories/assembly/"
+    class="nav__item"
+  >
+    Assembly
+    <span class="count">
+      (14)
+    </span>
+  </a>
+</li>
   
+<li>
+   
+  <a
+    href="/categories/reversing_engineering/"
+    class="nav__item"
+  >
+    Reversing Engineering
+    <span class="count">
+      (3)
+    </span>
+  </a>
+</li>
+ 
 
-
-        </ul>
-      
-    </li>
+  </ul>
+  
+</li>
 
   
-
-  
-    <li>
-      
-      
-      <a href="/categories/blog/" class="nav__item category-button">
-        Blog
-        <span class="count">(19)</span>
-      </a>
-    </li>
-  
-
-
-      
-
-      <li><hr class="nav-divider" /></li>
-    </ul>
+<li>
+   
+  <a
+    href="/categories/blog/"
+    class="nav__item"
+  >
+    Blog
+    <span class="count">
+      (19)
+    </span>
+  </a>
+</li>
+ 
+ 
 
     <div class="sidebar__search">
       <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
@@ -608,84 +609,84 @@
 
 <h3 id="3-1-분석-퀴즈-disassembly-보기-전에-예상해보자">3-1. 분석 퀴즈 (Disassembly 보기 전에 예상해보자!)</h3>
 
-<div class="quiz-box" id="quiz-box-380018">
-  <div class="quiz-message" id="quiz-message-380018" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-575235">
+  <div class="quiz-message" id="quiz-message-575235" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 C++의 <code class="language-plaintext highlighter-rouge">for (int i = 0; i &lt; 10; ++i)</code> 루프가 어셈블리 코드로 번역될 때 <strong>반드시 포함되는 흐름</strong>이 아닌 것은?</p>
 
   </div>
-  <form id="quiz-form-380018" onsubmit="return false;">
+  <form id="quiz-form-575235" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-380018" id="quiz-380018-0" value="조건 검사 후 점프 명령 (`jl`, `jg` 등)" data-correct="false" />
-  <label for="quiz-380018-0">조건 검사 후 점프 명령 (<code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">jg</code> 등)</label>
+  <input type="radio" name="quiz-answer-575235" id="quiz-575235-0" value="조건 검사 후 점프 명령 (`jl`, `jg` 등)" data-correct="false" />
+  <label for="quiz-575235-0">조건 검사 후 점프 명령 (<code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">jg</code> 등)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-380018" id="quiz-380018-1" value="증가 연산자 (`inc`, `add`)" data-correct="false" />
-  <label for="quiz-380018-1">증가 연산자 (<code class="language-plaintext highlighter-rouge">inc</code>, <code class="language-plaintext highlighter-rouge">add</code>)</label>
+  <input type="radio" name="quiz-answer-575235" id="quiz-575235-1" value="증가 연산자 (`inc`, `add`)" data-correct="false" />
+  <label for="quiz-575235-1">증가 연산자 (<code class="language-plaintext highlighter-rouge">inc</code>, <code class="language-plaintext highlighter-rouge">add</code>)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-380018" id="quiz-380018-2" value="함수 호출 명령 (`call`)" data-correct="true" />
-  <label for="quiz-380018-2">함수 호출 명령 (<code class="language-plaintext highlighter-rouge">call</code>)</label>
+  <input type="radio" name="quiz-answer-575235" id="quiz-575235-2" value="함수 호출 명령 (`call`)" data-correct="true" />
+  <label for="quiz-575235-2">함수 호출 명령 (<code class="language-plaintext highlighter-rouge">call</code>)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-380018" id="quiz-380018-3" value="무조건 점프 명령 (`jmp`)" data-correct="false" />
-  <label for="quiz-380018-3">무조건 점프 명령 (<code class="language-plaintext highlighter-rouge">jmp</code>)</label>
+  <input type="radio" name="quiz-answer-575235" id="quiz-575235-3" value="무조건 점프 명령 (`jmp`)" data-correct="false" />
+  <label for="quiz-575235-3">무조건 점프 명령 (<code class="language-plaintext highlighter-rouge">jmp</code>)</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(380018, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(575235, false, null)">제출</button>
   </form>
-  <div id="quiz-result-380018" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-380018" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-380018', this)" data-label="해설 보기"></div>
-  <div id="toggle-380018" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-575235" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-575235" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-575235', this)" data-label="해설 보기"></div>
+  <div id="toggle-575235" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: 함수 호출이 없는 경우 <code class="language-plaintext highlighter-rouge">call</code> 명령은 포함되지 않는다. 루프에서는 비교(<code class="language-plaintext highlighter-rouge">cmp</code>), 조건 분기(<code class="language-plaintext highlighter-rouge">jl</code>), 루프 변수 증가(<code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">inc</code>), 루프 반복을 위한 <code class="language-plaintext highlighter-rouge">jmp</code>는 일반적으로 포함된다.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-159767">
-  <div class="quiz-message" id="quiz-message-159767" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-423741">
+  <div class="quiz-message" id="quiz-message-423741" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">2.</code> C++의 <code class="language-plaintext highlighter-rouge">sum += i;</code> 같은 연산이 어셈블리어에서 <strong>보통 어떤 명령어</strong>로 나타나는가?</p>
 
   </div>
-  <form id="quiz-form-159767" onsubmit="return false;">
+  <form id="quiz-form-423741" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-159767" id="quiz-159767-0" value="`mov`" data-correct="false" />
-  <label for="quiz-159767-0"><code class="language-plaintext highlighter-rouge">mov</code></label>
+  <input type="radio" name="quiz-answer-423741" id="quiz-423741-0" value="`mov`" data-correct="false" />
+  <label for="quiz-423741-0"><code class="language-plaintext highlighter-rouge">mov</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-159767" id="quiz-159767-1" value="`cmp`" data-correct="false" />
-  <label for="quiz-159767-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
+  <input type="radio" name="quiz-answer-423741" id="quiz-423741-1" value="`cmp`" data-correct="false" />
+  <label for="quiz-423741-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-159767" id="quiz-159767-2" value="`add`" data-correct="true" />
-  <label for="quiz-159767-2"><code class="language-plaintext highlighter-rouge">add</code></label>
+  <input type="radio" name="quiz-answer-423741" id="quiz-423741-2" value="`add`" data-correct="true" />
+  <label for="quiz-423741-2"><code class="language-plaintext highlighter-rouge">add</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-159767" id="quiz-159767-3" value="`jmp`" data-correct="false" />
-  <label for="quiz-159767-3"><code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-423741" id="quiz-423741-3" value="`jmp`" data-correct="false" />
+  <label for="quiz-423741-3"><code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(159767, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(423741, false, null)">제출</button>
   </form>
-  <div id="quiz-result-159767" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-159767" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-159767', this)" data-label="해설 보기"></div>
-  <div id="toggle-159767" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-423741" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-423741" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-423741', this)" data-label="해설 보기"></div>
+  <div id="toggle-423741" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">sum += i</code>는 덧셈 연산이므로 <code class="language-plaintext highlighter-rouge">add</code> 명령어로 나타난다.</p>
 
 <ul>
@@ -698,42 +699,42 @@
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-780703">
-  <div class="quiz-message" id="quiz-message-780703" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-340591">
+  <div class="quiz-message" id="quiz-message-340591" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">3.</code> C++의 조건문 <code class="language-plaintext highlighter-rouge">i &lt; 5</code>는 어셈블리어에서 보통 어떤 두 개의 명령어 조합으로 표현되는가?</p>
 
   </div>
-  <form id="quiz-form-780703" onsubmit="return false;">
+  <form id="quiz-form-340591" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-780703" id="quiz-780703-0" value="`cmp` + `call`" data-correct="false" />
-  <label for="quiz-780703-0"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">call</code></label>
+  <input type="radio" name="quiz-answer-340591" id="quiz-340591-0" value="`cmp` + `call`" data-correct="false" />
+  <label for="quiz-340591-0"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">call</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-780703" id="quiz-780703-1" value="`mov` + `jmp`" data-correct="false" />
-  <label for="quiz-780703-1"><code class="language-plaintext highlighter-rouge">mov</code> + <code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-340591" id="quiz-340591-1" value="`mov` + `jmp`" data-correct="false" />
+  <label for="quiz-340591-1"><code class="language-plaintext highlighter-rouge">mov</code> + <code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-780703" id="quiz-780703-2" value="`cmp` + `jl`" data-correct="true" />
-  <label for="quiz-780703-2"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">jl</code></label>
+  <input type="radio" name="quiz-answer-340591" id="quiz-340591-2" value="`cmp` + `jl`" data-correct="true" />
+  <label for="quiz-340591-2"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">jl</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-780703" id="quiz-780703-3" value="`test` + `jne`" data-correct="false" />
-  <label for="quiz-780703-3"><code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">jne</code></label>
+  <input type="radio" name="quiz-answer-340591" id="quiz-340591-3" value="`test` + `jne`" data-correct="false" />
+  <label for="quiz-340591-3"><code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">jne</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(780703, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(340591, false, null)">제출</button>
   </form>
-  <div id="quiz-result-780703" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-780703" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-780703', this)" data-label="해설 보기"></div>
-  <div id="toggle-780703" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-340591" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-340591" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-340591', this)" data-label="해설 보기"></div>
+  <div id="toggle-340591" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">i &lt; 5</code>는 <code class="language-plaintext highlighter-rouge">cmp i, 5</code>로 비교하고, 조건이 참일 경우 <code class="language-plaintext highlighter-rouge">jl target</code>으로 분기한다.</p>
 
 <p><code class="language-plaintext highlighter-rouge">jl</code>은 “Jump if Less” (signed 비교 기준).</p>

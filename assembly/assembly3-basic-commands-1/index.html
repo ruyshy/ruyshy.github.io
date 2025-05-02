@@ -279,77 +279,78 @@
   <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
-    <input type="checkbox" id="sidebar-cat-toggle" />
-    <label for="sidebar-cat-toggle" class="nav__subtitle">
-      <span class="nav__arrow"></span> Category
-    </label>
-
     <ul class="nav__items">
-      <li>
-        <a href="/categories/" class="nav__item category-button">
-          ALL <span class="count">(33)</span>
-        </a>
-      </li>
+      <li class="nav__title">Category</li>
+      <a
+      href="/categories/"
+      class="nav__item"
+    >
+    ALL <span class="count">(33)</span>
+  </a>
+</li>
+   
+<li class="nav__item-toggle">
+  <input
+    type="checkbox"
+    id="toggle-security"
+    class="nav__toggle"
+    hidden
+    checked
+  />
 
-      
-      
-        
-  
-    <li class="nav__item-toggle">
-      <input type="checkbox" id="toggle-security" class="nav__toggle" hidden checked>
-
-      <label for="toggle-security" class="nav__subtitle">
-        <span class="nav__arrow"></span> Security
-      </label>
-
-      
-        <ul class="nav__subitems">
-          
-  
-    <li>
-      
-      
-      <a href="/categories/assembly/" class="nav__item category-button">
-        Assembly
-        <span class="count">(14)</span>
-      </a>
-    </li>
-  
+  <label for="toggle-security" class="nav__subtitle">
+    <span class="nav__arrow"></span> Security
+  </label>
 
   
-    <li>
-      
-      
-      <a href="/categories/reversing_engineering/" class="nav__item category-button">
-        Reversing Engineering
-        <span class="count">(3)</span>
-      </a>
-    </li>
+  <ul class="nav__subitems">
+     
+<li>
+   
+  <a
+    href="/categories/assembly/"
+    class="nav__item"
+  >
+    Assembly
+    <span class="count">
+      (14)
+    </span>
+  </a>
+</li>
   
+<li>
+   
+  <a
+    href="/categories/reversing_engineering/"
+    class="nav__item"
+  >
+    Reversing Engineering
+    <span class="count">
+      (3)
+    </span>
+  </a>
+</li>
+ 
 
-
-        </ul>
-      
-    </li>
+  </ul>
+  
+</li>
 
   
-
-  
-    <li>
-      
-      
-      <a href="/categories/blog/" class="nav__item category-button">
-        Blog
-        <span class="count">(19)</span>
-      </a>
-    </li>
-  
-
-
-      
-
-      <li><hr class="nav-divider" /></li>
-    </ul>
+<li>
+   
+  <a
+    href="/categories/blog/"
+    class="nav__item"
+  >
+    Blog
+    <span class="count">
+      (19)
+    </span>
+  </a>
+</li>
+ 
+ 
 
     <div class="sidebar__search">
       <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
@@ -597,9 +598,9 @@
 
 <p><br /></p>
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ot7jxj', this)" data-label="실습 문제 풀이1">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-nw37fs', this)" data-label="실습 문제 풀이1">
   </div>
-  <div id="toggle-ot7jxj" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-nw37fs" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -783,9 +784,9 @@
 <p>진행 후, 아래에 최종 답안과 풀이 과정을 확인 해보자.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-x456wq', this)" data-label="한 줄씩 풀이 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-dli6e6', this)" data-label="한 줄씩 풀이 보기">
   </div>
-  <div id="toggle-x456wq" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-dli6e6" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li><code class="language-plaintext highlighter-rouge">mov rax, 10</code> ;mov 명렁어로 rax 에 10을 저장</li>
@@ -807,9 +808,9 @@
 </div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-qjivrs', this)" data-label="최종 답안 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-ky2v4z', this)" data-label="최종 답안 보기">
   </div>
-  <div id="toggle-qjivrs" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-ky2v4z" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>
@@ -1065,9 +1066,9 @@
 </code></pre></div></div>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-bt9pcl', this)" data-label="미션 풀이:">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-e6cn1n', this)" data-label="미션 풀이:">
   </div>
-  <div id="toggle-bt9pcl" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-e6cn1n" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">default</span> <span class="nv">rel</span>
 <span class="nf">global</span> <span class="nv">main</span>

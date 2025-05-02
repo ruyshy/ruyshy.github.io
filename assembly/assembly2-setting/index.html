@@ -279,77 +279,78 @@
   <li><hr class="nav-divider" /></li>
 
   <nav class="nav__list">
-    <input type="checkbox" id="sidebar-cat-toggle" />
-    <label for="sidebar-cat-toggle" class="nav__subtitle">
-      <span class="nav__arrow"></span> Category
-    </label>
-
     <ul class="nav__items">
-      <li>
-        <a href="/categories/" class="nav__item category-button">
-          ALL <span class="count">(33)</span>
-        </a>
-      </li>
+      <li class="nav__title">Category</li>
+      <a
+      href="/categories/"
+      class="nav__item"
+    >
+    ALL <span class="count">(33)</span>
+  </a>
+</li>
+   
+<li class="nav__item-toggle">
+  <input
+    type="checkbox"
+    id="toggle-security"
+    class="nav__toggle"
+    hidden
+    checked
+  />
 
-      
-      
-        
-  
-    <li class="nav__item-toggle">
-      <input type="checkbox" id="toggle-security" class="nav__toggle" hidden checked>
-
-      <label for="toggle-security" class="nav__subtitle">
-        <span class="nav__arrow"></span> Security
-      </label>
-
-      
-        <ul class="nav__subitems">
-          
-  
-    <li>
-      
-      
-      <a href="/categories/assembly/" class="nav__item category-button">
-        Assembly
-        <span class="count">(14)</span>
-      </a>
-    </li>
-  
+  <label for="toggle-security" class="nav__subtitle">
+    <span class="nav__arrow"></span> Security
+  </label>
 
   
-    <li>
-      
-      
-      <a href="/categories/reversing_engineering/" class="nav__item category-button">
-        Reversing Engineering
-        <span class="count">(3)</span>
-      </a>
-    </li>
+  <ul class="nav__subitems">
+     
+<li>
+   
+  <a
+    href="/categories/assembly/"
+    class="nav__item"
+  >
+    Assembly
+    <span class="count">
+      (14)
+    </span>
+  </a>
+</li>
   
+<li>
+   
+  <a
+    href="/categories/reversing_engineering/"
+    class="nav__item"
+  >
+    Reversing Engineering
+    <span class="count">
+      (3)
+    </span>
+  </a>
+</li>
+ 
 
-
-        </ul>
-      
-    </li>
+  </ul>
+  
+</li>
 
   
-
-  
-    <li>
-      
-      
-      <a href="/categories/blog/" class="nav__item category-button">
-        Blog
-        <span class="count">(19)</span>
-      </a>
-    </li>
-  
-
-
-      
-
-      <li><hr class="nav-divider" /></li>
-    </ul>
+<li>
+   
+  <a
+    href="/categories/blog/"
+    class="nav__item"
+  >
+    Blog
+    <span class="count">
+      (19)
+    </span>
+  </a>
+</li>
+ 
+ 
 
     <div class="sidebar__search">
       <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
@@ -609,9 +610,9 @@
 <h3 id="2-4-sasm-디버깅-연습-미션풀이">2-4. SASM 디버깅 연습 미션&amp;풀이</h3>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-vlmhje', this)" data-label="미션 1.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-pnlkcz', this)" data-label="미션 1.">
   </div>
-  <div id="toggle-vlmhje" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-pnlkcz" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">msg</code> 문자열이 메모리에 어떻게 저장되어 있는지 확인하기.</p>
 
@@ -635,9 +636,9 @@
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-uqima5', this)" data-label="미션 1. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-wqml7c', this)" data-label="미션 1. 풀이">
   </div>
-  <div id="toggle-uqima5" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-wqml7c" class="toggle-body" style="display: none; max-height: 0;">
     
 <ol>
   <li>F5(Debug)를 눌러 디버깅 진행</li>
@@ -657,9 +658,9 @@
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-ydevpl', this)" data-label="미션 2.">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-nrca69', this)" data-label="미션 2.">
   </div>
-  <div id="toggle-ydevpl" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-nrca69" class="toggle-body" style="display: none; max-height: 0;">
     
 <p><code class="language-plaintext highlighter-rouge">xor rax, rax</code> 명령어 수행 전후 <code class="language-plaintext highlighter-rouge">RAX</code> 값 비교하기</p>
 
@@ -683,9 +684,9 @@
 <p><br /></p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-gaxlvd', this)" data-label="미션 2. 풀이">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-whn64r', this)" data-label="미션 2. 풀이">
   </div>
-  <div id="toggle-gaxlvd" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-whn64r" class="toggle-body" style="display: none; max-height: 0;">
     
 <ul>
   <li><strong>F5 (Debug)</strong> 눌러 디버깅 모드 진입</li>
