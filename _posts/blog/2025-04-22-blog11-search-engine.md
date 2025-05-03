@@ -154,7 +154,6 @@ defaults:
 3. blog2, blog3, ... 반복
 
 > 실제로 인덱싱되면 24시간 내에 검색에 나타나기 시작
-> 
 
 저의 경우 하위 사이트 목록
 
@@ -176,7 +175,6 @@ https://ruyshy.github.io/blog/blog12-toggle-plugin/
 ```
 
 수동으로 해당 리스트들을 등록했습니다.
-
 
 ## jekyll-seo-tag 사용
 
