@@ -11,4 +11,9 @@ gem "jekyll-include-cache"
 gem "jekyll-gist"
 gem "tzinfo"
 gem "tzinfo-data"
+
 gem 'nokogiri'
+gem 'csv'
+gem 'base64'
+gem 'faraday-retry'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
