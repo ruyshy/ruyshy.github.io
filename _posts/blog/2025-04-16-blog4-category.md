@@ -64,56 +64,55 @@ Quick-Start Guide 해당 부분을 지워줍니다.
 ```html
 {% raw %}{% if page.author_profile or layout.author_profile or page.sidebar %}
 <div class="sidebar sticky">
-
-  {% if page.author_profile or layout.author_profile %}
-    {% include author-profile.html %}
-  {% endif %}
+  {% if page.author_profile or layout.author_profile %} {% include
+  author-profile.html %} {% endif %}
 
   <nav class="nav__list">
     <ul class="nav__items">
-
       <!-- HOME -->
       <li>
-        <a href="{{ '/' | relative_url }}" class="nav__item{% if page.url == '/' %} active{% endif %}">
+        <a
+          href="{{ '/' | relative_url }}"
+          class="nav__item{% if page.url == '/' %} active{% endif %}"
+        >
           Home
         </a>
       </li>
 
       <!-- Divider -->
-      <li><hr class="nav-divider"></li>
+      <li><hr class="nav-divider" /></li>
 
       <!-- CATEGORY TITLE -->
       <li class="nav__title">Category</li>
 
       <!-- All -->
       <li>
-        <a href="{{ '/categories/' | relative_url }}" class="nav__item{% if page.url == '/categories/' %} active{% endif %}">
+        <a
+          href="{{ '/categories/' | relative_url }}"
+          class="nav__item{% if page.url == '/categories/' %} active{% endif %}"
+        >
           - All <span class="count">({{ site.posts | size }})</span>
         </a>
       </li>
 
       <!-- Dynamic categories with count -->
-      {% for nav_item in site.data.navigation.main %}
-        {% if nav_item.children %}
-          {% for child in nav_item.children %}
-            {% assign category_name = child.url | split: '/' | last %}
-            {% assign category_posts = site.categories[category_name] %}
-            <li>
-              <a href="{{ child.url | relative_url }}" 
-                 class="nav__item{% if page.url == child.url %} active{% endif %}">
-                - {{ child.title }}
-                {% if category_posts %}
-                  <span class="count">({{ category_posts | size }})</span>
-                {% endif %}
-              </a>
-            </li>
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-
+      {% for nav_item in site.data.navigation.main %} {% if nav_item.children %}
+      {% for child in nav_item.children %} {% assign category_name = child.url |
+      split: '/' | last %} {% assign category_posts =
+      site.categories[category_name] %}
+      <li>
+        <a
+          href="{{ child.url | relative_url }}"
+          class="nav__item{% if page.url == child.url %} active{% endif %}"
+        >
+          - {{ child.title }} {% if category_posts %}
+          <span class="count">({{ category_posts | size }})</span>
+          {% endif %}
+        </a>
+      </li>
+      {% endfor %} {% endif %} {% endfor %}
     </ul>
   </nav>
-
 </div>
 {% endif %}{% endraw %}
 ```
