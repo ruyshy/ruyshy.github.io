@@ -131,7 +131,18 @@ permalink: /categories/
 
 예시) [ruyshy.github.io/categories/](http://ruyshy.github.io/categories/) 페이지
 
-### 이어서 .\_pages\assembly.md
+#### 이어서 .\_pages\assembly.md
+
+이걸 진행하기 전, 확인해야 할 것 `_config.yml`:
+
+```yaml
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+```
+
+해당 코드가 있다면 `.\_pages\assembly.md`를 추가하지 않아도 자동으로 생성되니, 넘어가도 됩니다!
 
 ```markdown
 ---
