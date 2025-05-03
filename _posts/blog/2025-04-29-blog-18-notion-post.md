@@ -2,11 +2,19 @@
 title: "GitHub Blog에 Notion으로 글 작성하고 업로드하는 방법"
 description: "Notion에서 Markdown 파일로 내보내기한 후, GitHub 블로그에 포스트로 등록하는 전체 과정을 설명합니다. Front Matter 설정, 마크다운 내보내기, 포스트 업로드까지 단계별로 다룹니다."
 date: 2025-04-29
-tags: [GitHubBlog, Notion, markdown, Jekyll, 블로그 포스트 작성, 마크다운 변환, front-matter]
+tags:
+  [
+    GitHubBlog,
+    Notion,
+    markdown,
+    Jekyll,
+    블로그 포스트 작성,
+    마크다운 변환,
+    front-matter,
+  ]
 ---
 
 GitHub Blog에 글을 올릴 때 Notion을 활용하고 싶다면 이 포스트를 참고하세요. **Notion Markdown 내보내기**, **Front Matter 설정**, **GitHub 블로그 포스트 등록**까지 전체 과정을 쉽게 설명합니다.
-
 
 ## GitHub Blog post Notion으로 작성
 
@@ -27,13 +35,11 @@ Notion 작성 → Markdown 내보내기 → Front Matter 추가 → _posts에 �
 
 ## Front Matter
 
-**Front Matter**는 **Markdown 파일 맨 위**에 적는 **"메타데이터 영역"** 
+**Front Matter**는 **Markdown 파일 맨 위**에 적는 **"메타데이터 영역"**
 
 Jekyll이나 Hugo 같은 정적 사이트 생성기(SSG)는 **Markdown 파일을 그냥 읽는 게 아니라**,이 Front Matter를 먼저 읽고 **글의 정보(제목, 날짜, 카테고리, 레이아웃 등)를 파악**
 
 여태 익숙하게 사용했었지만, 좀 자세히 알아보는 시간을 가져볼까 합니다.
-
- 
 
 ```markdown
 ---
@@ -51,16 +57,16 @@ layout: post
 
 ### 주요 속성 설명
 
-| 항목 | 설명 | 예시 |
-| --- | --- | --- |
-| `title` | 글 제목 | `"Notion으로 GitHub Blog 쓰기"` |
-| `date` | 글 작성/게시 날짜 (yyyy-mm-dd 형식) | `2025-04-29` |
-| `categories` | 글이 속할 카테고리 (폴더처럼) | `[blog]` |
-| `tags` | 글에 달 태그들 (검색, 분류 용도) | `[notion, markdown]` |
-| `layout` | 사용할 레이아웃(보통 `post` 또는 `single`) | `post` |
-| `author` | 작성자 이름 (설정해놓은 경우) | `ruyshy2` |
-| `toc` | 글에 목차(Table of Contents)를 넣을지 | `true` |
-| `comments` | 댓글 기능 켤지 | `true` |
+| 항목         | 설명                                       | 예시                            |
+| ------------ | ------------------------------------------ | ------------------------------- |
+| `title`      | 글 제목                                    | `"Notion으로 GitHub Blog 쓰기"` |
+| `date`       | 글 작성/게시 날짜 (yyyy-mm-dd 형식)        | `2025-04-29`                    |
+| `categories` | 글이 속할 카테고리 (폴더처럼)              | `[blog]`                        |
+| `tags`       | 글에 달 태그들 (검색, 분류 용도)           | `[notion, markdown]`            |
+| `layout`     | 사용할 레이아웃(보통 `post` 또는 `single`) | `post`                          |
+| `author`     | 작성자 이름 (설정해놓은 경우)              | `ruyshy2`                       |
+| `toc`        | 글에 목차(Table of Contents)를 넣을지      | `true`                          |
+| `comments`   | 댓글 기능 켤지                             | `true`                          |
 
 ### Front Matter 요약
 
@@ -84,6 +90,7 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
 예시:
 
 markdown:
+
 ```markdown
 ![GitHub-Blog-Notion-Post.png](GitHub-Blog-Notion-Post.png)
 ```
@@ -91,6 +98,7 @@ markdown:
 에서
 
 liquid:
+
 ```markdown
 {% raw %}{% img "GitHub-Blog-Notion-Post.png","GitHub-Blog-Notion-Post" %}{% endraw %}
 ```
