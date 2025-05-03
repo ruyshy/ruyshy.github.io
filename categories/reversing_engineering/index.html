@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>search result - ruyshy blog</title>
+<!-- begin _includes/seo.html --><title>Reversing Engineering - ruyshy blog</title>
 <meta name="description" content="">
 
 
@@ -23,8 +23,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="search result">
-<meta property="og:url" content="https://ruyshy.github.io/_search/">
+<meta property="og:title" content="Reversing Engineering">
+<meta property="og:url" content="https://ruyshy.github.io/categories/reversing_engineering/">
 
 
   <meta property="og:description" content="">
@@ -46,7 +46,7 @@
   
 
 
-<link rel="canonical" href="https://ruyshy.github.io/_search/">
+<link rel="canonical" href="https://ruyshy.github.io/categories/reversing_engineering/">
 
 
 
@@ -89,7 +89,7 @@
 
   </head>
 
-  <body class="layout--search" dir="ltr">
+  <body class="layout--category" dir="ltr">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -322,7 +322,7 @@
    
   <a
     href="/categories/reversing_engineering/"
-    class="nav__item"
+    class="nav__item active"
   >
     Reversing Engineering
     <span class="count">
@@ -379,12 +379,122 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">search result</h1>
+      <h1 id="page-title" class="page__title">Reversing Engineering</h1>
+    
     
 
+
+
+<div class="entries-list">
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
-<input type="text" id="search" class="search-input" placeholder="Enter your search term..." />
-        <div id="results" class="results"></div></div>
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/reversing3-basic/" rel="permalink">리버싱 엔지니어링 기초 정리
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">리버싱(Reverse Engineering)은 소스코드 없이 프로그램을 분석해 동작 원리를 파악하는 기술입니다.
+이 글에서는 정적/동적 분석 방식의 차이와 리버싱 목적, 필요한 배경지식까지 처음 배우는 사람도 이해할 수 있게 정리합니다.
+</p>
+  </article>
+</div>
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/reversing2-pe-structural-analysis/" rel="permalink">PE 구조 분석 완전 정복
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Windows 실행파일이 어떻게 구성되어 있고, 어떤 순서로 메모리에 로딩되는지 궁금하셨나요?
+이 글에서는 PE 구조의 전반적인 구성과 주요 필드들의 역할, RVA 변환 방식까지 하나씩 정리해봅니다.
+</p>
+  </article>
+</div>
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/assembly/reversing1-disassembly3/" rel="permalink">Disassembly 함수 호출 및 재귀 분석: C++ → 어셈블리 흐름 정복
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">C++에서 함수 호출과 재귀 함수는 어셈블리에서 어떻게 나타날까요?
+이 포스트에서는 call, ret, ecx, eax, rsp를 통해 함수 호출과 재귀 구조가 어떻게 구현되는지를 디스어셈블리로 명확히 분석합니다.
+스택 프레임의 변화를 이해하면 리버싱 실력이 한층 더 올라갑니다.
+</p>
+  </article>
+</div>
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/assembly/reversing1-disassembly2/" rel="permalink">Disassembly 실전 분석편: if문과 for문 C++ → Assembly 흐름 이해
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">C++의 조건문과 반복문이 디스어셈블리에서 어떻게 구현되는지 궁금하신가요?
+이 포스트에서는 Visual Studio 디버거를 활용해 if문, for문을 실제 실행파일 수준에서 분석하고, cmp, jmp, jge, add 등의 핵심 명령어 패턴을 정확히 짚어드립니다.
+</p>
+  </article>
+</div>
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/assembly/reversing1-disassembly1/" rel="permalink">Disassembly란? 실행파일을 Assembly로 분석하는 방법
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">실행파일을 어셈블리 코드로 분석하고 싶다면 이 포스트를 참고하세요. Disassembly 기본 개념, C++ → Assembly 흐름, Visual Studio로 디스어셈블리 실습, 스택/레지스터 동작 구조까지 예제를 통해 쉽게 정리합니다.
+</p>
+  </article>
+</div>
+
+</div>
+
+  </div>
 </div>
 
       
