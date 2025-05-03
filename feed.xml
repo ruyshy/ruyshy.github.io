@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-05-02T17:43:29+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub 블로그에 태그 기능 추가 및 자동 생성 방법</title><link href="https://ruyshy.github.io/blog/blog-20-tag/" rel="alternate" type="text/html" title="GitHub 블로그에 태그 기능 추가 및 자동 생성 방법" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-20-tag</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-20-tag/"><![CDATA[<p>Jekyll 기반의 GitHub 블로그에서 태그(tag)를 활용하면 각 포스트를 키워드로 분류하고 관련된 글끼리 연결할 수 있습니다.<br />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-05-03T21:13:37+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub 블로그에 태그 기능 추가 및 자동 생성 방법</title><link href="https://ruyshy.github.io/blog/blog-20-tag/" rel="alternate" type="text/html" title="GitHub 블로그에 태그 기능 추가 및 자동 생성 방법" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-20-tag</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-20-tag/"><![CDATA[<p>Jekyll 기반의 GitHub 블로그에서 태그(tag)를 활용하면 각 포스트를 키워드로 분류하고 관련된 글끼리 연결할 수 있습니다.<br />
 이 글에서는 <code class="language-plaintext highlighter-rouge">/tags/태그명/</code> 형식의 태그별 아카이브 페이지를 자동으로 생성하는 방법과 그 설정 과정을 단계별로 정리해봅니다.</p>
 
 <h2 id="태그tag란">태그(tag)란?</h2>
@@ -83,6 +83,7 @@
 <p><code class="language-plaintext highlighter-rouge">minimal-mistakes-jekyll</code> 테마에서는 자동으로 태그 페이지를 생성할 수 있도록 설정할 수 있고, 다음처럼 <code class="language-plaintext highlighter-rouge">tags</code> 폴더를 만들어 태그별 아카이브를 구성할 수도 있습니다:</p>
 
 <p><code class="language-plaintext highlighter-rouge">/tags/assembly.md</code> 파일 생성하고 아래 코드 추가:</p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">assembly"</span>
 <span class="na">permalink</span><span class="pi">:</span> <span class="s">/tags/assembly/</span>
@@ -175,7 +176,6 @@
 
 <blockquote>
   <p>기존의 태그 목록 방식도 충분히 유용하지만, 저는 <code class="language-plaintext highlighter-rouge">/tags/태그명/</code>처럼 각 태그별로 독립된 페이지가 생성되어 관련 글만 모아볼 수 있는 구조가 훨씬 더 직관적이고 마음에 들었습니다.</p>
-
 </blockquote>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="jekyll" /><category term="github pages" /><category term="tag" /><category term="blog customization" /><summary type="html"><![CDATA[Jekyll 기반 GitHub 블로그에서 태그 기능을 추가하고 /tags/태그명/ 경로로 자동 생성되도록 설정하는 방법을 정리합니다. generate_tags.rb 플러그인과 tag_archive 레이아웃을 활용한 커스터마이징을 포함합니다.]]></summary></entry><entry><title type="html">GitHub 블로그에 Lunr 기반 커스텀 검색창 만들기</title><link href="https://ruyshy.github.io/blog/blog-21-search/" rel="alternate" type="text/html" title="GitHub 블로그에 Lunr 기반 커스텀 검색창 만들기" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/blog-21-search</id><content type="html" xml:base="https://ruyshy.github.io/blog/blog-21-search/"><![CDATA[<p>GitHub Pages 블로그에 사용자 정의 검색창을 추가하고 싶으셨나요?<br />
 이 포스트에서는 minimal-mistakes 테마를 기반으로 Lunr.js를 활용해 상단과 사이드바에 검색창을 구현하고, 제목 및 태그 기준의 검색 기능을 설정하는 방법을 단계별로 안내합니다.</p>
 
@@ -220,7 +220,10 @@
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.search == true %}
 <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"search__toggle"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"visually-hidden"</span><span class="nt">&gt;</span>{{ site.data.ui-text[site.locale].search_label | default: "Toggle search" }}<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"visually-hidden"</span>
+    <span class="nt">&gt;</span>{{ site.data.ui-text[site.locale].search_label | default: "Toggle search"
+    }}<span class="nt">&lt;/span</span>
+  <span class="nt">&gt;</span>
   <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span>
 <span class="nt">&lt;/button&gt;</span>
 {% endif %}
@@ -234,35 +237,35 @@
 
 <p>해당 코드를 <code class="language-plaintext highlighter-rouge">\_include\sidebar.html</code> 에 넣어 줍니다.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar__search"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"sidebar-search"</span> <span class="na">onsubmit=</span><span class="s">"return SidebarSearchHandler();"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"search-type"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"tag"</span><span class="nt">&gt;</span>Tag<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"both"</span><span class="nt">&gt;</span>Title + Tag<span class="nt">&lt;/option&gt;</span>
-          <span class="nt">&lt;/select&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"search-query"</span> <span class="na">placeholder=</span><span class="s">"Search input"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span> Search<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/form&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar__search"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"sidebar-search"</span> <span class="na">onsubmit=</span><span class="s">"return SidebarSearchHandler();"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"search-type"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"tag"</span><span class="nt">&gt;</span>Tag<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"both"</span><span class="nt">&gt;</span>Title + Tag<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;/select&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"search-query"</span> <span class="na">placeholder=</span><span class="s">"Search input"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span> Search<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
 <hr />
 
-<p>해당 코드를 넣을 때, <code class="language-plaintext highlighter-rouge">&lt;nav class="nav__list"&gt;</code>  … <code class="language-plaintext highlighter-rouge">&lt;/nav&gt;</code>  해당 nav 태그 안에 넣어 주도록 합시다.</p>
+<p>해당 코드를 넣을 때, <code class="language-plaintext highlighter-rouge">&lt;nav class="nav__list"&gt;</code> … <code class="language-plaintext highlighter-rouge">&lt;/nav&gt;</code> 해당 nav 태그 안에 넣어 주도록 합시다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code>  해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code> 해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-6soms5', this)" data-label="sidebar.html 전체 코드">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-q2xayu', this)" data-label="sidebar.html 전체 코드">
   </div>
-  <div id="toggle-6soms5" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-q2xayu" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
@@ -283,10 +286,10 @@
   <span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/li&gt;</span>
 {% assign category_nav = site.data.navigation.main | where: "title","Category" | first %}
- {% if category_nav %} 
+ {% if category_nav %}
  {% include sidebar-items.html items=category_nav.children %}
  {% endif %}
- 
+
  <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"nav-divider"</span> <span class="nt">/&gt;&lt;/li&gt;</span>
 
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar__search"</span><span class="nt">&gt;</span>
@@ -324,7 +327,7 @@
   <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-6</span><span class="p">;</span>
   <span class="nl">margin-top</span><span class="p">:</span> <span class="m">1em</span><span class="p">;</span>
   <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">top</span><span class="p">;</span>
-  
+
   <span class="k">@include</span> <span class="nd">breakpoint</span><span class="p">(</span><span class="nv">$x-large</span><span class="p">)</span> <span class="p">{</span>
     <span class="nl">width</span><span class="p">:</span> <span class="n">initial</span><span class="p">;</span>
     <span class="na">margin-inline-end</span><span class="p">:</span> <span class="n">initial</span><span class="p">;</span>
@@ -414,7 +417,7 @@
 
 <p><code class="language-plaintext highlighter-rouge">\_pages\</code> 경로에 <code class="language-plaintext highlighter-rouge">search.md</code> 새로 파일을 만들기 해줍니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">search.md</code>  코드</p>
+<p><code class="language-plaintext highlighter-rouge">search.md</code> 코드</p>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">search</span><span class="nv"> </span><span class="s">result"</span>
@@ -431,22 +434,22 @@
 
 <h3 id="2-4-serachjs-구현하기">2-4. serach.js 구현하기</h3>
 
-<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\</code>  경로에 <code class="language-plaintext highlighter-rouge">search.js</code> 파일을 새로 만들기 합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\</code> 경로에 <code class="language-plaintext highlighter-rouge">search.js</code> 파일을 새로 만들기 합니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\search.js</code>  코드</p>
+<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\search.js</code> 코드</p>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(function () {
-  const params = new URLSearchParams(window.location.search);
-  const query = params.get("q");
+const params = new URLSearchParams(window.location.search);
+const query = params.get("q");
 
-  const searchInput = document.getElementById("search");
-  const resultsContainer = document.getElementById("results");
+const searchInput = document.getElementById("search");
+const resultsContainer = document.getElementById("results");
 
-  if (!searchInput || !resultsContainer) return;
-  if (typeof window.store === "undefined") return;
+if (!searchInput || !resultsContainer) return;
+if (typeof window.store === "undefined") return;
 
-  function renderResults(results, query) {
-    resultsContainer.innerHTML = "";<span class="sb">
+function renderResults(results, query) {
+resultsContainer.innerHTML = "";<span class="sb">
 
     if (results.length === 0) {
       resultsContainer.innerHTML = `&lt;p&gt;&lt;em&gt;"${query}"&lt;/em&gt;에 대한 결과가 없습니다.&lt;/p&gt;`;
@@ -471,11 +474,12 @@
       .join("");
 
     resultsContainer.innerHTML = html;
-</span>  }
 
-  function performSearch(query) {
-    const results = [];
-    const lower = query.toLowerCase();<span class="sb">
+</span>}
+
+function performSearch(query) {
+const results = [];
+const lower = query.toLowerCase();<span class="sb">
 
     for (const post of window.store) {
       const title = post.title?.toLowerCase() ?? "";
@@ -505,16 +509,17 @@
     }
 
     renderResults(results, query);
-</span>  }
 
-  if (query) {
-    searchInput.value = query;
-    performSearch(query);
-  }
+</span>}
 
-  searchInput.addEventListener("input", function (e) {
-    performSearch(e.target.value);
-  });
+if (query) {
+searchInput.value = query;
+performSearch(query);
+}
+
+searchInput.addEventListener("input", function (e) {
+performSearch(e.target.value);
+});
 })();
 </code></pre></div></div>
 
@@ -533,11 +538,11 @@
 
 <p><code class="language-plaintext highlighter-rouge">\_layouts\default.html</code> 코드 추가:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c">&lt;!-- lunr search script --&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/sidebar-search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr-store.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- lunr search script --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/sidebar-search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr-store.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
 <hr />
@@ -575,10 +580,10 @@
         {% include_cached footer.html %}
       <span class="nt">&lt;/footer&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-    
-    <span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span> 
-    {% include custom_code-block_custom.html %} 
-    {%include custom_toggle-script.html %} 
+
+    <span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span>
+    {% include custom_code-block_custom.html %}
+    {%include custom_toggle-script.html %}
     {% include custom_quiz-form.html %}
 
     <span class="c">&lt;!-- lunr search script --&gt;</span>
@@ -598,16 +603,16 @@
 
 <p><code class="language-plaintext highlighter-rouge">custom_script.html</code> 코드:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span> 
-{% include custom_code-block_custom.html %} 
-{%include custom_toggle-script.html %} 
-{% include custom_quiz-form.html %}
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span>
+{% include custom_code-block_custom.html %} {%include custom_toggle-script.html
+%} {% include custom_quiz-form.html %}
 
 <span class="c">&lt;!-- lunr search script --&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/sidebar-search.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/lunr.min.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/lunr-store.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/search.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
 </code></pre></div></div>
 
 <hr />
@@ -623,14 +628,14 @@
 
 <p><code class="language-plaintext highlighter-rouge">\_config.yml</code> 에서 <code class="language-plaintext highlighter-rouge">defaults:</code> 속성에서 수정:</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">search</span><span class="pi">:</span> <span class="kc">false</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
+  <span class="na">values</span><span class="pi">:</span>
+    <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">search</span><span class="pi">:</span> <span class="kc">false</span>
+    <span class="na">sidebar</span><span class="pi">:</span>
+      <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
 </code></pre></div></div>
 
 <hr />
@@ -725,11 +730,8 @@
 <p><strong>추가 설명: 옛날 코드 조각</strong></p>
 
 <ul>
-  <li>
-    <p>DOS에서는 실행이 안 되니까 이런 메시지가 나와:</p>
-
-    <p><code class="language-plaintext highlighter-rouge">"This program cannot be run in DOS mode"</code></p>
-  </li>
+  <li>DOS에서는 실행이 안 되니까 이런 메시지가 나와:
+<code class="language-plaintext highlighter-rouge">"This program cannot be run in DOS mode"</code></li>
 </ul>
 
 <p>이건 사실 지금은 의미 없고 그냥 관습적으로 들어있음.</p>
@@ -930,7 +932,7 @@
   <li><code class="language-plaintext highlighter-rouge">Characteristics</code>: 코드/데이터/읽기쓰기 속성</li>
 </ul>
 
-<p><strong>추가 설명:</strong> 
+<p><strong>추가 설명:</strong>
 이제부터는 <strong>진짜 컨텐츠</strong>를 설명함.</p>
 
 <ul>
@@ -1123,10 +1125,8 @@
       <li>해당 섹션의 <code class="language-plaintext highlighter-rouge">VirtualAddress ≤ RVA &lt; VirtualAddress + VirtualSize</code>인지 검사</li>
     </ul>
   </li>
-  <li>
-    <p>맞는 섹션이 있다면:</p>
-
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">FileOffset</span> <span class="o">=</span> <span class="n">RVA</span> <span class="o">-</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">PointerToRawData</span>
+  <li>맞는 섹션이 있다면:
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FileOffset</span> <span class="o">=</span> <span class="n">RVA</span> <span class="o">-</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">PointerToRawData</span>
 </code></pre></div>    </div>
   </li>
   <li>못 찾으면 → 잘못된 RVA일 가능성</li>
@@ -1378,7 +1378,6 @@ EntryPoint = 0x1100 (RVA)
 <blockquote>
   <p>정적 분석은 “지도 보면서 전체 루트 파악”
 동적 분석은 “차 타고 직접 도로 달리는 느낌”</p>
-
 </blockquote>
 
 <h2 id="리버싱이-필요한-전제-지식">리버싱이 필요한 전제 지식</h2>
@@ -1700,84 +1699,84 @@ EntryPoint = 0x1100 (RVA)
 
 <h3 id="3-1-분석-퀴즈-disassembly-보기-전에-예상해보자">3-1. 분석 퀴즈 (Disassembly 보기 전에 예상해보자!)</h3>
 
-<div class="quiz-box" id="quiz-box-287266">
-  <div class="quiz-message" id="quiz-message-287266" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-829417">
+  <div class="quiz-message" id="quiz-message-829417" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 C++의 <code class="language-plaintext highlighter-rouge">for (int i = 0; i &lt; 10; ++i)</code> 루프가 어셈블리 코드로 번역될 때 <strong>반드시 포함되는 흐름</strong>이 아닌 것은?</p>
 
   </div>
-  <form id="quiz-form-287266" onsubmit="return false;">
+  <form id="quiz-form-829417" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-287266" id="quiz-287266-0" value="조건 검사 후 점프 명령 (`jl`, `jg` 등)" data-correct="false" />
-  <label for="quiz-287266-0">조건 검사 후 점프 명령 (<code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">jg</code> 등)</label>
+  <input type="radio" name="quiz-answer-829417" id="quiz-829417-0" value="조건 검사 후 점프 명령 (`jl`, `jg` 등)" data-correct="false" />
+  <label for="quiz-829417-0">조건 검사 후 점프 명령 (<code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">jg</code> 등)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-287266" id="quiz-287266-1" value="증가 연산자 (`inc`, `add`)" data-correct="false" />
-  <label for="quiz-287266-1">증가 연산자 (<code class="language-plaintext highlighter-rouge">inc</code>, <code class="language-plaintext highlighter-rouge">add</code>)</label>
+  <input type="radio" name="quiz-answer-829417" id="quiz-829417-1" value="증가 연산자 (`inc`, `add`)" data-correct="false" />
+  <label for="quiz-829417-1">증가 연산자 (<code class="language-plaintext highlighter-rouge">inc</code>, <code class="language-plaintext highlighter-rouge">add</code>)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-287266" id="quiz-287266-2" value="함수 호출 명령 (`call`)" data-correct="true" />
-  <label for="quiz-287266-2">함수 호출 명령 (<code class="language-plaintext highlighter-rouge">call</code>)</label>
+  <input type="radio" name="quiz-answer-829417" id="quiz-829417-2" value="함수 호출 명령 (`call`)" data-correct="true" />
+  <label for="quiz-829417-2">함수 호출 명령 (<code class="language-plaintext highlighter-rouge">call</code>)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-287266" id="quiz-287266-3" value="무조건 점프 명령 (`jmp`)" data-correct="false" />
-  <label for="quiz-287266-3">무조건 점프 명령 (<code class="language-plaintext highlighter-rouge">jmp</code>)</label>
+  <input type="radio" name="quiz-answer-829417" id="quiz-829417-3" value="무조건 점프 명령 (`jmp`)" data-correct="false" />
+  <label for="quiz-829417-3">무조건 점프 명령 (<code class="language-plaintext highlighter-rouge">jmp</code>)</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(287266, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(829417, false, null)">제출</button>
   </form>
-  <div id="quiz-result-287266" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-287266" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-287266', this)" data-label="해설 보기"></div>
-  <div id="toggle-287266" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-829417" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-829417" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-829417', this)" data-label="해설 보기"></div>
+  <div id="toggle-829417" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: 함수 호출이 없는 경우 <code class="language-plaintext highlighter-rouge">call</code> 명령은 포함되지 않는다. 루프에서는 비교(<code class="language-plaintext highlighter-rouge">cmp</code>), 조건 분기(<code class="language-plaintext highlighter-rouge">jl</code>), 루프 변수 증가(<code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">inc</code>), 루프 반복을 위한 <code class="language-plaintext highlighter-rouge">jmp</code>는 일반적으로 포함된다.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-309798">
-  <div class="quiz-message" id="quiz-message-309798" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-443545">
+  <div class="quiz-message" id="quiz-message-443545" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">2.</code> C++의 <code class="language-plaintext highlighter-rouge">sum += i;</code> 같은 연산이 어셈블리어에서 <strong>보통 어떤 명령어</strong>로 나타나는가?</p>
 
   </div>
-  <form id="quiz-form-309798" onsubmit="return false;">
+  <form id="quiz-form-443545" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-309798" id="quiz-309798-0" value="`mov`" data-correct="false" />
-  <label for="quiz-309798-0"><code class="language-plaintext highlighter-rouge">mov</code></label>
+  <input type="radio" name="quiz-answer-443545" id="quiz-443545-0" value="`mov`" data-correct="false" />
+  <label for="quiz-443545-0"><code class="language-plaintext highlighter-rouge">mov</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-309798" id="quiz-309798-1" value="`cmp`" data-correct="false" />
-  <label for="quiz-309798-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
+  <input type="radio" name="quiz-answer-443545" id="quiz-443545-1" value="`cmp`" data-correct="false" />
+  <label for="quiz-443545-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-309798" id="quiz-309798-2" value="`add`" data-correct="true" />
-  <label for="quiz-309798-2"><code class="language-plaintext highlighter-rouge">add</code></label>
+  <input type="radio" name="quiz-answer-443545" id="quiz-443545-2" value="`add`" data-correct="true" />
+  <label for="quiz-443545-2"><code class="language-plaintext highlighter-rouge">add</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-309798" id="quiz-309798-3" value="`jmp`" data-correct="false" />
-  <label for="quiz-309798-3"><code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-443545" id="quiz-443545-3" value="`jmp`" data-correct="false" />
+  <label for="quiz-443545-3"><code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(309798, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(443545, false, null)">제출</button>
   </form>
-  <div id="quiz-result-309798" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-309798" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-309798', this)" data-label="해설 보기"></div>
-  <div id="toggle-309798" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-443545" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-443545" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-443545', this)" data-label="해설 보기"></div>
+  <div id="toggle-443545" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">sum += i</code>는 덧셈 연산이므로 <code class="language-plaintext highlighter-rouge">add</code> 명령어로 나타난다.</p>
 
 <ul>
@@ -1790,42 +1789,42 @@ EntryPoint = 0x1100 (RVA)
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-891501">
-  <div class="quiz-message" id="quiz-message-891501" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-514812">
+  <div class="quiz-message" id="quiz-message-514812" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">3.</code> C++의 조건문 <code class="language-plaintext highlighter-rouge">i &lt; 5</code>는 어셈블리어에서 보통 어떤 두 개의 명령어 조합으로 표현되는가?</p>
 
   </div>
-  <form id="quiz-form-891501" onsubmit="return false;">
+  <form id="quiz-form-514812" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-891501" id="quiz-891501-0" value="`cmp` + `call`" data-correct="false" />
-  <label for="quiz-891501-0"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">call</code></label>
+  <input type="radio" name="quiz-answer-514812" id="quiz-514812-0" value="`cmp` + `call`" data-correct="false" />
+  <label for="quiz-514812-0"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">call</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-891501" id="quiz-891501-1" value="`mov` + `jmp`" data-correct="false" />
-  <label for="quiz-891501-1"><code class="language-plaintext highlighter-rouge">mov</code> + <code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-514812" id="quiz-514812-1" value="`mov` + `jmp`" data-correct="false" />
+  <label for="quiz-514812-1"><code class="language-plaintext highlighter-rouge">mov</code> + <code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-891501" id="quiz-891501-2" value="`cmp` + `jl`" data-correct="true" />
-  <label for="quiz-891501-2"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">jl</code></label>
+  <input type="radio" name="quiz-answer-514812" id="quiz-514812-2" value="`cmp` + `jl`" data-correct="true" />
+  <label for="quiz-514812-2"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">jl</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-891501" id="quiz-891501-3" value="`test` + `jne`" data-correct="false" />
-  <label for="quiz-891501-3"><code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">jne</code></label>
+  <input type="radio" name="quiz-answer-514812" id="quiz-514812-3" value="`test` + `jne`" data-correct="false" />
+  <label for="quiz-514812-3"><code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">jne</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(891501, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(514812, false, null)">제출</button>
   </form>
-  <div id="quiz-result-891501" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-891501" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-891501', this)" data-label="해설 보기"></div>
-  <div id="toggle-891501" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-514812" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-514812" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-514812', this)" data-label="해설 보기"></div>
+  <div id="toggle-514812" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">i &lt; 5</code>는 <code class="language-plaintext highlighter-rouge">cmp i, 5</code>로 비교하고, 조건이 참일 경우 <code class="language-plaintext highlighter-rouge">jl target</code>으로 분기한다.</p>
 
 <p><code class="language-plaintext highlighter-rouge">jl</code>은 “Jump if Less” (signed 비교 기준).</p>
@@ -2426,12 +2425,14 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
 <p>예시:</p>
 
 <p>markdown:</p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">GitHub-Blog-Notion-Post.png</span><span class="p">](</span><span class="sx">GitHub-Blog-Notion-Post.png</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>에서</p>
 
 <p>liquid:</p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% img "GitHub-Blog-Notion-Post.png","GitHub-Blog-Notion-Post" %}
 </code></pre></div></div>
 
@@ -2742,147 +2743,149 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
-
-  {% if page.author_profile or layout.author_profile %}
-    {% include author-profile.html %}
-  {% endif %}
+  {% if page.author_profile or layout.author_profile %} {% include
+  author-profile.html %} {% endif %}
 
   <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav__list"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav__items"</span><span class="nt">&gt;</span>
-
       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav__title"</span><span class="nt">&gt;</span>Category<span class="nt">&lt;/li&gt;</span>
-      <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"nav-divider"</span><span class="nt">&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"nav-divider"</span> <span class="nt">/&gt;&lt;/li&gt;</span>
 
       <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/categories/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/categories/' %} active{% endif %}"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span>
+          <span class="na">href=</span><span class="s">"{{ '/categories/' | relative_url }}"</span>
+          <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/categories/' %} active{% endif %}"</span>
+        <span class="nt">&gt;</span>
           ALL <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>({{ site.posts | size }})<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
 
-      {% assign category_nav = site.data.navigation.main | where: "title", "Category" | first %}
-      {% if category_nav %}
-        {% include sidebar-items.html items=category_nav.children %}
-      {% endif %}
-
+      {% assign category_nav = site.data.navigation.main | where: "title",
+      "Category" | first %} {% if category_nav %} {% include sidebar-items.html
+      items=category_nav.children %} {% endif %}
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/nav&gt;</span>
-
 <span class="nt">&lt;/div&gt;</span>
 {% endif %}
-
 </code></pre></div></div>
 
 <h4 id="_includesidebar-itemshtml-추가하기">_include/sidebar-items.html 추가하기</h4>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for item in include.items %}
-  {% if item.sub_title %}
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav__item-toggle"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"toggle-{{ item.sub_title | slugify }}"</span> <span class="na">class=</span><span class="s">"nav__toggle"</span> <span class="na">hidden</span> <span class="na">checked</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for item in include.items %} {% if item.sub_title %}
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav__item-toggle"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span>
+    <span class="na">type=</span><span class="s">"checkbox"</span>
+    <span class="na">id=</span><span class="s">"toggle-{{ item.sub_title | slugify }}"</span>
+    <span class="na">class=</span><span class="s">"nav__toggle"</span>
+    <span class="na">hidden</span>
+    <span class="na">checked</span>
+  <span class="nt">/&gt;</span>
 
-      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"toggle-{{ item.sub_title | slugify }}"</span> <span class="na">class=</span><span class="s">"nav__subtitle"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nav__arrow"</span><span class="nt">&gt;&lt;/span&gt;</span> {{ item.sub_title }}
-      <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"toggle-{{ item.sub_title | slugify }}"</span> <span class="na">class=</span><span class="s">"nav__subtitle"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nav__arrow"</span><span class="nt">&gt;&lt;/span&gt;</span> {{ item.sub_title }}
+  <span class="nt">&lt;/label&gt;</span>
 
-      {% if item.children %}
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav__subitems"</span><span class="nt">&gt;</span>
-          {% include sidebar-items.html items=item.children %}
-        <span class="nt">&lt;/ul&gt;</span>
-      {% endif %}
-    <span class="nt">&lt;/li&gt;</span>
-
-  {% elsif item.title %}
-    <span class="nt">&lt;li&gt;</span>
-      {% assign category_name = item.url | split: '/' | last %}
-      {% assign category_posts = site.categories[category_name] %}
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ item.url | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav__item{% if page.url == item.url %} active{% endif %}"</span><span class="nt">&gt;</span>
-        - {{ item.title }}
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>
-          ({% if category_posts %}{{ category_posts | size }}{% else %}0{% endif %})
-        <span class="nt">&lt;/span&gt;</span>
-      <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-
+  {% if item.children %}
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav__subitems"</span><span class="nt">&gt;</span>
+    {% include sidebar-items.html items=item.children %}
+  <span class="nt">&lt;/ul&gt;</span>
   {% endif %}
-{% endfor %}
+<span class="nt">&lt;/li&gt;</span>
+
+{% elsif item.title %}
+<span class="nt">&lt;li&gt;</span>
+  {% assign category_name = item.url | split: '/' | last %} {% assign
+  category_posts = site.categories[category_name] %}
+  <span class="nt">&lt;a</span>
+    <span class="na">href=</span><span class="s">"{{ item.url | relative_url }}"</span>
+    <span class="na">class=</span><span class="s">"nav__item{% if page.url == item.url %} active{% endif %}"</span>
+  <span class="nt">&gt;</span>
+    - {{ item.title }}
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>
+      ({% if category_posts %}{{ category_posts | size }}{% else %}0{% endif %})
+    <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+
+{% endif %} {% endfor %}
 </code></pre></div></div>
 
 <h4 id="_sassminimal-mistakes_navigationscss">_sass/minimal-mistakes/_navigation.scss</h4>
 
 <h5 id="추가해야-할-부분">추가해야 할 부분</h5>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nc">.nav__subtitle</span> <span class="p">{</span>
-    <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
-    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
-    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25em</span><span class="p">;</span>
-    <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-5</span><span class="p">;</span>
-    <span class="nl">color</span><span class="p">:</span> <span class="mh">#ccc</span><span class="p">;</span>
-  
-    <span class="nc">.nav__arrow</span> <span class="p">{</span>
-      <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="mi">.4em</span><span class="p">;</span>
-      <span class="nl">transition</span><span class="p">:</span> <span class="n">transform</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  
-  <span class="nc">.nav__item-toggle</span> <span class="p">{</span>
-    <span class="nc">.nav__toggle</span> <span class="p">{</span>
-      <span class="k">&amp;</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="nc">.nav__arrow</span><span class="nd">::before</span> <span class="p">{</span>
-        <span class="nl">content</span><span class="p">:</span> <span class="s2">"▼"</span><span class="p">;</span> <span class="cm">/* 펼친 상태 */</span>
-      <span class="p">}</span>
-      <span class="k">&amp;</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="nc">.nav__arrow</span><span class="nd">::before</span> <span class="p">{</span>
-        <span class="nl">content</span><span class="p">:</span> <span class="s2">"▶"</span><span class="p">;</span> <span class="cm">/* 접힌 상태 */</span>
-      <span class="p">}</span>
-      <span class="k">&amp;</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="o">+</span> <span class="nc">.nav__subitems</span> <span class="p">{</span>
-        <span class="nl">max-height</span><span class="p">:</span> <span class="m">1000px</span><span class="p">;</span>
-        <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
-        <span class="nl">transition</span><span class="p">:</span> <span class="n">max-height</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">opacity</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nb">ease</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  
-  <span class="nc">.nav__subitems</span> <span class="p">{</span>
-    <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-    <span class="nl">padding-left</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25em</span><span class="p">;</span>
-    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5em</span><span class="p">;</span>
-    <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
-    <span class="nl">max-height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="nl">transition</span><span class="p">:</span> <span class="n">max-height</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">opacity</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nb">ease</span><span class="p">;</span>
-  
-    <span class="nt">li</span> <span class="p">{</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.nav__subtitle</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25em</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-5</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="mh">#ccc</span><span class="p">;</span>
 
-      <span class="nt">a</span><span class="nc">.nav__item</span> <span class="p">{</span>
-        <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
-        <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-4</span><span class="p">;</span>
-        <span class="nl">transition</span><span class="p">:</span> <span class="nb">color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">padding-left</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span> 
-      <span class="p">}</span>
+  <span class="nc">.nav__arrow</span> <span class="p">{</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="mi">.4em</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">transform</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.nav__item-toggle</span> <span class="p">{</span>
+  <span class="nc">.nav__toggle</span> <span class="p">{</span>
+    <span class="k">&amp;</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="nc">.nav__arrow</span><span class="nd">::before</span> <span class="p">{</span>
+      <span class="nl">content</span><span class="p">:</span> <span class="s2">"▼"</span><span class="p">;</span> <span class="cm">/* 펼친 상태 */</span>
+    <span class="p">}</span>
+    <span class="k">&amp;</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="nc">.nav__arrow</span><span class="nd">::before</span> <span class="p">{</span>
+      <span class="nl">content</span><span class="p">:</span> <span class="s2">"▶"</span><span class="p">;</span> <span class="cm">/* 접힌 상태 */</span>
+    <span class="p">}</span>
+    <span class="k">&amp;</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="o">+</span> <span class="nc">.nav__subitems</span> <span class="p">{</span>
+      <span class="nl">max-height</span><span class="p">:</span> <span class="m">1000px</span><span class="p">;</span>
+      <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+      <span class="nl">transition</span><span class="p">:</span> <span class="n">max-height</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">opacity</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nb">ease</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.nav__subitems</span> <span class="p">{</span>
+  <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">padding-left</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25em</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5em</span><span class="p">;</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+  <span class="nl">max-height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="n">max-height</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">opacity</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nb">ease</span><span class="p">;</span>
+
+  <span class="nt">li</span> <span class="p">{</span>
+    <span class="nt">a</span><span class="nc">.nav__item</span> <span class="p">{</span>
+      <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-4</span><span class="p">;</span>
+      <span class="nl">transition</span><span class="p">:</span> <span class="nb">color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">padding-left</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <h5 id="수정해야-할-부분">수정해야 할 부분</h5>
 
 <p>기존 코드:</p>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"checkbox"</span><span class="o">],</span>
-  <span class="nt">label</span> <span class="p">{</span>
-    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-  <span class="p">}</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"checkbox"</span><span class="o">],</span>
+<span class="nt">label</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p>수정 코드:</p>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"checkbox"</span><span class="o">]</span> <span class="p">{</span>
-    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-  <span class="p">}</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"checkbox"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <h5 id="_navigationscss-전체-코드">_navigation.scss 전체 코드</h5>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-fj1obr', this)" data-label="전체 코드 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-a4z94', this)" data-label="전체 코드 보기">
   </div>
-  <div id="toggle-fj1obr" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-a4z94" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* ==========================================================================
    NAVIGATION
@@ -3153,8 +3156,7 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
     <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nv">$border-color</span><span class="p">;</span>
     <span class="nl">border-radius</span><span class="p">:</span> <span class="nv">$border-radius</span><span class="p">;</span>
     <span class="nl">background</span><span class="p">:</span> <span class="nv">$background-color</span><span class="p">;</span>
-    <span class="na">-webkit-box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">2px</span> <span class="m">4px</span> <span class="m">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="m">0</span><span class="mi">.16</span><span class="p">)</span><span class="o">,</span>
-      <span class="m">0</span> <span class="m">2px</span> <span class="m">10px</span> <span class="m">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="m">0</span><span class="mi">.12</span><span class="p">);</span>
+    <span class="na">-webkit-box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">2px</span> <span class="m">4px</span> <span class="m">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="m">0</span><span class="mi">.16</span><span class="p">)</span><span class="o">,</span> <span class="m">0</span> <span class="m">2px</span> <span class="m">10px</span> <span class="m">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="m">0</span><span class="mi">.12</span><span class="p">);</span>
     <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">2px</span> <span class="m">4px</span> <span class="m">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="m">0</span><span class="mi">.16</span><span class="p">)</span><span class="o">,</span> <span class="m">0</span> <span class="m">2px</span> <span class="m">10px</span> <span class="m">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mh">#000</span><span class="o">,</span> <span class="m">0</span><span class="mi">.12</span><span class="p">);</span>
 
     <span class="k">&amp;</span><span class="nc">.hidden</span> <span class="p">{</span>
@@ -3323,7 +3325,7 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
 
 <span class="nc">.nav__list</span> <span class="nc">.nav__items</span> <span class="p">{</span>
   <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.0rem</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
 
   <span class="nt">a</span> <span class="p">{</span>
     <span class="nl">color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
@@ -3381,60 +3383,59 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
    Sidebar Navigation toggle
    =============================== */</span>
 
-   <span class="nc">.nav__subtitle</span> <span class="p">{</span>
-    <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
-    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
-    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25em</span><span class="p">;</span>
-    <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-5</span><span class="p">;</span>
-    <span class="nl">color</span><span class="p">:</span> <span class="mh">#ccc</span><span class="p">;</span>
-  
-    <span class="nc">.nav__arrow</span> <span class="p">{</span>
-      <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="mi">.4em</span><span class="p">;</span>
-      <span class="nl">transition</span><span class="p">:</span> <span class="n">transform</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  
-  <span class="nc">.nav__item-toggle</span> <span class="p">{</span>
-    <span class="nc">.nav__toggle</span> <span class="p">{</span>
-      <span class="k">&amp;</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="nc">.nav__arrow</span><span class="nd">::before</span> <span class="p">{</span>
-        <span class="nl">content</span><span class="p">:</span> <span class="s2">"▼"</span><span class="p">;</span> <span class="cm">/* 펼친 상태 */</span>
-      <span class="p">}</span>
-      <span class="k">&amp;</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="nc">.nav__arrow</span><span class="nd">::before</span> <span class="p">{</span>
-        <span class="nl">content</span><span class="p">:</span> <span class="s2">"▶"</span><span class="p">;</span> <span class="cm">/* 접힌 상태 */</span>
-      <span class="p">}</span>
-      <span class="k">&amp;</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="o">+</span> <span class="nc">.nav__subitems</span> <span class="p">{</span>
-        <span class="nl">max-height</span><span class="p">:</span> <span class="m">1000px</span><span class="p">;</span>
-        <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
-        <span class="nl">transition</span><span class="p">:</span> <span class="n">max-height</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">opacity</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nb">ease</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  
-  <span class="nc">.nav__subitems</span> <span class="p">{</span>
-    <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-    <span class="nl">padding-left</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25em</span><span class="p">;</span>
-    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5em</span><span class="p">;</span>
-    <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
-    <span class="nl">max-height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="nl">transition</span><span class="p">:</span> <span class="n">max-height</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">opacity</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nb">ease</span><span class="p">;</span>
-  
-    <span class="nt">li</span> <span class="p">{</span>
+<span class="nc">.nav__subtitle</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25em</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-5</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="mh">#ccc</span><span class="p">;</span>
 
-      <span class="nt">a</span><span class="nc">.nav__item</span> <span class="p">{</span>
-        <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
-        <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-4</span><span class="p">;</span>
-        <span class="nl">transition</span><span class="p">:</span> <span class="nb">color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">padding-left</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span> 
-      <span class="p">}</span>
+  <span class="nc">.nav__arrow</span> <span class="p">{</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="mi">.4em</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">transform</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.nav__item-toggle</span> <span class="p">{</span>
+  <span class="nc">.nav__toggle</span> <span class="p">{</span>
+    <span class="k">&amp;</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="nc">.nav__arrow</span><span class="nd">::before</span> <span class="p">{</span>
+      <span class="nl">content</span><span class="p">:</span> <span class="s2">"▼"</span><span class="p">;</span> <span class="cm">/* 펼친 상태 */</span>
+    <span class="p">}</span>
+    <span class="k">&amp;</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="nc">.nav__arrow</span><span class="nd">::before</span> <span class="p">{</span>
+      <span class="nl">content</span><span class="p">:</span> <span class="s2">"▶"</span><span class="p">;</span> <span class="cm">/* 접힌 상태 */</span>
+    <span class="p">}</span>
+    <span class="k">&amp;</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.nav__subtitle</span> <span class="o">+</span> <span class="nc">.nav__subitems</span> <span class="p">{</span>
+      <span class="nl">max-height</span><span class="p">:</span> <span class="m">1000px</span><span class="p">;</span>
+      <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+      <span class="nl">transition</span><span class="p">:</span> <span class="n">max-height</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">opacity</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nb">ease</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
-  
-  <span class="nc">.count</span> <span class="p">{</span>
-    <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
-    <span class="nl">color</span><span class="p">:</span> <span class="mh">#888</span><span class="p">;</span>
-    <span class="nl">margin-left</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.nav__subitems</span> <span class="p">{</span>
+  <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">padding-left</span><span class="p">:</span> <span class="m">0</span><span class="mi">.25em</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5em</span><span class="p">;</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+  <span class="nl">max-height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="n">max-height</span> <span class="m">0</span><span class="mi">.4s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">opacity</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nb">ease</span><span class="p">;</span>
+
+  <span class="nt">li</span> <span class="p">{</span>
+    <span class="nt">a</span><span class="nc">.nav__item</span> <span class="p">{</span>
+      <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-4</span><span class="p">;</span>
+      <span class="nl">transition</span><span class="p">:</span> <span class="nb">color</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="o">,</span> <span class="n">padding-left</span> <span class="m">0</span><span class="mi">.2s</span> <span class="nb">ease</span><span class="p">;</span>
+    <span class="p">}</span>
   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.count</span> <span class="p">{</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="mh">#888</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
 
 <span class="cm">/*
      Table of contents navigation
@@ -3520,5 +3521,4 @@ markdown형식에서 liquid tag으로 바꾼 뒤, image를 불러오는 작업�
 
 <blockquote>
   <p>스타일을 바꾸고 싶다면, <code class="language-plaintext highlighter-rouge">_navigation.scss</code> 을 수정하도록 하자!</p>
-
 </blockquote>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHubBlog" /><category term="Liquid" /><category term="sidebar" /><category term="카테고리 설정" /><category term="Jekyll 커스터마이징" /><category term="navigation" /><category term="SCSS" /><summary type="html"><![CDATA[GitHub 블로그에서 Liquid와 Sass를 이용해 카테고리 목록을 트리 형태(상위/하위)로 구성하고, sidebar.html, sidebar-items.html, _navigation.scss를 수정하는 방법을 단계별로 설명합니다.]]></summary></entry></feed>

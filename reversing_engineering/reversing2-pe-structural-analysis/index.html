@@ -493,11 +493,8 @@
 <p><strong>추가 설명: 옛날 코드 조각</strong></p>
 
 <ul>
-  <li>
-    <p>DOS에서는 실행이 안 되니까 이런 메시지가 나와:</p>
-
-    <p><code class="language-plaintext highlighter-rouge">"This program cannot be run in DOS mode"</code></p>
-  </li>
+  <li>DOS에서는 실행이 안 되니까 이런 메시지가 나와:
+<code class="language-plaintext highlighter-rouge">"This program cannot be run in DOS mode"</code></li>
 </ul>
 
 <p>이건 사실 지금은 의미 없고 그냥 관습적으로 들어있음.</p>
@@ -698,7 +695,7 @@
   <li><code class="language-plaintext highlighter-rouge">Characteristics</code>: 코드/데이터/읽기쓰기 속성</li>
 </ul>
 
-<p><strong>추가 설명:</strong> 
+<p><strong>추가 설명:</strong>
 이제부터는 <strong>진짜 컨텐츠</strong>를 설명함.</p>
 
 <ul>
@@ -891,10 +888,8 @@
       <li>해당 섹션의 <code class="language-plaintext highlighter-rouge">VirtualAddress ≤ RVA &lt; VirtualAddress + VirtualSize</code>인지 검사</li>
     </ul>
   </li>
-  <li>
-    <p>맞는 섹션이 있다면:</p>
-
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">FileOffset</span> <span class="o">=</span> <span class="n">RVA</span> <span class="o">-</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">PointerToRawData</span>
+  <li>맞는 섹션이 있다면:
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FileOffset</span> <span class="o">=</span> <span class="n">RVA</span> <span class="o">-</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">PointerToRawData</span>
 </code></pre></div>    </div>
   </li>
   <li>못 찾으면 → 잘못된 RVA일 가능성</li>

@@ -451,7 +451,10 @@
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.search == true %}
 <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"search__toggle"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"visually-hidden"</span><span class="nt">&gt;</span>{{ site.data.ui-text[site.locale].search_label | default: "Toggle search" }}<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"visually-hidden"</span>
+    <span class="nt">&gt;</span>{{ site.data.ui-text[site.locale].search_label | default: "Toggle search"
+    }}<span class="nt">&lt;/span</span>
+  <span class="nt">&gt;</span>
   <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span>
 <span class="nt">&lt;/button&gt;</span>
 {% endif %}
@@ -465,35 +468,35 @@
 
 <p>해당 코드를 <code class="language-plaintext highlighter-rouge">\_include\sidebar.html</code> 에 넣어 줍니다.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar__search"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"sidebar-search"</span> <span class="na">onsubmit=</span><span class="s">"return SidebarSearchHandler();"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"search-type"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"tag"</span><span class="nt">&gt;</span>Tag<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"both"</span><span class="nt">&gt;</span>Title + Tag<span class="nt">&lt;/option&gt;</span>
-          <span class="nt">&lt;/select&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"search-query"</span> <span class="na">placeholder=</span><span class="s">"Search input"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span> Search<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/form&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar__search"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"sidebar-search"</span> <span class="na">onsubmit=</span><span class="s">"return SidebarSearchHandler();"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"search-type"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"tag"</span><span class="nt">&gt;</span>Tag<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"both"</span><span class="nt">&gt;</span>Title + Tag<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;/select&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"search-query"</span> <span class="na">placeholder=</span><span class="s">"Search input"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span> Search<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
 <hr />
 
-<p>해당 코드를 넣을 때, <code class="language-plaintext highlighter-rouge">&lt;nav class="nav__list"&gt;</code>  … <code class="language-plaintext highlighter-rouge">&lt;/nav&gt;</code>  해당 nav 태그 안에 넣어 주도록 합시다.</p>
+<p>해당 코드를 넣을 때, <code class="language-plaintext highlighter-rouge">&lt;nav class="nav__list"&gt;</code> … <code class="language-plaintext highlighter-rouge">&lt;/nav&gt;</code> 해당 nav 태그 안에 넣어 주도록 합시다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code>  해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code> 해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-6soms5', this)" data-label="sidebar.html 전체 코드">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-q2xayu', this)" data-label="sidebar.html 전체 코드">
   </div>
-  <div id="toggle-6soms5" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-q2xayu" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
@@ -514,10 +517,10 @@
   <span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/li&gt;</span>
 {% assign category_nav = site.data.navigation.main | where: "title","Category" | first %}
- {% if category_nav %} 
+ {% if category_nav %}
  {% include sidebar-items.html items=category_nav.children %}
  {% endif %}
- 
+
  <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"nav-divider"</span> <span class="nt">/&gt;&lt;/li&gt;</span>
 
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar__search"</span><span class="nt">&gt;</span>
@@ -555,7 +558,7 @@
   <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-6</span><span class="p">;</span>
   <span class="nl">margin-top</span><span class="p">:</span> <span class="m">1em</span><span class="p">;</span>
   <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">top</span><span class="p">;</span>
-  
+
   <span class="k">@include</span> <span class="nd">breakpoint</span><span class="p">(</span><span class="nv">$x-large</span><span class="p">)</span> <span class="p">{</span>
     <span class="nl">width</span><span class="p">:</span> <span class="n">initial</span><span class="p">;</span>
     <span class="na">margin-inline-end</span><span class="p">:</span> <span class="n">initial</span><span class="p">;</span>
@@ -645,7 +648,7 @@
 
 <p><code class="language-plaintext highlighter-rouge">\_pages\</code> 경로에 <code class="language-plaintext highlighter-rouge">search.md</code> 새로 파일을 만들기 해줍니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">search.md</code>  코드</p>
+<p><code class="language-plaintext highlighter-rouge">search.md</code> 코드</p>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">search</span><span class="nv"> </span><span class="s">result"</span>
@@ -662,22 +665,22 @@
 
 <h3 id="2-4-serachjs-구현하기">2-4. serach.js 구현하기</h3>
 
-<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\</code>  경로에 <code class="language-plaintext highlighter-rouge">search.js</code> 파일을 새로 만들기 합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\</code> 경로에 <code class="language-plaintext highlighter-rouge">search.js</code> 파일을 새로 만들기 합니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\search.js</code>  코드</p>
+<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\search.js</code> 코드</p>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(function () {
-  const params = new URLSearchParams(window.location.search);
-  const query = params.get("q");
+const params = new URLSearchParams(window.location.search);
+const query = params.get("q");
 
-  const searchInput = document.getElementById("search");
-  const resultsContainer = document.getElementById("results");
+const searchInput = document.getElementById("search");
+const resultsContainer = document.getElementById("results");
 
-  if (!searchInput || !resultsContainer) return;
-  if (typeof window.store === "undefined") return;
+if (!searchInput || !resultsContainer) return;
+if (typeof window.store === "undefined") return;
 
-  function renderResults(results, query) {
-    resultsContainer.innerHTML = "";<span class="sb">
+function renderResults(results, query) {
+resultsContainer.innerHTML = "";<span class="sb">
 
     if (results.length === 0) {
       resultsContainer.innerHTML = `&lt;p&gt;&lt;em&gt;"${query}"&lt;/em&gt;에 대한 결과가 없습니다.&lt;/p&gt;`;
@@ -702,11 +705,12 @@
       .join("");
 
     resultsContainer.innerHTML = html;
-</span>  }
 
-  function performSearch(query) {
-    const results = [];
-    const lower = query.toLowerCase();<span class="sb">
+</span>}
+
+function performSearch(query) {
+const results = [];
+const lower = query.toLowerCase();<span class="sb">
 
     for (const post of window.store) {
       const title = post.title?.toLowerCase() ?? "";
@@ -736,16 +740,17 @@
     }
 
     renderResults(results, query);
-</span>  }
 
-  if (query) {
-    searchInput.value = query;
-    performSearch(query);
-  }
+</span>}
 
-  searchInput.addEventListener("input", function (e) {
-    performSearch(e.target.value);
-  });
+if (query) {
+searchInput.value = query;
+performSearch(query);
+}
+
+searchInput.addEventListener("input", function (e) {
+performSearch(e.target.value);
+});
 })();
 </code></pre></div></div>
 
@@ -764,11 +769,11 @@
 
 <p><code class="language-plaintext highlighter-rouge">\_layouts\default.html</code> 코드 추가:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c">&lt;!-- lunr search script --&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/sidebar-search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr-store.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- lunr search script --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/sidebar-search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr-store.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
 <hr />
@@ -806,10 +811,10 @@
         {% include_cached footer.html %}
       <span class="nt">&lt;/footer&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-    
-    <span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span> 
-    {% include custom_code-block_custom.html %} 
-    {%include custom_toggle-script.html %} 
+
+    <span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span>
+    {% include custom_code-block_custom.html %}
+    {%include custom_toggle-script.html %}
     {% include custom_quiz-form.html %}
 
     <span class="c">&lt;!-- lunr search script --&gt;</span>
@@ -829,16 +834,16 @@
 
 <p><code class="language-plaintext highlighter-rouge">custom_script.html</code> 코드:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span> 
-{% include custom_code-block_custom.html %} 
-{%include custom_toggle-script.html %} 
-{% include custom_quiz-form.html %}
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span>
+{% include custom_code-block_custom.html %} {%include custom_toggle-script.html
+%} {% include custom_quiz-form.html %}
 
 <span class="c">&lt;!-- lunr search script --&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/sidebar-search.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/lunr.min.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/lunr-store.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/search.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
 </code></pre></div></div>
 
 <hr />
@@ -854,14 +859,14 @@
 
 <p><code class="language-plaintext highlighter-rouge">\_config.yml</code> 에서 <code class="language-plaintext highlighter-rouge">defaults:</code> 속성에서 수정:</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">search</span><span class="pi">:</span> <span class="kc">false</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
+  <span class="na">values</span><span class="pi">:</span>
+    <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">search</span><span class="pi">:</span> <span class="kc">false</span>
+    <span class="na">sidebar</span><span class="pi">:</span>
+      <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
 </code></pre></div></div>
 
 <hr />
