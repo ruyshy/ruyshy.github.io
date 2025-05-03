@@ -8,7 +8,6 @@ tags: [pe파일, executable format, windows 구조, 리버싱, 바이너리 분�
 Windows 실행파일이 어떻게 구성되어 있고, 어떤 순서로 메모리에 로딩되는지 궁금하셨나요?  
 이 글에서는 PE 구조의 전반적인 구성과 주요 필드들의 역할, RVA 변환 방식까지 하나씩 정리해봅니다.
 
-
 ## PE 파일이란?
 
 **PE 파일**은 쉽게 말해 **Windows에서 실행되는 모든 실행파일(EXE), 라이브러리(DLL)**의 **설계도**.
@@ -61,7 +60,7 @@ Windows에서 실행되는 .exe, .dll파일은 전부 이 포맷을 따르기 �
 
 - Signature: `MZ` (0x5A4D)
 - 주요 필드:
-    - `e_lfanew`: PE 헤더의 오프셋 (PE Signature 위치)
+  - `e_lfanew`: PE 헤더의 오프셋 (PE Signature 위치)
 
 **용도:** 오래된 MS-DOS 호환을 위한 Stub 실행 코드 포함
 
@@ -82,9 +81,7 @@ Windows에서 실행되는 .exe, .dll파일은 전부 이 포맷을 따르기 �
 **추가 설명: 옛날 코드 조각**
 
 - DOS에서는 실행이 안 되니까 이런 메시지가 나와:
-    
-    `"This program cannot be run in DOS mode"`
-    
+  `"This program cannot be run in DOS mode"`
 
 이건 사실 지금은 의미 없고 그냥 관습적으로 들어있음.
 
@@ -145,16 +142,16 @@ Windows에서 실행되는 .exe, .dll파일은 전부 이 포맷을 따르기 �
 
 총 16개 엔트리:
 
-| 인덱스 | 이름 | 설명 |
-| --- | --- | --- |
-| 0 | Export Table | DLL 내보내기 함수 테이블 |
-| 1 | Import Table | 외부 DLL 로딩 함수 테이블 |
-| 2 | Resource Table | 아이콘, 다이얼로그, 문자열 등 |
-| 3 | Exception Table | SEH 정보 (x64) |
-| 4 | Certificate Table | 디지털 서명 |
-| 5 | Base Relocation | 재배치 정보 |
-| 6 | Debug Directory | 디버그 심볼 정보 |
-| 7~15 | TLS, Load Config 등 | Thread Local Storage 등 |
+| 인덱스 | 이름                | 설명                          |
+| ------ | ------------------- | ----------------------------- |
+| 0      | Export Table        | DLL 내보내기 함수 테이블      |
+| 1      | Import Table        | 외부 DLL 로딩 함수 테이블     |
+| 2      | Resource Table      | 아이콘, 다이얼로그, 문자열 등 |
+| 3      | Exception Table     | SEH 정보 (x64)                |
+| 4      | Certificate Table   | 디지털 서명                   |
+| 5      | Base Relocation     | 재배치 정보                   |
+| 6      | Debug Directory     | 디버그 심볼 정보              |
+| 7~15   | TLS, Load Config 등 | Thread Local Storage 등       |
 
 **추가 설명: 필수**
 
@@ -162,13 +159,13 @@ Windows에서 실행되는 .exe, .dll파일은 전부 이 포맷을 따르기 �
 
 여기엔 이런 것들이 있다:
 
-| 항목 | 설명 |
-| --- | --- |
-| EntryPoint | 실행 시작 주소 (`main()` 같은 곳) |
-| ImageBase | 이 파일이 메모리에 올라갈 기본 주소 (예: 0x400000) |
-| SizeOfImage | 전체 프로그램이 차지할 메모리 크기 |
-| Subsystem | GUI인지, 콘솔인지 등 |
-| DLL 필요 여부 | Import Table 참고해서 DLL 호출 |
+| 항목          | 설명                                               |
+| ------------- | -------------------------------------------------- |
+| EntryPoint    | 실행 시작 주소 (`main()` 같은 곳)                  |
+| ImageBase     | 이 파일이 메모리에 올라갈 기본 주소 (예: 0x400000) |
+| SizeOfImage   | 전체 프로그램이 차지할 메모리 크기                 |
+| Subsystem     | GUI인지, 콘솔인지 등                               |
+| DLL 필요 여부 | Import Table 참고해서 DLL 호출                     |
 
 **추가 설명: Data Directories (길잡이)**
 
@@ -202,7 +199,7 @@ Windows에서 실행되는 .exe, .dll파일은 전부 이 포맷을 따르기 �
 - `PointerToRawData`: 실제 파일 오프셋
 - `Characteristics`: 코드/데이터/읽기쓰기 속성
 
-**추가 설명:** 
+**추가 설명:**
 이제부터는 **진짜 컨텐츠**를 설명함.
 
 - `.text` : 코드가 담긴 부분 (컴파일된 함수들)
@@ -310,12 +307,12 @@ PE 파일은 **파일에서는 FileAlignment 단위로 정렬**되고, **메모�
 
 #### 예시
 
-| 항목 | 값 |
-| --- | --- |
-| FileAlignment | 0x200 |
+| 항목             | 값     |
+| ---------------- | ------ |
+| FileAlignment    | 0x200  |
 | SectionAlignment | 0x1000 |
-| `.text` Size | 0x123 |
-| `.data` Size | 0x430 |
+| `.text` Size     | 0x123  |
+| `.data` Size     | 0x430  |
 
 → 디스크에서는 0x200 단위로 반올림 → `.text`는 0x200, `.data`는 0x600
 
@@ -325,10 +322,10 @@ PE 파일은 **파일에서는 FileAlignment 단위로 정렬**되고, **메모�
 
 PE에서는 주소가 두 가지로 표현:
 
-| 종류 | 설명 |
-| --- | --- |
+| 종류                               | 설명                                                                    |
+| ---------------------------------- | ----------------------------------------------------------------------- |
 | **RVA** (Relative Virtual Address) | 베이스 주소 기준 상대 가상주소 (예: EntryPoint 등 대부분 이걸로 표시됨) |
-| **File Offset** | 실제 파일 내 위치 (디스크 오프셋) |
+| **File Offset**                    | 실제 파일 내 위치 (디스크 오프셋)                                       |
 
 #### 변환 공식
 
@@ -339,13 +336,11 @@ PE에서는 주소가 두 가지로 표현:
 #### 변환 순서 정리
 
 - 모든 섹션 헤더를 순회하며:
-    - 해당 섹션의 `VirtualAddress ≤ RVA < VirtualAddress + VirtualSize`인지 검사
+  - 해당 섹션의 `VirtualAddress ≤ RVA < VirtualAddress + VirtualSize`인지 검사
 - 맞는 섹션이 있다면:
-    
-    ```cpp
-    FileOffset = RVA - VirtualAddress + PointerToRawData
-    ```
-    
+  ```cpp
+  FileOffset = RVA - VirtualAddress + PointerToRawData
+  ```
 - 못 찾으면 → 잘못된 RVA일 가능성
 
 #### 예제
@@ -383,13 +378,13 @@ DWORD RvaToOffset(DWORD rva, PIMAGE_NT_HEADERS nt, PIMAGE_SECTION_HEADER section
 
 #### 참고 구조체 Alignment
 
-| 구조체 | Alignment 정보 |
-| --- | --- |
-| IMAGE_DOS_HEADER | 고정 위치 (0x0) |
-| IMAGE_NT_HEADERS | `e_lfanew`부터 |
-| IMAGE_FILE_HEADER | 20 bytes |
-| IMAGE_OPTIONAL_HEADER | 224 bytes (PE32), 240 bytes (PE32+) |
-| IMAGE_SECTION_HEADER | 40 bytes/섹션 |
-| IMAGE_IMPORT_DESCRIPTOR | 20 bytes |
-| IMAGE_EXPORT_DIRECTORY | 40 bytes |
-| IMAGE_DATA_DIRECTORY | 8 bytes × 16개 |
+| 구조체                  | Alignment 정보                      |
+| ----------------------- | ----------------------------------- |
+| IMAGE_DOS_HEADER        | 고정 위치 (0x0)                     |
+| IMAGE_NT_HEADERS        | `e_lfanew`부터                      |
+| IMAGE_FILE_HEADER       | 20 bytes                            |
+| IMAGE_OPTIONAL_HEADER   | 224 bytes (PE32), 240 bytes (PE32+) |
+| IMAGE_SECTION_HEADER    | 40 bytes/섹션                       |
+| IMAGE_IMPORT_DESCRIPTOR | 20 bytes                            |
+| IMAGE_EXPORT_DIRECTORY  | 40 bytes                            |
+| IMAGE_DATA_DIRECTORY    | 8 bytes × 16개                      |
