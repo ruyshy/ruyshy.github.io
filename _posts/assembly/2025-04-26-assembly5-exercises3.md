@@ -2,11 +2,20 @@
 title: "Assembly 조건 분기와 스택프레임 연습문제 풀이3 - NASM 실습 퀴즈"
 description: "Assembly NASM 기반으로 조건 분기 명령어(jmp, je, jne, jl, jg)와 함수 호출 구조(call, ret) 및 스택프레임 접근을 객관식, 단답형 퀴즈로 복습합니다."
 date: 2025-04-26
-tags: [assembly, nasm, 조건 분기, call ret 구조, 스택프레임, x64, reversing, 어셈블리어]
+tags:
+  [
+    assembly,
+    nasm,
+    조건 분기,
+    call ret 구조,
+    스택프레임,
+    x64,
+    reversing,
+    어셈블리어,
+  ]
 ---
 
 `NASM` 어셈블리어에서 조건 분기(`jmp`, `je`, `jne`, `jl`, `jg`), 함수 호출 구조(`call`, `ret`), 스택프레임과 지역 변수 접근 방식을 복습하는 퀴즈입니다. 기본 명령어 흐름을 명확히 이해하는 데 도움이 됩니다.
-
 
 {% quiz "
 `1.` `cmp rax, rbx` 실행 후 `je label` 명령이 의미하는 것은?
