@@ -8,13 +8,13 @@ tags: [Ghidra, 리버싱, 리버스 엔지니어링, 디컴파일, 정적분석,
 Ghidra는 NSA에서 만든 무료 리버스 엔지니어링 도구로, 실행 파일을 디컴파일하고 분석할 수 있는 강력한 기능을 제공합니다.  
 이 글은 설치부터 실습까지 Ghidra 입문자가 따라 하기 쉽게 정리된 단계별 사용 가이드입니다.
 
-# 🐉 Ghidra 입문자를 위한 완전 쉬운 매뉴얼
+# Ghidra 입문자를 위한 완전 쉬운 매뉴얼
 
 > 이 매뉴얼은 Ghidra를 처음 접할 사람도 바로 분석을 시작할 수 있도록 구성되어있습니다. 설치부터 분석 실습까지 단계별로 설명합니다.
 
 ---
 
-## 🧬 Ghidra란?
+## Ghidra란?
 
 - 미국 NSA에서 만들어온 **무료 리버스 엔지니어링 도구**
 - 실행 파일(.exe, .dll 등)을 열어서 내부 구조를 분석
@@ -22,21 +22,21 @@ Ghidra는 NSA에서 만든 무료 리버스 엔지니어링 도구로, 실행 �
 
 ---
 
-## 💻 1단계: 설치 방법
+## 1단계: 설치 방법
 
-### ✅ Java 설치
+### Java 설치
 
 - Ghidra는 Java 기반이며 Java 17 이상 필요
 - 설치 링크: [https://adoptium.net](https://adoptium.net/) (Temurin 17 추천)
 
-### ✅ Ghidra 다운로드
+### Ghidra 다운로드
 
 - 공식 홈페이지: [https://ghidra-sre.org/](https://ghidra-sre.org/)
 - 압축 해제 후 `ghidraRun` 실행
 
 ---
 
-## 📁 2단계: 프로젝트 만들기
+## 2단계: 프로젝트 만들기
 
 1. Ghidra를 실행하면 초기 시작 화면이 나옵니다.
 2. 상단 메뉴에서 `File → New Project`를 클릭합니다.
@@ -45,13 +45,13 @@ Ghidra는 NSA에서 만든 무료 리버스 엔지니어링 도구로, 실행 �
 5. 새 프로젝트 창이 열리면, 분석할 실행 파일(`.exe` 등)을 Ghidra 창으로 끌어오거나 상단 메뉴의 `File → Import File...`을 통해 불러옵니다.
 6. 파일을 불러오면 자동으로 `Import File` 창이 뜹니다. 포맷이 잘 인식되었는지 확인하고 OK를 누릅니다.
 7. 이어서 `Auto-Analysis` 창이 자동으로 뜨는데, 기본 설정을 그대로 둔 채 `Analyze` 버튼을 누르면 분석이 시작됩니다.
-   - ✔️ Pre Analysis: PE 구조, 섹션 구조 등 초기 정보 수집
-   - ✔️ Post Analysis: 코드 분석, 함수 감지, 문자열 참조 연결 등 자동 처리
+   - Pre Analysis: PE 구조, 섹션 구조 등 초기 정보 수집
+   - Post Analysis: 코드 분석, 함수 감지, 문자열 참조 연결 등 자동 처리
 8. 분석이 끝나면 `CodeBrowser` 창이 활성화되고, 이제 분석을 시작할 수 있습니다.
 
 ---
 
-## 🤖 3단계: 인터페이스 이해
+## 3단계: 인터페이스 이해
 
 | 위치   | 창 이름     | 설명                           |
 | ------ | ----------- | ------------------------------ |
@@ -62,7 +62,7 @@ Ghidra는 NSA에서 만든 무료 리버스 엔지니어링 도구로, 실행 �
 
 ---
 
-## 🔍 4단계: 문자열 분석하기
+## 4단계: 문자열 분석하기
 
 ### 문자열 찾는 방법
 
@@ -86,7 +86,7 @@ Ghidra는 NSA에서 만든 무료 리버스 엔지니어링 도구로, 실행 �
 
 ---
 
-## 🧠 5단계: 함수 흐름 따라가기
+## 5단계: 함수 흐름 따라가기
 
 ### Decompile 창에서:
 
@@ -105,7 +105,7 @@ Ghidra는 NSA에서 만든 무료 리버스 엔지니어링 도구로, 실행 �
 
 ---
 
-## 🔧 6단계: MessageBox, printf 추적
+## 6단계: MessageBox, printf 추적
 
 문자열이 없거나, 출력 문자열이 암호화되어 있어 문자열 탭에서 확인할 수 없는 경우에는 직접 함수 호출을 추적해야 합니다.
 
@@ -137,7 +137,7 @@ if (strcmp(user_input, "correct") == 0) {
 
 ---
 
-## ⌨️ 7단계: 주요 단축키 (출처: [Ghidra CheatSheet](https://ghidra-sre.org/CheatSheet.html))
+## 7단계: 주요 단축키 (출처: [Ghidra CheatSheet](https://ghidra-sre.org/CheatSheet.html))
 
 | 단축키             | 기능                                        |
 | ------------------ | ------------------------------------------- |
@@ -159,7 +159,7 @@ if (strcmp(user_input, "correct") == 0) {
 
 ---
 
-## 📚 추천 학습 자료
+## 추천 학습 자료
 
 - [Ghidra 공식 문서](https://ghidra-sre.org/Documentation.html)
 - [Dreamhack 입문 강의](https://learn.dreamhack.io/389)
