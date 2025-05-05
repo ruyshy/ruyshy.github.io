@@ -1,0 +1,24 @@
+.post-sort-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid #444;
+    padding-top: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  
+    label {  
+      cursor: default;
+      margin-right: 0.25rem;
+      font-weight: 500;
+      font-size: $type-size-5;
+      color: $base07;
+    }
+  
+    select {
+      padding: 0.3rem 0.6rem;
+      font-size: $type-size-6;
+      color: $base00;
+    }
+  }
+  

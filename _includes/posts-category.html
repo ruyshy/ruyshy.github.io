@@ -1,4 +1,27 @@
-{% assign posts = site.categories[include.taxonomy] | where_exp: "post", "post.hidden != true" %}
+<!-- {% assign posts = site.categories[include.taxonomy] | where_exp: "post", "post.hidden != true" %}
 {%- for post in posts -%}
   {% include archive-single.html %}
-{%- endfor -%}
+{%- endfor -%} -->
+
+{% assign raw_posts = site.categories[include.taxonomy] %}
+{% if raw_posts %}
+  {% assign posts = raw_posts | sort: 'date' | reverse %}
+
+  <div class="post-sort-bar">
+    <label for="sort-select">정렬 순서:</label>
+    <select id="sort-select">
+      <option value="desc" selected>최신순</option>
+      <option value="asc">과거순</option>
+    </select>
+  </div>
+
+  <div id="post-list" class="entries-{{ include.type }}">
+    {% for post in posts %}
+      <div class="post-entry" data-date="{{ post.date | date: '%Y-%m-%d' }}">
+        {% include archive-single.html type=include.type %}
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p><strong>{{ include.taxonomy }}</strong> 카테고리에 해당하는 포스트가 없습니다.</p>
+{% endif %}

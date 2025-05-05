@@ -8,3 +8,7 @@
 <script src="{{ '/assets/js/lunr/lunr.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/lunr/lunr-store.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/lunr/search.js' | relative_url }}"></script>
+
+{% if page.layout == "category" %}
+  <script src="{{ '/assets/js/post-sort.js' | relative_url }}"></script>
+{% endif %}
