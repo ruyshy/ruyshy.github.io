@@ -9,6 +9,6 @@ function SidebarSearchHandler() {
   else if (type === "tag") finalQuery = `tags:${query}`;
   else finalQuery = query;
 
-  window.location.href = `/_search/?q=${encodeURIComponent(finalQuery)}`;
+  window.location.href = `/search/?q=${encodeURIComponent(finalQuery)}`;
   return false;
 }
