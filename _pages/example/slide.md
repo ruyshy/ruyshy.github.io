@@ -2,7 +2,6 @@
 layout: slide
 title: "프레젠테이션 슬라이드"
 data: 2025-04-24
-permalink: /example/slide/
 ---
 
 <section>
