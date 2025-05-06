@@ -1,0 +1,888 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GitHub Blog Google Analytics GA4 연동 가이드 - ruyshy blog</title>
+<meta name="description" content="Jekyll 블로그에서 Google Analytics GA4 측정 ID를 연동하여 방문자 분석 데이터를 수집하는 방법을 설명합니다. minimal-mistakes 테마 설정부터 Search Console 연동까지 단계별 가이드 포함.">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="GitHub Blog Google Analytics GA4 연동 가이드">
+<meta property="og:url" content="https://ruyshy.github.io/blog/2025/04/25/blog16-google-analytics.html">
+
+
+  <meta property="og:description" content="Jekyll 블로그에서 Google Analytics GA4 측정 ID를 연동하여 방문자 분석 데이터를 수집하는 방법을 설명합니다. minimal-mistakes 테마 설정부터 Search Console 연동까지 단계별 가이드 포함.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-04-25T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/blog/2025/04/25/blog16-google-analytics.html">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/tags/"
+                
+                
+              >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >Category</a>
+            </li></ul>
+        <!-- 
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+         -->
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://ruyshy.github.io/">
+        <img src="/assets/images/profile/github_profile_image.jpg" alt="ruyshy" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <li><hr class="nav-divider" /></li>
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+      <li class="nav__title">Category</li>
+      <a
+      href="/categories/"
+      class="nav__item"
+    >
+    ALL <span class="count">(39)</span>
+  </a>
+</li>
+
+  
+  
+<li class="nav__item-toggle">
+  <input
+    type="checkbox"
+    id="toggle-security"
+    class="nav__toggle"
+    hidden
+    checked
+  />
+
+  <label for="toggle-security" class="nav__subtitle">
+    <span class="nav__arrow"></span> Security
+  </label>
+
+  
+  <ul class="nav__subitems">
+     
+<li>
+   
+  <a
+    href="/categories/assembly/"
+    class="nav__item"
+  >
+    Assembly
+    <span class="count">
+      (14)
+    </span>
+  </a>
+</li>
+  
+<li>
+   
+  <a
+    href="/categories/reversing_engineering/"
+    class="nav__item"
+  >
+    Reversing Engineering
+    <span class="count">
+      (6)
+    </span>
+  </a>
+</li>
+ 
+
+  </ul>
+  
+</li>
+
+  
+<li>
+   
+  <a
+    href="/categories/blog/"
+    class="nav__item"
+  >
+    Blog
+    <span class="count">
+      (22)
+    </span>
+  </a>
+</li>
+ 
+
+ 
+ 
+ <li><hr class="nav-divider" /></li>
+
+    <div class="sidebar__search">
+      <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
+        <div class="search-block">
+          <select id="search-type">
+            <option value="title">Title</option>
+            <option value="tag">Tag</option>
+            <option value="both">Title + Tag</option>
+          </select>
+        </div>
+        <div class="search-block">
+          <input type="text" id="search-query" placeholder="Search input" />
+        </div>
+        <div class="search-block">
+          <button type="submit"><i class="fa fa-search"></i> Search</button>
+        </div>
+      </form>
+    </div>
+  </nav>
+</div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="GitHub Blog Google Analytics GA4 연동 가이드">
+    <meta itemprop="description" content="GitHub Pages 기반 Jekyll 블로그에서 방문자 추적을 하고 싶다면, Google Analytics GA4를 연동하는 것이 필수입니다. 이 글에서는 GA4 측정 ID 삽입, minimal-mistakes 테마 설정, 실시간 유입 확인, 그리고 Google Search Console 연동 방법까지 전체 과정을 상세히 다룹니다.">
+    <meta itemprop="datePublished" content="2025-04-25T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/blog/2025/04/25/blog16-google-analytics.html" itemprop="url">GitHub Blog Google Analytics GA4 연동 가이드
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-ga4-속성-만들기">1. GA4 속성 만들기</a></li><li><a href="#2-jekyll-블로그에-코드-삽입">2. Jekyll 블로그에 코드 삽입</a><ul><li><a href="#2-1-코드-수정">2-1. 코드 수정</a><ul><li><a href="#_includesgooglehtml">/_includes/google.html</a></li></ul></li></ul></li><li><a href="#3-잘-동작하는지-확인">3. 잘 동작하는지 확인</a><ul><li><a href="#3-1-직접-테스트-진행하는-방법">3-1. 직접 테스트 진행하는 방법</a></li></ul></li><li><a href="#4-google-search-console-연동">4. Google Search Console 연동</a></li></ul>
+            </nav>
+          </aside>
+        
+        <p>GitHub Pages 기반 <code class="language-plaintext highlighter-rouge">Jekyll</code> 블로그에서 방문자 추적을 하고 싶다면, <code class="language-plaintext highlighter-rouge">Google Analytics GA4</code>를 연동하는 것이 필수입니다. 이 글에서는 <strong>GA4 측정 ID 삽입</strong>, <strong>minimal-mistakes 테마 설정</strong>, <strong>실시간 유입 확인</strong>, 그리고 <strong>Google Search Console 연동 방법</strong>까지 전체 과정을 상세히 다룹니다.</p>
+
+<h2 id="1-ga4-속성-만들기">1. <strong>GA4 속성 만들기</strong></h2>
+
+<ol>
+  <li><a href="https://analytics.google.com/">Google Analytics</a> 접속</li>
+  <li>‘만들기’ → ‘계정 생성’ → ‘속성 만들기’ 진행</li>
+  <li>웹 스트림 URL에 <code class="language-plaintext highlighter-rouge">https://yourname.github.io</code> 입력</li>
+  <li>완료 후 “측정 <code class="language-plaintext highlighter-rouge">ID (G-XXXXXXX)</code>” 확인</li>
+</ol>
+
+<h2 id="2-jekyll-블로그에-코드-삽입"><strong>2. Jekyll 블로그에 코드 삽입</strong></h2>
+
+<p>(1) <code class="language-plaintext highlighter-rouge">_config.yml</code>에 <code class="language-plaintext highlighter-rouge">analytics:</code> 설정 추가</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">provider</span><span class="pi">:</span> <span class="s">google</span>
+<span class="na">google_analytics</span><span class="pi">:</span> <span class="s">G-XXXXXXXXXX</span> <span class="c1"># GA4의 측정 ID</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>주의:</strong> <code class="language-plaintext highlighter-rouge">minimal-mistakes</code> 테마 같은 경우 이 설정을 자동으로 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>에 삽입해줌</p>
+</blockquote>
+
+<h3 id="2-1-코드-수정">2-1. 코드 수정</h3>
+
+<h4 id="_includesgooglehtml">/_includes/google.html</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script
+  </span><span class="na">async</span>
+  <span class="na">src=</span><span class="s">"https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"</span>
+<span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">||</span> <span class="p">[];</span>
+  <span class="kd">function</span> <span class="nf">gtag</span><span class="p">(){</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);}</span>
+  <span class="nf">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">js</span><span class="dl">'</span><span class="p">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">());</span>
+  <span class="nf">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">config</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">G-VGYDK4XE75</span><span class="dl">'</span>
+  
+  <span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>해당 코드를 추가해줍니다.</p>
+
+<p>기존 코드:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">_gaq</span> <span class="o">=</span> <span class="nx">_gaq</span> <span class="o">||</span> <span class="p">[];</span>
+  <span class="nx">_gaq</span><span class="p">.</span><span class="nf">push</span><span class="p">([</span><span class="dl">'</span><span class="s1">_setAccount</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">G-VGYDK4XE75</span><span class="dl">'</span><span class="p">]);</span>
+  
+  <span class="nx">_gaq</span><span class="p">.</span><span class="nf">push</span><span class="p">([</span><span class="dl">'</span><span class="s1">_trackPageview</span><span class="dl">'</span><span class="p">]);</span>
+
+  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">ga</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">script</span><span class="dl">'</span><span class="p">);</span> <span class="nx">ga</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">text/javascript</span><span class="dl">'</span><span class="p">;</span> <span class="nx">ga</span><span class="p">.</span><span class="k">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">ga</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">(</span><span class="dl">'</span><span class="s1">https:</span><span class="dl">'</span> <span class="o">==</span> <span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">https://ssl</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">http://www</span><span class="dl">'</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">.google-analytics.com/ga.js</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementsByTagName</span><span class="p">(</span><span class="dl">'</span><span class="s1">script</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nf">insertBefore</span><span class="p">(</span><span class="nx">ga</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="p">})();</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p><strong>구글 애널리틱스 “구버전 (Universal Analytics, UA)”</strong> 추적 코드
+이런 형태는 <strong>UA-XXXXXXX</strong> 형식의 <code class="language-plaintext highlighter-rouge">ID</code>에서 쓰이던 것입니다.
+2023년 7월 이후로 <strong>완전히 종료된 API</strong> 라서 데이터도 수집이 안된다고 합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">_config.yml</code> 에서 <code class="language-plaintext highlighter-rouge">anonymize_ip:</code> 저는 이 옵션을 사용하지 않기 때문에 위에 코드로 대체 했습니다.</p>
+
+<h2 id="3-잘-동작하는지-확인">3. 잘 동작하는지 확인</h2>
+
+<ul>
+  <li>GA 대시보드의 실시간 탭에서 확인 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">?utm_source=github_test</code> 같은 커스텀 링크로 유입 추적도 가능</li>
+</ul>
+
+<h3 id="3-1-직접-테스트-진행하는-방법">3-1. 직접 테스트 진행하는 방법</h3>
+
+<ol>
+  <li>속성 설정 탭에 <code class="language-plaintext highlighter-rouge">데이터 수집 및 수정</code> → <code class="language-plaintext highlighter-rouge">데이터 스트림</code> → <code class="language-plaintext highlighter-rouge">등록한 스트림 클릭</code></li>
+  <li>해당 속성의 웹 스트림 세부정부가 표시됩니다. 아래로 내려 <code class="language-plaintext highlighter-rouge">Google 태그</code> 탭에서 <code class="language-plaintext highlighter-rouge">태그 설정 구성</code> → <code class="language-plaintext highlighter-rouge">설치 안내</code> → <code class="language-plaintext highlighter-rouge">웹사이트 테스트(선택사항):</code> → 테스트 버튼을 눌러 확인해 주세요!</li>
+</ol>
+
+<h2 id="4-google-search-console-연동">4. Google Search Console 연동</h2>
+
+<ol>
+  <li>속성 설정 탭에 <code class="language-plaintext highlighter-rouge">제품 링크</code> → <code class="language-plaintext highlighter-rouge">Serach Console 링크</code> → <code class="language-plaintext highlighter-rouge">연결</code></li>
+  <li>Search Console과 연결하기 창이 표시됩니다.</li>
+  <li>1단계인, <code class="language-plaintext highlighter-rouge">Search Console 속성 선택</code> 에서 계정 선택 클릭</li>
+  <li>등록한 깃허브 블로그 홈페이지와 속성 유형은 URL 프리픽스로 되어있습니다. 해당되는 것을 선택 후, 확인을 클릭 → 다음</li>
+  <li><code class="language-plaintext highlighter-rouge">웹 스트림 선택</code> → <code class="language-plaintext highlighter-rouge">데이터 스트림 선택</code> → <code class="language-plaintext highlighter-rouge">다음</code></li>
+  <li><code class="language-plaintext highlighter-rouge">보내기</code> 를 눌러 작업을 완료합니다.</li>
+</ol>
+
+<p><img src="/assets/images/blog/2025-04-25-blog16-google-analytics/image.png" alt="구글 애널리틱스 실시간 보고서" style="max-width:100%;" />
+보고서를 설정 후, 실시간 개요 테스트를 진행한 스크린샷입니다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#ga4" class="page__taxonomy-item p-category" rel="tag">GA4</a><span class="sep">, </span>
+    
+      <a href="/tags/#github-blog" class="page__taxonomy-item p-category" rel="tag">GitHub Blog</a><span class="sep">, </span>
+    
+      <a href="/tags/#googleanalytics" class="page__taxonomy-item p-category" rel="tag">GoogleAnalytics</a><span class="sep">, </span>
+    
+      <a href="/tags/#jekyll" class="page__taxonomy-item p-category" rel="tag">Jekyll</a><span class="sep">, </span>
+    
+      <a href="/tags/#minimal-mistakes" class="page__taxonomy-item p-category" rel="tag">minimal-mistakes</a><span class="sep">, </span>
+    
+      <a href="/tags/#searchconsole" class="page__taxonomy-item p-category" rel="tag">SearchConsole</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-04-25T00:00:00+09:00">April 25, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">Share on</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+Google+Analytics+GA4+%EC%97%B0%EB%8F%99+%EA%B0%80%EC%9D%B4%EB%93%9C%20https%3A%2F%2Fruyshy.github.io%2Fblog%2F2025%2F04%2F25%2Fblog16-google-analytics.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2F2025%2F04%2F25%2Fblog16-google-analytics.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/2025/04/25/blog16-google-analytics.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/assembly/2025/04/25/assembly5-exercises2.html" class="pagination--pager" title="Assembly 기초 연습문제 풀이2 - 명령어 개념 정리 퀴즈">Previous</a>
+    
+    
+      <a href="/assembly/2025/04/26/assembly5-exercises3.html" class="pagination--pager" title="Assembly 조건 분기와 스택프레임 연습문제 풀이3 - NASM 실습 퀴즈">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
+      
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You may also enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/2025/05/06/blog-22-category-post-sort.html" rel="permalink">GitHub Blog 카테고리별 게시글 정렬 기능 구현
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub 블로그를 최신순 또는 과거순으로 정렬하고 싶다면?
+이 글에서는 minimal-mistakes 테마에서 카테고리별 게시글 정렬 기능을 구현하는 전체 과정을 코드 중심으로 정리했습니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/2025/05/04/reversing4-Ghidra.html" rel="permalink">Ghidra 입문자를 위한 리버싱 가이드
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Ghidra는 NSA에서 만든 무료 리버스 엔지니어링 도구로, 실행 파일을 디컴파일하고 분석할 수 있는 강력한 기능을 제공합니다.
+이 글은 설치부터 실습까지 Ghidra 입문자가 따라 하기 쉽게 정리된 단계별 사용 가이드입니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/2025/05/02/reversing3-basic.html" rel="permalink">리버싱 엔지니어링 기초 정리
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">리버싱(Reverse Engineering)은 소스코드 없이 프로그램을 분석해 동작 원리를 파악하는 기술입니다.
+이 글에서는 정적/동적 분석 방식의 차이와 리버싱 목적, 필요한 배경지식까지 처음 배우는 사람도 이해할 수 있게 정리합니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/2025/05/02/reversing2-pe-structural-analysis.html" rel="permalink">PE 구조 분석 완전 정복
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Windows 실행파일이 어떻게 구성되어 있고, 어떤 순서로 메모리에 로딩되는지 궁금하셨나요?
+이 글에서는 PE 구조의 전반적인 구성과 주요 필드들의 역할, RVA 변환 방식까지 하나씩 정리해봅니다.
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+    
+    <!-- JEKYLL LIQUID TAG --> 
+<script src="/assets/js/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script> 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
+    
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script> 
+<!-- 
+
+-->>
+
+<script src="/assets/js/quiz-handler.js"></script>
+
+
+<!-- lunr search script -->
+<script src="/assets/js/sidebar-search.js"></script>
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/search.js"></script>
+
+
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+<!-- 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script> -->
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VGYDK4XE75'
+  
+  );
+</script>
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'ruyshy/ruyshy.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+  </body>
+</html>

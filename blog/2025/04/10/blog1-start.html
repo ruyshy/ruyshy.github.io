@@ -1,0 +1,1432 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GitHub Blog 시작하기 - Jekyll과 GitHub Pages 블로그 만들기 - ruyshy blog</title>
+<meta name="description" content="GitHub Pages와 Jekyll을 활용해 minimal-mistakes 테마로 GitHub 블로그를 만드는 방법을 정리했습니다.">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="GitHub Blog 시작하기 - Jekyll과 GitHub Pages 블로그 만들기">
+<meta property="og:url" content="https://ruyshy.github.io/blog/2025/04/10/blog1-start.html">
+
+
+  <meta property="og:description" content="GitHub Pages와 Jekyll을 활용해 minimal-mistakes 테마로 GitHub 블로그를 만드는 방법을 정리했습니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-04-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/blog/2025/04/10/blog1-start.html">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/tags/"
+                
+                
+              >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >Category</a>
+            </li></ul>
+        <!-- 
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+         -->
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://ruyshy.github.io/">
+        <img src="/assets/images/profile/github_profile_image.jpg" alt="ruyshy" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <li><hr class="nav-divider" /></li>
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+      <li class="nav__title">Category</li>
+      <a
+      href="/categories/"
+      class="nav__item"
+    >
+    ALL <span class="count">(39)</span>
+  </a>
+</li>
+
+  
+  
+<li class="nav__item-toggle">
+  <input
+    type="checkbox"
+    id="toggle-security"
+    class="nav__toggle"
+    hidden
+    checked
+  />
+
+  <label for="toggle-security" class="nav__subtitle">
+    <span class="nav__arrow"></span> Security
+  </label>
+
+  
+  <ul class="nav__subitems">
+     
+<li>
+   
+  <a
+    href="/categories/assembly/"
+    class="nav__item"
+  >
+    Assembly
+    <span class="count">
+      (14)
+    </span>
+  </a>
+</li>
+  
+<li>
+   
+  <a
+    href="/categories/reversing_engineering/"
+    class="nav__item"
+  >
+    Reversing Engineering
+    <span class="count">
+      (6)
+    </span>
+  </a>
+</li>
+ 
+
+  </ul>
+  
+</li>
+
+  
+<li>
+   
+  <a
+    href="/categories/blog/"
+    class="nav__item"
+  >
+    Blog
+    <span class="count">
+      (22)
+    </span>
+  </a>
+</li>
+ 
+
+ 
+ 
+ <li><hr class="nav-divider" /></li>
+
+    <div class="sidebar__search">
+      <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
+        <div class="search-block">
+          <select id="search-type">
+            <option value="title">Title</option>
+            <option value="tag">Tag</option>
+            <option value="both">Title + Tag</option>
+          </select>
+        </div>
+        <div class="search-block">
+          <input type="text" id="search-query" placeholder="Search input" />
+        </div>
+        <div class="search-block">
+          <button type="submit"><i class="fa fa-search"></i> Search</button>
+        </div>
+      </form>
+    </div>
+  </nav>
+</div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="GitHub Blog 시작하기 - Jekyll과 GitHub Pages 블로그 만들기">
+    <meta itemprop="description" content="GitHub Blog를 시작하려는 분들을 위한 가이드입니다.이 글에서는 GitHub Pages, Jekyll, 그리고 인기 테마인 minimal-mistakes를 활용해나만의 기술 블로그를 만드는 과정을 단계별로 설명합니다.">
+    <meta itemprop="datePublished" content="2025-04-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/blog/2025/04/10/blog1-start.html" itemprop="url">GitHub Blog 시작하기 - Jekyll과 GitHub Pages 블로그 만들기
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#jekyll-기반-github-blog-생성">Jekyll 기반 GitHub Blog 생성</a></li><li><a href="#준비해야-할-준비물">준비해야 할 준비물</a></li><li><a href="#github-blog-시작하기">GitHub Blog 시작하기</a></li><li><a href="#blog-post-작성-방법">Blog Post 작성 방법</a><ul><li><a href="#visual-studio-code-간단-사용-방법">Visual Studio Code 간단 사용 방법</a><ul><li><a href="#visual-studio-code-쓸만한-extension-추천">Visual studio code 쓸만한 extension 추천</a><ul><li><a href="#material-icon-theme">Material Icon Theme</a></li><li><a href="#prettier---code-formatter">Prettier - Code formatter</a><ul><li><a href="#prettier-설정-방법">Prettier 설정 방법</a></li></ul></li><li><a href="#markdown">Markdown</a></li><li><a href="#markdown-all-in-one">Markdown All in One</a></li></ul></li></ul></li></ul></li><li><a href="#github-blog-기본-설정-설명-_configyml">GitHub Blog 기본 설정 설명 (_config.yml)</a><ul><li><a href="#프로필-설정">프로필 설정</a><ul><li><a href="#links-항목의-구조">links: 항목의 구조</a></li></ul></li><li><a href="#default-설정">default 설정</a></li><li><a href="#plugins-설정">plugins 설정</a><ul><li><a href="#별도-설정들">별도 설정들</a></li><li><a href="#faviconico">favicon.ico</a><ul><li><a href="#favicon이란">Favicon이란?</a><ul><li><a href="#테스트">테스트</a></li></ul></li></ul></li><li><a href="#thema">Thema</a></li><li><a href="#깃허브-블로그-댓글">깃허브 블로그 댓글</a></li><li><a href="#추가-내용">추가 내용</a></li></ul></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>GitHub Blog를 시작하려는 분들을 위한 가이드입니다.<br />
+이 글에서는 <strong>GitHub Pages</strong>, <strong>Jekyll</strong>, 그리고 인기 테마인 <strong>minimal-mistakes</strong>를 활용해<br />
+<strong>나만의 기술 블로그</strong>를 만드는 과정을 단계별로 설명합니다.</p>
+
+<h2 id="jekyll-기반-github-blog-생성">Jekyll 기반 GitHub Blog 생성</h2>
+
+<p><a href="https://mmistakes.github.io/minimal-mistakes/">https://mmistakes.github.io/minimal-mistakes/</a></p>
+
+<p>해당 Jekyll 테마(minimal-mistakes) 기준으로 작성 되어있습니다.</p>
+
+<hr />
+
+<h2 id="준비해야-할-준비물">준비해야 할 준비물</h2>
+
+<p>개인 GitHub 계정 (<a href="https://github.com/">https://github.com/</a>)</p>
+
+<p>Visual Studio Code (<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>)</p>
+
+<hr />
+
+<h2 id="github-blog-시작하기">GitHub Blog 시작하기</h2>
+
+<p><a href="https://github.com/mmistakes/minimal-mistakes">https://github.com/mmistakes/minimal-mistakes</a></p>
+
+<p>github 홈페이지에서 로그인을 한 상태로 해당 jekyll 테마 github 사이트에 접속합니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/minimal-mistakes-repo-fork.png" alt="minimal-mistakes-repo-fork" style="max-width:100%;" /></p>
+
+<p>해당 사이트에서 위 오른쪽에 Fork가 있습니다. 해당 버튼을 눌러주세요.</p>
+
+<p>Fork 버튼을 누르면 로그인하고있는 Github계정에 <strong>repositories(저장소)</strong> 에 똑같은 코드를 가진 Project(코드 저장소)가 생성이 됩니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-setting.png" alt="github-blog-setting" style="max-width:100%;" /></p>
+
+<p>Fork 작업이 완료되면 Setting 버튼을 눌러 Setting 홈페이지로 이동합니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-repo-name-setting.png" alt="github-blog-repo-name-setting" style="max-width:100%;" /></p>
+
+<p>코드 저장소의 이름을 바꿔줘야 합니다.</p>
+
+<p>무조건 자기 자신의 <a href="http://githubID.github.io">githubID.github.io</a></p>
+
+<p>저의 경우, 제 닉네임은 ruyshy 이므로 <a href="http://ruyshy.github.io">ruyshy.github.io</a> 로 설정해줍니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-config-yml-click.png" alt="github-blog-config-yml-click" style="max-width:100%;" /></p>
+
+<p>다음으로 Code로 돌아가서 <strong>_config.yml</strong>을 클릭해서 해당 파일로 들어갑니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-config-yml-edit.png" alt="github-blog-config-yml-edit" style="max-width:100%;" /></p>
+
+<p>화면과 같이 펜모양 버튼을 눌러, 하단 메뉴인 Edit in place를 클릭하여 편집 화면으로 넘어갑니다.</p>
+
+<p>url : “<a href="https://ruyshy.github.io/">https://ruyshy.github.io</a>”</p>
+
+<p>제일 먼저 url을 위 형식처럼 변경해줍니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-config-yml-change.png" alt="github-blog-config-yml-change" style="max-width:100%;" /></p>
+
+<p>변경 후, Commit changes…를 눌러 편집 완료를 진행합니다.</p>
+
+<p>이 작업을 통해 자신의 블로그를 접속하실 수 있게 됩니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-create-home.png" alt="github-blog-create-home" style="max-width:100%;" /></p>
+
+<p>다음으로 자신의 블로그 홈페이지(<a href="https://ruyshy.github.io/">https://ruyshy.github.io/</a>)를 들어가서 정상적으로 만들어졌는지 확인합니다. 제 블로그는 이미 작성이 되어있기 때문에 저와 다르게 보이긴 해도 블로그에 접속하실 수 있습니다.</p>
+
+<hr />
+
+<h2 id="blog-post-작성-방법">Blog Post 작성 방법</h2>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-repo-add-file.png" alt="github-blog-repo-add-file" style="max-width:100%;" /></p>
+
+<p>다시 GitHub 저장소로 돌아와서 Add file 버튼을 눌러 Create new file을 선택합니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-repo-post-create.png" alt="github-blog-repo-post-create" style="max-width:100%;" /></p>
+
+<p>입력 칸에 _posts/ 를 입력해 폴더를 만들어줍니다.</p>
+
+<p>다음 입력 칸에 포스트 파일을 작성할 것인데, 작성할 때, 형식은 다음과 같습니다.</p>
+
+<p>예시) <a href="http://YYYY-MM-DD-PostName.md">YYYY-MM-DD-PostName.md</a> (2025-04-10-TestPost.md)</p>
+
+<p>.md 확장자는 마크다운 파일 형식입니다.</p>
+
+<p><a href="https://mmistakes.github.io/minimal-mistakes/docs/configuration/#paginate-v2">https://mmistakes.github.io/minimal-mistakes/docs/configuration/#paginate-v2</a></p>
+
+<p>해당 홈페이지에 들어가면</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/minimal-mistakes-doc-1.png" alt="minimal-mistakes-doc-1" style="max-width:100%;" /></p>
+
+<p>살짝 스크롤을 내려보면</p>
+
+<p>Then, create <code class="language-plaintext highlighter-rouge">/posts/index.html</code> with the following content:
+밑에 코드 블럭을 복사해서 깃허브 코드에 붙여줍니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-post-yml-setting.png" alt="github-blog-post-yml-setting" style="max-width:100%;" /></p>
+
+<p>입력 후, 아래 줄에 아무 텍스트나 적어서 테스트를 진행 해봅시다.</p>
+
+<p>편집이 다 끝나면, Commit changes… 을 눌러 저장소에 적용합니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-repo-workflows.png" alt="github-blog-repo-workflows" style="max-width:100%;" /></p>
+
+<p>적용 후, Action을 눌러 가보면 맨위에 노란색으로 뜨며 해당 액션을 눌러서 보면</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-repo-actions.png" alt="github-blog-repo-actions" style="max-width:100%;" /></p>
+
+<p>이런식으로 빌드가 진행되고 있습니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-repo-build-done.png" alt="github-blog-repo-build-done" style="max-width:100%;" /></p>
+
+<p>위 스크린샷처럼 완료가 되면 홈페이지에 적용이 됩니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-site-image.png" alt="github-blog-site-image" style="max-width:100%;" /></p>
+
+<p>포스트 작성까지 진행이 되었습니다.</p>
+
+<p>Posts를 눌러 작성이 된 내용이 뛰워지는 것을 확인할 수 있습니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-first-post-create.png" alt="github-blog-first-post-create" style="max-width:100%;" /></p>
+
+<hr />
+
+<h3 id="visual-studio-code-간단-사용-방법">Visual Studio Code 간단 사용 방법</h3>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-visual-studio-code-screenshoort.png" alt="github-blog-visual-studio-code-screenshoort.png" style="max-width:100%;" /></p>
+
+<p>저는 이미 설치가 되어있기 떄문에 한글입니다. 한글 설정하는 방법은 다음에 이어서 진행하겠습니다.</p>
+
+<p>우선, 먼저 해야할 것은 해당 위에 이미지 처럼 visual studio code 창에 자기 자신의 프로젝트 폴더를 드래그하여, 열어줍니다!</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-visual-studio-code-file-list.PNG" alt="github-blog-visual-studio-code-file-list.PNG" style="max-width:100%;" /></p>
+
+<p>해당 폴더가 열리면서 왼쪽에 파일 리스트가 열립니다. 수정할 파일을 열어서 편집하거나, 마우스 오른쪽 클릭하여 파일을 추가/삭제/이름 수정 작업을 진행할 수 있습니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-visual-studio-code-extension.png" alt="github-blog-visual-studio-code-extension.png" style="max-width:100%;" /></p>
+
+<p>위 빨간색 박스모양이 extension(확장) 인데요. 클릭하여 확장 탭으로 들어가줍니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Korean Language Pack for Visual Studio Code</code> 검색칸에 해당 확장을 검색하여 설치하면 한국어 설정이 됩니다.</p>
+
+<p>설치 진행 후, <code class="language-plaintext highlighter-rouge">Ctrl</code> + <code class="language-plaintext highlighter-rouge">Shift</code> + <code class="language-plaintext highlighter-rouge">P</code> 를 입력 후, <code class="language-plaintext highlighter-rouge">configure display languag</code> 선택 후, 한국어를 설정해주고 재실행하면 적용 됩니다.</p>
+
+<h4 id="visual-studio-code-쓸만한-extension-추천">Visual studio code 쓸만한 extension 추천</h4>
+
+<h5 id="material-icon-theme">Material Icon Theme</h5>
+
+<p><code class="language-plaintext highlighter-rouge">Material Icon Theme</code>은 Visual Studio Code에서 파일 및 폴더 아이콘을 Google의 Material Design 스타일로 바꾸어 개발 환경을 더욱 직관적이고 세련되게 만들어주는 인기 확장 프로그램입니다.</p>
+
+<div style="margin: 1em 0;">
+  <a href="https://marketplace.visualstudio.com/items/?itemName=PKief.material-icon-theme" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://PKief.gallerycdn.vsassets.io/extensions/pkief/material-icon-theme/5.22.0/1746195618709/Microsoft.VisualStudio.Services.Icons.Default" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Material Icon Theme - Visual Studio Marketplace</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">Extension for Visual Studio Code - Material Design Icons for Visual Studio Code</p>
+        <small style="color: #999;">marketplace.visualstudio.com</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<hr />
+
+<p><br /></p>
+
+<h5 id="prettier---code-formatter">Prettier - Code formatter</h5>
+
+<p><code class="language-plaintext highlighter-rouge">​Prettier - Code formatter</code> 는 Visual Studio Code에서 널리 사용되는 코드 포맷터 확장 프로그램으로, 일관된 코드 스타일을 자동으로 적용하여 가독성과 유지보수성을 향상시킵니다.</p>
+
+<h6 id="prettier-설정-방법">Prettier 설정 방법</h6>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-visual_studio_code_prettier_code_formatter_setting1.png" alt="visual_studio_code_prettier_code_formatter_setting1" style="max-width:100%;" /></p>
+
+<p>위에 빨간 박스를 클릭하여 <code class="language-plaintext highlighter-rouge">Prettier - Code formatter</code>을 찾아 초록 박스를 클릭 후, 설정을 클릭 해서 설정 창으로 이동합니다.</p>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-visual_studio_code_prettier_code_formatter_setting2.png" alt="visual_studio_code_prettier_code_formatter_setting2" style="max-width:100%;" /></p>
+
+<ol>
+  <li>상단 검색 창(빨간 박스)에 <code class="language-plaintext highlighter-rouge">format on save</code>을 입력합니다.</li>
+  <li>노란 박스 부분의 옵션을 체크 해줍니다.</li>
+  <li>해당 기능은 파일 저장<code class="language-plaintext highlighter-rouge">Ctrl+S</code>을 할 때 마다 코드를 이쁘게 정렬 해주는 옵션입니다.</li>
+</ol>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-visual_studio_code_prettier_code_formatter_setting3.png" alt="visual_studio_code_prettier_code_formatter_setting3" style="max-width:100%;" /></p>
+
+<ol>
+  <li>상단 검색 창에 <code class="language-plaintext highlighter-rouge">Default Formatter</code>을 검색합니다.</li>
+  <li>설정이 prettier format (esbenp.prettier-vscode) 로 설정되어 있는 지 확인하고 안되어 있다면 <code class="language-plaintext highlighter-rouge">Prettier - Code formatter</code> 해당 확장을 선택해 줍니다.</li>
+</ol>
+
+<div style="margin: 1em 0;">
+  <a href="https://marketplace.visualstudio.com/items/?itemName=esbenp.prettier-vscode" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://esbenp.gallerycdn.vsassets.io/extensions/esbenp/prettier-vscode/11.0.0/1723648421534/Microsoft.VisualStudio.Services.Icons.Default" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Prettier - Code formatter - Visual Studio Marketplace</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">Extension for Visual Studio Code - Code formatter using prettier</p>
+        <small style="color: #999;">marketplace.visualstudio.com</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<hr />
+
+<p><br /></p>
+
+<h5 id="markdown">Markdown</h5>
+
+<p><code class="language-plaintext highlighter-rouge">Markdown</code> 기능 목록입니다.</p>
+
+<ul>
+  <li>.md 파일을 열면 자동으로 문법 강조(syntax highlighting)가 적용된다.</li>
+  <li>Ctrl+Shift+V 를 누르면 Markdown 미리보기(Preview)를 열 수 있다.</li>
+  <li>Markdown 파일을 수정하면 미리보기가 자동으로 갱신된다.</li>
+  <li>링크 클릭, 이미지 삽입, 표 작성 같은 것도 기본적으로 지원한다.</li>
+</ul>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-markdown-click.png" alt="github-blog-markdown-click.png" style="max-width:100%;" /></p>
+
+<p>해당 버튼을 클릭하면 markdown 문법이 적용된 것을 미리보기를 열 수 있습니다.</p>
+
+<div style="margin: 1em 0;">
+  <a href="https://marketplace.visualstudio.com/items?itemName=starkwang.markdown" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://starkwang.gallerycdn.vsassets.io/extensions/starkwang/markdown/2.0.10/1729878053035/Microsoft.VisualStudio.Services.Icons.Default" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Markdown - Visual Studio Marketplace</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">Extension for Visual Studio Code - Markdown Paste Image To okmd.dev OSS store</p>
+        <small style="color: #999;">marketplace.visualstudio.com</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<hr />
+
+<p><br /></p>
+
+<h5 id="markdown-all-in-one">Markdown All in One</h5>
+
+<p>저는 개인적으로 Markdown 보다 해당 확장을 추천합니다.</p>
+
+<p>사용하기 간편하고, 해당 확장에서 간편하게 사용법을 익힐 수 있습니다.</p>
+
+<p>Markdown 확장과 같이 Preview를 통해 미리보기가 가능합니다.</p>
+
+<div style="margin: 1em 0;">
+  <a href="https://marketplace.visualstudio.com/items/?itemName=yzhang.markdown-all-in-one" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://yzhang.gallerycdn.vsassets.io/extensions/yzhang/markdown-all-in-one/3.6.3/1741534224980/Microsoft.VisualStudio.Services.Icons.Default" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Markdown All in One - Visual Studio Marketplace</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">Extension for Visual Studio Code - All you need to write Markdown (keyboard shortcuts, table of contents, auto preview and more)</p>
+        <small style="color: #999;">marketplace.visualstudio.com</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<p><img src="/assets/images/blog/2025-04-10-blog1-start/github-blog-markdown-preview.png" alt="github-blog-markdown-preview.png" style="max-width:100%;" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">{% %}</code> 해당 문법은 preview에 적용되지 않긴하지만, markdown 문법들은 적용되서 괜찮은거 같습니다.</p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="github-blog-기본-설정-설명-_configyml">GitHub Blog 기본 설정 설명 (<code class="language-plaintext highlighter-rouge">_config.yml</code>)</h2>
+
+<h3 id="프로필-설정">프로필 설정</h3>
+
+<p><code class="language-plaintext highlighter-rouge">author:</code> 해당 코드에서 설정을 진행 해주면 됩니다!</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>설명</th>
+      <th>예시 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>작성자의 이름 또는 닉네임을 지정합니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">"ruyshy"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">avatar</code></td>
+      <td>프로필 이미지 경로입니다. <code class="language-plaintext highlighter-rouge">/assets/images/...</code> 또는 외부 URL도 가능.</td>
+      <td><code class="language-plaintext highlighter-rouge">"/assets/images/profile/github_profile_image.jpg"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bio</code></td>
+      <td>간단한 자기소개 텍스트입니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">"백엔드 개발자이자 블로거"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">location</code></td>
+      <td>거주지 또는 활동 지역 정보를 입력합니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">"South Korea"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">email</code></td>
+      <td>이메일 주소입니다. 보통 연락처 용도로 사용됩니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">"ruyshyttr@gmail.com"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">links</code></td>
+      <td>외부 링크 목록을 구성할 수 있는 배열입니다.</td>
+      <td>아래 참고 (하단에 자세히 설명)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h4 id="links-항목의-구조"><code class="language-plaintext highlighter-rouge">links:</code> 항목의 구조</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>하위 속성</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">label</code></td>
+      <td>표시될 이름 (예: GitHub, Email 등)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">icon</code></td>
+      <td>Font Awesome 아이콘 클래스</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">url</code></td>
+      <td>연결할 외부 링크 주소 (mailto:도 가능)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="default-설정">default 설정</h3>
+
+<p>Jekyll 블로그의 _config.yml 파일에서 defaults: 섹션은 파일의 경로(path)와 유형(type)에 따라 자동으로 기본값(values)을 설정하는 기능입니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>옵션 명</th>
+      <th>설명</th>
+      <th>예시 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scope.path</code></td>
+      <td>이 default 설정이 적용될 경로 (상대 경로 기준). 비워두면 전체 적용</td>
+      <td><code class="language-plaintext highlighter-rouge">""</code>, <code class="language-plaintext highlighter-rouge">"_posts/blog"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scope.type</code></td>
+      <td>콘텐츠 타입. 보통 <code class="language-plaintext highlighter-rouge">posts</code>, <code class="language-plaintext highlighter-rouge">pages</code>, <code class="language-plaintext highlighter-rouge">drafts</code> 등을 지정</td>
+      <td><code class="language-plaintext highlighter-rouge">"posts"</code>, <code class="language-plaintext highlighter-rouge">"pages"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.layout</code></td>
+      <td>적용할 레이아웃 템플릿 지정. <code class="language-plaintext highlighter-rouge">_layouts/</code> 폴더의 파일명에서 <code class="language-plaintext highlighter-rouge">.html</code> 제외하고 작성</td>
+      <td><code class="language-plaintext highlighter-rouge">"single"</code>, <code class="language-plaintext highlighter-rouge">"default"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.title</code></td>
+      <td>기본 제목. 개별 포스트에서 설정하지 않으면 이 값이 사용됨</td>
+      <td><code class="language-plaintext highlighter-rouge">"기본 제목"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.permalink</code></td>
+      <td>기본 URL 구조를 지정. 글의 URL 커스터마이징에 사용</td>
+      <td><code class="language-plaintext highlighter-rouge">"/:categories/:title/"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.categories</code></td>
+      <td>글의 카테고리 설정. 배열로 지정 가능</td>
+      <td><code class="language-plaintext highlighter-rouge">[blog]</code>, <code class="language-plaintext highlighter-rouge">[assembly]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.tags</code></td>
+      <td>기본 태그 설정. 배열 형태로 사용 가능</td>
+      <td><code class="language-plaintext highlighter-rouge">[jekyll, ruby]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.author_profile</code></td>
+      <td>프로필 박스 출력 여부 (Minimal Mistakes 테마에서 사용)</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.sidebar.nav</code></td>
+      <td>사용할 사이드바 메뉴 지정. <code class="language-plaintext highlighter-rouge">_data/navigation.yml</code>에서 정의한 키와 일치해야 함</td>
+      <td><code class="language-plaintext highlighter-rouge">"main"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.comments</code></td>
+      <td>댓글 기능 사용 여부. Utterances, Disqus 등 설정에 따라 작동</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.share</code></td>
+      <td>SNS 공유 버튼 표시 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.related</code></td>
+      <td>관련 포스트 영역 표시 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.robots</code></td>
+      <td>SEO 메타 태그 설정. <code class="language-plaintext highlighter-rouge">"noindex, nofollow"</code> 등도 설정 가능</td>
+      <td><code class="language-plaintext highlighter-rouge">"index, follow"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.toc</code></td>
+      <td>목차 표시 여부 (Table of Contents)</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.toc_sticky</code></td>
+      <td>스크롤해도 목차가 고정되도록 설정</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.classes</code></td>
+      <td>레이아웃에 custom CSS class를 적용할 수 있음</td>
+      <td><code class="language-plaintext highlighter-rouge">"wide"</code>, <code class="language-plaintext highlighter-rouge">"narrow"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.read_time</code></td>
+      <td>예상 읽기 시간 표시 여부</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">values.exclude</code></td>
+      <td>특정 키워드/파일을 기본 설정에서 제외할 수 있음</td>
+      <td><code class="language-plaintext highlighter-rouge">["drafts", "secret.md"]</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="plugins-설정">plugins 설정</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>설정 이름</th>
+      <th>설명</th>
+      <th>예시 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">plugins</code></td>
+      <td>Jekyll에서 사용할 플러그인 목록입니다. 로컬 서버나 GitHub Action으로 빌드할 때 작동합니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">["jekyll-feed", "jekyll-seo-tag"]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">whitelist</code></td>
+      <td>(이전 이름: <code class="language-plaintext highlighter-rouge">safe_plugins</code>) GitHub Pages에서 사용이 허용된 플러그인만 명시적으로 지정합니다.</td>
+      <td><code class="language-plaintext highlighter-rouge">["jekyll-seo-tag"]</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h4 id="별도-설정들">별도 설정들</h4>
+
+<p><code class="language-plaintext highlighter-rouge">timezone:</code> 해당 속성을 사용할 시,
+Gemfile 에서 아래 코드를 추가해줘야 합니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem "tzinfo"
+gem "tzinfo-data"
+</code></pre></div></div>
+
+<p>timezone 설정할 때, 아래 링크에서 선택할 수 있습니다. 저는 <code class="language-plaintext highlighter-rouge">Asia/Seoul</code> 을 사용 중입니다.</p>
+
+<div style="margin: 1em 0;">
+  <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Timezone-boundary-builder_release_2023d.png/1200px-Timezone-boundary-builder_release_2023d.png" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">List of tz database time zones - Wikipedia</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;"></p>
+        <small style="color: #999;">en.wikipedia.org</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<hr />
+
+<p><br /></p>
+
+<h4 id="faviconico">favicon.ico</h4>
+
+<h5 id="favicon이란">Favicon이란?</h5>
+
+<p>웹사이트 탭에 표시되는 작은 아이콘입니다. <code class="language-plaintext highlighter-rouge">.ico</code>, <code class="language-plaintext highlighter-rouge">.png</code>, <code class="language-plaintext highlighter-rouge">.svg</code> 등의 포맷을 사용할 수 있지만 브라우저 호환성을 위해 <code class="language-plaintext highlighter-rouge">favicon.ico</code>가 가장 일반적입니다.</p>
+
+<p>설정 방법 (Jekyll + GitHub Pages 기준)</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">favicon.ico</code> 파일 준비
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">32x32</code> 또는 <code class="language-plaintext highlighter-rouge">16x16</code> 크기의 <code class="language-plaintext highlighter-rouge">.ico</code> 포맷 이미지 파일을 준비하세요.</li>
+      <li>변환 사이트 예:
+        <ul>
+          <li><a href="https://favicon.io/">https://favicon.io/</a></li>
+          <li><a href="https://realfavicongenerator.net/">https://realfavicongenerator.net/</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>루트 디렉토리에 추가
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">favicon.ico</code> 파일을 GitHub 블로그의 루트 경로 (/)에 위치시켜야 합니다.
+        <ul>
+          <li>즉, 리포지토리 기준으로는 <code class="language-plaintext highlighter-rouge">/favicon.ico</code></li>
+          <li>로컬 디렉토리 기준으로는 <code class="language-plaintext highlighter-rouge">your-project-root/favicon.ico</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">_includes/head.html</code> 또는 <code class="language-plaintext highlighter-rouge">_layouts/default.html</code>에 링크 추가</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span>
+  <span class="na">rel=</span><span class="s">"icon"</span>
+  <span class="na">type=</span><span class="s">"image/x-icon"</span>
+  <span class="na">href=</span><span class="s">"/favicon.ico"</span>
+<span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>보통 <code class="language-plaintext highlighter-rouge">minimal-mistakes</code> 테마에서는 <code class="language-plaintext highlighter-rouge">_includes/head/custom.html</code>에 추가하면 안전합니다.</p>
+
+<ol>
+  <li>GitHub Actions를 사용하는 경우 <code class="language-plaintext highlighter-rouge">_site/</code>에 복사되도록 확인
+    <ul>
+      <li>Jekyll 빌드시 <code class="language-plaintext highlighter-rouge">favicon.ico</code>가 <code class="language-plaintext highlighter-rouge">/_site/</code>에 복사되어야 합니다.</li>
+      <li><code class="language-plaintext highlighter-rouge">_config.yml</code>에 아래 설정이 있다면, favicon도 복사될 수 있도록 확인:</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">include</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">favicon.ico</span>
+</code></pre></div></div>
+
+<hr />
+
+<h6 id="테스트">테스트</h6>
+
+<p>GitHub Pages에 배포 후, 브라우저에서 <code class="language-plaintext highlighter-rouge">https://yourusername.github.io/favicon.ico</code>가 열리는지 확인</p>
+
+<p>캐시로 인해 보이지 않으면 강력 새로고침 (Ctrl+Shift+R) 또는 시크릿 모드에서 확인</p>
+
+<p>필요하다면 .png, .svg 같은 확장 포맷으로도 대체 가능하며, 다음과 같이 추가할 수 있습니다:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span>
+  <span class="na">rel=</span><span class="s">"icon"</span>
+  <span class="na">type=</span><span class="s">"image/png"</span>
+  <span class="na">href=</span><span class="s">"/assets/images/favicon.png"</span>
+<span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>favicon도 GitHub 블로그의 인상 요소 중 하나니까, 블로그 컨셉에 맞게 예쁘게 꾸며보는 것도 추천!</p>
+
+<hr />
+
+<h4 id="thema">Thema</h4>
+
+<div style="margin: 1em 0;">
+  <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://mmistakes.github.io/minimal-mistakes/assets/images/site-logo.png" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Quick-Start Guide</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">How to quickly install and setup Minimal Mistakes for use with GitHub Pages.</p>
+        <small style="color: #999;">mmistakes.github.io</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<p>해당 사이트에 설명이 자세히 나와있습니다!</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># theme                  : "minimal-mistakes-jekyll"</span>
+<span class="na">remote_theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mmistakes/minimal-mistakes"</span>
+<span class="na">minimal_mistakes_skin</span><span class="pi">:</span> <span class="s2">"</span><span class="s">dark"</span> <span class="c1"># "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"</span>
+</code></pre></div></div>
+
+<p>Gem 기반 테마로 설치하려면: <code class="language-plaintext highlighter-rouge">theme:</code> 속성을 사용합니다.
+Gemfile에 <code class="language-plaintext highlighter-rouge">gem "minimal-mistakes-jekyll"</code> 추가해줘야 합니다.</p>
+
+<hr />
+
+<p><br /></p>
+
+<p>원격 테마로 설치하려면: <code class="language-plaintext highlighter-rouge">remote_theme:</code> 속성을 사용합니다.
+<code class="language-plaintext highlighter-rouge">minimal_mistakes_skin</code> 속성에서 테마를 선택하실 수 있습니다.</p>
+
+<hr />
+
+<h4 id="깃허브-블로그-댓글">깃허브 블로그 댓글</h4>
+
+<p><code class="language-plaintext highlighter-rouge">comments:</code> 해당 속성은 <a href="https://ruyshy.github.io/blog/blog6-comment/">깃허브 블로그 댓글 설정</a> 에서 다룹니다.</p>
+
+<h4 id="추가-내용">추가 내용</h4>
+
+<div style="margin: 1em 0;">
+  <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    <div style="display: flex; background: #f5f5f5; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <img src="https://mmistakes.github.io/minimal-mistakes/assets/images/site-logo.png" alt="thumbnail" style="width: 40%; object-fit: cover;" />
+      <div style="padding: 1em; flex: 1;">
+        <h3 style="margin: 0; color: #1a73e8; font-size: 1.1em; line-height: 1.4;">Quick-Start Guide</h3>
+        <p style="margin: 0.5em 0 0 0; color: #555; font-size: 0.9em; line-height: 1.4;">How to quickly install and setup Minimal Mistakes for use with GitHub Pages.</p>
+        <small style="color: #999;">mmistakes.github.io</small>
+      </div>
+    </div>
+  </a>
+</div>
+
+<p>저와 같은 깃허브 블로그 테마를 선택하셨다면, 해당 <code class="language-plaintext highlighter-rouge">minimal-mistakes</code> 위에 해당하는 테마 가이드 사이트에서 더 많은 것을 배우고 설정할 수 있습니다!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#github-blog" class="page__taxonomy-item p-category" rel="tag">GitHub Blog</a><span class="sep">, </span>
+    
+      <a href="/tags/#github-pages" class="page__taxonomy-item p-category" rel="tag">GitHub Pages</a><span class="sep">, </span>
+    
+      <a href="/tags/#jekyll" class="page__taxonomy-item p-category" rel="tag">Jekyll</a><span class="sep">, </span>
+    
+      <a href="/tags/#minimal-mistakes" class="page__taxonomy-item p-category" rel="tag">minimal-mistakes</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0" class="page__taxonomy-item p-category" rel="tag">블로그 만들기</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-04-10T00:00:00+09:00">April 10, 2025</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">Share on</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=GitHub+Blog+%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0+-+Jekyll%EA%B3%BC+GitHub+Pages+%EB%B8%94%EB%A1%9C%EA%B7%B8+%EB%A7%8C%EB%93%A4%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fblog%2F2025%2F04%2F10%2Fblog1-start.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fblog%2F2025%2F04%2F10%2Fblog1-start.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/blog/2025/04/10/blog1-start.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/blog/2025/04/16/blog2-local-server.html" class="pagination--pager" title="GitHub Blog 로컬 서버 설정 - Jekyll 개발 환경 구축">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
+      
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You may also enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/2025/05/06/blog-22-category-post-sort.html" rel="permalink">GitHub Blog 카테고리별 게시글 정렬 기능 구현
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub 블로그를 최신순 또는 과거순으로 정렬하고 싶다면?
+이 글에서는 minimal-mistakes 테마에서 카테고리별 게시글 정렬 기능을 구현하는 전체 과정을 코드 중심으로 정리했습니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/2025/05/04/reversing4-Ghidra.html" rel="permalink">Ghidra 입문자를 위한 리버싱 가이드
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Ghidra는 NSA에서 만든 무료 리버스 엔지니어링 도구로, 실행 파일을 디컴파일하고 분석할 수 있는 강력한 기능을 제공합니다.
+이 글은 설치부터 실습까지 Ghidra 입문자가 따라 하기 쉽게 정리된 단계별 사용 가이드입니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/2025/05/02/reversing3-basic.html" rel="permalink">리버싱 엔지니어링 기초 정리
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">리버싱(Reverse Engineering)은 소스코드 없이 프로그램을 분석해 동작 원리를 파악하는 기술입니다.
+이 글에서는 정적/동적 분석 방식의 차이와 리버싱 목적, 필요한 배경지식까지 처음 배우는 사람도 이해할 수 있게 정리합니다.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/2025/05/02/reversing2-pe-structural-analysis.html" rel="permalink">PE 구조 분석 완전 정복
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">Windows 실행파일이 어떻게 구성되어 있고, 어떤 순서로 메모리에 로딩되는지 궁금하셨나요?
+이 글에서는 PE 구조의 전반적인 구성과 주요 필드들의 역할, RVA 변환 방식까지 하나씩 정리해봅니다.
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+    
+    <!-- JEKYLL LIQUID TAG --> 
+<script src="/assets/js/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script> 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
+    
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script> 
+<!-- 
+
+-->>
+
+<script src="/assets/js/quiz-handler.js"></script>
+
+
+<!-- lunr search script -->
+<script src="/assets/js/sidebar-search.js"></script>
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/search.js"></script>
+
+
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+<!-- 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script> -->
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VGYDK4XE75'
+  
+  );
+</script>
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'ruyshy/ruyshy.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+  </body>
+</html>
