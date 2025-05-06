@@ -4,7 +4,7 @@ description: "Jekyll 블로그에서 외부 링크를 깔끔한 카드 형식으
 date: 2025-04-24
 tags:
   [
-    GitHubBlog,
+    GitHub Blog,
     link preview,
     liquid plugin,
     jekyll plugin,

@@ -4,8 +4,8 @@ description: "GitHub 블로그에서 Liquid와 Sass를 이용해 카테고리 �
 date: 2025-04-28
 tags:
   [
-    GitHubBlog,
-    Liquid,
+    GitHub Blog,
+    liquid,
     sidebar,
     카테고리 설정,
     Jekyll 커스터마이징,

@@ -2,7 +2,16 @@
 title: "GitHub Blog 카테고리별 게시글 정렬 기능 구현"
 description: "minimal-mistakes 테마 기반 GitHub 블로그에서 카테고리 페이지에 최신순/과거순 정렬 기능을 JavaScript와 Liquid로 구현하는 방법을 소개합니다."
 date: 2025-05-06
-tags: [jekyll, github-pages, minimal-mistakes, 블로그정렬, liquid, javascript]
+tags:
+  [
+    GitHub Blog,
+    Jekyll,
+    GitHub Pages,
+    minimal-mistakes,
+    블로그정렬,
+    liquid,
+    javascript,
+  ]
 ---
 
 GitHub 블로그를 최신순 또는 과거순으로 정렬하고 싶다면?  

@@ -4,7 +4,7 @@ description: "Notion에서 Markdown 파일로 내보내기한 후, GitHub 블로
 date: 2025-04-29
 tags:
   [
-    GitHubBlog,
+    GitHub Blog,
     Notion,
     markdown,
     Jekyll,
