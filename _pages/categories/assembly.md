@@ -1,6 +1,5 @@
 ---
-title: "Assembly"
 layout: category
-permalink: /categories/assembly/
+title: "Assembly"
 taxonomy: assembly
 ---
