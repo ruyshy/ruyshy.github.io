@@ -1,0 +1,3 @@
+_includes/**/*.html
+_posts/**/*.md
+_layouts/**/*.html
