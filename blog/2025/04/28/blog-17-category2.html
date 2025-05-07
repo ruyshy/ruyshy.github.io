@@ -403,7 +403,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#category-상위목록하위목록을-만들어보자">Category 상위목록/하위목록을 만들어보자.</a><ul><li><a href="#_includesidebarhtml">_include/sidebar.html</a></li><li><a href="#_includesidebar-itemshtml-추가하기">_include/sidebar-items.html 추가하기</a></li><li><a href="#_sassminimal-mistakes_navigationscss">_sass/minimal-mistakes/_navigation.scss</a><ul><li><a href="#추가해야-할-부분">추가해야 할 부분</a></li><li><a href="#수정해야-할-부분">수정해야 할 부분</a></li><li><a href="#_navigationscss-전체-코드">_navigation.scss 전체 코드</a></li></ul></li><li><a href="#적용된-예시-스크린샷">적용된 예시 스크린샷</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#category-상위목록하위목록을-만들어보자">Category 상위목록/하위목록을 만들어보자.</a><ul><li><a href="#_includesidebarhtml">_include/sidebar.html</a></li><li><a href="#_includesidebar-itemshtml-추가하기">_include/sidebar-items.html 추가하기</a></li><li><a href="#_sassminimal-mistakes_navigationscss">_sass/minimal-mistakes/_navigation.scss</a><ul><li><a href="#추가해야-할-부분">추가해야 할 부분</a></li><li><a href="#수정해야-할-부분">수정해야 할 부분</a></li></ul></li><li><a href="#_datanavigationyml-전체-코드">_data\navigation.yml 전체 코드</a><ul><li><a href="#_navigationscss-전체-코드">_navigation.scss 전체 코드</a></li></ul></li><li><a href="#적용된-예시-스크린샷">적용된 예시 스크린샷</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -554,12 +554,34 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
+<h4 id="_datanavigationyml-전체-코드">_data\navigation.yml 전체 코드</h4>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">main</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Home"</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Tags"</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/tags/</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Category"</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/categories/</span>
+    <span class="na">children</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">sub_title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Security"</span>
+        <span class="na">children</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Assembly"</span>
+            <span class="na">url</span><span class="pi">:</span> <span class="s">/categories/assembly/</span>
+          <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Reversing</span><span class="nv"> </span><span class="s">Engineering"</span>
+            <span class="na">url</span><span class="pi">:</span> <span class="s">/categories/reversing_engineering/</span>
+
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Blog"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s">/categories/blog/</span>
+</code></pre></div></div>
+
+<p>들여쓰기 중요!</p>
+
 <h5 id="_navigationscss-전체-코드">_navigation.scss 전체 코드</h5>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-5ejxil', this)" data-label="전체 코드 보기">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-us77s1', this)" data-label="전체 코드 보기">
   </div>
-  <div id="toggle-5ejxil" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-us77s1" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* ==========================================================================
    NAVIGATION
