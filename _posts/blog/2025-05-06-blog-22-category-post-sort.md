@@ -19,6 +19,13 @@ GitHub 블로그를 최신순 또는 과거순으로 정렬하고 싶다면?
 
 ---
 
+# category pagination 관련 내용
+
+카테고리에 페이지 < 1 2 3..5 > 를 만들고싶다면 해당 포스트는 스킵하고, 
+[카테고리 페이지 생성하기](https://ruyshy.github.io/blog/2025/05/07/blog-23-category-pagination.html) 해당 게시글으로 이동해주세요.
+
+---
+
 {% img "image.png" %}
 
 카테고리 별로 최신순/과거순 으로 정렬 기능을 추가한 스크린샷입니다.
