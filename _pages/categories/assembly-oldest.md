@@ -1,11 +1,11 @@
 ---
-title: "Assembly"
+title: "Assembly-Oldest"
 layout: category
 taxonomy: assembly
-permalink: categories/assembly
+permalink: categories/assembly-oldest
 pagination:
   enabled: true
   category: assembly
   per_page: 5
-  sort_reverse: true
+  sort_reverse: false
 ---
