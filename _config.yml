@@ -240,7 +240,7 @@ pagination:
   per_page: 5
   limit: 0
   permalink: "/page/:num/"
-  title: ""
+  title: ":title-p:num"
   sort_field: "date"
   sort_reverse: true
   trail:
