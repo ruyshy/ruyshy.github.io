@@ -1,0 +1,15 @@
+{% unless page.oldest == false %}
+<div class="post-sort-bar">
+  <label for="sort-select">정렬 순서:</label>
+  <select id="sort-select">
+    <option value="/categories/{{ page.taxonomy | downcase }}/" {% unless page.url contains '-oldest' %}selected{% endunless %}>최신순</option>
+    <option value="/categories/{{ page.taxonomy | downcase }}-oldest/" {% if page.url contains '-oldest' %}selected{% endif %}>과거순</option>
+  </select>
+</div>
+
+<script>
+  document.getElementById("sort-select").addEventListener("change", function () {
+    window.location.href = this.value;
+  });
+</script>
+{% endunless %}
