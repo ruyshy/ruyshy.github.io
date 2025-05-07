@@ -2,6 +2,7 @@
 title: "x64dbg 기본 사용법과 디버깅 흐름 이해하기 - Windows 어셈블리 디버거 입문"
 description: "x64dbg를 이용한 Windows 64비트/32비트 프로그램 디버깅 방법을 GUI 기반 화면 구성, 기본 조작법, 주요 기능과 함께 소개합니다."
 date: 2025-04-26
+categories: [assembly, reversing_engineering]
 tags:
   [x64dbg, 디버깅, reversing, assembly, windows 디버거, 스택 분석, 메모리 분석]
 ---

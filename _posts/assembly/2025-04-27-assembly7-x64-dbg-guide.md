@@ -2,6 +2,7 @@
 title: "초보자를 위한 x64dbg 실습 흐름 가이드 - Windows 어셈블리 디버깅 입문"
 description: "x64dbg로 Hello World C++ 프로그램을 디버깅하면서 EntryPoint, main 함수 추적, 메모리 검색(Az 기능)과 모듈 호출 분석 방법을 단계별 실습합니다."
 date: 2025-04-27
+categories: [assembly, reversing_engineering]
 tags:
   [
     x64dbg,
