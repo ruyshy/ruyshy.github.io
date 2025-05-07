@@ -166,6 +166,29 @@ input[type="checkbox"] {
 }
 ```
 
+#### \_data\navigation.yml 전체 코드
+```yaml
+main:
+  - title: "Home"
+    url: /
+  - title: "Tags"
+    url: /tags/
+  - title: "Category"
+    url: /categories/
+    children:
+      - sub_title: "Security"
+        children:
+          - title: "Assembly"
+            url: /categories/assembly/
+          - title: "Reversing Engineering"
+            url: /categories/reversing_engineering/
+
+      - title: "Blog"
+        url: /categories/blog/
+```
+
+들여쓰기 중요!
+
 ##### \_navigation.scss 전체 코드
 
 {% toggle 전체 코드 보기 %}
