@@ -1,4 +1,206 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-05-08T08:07:30+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">GitHub Blog 카테고리 페이지 생성하기</title><link href="https://ruyshy.github.io/blog/2025/05/07/blog-23-category-pagination.html" rel="alternate" type="text/html" title="GitHub Blog 카테고리 페이지 생성하기" /><published>2025-05-07T00:00:00+09:00</published><updated>2025-05-07T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/2025/05/07/blog-23-category-pagination</id><content type="html" xml:base="https://ruyshy.github.io/blog/2025/05/07/blog-23-category-pagination.html"><![CDATA[<p>GitHub 블로그에 카테고리별 페이지를 만들고, <strong>페이지네이션</strong>과 <strong>정렬 기능(최신순/과거순)</strong> 까지 넣고 싶다면?<br />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2025-05-08T08:53:38+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html" rel="alternate" type="text/html" title="PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리" /><published>2025-05-08T00:00:00+09:00</published><updated>2025-05-08T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html"><![CDATA[<p>PE Viewer는 .exe, .dll 등 PE(Portable Executable) 형식의 파일 구조를 시각적으로 확인할 수 있는 도구입니다.
+이 글에서는 대표적인 PE Viewer 도구들과, 그 중 PE-bear를 활용한 구조 분석 예시를 간단히 정리합니다.</p>
+
+<hr />
+
+<h2 id="pe-viewer란">PE Viewer란?</h2>
+
+<p><strong>PE 파일</strong>은 <code class="language-plaintext highlighter-rouge">.exe</code>, <code class="language-plaintext highlighter-rouge">.dll</code>, <code class="language-plaintext highlighter-rouge">.sys</code> 같은 실행 가능한 바이너리 파일의 형식 PE Viewer는 이 파일을 열어 내부 <strong>헤더</strong>, <strong>섹션</strong>, <strong>임포트/익스포트 함수</strong>, <strong>리소스</strong>, <strong>디버그 정보</strong> 등을 <strong>시각적</strong>으로 보여주는 프로그램</p>
+
+<hr />
+
+<h2 id="다시-보는-pe-구조-요약">다시 보는 PE 구조 요약</h2>
+
+<p>PE Viewer는 아래 구조를 보기 쉽게 보여줍니다:</p>
+
+<ul>
+  <li><strong>DOS Header (<code class="language-plaintext highlighter-rouge">MZ</code>)</strong>
+    <ul>
+      <li>예전 DOS 실행파일과의 호환용</li>
+      <li><code class="language-plaintext highlighter-rouge">e_lfanew</code> 필드에 NT Header의 오프셋 존재</li>
+    </ul>
+  </li>
+  <li><strong>NT Header (<code class="language-plaintext highlighter-rouge">PE\0\0</code>)</strong>
+    <ul>
+      <li>Signature: PE</li>
+      <li>File Header: 타겟 머신, 섹션 개수, 타임스탬프</li>
+      <li>Optional Header: 실행 진입점, 메모리 배치 등</li>
+    </ul>
+  </li>
+  <li><strong>Section Table (예: <code class="language-plaintext highlighter-rouge">.text</code>, <code class="language-plaintext highlighter-rouge">.data</code>, <code class="language-plaintext highlighter-rouge">.rsrc</code>)</strong>
+    <ul>
+      <li>코드, 데이터, 리소스 등의 실제 내용을 담음</li>
+    </ul>
+  </li>
+  <li><strong>Import Table</strong>
+    <ul>
+      <li>이 파일이 참조하는 외부 DLL과 함수 목록</li>
+    </ul>
+  </li>
+  <li><strong>Export Table</strong>
+    <ul>
+      <li>다른 파일에서 참조할 수 있는 함수 목록</li>
+    </ul>
+  </li>
+  <li><strong>Resource Table</strong>
+    <ul>
+      <li>아이콘, 문자열, 대화상자 등 리소스 정보</li>
+    </ul>
+  </li>
+  <li><strong>Relocation Table</strong>
+    <ul>
+      <li>실행 주소가 바뀔 경우 고정 위치 보정 정보</li>
+    </ul>
+  </li>
+  <li><strong>Debug Directory</strong>
+    <ul>
+      <li>디버깅 심볼 정보 위치</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="대표적인-pe-viewer-도구들">대표적인 PE Viewer 도구들</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>도구</th>
+      <th>특징</th>
+      <th>참고 사이트</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>PE-bear</strong></td>
+      <td>가볍고 빠르며 구조 파싱이 잘 되어 있음</td>
+      <td><a href="https://github.com/hasherezade/pe-bear">https://github.com/hasherezade/pe-bear</a></td>
+    </tr>
+    <tr>
+      <td><strong>CFF Explorer</strong></td>
+      <td>수동 수정 가능, 섹션 수정, IAT 재배치 등</td>
+      <td><a href="https://github.com/bfosterjr/CFFExtensions">https://github.com/bfosterjr/CFFExtensions</a></td>
+    </tr>
+    <tr>
+      <td><strong>Exeinfo PE</strong></td>
+      <td>패킹 정보, 컴파일러 추정 기능 제공</td>
+      <td><a href="https://github.com/ExeinfoASL/ASL">https://github.com/ExeinfoASL/ASL</a></td>
+    </tr>
+    <tr>
+      <td><strong>LordPE</strong></td>
+      <td>오래된 도구지만 여전히 일부 분석에 유용</td>
+      <td><a href="https://github.com/DonaldTrump0/LordPE">https://github.com/DonaldTrump0/LordPE</a></td>
+    </tr>
+    <tr>
+      <td><strong>x64dbg / x32dbg 내 PE 뷰어</strong></td>
+      <td>동적 디버깅과 통합된 PE 구조 보기</td>
+      <td><a href="https://x64dbg.com/">https://x64dbg.com/</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="pe-viewer로-할-수-있는-일">PE Viewer로 할 수 있는 일</h2>
+
+<ul>
+  <li>프로그램 진입점 찾기 (EntryPoint)</li>
+  <li>특정 함수가 어디서 임포트되었는지 확인</li>
+  <li>패킹 여부 및 패커 종류 확인</li>
+  <li>섹션 구조와 오프셋 분석</li>
+  <li>리소스 추출 및 뷰</li>
+</ul>
+
+<hr />
+
+<h2 id="pe-bear-간단-설명">PE-bear 간단 설명</h2>
+
+<p>실행 후, File→Load PEs 진행 한 모습 (예제는 Hello World.exe):</p>
+
+<p><img src="/assets/images/reversing_engineering/2025-05-08-reversing5-PE-Viewer/PE-bear-Hello-World-exe-Image.png" alt="PE-bear-Hello-World-exe-Image.png" style="max-width:100%;" /></p>
+
+<h3 id="1-왼쪽-트리-구조">1. <strong>왼쪽 트리 구조</strong></h3>
+
+<ul>
+  <li>
+    <p><strong>DOS Header, DOS stub, NT Headers, Section Headers</strong>:</p>
+
+    <p>PE 구조의 계층을 보여주는 부분.</p>
+  </li>
+  <li>
+    <p><strong>Sections</strong>:</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.text</code>: 코드 섹션. <strong>EP = 934</strong> → 진입점 주소가 이곳임.</li>
+      <li><code class="language-plaintext highlighter-rouge">.rdata</code>, <code class="language-plaintext highlighter-rouge">.data</code>, <code class="language-plaintext highlighter-rouge">.pdata</code>, <code class="language-plaintext highlighter-rouge">.gfids</code>, <code class="language-plaintext highlighter-rouge">.rsrc</code>, <code class="language-plaintext highlighter-rouge">.reloc</code>: 각각 상수 데이터, 초기화된 데이터, 예외 처리 정보, 전역 함수 포인터, 리소스, 재배치 정보 등.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-오른쪽-hex--ascii-뷰어">2. <strong>오른쪽 Hex + Ascii 뷰어</strong></h3>
+
+<ul>
+  <li>중앙 상단에는 HEX 값들이, 오른쪽에는 그 ASCII 해석이 보임.</li>
+  <li>현재 <code class="language-plaintext highlighter-rouge">Entry Point(EP)</code>인 <code class="language-plaintext highlighter-rouge">0x934</code> 부근의 코드가 표시되고 있음.</li>
+</ul>
+
+<h3 id="3-하단-disassembly-뷰">3. <strong>하단 Disassembly 뷰</strong></h3>
+
+<ul>
+  <li>선택된 섹션(<code class="language-plaintext highlighter-rouge">.text</code>)의 디스어셈블리 코드가 나열되어 있음.</li>
+</ul>
+
+<h3 id="4-ep--934">4. <strong>EP = 934</strong></h3>
+
+<ul>
+  <li>이 <code class="language-plaintext highlighter-rouge">934</code>는 PE 파일의 <strong>메모리상 진입점 주소 (Entry Point)</strong> 이며, 실행 시 가장 먼저 도착하는 위치임.</li>
+  <li>이건 <strong>RVA (Relative Virtual Address)</strong> 이고, 실제 파일 오프셋과 매핑해서 해석됨.</li>
+</ul>
+
+<h3 id="pe-bear로-할-수-있는-주요-분석">PE-bear로 할 수 있는 주요 분석</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>기능</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Header 확인</strong></td>
+      <td>DOS → NT Header → Optional Header까지 전부 탐색 가능</td>
+    </tr>
+    <tr>
+      <td><strong>Section 정보 분석</strong></td>
+      <td>코드/데이터/리소스 구분 확인</td>
+    </tr>
+    <tr>
+      <td><strong>Entry Point 추적</strong></td>
+      <td>프로그램 시작 위치에서부터 실행 흐름 파악 가능</td>
+    </tr>
+    <tr>
+      <td><strong>IAT 확인</strong></td>
+      <td>Import Address Table (어떤 DLL, 함수 호출하는지)</td>
+    </tr>
+    <tr>
+      <td><strong>리소스 탐색</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">.rsrc</code> 섹션에서 아이콘, 문자열 등의 정보 확인</td>
+    </tr>
+    <tr>
+      <td><strong>디스어셈블리</strong></td>
+      <td>기계어 → 어셈블리 변환된 흐름 추적 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="pe-bear-요약">PE-bear 요약</h3>
+
+<ul>
+  <li>EP = <code class="language-plaintext highlighter-rouge">0x934</code> → 실행의 시작점.</li>
+  <li><code class="language-plaintext highlighter-rouge">SUB/CALL/ADD/JMP</code> 구조 → 함수 호출과 복귀의 전형적 형태.</li>
+  <li>PE-bear는 <strong>디버깅 전 정적 분석용으로 가볍고 시각적이어서 좋음</strong>.</li>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="PE" /><category term="PE Viewer" /><category term="PE-bear" /><category term="Reverse Engineering" /><category term="리버싱" /><category term="실행파일 분석" /><category term="바이너리 분석" /><summary type="html"><![CDATA[PE 파일 포맷(.exe, .dll 등)의 구조를 시각적으로 분석할 수 있는 PE Viewer 도구들을 소개하고, 특히 PE-bear를 활용해 진입점 분석, 섹션 구조 확인, IAT 탐색 등을 정리합니다.]]></summary></entry><entry><title type="html">GitHub Blog 카테고리 페이지 생성하기</title><link href="https://ruyshy.github.io/blog/2025/05/07/blog-23-category-pagination.html" rel="alternate" type="text/html" title="GitHub Blog 카테고리 페이지 생성하기" /><published>2025-05-07T00:00:00+09:00</published><updated>2025-05-07T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/2025/05/07/blog-23-category-pagination</id><content type="html" xml:base="https://ruyshy.github.io/blog/2025/05/07/blog-23-category-pagination.html"><![CDATA[<p>GitHub 블로그에 카테고리별 페이지를 만들고, <strong>페이지네이션</strong>과 <strong>정렬 기능(최신순/과거순)</strong> 까지 넣고 싶다면?<br />
 이 글에서는 <code class="language-plaintext highlighter-rouge">jekyll-paginate-v2</code> 플러그인을 이용해 minimal-mistakes 테마 기반 블로그에서 <strong>카테고리 페이지를 만드는 전 과정을 정리</strong>했습니다.</p>
 
 <blockquote>
@@ -921,9 +1123,9 @@ archive-single.html %} {%- endfor -%}
 <p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code> 해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-leeoz', this)" data-label="sidebar.html 전체 코드">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-rzgb6m', this)" data-label="sidebar.html 전체 코드">
   </div>
-  <div id="toggle-leeoz" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-rzgb6m" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
@@ -2357,84 +2559,84 @@ EntryPoint = 0x1100 (RVA)
 
 <h3 id="3-1-분석-퀴즈-disassembly-보기-전에-예상해보자">3-1. 분석 퀴즈 (Disassembly 보기 전에 예상해보자!)</h3>
 
-<div class="quiz-box" id="quiz-box-331707">
-  <div class="quiz-message" id="quiz-message-331707" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-192218">
+  <div class="quiz-message" id="quiz-message-192218" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 C++의 <code class="language-plaintext highlighter-rouge">for (int i = 0; i &lt; 10; ++i)</code> 루프가 어셈블리 코드로 번역될 때 <strong>반드시 포함되는 흐름</strong>이 아닌 것은?</p>
 
   </div>
-  <form id="quiz-form-331707" onsubmit="return false;">
+  <form id="quiz-form-192218" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-331707" id="quiz-331707-0" value="조건 검사 후 점프 명령 (`jl`, `jg` 등)" data-correct="false" />
-  <label for="quiz-331707-0">조건 검사 후 점프 명령 (<code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">jg</code> 등)</label>
+  <input type="radio" name="quiz-answer-192218" id="quiz-192218-0" value="조건 검사 후 점프 명령 (`jl`, `jg` 등)" data-correct="false" />
+  <label for="quiz-192218-0">조건 검사 후 점프 명령 (<code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">jg</code> 등)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-331707" id="quiz-331707-1" value="증가 연산자 (`inc`, `add`)" data-correct="false" />
-  <label for="quiz-331707-1">증가 연산자 (<code class="language-plaintext highlighter-rouge">inc</code>, <code class="language-plaintext highlighter-rouge">add</code>)</label>
+  <input type="radio" name="quiz-answer-192218" id="quiz-192218-1" value="증가 연산자 (`inc`, `add`)" data-correct="false" />
+  <label for="quiz-192218-1">증가 연산자 (<code class="language-plaintext highlighter-rouge">inc</code>, <code class="language-plaintext highlighter-rouge">add</code>)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-331707" id="quiz-331707-2" value="함수 호출 명령 (`call`)" data-correct="true" />
-  <label for="quiz-331707-2">함수 호출 명령 (<code class="language-plaintext highlighter-rouge">call</code>)</label>
+  <input type="radio" name="quiz-answer-192218" id="quiz-192218-2" value="함수 호출 명령 (`call`)" data-correct="true" />
+  <label for="quiz-192218-2">함수 호출 명령 (<code class="language-plaintext highlighter-rouge">call</code>)</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-331707" id="quiz-331707-3" value="무조건 점프 명령 (`jmp`)" data-correct="false" />
-  <label for="quiz-331707-3">무조건 점프 명령 (<code class="language-plaintext highlighter-rouge">jmp</code>)</label>
+  <input type="radio" name="quiz-answer-192218" id="quiz-192218-3" value="무조건 점프 명령 (`jmp`)" data-correct="false" />
+  <label for="quiz-192218-3">무조건 점프 명령 (<code class="language-plaintext highlighter-rouge">jmp</code>)</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(331707, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(192218, false, null)">제출</button>
   </form>
-  <div id="quiz-result-331707" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-331707" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-331707', this)" data-label="해설 보기"></div>
-  <div id="toggle-331707" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-192218" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-192218" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-192218', this)" data-label="해설 보기"></div>
+  <div id="toggle-192218" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: 함수 호출이 없는 경우 <code class="language-plaintext highlighter-rouge">call</code> 명령은 포함되지 않는다. 루프에서는 비교(<code class="language-plaintext highlighter-rouge">cmp</code>), 조건 분기(<code class="language-plaintext highlighter-rouge">jl</code>), 루프 변수 증가(<code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">inc</code>), 루프 반복을 위한 <code class="language-plaintext highlighter-rouge">jmp</code>는 일반적으로 포함된다.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-831995">
-  <div class="quiz-message" id="quiz-message-831995" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-129093">
+  <div class="quiz-message" id="quiz-message-129093" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">2.</code> C++의 <code class="language-plaintext highlighter-rouge">sum += i;</code> 같은 연산이 어셈블리어에서 <strong>보통 어떤 명령어</strong>로 나타나는가?</p>
 
   </div>
-  <form id="quiz-form-831995" onsubmit="return false;">
+  <form id="quiz-form-129093" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-831995" id="quiz-831995-0" value="`mov`" data-correct="false" />
-  <label for="quiz-831995-0"><code class="language-plaintext highlighter-rouge">mov</code></label>
+  <input type="radio" name="quiz-answer-129093" id="quiz-129093-0" value="`mov`" data-correct="false" />
+  <label for="quiz-129093-0"><code class="language-plaintext highlighter-rouge">mov</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-831995" id="quiz-831995-1" value="`cmp`" data-correct="false" />
-  <label for="quiz-831995-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
+  <input type="radio" name="quiz-answer-129093" id="quiz-129093-1" value="`cmp`" data-correct="false" />
+  <label for="quiz-129093-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-831995" id="quiz-831995-2" value="`add`" data-correct="true" />
-  <label for="quiz-831995-2"><code class="language-plaintext highlighter-rouge">add</code></label>
+  <input type="radio" name="quiz-answer-129093" id="quiz-129093-2" value="`add`" data-correct="true" />
+  <label for="quiz-129093-2"><code class="language-plaintext highlighter-rouge">add</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-831995" id="quiz-831995-3" value="`jmp`" data-correct="false" />
-  <label for="quiz-831995-3"><code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-129093" id="quiz-129093-3" value="`jmp`" data-correct="false" />
+  <label for="quiz-129093-3"><code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(831995, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(129093, false, null)">제출</button>
   </form>
-  <div id="quiz-result-831995" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-831995" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-831995', this)" data-label="해설 보기"></div>
-  <div id="toggle-831995" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-129093" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-129093" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-129093', this)" data-label="해설 보기"></div>
+  <div id="toggle-129093" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">sum += i</code>는 덧셈 연산이므로 <code class="language-plaintext highlighter-rouge">add</code> 명령어로 나타난다.</p>
 
 <ul>
@@ -2447,42 +2649,42 @@ EntryPoint = 0x1100 (RVA)
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-960122">
-  <div class="quiz-message" id="quiz-message-960122" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-434796">
+  <div class="quiz-message" id="quiz-message-434796" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">3.</code> C++의 조건문 <code class="language-plaintext highlighter-rouge">i &lt; 5</code>는 어셈블리어에서 보통 어떤 두 개의 명령어 조합으로 표현되는가?</p>
 
   </div>
-  <form id="quiz-form-960122" onsubmit="return false;">
+  <form id="quiz-form-434796" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-960122" id="quiz-960122-0" value="`cmp` + `call`" data-correct="false" />
-  <label for="quiz-960122-0"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">call</code></label>
+  <input type="radio" name="quiz-answer-434796" id="quiz-434796-0" value="`cmp` + `call`" data-correct="false" />
+  <label for="quiz-434796-0"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">call</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-960122" id="quiz-960122-1" value="`mov` + `jmp`" data-correct="false" />
-  <label for="quiz-960122-1"><code class="language-plaintext highlighter-rouge">mov</code> + <code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-434796" id="quiz-434796-1" value="`mov` + `jmp`" data-correct="false" />
+  <label for="quiz-434796-1"><code class="language-plaintext highlighter-rouge">mov</code> + <code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-960122" id="quiz-960122-2" value="`cmp` + `jl`" data-correct="true" />
-  <label for="quiz-960122-2"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">jl</code></label>
+  <input type="radio" name="quiz-answer-434796" id="quiz-434796-2" value="`cmp` + `jl`" data-correct="true" />
+  <label for="quiz-434796-2"><code class="language-plaintext highlighter-rouge">cmp</code> + <code class="language-plaintext highlighter-rouge">jl</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-960122" id="quiz-960122-3" value="`test` + `jne`" data-correct="false" />
-  <label for="quiz-960122-3"><code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">jne</code></label>
+  <input type="radio" name="quiz-answer-434796" id="quiz-434796-3" value="`test` + `jne`" data-correct="false" />
+  <label for="quiz-434796-3"><code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">jne</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(960122, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(434796, false, null)">제출</button>
   </form>
-  <div id="quiz-result-960122" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-960122" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-960122', this)" data-label="해설 보기"></div>
-  <div id="toggle-960122" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-434796" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-434796" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-434796', this)" data-label="해설 보기"></div>
+  <div id="toggle-434796" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설</strong>: <code class="language-plaintext highlighter-rouge">i &lt; 5</code>는 <code class="language-plaintext highlighter-rouge">cmp i, 5</code>로 비교하고, 조건이 참일 경우 <code class="language-plaintext highlighter-rouge">jl target</code>으로 분기한다.</p>
 
 <p><code class="language-plaintext highlighter-rouge">jl</code>은 “Jump if Less” (signed 비교 기준).</p>
@@ -2637,329 +2839,4 @@ EntryPoint = 0x1100 (RVA)
   </li>
   <li><strong>루프 탈출 조건은 <code class="language-plaintext highlighter-rouge">cmp</code> + 조건 점프 (<code class="language-plaintext highlighter-rouge">jge</code>, <code class="language-plaintext highlighter-rouge">jl</code>, <code class="language-plaintext highlighter-rouge">je</code> 등)</strong></li>
   <li><code class="language-plaintext highlighter-rouge">sum += i</code> 는 항상 <code class="language-plaintext highlighter-rouge">add</code> 명령어로 나타남</li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="assembly" /><category term="assembly" /><category term="disassembly" /><category term="VisualStudio" /><category term="조건문 어셈블리" /><category term="루프 구조" /><category term="cmp" /><category term="jmp" /><category term="x64 디버깅" /><summary type="html"><![CDATA[조건문과 반복문이 C++에서 어셈블리로 어떻게 번역되는지 Visual Studio와 x64 디스어셈블리 창에서 직접 분석하며 흐름을 파악합니다. cmp, jmp, jge, add 등 핵심 명령어를 예제로 익혀보세요.]]></summary></entry><entry><title type="html">Disassembly 함수 호출 및 재귀 분석: C++ → 어셈블리 흐름 정복</title><link href="https://ruyshy.github.io/reversing_engineering/assembly/2025/04/30/reversing1-disassembly3.html" rel="alternate" type="text/html" title="Disassembly 함수 호출 및 재귀 분석: C++ → 어셈블리 흐름 정복" /><published>2025-04-30T00:00:00+09:00</published><updated>2025-04-30T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/assembly/2025/04/30/reversing1-disassembly3</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/assembly/2025/04/30/reversing1-disassembly3.html"><![CDATA[<p>C++에서 함수 호출과 재귀 함수는 어셈블리에서 어떻게 나타날까요?<br />
-이 포스트에서는 <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">ret</code>, <code class="language-plaintext highlighter-rouge">ecx</code>, <code class="language-plaintext highlighter-rouge">eax</code>, <code class="language-plaintext highlighter-rouge">rsp</code>를 통해 함수 호출과 재귀 구조가 어떻게 구현되는지를 디스어셈블리로 명확히 분석합니다.<br />
-스택 프레임의 변화를 이해하면 리버싱 실력이 한층 더 올라갑니다.</p>
-
-<h2 id="1-c-코드-작성-함수-호출의-내부-구조-분석">1. C++ 코드 작성 (함수 호출의 내부 구조 분석)</h2>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">square</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"result = "</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-</code></pre></div></div>
-
-<h3 id="1-1-squareint-x-함수-내부">1-1. <code class="language-plaintext highlighter-rouge">square(int x)</code> 함수 내부</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">00007</span><span class="nf">FF69D0410B0</span> <span class="mi">89</span> <span class="mi">4</span><span class="nv">C</span> <span class="mi">24</span> <span class="mi">08</span>    <span class="nv">mov</span> <span class="kt">dword</span> <span class="nv">ptr</span> <span class="p">[</span><span class="nv">x</span><span class="p">],</span> <span class="nb">ecx</span>
-<span class="err">00007</span><span class="nf">FF69D0410B4</span> <span class="mi">8</span><span class="nv">B</span> <span class="mi">44</span> <span class="mi">24</span> <span class="mi">08</span>    <span class="nv">mov</span> <span class="nb">eax</span><span class="p">,</span> <span class="kt">dword</span> <span class="nv">ptr</span> <span class="p">[</span><span class="nv">x</span><span class="p">]</span>
-<span class="err">00007</span><span class="nf">FF69D0410B8</span> <span class="mi">0</span><span class="nv">F</span> <span class="nv">AF</span> <span class="mi">44</span> <span class="mi">24</span> <span class="mi">08</span> <span class="nv">imul</span> <span class="nb">eax</span><span class="p">,</span> <span class="kt">dword</span> <span class="nv">ptr</span> <span class="p">[</span><span class="nv">x</span><span class="p">]</span>
-</code></pre></div></div>
-
-<p><strong>해석:</strong></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>명령어</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">mov [x], ecx</code></td>
-      <td>x 값 저장 (ecx = 인자)</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">mov eax, [x]</code></td>
-      <td>x 값을 eax에 로드</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">imul eax, [x]</code></td>
-      <td>eax _= x (<code class="language-plaintext highlighter-rouge">x _ x</code>)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Microsoft x64 Calling Convention 정수 인자는 ecx, 결과는 eax로 오고감.</p>
-
-<p>리턴값은 <code class="language-plaintext highlighter-rouge">eax</code>에 있음</p>
-
-<h3 id="1-2-main-함수-내">1-2. <code class="language-plaintext highlighter-rouge">main()</code> 함수 내</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">sub</span> <span class="nb">rsp</span><span class="p">,</span><span class="mh">38h</span>                   <span class="c1">; 스택 공간 확보</span>
-<span class="nf">mov</span> <span class="p">[</span><span class="nv">value</span><span class="p">],</span> <span class="mi">3</span>                <span class="c1">; value = 3</span>
-</code></pre></div></div>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">mov</span> <span class="nb">ecx</span><span class="p">,</span> <span class="p">[</span><span class="nv">value</span><span class="p">]</span>              <span class="c1">; 인자 전달 (ecx = value)</span>
-<span class="nf">call</span> <span class="nv">square</span>                   <span class="c1">; square 함수 호출</span>
-<span class="nf">mov</span> <span class="p">[</span><span class="nv">result</span><span class="p">],</span> <span class="nb">eax</span>             <span class="c1">; 리턴값 저장</span>
-</code></pre></div></div>
-
-<p>해석:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>C++ 코드</th>
-      <th>Assembly</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">square(value)</code></td>
-      <td><code class="language-plaintext highlighter-rouge">mov ecx, [value]</code> → <code class="language-plaintext highlighter-rouge">call square</code></td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">int result = ...</code></td>
-      <td><code class="language-plaintext highlighter-rouge">mov [result], eax</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>→ 즉,</p>
-
-<ul>
-  <li>인자는 <strong>ecx로 전달</strong></li>
-  <li>결과는 <strong>eax에 담겨 리턴</strong></li>
-</ul>
-
-<p>이게 C++ 함수 호출의 기본 원리</p>
-
-<h3 id="1-3-핵심-요약표">1-3. 핵심 요약표</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>구성 요소</th>
-      <th>사용 레지스터 / 명령</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1. 인자 전달</td>
-      <td><code class="language-plaintext highlighter-rouge">ecx</code></td>
-      <td>첫 번째 인자</td>
-    </tr>
-    <tr>
-      <td>2. 함수 호출</td>
-      <td><code class="language-plaintext highlighter-rouge">call</code></td>
-      <td>스택에 리턴주소 push 후 분기</td>
-    </tr>
-    <tr>
-      <td>3. 리턴값</td>
-      <td><code class="language-plaintext highlighter-rouge">eax</code></td>
-      <td>함수 결과는 eax에 담김</td>
-    </tr>
-    <tr>
-      <td>4. 스택 복귀</td>
-      <td><code class="language-plaintext highlighter-rouge">ret</code> (보이지 않지만 존재)</td>
-      <td>이전 주소로 복귀</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h2 id="2-코드-작성-재귀-함수">2. 코드 작성 (재귀 함수)</h2>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"result = "</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="2-1-기대하는-어셈블리-흐름-재귀의-핵심은-자기-자신을-call한다는-것">2-1. 기대하는 어셈블리 흐름 (재귀의 핵심은 “<strong>자기 자신을 call</strong>”한다는 것!)</h3>
-
-<p>흐름 예상:</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">factorial:</span>
-    <span class="n">cmp</span>     <span class="n">ecx</span><span class="p">,</span> <span class="mi">1</span>            <span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">jle</span>     <span class="n">base_case</span>
-    <span class="n">sub</span>     <span class="n">ecx</span><span class="p">,</span> <span class="mi">1</span>            <span class="p">;</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
-    <span class="n">call</span>    <span class="n">factorial</span>         <span class="p">;</span> <span class="err">재귀</span> <span class="err">호출</span><span class="o">!</span>
-    <span class="n">imul</span>    <span class="n">eax</span><span class="p">,</span> <span class="n">ecx</span>          <span class="p">;</span> <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">ret</span>
-<span class="n">base_case</span><span class="o">:</span>
-    <span class="n">mov</span>     <span class="n">eax</span><span class="p">,</span> <span class="mi">1</span>
-    <span class="n">ret</span>
-</code></pre></div></div>
-
-<p>관찰 해야할 포인트:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>포인트</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">call factorial</code></td>
-      <td>재귀 호출 핵심</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cmp ecx, 1</code> + <code class="language-plaintext highlighter-rouge">jle</code></td>
-      <td>종료 조건 분기</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">imul eax, ecx</code></td>
-      <td>n * sub결과</td>
-    </tr>
-    <tr>
-      <td>레지스터</td>
-      <td><code class="language-plaintext highlighter-rouge">ecx</code>: 인자, <code class="language-plaintext highlighter-rouge">eax</code>: 리턴값</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>또한, 재귀 호출마다 <strong>스택에 리턴주소와 지역변수, 인자 값이 쌓이는 것</strong>도 체크할 수 있음.</p>
-
-<h3 id="2-2-함수-분석-대상-int-factorialint-n">2-2. 함수 분석 대상: <code class="language-plaintext highlighter-rouge">int factorial(int n)</code></h3>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-<span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-</code></pre></div></div>
-
-<h3 id="2-3-한-줄씩-disassembly-분석-재귀-구조-중심">2-3. 한 줄씩 Disassembly 분석 (재귀 구조 중심)</h3>
-
-<p><strong>인자 저장 및 스택 프롤로그</strong></p>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">00007</span><span class="nf">FF6AC1810B0</span> <span class="mi">89</span> <span class="mi">4</span><span class="nv">C</span> <span class="mi">24</span> <span class="mi">08</span>          <span class="nv">mov</span>         <span class="kt">dword</span> <span class="nv">ptr</span> <span class="p">[</span><span class="nb">rsp</span><span class="o">+</span><span class="mi">8</span><span class="p">],</span><span class="nb">ecx</span>
-<span class="err">00007</span><span class="nf">FF6AC1810B4</span> <span class="mi">48</span> <span class="mi">83</span> <span class="nv">EC</span> <span class="mi">28</span>          <span class="nv">sub</span>         <span class="nb">rsp</span><span class="p">,</span><span class="mh">28h</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">ecx</code> = 첫 번째 인자 <code class="language-plaintext highlighter-rouge">n</code></li>
-  <li>이 값을 스택에 <code class="language-plaintext highlighter-rouge">rsp+8</code> 위치에 저장 (<code class="language-plaintext highlighter-rouge">[n]</code>)</li>
-  <li>스택 공간 확보: 로컬 변수 및 함수 호출용</li>
-</ul>
-
-<h3 id="2-4-종료-조건-분기">2-4. 종료 조건 분기</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">00007</span><span class="nf">FF6AC1810B8</span> <span class="mi">83</span> <span class="mi">7</span><span class="nv">C</span> <span class="mi">24</span> <span class="mi">30</span> <span class="mi">01</span>       <span class="nv">cmp</span>         <span class="kt">dword</span> <span class="nv">ptr</span> <span class="p">[</span><span class="nv">n</span><span class="p">],</span><span class="mi">1</span>
-<span class="err">00007</span><span class="nf">FF6AC1810BD</span> <span class="mi">7</span><span class="nv">F</span> <span class="mi">07</span>                <span class="nv">jg</span>          <span class="mi">0</span><span class="nv">x...10C6</span>  <span class="c1">; n &gt; 1 이면 재귀</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">cmp n, 1</code> → <code class="language-plaintext highlighter-rouge">n &lt;= 1</code>이면 다음 줄로 진행</li>
-  <li><code class="language-plaintext highlighter-rouge">jg</code> = jump if greater → 즉 <code class="language-plaintext highlighter-rouge">n &gt; 1</code>이면 재귀로 분기</li>
-</ul>
-
-<h3 id="2-5-base-case-return-1">2-5. base case: return 1;</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">00007</span><span class="nf">FF6AC1810BF</span> <span class="nv">B8</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>       <span class="nv">mov</span>         <span class="nb">eax</span><span class="p">,</span><span class="mi">1</span>
-<span class="err">00007</span><span class="nf">FF6AC1810C4</span> <span class="nv">EB</span> <span class="mi">16</span>                <span class="nv">jmp</span>         <span class="mi">0</span><span class="nv">x...10DC</span>  <span class="c1">; 함수 탈출</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">eax = 1</code> 설정 (리턴값)</li>
-  <li><code class="language-plaintext highlighter-rouge">jmp</code>로 아래 리턴 처리로 이동</li>
-</ul>
-
-<h3 id="2-6-재귀-호출-준비-및-호출">2-6. 재귀 호출 준비 및 호출</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">00007</span><span class="nf">FF6AC1810C6</span> <span class="mi">8</span><span class="nv">B</span> <span class="mi">44</span> <span class="mi">24</span> <span class="mi">30</span>          <span class="nv">mov</span>         <span class="nb">eax</span><span class="p">,</span><span class="kt">dword</span> <span class="nv">ptr</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span>
-<span class="err">00007</span><span class="nf">FF6AC1810CA</span> <span class="nv">FF</span> <span class="nv">C8</span>                <span class="nv">dec</span>         <span class="nb">eax</span>        <span class="c1">; eax = n-1</span>
-<span class="err">00007</span><span class="nf">FF6AC1810CC</span> <span class="mi">8</span><span class="nv">B</span> <span class="nv">C8</span>                <span class="nv">mov</span>         <span class="nb">ecx</span><span class="p">,</span><span class="nb">eax</span>     <span class="c1">; ecx = n-1</span>
-<span class="err">00007</span><span class="nf">FF6AC1810CE</span> <span class="nv">E8</span> <span class="nv">...</span>               <span class="nv">call</span>        <span class="nv">factorial</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">n-1</code> 계산 → <code class="language-plaintext highlighter-rouge">ecx</code>에 다시 설정 (함수 인자 규칙)</li>
-  <li><code class="language-plaintext highlighter-rouge">call factorial</code>: 자기 자신을 재귀 호출</li>
-</ul>
-
-<p><strong>중요한 점:</strong></p>
-
-<p><code class="language-plaintext highlighter-rouge">call</code>은 다음 명령 주소를 스택에 <code class="language-plaintext highlighter-rouge">push</code> 후, 해당 함수로 <code class="language-plaintext highlighter-rouge">jmp</code>
-→ 따라서 재귀마다 스택 프레임이 계속 쌓인다!</p>
-
-<h3 id="2-7-재귀-호출-이후-곱셈-및-리턴">2-7. 재귀 호출 이후 곱셈 및 리턴</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">00007</span><span class="nf">FF6AC1810D3</span> <span class="mi">8</span><span class="nv">B</span> <span class="mi">4</span><span class="nv">C</span> <span class="mi">24</span> <span class="mi">30</span>          <span class="nv">mov</span>         <span class="nb">ecx</span><span class="p">,</span><span class="kt">dword</span> <span class="nv">ptr</span> <span class="p">[</span><span class="nv">n</span><span class="p">]</span>
-<span class="err">00007</span><span class="nf">FF6AC1810D7</span> <span class="mi">0</span><span class="nv">F</span> <span class="nv">AF</span> <span class="nv">C8</span>             <span class="nv">imul</span>        <span class="nb">ecx</span><span class="p">,</span><span class="nb">eax</span>    <span class="c1">; ecx = n * factorial(n-1)</span>
-<span class="err">00007</span><span class="nf">FF6AC1810DA</span> <span class="mi">8</span><span class="nv">B</span> <span class="nv">C1</span>                <span class="nv">mov</span>         <span class="nb">eax</span><span class="p">,</span><span class="nb">ecx</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">eax</code>는 방금 호출된 <code class="language-plaintext highlighter-rouge">factorial(n-1)</code>의 리턴값</li>
-  <li>현재 <code class="language-plaintext highlighter-rouge">n</code> 값과 곱함 → 다시 <code class="language-plaintext highlighter-rouge">eax</code>로 설정 → 리턴 준비 완료</li>
-</ul>
-
-<h3 id="2-8-스택-복원--리턴">2-8. 스택 복원 + 리턴</h3>
-
-<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">00007</span><span class="nf">FF6AC1810DC</span> <span class="mi">48</span> <span class="mi">83</span> <span class="nv">C4</span> <span class="mi">28</span>          <span class="nv">add</span>         <span class="nb">rsp</span><span class="p">,</span><span class="mh">28h</span>
-<span class="err">00007</span><span class="nf">FF6AC1810E0</span> <span class="nv">C3</span>                   <span class="nv">ret</span>
-</code></pre></div></div>
-
-<ul>
-  <li>함수 호출 전 확보한 스택 해제</li>
-  <li><code class="language-plaintext highlighter-rouge">ret</code>: <code class="language-plaintext highlighter-rouge">call</code> 전에 push된 주소로 복귀 (이게 바로 재귀 스택 복귀!)</li>
-</ul>
-
-<h3 id="2-9-재귀-함수-호출-흐름-요약">2-9. 재귀 함수 호출 흐름 요약</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>C++ 구조</th>
-      <th>Assembly 흐름</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>인자 전달</td>
-      <td><code class="language-plaintext highlighter-rouge">mov ecx, n</code></td>
-    </tr>
-    <tr>
-      <td>종료 조건</td>
-      <td><code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">jg</code>, <code class="language-plaintext highlighter-rouge">mov eax, 1</code></td>
-    </tr>
-    <tr>
-      <td>재귀 호출</td>
-      <td><code class="language-plaintext highlighter-rouge">dec</code>, <code class="language-plaintext highlighter-rouge">mov ecx</code>, <code class="language-plaintext highlighter-rouge">call</code></td>
-    </tr>
-    <tr>
-      <td>복귀 후 계산</td>
-      <td><code class="language-plaintext highlighter-rouge">imul eax, n</code></td>
-    </tr>
-    <tr>
-      <td>리턴</td>
-      <td><code class="language-plaintext highlighter-rouge">eax</code>, <code class="language-plaintext highlighter-rouge">ret</code></td>
-    </tr>
-    <tr>
-      <td>스택 관리</td>
-      <td><code class="language-plaintext highlighter-rouge">sub/add rsp</code>, 호출마다 새 프레임 생성</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="2-10-왜-이게-중요한가">2-10. 왜 이게 중요한가?</h3>
-
-<ul>
-  <li>이 구조를 이해하면 <strong>스택 기반 함수 흐름 분석</strong>,
-<strong>스택 프레임 추적</strong>, <strong>리턴값 추적</strong>,
-<strong>함수 추적 트리 작성</strong>까지 가능하다.</li>
-  <li><code class="language-plaintext highlighter-rouge">ret</code> 이후 <strong>스택을 어떻게 밀고 당기는지</strong> 보면,
-리버싱으로 <code class="language-plaintext highlighter-rouge">호출 흐름 복원</code>할 수 있다.</li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="assembly" /><category term="assembly" /><category term="disassembly" /><category term="함수호출" /><category term="재귀분석" /><category term="ecx" /><category term="eax" /><category term="call" /><category term="ret" /><category term="스택프레임" /><category term="리버스엔지니어링" /><summary type="html"><![CDATA[C++ 함수 호출 및 재귀 함수의 어셈블리 구조를 디스어셈블리로 분석합니다. ecx 인자 전달, eax 리턴값, call-ret 흐름과 스택 프레임 변화를 실습 코드와 함께 배워봅니다.]]></summary></entry></feed>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="assembly" /><category term="assembly" /><category term="disassembly" /><category term="VisualStudio" /><category term="조건문 어셈블리" /><category term="루프 구조" /><category term="cmp" /><category term="jmp" /><category term="x64 디버깅" /><summary type="html"><![CDATA[조건문과 반복문이 C++에서 어셈블리로 어떻게 번역되는지 Visual Studio와 x64 디스어셈블리 창에서 직접 분석하며 흐름을 파악합니다. cmp, jmp, jge, add 등 핵심 명령어를 예제로 익혀보세요.]]></summary></entry></feed>
