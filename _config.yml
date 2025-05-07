@@ -236,40 +236,43 @@ timezone: Asia/Seoul
 
 pagination:
   enabled: true
+  collection: "posts"
   per_page: 5
-  permalink: "/:num/"
+  limit: 0
+  permalink: "/page/:num/"
   title: ""
   sort_field: "date"
   sort_reverse: true
   trail:
     before: 2
     after: 2
-
-# pagination_path:
-#   enabled: true
-#   auto: true
-#   path: "/categories/:category/page/:num/"
+  category: "posts"
+  tag: ""
+  locale: ""
 
 collections:
   pages:
     output: true
     permalink: /:path/
+  category:
+    output: true
+    permalink: /_pages/categories
 
 # Plugins (previously gems:)
 plugins:
-  - jekyll-paginate-v2
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-gist
+  - jekyll-paginate-v2
   - jekyll-feed
   - jekyll-include-cache
 
 # mimic GitHub Pages with --safe
 whitelist:
-  - jekyll-paginate-v2
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-gist
+  - jekyll-paginate-v2
   - jekyll-feed
   - jekyll-include-cache
 
