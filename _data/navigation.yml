@@ -5,6 +5,7 @@ main:
     url: /tags/
   - title: "Category"
     url: /categories/
+
     children:
       - sub_title: "Security"
         children:
@@ -12,6 +13,9 @@ main:
             url: /categories/assembly/
           - title: "Reversing Engineering"
             url: /categories/reversing_engineering/
+
+      - title: "C/C++"
+        url: /categories/C_C++/
 
       - title: "Blog"
         url: /categories/blog/
