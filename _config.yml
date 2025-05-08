@@ -341,33 +341,21 @@ defaults:
       type: posts
     values:
       categories: [assembly]
-      author_profile: true
-      sidebar:
-        nav: "main"
 
   - scope:
       path: "_posts/C_C++"
       type: posts
     values:
       categories: [C_C++]
-      author_profile: true
-      sidebar:
-        nav: "main"
 
   - scope:
       path: "_posts/blog"
       type: posts
     values:
       categories: [blog]
-      author_profile: true
-      sidebar:
-        nav: "main"
 
   - scope:
       path: "_posts/reversing_engineering"
       type: posts
     values:
       categories: [reversing_engineering]
-      author_profile: true
-      sidebar:
-        nav: "main"
