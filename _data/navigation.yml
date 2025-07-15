@@ -16,6 +16,7 @@ main:
 
       - title: "C/C++"
         url: /categories/C_C++/
-
+      - title: "React"
+        url: /categories/react/
       - title: "Blog"
         url: /categories/blog/
