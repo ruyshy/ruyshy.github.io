@@ -343,22 +343,16 @@ defaults:
       categories: [assembly]
 
   - scope:
-      path: "_posts/C_C++"
+      path: "_posts/opengl"
       type: posts
     values:
-      categories: [C_C++]
+      categories: [opengl]
 
   - scope:
       path: "_posts/blog"
       type: posts
     values:
       categories: [blog]
-
-  - scope:
-      path: "_posts/react"
-      type: posts
-    values:
-      categories: [react]   
 
   - scope:
       path: "_posts/reversing_engineering"
