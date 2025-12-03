@@ -1,11 +1,11 @@
 ---
-title: "React"
+title: "OpenGL"
 layout: category
-taxonomy: react
-permalink: categories/react
+taxonomy: opengl
+permalink: categories/opengl
 pagination:
   enabled: true
-  category: react
+  category: opengl
   per_page: 5
   sort_reverse: true
 ---
