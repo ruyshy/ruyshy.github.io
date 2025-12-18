@@ -5,7 +5,10 @@ main:
     url: /tags/
   - title: "Category"
     url: /categories/
-
+  - title: "Blog"
+    url: /categories/blog/
+    
+  - title: "Security"
     children:
       - sub_title: "Security"
         children:
@@ -13,8 +16,6 @@ main:
             url: /categories/assembly/
           - title: "Reversing Engineering"
             url: /categories/reversing_engineering/
-
-      - title: "Blog"
-        url: /categories/blog/
+      
       - title: "OpenGL"
         url: /categories/opengl/
