@@ -10,11 +10,12 @@ main:
     url: /categories/blog/
   - title: "OpenGL"
     url: /categories/opengl/
-    
-children:
-  - sub_title: "Security"
+  
+    -title: "---"
     children:
-      - title: "Assembly"
-        url: /categories/assembly/
-      - title: "Reversing Engineering"
-        url: /categories/reversing_engineering/
+    - sub_title: "Security"
+      children:
+        - title: "Assembly"
+          url: /categories/assembly/
+        - title: "Reversing Engineering"
+          url: /categories/reversing_engineering/
