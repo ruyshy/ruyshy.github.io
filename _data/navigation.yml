@@ -6,6 +6,9 @@ main:
   - title: "Category"
     url: /categories/
 
+  - title: "Blog"
+    url: /categories/blog/
+
     children:
       - sub_title: "Security"
         children:
