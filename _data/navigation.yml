@@ -5,17 +5,15 @@ main:
     url: /tags/
   - title: "Category"
     url: /categories/
+
   - title: "Blog"
     url: /categories/blog/
-    
-  - title: "Security"
+  - title: "OpenGL"
+    url: /categories/opengl/
+
+  - sub_title: "Security"
     children:
-      - sub_title: "Security"
-        children:
-          - title: "Assembly"
-            url: /categories/assembly/
-          - title: "Reversing Engineering"
-            url: /categories/reversing_engineering/
-      
-      - title: "OpenGL"
-        url: /categories/opengl/
+      - title: "Assembly"
+        url: /categories/assembly/
+      - title: "Reversing Engineering"
+        url: /categories/reversing_engineering/
