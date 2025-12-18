@@ -5,14 +5,14 @@ main:
     url: /tags/
   - title: "Category"
     url: /categories/
-
-  - title: "Blog"
-    url: /categories/blog/
-  - title: "OpenGL"
-    url: /categories/opengl/
   
-    -title: "---"
-    children:
+    children:  
+    - title: "Blog"
+      url: /categories/blog/
+    - title: "OpenGL"
+      url: /categories/opengl/
+
+    
     - sub_title: "Security"
       children:
         - title: "Assembly"
