@@ -10,7 +10,8 @@ main:
     url: /categories/blog/
   - title: "OpenGL"
     url: /categories/opengl/
-
+    
+children:
   - sub_title: "Security"
     children:
       - title: "Assembly"
