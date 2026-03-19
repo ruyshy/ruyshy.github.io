@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-19T11:32:42+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-19T11:44:32+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
 
 <p>OpenGL로 게임을 만든다고 하면 많은 사람이 가장 먼저 셰이더 문법이나 버퍼 객체부터 떠올린다. 하지만 실제로 프로젝트를 시작해 보면 제일 먼저 필요한 것은 화려한 그래픽 기술이 아니라, “게임을 올려둘 수 있는 안정적인 바닥”이다. 창을 만들고, OpenGL 컨텍스트를 초기화하고, 매 프레임마다 갱신과 렌더링을 분리해서 호출하고, 입력과 시간 정보를 관리하고, 이후 텍스처나 스프라이트 같은 상위 개념을 차곡차곡 쌓아 올릴 수 있어야 한다.</p>
 
@@ -1151,7 +1151,575 @@
   <li>모바일/패드 입력 대응</li>
 </ul>
 
-<p>지금 구조는 이런 확장을 고려해도 크게 무리 없는 상태까지 정리되어 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><category term="Game" /><category term="Tetris" /><summary type="html"><![CDATA[OpenGL Game Project + 테트리스 만들기]]></summary></entry><entry><title type="html">PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html" rel="alternate" type="text/html" title="PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리" /><published>2025-05-08T00:00:00+09:00</published><updated>2025-05-08T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html"><![CDATA[<p>PE Viewer는 .exe, .dll 등 PE(Portable Executable) 형식의 파일 구조를 시각적으로 확인할 수 있는 도구입니다.
+<p>지금 구조는 이런 확장을 고려해도 크게 무리 없는 상태까지 정리되어 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><category term="Game" /><category term="Tetris" /><summary type="html"><![CDATA[OpenGL Game Project + 테트리스 만들기]]></summary></entry><entry><title type="html">OpenGL puzzle pang</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl3-puzzle_pang.html" rel="alternate" type="text/html" title="OpenGL puzzle pang" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl3-puzzle_pang</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl3-puzzle_pang.html"><![CDATA[<h1 id="opengl로-애니팡-스타일-퍼즐-게임-만들기">OpenGL로 애니팡 스타일 퍼즐 게임 만들기</h1>
+
+<p>처음 이 프로젝트를 시작했을 때 목표는 단순했다.<br />
+<code class="language-plaintext highlighter-rouge">애니팡</code>처럼 누구나 바로 이해할 수 있는 3매치 퍼즐 게임을 직접 만들어보는 것이었다.</p>
+
+<p>하지만 실제로 구현을 진행해보니, 퍼즐 게임은 겉보기보다 훨씬 많은 시스템이 맞물려 있었다.</p>
+
+<ul>
+  <li>클릭 입력 해석</li>
+  <li>인접 타일 스왑</li>
+  <li>매치 탐지</li>
+  <li>연쇄 제거</li>
+  <li>낙하와 리필</li>
+  <li>점수, 콤보, 제한 시간</li>
+  <li>특수 블록 생성</li>
+  <li>특수 블록 조합</li>
+  <li>애니메이션과 이펙트</li>
+  <li>유지보수 가능한 코드 구조</li>
+</ul>
+
+<p>이번 글에서는 단순히 “무엇을 만들었다”보다, <strong>이 프로젝트를 어떤 순서로 확장했고, 어떤 기준으로 구조를 분리했는지</strong>를 기술적인 관점에서 정리해보려고 한다.</p>
+
+<hr />
+
+<h2 id="프로젝트-목표">프로젝트 목표</h2>
+
+<p>이번 프로젝트의 목표는 크게 두 가지였다.</p>
+
+<p>첫 번째는 <strong>실제로 플레이 가능한 퍼즐 게임을 만드는 것</strong>이었다.<br />
+보드가 화면에 나오고, 타일을 선택해서 교환하고, 3개 이상 맞으면 제거되고, 연쇄가 이어지고, 점수가 오르는 흐름이 자연스럽게 연결되어야 했다.</p>
+
+<p>두 번째는 <strong>기능이 늘어나도 버티는 구조를 만드는 것</strong>이었다.<br />
+퍼즐 게임은 초반에는 단순해 보이지만, 특수 블록과 조합 규칙이 붙기 시작하면 로직이 빠르게 비대해진다. 그래서 기능을 추가할 때마다 “이 책임은 어디에 있어야 가장 읽기 쉬울까?”를 계속 고민하면서 리팩터링을 병행했다.</p>
+
+<p>조금 더 기술적으로 말하면, 이번 프로젝트에서 중요하게 본 기준은 다음과 같았다.</p>
+
+<ul>
+  <li>입력 처리와 게임 규칙 계산을 분리할 것</li>
+  <li>렌더링과 상태 전이를 분리할 것</li>
+  <li>특수 블록 조합처럼 복잡도가 빠르게 커지는 규칙은 별도 레이어로 분리할 것</li>
+  <li><code class="language-plaintext highlighter-rouge">PuzzleBoard</code> 는 계산 엔진이 아니라 오케스트레이터에 가깝게 유지할 것</li>
+</ul>
+
+<hr />
+
+<h2 id="1-가장-먼저-만든-것-8x8-보드와-스왑">1. 가장 먼저 만든 것: 8x8 보드와 스왑</h2>
+
+<p>가장 먼저 구현한 것은 기본 보드와 타일 스왑이었다.</p>
+
+<ol>
+  <li>8x8 보드를 만든다.</li>
+  <li>마우스로 타일을 선택한다.</li>
+  <li>인접한 타일과 교환한다.</li>
+  <li>유효한 스왑이면 다음 단계로 넘긴다.</li>
+</ol>
+
+<p>이 단계에서 중요한 건 “클릭을 어떻게 해석할 것인가”였다.</p>
+
+<ul>
+  <li>아무 것도 선택되지 않은 상태에서 클릭하면 선택</li>
+  <li>같은 칸을 다시 클릭하면 선택 해제</li>
+  <li>인접하지 않은 칸을 클릭하면 선택 변경</li>
+  <li>인접한 칸을 클릭하면 스왑 시도</li>
+</ul>
+
+<p>이 해석은 현재 <code class="language-plaintext highlighter-rouge">PuzzleInputController.h</code>에 들어 있다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">InputAction</span> <span class="n">PuzzleInputController</span><span class="o">::</span><span class="n">processClick</span><span class="p">(</span><span class="kt">bool</span> <span class="n">hasSelection</span><span class="p">,</span> <span class="k">const</span> <span class="n">Cell</span><span class="o">&amp;</span> <span class="n">selectedCell</span><span class="p">,</span> <span class="k">const</span> <span class="n">Cell</span><span class="o">&amp;</span> <span class="n">clickedCell</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hasSelection</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="n">InputActionType</span><span class="o">::</span><span class="n">Select</span><span class="p">,</span> <span class="n">clickedCell</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">selectedCell</span> <span class="o">==</span> <span class="n">clickedCell</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="n">InputActionType</span><span class="o">::</span><span class="n">Deselect</span><span class="p">,</span> <span class="n">clickedCell</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">PuzzleRuleEngine</span><span class="o">::</span><span class="n">areAdjacent</span><span class="p">(</span><span class="n">selectedCell</span><span class="p">,</span> <span class="n">clickedCell</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="n">InputActionType</span><span class="o">::</span><span class="n">Select</span><span class="p">,</span> <span class="n">clickedCell</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span> <span class="n">InputActionType</span><span class="o">::</span><span class="n">Swap</span><span class="p">,</span> <span class="n">clickedCell</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>여기서 중요한 점은, 입력 계층은 아직 “이 스왑이 유효한가?”까지 판단하지 않는다는 것이다.<br />
+입력 계층은 오직 사용자의 의도를 <code class="language-plaintext highlighter-rouge">선택</code>, <code class="language-plaintext highlighter-rouge">해제</code>, <code class="language-plaintext highlighter-rouge">스왑 시도</code>로 해석하는 데 집중하고, 실제 규칙 검사는 이후 <code class="language-plaintext highlighter-rouge">SwapResolver</code> 와 <code class="language-plaintext highlighter-rouge">PuzzleRuleEngine</code> 이 담당한다.</p>
+
+<hr />
+
+<h2 id="2-퍼즐-게임의-핵심-매치-판정과-연쇄-처리">2. 퍼즐 게임의 핵심: 매치 판정과 연쇄 처리</h2>
+
+<p>스왑이 가능해진 뒤에는 퍼즐 게임의 핵심인 <strong>매치 탐지와 연쇄 처리</strong>를 구현했다.</p>
+
+<p>기본 규칙은 다음과 같다.</p>
+
+<ul>
+  <li>가로 또는 세로로 같은 색 타일이 3개 이상 이어지면 제거</li>
+  <li>제거된 자리는 빈칸이 된다</li>
+  <li>위 타일이 아래로 낙하한다</li>
+  <li>빈칸은 새 타일로 채워진다</li>
+  <li>새로 채워진 결과에서 다시 3매치가 생기면 연쇄가 이어진다</li>
+</ul>
+
+<p>문제는 이 흐름이 코드 상으로는 한 번의 함수 호출이 아니라는 점이었다.<br />
+실제 한 번의 턴은 내부적으로 다음 단계를 거친다.</p>
+
+<ol>
+  <li>스왑 애니메이션</li>
+  <li>매치 탐지</li>
+  <li>제거 연출</li>
+  <li>실제 제거</li>
+  <li>낙하 계산</li>
+  <li>낙하 애니메이션</li>
+  <li>다시 매치 탐지</li>
+  <li>더 이상 연쇄가 없으면 입력 대기 상태로 복귀</li>
+</ol>
+
+<p>이 흐름을 오케스트레이션하는 중심 클래스가 <code class="language-plaintext highlighter-rouge">PuzzleBoard.h</code> 이다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">PuzzleBoard</span><span class="o">::</span><span class="n">finishAnimationStep</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">_state</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="n">BoardState</span><span class="o">::</span><span class="n">AnimatingSwap</span><span class="p">:</span>
+    <span class="p">{</span>
+        <span class="k">const</span> <span class="n">MatchResolution</span> <span class="n">resolution</span> <span class="o">=</span> <span class="o">!</span><span class="n">_pendingSwapResolution</span><span class="p">.</span><span class="n">cells</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span>
+            <span class="o">?</span> <span class="n">_pendingSwapResolution</span>
+            <span class="o">:</span> <span class="n">MatchFactory</span><span class="o">::</span><span class="n">createBoardMatch</span><span class="p">(</span><span class="n">_tiles</span><span class="p">,</span> <span class="n">_swapSource</span><span class="p">,</span> <span class="n">_swapTarget</span><span class="p">);</span>
+
+        <span class="n">_pendingSwapResolution</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">resolution</span><span class="p">.</span><span class="n">cells</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">_session</span><span class="p">.</span><span class="n">breakCombo</span><span class="p">();</span>
+            <span class="n">ensurePlayableBoard</span><span class="p">();</span>
+            <span class="n">_state</span> <span class="o">=</span> <span class="n">BoardStateMachine</span><span class="o">::</span><span class="n">onWaitingForInput</span><span class="p">();</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">beginClearAnimation</span><span class="p">(</span><span class="n">resolution</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 설계에서 핵심은 “애니메이션 종료 시점이 곧 상태 전이 시점”이라는 점이었다.<br />
+퍼즐 게임은 단순히 배열만 바꾸는 문제가 아니라, <strong>보여주는 연출과 실제 보드 상태를 동기화해야 하는 구조</strong>에 가깝다.<br />
+그래서 <code class="language-plaintext highlighter-rouge">BoardState</code> 와 <code class="language-plaintext highlighter-rouge">BoardStateMachine.h</code>를 도입해, 보드가 현재 어떤 단계에 있는지 명시적으로 관리하도록 정리했다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">BoardState</span> <span class="n">BoardStateMachine</span><span class="o">::</span><span class="n">stateForSwapResult</span><span class="p">(</span><span class="kt">bool</span> <span class="n">validSwap</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">validSwap</span> <span class="o">?</span> <span class="n">BoardState</span><span class="o">::</span><span class="n">AnimatingSwap</span> <span class="o">:</span> <span class="n">BoardState</span><span class="o">::</span><span class="n">AnimatingInvalidSwapForward</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-시작-보드는-왜-따로-신경-써야-할까">3. 시작 보드는 왜 따로 신경 써야 할까?</h2>
+
+<p>퍼즐 게임에서 의외로 중요했던 문제는 <strong>초기 보드 품질</strong>이었다.</p>
+
+<p>그냥 무작위로 타일을 채우면 다음 두 가지 문제가 바로 생긴다.</p>
+
+<ul>
+  <li>게임 시작과 동시에 자동으로 매치가 터진다</li>
+  <li>플레이어가 둘 수 있는 수가 없는 보드가 나온다</li>
+</ul>
+
+<p>그래서 초기 보드는 다음 조건을 만족하도록 만들었다.</p>
+
+<ul>
+  <li>시작 직후 3매치가 없어야 함</li>
+  <li>적어도 한 개 이상의 가능한 이동이 있어야 함</li>
+</ul>
+
+<p>초기 타일 생성은 <code class="language-plaintext highlighter-rouge">PuzzleRuleEngine.cpp</code> 의 <code class="language-plaintext highlighter-rouge">generateTileForPosition</code> 에서 처리한다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Tile</span> <span class="n">PuzzleRuleEngine</span><span class="o">::</span><span class="n">generateTileForPosition</span><span class="p">(</span><span class="k">const</span> <span class="n">PuzzleGrid</span><span class="o">&amp;</span> <span class="n">tiles</span><span class="p">,</span> <span class="kt">int</span> <span class="n">row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">column</span><span class="p">,</span> <span class="n">mt19937</span><span class="o">&amp;</span> <span class="n">rng</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">candidates</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">color</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">color</span> <span class="o">&lt;</span> <span class="n">PuzzleTileTypeCount</span><span class="p">;</span> <span class="o">++</span><span class="n">color</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">bool</span> <span class="n">createsHorizontalMatch</span> <span class="o">=</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+            <span class="o">&amp;&amp;</span> <span class="n">tiles</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">column</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span>
+            <span class="o">&amp;&amp;</span> <span class="n">tiles</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">column</span> <span class="o">-</span> <span class="mi">2</span><span class="p">].</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span><span class="p">;</span>
+
+        <span class="k">const</span> <span class="kt">bool</span> <span class="n">createsVerticalMatch</span> <span class="o">=</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+            <span class="o">&amp;&amp;</span> <span class="n">tiles</span><span class="p">[</span><span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">column</span><span class="p">].</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span>
+            <span class="o">&amp;&amp;</span> <span class="n">tiles</span><span class="p">[</span><span class="n">row</span> <span class="o">-</span> <span class="mi">2</span><span class="p">][</span><span class="n">column</span><span class="p">].</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">createsHorizontalMatch</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">createsVerticalMatch</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">candidates</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">color</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">uniform_int_distribution</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">distribution</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">candidates</span><span class="p">.</span><span class="n">size</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="n">candidates</span><span class="p">[</span><span class="n">distribution</span><span class="p">(</span><span class="n">rng</span><span class="p">)],</span> <span class="n">SpecialType</span><span class="o">::</span><span class="n">None</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>플레이 도중 가능한 이동이 사라진 경우에는 <code class="language-plaintext highlighter-rouge">ShuffleResolver.h</code> 를 통해 셔플로 다시 살아있는 보드를 만든다.</p>
+
+<p>이 부분을 따로 분리한 이유는 단순했다.<br />
+초기 생성, 리필, 셔플 가능 여부 판정은 모두 “새 타일을 어떻게 공급할 것인가”에 대한 문제이기 때문이다.<br />
+그래서 나중에는 <code class="language-plaintext highlighter-rouge">SpawnResolver.h</code> 와 <code class="language-plaintext highlighter-rouge">ShuffleResolver</code> 로 책임을 분리해 보드 클래스가 직접 무작위 생성 세부사항을 들고 있지 않도록 정리했다.</p>
+
+<hr />
+
+<h2 id="4-점수-콤보-제한-시간-추가">4. 점수, 콤보, 제한 시간 추가</h2>
+
+<p>기본 3매치만 구현했을 때는 게임이 동작하기는 했지만, 아직 “퍼즐 게임답다”는 느낌은 약했다.<br />
+그래서 그 다음 단계로 점수, 콤보, 제한 시간을 추가했다.</p>
+
+<p>현재 한 판의 상태는 <code class="language-plaintext highlighter-rouge">GameSession.h</code> 에서 관리한다.</p>
+
+<ul>
+  <li>현재 점수</li>
+  <li>현재 콤보</li>
+  <li>남은 시간</li>
+  <li>게임오버 상태</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">GameSession</span><span class="o">::</span><span class="n">registerClear</span><span class="p">(</span><span class="kt">int</span> <span class="n">clearedCount</span><span class="p">,</span> <span class="kt">int</span> <span class="n">spawnCount</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_combo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">comboMultiplier</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">_combo</span><span class="p">);</span>
+    <span class="n">_score</span> <span class="o">+=</span> <span class="n">clearedCount</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">comboMultiplier</span><span class="p">;</span>
+    <span class="n">_score</span> <span class="o">+=</span> <span class="n">spawnCount</span> <span class="o">*</span> <span class="mi">40</span><span class="p">;</span>
+    <span class="n">_timeRemaining</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">PuzzleRoundTimeSeconds</span><span class="p">,</span> <span class="n">_timeRemaining</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.6f</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">comboMultiplier</span><span class="p">)));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>점수 시스템에서 중요했던 건 단순한 숫자 증가보다 <strong>플레이 리듬과 피드백</strong>이었다.<br />
+연쇄가 이어질수록 콤보가 오르고, 그 결과 시간이 조금 회복되게 만들면 플레이어는 “잘 풀고 있다”는 감각을 더 직접적으로 느끼게 된다.</p>
+
+<p>또 하나 중요했던 점은, 점수 정책을 보드 로직과 분리했다는 것이다.<br />
+보드 로직은 “무슨 일이 일어났는가”를 계산하고, <code class="language-plaintext highlighter-rouge">GameSession</code> 은 “그 결과를 점수와 시간 관점에서 어떻게 해석할 것인가”를 담당한다.<br />
+이렇게 나누니 이후 점수 정책을 바꾸더라도 매치 로직을 건드릴 필요가 없어졌다.</p>
+
+<hr />
+
+<h2 id="5-손맛을-만드는-요소-애니메이션과-이펙트">5. 손맛을 만드는 요소: 애니메이션과 이펙트</h2>
+
+<p>퍼즐 게임은 규칙만 맞다고 재미있어지지 않는다.<br />
+특히 스왑, 제거, 낙하처럼 반복되는 행동은 애니메이션의 품질이 체감 재미를 크게 좌우한다.</p>
+
+<p>현재 프로젝트에는 다음 연출이 들어 있다.</p>
+
+<ul>
+  <li>성공 스왑 애니메이션</li>
+  <li>실패 스왑 복귀 애니메이션</li>
+  <li>제거 플래시</li>
+  <li>낙하 애니메이션</li>
+  <li>특수 블록 버스트 이펙트</li>
+  <li>게임오버 오버레이</li>
+</ul>
+
+<p>애니메이션 상태는 <code class="language-plaintext highlighter-rouge">BoardAnimator.h</code>,<br />
+버스트 생성은 <code class="language-plaintext highlighter-rouge">SpecialEffectSystem.h</code>,<br />
+실제 드로우는 <code class="language-plaintext highlighter-rouge">PuzzleRenderer.h</code> 가 맡고 있다.</p>
+
+<p>예를 들어 <code class="language-plaintext highlighter-rouge">PuzzleRenderer</code> 는 정적 타일과 애니메이션 중인 타일이 겹쳐 보이지 않도록, 애니메이션 목적지와 겹치는 정적 셀을 숨긴다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">PuzzleRenderer</span><span class="o">::</span><span class="n">isCellHiddenByAnimation</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">TileAnimation</span><span class="o">&gt;&amp;</span> <span class="n">animations</span><span class="p">,</span> <span class="kt">int</span> <span class="n">row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">column</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="n">Cell</span> <span class="n">cell</span><span class="p">{</span> <span class="n">column</span><span class="p">,</span> <span class="n">row</span> <span class="p">};</span>
+    <span class="k">const</span> <span class="n">vec2</span> <span class="n">position</span> <span class="o">=</span> <span class="n">getCellPosition</span><span class="p">(</span><span class="n">cell</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">TileAnimation</span><span class="o">&amp;</span> <span class="n">animation</span> <span class="o">:</span> <span class="n">animations</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">distance</span><span class="p">(</span><span class="n">animation</span><span class="p">.</span><span class="n">end</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.01f</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>렌더링 계층을 따로 둔 이유도 분명했다.<br />
+초기에 <code class="language-plaintext highlighter-rouge">PuzzleBoard</code> 안에서 좌표 계산과 드로우 호출을 같이 처리하면 빠르게 만들 수는 있지만, 나중에는 셀 크기 계산, 보드 위치 조정, 특수 블록 마커 렌더링, 애니메이션 보간이 모두 뒤섞이게 된다.<br />
+그래서 현재는 렌더링 책임을 <code class="language-plaintext highlighter-rouge">PuzzleRenderer</code> 로 모아, 보드 클래스가 표현 계층 세부사항을 직접 알지 않도록 정리했다.</p>
+
+<hr />
+
+<h2 id="6-특수-블록을-넣으면서-게임이-확-달라졌다">6. 특수 블록을 넣으면서 게임이 확 달라졌다</h2>
+
+<p>기본 3매치만으로는 금방 단조로워지기 때문에, 게임성을 확장하기 위해 특수 블록을 추가했다.</p>
+
+<p>현재 구현된 특수 블록은 다음과 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">4개 직선 매치</code> -&gt; <code class="language-plaintext highlighter-rouge">RowClear</code></li>
+  <li><code class="language-plaintext highlighter-rouge">T/L 형태 매치</code> -&gt; <code class="language-plaintext highlighter-rouge">Bomb</code></li>
+  <li><code class="language-plaintext highlighter-rouge">5개 직선 매치</code> -&gt; <code class="language-plaintext highlighter-rouge">ColorBomb</code></li>
+</ul>
+
+<p>이 규칙은 <code class="language-plaintext highlighter-rouge">PuzzleRuleEngine::findMatches</code> 안에서 처리된다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">hasCross</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">resolution</span><span class="p">.</span><span class="n">spawns</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span> <span class="n">anchor</span><span class="p">,</span> <span class="n">Tile</span><span class="p">{</span> <span class="n">color</span><span class="p">,</span> <span class="n">SpecialType</span><span class="o">::</span><span class="n">Bomb</span> <span class="p">}</span> <span class="p">});</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">hasLengthFive</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">resolution</span><span class="p">.</span><span class="n">spawns</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span> <span class="n">anchor</span><span class="p">,</span> <span class="n">Tile</span><span class="p">{</span> <span class="n">color</span><span class="p">,</span> <span class="n">SpecialType</span><span class="o">::</span><span class="n">ColorBomb</span> <span class="p">}</span> <span class="p">});</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">hasLengthFour</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">resolution</span><span class="p">.</span><span class="n">spawns</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span> <span class="n">anchor</span><span class="p">,</span> <span class="n">Tile</span><span class="p">{</span> <span class="n">color</span><span class="p">,</span> <span class="n">SpecialType</span><span class="o">::</span><span class="n">RowClear</span> <span class="p">}</span> <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 시점부터 <code class="language-plaintext highlighter-rouge">findMatches</code> 는 단순히 “같은 색 3개를 찾는 함수”가 아니게 되었다.<br />
+가로/세로 연속 길이를 기록하고, 연결된 컴포넌트를 묶고, 매치 형태를 해석하고, 어떤 칸에 어떤 특수 블록을 생성할지까지 결정해야 했다.</p>
+
+<p>특히 T/L 형태 판정은 가로 길이와 세로 길이를 각각 기록한 뒤, 같은 컴포넌트 안에서 둘 다 3 이상인 교차점이 있는지를 보는 방식으로 처리했다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">horizontalLen</span><span class="p">[</span><span class="n">cell</span><span class="p">.</span><span class="n">row</span><span class="p">][</span><span class="n">cell</span><span class="p">.</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">verticalLen</span><span class="p">[</span><span class="n">cell</span><span class="p">.</span><span class="n">row</span><span class="p">][</span><span class="n">cell</span><span class="p">.</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">hasCross</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">anchor</span> <span class="o">=</span> <span class="n">cell</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>특수 블록이 들어간 뒤부터는 플레이 감각도 확 달라졌다.<br />
+이전에는 “3개를 맞춘다”가 중심이었다면, 이후에는 “어떻게 특수 블록을 만들고, 그걸 어떤 위치에서 터뜨릴까?”가 플레이의 핵심이 되었다.</p>
+
+<hr />
+
+<h2 id="7-가장-재미있었던-확장-특수-블록-조합">7. 가장 재미있었던 확장: 특수 블록 조합</h2>
+
+<p>프로젝트를 진행하면서 가장 재미있었던 부분은 <strong>특수 블록 조합 시스템</strong>이었다.</p>
+
+<p>현재 구현된 조합은 다음과 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">줄 제거 + 폭탄</code> = 십자 대폭발</li>
+  <li><code class="language-plaintext highlighter-rouge">줄 제거 + 줄 제거</code> = 이중 가로/세로 정리</li>
+  <li><code class="language-plaintext highlighter-rouge">폭탄 + 폭탄</code> = <code class="language-plaintext highlighter-rouge">5x5</code> 대폭발</li>
+  <li><code class="language-plaintext highlighter-rouge">폭탄 + 일반 블록</code> = 해당 색 전체 제거</li>
+  <li><code class="language-plaintext highlighter-rouge">줄 제거 + 일반 블록</code> = 해당 색 전체를 줄 제거처럼 발동</li>
+  <li><code class="language-plaintext highlighter-rouge">컬러 폭탄 + 일반 블록</code> = 해당 색 전체 제거</li>
+  <li><code class="language-plaintext highlighter-rouge">컬러 폭탄 + 줄 제거 블록</code> = 해당 색 전체를 줄 제거처럼 발동</li>
+  <li><code class="language-plaintext highlighter-rouge">컬러 폭탄 + 폭탄</code> = 해당 색 전체를 폭탄처럼 발동</li>
+  <li><code class="language-plaintext highlighter-rouge">컬러 폭탄 + 컬러 폭탄</code> = 보드 전체 제거</li>
+</ul>
+
+<p>이 조합은 일반 3매치와 계산 출발점부터 다르다.</p>
+
+<ul>
+  <li>일반 매치는 보드 전체를 스캔해서 결과를 찾는다</li>
+  <li>특수 조합은 스왑한 두 칸의 타입 조합만으로 결과가 즉시 결정된다</li>
+</ul>
+
+<p>그래서 현재는 <code class="language-plaintext highlighter-rouge">SpecialComboResolver.h</code> 와 <code class="language-plaintext highlighter-rouge">MatchFactory.h</code> 로 일반 매치와 특수 조합 매치를 분리해두었다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MatchResolution</span> <span class="n">MatchFactory</span><span class="o">::</span><span class="n">createSpecialSwapMatch</span><span class="p">(</span><span class="k">const</span> <span class="n">PuzzleGrid</span><span class="o">&amp;</span> <span class="n">tiles</span><span class="p">,</span> <span class="k">const</span> <span class="n">Cell</span><span class="o">&amp;</span> <span class="n">first</span><span class="p">,</span> <span class="k">const</span> <span class="n">Cell</span><span class="o">&amp;</span> <span class="n">second</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">SpecialComboResolver</span><span class="o">::</span><span class="n">resolveSwap</span><span class="p">(</span><span class="n">tiles</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 선택은 구조적으로도 꽤 중요했다.<br />
+조합 규칙을 일반 매치 안에 섞으면 조건문이 빠르게 비대해지고, 어느 순간부터는 규칙 추가가 아니라 “분기 수습”이 된다.<br />
+특수 조합을 별도 파이프라인으로 분리한 뒤에는 새 조합을 넣을 때 수정 범위가 훨씬 예측 가능해졌다.</p>
+
+<hr />
+
+<h2 id="8-코드가-커지면서-가장-중요했던-일-역할-분리">8. 코드가 커지면서 가장 중요했던 일: 역할 분리</h2>
+
+<p>처음에는 <code class="language-plaintext highlighter-rouge">PuzzleBoard</code> 하나에 거의 모든 기능이 들어 있었다.<br />
+하지만 기능이 늘어날수록 다음 문제가 생겼다.</p>
+
+<ul>
+  <li>파일이 너무 커진다</li>
+  <li>입력, 규칙, 세션, 렌더링, 이펙트가 한곳에 섞인다</li>
+  <li>수정해야 할 위치를 찾기 어렵다</li>
+  <li>기능 하나를 고치다가 다른 기능을 깨뜨릴 가능성이 커진다</li>
+</ul>
+
+<p>그래서 중간부터는 기능 추가와 병행해서 클래스를 계속 분리했다.</p>
+
+<p>현재 구조는 대략 이렇게 정리되어 있다.</p>
+
+<h3 id="퍼즐-코어">퍼즐 코어</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">PuzzleBoard.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">PuzzleTypes.h</code></li>
+</ul>
+
+<h3 id="규칙-계산">규칙 계산</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">PuzzleRuleEngine.h</code></li>
+</ul>
+
+<h3 id="턴-파이프라인">턴 파이프라인</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">PuzzleInputController.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SwapResolver.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">CascadeResolver.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SpecialComboResolver.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">BoardStateMachine.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">MatchFactory.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SpawnResolver.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ShuffleResolver.h</code></li>
+</ul>
+
+<h3 id="판-상태와-표현-계층">판 상태와 표현 계층</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GameSession.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">BoardAnimator.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SpecialEffectSystem.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">PuzzleRenderer.h</code></li>
+</ul>
+
+<p>조금 더 요약하면 최종 구조는 다음 방향을 목표로 했다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">PuzzleBoard</code>: 턴 흐름 제어</li>
+  <li><code class="language-plaintext highlighter-rouge">PuzzleRuleEngine</code>: 순수 규칙 계산</li>
+  <li><code class="language-plaintext highlighter-rouge">Resolver</code> 계열: 턴 파이프라인 세분화</li>
+  <li><code class="language-plaintext highlighter-rouge">GameSession</code>: 판 단위 진행 상태</li>
+  <li><code class="language-plaintext highlighter-rouge">BoardAnimator</code> / <code class="language-plaintext highlighter-rouge">PuzzleRenderer</code>: 표현 계층</li>
+</ul>
+
+<p>이렇게 정리하고 나니 <code class="language-plaintext highlighter-rouge">PuzzleBoard</code> 는 더 이상 거대한 만능 클래스가 아니라, “누가 무엇을 해야 하는지 연결하는 오케스트레이터”에 가까워졌다.<br />
+개인적으로는 이 단계가 프로젝트 완성도를 가장 크게 끌어올린 전환점이었다.</p>
+
+<hr />
+
+<h2 id="9-visual-studio-솔루션-탐색기도-같이-정리했다">9. Visual Studio 솔루션 탐색기도 같이 정리했다</h2>
+
+<p>코드 구조를 분리한 뒤에는 Visual Studio 솔루션 탐색기에서도 보기 좋게 정리했다.<br />
+실제 디스크 폴더를 옮긴 것은 아니고, <code class="language-plaintext highlighter-rouge">.vcxproj.filters</code> 를 이용해 가상 폴더만 재구성했다.</p>
+
+<p>현재는 대략 다음처럼 나뉘어 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">App</code></li>
+  <li><code class="language-plaintext highlighter-rouge">App\Window</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Puzzle\Core</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Puzzle\Rules</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Puzzle\Flow</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Puzzle\Presentation</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Puzzle\Systems</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGL\Rendering</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGL\Resources</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Support\Utilities</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Support\ThirdParty</code></li>
+</ul>
+
+<p>실제 디스크 구조를 건드리지 않고도, 솔루션 탐색기 기준으로는 훨씬 덜 지저분하게 보이도록 정리할 수 있었다.</p>
+
+<hr />
+
+<h2 id="10-개발하면서-느낀-점">10. 개발하면서 느낀 점</h2>
+
+<p>이번 프로젝트를 진행하면서 특히 크게 느낀 점은 세 가지였다.</p>
+
+<h3 id="1-처음부터-완벽한-구조를-만들-필요는-없다">1. 처음부터 완벽한 구조를 만들 필요는 없다</h3>
+
+<p>초반에는 빠르게 만들고, 기능이 실제로 커졌을 때 구조를 다시 나누는 편이 훨씬 효율적이었다.<br />
+실제로 어떤 책임이 문제를 만들고 있는지는 코드가 어느 정도 자란 뒤에 더 잘 보인다.</p>
+
+<h3 id="2-퍼즐-게임은-상태-전이가-정말-중요하다">2. 퍼즐 게임은 상태 전이가 정말 중요하다</h3>
+
+<p>퍼즐 게임은 단순해 보여도 내부적으로는 계속 상태가 바뀐다.</p>
+
+<ul>
+  <li>입력 대기</li>
+  <li>스왑 중</li>
+  <li>제거 중</li>
+  <li>낙하 중</li>
+  <li>연쇄 확인 중</li>
+  <li>게임오버</li>
+</ul>
+
+<p>결국 이 장르는 “타일을 어떻게 그릴까?”보다도 <strong>지금 보드가 어떤 상태이고, 다음 상태로 어떻게 넘어갈까?</strong>를 명확히 관리하는 것이 핵심이었다.</p>
+
+<p>이 점은 디버깅할 때 특히 큰 차이를 만들었다.<br />
+예를 들어 “특정 상황에서 연쇄가 한 번 덜 터진다” 같은 문제는 배열 값만 봐서는 원인을 찾기 어렵다.<br />
+대신 현재 상태가 <code class="language-plaintext highlighter-rouge">AnimatingClear</code> 였는지, <code class="language-plaintext highlighter-rouge">AnimatingFall</code> 에서 입력 대기로 너무 빨리 넘어갔는지처럼 상태 전이 관점에서 보면 훨씬 빨리 원인을 좁힐 수 있었다.</p>
+
+<h3 id="3-특수-규칙은-반드시-분리하는-편이-좋다">3. 특수 규칙은 반드시 분리하는 편이 좋다</h3>
+
+<p>특수 블록 조합을 일반 매치 규칙과 섞어버리면 조건문이 금방 감당하기 어려워진다.<br />
+이번 프로젝트에서는 특수 조합을 별도 레이어로 분리한 것이 전체 구조를 안정시키는 데 큰 도움이 됐다.</p>
+
+<hr />
+
+<h2 id="11-다음에-더-해보고-싶은-것들">11. 다음에 더 해보고 싶은 것들</h2>
+
+<p>현재도 충분히 플레이 가능한 상태지만, 더 다듬고 싶은 부분은 남아 있다.</p>
+
+<ul>
+  <li>사운드 효과 추가</li>
+  <li>콤보 텍스트 팝업</li>
+  <li>목표 점수 / 스테이지 구조</li>
+  <li>남은 시간 보너스</li>
+  <li>셔플 연출 강화</li>
+  <li>더 다양한 특수 블록</li>
+  <li>모바일 입력 대응</li>
+</ul>
+
+<p>특히 다음 단계에서는 단순한 기능 추가보다, <strong>연출 완성도와 피드백 강화</strong>에 더 집중하면 게임 느낌이 한층 더 살아날 것 같다.</p>
+
+<p>기술적으로는 다음 두 방향이 특히 재미있을 것 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ComboSystem</code> 을 실제 점수 정책 계산에 적극 연결하기</li>
+  <li>특수 블록 조합을 데이터 기반으로 옮겨서 규칙 추가 비용 줄이기</li>
+</ul>
+
+<hr />
+
+<h2 id="마무리">마무리</h2>
+
+<p>이번 프로젝트는 단순한 퍼즐 게임 구현이면서도, 동시에 <strong>작은 프로토타입이 기능 추가와 구조 분리를 거치며 어떻게 점점 게임다운 형태로 변해가는지</strong>를 보여주는 과정이기도 했다.</p>
+
+<p>처음엔 8x8 보드와 간단한 3매치만 있었지만, 지금은 다음 요소들이 모두 들어간 상태가 되었다.</p>
+
+<ul>
+  <li>기본 퍼즐 플레이</li>
+  <li>연쇄 제거</li>
+  <li>점수 / 콤보 / 제한 시간</li>
+  <li>특수 블록</li>
+  <li>특수 블록 조합</li>
+  <li>애니메이션과 이펙트</li>
+  <li>모듈화된 코드 구조</li>
+</ul>
+
+<p>무엇보다도 가장 크게 느낀 건, <strong>일단 돌아가게 만든 뒤 그다음에 구조를 다듬는 과정이 정말 중요하다</strong>는 점이었다.<br />
+게임 로직은 기능이 늘어날수록 복잡도가 빠르게 올라가기 때문에, 중간중간 리팩터링을 통해 책임을 정리해두는 것이 결국 프로젝트 전체의 완성도를 결정한다.</p>
+
+<p>같은 흐름으로 다음에는 더 큰 퍼즐 시스템이나, 다른 장르의 게임도 충분히 확장해볼 수 있을 것 같다.</p>
+
+<hr />
+
+<h2 id="부록-핵심-코드-위치">부록: 핵심 코드 위치</h2>
+
+<p>기술 블로그 형태로 읽는 사람을 위해, 실제 핵심 코드가 들어 있는 파일도 마지막에 정리해둔다.</p>
+
+<ul>
+  <li>보드 파이프라인 오케스트레이션: <code class="language-plaintext highlighter-rouge">PuzzleBoard.cpp</code></li>
+  <li>타입 정의: <code class="language-plaintext highlighter-rouge">PuzzleTypes.h</code></li>
+  <li>규칙 계산: <code class="language-plaintext highlighter-rouge">PuzzleRuleEngine.cpp</code></li>
+  <li>입력 해석: <code class="language-plaintext highlighter-rouge">PuzzleInputController.cpp</code></li>
+  <li>스왑 처리: <code class="language-plaintext highlighter-rouge">SwapResolver.cpp</code></li>
+  <li>연쇄 탐지/낙하: <code class="language-plaintext highlighter-rouge">CascadeResolver.cpp</code></li>
+  <li>특수 조합: <code class="language-plaintext highlighter-rouge">SpecialComboResolver.cpp</code></li>
+  <li>렌더링: <code class="language-plaintext highlighter-rouge">PuzzleRenderer.cpp</code></li>
+  <li>애니메이션 상태: <code class="language-plaintext highlighter-rouge">BoardAnimator.cpp</code></li>
+  <li>세션 상태: <code class="language-plaintext highlighter-rouge">GameSession.cpp</code></li>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><category term="Game" /><category term="애니팡" /><summary type="html"><![CDATA[OpenGL로 애니팡 스타일 퍼즐 게임 만들기]]></summary></entry><entry><title type="html">PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html" rel="alternate" type="text/html" title="PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리" /><published>2025-05-08T00:00:00+09:00</published><updated>2025-05-08T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html"><![CDATA[<p>PE Viewer는 .exe, .dll 등 PE(Portable Executable) 형식의 파일 구조를 시각적으로 확인할 수 있는 도구입니다.
 이 글에서는 대표적인 PE Viewer 도구들과, 그 중 PE-bear를 활용한 구조 분석 예시를 간단히 정리합니다.</p>
 
 <hr />
@@ -2276,9 +2844,9 @@ archive-single.html %} {%- endfor -%}
 <p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code> 해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-tmaq1n', this)" data-label="sidebar.html 전체 코드">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-vpi06f', this)" data-label="sidebar.html 전체 코드">
   </div>
-  <div id="toggle-tmaq1n" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-vpi06f" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
@@ -3219,185 +3787,4 @@ EntryPoint = 0x1100 (RVA)
       <td>8 bytes × 16개</td>
     </tr>
   </tbody>
-</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="pe파일" /><category term="executable format" /><category term="windows 구조" /><category term="리버싱" /><category term="바이너리 분석" /><summary type="html"><![CDATA[Windows 실행파일(EXE, DLL)의 핵심 구조인 PE(Portable Executable) 포맷을 DOS Header부터 Section, RVA 변환까지 전체 흐름으로 정리한 리버싱 초보자 필수 가이드입니다.]]></summary></entry><entry><title type="html">리버싱 엔지니어링 기초 정리</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/02/reversing3-basic.html" rel="alternate" type="text/html" title="리버싱 엔지니어링 기초 정리" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/02/reversing3-basic</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/02/reversing3-basic.html"><![CDATA[<p>리버싱(Reverse Engineering)은 소스코드 없이 프로그램을 분석해 동작 원리를 파악하는 기술입니다.<br />
-이 글에서는 정적/동적 분석 방식의 차이와 리버싱 목적, 필요한 배경지식까지 처음 배우는 사람도 이해할 수 있게 정리합니다.</p>
-
-<h2 id="리버싱-엔지니어링-reverse-engineering이란">리버싱 엔지니어링 (Reverse Engineering)이란?</h2>
-
-<p><strong>정의:</strong> 완성된 소프트웨어(특히 바이너리 파일)를 분석하여, 그 <strong>동작 원리</strong>, <strong>구조</strong>, <strong>원래의 코드 또는 설계 의도</strong> 를 <strong>거꾸로 추론해내는 과정.</strong></p>
-
-<h2 id="왜-하는가-목적">왜 하는가? (목적)</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>목적</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>보안 분석</strong></td>
-      <td>악성코드 분석, 백도어 탐지, 보안 취약점 확인</td>
-    </tr>
-    <tr>
-      <td><strong>디버깅</strong></td>
-      <td>소스코드 없이 오류 원인 파악, 버그 수정</td>
-    </tr>
-    <tr>
-      <td><strong>크랙 방지</strong></td>
-      <td>소프트웨어 정품 인증 우회 여부 분석</td>
-    </tr>
-    <tr>
-      <td><strong>학습/연구</strong></td>
-      <td>OS 내부 구조, 서드파티 프로그램의 동작 이해</td>
-    </tr>
-    <tr>
-      <td><strong>호환성 확보</strong></td>
-      <td>오래된 시스템에 맞는 드라이버 제작 등</td>
-    </tr>
-    <tr>
-      <td><strong>소스코드 복구</strong></td>
-      <td>유실된 소스의 재구성 시도</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="어떻게-하는가-분석-방법">어떻게 하는가? (분석 방법)</h2>
-
-<p>리버싱은 크게 <strong>두 가지 방식</strong>으로 있음:</p>
-
-<ol>
-  <li>
-    <p><strong>정적 분석 (Static Analysis)</strong></p>
-
-    <p>→ 프로그램을 실행하지 않고 구조, 코드 흐름을 분석</p>
-
-    <p>→ 예: 디스어셈블리, 디컴파일, PE 헤더 분석 등</p>
-  </li>
-  <li>
-    <p><strong>동적 분석 (Dynamic Analysis)</strong></p>
-
-    <p>→ 프로그램을 실행시키고 실시간 동작을 추적</p>
-
-    <p>→ 예: 디버깅, 메모리/레지스터 모니터링, API 호출 추적 등</p>
-  </li>
-</ol>
-
-<p>이 두 가지 방식은 <strong>서로 보완적.</strong></p>
-
-<h3 id="정적-분석-static-analysis">정적 분석 (Static Analysis)</h3>
-
-<p><strong>정의:</strong> 프로그램을 실행하지 않고, 바이너리 또는 소스코드를 분석하여 동작을 파악하는 기법</p>
-
-<p>방법:</p>
-
-<ul>
-  <li>디스어셈블러로 기계어 → 어셈블리어 확인 (ex. Ghidra, IDA)</li>
-  <li>문자열 추출, PE 구조 분석, 함수 호출 흐름 추정 등</li>
-</ul>
-
-<p>장점:</p>
-
-<ul>
-  <li>실행 없이도 분석 가능 (안전)</li>
-  <li>코드 흐름 전체를 미리 볼 수 있음</li>
-  <li>악성 행위를 사전에 탐지 가능</li>
-</ul>
-
-<p>단점:</p>
-
-<ul>
-  <li>난독화나 암호화된 코드에 약함</li>
-  <li>실제 런타임 조건을 완전히 알 수 없음</li>
-</ul>
-
-<h3 id="동적-분석-dynamic-analysis">동적 분석 (Dynamic Analysis)</h3>
-
-<p>정의: 프로그램을 직접 실행하면서, 그 <strong>실행 흐름과 메모리 변화</strong> 등을 관찰하여 분석하는 기법</p>
-
-<p>방법:</p>
-
-<ul>
-  <li>디버거 사용 (x64dbg 등)</li>
-  <li>API 호출 추적, 메모리/레지스터 변화 확인</li>
-  <li>실행 조건에 따른 분기 탐색</li>
-</ul>
-
-<p>장점:</p>
-
-<ul>
-  <li>실제 동작을 보며 분석 가능 (조건부 실행 확인)</li>
-  <li>복잡한 로직을 실행하면서 해석 가능</li>
-</ul>
-
-<p>단점:</p>
-
-<ul>
-  <li>악성 코드 실행 위험</li>
-  <li>코드 전부를 보지 못할 수 있음 (조건이 맞지 않으면 일부만 실행됨)</li>
-</ul>
-
-<h3 id="주요-차이점-비교표">주요 차이점 비교표</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>항목</th>
-      <th>정적 분석</th>
-      <th>동적 분석</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>실행 여부</td>
-      <td>실행 안 함</td>
-      <td>실행함</td>
-    </tr>
-    <tr>
-      <td>도구</td>
-      <td>IDA, Ghidra 등</td>
-      <td>x64dbg, OllyDbg 등</td>
-    </tr>
-    <tr>
-      <td>분석 대상</td>
-      <td>코드/바이너리</td>
-      <td>실행 중인 프로그램</td>
-    </tr>
-    <tr>
-      <td>위험성</td>
-      <td>낮음</td>
-      <td>악성코드 실행 위험 있음</td>
-    </tr>
-    <tr>
-      <td>난독화 대응</td>
-      <td>약함</td>
-      <td>일부 우회 가능</td>
-    </tr>
-    <tr>
-      <td>실행 흐름 파악</td>
-      <td>어려움</td>
-      <td>용이함</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>정적 분석으로 전체 구조 파악 → 동적 분석으로 구체 흐름 확인</p>
-
-<p><strong>실전에서는 둘을 함께 써야</strong> 가장 효과적.</p>
-
-<h4 id="비유로-설명하면">비유로 설명하면….</h4>
-
-<blockquote>
-  <p>정적 분석은 “지도 보면서 전체 루트 파악”
-동적 분석은 “차 타고 직접 도로 달리는 느낌”</p>
-</blockquote>
-
-<h2 id="리버싱이-필요한-전제-지식">리버싱이 필요한 전제 지식</h2>
-
-<ul>
-  <li>어셈블리어(x86/x64)</li>
-  <li>컴파일 과정과 실행 파일 구조 (특히 PE, ELF)</li>
-  <li>디버거 및 분석 도구 사용법</li>
-  <li>운영체제의 기본 구조 (메모리, 스택, 프로세스 등)</li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="reverse engineering" /><category term="정적분석" /><category term="동적분석" /><category term="x64dbg" /><category term="ghidra" /><category term="IDA" /><category term="리버싱 기초" /><summary type="html"><![CDATA[리버스 엔지니어링의 정의부터 정적/동적 분석의 차이, 활용 목적, 필수 도구와 사전 지식까지 한눈에 정리한 입문자를 위한 가이드입니다.]]></summary></entry></feed>
+</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="pe파일" /><category term="executable format" /><category term="windows 구조" /><category term="리버싱" /><category term="바이너리 분석" /><summary type="html"><![CDATA[Windows 실행파일(EXE, DLL)의 핵심 구조인 PE(Portable Executable) 포맷을 DOS Header부터 Section, RVA 변환까지 전체 흐름으로 정리한 리버싱 초보자 필수 가이드입니다.]]></summary></entry></feed>
