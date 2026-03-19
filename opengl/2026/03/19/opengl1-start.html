@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>OpenGL Game Project Framework - ruyshy blog</title>
-<meta name="description" content="OpenGL Game Project">
+<meta name="description" content="OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지">
 
 
   <meta name="author" content="ruyshy">
@@ -24,10 +24,10 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
 <meta property="og:title" content="OpenGL Game Project Framework">
-<meta property="og:url" content="https://ruyshy.github.io/opengl/2026/03/19/opengl-start.html">
+<meta property="og:url" content="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html">
 
 
-  <meta property="og:description" content="OpenGL Game Project">
+  <meta property="og:description" content="OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지">
 
 
 
@@ -46,7 +46,7 @@
   
 
 
-<link rel="canonical" href="https://ruyshy.github.io/opengl/2026/03/19/opengl-start.html">
+<link rel="canonical" href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html">
 
 
 
@@ -394,7 +394,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="OpenGL Game Project Framework">
-    <meta itemprop="description" content="OpenGL Game Project">
+    <meta itemprop="description" content="OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지">
     <meta itemprop="datePublished" content="2026-03-19T00:00:00+09:00">
     
 
@@ -402,7 +402,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/opengl/2026/03/19/opengl-start.html" itemprop="url">OpenGL Game Project Framework
+            <a href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" itemprop="url">OpenGL Game Project Framework
 </a>
           </h1>
           
@@ -416,11 +416,17 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#opengl-game-project">OpenGL Game Project</a></li><li><a href="#opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</a><ul><li><a href="#1-이-프로젝트를-한-문장으로-요약하면">1. 이 프로젝트를 한 문장으로 요약하면</a></li><li><a href="#2-왜-이런-기본-뼈대가-중요한가">2. 왜 이런 기본 뼈대가 중요한가</a></li><li><a href="#3-프로젝트-전체-구조-어떤-계층으로-이루어져-있는가">3. 프로젝트 전체 구조: 어떤 계층으로 이루어져 있는가</a><ul><li><a href="#3-1-애플리케이션-시작-계층">3-1. 애플리케이션 시작 계층</a></li></ul></li><li><a href="#4-openglwindow-이-프로젝트의-실제-엔진-코어">4. OpenGLWindow: 이 프로젝트의 실제 엔진 코어</a><ul><li><a href="#4-1-창-생성과-opengl-컨텍스트-초기화">4-1. 창 생성과 OpenGL 컨텍스트 초기화</a></li><li><a href="#4-2-메인-루프의-구조">4-2. 메인 루프의 구조</a></li><li><a href="#4-3-시간-관리와-fps-계산">4-3. 시간 관리와 FPS 계산</a></li><li><a href="#4-4-입력과-마우스-좌표-처리">4-4. 입력과 마우스 좌표 처리</a></li><li><a href="#4-5-투영-행렬-관리">4-5. 투영 행렬 관리</a></li></ul></li><li><a href="#5-mainwindow-비어-있지만-가장-중요한-확장-포인트">5. MainWindow: 비어 있지만 가장 중요한 확장 포인트</a></li><li><a href="#6-2d-렌더링-기반-vertexbuffer2d-texture2d-transform2d-sprite">6. 2D 렌더링 기반: VertexBuffer2D, Texture2D, Transform2D, Sprite</a><ul><li><a href="#6-1-vertexbuffer2d-그릴-사각형을-만든다">6-1. VertexBuffer2D: “그릴 사각형”을 만든다</a></li><li><a href="#6-2-texture2d-이미지-데이터를-gpu-텍스처로-변환한다">6-2. Texture2D: 이미지 데이터를 GPU 텍스처로 변환한다</a></li><li><a href="#6-3-transform2d-위치-크기-회전-반전을-행렬로-묶는다">6-3. Transform2D: 위치, 크기, 회전, 반전을 행렬로 묶는다</a></li><li><a href="#6-4-sprite-렌더-가능한-게임-오브젝트의-최소-단위">6-4. Sprite: 렌더 가능한 게임 오브젝트의 최소 단위</a></li></ul></li><li><a href="#7-shader-작은-프로젝트에서-아주-현실적인-선택">7. Shader: 작은 프로젝트에서 아주 현실적인 선택</a></li><li><a href="#8-resourcemanager와-encoding-플랫폼-친화적인-보조-도구">8. ResourceManager와 Encoding: 플랫폼 친화적인 보조 도구</a><ul><li><a href="#8-1-resourcemanager-실행-파일-내부-리소스-접근을-위한-준비">8-1. ResourceManager: 실행 파일 내부 리소스 접근을 위한 준비</a></li><li><a href="#8-2-encoding-드래그-앤-드롭-파일-경로-처리에서-빛나는-유틸리티">8-2. Encoding: 드래그 앤 드롭 파일 경로 처리에서 빛나는 유틸리티</a></li></ul></li><li><a href="#9-이-프로젝트가-현재-보여-주는-기술-스택과-개발-철학">9. 이 프로젝트가 현재 보여 주는 기술 스택과 개발 철학</a></li><li><a href="#10-지금-단계의-강점">10. 지금 단계의 강점</a><ul><li><a href="#10-1-책임-분리가-이미-시작되어-있다">10-1. 책임 분리가 이미 시작되어 있다</a></li><li><a href="#10-2-2d-게임으로-확장하기-좋은-형태다">10-2. 2D 게임으로 확장하기 좋은 형태다</a></li><li><a href="#10-3-프레임-독립-업데이트를-위한-시간-기반-구조가-있다">10-3. 프레임 독립 업데이트를 위한 시간 기반 구조가 있다</a></li><li><a href="#10-4-플랫폼-실무-감각이-조금-들어-있다">10-4. 플랫폼 실무 감각이 조금 들어 있다</a></li></ul></li><li><a href="#11-지금-단계의-한계와-앞으로-보완하면-좋은-점">11. 지금 단계의 한계와 앞으로 보완하면 좋은 점</a><ul><li><a href="#11-1-게임-상태와-씬-구조가-아직-없다">11-1. 게임 상태와 씬 구조가 아직 없다</a></li><li><a href="#11-2-리소스-캐싱-구조가-아직-약하다">11-2. 리소스 캐싱 구조가 아직 약하다</a></li><li><a href="#11-3-렌더링과-로직의-경계가-더-선명해질-필요가-있다">11-3. 렌더링과 로직의 경계가 더 선명해질 필요가 있다</a></li><li><a href="#11-4-예외-처리와-실패-처리의-일관성이-더-필요하다">11-4. 예외 처리와 실패 처리의 일관성이 더 필요하다</a></li><li><a href="#11-5-플랫폼-종속-코드가-명시적으로-분리되지-않았다">11-5. 플랫폼 종속 코드가 명시적으로 분리되지 않았다</a></li></ul></li><li><a href="#12-이-뼈대를-바탕으로-어떤-게임을-만들기-좋은가">12. 이 뼈대를 바탕으로 어떤 게임을 만들기 좋은가</a><ul><li><a href="#12-1-2d-퍼즐-게임">12-1. 2D 퍼즐 게임</a></li><li><a href="#12-2-2d-액션-또는-아케이드-게임">12-2. 2D 액션 또는 아케이드 게임</a></li><li><a href="#12-3-ui-중심-시뮬레이션-게임">12-3. UI 중심 시뮬레이션 게임</a></li></ul></li><li><a href="#13-만약-내가-이-프로젝트를-다음-단계로-확장한다면">13. 만약 내가 이 프로젝트를 다음 단계로 확장한다면</a><ul><li><a href="#1단계-장면에-실제-오브젝트-하나를-올린다">1단계. 장면에 실제 오브젝트 하나를 올린다</a></li><li><a href="#2단계-입력과-이동을-붙인다">2단계. 입력과 이동을 붙인다</a></li><li><a href="#3단계-다수-오브젝트와-업데이트-루프를-정리한다">3단계. 다수 오브젝트와 업데이트 루프를 정리한다</a></li><li><a href="#4단계-리소스-매니저와-씬-시스템을-도입한다">4단계. 리소스 매니저와 씬 시스템을 도입한다</a></li><li><a href="#5단계-충돌-애니메이션-ui-오디오를-붙인다">5단계. 충돌, 애니메이션, UI, 오디오를 붙인다</a></li></ul></li><li><a href="#14-마무리-이-프로젝트는-작지만-방향이-좋다">14. 마무리: 이 프로젝트는 작지만 방향이 좋다</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</a><ul><li><a href="#opengl-game-project">OpenGL Game Project</a></li><li><a href="#1-이-프로젝트를-한-문장으로-요약하면">1. 이 프로젝트를 한 문장으로 요약하면</a></li><li><a href="#2-왜-이런-기본-뼈대가-중요한가">2. 왜 이런 기본 뼈대가 중요한가</a></li><li><a href="#3-프로젝트-전체-구조-어떤-계층으로-이루어져-있는가">3. 프로젝트 전체 구조: 어떤 계층으로 이루어져 있는가</a><ul><li><a href="#3-1-애플리케이션-시작-계층">3-1. 애플리케이션 시작 계층</a></li></ul></li><li><a href="#4-openglwindow-이-프로젝트의-실제-엔진-코어">4. OpenGLWindow: 이 프로젝트의 실제 엔진 코어</a><ul><li><a href="#4-1-창-생성과-opengl-컨텍스트-초기화">4-1. 창 생성과 OpenGL 컨텍스트 초기화</a></li><li><a href="#4-2-메인-루프의-구조">4-2. 메인 루프의 구조</a></li><li><a href="#4-3-시간-관리와-fps-계산">4-3. 시간 관리와 FPS 계산</a></li><li><a href="#4-4-입력과-마우스-좌표-처리">4-4. 입력과 마우스 좌표 처리</a></li><li><a href="#4-5-투영-행렬-관리">4-5. 투영 행렬 관리</a></li></ul></li><li><a href="#5-mainwindow-비어-있지만-가장-중요한-확장-포인트">5. MainWindow: 비어 있지만 가장 중요한 확장 포인트</a></li><li><a href="#6-2d-렌더링-기반-vertexbuffer2d-texture2d-transform2d-sprite">6. 2D 렌더링 기반: VertexBuffer2D, Texture2D, Transform2D, Sprite</a><ul><li><a href="#6-1-vertexbuffer2d-그릴-사각형을-만든다">6-1. VertexBuffer2D: “그릴 사각형”을 만든다</a></li><li><a href="#6-2-texture2d-이미지-데이터를-gpu-텍스처로-변환한다">6-2. Texture2D: 이미지 데이터를 GPU 텍스처로 변환한다</a></li><li><a href="#6-3-transform2d-위치-크기-회전-반전을-행렬로-묶는다">6-3. Transform2D: 위치, 크기, 회전, 반전을 행렬로 묶는다</a></li><li><a href="#6-4-sprite-렌더-가능한-게임-오브젝트의-최소-단위">6-4. Sprite: 렌더 가능한 게임 오브젝트의 최소 단위</a></li></ul></li><li><a href="#7-shader-작은-프로젝트에서-아주-현실적인-선택">7. Shader: 작은 프로젝트에서 아주 현실적인 선택</a></li><li><a href="#8-resourcemanager와-encoding-플랫폼-친화적인-보조-도구">8. ResourceManager와 Encoding: 플랫폼 친화적인 보조 도구</a><ul><li><a href="#8-1-resourcemanager-실행-파일-내부-리소스-접근을-위한-준비">8-1. ResourceManager: 실행 파일 내부 리소스 접근을 위한 준비</a></li><li><a href="#8-2-encoding-드래그-앤-드롭-파일-경로-처리에서-빛나는-유틸리티">8-2. Encoding: 드래그 앤 드롭 파일 경로 처리에서 빛나는 유틸리티</a></li></ul></li><li><a href="#9-이-프로젝트가-현재-보여-주는-기술-스택과-개발-철학">9. 이 프로젝트가 현재 보여 주는 기술 스택과 개발 철학</a></li><li><a href="#10-지금-단계의-강점">10. 지금 단계의 강점</a><ul><li><a href="#10-1-책임-분리가-이미-시작되어-있다">10-1. 책임 분리가 이미 시작되어 있다</a></li><li><a href="#10-2-2d-게임으로-확장하기-좋은-형태다">10-2. 2D 게임으로 확장하기 좋은 형태다</a></li><li><a href="#10-3-프레임-독립-업데이트를-위한-시간-기반-구조가-있다">10-3. 프레임 독립 업데이트를 위한 시간 기반 구조가 있다</a></li><li><a href="#10-4-플랫폼-실무-감각이-조금-들어-있다">10-4. 플랫폼 실무 감각이 조금 들어 있다</a></li></ul></li><li><a href="#11-지금-단계의-한계와-앞으로-보완하면-좋은-점">11. 지금 단계의 한계와 앞으로 보완하면 좋은 점</a><ul><li><a href="#11-1-게임-상태와-씬-구조가-아직-없다">11-1. 게임 상태와 씬 구조가 아직 없다</a></li><li><a href="#11-2-리소스-캐싱-구조가-아직-약하다">11-2. 리소스 캐싱 구조가 아직 약하다</a></li><li><a href="#11-3-렌더링과-로직의-경계가-더-선명해질-필요가-있다">11-3. 렌더링과 로직의 경계가 더 선명해질 필요가 있다</a></li><li><a href="#11-4-예외-처리와-실패-처리의-일관성이-더-필요하다">11-4. 예외 처리와 실패 처리의 일관성이 더 필요하다</a></li><li><a href="#11-5-플랫폼-종속-코드가-명시적으로-분리되지-않았다">11-5. 플랫폼 종속 코드가 명시적으로 분리되지 않았다</a></li></ul></li><li><a href="#12-이-뼈대를-바탕으로-어떤-게임을-만들기-좋은가">12. 이 뼈대를 바탕으로 어떤 게임을 만들기 좋은가</a><ul><li><a href="#12-1-2d-퍼즐-게임">12-1. 2D 퍼즐 게임</a></li><li><a href="#12-2-2d-액션-또는-아케이드-게임">12-2. 2D 액션 또는 아케이드 게임</a></li><li><a href="#12-3-ui-중심-시뮬레이션-게임">12-3. UI 중심 시뮬레이션 게임</a></li></ul></li><li><a href="#13-만약-내가-이-프로젝트를-다음-단계로-확장한다면">13. 만약 내가 이 프로젝트를 다음 단계로 확장한다면</a><ul><li><a href="#1단계-장면에-실제-오브젝트-하나를-올린다">1단계. 장면에 실제 오브젝트 하나를 올린다</a></li><li><a href="#2단계-입력과-이동을-붙인다">2단계. 입력과 이동을 붙인다</a></li><li><a href="#3단계-다수-오브젝트와-업데이트-루프를-정리한다">3단계. 다수 오브젝트와 업데이트 루프를 정리한다</a></li><li><a href="#4단계-리소스-매니저와-씬-시스템을-도입한다">4단계. 리소스 매니저와 씬 시스템을 도입한다</a></li><li><a href="#5단계-충돌-애니메이션-ui-오디오를-붙인다">5단계. 충돌, 애니메이션, UI, 오디오를 붙인다</a></li></ul></li><li><a href="#14-마무리-이-프로젝트는-작지만-방향이-좋다">14. 마무리: 이 프로젝트는 작지만 방향이 좋다</a></li></ul></li></ul>
             </nav>
           </aside>
         
-        <h1 id="opengl-game-project">OpenGL Game Project</h1>
+        <h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
+
+<p>OpenGL로 게임을 만든다고 하면 많은 사람이 가장 먼저 셰이더 문법이나 버퍼 객체부터 떠올린다. 하지만 실제로 프로젝트를 시작해 보면 제일 먼저 필요한 것은 화려한 그래픽 기술이 아니라, “게임을 올려둘 수 있는 안정적인 바닥”이다. 창을 만들고, OpenGL 컨텍스트를 초기화하고, 매 프레임마다 갱신과 렌더링을 분리해서 호출하고, 입력과 시간 정보를 관리하고, 이후 텍스처나 스프라이트 같은 상위 개념을 차곡차곡 쌓아 올릴 수 있어야 한다.</p>
+
+<p>이번 글에서는 현재 이 OpenGLGame 프로젝트의 기본 뼈대를 바탕으로, 이 프로젝트가 어떤 책임 분리를 가지고 설계되어 있는지, 왜 이런 구조가 초기 게임 프레임워크로 괜찮은 출발점이 되는지, 그리고 앞으로 어떤 방향으로 확장하면 좋은지를 아주 자세하게 정리해 보려고 한다. 이 글은 단순한 파일 설명이 아니라, “이 프로젝트가 지금 어느 단계에 있고 앞으로 무엇을 담을 수 있는가”를 중심으로 읽으면 더 잘 이해된다.</p>
+
+<h2 id="opengl-game-project">OpenGL Game Project</h2>
 
 <blockquote>
   <p>OpenGL Game Project 사이트를 아래에 링크했습니다.</p>
@@ -428,12 +434,6 @@
   <p><a href="https://github.com/ruyshy/OpenGL-Game"><code class="language-plaintext highlighter-rouge">OpenGL Game Project Github</code></a></p>
 
 </blockquote>
-
-<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
-
-<p>OpenGL로 게임을 만든다고 하면 많은 사람이 가장 먼저 셰이더 문법이나 버퍼 객체부터 떠올린다. 하지만 실제로 프로젝트를 시작해 보면 제일 먼저 필요한 것은 화려한 그래픽 기술이 아니라, “게임을 올려둘 수 있는 안정적인 바닥”이다. 창을 만들고, OpenGL 컨텍스트를 초기화하고, 매 프레임마다 갱신과 렌더링을 분리해서 호출하고, 입력과 시간 정보를 관리하고, 이후 텍스처나 스프라이트 같은 상위 개념을 차곡차곡 쌓아 올릴 수 있어야 한다.</p>
-
-<p>이번 글에서는 현재 이 OpenGLGame 프로젝트의 기본 뼈대를 바탕으로, 이 프로젝트가 어떤 책임 분리를 가지고 설계되어 있는지, 왜 이런 구조가 초기 게임 프레임워크로 괜찮은 출발점이 되는지, 그리고 앞으로 어떤 방향으로 확장하면 좋은지를 아주 자세하게 정리해 보려고 한다. 이 글은 단순한 파일 설명이 아니라, “이 프로젝트가 지금 어느 단계에 있고 앞으로 무엇을 담을 수 있는가”를 중심으로 읽으면 더 잘 이해된다.</p>
 
 <h2 id="1-이-프로젝트를-한-문장으로-요약하면">1. 이 프로젝트를 한 문장으로 요약하면</h2>
 
@@ -1020,11 +1020,11 @@
       <section class="page__share">
   <h4 class="page__share-title">Share on</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=OpenGL+Game+Project+Framework%20https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl-start.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=OpenGL+Game+Project+Framework%20https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl1-start.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl-start.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl1-start.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/opengl/2026/03/19/opengl-start.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
