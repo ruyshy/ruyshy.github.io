@@ -6,6 +6,11 @@ tags: [OpenGL, Game, 애니팡]
 
 # OpenGL로 애니팡 스타일 퍼즐 게임 만들기
 
+> 프로젝트는 아래에 링크했습니다.
+>
+>[puzzle pang project](https://github.com/ruyshy/OpenGL-Game/tree/Puzzle_Pang)
+>
+
 처음 이 프로젝트를 시작했을 때 목표는 단순했다.  
 `애니팡`처럼 누구나 바로 이해할 수 있는 3매치 퍼즐 게임을 직접 만들어보는 것이었다.
 
