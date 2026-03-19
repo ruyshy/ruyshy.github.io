@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>OpenGL Tetris - ruyshy blog</title>
-<meta name="description" content="OpenGL 프로젝트에 테트리스 만들기">
+<!-- begin _includes/seo.html --><title>OpenGL Tetris 만들기 - ruyshy blog</title>
+<meta name="description" content="OpenGL Game Project + 테트리스 만들기">
 
 
   <meta name="author" content="ruyshy">
@@ -23,11 +23,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="ruyshy blog">
-<meta property="og:title" content="OpenGL Tetris">
+<meta property="og:title" content="OpenGL Tetris 만들기">
 <meta property="og:url" content="https://ruyshy.github.io/opengl/2026/03/19/opengl2-tetris.html">
 
 
-  <meta property="og:description" content="OpenGL 프로젝트에 테트리스 만들기">
+  <meta property="og:description" content="OpenGL Game Project + 테트리스 만들기">
 
 
 
@@ -393,8 +393,8 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="OpenGL Tetris">
-    <meta itemprop="description" content="OpenGL 프로젝트에 테트리스 만들기">
+    <meta itemprop="headline" content="OpenGL Tetris 만들기">
+    <meta itemprop="description" content="OpenGL Game Project + 테트리스 만들기">
     <meta itemprop="datePublished" content="2026-03-19T00:00:00+09:00">
     
 
@@ -402,7 +402,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://ruyshy.github.io/opengl/2026/03/19/opengl2-tetris.html" itemprop="url">OpenGL Tetris
+            <a href="https://ruyshy.github.io/opengl/2026/03/19/opengl2-tetris.html" itemprop="url">OpenGL Tetris 만들기
 </a>
           </h1>
           
@@ -416,11 +416,11 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#opengl-프로젝트에-테트리스-만들기">OpenGL 프로젝트에 테트리스 만들기</a><ul><li><a href="#소개">소개</a></li><li><a href="#최종-구조-먼저-보기">최종 구조 먼저 보기</a><ul><li><a href="#mainwindow">MainWindow</a></li><li><a href="#tetrisgame">TetrisGame</a></li><li><a href="#tetrisrenderer">TetrisRenderer</a></li><li><a href="#tetrisinputcontroller">TetrisInputController</a></li><li><a href="#tetrisaudio">TetrisAudio</a></li></ul></li><li><a href="#1단계-먼저-돌아가는-테트리스를-만든다">1단계. 먼저 “돌아가는 테트리스”를 만든다</a><ul><li><a href="#핵심-구현-포인트">핵심 구현 포인트</a><ul><li><a href="#1-테트로미노를-4x4-배열로-저장하기">1. 테트로미노를 4x4 배열로 저장하기</a></li><li><a href="#2-충돌-판정을-하나의-함수로-모으기">2. 충돌 판정을 하나의 함수로 모으기</a></li><li><a href="#3-7-bag-시스템-적용하기">3. 7-bag 시스템 적용하기</a></li></ul></li></ul></li><li><a href="#2단계-mainwindow에-몰아넣지-말고-게임-규칙부터-분리한다">2단계. MainWindow에 몰아넣지 말고, 게임 규칙부터 분리한다</a><ul><li><a href="#왜-먼저-tetrisgame을-분리했나">왜 먼저 TetrisGame을 분리했나?</a></li></ul></li><li><a href="#3단계-컬러-사각형-대신-스프라이트-블록으로-바꾸기">3단계. 컬러 사각형 대신 스프라이트 블록으로 바꾸기</a><ul><li><a href="#구현-방식">구현 방식</a></li><li><a href="#여기서-중요했던-문제">여기서 중요했던 문제</a></li></ul></li><li><a href="#4단계-hud-만들기">4단계. HUD 만들기</a><ul><li><a href="#hud를-구현하면서-했던-선택">HUD를 구현하면서 했던 선택</a></li></ul></li><li><a href="#5단계-입력을-별도-컨트롤러로-분리하기">5단계. 입력을 별도 컨트롤러로 분리하기</a><ul><li><a href="#입력-계층에서-처리한-것">입력 계층에서 처리한 것</a></li><li><a href="#왜-이-분리가-중요할까">왜 이 분리가 중요할까?</a></li></ul></li><li><a href="#6단계-고급-게임-기능-붙이기">6단계. 고급 게임 기능 붙이기</a><ul><li><a href="#홀드-기능">홀드 기능</a></li><li><a href="#고스트-피스">고스트 피스</a></li><li><a href="#콤보-점수">콤보 점수</a></li><li><a href="#일시정지">일시정지</a></li></ul></li><li><a href="#7단계-라인-클리어-연출-넣기">7단계. 라인 클리어 연출 넣기</a><ul><li><a href="#1-삭제-대상-줄-먼저-표시">1. 삭제 대상 줄 먼저 표시</a></li><li><a href="#2-잠깐-멈춘-뒤-실제로-삭제">2. 잠깐 멈춘 뒤 실제로 삭제</a></li><li><a href="#이-방식의-장점">이 방식의 장점</a></li></ul></li><li><a href="#8단계-배경-파티클과-버스트-파티클">8단계. 배경 파티클과 버스트 파티클</a><ul><li><a href="#배경-파티클">배경 파티클</a></li><li><a href="#버스트-파티클">버스트 파티클</a></li></ul></li><li><a href="#9단계-사운드-붙이기">9단계. 사운드 붙이기</a><ul><li><a href="#구현-방식-1">구현 방식</a></li><li><a href="#왜-이벤트-기반으로-만들었나">왜 이벤트 기반으로 만들었나?</a></li></ul></li><li><a href="#10단계-레벨별-속도-커브-튜닝">10단계. 레벨별 속도 커브 튜닝</a></li><li><a href="#11단계-빌드-문제-해결하기">11단계. 빌드 문제 해결하기</a><ul><li><a href="#release-x64-빌드-문제">Release x64 빌드 문제</a></li><li><a href="#리소스-경로-문제">리소스 경로 문제</a></li><li><a href="#한글-주석-인코딩-문제">한글 주석 인코딩 문제</a></li></ul></li><li><a href="#12단계-마무리-주석과-문서화">12단계. 마무리: 주석과 문서화</a></li><li><a href="#정리">정리</a></li><li><a href="#다음에-확장해볼-만한-것">다음에 확장해볼 만한 것</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#opengl-game-project--테트리스-만들기">OpenGL Game Project + 테트리스 만들기</a><ul><li><a href="#소개">소개</a></li><li><a href="#최종-구조-먼저-보기">최종 구조 먼저 보기</a><ul><li><a href="#mainwindow">MainWindow</a></li><li><a href="#tetrisgame">TetrisGame</a></li><li><a href="#tetrisrenderer">TetrisRenderer</a></li><li><a href="#tetrisinputcontroller">TetrisInputController</a></li><li><a href="#tetrisaudio">TetrisAudio</a></li></ul></li><li><a href="#1단계-먼저-돌아가는-테트리스를-만든다">1단계. 먼저 “돌아가는 테트리스”를 만든다</a><ul><li><a href="#핵심-구현-포인트">핵심 구현 포인트</a><ul><li><a href="#1-테트로미노를-4x4-배열로-저장하기">1. 테트로미노를 4x4 배열로 저장하기</a></li><li><a href="#2-충돌-판정을-하나의-함수로-모으기">2. 충돌 판정을 하나의 함수로 모으기</a></li><li><a href="#3-7-bag-시스템-적용하기">3. 7-bag 시스템 적용하기</a></li></ul></li></ul></li><li><a href="#2단계-mainwindow에-몰아넣지-말고-게임-규칙부터-분리한다">2단계. MainWindow에 몰아넣지 말고, 게임 규칙부터 분리한다</a><ul><li><a href="#왜-먼저-tetrisgame을-분리했나">왜 먼저 TetrisGame을 분리했나?</a></li></ul></li><li><a href="#3단계-컬러-사각형-대신-스프라이트-블록으로-바꾸기">3단계. 컬러 사각형 대신 스프라이트 블록으로 바꾸기</a><ul><li><a href="#구현-방식">구현 방식</a></li><li><a href="#여기서-중요했던-문제">여기서 중요했던 문제</a></li></ul></li><li><a href="#4단계-hud-만들기">4단계. HUD 만들기</a><ul><li><a href="#hud를-구현하면서-했던-선택">HUD를 구현하면서 했던 선택</a></li></ul></li><li><a href="#5단계-입력을-별도-컨트롤러로-분리하기">5단계. 입력을 별도 컨트롤러로 분리하기</a><ul><li><a href="#입력-계층에서-처리한-것">입력 계층에서 처리한 것</a></li><li><a href="#왜-이-분리가-중요할까">왜 이 분리가 중요할까?</a></li></ul></li><li><a href="#6단계-고급-게임-기능-붙이기">6단계. 고급 게임 기능 붙이기</a><ul><li><a href="#홀드-기능">홀드 기능</a></li><li><a href="#고스트-피스">고스트 피스</a></li><li><a href="#콤보-점수">콤보 점수</a></li><li><a href="#일시정지">일시정지</a></li></ul></li><li><a href="#7단계-라인-클리어-연출-넣기">7단계. 라인 클리어 연출 넣기</a><ul><li><a href="#1-삭제-대상-줄-먼저-표시">1. 삭제 대상 줄 먼저 표시</a></li><li><a href="#2-잠깐-멈춘-뒤-실제로-삭제">2. 잠깐 멈춘 뒤 실제로 삭제</a></li><li><a href="#이-방식의-장점">이 방식의 장점</a></li></ul></li><li><a href="#8단계-배경-파티클과-버스트-파티클">8단계. 배경 파티클과 버스트 파티클</a><ul><li><a href="#배경-파티클">배경 파티클</a></li><li><a href="#버스트-파티클">버스트 파티클</a></li></ul></li><li><a href="#9단계-사운드-붙이기">9단계. 사운드 붙이기</a><ul><li><a href="#구현-방식-1">구현 방식</a></li><li><a href="#왜-이벤트-기반으로-만들었나">왜 이벤트 기반으로 만들었나?</a></li></ul></li><li><a href="#10단계-레벨별-속도-커브-튜닝">10단계. 레벨별 속도 커브 튜닝</a></li><li><a href="#11단계-빌드-문제-해결하기">11단계. 빌드 문제 해결하기</a><ul><li><a href="#release-x64-빌드-문제">Release x64 빌드 문제</a></li><li><a href="#리소스-경로-문제">리소스 경로 문제</a></li><li><a href="#한글-주석-인코딩-문제">한글 주석 인코딩 문제</a></li></ul></li><li><a href="#12단계-마무리-주석과-문서화">12단계. 마무리: 주석과 문서화</a></li><li><a href="#정리">정리</a></li><li><a href="#다음에-확장해볼-만한-것">다음에 확장해볼 만한 것</a></li></ul></li></ul>
             </nav>
           </aside>
         
-        <h1 id="opengl-프로젝트에-테트리스-만들기">OpenGL 프로젝트에 테트리스 만들기</h1>
+        <h1 id="opengl-game-project--테트리스-만들기">OpenGL Game Project + 테트리스 만들기</h1>
 
 <h2 id="소개">소개</h2>
 
@@ -1075,7 +1075,7 @@
       <section class="page__share">
   <h4 class="page__share-title">Share on</h4>
 
-  <a href="https://twitter.com/intent/tweet?text=OpenGL+Tetris%20https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl2-tetris.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=OpenGL+Tetris+%EB%A7%8C%EB%93%A4%EA%B8%B0%20https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl2-tetris.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl2-tetris.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
