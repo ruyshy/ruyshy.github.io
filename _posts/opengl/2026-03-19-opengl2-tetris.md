@@ -1,10 +1,10 @@
 ---
-title: "OpenGL Tetris"
+title: "OpenGL Tetris 만들기"
 date: 2026-03-19
 tags: [OpenGL, Game, Tetris]
 ---
 
-# OpenGL 프로젝트에 테트리스 만들기
+# OpenGL Game Project + 테트리스 만들기
 
 ## 소개
 
