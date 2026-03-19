@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-19T11:26:00+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-19T11:30:08+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
 
 <p>OpenGL로 게임을 만든다고 하면 많은 사람이 가장 먼저 셰이더 문법이나 버퍼 객체부터 떠올린다. 하지만 실제로 프로젝트를 시작해 보면 제일 먼저 필요한 것은 화려한 그래픽 기술이 아니라, “게임을 올려둘 수 있는 안정적인 바닥”이다. 창을 만들고, OpenGL 컨텍스트를 초기화하고, 매 프레임마다 갱신과 렌더링을 분리해서 호출하고, 입력과 시간 정보를 관리하고, 이후 텍스처나 스프라이트 같은 상위 개념을 차곡차곡 쌓아 올릴 수 있어야 한다.</p>
 
@@ -549,7 +549,609 @@
 
 <p>결국 좋은 기본 뼈대란 처음부터 모든 기능을 가진 프로젝트가 아니다. 오히려 새로운 기능이 들어와도 어디에 놓아야 할지 감이 오는 프로젝트가 좋은 뼈대다. 그런 관점에서 보면, 현재 이 프로젝트는 화려하지는 않지만 꽤 건강한 출발선에 서 있다.</p>
 
-<p>앞으로 여기에 첫 스프라이트가 올라가고, 입력으로 움직이기 시작하고, 충돌과 애니메이션과 씬 전환이 더해진다면, 이 작은 뼈대는 금세 하나의 게임다운 구조로 성장할 수 있다. 그리고 바로 그런 성장 가능성이 이 프로젝트의 가장 큰 가치다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><summary type="html"><![CDATA[OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지]]></summary></entry><entry><title type="html">PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html" rel="alternate" type="text/html" title="PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리" /><published>2025-05-08T00:00:00+09:00</published><updated>2025-05-08T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html"><![CDATA[<p>PE Viewer는 .exe, .dll 등 PE(Portable Executable) 형식의 파일 구조를 시각적으로 확인할 수 있는 도구입니다.
+<p>앞으로 여기에 첫 스프라이트가 올라가고, 입력으로 움직이기 시작하고, 충돌과 애니메이션과 씬 전환이 더해진다면, 이 작은 뼈대는 금세 하나의 게임다운 구조로 성장할 수 있다. 그리고 바로 그런 성장 가능성이 이 프로젝트의 가장 큰 가치다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><summary type="html"><![CDATA[OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지]]></summary></entry><entry><title type="html">OpenGL Tetris</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl2-tetris.html" rel="alternate" type="text/html" title="OpenGL Tetris" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl2-tetris</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl2-tetris.html"><![CDATA[<h1 id="opengl-프로젝트에-테트리스-만들기">OpenGL 프로젝트에 테트리스 만들기</h1>
+
+<h2 id="소개">소개</h2>
+
+<p>이번 글은 기존 OpenGL 프로젝트 위에 테트리스를 붙이면서,<br />
+어떤 순서로 구현했고 왜 그런 구조로 나눴는지를 튜토리얼 형태로 정리한 글입니다.</p>
+
+<blockquote>
+  <p>아래에 깃허브 사이트를 링크했습니다.</p>
+
+  <p><a href="https://github.com/ruyshy/OpenGL-Game/tree/tetris_game">tetris github</a></p>
+</blockquote>
+
+<p>최종적으로 만든 기능은 다음과 같습니다.</p>
+
+<ul>
+  <li>스프라이트 기반 블록 렌더링</li>
+  <li>점수, 라인, 레벨 HUD</li>
+  <li>다음 블록 미리보기</li>
+  <li>홀드 기능</li>
+  <li>고스트 피스</li>
+  <li>콤보 점수</li>
+  <li>일시정지</li>
+  <li>라인 클리어 연출</li>
+  <li>배경 파티클</li>
+  <li>합성 사운드</li>
+</ul>
+
+<p>이 글은 단순히 “기능 목록”을 보여주기보다,<br />
+<strong>어떤 순서로 만드는 것이 덜 꼬이고 유지보수도 쉬운지</strong>를 기준으로 설명합니다.</p>
+
+<hr />
+
+<h2 id="최종-구조-먼저-보기">최종 구조 먼저 보기</h2>
+
+<p>처음부터 구조를 잘게 나누기보다, 먼저 빠르게 동작하게 만든 뒤 점점 분리하는 방식으로 진행했습니다.<br />
+최종적으로는 다음 구조로 정리했습니다.</p>
+
+<h3 id="mainwindow"><code class="language-plaintext highlighter-rouge">MainWindow</code></h3>
+
+<p>앱 전체 생명주기 담당</p>
+
+<ul>
+  <li>장면 초기화</li>
+  <li>프레임 업데이트 호출</li>
+  <li>창 제목 갱신</li>
+  <li>창 크기 변경 대응</li>
+</ul>
+
+<h3 id="tetrisgame"><code class="language-plaintext highlighter-rouge">TetrisGame</code></h3>
+
+<p>게임 규칙 담당</p>
+
+<ul>
+  <li>보드 상태</li>
+  <li>현재 피스 / 다음 피스 / 홀드 피스</li>
+  <li>이동, 회전, 드롭</li>
+  <li>줄 삭제</li>
+  <li>점수, 레벨, 콤보</li>
+  <li>게임 오버 / 일시정지</li>
+</ul>
+
+<h3 id="tetrisrenderer"><code class="language-plaintext highlighter-rouge">TetrisRenderer</code></h3>
+
+<p>렌더링 담당</p>
+
+<ul>
+  <li>보드</li>
+  <li>현재 피스</li>
+  <li>고스트 피스</li>
+  <li>HOLD / NEXT 패널</li>
+  <li>HUD</li>
+  <li>라인 클리어 플래시</li>
+  <li>파티클</li>
+</ul>
+
+<h3 id="tetrisinputcontroller"><code class="language-plaintext highlighter-rouge">TetrisInputController</code></h3>
+
+<p>입력 해석 담당</p>
+
+<ul>
+  <li>좌우 반복 이동</li>
+  <li>소프트 드롭 반복</li>
+  <li>회전</li>
+  <li>홀드</li>
+  <li>하드 드롭</li>
+  <li>재시작 / 일시정지</li>
+</ul>
+
+<h3 id="tetrisaudio"><code class="language-plaintext highlighter-rouge">TetrisAudio</code></h3>
+
+<p>사운드 담당</p>
+
+<ul>
+  <li>홀드</li>
+  <li>라인 클리어</li>
+  <li>하드 드롭</li>
+  <li>레벨업</li>
+  <li>일시정지</li>
+  <li>게임 오버</li>
+</ul>
+
+<p>이 구조를 먼저 머리에 두고 시작하면, 각 단계에서 왜 파일을 나눴는지가 훨씬 이해가 쉽습니다.</p>
+
+<hr />
+
+<h2 id="1단계-먼저-돌아가는-테트리스를-만든다">1단계. 먼저 “돌아가는 테트리스”를 만든다</h2>
+
+<p>처음에는 시각 효과보다 규칙이 먼저입니다.<br />
+테트리스가 최소한 게임으로 동작하려면 다음이 필요합니다.</p>
+
+<ul>
+  <li>보드 10x20</li>
+  <li>테트로미노 정의</li>
+  <li>이동과 회전</li>
+  <li>중력 낙하</li>
+  <li>줄 삭제</li>
+  <li>점수 계산</li>
+</ul>
+
+<p>이 단계는 <code class="language-plaintext highlighter-rouge">TetrisGame.cpp</code> 중심으로 구현했습니다.</p>
+
+<h3 id="핵심-구현-포인트">핵심 구현 포인트</h3>
+
+<h4 id="1-테트로미노를-4x4-배열로-저장하기">1. 테트로미노를 4x4 배열로 저장하기</h4>
+
+<p>각 블록을 회전할 때마다 계산하는 대신,<br />
+애초에 4개의 회전 상태를 모두 저장해두면 훨씬 단순해집니다.</p>
+
+<p>이 방식의 장점은 다음과 같습니다.</p>
+
+<ul>
+  <li>이동 판정이 단순해짐</li>
+  <li>회전 판정이 단순해짐</li>
+  <li>고스트 피스 계산도 같은 데이터 사용 가능</li>
+  <li>스폰 가능 여부 검사도 재사용 가능</li>
+</ul>
+
+<h4 id="2-충돌-판정을-하나의-함수로-모으기">2. 충돌 판정을 하나의 함수로 모으기</h4>
+
+<p><code class="language-plaintext highlighter-rouge">doesPieceFit()</code> 같은 함수를 만들고,<br />
+이동/회전/고스트/홀드/스폰 검사를 모두 이 함수로 통일하는 것이 중요합니다.</p>
+
+<p>왜냐하면 테트리스 버그 대부분은 “충돌 판정이 제각각인 상태”에서 생기기 때문입니다.</p>
+
+<p>예를 들어:</p>
+
+<ul>
+  <li>이동은 되는데 회전은 이상함</li>
+  <li>고스트 피스 위치가 다름</li>
+  <li>홀드 후 스폰이 겹침</li>
+</ul>
+
+<p>이런 문제를 줄이려면 충돌 판정을 반드시 한 곳으로 모아야 합니다.</p>
+
+<h4 id="3-7-bag-시스템-적용하기">3. 7-bag 시스템 적용하기</h4>
+
+<p>무작위 블록 생성은 그냥 <code class="language-plaintext highlighter-rouge">rand()</code>로 뽑아도 되지만,<br />
+테트리스는 7-bag 방식을 쓰면 훨씬 플레이 감각이 안정적입니다.</p>
+
+<p>7-bag 방식은:</p>
+
+<ul>
+  <li>7종류 블록을 한 번씩 담고</li>
+  <li>섞은 뒤</li>
+  <li>순서대로 꺼내는 방식입니다</li>
+</ul>
+
+<p>이렇게 하면 특정 블록이 너무 오래 안 나오는 문제를 줄일 수 있습니다.</p>
+
+<hr />
+
+<h2 id="2단계-mainwindow에-몰아넣지-말고-게임-규칙부터-분리한다">2단계. MainWindow에 몰아넣지 말고, 게임 규칙부터 분리한다</h2>
+
+<p>처음에는 <code class="language-plaintext highlighter-rouge">MainWindow</code> 안에서 게임 상태를 직접 다뤄도 됩니다.<br />
+하지만 기능이 조금만 늘어나면 금방 복잡해집니다.</p>
+
+<p>그래서 테트리스 규칙은 <code class="language-plaintext highlighter-rouge">TetrisGame.h</code>, <code class="language-plaintext highlighter-rouge">TetrisGame.cpp</code>로 분리했습니다.</p>
+
+<h3 id="왜-먼저-tetrisgame을-분리했나">왜 먼저 <code class="language-plaintext highlighter-rouge">TetrisGame</code>을 분리했나?</h3>
+
+<p>이유는 간단합니다.</p>
+
+<ul>
+  <li>렌더링은 바뀔 수 있다</li>
+  <li>입력 방식도 바뀔 수 있다</li>
+  <li>하지만 게임 규칙은 가장 오래 유지된다</li>
+</ul>
+
+<p>즉, 가장 먼저 안정시켜야 하는 코어가 <code class="language-plaintext highlighter-rouge">TetrisGame</code>입니다.</p>
+
+<p>이 구조를 만들어 두면 이후에:</p>
+
+<ul>
+  <li>HUD를 바꾸든</li>
+  <li>스프라이트를 바꾸든</li>
+  <li>파티클을 추가하든</li>
+  <li>사운드를 붙이든</li>
+</ul>
+
+<p>게임 규칙은 건드리지 않고 확장할 수 있습니다.</p>
+
+<hr />
+
+<h2 id="3단계-컬러-사각형-대신-스프라이트-블록으로-바꾸기">3단계. 컬러 사각형 대신 스프라이트 블록으로 바꾸기</h2>
+
+<p>기본 규칙이 완성되면 이제 화면을 게임답게 만들 차례입니다.</p>
+
+<p>이번 프로젝트에서는 한 칸짜리 블록 이미지들을 사용했습니다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">red_block.png</code></li>
+  <li><code class="language-plaintext highlighter-rouge">blue_block.png</code></li>
+  <li><code class="language-plaintext highlighter-rouge">yellow_block.png</code></li>
+  <li><code class="language-plaintext highlighter-rouge">green_block.png</code></li>
+  <li><code class="language-plaintext highlighter-rouge">purple_block.png</code></li>
+</ul>
+
+<p>렌더링은 <code class="language-plaintext highlighter-rouge">TetrisRenderer.cpp</code>에서 처리하도록 분리했습니다.</p>
+
+<h3 id="구현-방식">구현 방식</h3>
+
+<ol>
+  <li>블록 이미지들을 <code class="language-plaintext highlighter-rouge">Sprite</code>로 로드</li>
+  <li>shape 인덱스를 적절한 스프라이트 인덱스로 매핑</li>
+  <li>보드 셀마다 대응하는 스프라이트를 그림</li>
+</ol>
+
+<h3 id="여기서-중요했던-문제">여기서 중요했던 문제</h3>
+
+<p>실행 경로에 따라 이미지 경로가 어긋날 수 있다는 점입니다.</p>
+
+<p>예를 들어:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.\\Image\\...</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.\\OpenGLGame\\Image\\...</code></li>
+</ul>
+
+<p>실행 위치가 다르면 둘 중 하나만 맞는 경우가 생깁니다.<br />
+그래서 파일 존재 여부를 확인하면서 후보 경로를 순서대로 찾는 방식으로 처리했습니다.</p>
+
+<p>이 방식은 나중에 아이콘이나 다른 자산을 읽을 때도 재사용하기 좋습니다.</p>
+
+<hr />
+
+<h2 id="4단계-hud-만들기">4단계. HUD 만들기</h2>
+
+<p>게임이 돌아가도 점수와 상태가 안 보이면 완성도가 확 떨어집니다.<br />
+그래서 다음 요소를 순서대로 추가했습니다.</p>
+
+<ul>
+  <li>점수</li>
+  <li>라인 수</li>
+  <li>레벨</li>
+  <li>다음 블록 패널</li>
+  <li>HOLD 패널</li>
+  <li>게임 오버 오버레이</li>
+</ul>
+
+<p>관련 코드는 <code class="language-plaintext highlighter-rouge">TetrisRenderer.cpp</code>, <code class="language-plaintext highlighter-rouge">TetrisHudConfig.h</code>에 있습니다.</p>
+
+<h3 id="hud를-구현하면서-했던-선택">HUD를 구현하면서 했던 선택</h3>
+
+<p>일반 텍스트 폰트를 붙이는 대신,<br />
+픽셀 스타일 라벨과 블록형 숫자를 직접 그리는 방식으로 갔습니다.</p>
+
+<p>이 방식의 장점은:</p>
+
+<ul>
+  <li>프로젝트 전체 분위기와 잘 맞음</li>
+  <li>별도 텍스트 렌더러가 필요 없음</li>
+  <li>블록 이미지와 시각 스타일이 통일됨</li>
+</ul>
+
+<p>즉, 기술적으로 더 화려한 방식보다<br />
+<strong>현재 프로젝트에 어울리는 방식</strong>을 선택한 셈입니다.</p>
+
+<hr />
+
+<h2 id="5단계-입력을-별도-컨트롤러로-분리하기">5단계. 입력을 별도 컨트롤러로 분리하기</h2>
+
+<p>처음에는 입력 처리를 <code class="language-plaintext highlighter-rouge">MainWindow</code>에서 직접 해도 됩니다.<br />
+하지만 키 반복 이동, 소프트 드롭 반복, 일시정지 같은 로직이 늘어나면<br />
+게임 규칙과 입력 규칙이 섞이기 시작합니다.</p>
+
+<p>그래서 <code class="language-plaintext highlighter-rouge">TetrisInputController.cpp</code>로 입력을 분리했습니다.</p>
+
+<h3 id="입력-계층에서-처리한-것">입력 계층에서 처리한 것</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Left</code>, <code class="language-plaintext highlighter-rouge">Right</code> 반복 이동</li>
+  <li><code class="language-plaintext highlighter-rouge">Down</code> 소프트 드롭 반복</li>
+  <li><code class="language-plaintext highlighter-rouge">Up</code>, <code class="language-plaintext highlighter-rouge">Space</code>, <code class="language-plaintext highlighter-rouge">Z</code> 회전</li>
+  <li><code class="language-plaintext highlighter-rouge">Shift</code>, <code class="language-plaintext highlighter-rouge">H</code> 홀드</li>
+  <li><code class="language-plaintext highlighter-rouge">C</code> 하드 드롭</li>
+  <li><code class="language-plaintext highlighter-rouge">P</code> 일시정지</li>
+  <li><code class="language-plaintext highlighter-rouge">R</code> 재시작</li>
+</ul>
+
+<h3 id="왜-이-분리가-중요할까">왜 이 분리가 중요할까?</h3>
+
+<p>예를 들어 “왼쪽 키를 누르고 있으면 0.12초마다 이동”은 입력 장치의 감도 문제입니다.<br />
+반대로 “현재 이 위치로 이동 가능한가?”는 게임 규칙 문제입니다.</p>
+
+<p>이 둘을 분리하면:</p>
+
+<ul>
+  <li>입력 장치가 달라져도 게임 규칙은 유지됨</li>
+  <li>나중에 패드 입력을 붙이기 쉬움</li>
+  <li>키 반복 버그를 잡기 쉬움</li>
+</ul>
+
+<hr />
+
+<h2 id="6단계-고급-게임-기능-붙이기">6단계. 고급 게임 기능 붙이기</h2>
+
+<p>기본적인 테트리스가 완성되면 이제 플레이 감을 올려야 합니다.<br />
+이 단계에서 붙인 핵심 기능은 다음과 같습니다.</p>
+
+<h3 id="홀드-기능">홀드 기능</h3>
+
+<p>관련 코드: <code class="language-plaintext highlighter-rouge">TetrisGame.cpp</code></p>
+
+<p>구현 규칙:</p>
+
+<ul>
+  <li>첫 홀드는 현재 피스를 저장하고 다음 피스를 가져옴</li>
+  <li>이후부터는 저장 피스와 현재 피스를 교환</li>
+  <li>한 턴에 한 번만 홀드 가능</li>
+</ul>
+
+<p>이 제한이 중요합니다.<br />
+제한이 없으면 홀드를 반복해서 난이도가 크게 무너집니다.</p>
+
+<h3 id="고스트-피스">고스트 피스</h3>
+
+<p>관련 코드: <code class="language-plaintext highlighter-rouge">TetrisGame.cpp</code>, <code class="language-plaintext highlighter-rouge">TetrisRenderer.cpp</code></p>
+
+<p>현재 피스를 복사한 뒤, 충돌 직전까지 아래로 내린 결과를 계산해 반투명하게 그렸습니다.</p>
+
+<p>이 기능은 생각보다 체감 차이가 큽니다.</p>
+
+<ul>
+  <li>하드 드롭 위치를 바로 알 수 있음</li>
+  <li>미세 조정이 쉬워짐</li>
+  <li>초보자도 착지 위치를 읽기 쉬워짐</li>
+</ul>
+
+<h3 id="콤보-점수">콤보 점수</h3>
+
+<p>연속으로 줄을 지울 때 보상을 주기 위해 추가했습니다.</p>
+
+<p>규칙은 단순합니다.</p>
+
+<ul>
+  <li>줄을 지우면 콤보 증가</li>
+  <li>줄을 못 지우면 콤보 초기화</li>
+  <li>기본 라인 점수 + 콤보 보너스</li>
+</ul>
+
+<h3 id="일시정지">일시정지</h3>
+
+<p>일시정지는 단순히 게임 업데이트만 멈추는 것이 아닙니다.</p>
+
+<ul>
+  <li>입력 반복 상태 초기화</li>
+  <li>HUD 오버레이 표시</li>
+  <li>창 제목 갱신</li>
+  <li>일시정지 사운드 재생</li>
+</ul>
+
+<p>이런 부분까지 함께 맞춰줘야 실제 게임처럼 자연스럽게 느껴집니다.</p>
+
+<hr />
+
+<h2 id="7단계-라인-클리어-연출-넣기">7단계. 라인 클리어 연출 넣기</h2>
+
+<p>테트리스에서 줄이 지워질 때 바로 사라지게 하면 기능적으로는 맞지만 밋밋합니다.<br />
+그래서 이번 프로젝트에서는 줄 삭제를 두 단계로 나눴습니다.</p>
+
+<h3 id="1-삭제-대상-줄-먼저-표시">1. 삭제 대상 줄 먼저 표시</h3>
+
+<p><code class="language-plaintext highlighter-rouge">beginLineClear()</code>에서 하는 일:</p>
+
+<ul>
+  <li>가득 찬 줄을 찾음</li>
+  <li>바로 삭제하지 않고 마킹만 함</li>
+  <li>렌더러가 이 줄을 플래시할 수 있게 함</li>
+</ul>
+
+<h3 id="2-잠깐-멈춘-뒤-실제로-삭제">2. 잠깐 멈춘 뒤 실제로 삭제</h3>
+
+<p><code class="language-plaintext highlighter-rouge">finalizeLineClear()</code>에서 하는 일:</p>
+
+<ul>
+  <li>마킹된 줄을 제외하고 보드를 다시 재구성</li>
+  <li>위쪽 빈 줄 채움</li>
+  <li>점수 반영</li>
+  <li>이벤트 카운터 증가</li>
+  <li>다음 피스 스폰</li>
+</ul>
+
+<h3 id="이-방식의-장점">이 방식의 장점</h3>
+
+<ul>
+  <li>라인 클리어 플래시 가능</li>
+  <li>파티클 타이밍 맞추기 쉬움</li>
+  <li>오디오 타이밍 맞추기 쉬움</li>
+  <li>“어떤 줄이 지워졌는지”를 외부 시스템이 공유 가능</li>
+</ul>
+
+<p>즉, 규칙과 연출을 분리하면서도 서로 연결되는 구조를 만들 수 있습니다.</p>
+
+<hr />
+
+<h2 id="8단계-배경-파티클과-버스트-파티클">8단계. 배경 파티클과 버스트 파티클</h2>
+
+<p>게임 화면이 밋밋하지 않게 하기 위해 파티클도 추가했습니다.</p>
+
+<p>관련 코드는 <code class="language-plaintext highlighter-rouge">TetrisRenderer.cpp</code>에 있습니다.</p>
+
+<h3 id="배경-파티클">배경 파티클</h3>
+
+<p>화면 뒤쪽에서 천천히 떠다니는 작은 사각형들입니다.</p>
+
+<p>특징:</p>
+
+<ul>
+  <li>텍스처 없이 사각형만 사용</li>
+  <li>비용이 적음</li>
+  <li>화면이 정적이지 않게 만듦</li>
+</ul>
+
+<h3 id="버스트-파티클">버스트 파티클</h3>
+
+<p>짧게 터지는 이펙트입니다.</p>
+
+<p>사용 시점:</p>
+
+<ul>
+  <li>라인 클리어</li>
+  <li>하드 드롭 착지</li>
+</ul>
+
+<p>이 버스트는 아주 짧은데도 체감이 큽니다.<br />
+“내 입력이 화면에 강하게 반영된다”는 느낌을 주기 때문입니다.</p>
+
+<hr />
+
+<h2 id="9단계-사운드-붙이기">9단계. 사운드 붙이기</h2>
+
+<p>사운드는 처음에는 <code class="language-plaintext highlighter-rouge">Beep</code>로 빠르게 붙였지만, 소리가 너무 시스템 알림처럼 느껴졌습니다.<br />
+그래서 최종적으로는 <code class="language-plaintext highlighter-rouge">TetrisAudio.cpp</code>에서 PCM 샘플을 직접 생성해 재생하도록 바꿨습니다.</p>
+
+<h3 id="구현-방식-1">구현 방식</h3>
+
+<ol>
+  <li>이벤트별 톤 정의</li>
+  <li>사인파 기반 샘플 생성</li>
+  <li>약한 배음 추가</li>
+  <li>attack / release 엔벨로프 적용</li>
+  <li><code class="language-plaintext highlighter-rouge">waveOut</code>로 재생</li>
+</ol>
+
+<h3 id="왜-이벤트-기반으로-만들었나">왜 이벤트 기반으로 만들었나?</h3>
+
+<p>오디오가 키 입력을 직접 보면 타이밍이 어긋날 수 있습니다.</p>
+
+<p>예를 들어:</p>
+
+<ul>
+  <li>줄 삭제는 입력 직후가 아니라 애니메이션 종료 후 발생</li>
+  <li>홀드는 실제 교체 성공 시점이 중요</li>
+  <li>게임 오버는 상태 확정 시점이 중요</li>
+</ul>
+
+<p>그래서 <code class="language-plaintext highlighter-rouge">TetrisGame</code> 안에서 이벤트 카운터를 올리고,<br />
+<code class="language-plaintext highlighter-rouge">TetrisAudio</code>는 이 카운터 변화를 감지해서 사운드를 재생하도록 했습니다.</p>
+
+<p>이 구조가 훨씬 정확하고 확장하기도 쉽습니다.</p>
+
+<hr />
+
+<h2 id="10단계-레벨별-속도-커브-튜닝">10단계. 레벨별 속도 커브 튜닝</h2>
+
+<p>테트리스는 속도 조절이 매우 중요합니다.<br />
+단순히 <code class="language-plaintext highlighter-rouge">level * constant</code> 방식으로 떨어뜨리면 플레이 감이 쉽게 무너집니다.</p>
+
+<p>그래서 이번에는 직접 손으로 조정한 속도 테이블을 사용했습니다.</p>
+
+<p>의도는 다음과 같습니다.</p>
+
+<ul>
+  <li>초반은 천천히 익힐 수 있게</li>
+  <li>중반은 확실히 긴장감이 올라오게</li>
+  <li>후반은 숙련자도 집중해야 하게</li>
+</ul>
+
+<p>그리고 테이블 끝 이후에도 조금씩 더 빨라지게 만들어서,<br />
+오래 플레이해도 난이도가 정체되지 않게 했습니다.</p>
+
+<hr />
+
+<h2 id="11단계-빌드-문제-해결하기">11단계. 빌드 문제 해결하기</h2>
+
+<p>기능을 만드는 것만큼 중요한 것이 빌드 안정화였습니다.</p>
+
+<h3 id="release-x64-빌드-문제"><code class="language-plaintext highlighter-rouge">Release x64</code> 빌드 문제</h3>
+
+<p>원인은 프로젝트 설정이었습니다.</p>
+
+<ul>
+  <li>라이브러리 경로가 실제 <code class="language-plaintext highlighter-rouge">glfw</code> 위치와 맞지 않았음</li>
+  <li>릴리스 구성의 PCH 설정이 디버그와 다르게 맞지 않았음</li>
+</ul>
+
+<p>그래서:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">LibraryPath</code> 수정</li>
+  <li><code class="language-plaintext highlighter-rouge">Release x64</code> PCH 설정 정리</li>
+  <li><code class="language-plaintext highlighter-rouge">pch.cpp</code>의 릴리스 설정 보완</li>
+</ul>
+
+<p>이 작업으로 <code class="language-plaintext highlighter-rouge">Debug x64</code>, <code class="language-plaintext highlighter-rouge">Release x64</code> 모두 정상 빌드되게 만들었습니다.</p>
+
+<h3 id="리소스-경로-문제">리소스 경로 문제</h3>
+
+<p>이미지 경로가 실행 위치에 따라 달라져 텍스처가 안 보이는 문제도 있었는데,<br />
+후보 경로를 순서대로 검사하는 방식으로 해결했습니다.</p>
+
+<h3 id="한글-주석-인코딩-문제">한글 주석 인코딩 문제</h3>
+
+<p>마지막에 주석을 한국어로 바꾸면서 <code class="language-plaintext highlighter-rouge">C4819</code> 경고가 발생했는데,<br />
+관련 파일을 UTF-8로 저장해 정리했습니다.</p>
+
+<hr />
+
+<h2 id="12단계-마무리-주석과-문서화">12단계. 마무리: 주석과 문서화</h2>
+
+<p>기능이 다 들어간 뒤에는 주석 정리도 중요합니다.<br />
+특히 다음 부분은 나중에 다시 봐도 바로 이해되게 설명이 있어야 합니다.</p>
+
+<ul>
+  <li>줄 삭제를 왜 2단계로 나눴는지</li>
+  <li>충돌 판정을 왜 한 함수로 모았는지</li>
+  <li>파티클이 어떤 이벤트에 반응하는지</li>
+  <li>사운드가 왜 입력이 아니라 이벤트를 보는지</li>
+  <li>입력 반복을 왜 게임 로직 밖에서 처리하는지</li>
+</ul>
+
+<p>그래서 복잡한 파일 위주로 한국어 주석을 추가했습니다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MainWindow.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">TetrisGame.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">TetrisRenderer.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">TetrisAudio.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">TetrisInputController.cpp</code></li>
+</ul>
+
+<hr />
+
+<h2 id="정리">정리</h2>
+
+<p>이번 테트리스 작업은 “블록을 떨어뜨리는 예제”를 넘어서,<br />
+<strong>기존 OpenGL 프로젝트를 실제 플레이 가능한 게임 구조로 확장하는 과정</strong>이었습니다.</p>
+
+<p>핵심 순서를 다시 요약하면 다음과 같습니다.</p>
+
+<ol>
+  <li>먼저 최소한의 테트리스 규칙을 구현한다.</li>
+  <li>게임 규칙을 <code class="language-plaintext highlighter-rouge">TetrisGame</code>으로 분리한다.</li>
+  <li>스프라이트 기반 렌더링으로 교체한다.</li>
+  <li>HUD와 패널을 추가한다.</li>
+  <li>입력을 별도 컨트롤러로 분리한다.</li>
+  <li>홀드, 고스트 피스, 콤보를 추가한다.</li>
+  <li>라인 클리어 연출과 파티클을 붙인다.</li>
+  <li>사운드를 이벤트 기반으로 연결한다.</li>
+  <li>속도 커브를 다듬는다.</li>
+  <li>빌드와 인코딩 문제까지 정리한다.</li>
+</ol>
+
+<p>이 순서대로 가면 기능이 늘어나도 코드가 비교적 덜 꼬이고,<br />
+중간중간 테스트하면서 확장하기도 편합니다.</p>
+
+<hr />
+
+<h2 id="다음에-확장해볼-만한-것">다음에 확장해볼 만한 것</h2>
+
+<p>여기서 더 발전시키려면 다음 기능도 충분히 붙일 수 있습니다.</p>
+
+<ul>
+  <li>타이틀 화면 / 메뉴 화면</li>
+  <li>실제 WAV/MP3 효과음 자산 적용</li>
+  <li>랭킹 저장</li>
+  <li>키 설정 변경</li>
+  <li>고급 회전 규칙(SRS) 확장</li>
+  <li>모바일/패드 입력 대응</li>
+</ul>
+
+<p>지금 구조는 이런 확장을 고려해도 크게 무리 없는 상태까지 정리되어 있습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><category term="Game" /><category term="Tetris" /><summary type="html"><![CDATA[OpenGL 프로젝트에 테트리스 만들기]]></summary></entry><entry><title type="html">PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html" rel="alternate" type="text/html" title="PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리" /><published>2025-05-08T00:00:00+09:00</published><updated>2025-05-08T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html"><![CDATA[<p>PE Viewer는 .exe, .dll 등 PE(Portable Executable) 형식의 파일 구조를 시각적으로 확인할 수 있는 도구입니다.
 이 글에서는 대표적인 PE Viewer 도구들과, 그 중 PE-bear를 활용한 구조 분석 예시를 간단히 정리합니다.</p>
 
 <hr />
@@ -1674,9 +2276,9 @@ archive-single.html %} {%- endfor -%}
 <p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code> 해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-jgzwwx', this)" data-label="sidebar.html 전체 코드">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-lv2ayb', this)" data-label="sidebar.html 전체 코드">
   </div>
-  <div id="toggle-jgzwwx" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-lv2ayb" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
@@ -2798,109 +3400,4 @@ EntryPoint = 0x1100 (RVA)
   <li>컴파일 과정과 실행 파일 구조 (특히 PE, ELF)</li>
   <li>디버거 및 분석 도구 사용법</li>
   <li>운영체제의 기본 구조 (메모리, 스택, 프로세스 등)</li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="reverse engineering" /><category term="정적분석" /><category term="동적분석" /><category term="x64dbg" /><category term="ghidra" /><category term="IDA" /><category term="리버싱 기초" /><summary type="html"><![CDATA[리버스 엔지니어링의 정의부터 정적/동적 분석의 차이, 활용 목적, 필수 도구와 사전 지식까지 한눈에 정리한 입문자를 위한 가이드입니다.]]></summary></entry><entry><title type="html">GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기</title><link href="https://ruyshy.github.io/blog/2025/04/30/blog-19-file-upload.html" rel="alternate" type="text/html" title="GitHub Blog에서 .exe 파일 안전하게 업로드 및 다운로드하기" /><published>2025-04-30T00:00:00+09:00</published><updated>2025-04-30T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/2025/04/30/blog-19-file-upload</id><content type="html" xml:base="https://ruyshy.github.io/blog/2025/04/30/blog-19-file-upload.html"><![CDATA[<p>GitHub 블로그에 <code class="language-plaintext highlighter-rouge">.exe</code> 파일을 올리면 크롬이나 윈도우에서 보안 경고가 뜨곤 합니다.<br />
-이 포스트에서는 그러한 경고를 완화하거나 피할 수 있는 여러 가지 방법을 정리했습니다.<br />
-실제 <code class="language-plaintext highlighter-rouge">.zip</code> 방식 테스트도 함께 제공하니 참고해보세요!</p>
-
-<p>assets\files\example\assembly\hello_world_x64.exe 상대경로에 업로드가 되어있습니다.</p>
-
-<p>GitHub에서도 업로드가 되어있어야 다운로드가 가능합니다!</p>
-
-<p>로컬에서도 테스트 할 수 있습니다. 예시:</p>
-
-<p>http://localhost:4000/assets/files/example/assembly/hello_world_x64.exe</p>
-
-<p>업로드 경로 링크 :</p>
-
-<p><a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe">https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe</a></p>
-
-<p><img src="/assets/images/blog/2025-04-29-blog-19-file-upload/image.png" alt="image.png" style="max-width:100%;" /></p>
-
-<p>해당 이미지 처럼 .exe 파일을 다운로드 할 때, 크롬에서 뜨는 메세지 스크린샷</p>
-
-<p>Windows에서 <code class="language-plaintext highlighter-rouge">.exe</code> 파일을 다운로드할 때 <strong>“의심스러운 파일”</strong>이라는 경고가 뜨는 이유는 브라우저(특히 Chrome, Edge 등)나 OS가 <strong>디지털 서명(Signing Certificate)</strong> 없는 실행 파일을 보안 위험 요소로 간주하기 때문입니다. 이건 블로그 설정만으로는 <strong>완전히 막을 수 없습니다</strong>, 하지만 아래와 같은 우회적/간접적 방법들이 있습니다:</p>
-
-<h2 id="해결-또는-완화-방법">해결 또는 완화 방법</h2>
-
-<h3 id="1-압축-파일로-배포-추천">1. <strong>압축 파일로 배포 (추천)</strong></h3>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">hello_world_x64.exe</code> → <code class="language-plaintext highlighter-rouge">hello_world_x64.zip</code> 으로 압축</li>
-  <li><code class="language-plaintext highlighter-rouge">.exe</code> 파일이 직접 노출되지 않으므로 브라우저 보안 경고가 거의 사라짐</li>
-  <li>GitHub Pages에서도 MIME-type 문제 없이 다운로드됨</li>
-</ul>
-
-<h3 id="2-파일-이름-변경-부가-효과">2. <strong>파일 이름 변경 (부가 효과)</strong></h3>
-
-<ul>
-  <li>예: <code class="language-plaintext highlighter-rouge">hello_world_x64.safe</code> 또는 <code class="language-plaintext highlighter-rouge">hello_world_x64.dat</code>로 이름 변경 → 다운로드 후 사용자에게 <code class="language-plaintext highlighter-rouge">.exe</code>로 바꾸라고 안내</li>
-  <li>일부 브라우저 필터는 <code class="language-plaintext highlighter-rouge">.exe</code> 확장자만으로 차단함</li>
-</ul>
-
-<h3 id="3-https-사용-확인">3. <strong>HTTPS 사용 확인</strong></h3>
-
-<ul>
-  <li>GitHub Pages는 기본 HTTPS라서 괜찮지만, custom domain 사용 시 <code class="language-plaintext highlighter-rouge">https://</code>가 아니면 경고 메시지가 더 강해질 수 있음</li>
-</ul>
-
-<h3 id="4-브라우저-다운로드-설명-추가">4. <strong>브라우저 다운로드 설명 추가</strong></h3>
-
-<ul>
-  <li>포스트에 다운로드 전에 이런 문구를 넣을 수 있음:</li>
-</ul>
-
-<blockquote>
-  <p>⚠️ Windows에서는 .exe 파일 다운로드 시 보안 경고가 표시될 수 있습니다. 안전한 파일이며, 소스코드도 함께 제공됩니다.</p>
-</blockquote>
-
-<h3 id="5-디지털-서명코드-사인-사용-고급">5. <strong>디지털 서명(코드 사인) 사용 (고급)</strong></h3>
-
-<ul>
-  <li>진짜 근본적인 해결책</li>
-  <li><code class="language-plaintext highlighter-rouge">.exe</code> 파일에 <strong>코드 서명 인증서</strong>를 붙이면 대부분의 브라우저/OS가 신뢰</li>
-  <li>하지만 개인 개발자 입장에서 비용(1년에 최소 $100 이상) 및 번거로움이 커서 비현실적일 수 있음</li>
-</ul>
-
-<h2 id="요약">요약</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>방법</th>
-      <th>효과</th>
-      <th>추천도</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">.zip</code>으로 압축해서 제공</td>
-      <td>경고 방지</td>
-      <td>⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td>확장자 숨기기 (예: <code class="language-plaintext highlighter-rouge">.safe</code>)</td>
-      <td>브라우저 회피</td>
-      <td>⭐⭐</td>
-    </tr>
-    <tr>
-      <td>디지털 서명 인증서 적용</td>
-      <td>완전한 해결</td>
-      <td>⭐ (비용 부담 큼)</td>
-    </tr>
-    <tr>
-      <td>다운로드 안내문 추가</td>
-      <td>사용자 신뢰</td>
-      <td>⭐⭐⭐</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="테스트">테스트</h2>
-
-<p>기존의 exe 파일 링크 :</p>
-
-<p><a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe">https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.exe</a></p>
-
-<p>exe 파일을 압축한 파일(.zip) 링크:</p>
-
-<p><a href="https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.zip">https://ruyshy.github.io/assets/files/example/assembly/hello_world_x64.zip</a></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="GitHub Pages" /><category term="파일 업로드" /><category term="다운로드" /><category term="exe 보안경고" /><category term="zip" /><category term="코드서명" /><category term="블로그 팁" /><summary type="html"><![CDATA[GitHub 블로그에서 .exe 실행 파일을 업로드할 때 보안 경고 없이 안전하게 배포하는 방법을 소개합니다. ZIP 압축, 확장자 우회, 다운로드 안내문 등 실용적인 우회 방법도 함께 설명합니다.]]></summary></entry></feed>
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="reverse engineering" /><category term="정적분석" /><category term="동적분석" /><category term="x64dbg" /><category term="ghidra" /><category term="IDA" /><category term="리버싱 기초" /><summary type="html"><![CDATA[리버스 엔지니어링의 정의부터 정적/동적 분석의 차이, 활용 목적, 필수 도구와 사전 지식까지 한눈에 정리한 입문자를 위한 가이드입니다.]]></summary></entry></feed>
