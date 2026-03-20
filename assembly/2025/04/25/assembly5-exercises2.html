@@ -422,420 +422,420 @@
         
         <p>NASM 어셈블리어 명령어에 대한 이해도를 높이기 위한 연습문제입니다. <code class="language-plaintext highlighter-rouge">mov</code>, <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">cmp</code>, <code class="language-plaintext highlighter-rouge">jmp</code>, <code class="language-plaintext highlighter-rouge">push</code>, <code class="language-plaintext highlighter-rouge">pop</code>, <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">ret</code> 등 핵심 명령어와 스택 동작 구조를 객관식 퀴즈 형식으로 정리했습니다.</p>
 
-<div class="quiz-box" id="quiz-box-358503">
-  <div class="quiz-message" id="quiz-message-358503" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-377015">
+  <div class="quiz-message" id="quiz-message-377015" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">1.</code> 다음 중 <code class="language-plaintext highlighter-rouge">mov</code> 명령어의 올바른 사용 예시는?</p>
 
   </div>
-  <form id="quiz-form-358503" onsubmit="return false;">
+  <form id="quiz-form-377015" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-358503" id="quiz-358503-0" value="`mov [rax], [rbx]`" data-correct="false" />
-  <label for="quiz-358503-0"><code class="language-plaintext highlighter-rouge">mov [rax], [rbx]</code></label>
+  <input type="radio" name="quiz-answer-377015" id="quiz-377015-0" value="`mov [rax], [rbx]`" data-correct="false" />
+  <label for="quiz-377015-0"><code class="language-plaintext highlighter-rouge">mov [rax], [rbx]</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-358503" id="quiz-358503-1" value="`mov rax, 1234h`" data-correct="false" />
-  <label for="quiz-358503-1"><code class="language-plaintext highlighter-rouge">mov rax, 1234h</code></label>
+  <input type="radio" name="quiz-answer-377015" id="quiz-377015-1" value="`mov rax, 1234h`" data-correct="false" />
+  <label for="quiz-377015-1"><code class="language-plaintext highlighter-rouge">mov rax, 1234h</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-358503" id="quiz-358503-2" value="`mov 1234h, rax`" data-correct="false" />
-  <label for="quiz-358503-2"><code class="language-plaintext highlighter-rouge">mov 1234h, rax</code></label>
+  <input type="radio" name="quiz-answer-377015" id="quiz-377015-2" value="`mov 1234h, rax`" data-correct="false" />
+  <label for="quiz-377015-2"><code class="language-plaintext highlighter-rouge">mov 1234h, rax</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-358503" id="quiz-358503-3" value="`mov rax, [rbx + rcx]`" data-correct="true" />
-  <label for="quiz-358503-3"><code class="language-plaintext highlighter-rouge">mov rax, [rbx + rcx]</code></label>
+  <input type="radio" name="quiz-answer-377015" id="quiz-377015-3" value="`mov rax, [rbx + rcx]`" data-correct="true" />
+  <label for="quiz-377015-3"><code class="language-plaintext highlighter-rouge">mov rax, [rbx + rcx]</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(358503, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(377015, false, null)">제출</button>
   </form>
-  <div id="quiz-result-358503" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-358503" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-358503', this)" data-label="해설 보기"></div>
-  <div id="toggle-358503" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-377015" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-377015" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-377015', this)" data-label="해설 보기"></div>
+  <div id="toggle-377015" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">[rbx + rcx]</code>는 유효한 메모리 주소. <code class="language-plaintext highlighter-rouge">mov [mem], [mem]</code>은 금지라서 A는 틀림.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-165169">
-  <div class="quiz-message" id="quiz-message-165169" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-481482">
+  <div class="quiz-message" id="quiz-message-481482" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">2.</code> <code class="language-plaintext highlighter-rouge">add rax, 5</code> 명령어 실행 후 결과로 올바른 설명은?</p>
 
   </div>
-  <form id="quiz-form-165169" onsubmit="return false;">
+  <form id="quiz-form-481482" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-165169" id="quiz-165169-0" value="`rax`에 5가 저장된다" data-correct="false" />
-  <label for="quiz-165169-0"><code class="language-plaintext highlighter-rouge">rax</code>에 5가 저장된다</label>
+  <input type="radio" name="quiz-answer-481482" id="quiz-481482-0" value="`rax`에 5가 저장된다" data-correct="false" />
+  <label for="quiz-481482-0"><code class="language-plaintext highlighter-rouge">rax</code>에 5가 저장된다</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-165169" id="quiz-165169-1" value="`rax` 값이 5로 교체된다" data-correct="false" />
-  <label for="quiz-165169-1"><code class="language-plaintext highlighter-rouge">rax</code> 값이 5로 교체된다</label>
+  <input type="radio" name="quiz-answer-481482" id="quiz-481482-1" value="`rax` 값이 5로 교체된다" data-correct="false" />
+  <label for="quiz-481482-1"><code class="language-plaintext highlighter-rouge">rax</code> 값이 5로 교체된다</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-165169" id="quiz-165169-2" value="`rax` 값에 5가 더해진다" data-correct="true" />
-  <label for="quiz-165169-2"><code class="language-plaintext highlighter-rouge">rax</code> 값에 5가 더해진다</label>
+  <input type="radio" name="quiz-answer-481482" id="quiz-481482-2" value="`rax` 값에 5가 더해진다" data-correct="true" />
+  <label for="quiz-481482-2"><code class="language-plaintext highlighter-rouge">rax</code> 값에 5가 더해진다</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-165169" id="quiz-165169-3" value="5의 주소를 `rax`에 저장한다" data-correct="false" />
-  <label for="quiz-165169-3">5의 주소를 <code class="language-plaintext highlighter-rouge">rax</code>에 저장한다</label>
+  <input type="radio" name="quiz-answer-481482" id="quiz-481482-3" value="5의 주소를 `rax`에 저장한다" data-correct="false" />
+  <label for="quiz-481482-3">5의 주소를 <code class="language-plaintext highlighter-rouge">rax</code>에 저장한다</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(165169, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(481482, false, null)">제출</button>
   </form>
-  <div id="quiz-result-165169" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-165169" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-165169', this)" data-label="해설 보기"></div>
-  <div id="toggle-165169" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-481482" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-481482" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-481482', this)" data-label="해설 보기"></div>
+  <div id="toggle-481482" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">add</code>는 기존 값에 값을 더하는 연산. 즉, <code class="language-plaintext highlighter-rouge">rax</code> += 5 와 같음.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-821420">
-  <div class="quiz-message" id="quiz-message-821420" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-216255">
+  <div class="quiz-message" id="quiz-message-216255" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">3.</code> <code class="language-plaintext highlighter-rouge">sub rax, 3</code> 실행 전 <code class="language-plaintext highlighter-rouge">rax</code>가 10이었다면, 결과는?</p>
 
   </div>
-  <form id="quiz-form-821420" onsubmit="return false;">
+  <form id="quiz-form-216255" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-821420" id="quiz-821420-0" value="`rax` = 7" data-correct="true" />
-  <label for="quiz-821420-0"><code class="language-plaintext highlighter-rouge">rax</code> = 7</label>
+  <input type="radio" name="quiz-answer-216255" id="quiz-216255-0" value="`rax` = 7" data-correct="true" />
+  <label for="quiz-216255-0"><code class="language-plaintext highlighter-rouge">rax</code> = 7</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-821420" id="quiz-821420-1" value="`rax` = 13" data-correct="false" />
-  <label for="quiz-821420-1"><code class="language-plaintext highlighter-rouge">rax</code> = 13</label>
+  <input type="radio" name="quiz-answer-216255" id="quiz-216255-1" value="`rax` = 13" data-correct="false" />
+  <label for="quiz-216255-1"><code class="language-plaintext highlighter-rouge">rax</code> = 13</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-821420" id="quiz-821420-2" value="`rax` = -3" data-correct="false" />
-  <label for="quiz-821420-2"><code class="language-plaintext highlighter-rouge">rax</code> = -3</label>
+  <input type="radio" name="quiz-answer-216255" id="quiz-216255-2" value="`rax` = -3" data-correct="false" />
+  <label for="quiz-216255-2"><code class="language-plaintext highlighter-rouge">rax</code> = -3</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-821420" id="quiz-821420-3" value="`rax` = 3" data-correct="false" />
-  <label for="quiz-821420-3"><code class="language-plaintext highlighter-rouge">rax</code> = 3</label>
+  <input type="radio" name="quiz-answer-216255" id="quiz-216255-3" value="`rax` = 3" data-correct="false" />
+  <label for="quiz-216255-3"><code class="language-plaintext highlighter-rouge">rax</code> = 3</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(821420, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(216255, false, null)">제출</button>
   </form>
-  <div id="quiz-result-821420" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-821420" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-821420', this)" data-label="해설 보기"></div>
-  <div id="toggle-821420" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-216255" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-216255" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-216255', this)" data-label="해설 보기"></div>
+  <div id="toggle-216255" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">sub</code>는 뺄셈이므로 10 - 3 = 7이 됨.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-376092">
-  <div class="quiz-message" id="quiz-message-376092" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-355746">
+  <div class="quiz-message" id="quiz-message-355746" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">4.</code> <code class="language-plaintext highlighter-rouge">cmp rax, rbx</code>의 의미는?</p>
 
   </div>
-  <form id="quiz-form-376092" onsubmit="return false;">
+  <form id="quiz-form-355746" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-376092" id="quiz-376092-0" value="`rax` 값을 `rbx`로 바꿈" data-correct="false" />
-  <label for="quiz-376092-0"><code class="language-plaintext highlighter-rouge">rax</code> 값을 <code class="language-plaintext highlighter-rouge">rbx</code>로 바꿈</label>
+  <input type="radio" name="quiz-answer-355746" id="quiz-355746-0" value="`rax` 값을 `rbx`로 바꿈" data-correct="false" />
+  <label for="quiz-355746-0"><code class="language-plaintext highlighter-rouge">rax</code> 값을 <code class="language-plaintext highlighter-rouge">rbx</code>로 바꿈</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-376092" id="quiz-376092-1" value="`rbx` 값을 `rax`에서 뺀 뒤 저장" data-correct="false" />
-  <label for="quiz-376092-1"><code class="language-plaintext highlighter-rouge">rbx</code> 값을 <code class="language-plaintext highlighter-rouge">rax</code>에서 뺀 뒤 저장</label>
+  <input type="radio" name="quiz-answer-355746" id="quiz-355746-1" value="`rbx` 값을 `rax`에서 뺀 뒤 저장" data-correct="false" />
+  <label for="quiz-355746-1"><code class="language-plaintext highlighter-rouge">rbx</code> 값을 <code class="language-plaintext highlighter-rouge">rax</code>에서 뺀 뒤 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-376092" id="quiz-376092-2" value="두 값을 비교하고 플래그만 설정" data-correct="true" />
-  <label for="quiz-376092-2">두 값을 비교하고 플래그만 설정</label>
+  <input type="radio" name="quiz-answer-355746" id="quiz-355746-2" value="두 값을 비교하고 플래그만 설정" data-correct="true" />
+  <label for="quiz-355746-2">두 값을 비교하고 플래그만 설정</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-376092" id="quiz-376092-3" value="`rax`와 `rbx`를 교환" data-correct="false" />
-  <label for="quiz-376092-3"><code class="language-plaintext highlighter-rouge">rax</code>와 <code class="language-plaintext highlighter-rouge">rbx</code>를 교환</label>
+  <input type="radio" name="quiz-answer-355746" id="quiz-355746-3" value="`rax`와 `rbx`를 교환" data-correct="false" />
+  <label for="quiz-355746-3"><code class="language-plaintext highlighter-rouge">rax</code>와 <code class="language-plaintext highlighter-rouge">rbx</code>를 교환</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(376092, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(355746, false, null)">제출</button>
   </form>
-  <div id="quiz-result-376092" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-376092" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-376092', this)" data-label="해설 보기"></div>
-  <div id="toggle-376092" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-355746" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-355746" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-355746', this)" data-label="해설 보기"></div>
+  <div id="toggle-355746" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">cmp</code>는 뺄셈을 하되 결과를 저장하지 않고 플래그만 설정해서 조건 분기 판단에 사용.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-451305">
-  <div class="quiz-message" id="quiz-message-451305" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-944730">
+  <div class="quiz-message" id="quiz-message-944730" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">5.</code> 조건 분기와 가장 밀접한 관계가 있는 명령어는?</p>
 
   </div>
-  <form id="quiz-form-451305" onsubmit="return false;">
+  <form id="quiz-form-944730" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-451305" id="quiz-451305-0" value="`call`" data-correct="false" />
-  <label for="quiz-451305-0"><code class="language-plaintext highlighter-rouge">call</code></label>
+  <input type="radio" name="quiz-answer-944730" id="quiz-944730-0" value="`call`" data-correct="false" />
+  <label for="quiz-944730-0"><code class="language-plaintext highlighter-rouge">call</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-451305" id="quiz-451305-1" value="`cmp`" data-correct="true" />
-  <label for="quiz-451305-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
+  <input type="radio" name="quiz-answer-944730" id="quiz-944730-1" value="`cmp`" data-correct="true" />
+  <label for="quiz-944730-1"><code class="language-plaintext highlighter-rouge">cmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-451305" id="quiz-451305-2" value="`ret`" data-correct="false" />
-  <label for="quiz-451305-2"><code class="language-plaintext highlighter-rouge">ret</code></label>
+  <input type="radio" name="quiz-answer-944730" id="quiz-944730-2" value="`ret`" data-correct="false" />
+  <label for="quiz-944730-2"><code class="language-plaintext highlighter-rouge">ret</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-451305" id="quiz-451305-3" value="`push`" data-correct="false" />
-  <label for="quiz-451305-3"><code class="language-plaintext highlighter-rouge">push</code></label>
+  <input type="radio" name="quiz-answer-944730" id="quiz-944730-3" value="`push`" data-correct="false" />
+  <label for="quiz-944730-3"><code class="language-plaintext highlighter-rouge">push</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(451305, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(944730, false, null)">제출</button>
   </form>
-  <div id="quiz-result-451305" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-451305" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-451305', this)" data-label="해설 보기"></div>
-  <div id="toggle-451305" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-944730" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-944730" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-944730', this)" data-label="해설 보기"></div>
+  <div id="toggle-944730" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> 조건 분기(<code class="language-plaintext highlighter-rouge">jz</code>, <code class="language-plaintext highlighter-rouge">jne</code> 등)는 <code class="language-plaintext highlighter-rouge">cmp</code>로 플래그 설정 후 분기.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-276050">
-  <div class="quiz-message" id="quiz-message-276050" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-241655">
+  <div class="quiz-message" id="quiz-message-241655" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">6.</code> 다음 중 무조건 점프하는 명령어는?</p>
 
   </div>
-  <form id="quiz-form-276050" onsubmit="return false;">
+  <form id="quiz-form-241655" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-276050" id="quiz-276050-0" value="`je`" data-correct="false" />
-  <label for="quiz-276050-0"><code class="language-plaintext highlighter-rouge">je</code></label>
+  <input type="radio" name="quiz-answer-241655" id="quiz-241655-0" value="`je`" data-correct="false" />
+  <label for="quiz-241655-0"><code class="language-plaintext highlighter-rouge">je</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-276050" id="quiz-276050-1" value="`jne`" data-correct="false" />
-  <label for="quiz-276050-1"><code class="language-plaintext highlighter-rouge">jne</code></label>
+  <input type="radio" name="quiz-answer-241655" id="quiz-241655-1" value="`jne`" data-correct="false" />
+  <label for="quiz-241655-1"><code class="language-plaintext highlighter-rouge">jne</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-276050" id="quiz-276050-2" value="`jmp`" data-correct="true" />
-  <label for="quiz-276050-2"><code class="language-plaintext highlighter-rouge">jmp</code></label>
+  <input type="radio" name="quiz-answer-241655" id="quiz-241655-2" value="`jmp`" data-correct="true" />
+  <label for="quiz-241655-2"><code class="language-plaintext highlighter-rouge">jmp</code></label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-276050" id="quiz-276050-3" value="`jg`" data-correct="false" />
-  <label for="quiz-276050-3"><code class="language-plaintext highlighter-rouge">jg</code></label>
+  <input type="radio" name="quiz-answer-241655" id="quiz-241655-3" value="`jg`" data-correct="false" />
+  <label for="quiz-241655-3"><code class="language-plaintext highlighter-rouge">jg</code></label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(276050, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(241655, false, null)">제출</button>
   </form>
-  <div id="quiz-result-276050" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-276050" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-276050', this)" data-label="해설 보기"></div>
-  <div id="toggle-276050" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-241655" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-241655" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-241655', this)" data-label="해설 보기"></div>
+  <div id="toggle-241655" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">jmp</code>는 조건 없이 무조건 지정한 주소로 점프함.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-141240">
-  <div class="quiz-message" id="quiz-message-141240" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-413995">
+  <div class="quiz-message" id="quiz-message-413995" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">7.</code> <code class="language-plaintext highlighter-rouge">push rax</code> 수행 시 어떤 일이 일어나는가?</p>
 
   </div>
-  <form id="quiz-form-141240" onsubmit="return false;">
+  <form id="quiz-form-413995" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-141240" id="quiz-141240-0" value="`rax` 값을 스택에 저장하고 `RSP`는 증가" data-correct="false" />
-  <label for="quiz-141240-0"><code class="language-plaintext highlighter-rouge">rax</code> 값을 스택에 저장하고 <code class="language-plaintext highlighter-rouge">RSP</code>는 증가</label>
+  <input type="radio" name="quiz-answer-413995" id="quiz-413995-0" value="`rax` 값을 스택에 저장하고 `RSP`는 증가" data-correct="false" />
+  <label for="quiz-413995-0"><code class="language-plaintext highlighter-rouge">rax</code> 값을 스택에 저장하고 <code class="language-plaintext highlighter-rouge">RSP</code>는 증가</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-141240" id="quiz-141240-1" value="`rax` 값을 스택에 저장하고 `RSP`는 감소" data-correct="true" />
-  <label for="quiz-141240-1"><code class="language-plaintext highlighter-rouge">rax</code> 값을 스택에 저장하고 <code class="language-plaintext highlighter-rouge">RSP</code>는 감소</label>
+  <input type="radio" name="quiz-answer-413995" id="quiz-413995-1" value="`rax` 값을 스택에 저장하고 `RSP`는 감소" data-correct="true" />
+  <label for="quiz-413995-1"><code class="language-plaintext highlighter-rouge">rax</code> 값을 스택에 저장하고 <code class="language-plaintext highlighter-rouge">RSP</code>는 감소</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-141240" id="quiz-141240-2" value="스택에서 값을 꺼내 `rax`에 저장" data-correct="false" />
-  <label for="quiz-141240-2">스택에서 값을 꺼내 <code class="language-plaintext highlighter-rouge">rax</code>에 저장</label>
+  <input type="radio" name="quiz-answer-413995" id="quiz-413995-2" value="스택에서 값을 꺼내 `rax`에 저장" data-correct="false" />
+  <label for="quiz-413995-2">스택에서 값을 꺼내 <code class="language-plaintext highlighter-rouge">rax</code>에 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-141240" id="quiz-141240-3" value="`rax`가 스택 포인터로 바뀜" data-correct="false" />
-  <label for="quiz-141240-3"><code class="language-plaintext highlighter-rouge">rax</code>가 스택 포인터로 바뀜</label>
+  <input type="radio" name="quiz-answer-413995" id="quiz-413995-3" value="`rax`가 스택 포인터로 바뀜" data-correct="false" />
+  <label for="quiz-413995-3"><code class="language-plaintext highlighter-rouge">rax</code>가 스택 포인터로 바뀜</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(141240, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(413995, false, null)">제출</button>
   </form>
-  <div id="quiz-result-141240" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-141240" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-141240', this)" data-label="해설 보기"></div>
-  <div id="toggle-141240" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-413995" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-413995" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-413995', this)" data-label="해설 보기"></div>
+  <div id="toggle-413995" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> 스택은 위에서 아래로 쌓이기 때문에 <code class="language-plaintext highlighter-rouge">push</code> 시 <code class="language-plaintext highlighter-rouge">RSP</code>가 감소.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-326910">
-  <div class="quiz-message" id="quiz-message-326910" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-321726">
+  <div class="quiz-message" id="quiz-message-321726" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">8.</code> <code class="language-plaintext highlighter-rouge">pop rbx</code> 수행 후 상태는?</p>
 
   </div>
-  <form id="quiz-form-326910" onsubmit="return false;">
+  <form id="quiz-form-321726" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-326910" id="quiz-326910-0" value="`rbx`에 스택의 맨 위 값이 들어가고 `RSP`는 증가" data-correct="true" />
-  <label for="quiz-326910-0"><code class="language-plaintext highlighter-rouge">rbx</code>에 스택의 맨 위 값이 들어가고 <code class="language-plaintext highlighter-rouge">RSP</code>는 증가</label>
+  <input type="radio" name="quiz-answer-321726" id="quiz-321726-0" value="`rbx`에 스택의 맨 위 값이 들어가고 `RSP`는 증가" data-correct="true" />
+  <label for="quiz-321726-0"><code class="language-plaintext highlighter-rouge">rbx</code>에 스택의 맨 위 값이 들어가고 <code class="language-plaintext highlighter-rouge">RSP</code>는 증가</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-326910" id="quiz-326910-1" value="`rbx`에 스택의 맨 위 값이 들어가고 `RSP`는 감소" data-correct="false" />
-  <label for="quiz-326910-1"><code class="language-plaintext highlighter-rouge">rbx</code>에 스택의 맨 위 값이 들어가고 <code class="language-plaintext highlighter-rouge">RSP</code>는 감소</label>
+  <input type="radio" name="quiz-answer-321726" id="quiz-321726-1" value="`rbx`에 스택의 맨 위 값이 들어가고 `RSP`는 감소" data-correct="false" />
+  <label for="quiz-321726-1"><code class="language-plaintext highlighter-rouge">rbx</code>에 스택의 맨 위 값이 들어가고 <code class="language-plaintext highlighter-rouge">RSP</code>는 감소</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-326910" id="quiz-326910-2" value="`rbx`의 값이 스택에 들어감" data-correct="false" />
-  <label for="quiz-326910-2"><code class="language-plaintext highlighter-rouge">rbx</code>의 값이 스택에 들어감</label>
+  <input type="radio" name="quiz-answer-321726" id="quiz-321726-2" value="`rbx`의 값이 스택에 들어감" data-correct="false" />
+  <label for="quiz-321726-2"><code class="language-plaintext highlighter-rouge">rbx</code>의 값이 스택에 들어감</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-326910" id="quiz-326910-3" value="`rbx`와 `rsp`를 교환함" data-correct="false" />
-  <label for="quiz-326910-3"><code class="language-plaintext highlighter-rouge">rbx</code>와 <code class="language-plaintext highlighter-rouge">rsp</code>를 교환함</label>
+  <input type="radio" name="quiz-answer-321726" id="quiz-321726-3" value="`rbx`와 `rsp`를 교환함" data-correct="false" />
+  <label for="quiz-321726-3"><code class="language-plaintext highlighter-rouge">rbx</code>와 <code class="language-plaintext highlighter-rouge">rsp</code>를 교환함</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(326910, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(321726, false, null)">제출</button>
   </form>
-  <div id="quiz-result-326910" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-326910" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-326910', this)" data-label="해설 보기"></div>
-  <div id="toggle-326910" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-321726" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-321726" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-321726', this)" data-label="해설 보기"></div>
+  <div id="toggle-321726" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">pop</code>은 <code class="language-plaintext highlighter-rouge">RSP</code>가 가리키는 값을 꺼내고, <code class="language-plaintext highlighter-rouge">RSP</code>는 증가.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-762571">
-  <div class="quiz-message" id="quiz-message-762571" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-185331">
+  <div class="quiz-message" id="quiz-message-185331" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">9.</code> <code class="language-plaintext highlighter-rouge">call func</code> 명령어는 어떤 동작을 수행하는가?</p>
 
   </div>
-  <form id="quiz-form-762571" onsubmit="return false;">
+  <form id="quiz-form-185331" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-762571" id="quiz-762571-0" value="현재 위치를 저장하고 `func`로 점프" data-correct="true" />
-  <label for="quiz-762571-0">현재 위치를 저장하고 <code class="language-plaintext highlighter-rouge">func</code>로 점프</label>
+  <input type="radio" name="quiz-answer-185331" id="quiz-185331-0" value="현재 위치를 저장하고 `func`로 점프" data-correct="true" />
+  <label for="quiz-185331-0">현재 위치를 저장하고 <code class="language-plaintext highlighter-rouge">func</code>로 점프</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-762571" id="quiz-762571-1" value="`func`의 결과를 `rax`에 저장" data-correct="false" />
-  <label for="quiz-762571-1"><code class="language-plaintext highlighter-rouge">func</code>의 결과를 <code class="language-plaintext highlighter-rouge">rax</code>에 저장</label>
+  <input type="radio" name="quiz-answer-185331" id="quiz-185331-1" value="`func`의 결과를 `rax`에 저장" data-correct="false" />
+  <label for="quiz-185331-1"><code class="language-plaintext highlighter-rouge">func</code>의 결과를 <code class="language-plaintext highlighter-rouge">rax</code>에 저장</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-762571" id="quiz-762571-2" value="함수를 종료시킴" data-correct="false" />
-  <label for="quiz-762571-2">함수를 종료시킴</label>
+  <input type="radio" name="quiz-answer-185331" id="quiz-185331-2" value="함수를 종료시킴" data-correct="false" />
+  <label for="quiz-185331-2">함수를 종료시킴</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-762571" id="quiz-762571-3" value="`func`를 `push`함" data-correct="false" />
-  <label for="quiz-762571-3"><code class="language-plaintext highlighter-rouge">func</code>를 <code class="language-plaintext highlighter-rouge">push</code>함</label>
+  <input type="radio" name="quiz-answer-185331" id="quiz-185331-3" value="`func`를 `push`함" data-correct="false" />
+  <label for="quiz-185331-3"><code class="language-plaintext highlighter-rouge">func</code>를 <code class="language-plaintext highlighter-rouge">push</code>함</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(762571, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(185331, false, null)">제출</button>
   </form>
-  <div id="quiz-result-762571" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-762571" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-762571', this)" data-label="해설 보기"></div>
-  <div id="toggle-762571" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-185331" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-185331" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-185331', this)" data-label="해설 보기"></div>
+  <div id="toggle-185331" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">call</code>은 현재 <code class="language-plaintext highlighter-rouge">RIP</code>를 스택에 저장하고, 해당 함수로 점프.</p>
   </div>
 </div>
 </div>
 </div>
 
-<div class="quiz-box" id="quiz-box-780158">
-  <div class="quiz-message" id="quiz-message-780158" style="display: none;"></div>
+<div class="quiz-box" id="quiz-box-352571">
+  <div class="quiz-message" id="quiz-message-352571" style="display: none;"></div>
   <div class="quiz-question">
     <p><code class="language-plaintext highlighter-rouge">10.</code> <code class="language-plaintext highlighter-rouge">ret</code> 명령어의 기능은?</p>
 
   </div>
-  <form id="quiz-form-780158" onsubmit="return false;">
+  <form id="quiz-form-352571" onsubmit="return false;">
     <div class="quiz-choices">
       <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-780158" id="quiz-780158-0" value="rax를 초기화" data-correct="false" />
-  <label for="quiz-780158-0">rax를 초기화</label>
+  <input type="radio" name="quiz-answer-352571" id="quiz-352571-0" value="rax를 초기화" data-correct="false" />
+  <label for="quiz-352571-0">rax를 초기화</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-780158" id="quiz-780158-1" value="함수 인자를 정리" data-correct="false" />
-  <label for="quiz-780158-1">함수 인자를 정리</label>
+  <input type="radio" name="quiz-answer-352571" id="quiz-352571-1" value="함수 인자를 정리" data-correct="false" />
+  <label for="quiz-352571-1">함수 인자를 정리</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-780158" id="quiz-780158-2" value="스택에서 `return` 주소를 꺼내 복귀" data-correct="true" />
-  <label for="quiz-780158-2">스택에서 <code class="language-plaintext highlighter-rouge">return</code> 주소를 꺼내 복귀</label>
+  <input type="radio" name="quiz-answer-352571" id="quiz-352571-2" value="스택에서 `return` 주소를 꺼내 복귀" data-correct="true" />
+  <label for="quiz-352571-2">스택에서 <code class="language-plaintext highlighter-rouge">return</code> 주소를 꺼내 복귀</label>
 </div>
 
 <div class="quiz-choice">
-  <input type="radio" name="quiz-answer-780158" id="quiz-780158-3" value="프로그램 종료" data-correct="false" />
-  <label for="quiz-780158-3">프로그램 종료</label>
+  <input type="radio" name="quiz-answer-352571" id="quiz-352571-3" value="프로그램 종료" data-correct="false" />
+  <label for="quiz-352571-3">프로그램 종료</label>
 </div>
 
       
     </div>
-    <button type="button" onclick="window.checkQuizAnswer(780158, false, null)">제출</button>
+    <button type="button" onclick="window.checkQuizAnswer(352571, false, null)">제출</button>
   </form>
-  <div id="quiz-result-780158" class="quiz-result"></div>
-  <div id="quiz-explanation-toggle-780158" style="display:none; margin-top: 1em;"><div class="toggle">
-  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-780158', this)" data-label="해설 보기"></div>
-  <div id="toggle-780158" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="quiz-result-352571" class="quiz-result"></div>
+  <div id="quiz-explanation-toggle-352571" style="display:none; margin-top: 1em;"><div class="toggle">
+  <div class="toggle-label quiz-toggle" onclick="toggleTextContent('toggle-352571', this)" data-label="해설 보기"></div>
+  <div id="toggle-352571" class="toggle-body" style="display: none; max-height: 0;">
     <p><strong>해설:</strong> <code class="language-plaintext highlighter-rouge">ret</code>은 <code class="language-plaintext highlighter-rouge">call</code> 시 <code class="language-plaintext highlighter-rouge">push</code>된 <code class="language-plaintext highlighter-rouge">RIP</code> 값을 <code class="language-plaintext highlighter-rouge">pop</code>해서 해당 위치로 복귀.</p>
   </div>
 </div>
@@ -959,7 +959,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/opengl/2026/03/19/opengl3-sandforge.html" rel="permalink">OpenGL puzzle pang
+        <a href="/opengl/2026/03/19/opengl4-sandforge.html" rel="permalink">OpenGL puzzle pang
 </a>
       
     </h2>
