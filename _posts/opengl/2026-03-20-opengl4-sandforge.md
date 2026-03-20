@@ -1,7 +1,7 @@
 ---
-title: "OpenGL puzzle pang"
+title: "OpenGL SandForge"
 date: 2026-03-19
-tags: [OpenGL, Game, 애니팡]
+tags: [OpenGL, Game, RTS]
 ---
 
 # OpenGL RTS 프로토타입에 멀티플레이 로비와 권한형 동기화 붙이기
