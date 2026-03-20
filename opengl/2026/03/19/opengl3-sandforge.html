@@ -1,0 +1,1234 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="ko-KR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>OpenGL puzzle pang - ruyshy blog</title>
+<meta name="description" content="OpenGL RTS 프로토타입에 멀티플레이 로비와 권한형 동기화 붙이기">
+
+
+  <meta name="author" content="ruyshy">
+  
+  <meta property="article:author" content="ruyshy">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="ruyshy blog">
+<meta property="og:title" content="OpenGL puzzle pang">
+<meta property="og:url" content="https://ruyshy.github.io/opengl/2026/03/19/opengl3-sandforge.html">
+
+
+  <meta property="og:description" content="OpenGL RTS 프로토타입에 멀티플레이 로비와 권한형 동기화 붙이기">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-03-19T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://ruyshy.github.io/opengl/2026/03/19/opengl3-sandforge.html">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="0kzzhmbnk0AQfutCd0jcHHfNYMmXzafnXZVCY-fMSOU" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="ruyshy blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          ruyshy blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/"
+                
+                
+              >Home</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/tags/"
+                
+                
+              >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories/"
+                
+                
+              >Category</a>
+            </li></ul>
+        <!-- 
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+         -->
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+<div class="sidebar sticky">
+  
+    
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://ruyshy.github.io/">
+        <img src="/assets/images/profile/github_profile_image.jpg" alt="ruyshy" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://ruyshy.github.io/" itemprop="url">ruyshy</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ruyshy" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:ruyshyttr@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="ruyshyttr@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  <li><hr class="nav-divider" /></li>
+
+  <nav class="nav__list">
+    <ul class="nav__items">
+      <li class="nav__title">Category</li>
+      <a
+      href="/categories/"
+      class="nav__item"
+    >
+    ALL <span class="count">(45)</span>
+  </a>
+</li>
+
+  
+  
+<li>
+   
+  <a
+    href="/categories/blog/"
+    class="nav__item"
+  >
+    Blog
+    <span class="count">
+      (23)
+    </span>
+  </a>
+</li>
+  
+<li>
+   
+  <a
+    href="/categories/opengl/"
+    class="nav__item"
+  >
+    OpenGL
+    <span class="count">
+      (4)
+    </span>
+  </a>
+</li>
+  
+<li class="nav__item-toggle">
+  <input
+    type="checkbox"
+    id="toggle-security"
+    class="nav__toggle"
+    hidden
+    checked
+  />
+
+  <label for="toggle-security" class="nav__subtitle">
+    <span class="nav__arrow"></span> Security
+  </label>
+
+  
+  <ul class="nav__subitems">
+     
+<li>
+   
+  <a
+    href="/categories/assembly/"
+    class="nav__item"
+  >
+    Assembly
+    <span class="count">
+      (14)
+    </span>
+  </a>
+</li>
+  
+<li>
+   
+  <a
+    href="/categories/reversing_engineering/"
+    class="nav__item"
+  >
+    Reversing Engineering
+    <span class="count">
+      (9)
+    </span>
+  </a>
+</li>
+ 
+
+  </ul>
+  
+</li>
+
+ 
+
+ 
+ 
+ <li><hr class="nav-divider" /></li>
+
+    <div class="sidebar__search">
+      <form id="sidebar-search" onsubmit="return SidebarSearchHandler();">
+        <div class="search-block">
+          <select id="search-type">
+            <option value="title">Title</option>
+            <option value="tag">Tag</option>
+            <option value="both">Title + Tag</option>
+          </select>
+        </div>
+        <div class="search-block">
+          <input type="text" id="search-query" placeholder="Search input" />
+        </div>
+        <div class="search-block">
+          <button type="submit"><i class="fa fa-search"></i> Search</button>
+        </div>
+      </form>
+    </div>
+  </nav>
+</div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="OpenGL puzzle pang">
+    <meta itemprop="description" content="OpenGL RTS 프로토타입에 멀티플레이 로비와 권한형 동기화 붙이기">
+    <meta itemprop="datePublished" content="2026-03-19T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://ruyshy.github.io/opengl/2026/03/19/opengl3-sandforge.html" itemprop="url">OpenGL puzzle pang
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#opengl-rts-프로토타입에-멀티플레이-로비와-권한형-동기화-붙이기">OpenGL RTS 프로토타입에 멀티플레이 로비와 권한형 동기화 붙이기</a><ul><li><a href="#tldr">TL;DR</a></li><li><a href="#목차">목차</a></li><li><a href="#프로젝트-배경">프로젝트 배경</a></li><li><a href="#문제-정의">문제 정의</a></li><li><a href="#전체-구조">전체 구조</a></li><li><a href="#로비를-별도-씬으로-분리한-이유">로비를 별도 씬으로 분리한 이유</a></li><li><a href="#패킷-설계와-세션-관리">패킷 설계와 세션 관리</a><ul><li><a href="#1-로비-단계">1. 로비 단계</a></li><li><a href="#2-실제-게임-단계">2. 실제 게임 단계</a></li></ul></li><li><a href="#왜-authoritative-host-구조를-택했는가">왜 authoritative host 구조를 택했는가</a><ul><li><a href="#호스트의-책임">호스트의 책임</a></li><li><a href="#클라이언트의-책임">클라이언트의 책임</a></li></ul></li><li><a href="#게임플레이-동기화-방식">게임플레이 동기화 방식</a></li><li><a href="#로비-설정을-실제-게임-시작에-반영하기">로비 설정을 실제 게임 시작에 반영하기</a></li><li><a href="#플레이어-2-관점에서-드러난-문제들">플레이어 2 관점에서 드러난 문제들</a></li><li><a href="#ui에서-가장-많이-배운-점">UI에서 가장 많이 배운 점</a></li><li><a href="#핵심-코드-예시">핵심 코드 예시</a><ul><li><a href="#1-호스트만-명시적으로-경기-시작">1. 호스트만 명시적으로 경기 시작</a></li><li><a href="#2-로컬-플레이어-hq-기준-카메라-시작">2. 로컬 플레이어 HQ 기준 카메라 시작</a></li><li><a href="#3-클라이언트는-명령만-보내고-월드는-호스트가-반영">3. 클라이언트는 명령만 보내고 월드는 호스트가 반영</a></li></ul></li><li><a href="#현재-구조의-장점과-한계">현재 구조의 장점과 한계</a><ul><li><a href="#장점">장점</a></li><li><a href="#한계">한계</a></li></ul></li><li><a href="#마무리">마무리</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <h1 id="opengl-rts-프로토타입에-멀티플레이-로비와-권한형-동기화-붙이기">OpenGL RTS 프로토타입에 멀티플레이 로비와 권한형 동기화 붙이기</h1>
+
+<blockquote>
+  <p>프로젝트는 아래에 링크했습니다.</p>
+
+  <p><a href="https://github.com/ruyshy/OpenGL-Game/tree/Sandforge">sandforge project</a></p>
+
+</blockquote>
+
+<h2 id="tldr">TL;DR</h2>
+
+<p>이 글은 <code class="language-plaintext highlighter-rouge">Project Sandforge</code> 프로토타입에 멀티플레이를 붙이면서 정리한 설계와 구현 기록이다.<br />
+핵심은 세 가지였다.</p>
+
+<ul>
+  <li>로비를 별도 씬으로 분리해서 접속, 준비, 시작 설정을 관리하기</li>
+  <li>호스트 authoritative 구조로 월드 상태를 단일 기준으로 유지하기</li>
+  <li>클라이언트는 입력을 명령으로 보내고, 결과는 스냅샷으로 복제받기</li>
+</ul>
+
+<p>이 과정을 통해 “두 창에서 비슷하게 보이는 상태”가 아니라, 실제로 플레이 가능한 멀티플레이 프로토타입에 가까운 구조를 만들 수 있었다.</p>
+
+<h2 id="목차">목차</h2>
+
+<ol>
+  <li><a href="#프로젝트-배경">프로젝트 배경</a></li>
+  <li><a href="#문제-정의">문제 정의</a></li>
+  <li><a href="#전체-구조">전체 구조</a></li>
+  <li><a href="#로비를-별도-씬으로-분리한-이유">로비를 별도 씬으로 분리한 이유</a></li>
+  <li><a href="#패킷-설계와-세션-관리">패킷 설계와 세션 관리</a></li>
+  <li><a href="#왜-authoritative-host-구조를-택했는가">왜 authoritative host 구조를 택했는가</a></li>
+  <li><a href="#게임플레이-동기화-방식">게임플레이 동기화 방식</a></li>
+  <li><a href="#로비-설정을-실제-게임-시작에-반영하기">로비 설정을 실제 게임 시작에 반영하기</a></li>
+  <li><a href="#플레이어-2-관점에서-드러난-문제들">플레이어 2 관점에서 드러난 문제들</a></li>
+  <li><a href="#ui에서-가장-많이-배운-점">UI에서 가장 많이 배운 점</a></li>
+  <li><a href="#핵심-코드-예시">핵심 코드 예시</a></li>
+  <li><a href="#현재-구조의-장점과-한계">현재 구조의 장점과 한계</a></li>
+  <li><a href="#마무리">마무리</a></li>
+</ol>
+
+<h2 id="프로젝트-배경">프로젝트 배경</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Project Sandforge</code>는 C++20, OpenGL, GLFW, FreeType 기반으로 만든 2D RTS 프로토타입이다.<br />
+처음에는 싱글플레이 MVP, HUD 프로토타이핑, 생산/전투/자원 채집 루프를 빠르게 확인하는 데 집중했다.</p>
+
+<p>하지만 프로젝트가 커질수록 자연스럽게 다음 요구가 생겼다.</p>
+
+<ul>
+  <li>메인 메뉴에서 멀티플레이를 선택할 수 있어야 한다.</li>
+  <li>호스트와 클라이언트가 로컬 환경에서 접속할 수 있어야 한다.</li>
+  <li>로비에서 닉네임, 주소, 포트, 시작 설정을 조절할 수 있어야 한다.</li>
+  <li>실제 게임에서는 플레이어 1과 플레이어 2가 각자 자기 진영 기준으로 플레이해야 한다.</li>
+</ul>
+
+<p>여기서부터는 “기능 추가”가 아니라 “게임 상태를 누가 결정하는가”를 다시 설계하는 작업이 시작됐다.</p>
+
+<h2 id="문제-정의">문제 정의</h2>
+
+<p>싱글플레이 구조에서는 <code class="language-plaintext highlighter-rouge">GameplayState</code>가 입력을 받아 곧바로 <code class="language-plaintext highlighter-rouge">SandforgeWorld</code>를 바꾸는 방식이 큰 문제가 되지 않았다.<br />
+하지만 멀티플레이를 붙이는 순간 이 구조는 바로 한계를 드러냈다.</p>
+
+<p>예를 들어 클라이언트가 아래 동작을 로컬에서 직접 처리하면 상태가 쉽게 어긋난다.</p>
+
+<ul>
+  <li>유닛 생산</li>
+  <li>워커 자원 배정</li>
+  <li>건물 건설</li>
+  <li>유닛 이동</li>
+  <li>생산 취소</li>
+</ul>
+
+<p>결국 필요한 건 단순한 네트워크 연결이 아니라, 다음 질문에 대한 답이었다.</p>
+
+<ul>
+  <li>누가 진짜 월드 상태를 결정하는가?</li>
+  <li>누가 보여주기만 하는가?</li>
+  <li>어떤 데이터는 명령으로 보내고, 어떤 데이터는 스냅샷으로 복제할 것인가?</li>
+</ul>
+
+<h2 id="전체-구조">전체 구조</h2>
+
+<p>현재 멀티플레이 관련 핵심 파일은 아래와 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgePacketTypes.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgePacketBuffer.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgePacketBuffer.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgeMultiplayerSession.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgeMultiplayerSession.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Scenes/MultiplayerLobbyScene.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Scenes/MultiplayerLobbyScene.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Scenes/GameplayScene.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Scenes/GameplayState.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/World/SandforgeWorld.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/World/SandforgeWorld.cpp</code></li>
+</ul>
+
+<p>구조를 짧게 요약하면 이렇다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TitleScene
+  -&gt; MultiplayerLobbyScene
+      -&gt; SandforgeMultiplayerSession
+          -&gt; Host authoritative world
+          -&gt; Client command sender
+          -&gt; Snapshot replication
+</code></pre></div></div>
+
+<p>조금 더 자세히 보면:</p>
+
+<ul>
+  <li>로비에서는 세션 생성, 접속, 준비, 시작 설정을 처리한다.</li>
+  <li>실제 게임에서는 호스트가 월드를 업데이트한다.</li>
+  <li>클라이언트는 입력을 명령 패킷으로 전송한다.</li>
+  <li>호스트는 명령을 적용한 뒤 스냅샷을 보낸다.</li>
+  <li>클라이언트는 최신 스냅샷을 받아 렌더링한다.</li>
+</ul>
+
+<h2 id="로비를-별도-씬으로-분리한-이유">로비를 별도 씬으로 분리한 이유</h2>
+
+<p>처음에는 멀티플레이 버튼을 눌렀을 때 “미구현” 문구만 띄우는 상태였다.<br />
+하지만 로비 단계에서 관리해야 할 정보가 생각보다 많았다.</p>
+
+<ul>
+  <li>호스트 / 클라이언트 역할</li>
+  <li>닉네임</li>
+  <li>접속 주소</li>
+  <li>포트</li>
+  <li>준비 상태</li>
+  <li>시작 프리셋</li>
+  <li>최종 시작 여부</li>
+</ul>
+
+<p>이걸 타이틀 화면 오버레이로 처리하면 UI가 금방 복잡해진다.<br />
+그래서 <code class="language-plaintext highlighter-rouge">MultiplayerLobbyScene</code>을 별도 씬으로 분리했다.</p>
+
+<p>현재 로비에서 다루는 항목은 다음과 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Host Local Session</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Name</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Address</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Port</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Resources</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Workers</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Start Match</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Join Session</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Toggle Ready</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Back To Title</code></li>
+</ul>
+
+<p>특히 <code class="language-plaintext highlighter-rouge">Resources</code>, <code class="language-plaintext highlighter-rouge">Workers</code>, <code class="language-plaintext highlighter-rouge">Start Match</code>는 호스트 전용 기능으로 두고, 클라이언트에서는 시각적으로 비활성처럼 보이게 만들었다.<br />
+이런 사소한 차이가 실제 사용성에 큰 영향을 줬다.</p>
+
+<h2 id="패킷-설계와-세션-관리">패킷 설계와 세션 관리</h2>
+
+<p>패킷 종류를 먼저 분리해둔 것이 전체 구조를 단순하게 만드는 데 큰 도움이 됐다.</p>
+
+<p>현재 대표 패킷은 다음과 같다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">enum</span> <span class="k">class</span> <span class="nc">SandforgePacketType</span> <span class="o">:</span> <span class="kt">uint16_t</span>
+<span class="p">{</span>
+    <span class="n">C2S_JoinRequest</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">S2C_JoinAccept</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">S2C_MatchStart</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">C2S_Ready</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">C2S_Ping</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">S2C_Pong</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">S2C_WorldSnapshot</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">C2S_ProduceCommand</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">C2S_AssignWorkerCommand</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">C2S_MoveUnitCommand</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">C2S_BuildCommand</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">C2S_CancelProduction</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="n">S2C_LobbySettings</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>여기서 중요한 구분은 아래 두 가지다.</p>
+
+<h3 id="1-로비-단계">1. 로비 단계</h3>
+
+<ul>
+  <li>이름</li>
+  <li>준비 상태</li>
+  <li>시작 프리셋</li>
+  <li>게임 시작 신호</li>
+</ul>
+
+<p>즉, 로비에서는 상태 동기화가 중심이다.</p>
+
+<h3 id="2-실제-게임-단계">2. 실제 게임 단계</h3>
+
+<ul>
+  <li>생산 명령</li>
+  <li>워커 배정</li>
+  <li>이동 명령</li>
+  <li>건설 명령</li>
+  <li>생산 취소</li>
+  <li>월드 스냅샷</li>
+</ul>
+
+<p>즉, 인게임에서는 “명령 전송 + 결과 스냅샷 복제”가 중심이다.</p>
+
+<h2 id="왜-authoritative-host-구조를-택했는가">왜 authoritative host 구조를 택했는가</h2>
+
+<p>멀티플레이를 붙일 때 가장 먼저 정해야 했던 것은 권한 구조였다.</p>
+
+<p>이번 프로젝트에서는 host authoritative 구조를 선택했다.</p>
+
+<h3 id="호스트의-책임">호스트의 책임</h3>
+
+<ul>
+  <li>월드 업데이트</li>
+  <li>명령 수신</li>
+  <li>명령 유효성 검사</li>
+  <li>실제 상태 변경</li>
+  <li>스냅샷 송신</li>
+</ul>
+
+<h3 id="클라이언트의-책임">클라이언트의 책임</h3>
+
+<ul>
+  <li>입력 감지</li>
+  <li>명령 송신</li>
+  <li>최신 스냅샷 수신</li>
+  <li>복제 월드 갱신</li>
+  <li>렌더링</li>
+</ul>
+
+<p>이 구조를 택한 이유는 단순하다.</p>
+
+<ul>
+  <li>상태 기준점이 하나라서 디버깅이 쉽다.</li>
+  <li>치트나 로컬 오차에 덜 취약하다.</li>
+  <li>기존 싱글플레이 월드 로직을 호스트 쪽으로 거의 그대로 재사용할 수 있다.</li>
+</ul>
+
+<h2 id="게임플레이-동기화-방식">게임플레이 동기화 방식</h2>
+
+<p>현재 동기화 방식은 “클라이언트가 명령을 보내고, 호스트가 적용한 뒤 스냅샷을 보내는 구조”다.</p>
+
+<p>예를 들어 유닛 생산은 대략 이런 흐름이다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client input
+  -&gt; C2S_ProduceCommand
+      -&gt; Host receives command
+          -&gt; Host updates SandforgeWorld
+              -&gt; Host sends S2C_WorldSnapshot
+                  -&gt; Client applies snapshot
+</code></pre></div></div>
+
+<p>이 방식은 예측이나 보간이 거의 없기 때문에 아주 고급스럽진 않다.<br />
+하지만 프로토타입 단계에서는 “상태가 틀어지지 않는 것”이 더 중요했고, 이 목표에는 잘 맞았다.</p>
+
+<h2 id="로비-설정을-실제-게임-시작에-반영하기">로비 설정을 실제 게임 시작에 반영하기</h2>
+
+<p>로비 설정이 화면에만 있고 실제 게임에 반영되지 않으면, 결국 가짜 옵션이 된다.<br />
+그래서 <code class="language-plaintext highlighter-rouge">SandforgeWorld</code>에 아래 구조를 추가했다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">SandforgeMatchSetup</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">symmetricPlayers</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">aiEnabled</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">SandforgeStartResourcePreset</span> <span class="n">resourcePreset</span> <span class="o">=</span> <span class="n">SandforgeStartResourcePreset</span><span class="o">::</span><span class="n">Standard</span><span class="p">;</span>
+    <span class="n">SandforgeStartWorkerPreset</span> <span class="n">workerPreset</span> <span class="o">=</span> <span class="n">SandforgeStartWorkerPreset</span><span class="o">::</span><span class="n">Standard</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>멀티플레이 시작 시에는 이 값을 <code class="language-plaintext highlighter-rouge">GameplayScene</code> 진입 전에 주입하고, <code class="language-plaintext highlighter-rouge">reset()</code>에서 실제 초기 자원과 시작 워커 수를 계산하도록 연결했다.</p>
+
+<p>현재 의미는 다음과 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Resources: Standard</code>
+    <ul>
+      <li>기본 시작 자원</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Resources: Rich</code>
+    <ul>
+      <li>양쪽 시작 자원 증가</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Workers: Standard</code>
+    <ul>
+      <li>기본 시작 일꾼 수</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Workers: Expanded</code>
+    <ul>
+      <li>양쪽 시작 일꾼 1기 추가</li>
+    </ul>
+  </li>
+</ul>
+
+<p>싱글플레이에서 쓰던 비대칭 보정은 멀티플레이에서는 끄고, 대칭 시작 조건으로 바꿨다.</p>
+
+<h2 id="플레이어-2-관점에서-드러난-문제들">플레이어 2 관점에서 드러난 문제들</h2>
+
+<p>멀티플레이에서 가장 많이 틀어졌던 부분은 사실 네트워크보다 “플레이어 2 기준 로직”이었다.</p>
+
+<p>대표적으로 이런 문제가 있었다.</p>
+
+<ul>
+  <li>플레이어 2로 들어가도 카메라가 항상 플레이어 1 진영부터 보임</li>
+  <li>선택/소유권 판정이 플레이어 1 기준으로 남아 있음</li>
+  <li>HUD와 명령 처리 일부가 플레이어 1 가정으로 작성되어 있음</li>
+</ul>
+
+<p>이를 해결하기 위해:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">localPlayerId</code> 개념을 <code class="language-plaintext highlighter-rouge">GameplayState</code>에 도입</li>
+  <li>선택/렌더링/UI 판정에서 하드코딩된 <code class="language-plaintext highlighter-rouge">1</code> 제거</li>
+  <li>카메라 시작 위치를 로컬 플레이어 HQ 기준으로 설정</li>
+</ul>
+
+<p>이 마지막 수정은 의외로 체감이 컸다.<br />
+플레이어 2도 이제 게임 시작 시 자기 기지부터 보게 된다.</p>
+
+<h2 id="ui에서-가장-많이-배운-점">UI에서 가장 많이 배운 점</h2>
+
+<p>로비를 계속 확장하다 보니, 기능은 늘었는데 화면은 오히려 더 나빠지는 구간이 반복됐다.</p>
+
+<p>실제로 겪었던 문제는 다음과 같다.</p>
+
+<ul>
+  <li>상태 텍스트가 버튼 구역과 겹침</li>
+  <li>하단 긴 상태 문구가 한 줄로 밀려 화면을 가로질러 튀어나감</li>
+  <li>클라이언트가 건드릴 수 없는 항목도 똑같이 보여 혼란스러움</li>
+</ul>
+
+<p>이 문제를 해결한 방법은 꽤 기본적이었다.</p>
+
+<ul>
+  <li>패널을 더 크게 잡고 여백 확보</li>
+  <li>상태 텍스트 영역과 버튼 영역 분리</li>
+  <li>긴 문구 자동 줄바꿈</li>
+  <li>호스트 전용 항목 비활성 표현</li>
+  <li>준비/연결/시작 가능 상태를 색으로 구분</li>
+</ul>
+
+<p>결국 UI는 정보의 양보다 “읽히는가”가 더 중요했다.</p>
+
+<h2 id="핵심-코드-예시">핵심 코드 예시</h2>
+
+<h3 id="1-호스트만-명시적으로-경기-시작">1. 호스트만 명시적으로 경기 시작</h3>
+
+<p>자동 시작 대신 호스트가 <code class="language-plaintext highlighter-rouge">Start Match</code>를 눌렀을 때만 시작하도록 바꿨다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">SandforgeMultiplayerSession</span><span class="o">::</span><span class="n">tryStartMatch</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_lobbyState</span><span class="p">.</span><span class="n">mode</span> <span class="o">!=</span> <span class="n">SandforgeMultiplayerMode</span><span class="o">::</span><span class="n">Host</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_lobbyState</span><span class="p">.</span><span class="n">statusText</span> <span class="o">=</span> <span class="s">"Only the host can start the match."</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_lobbyState</span><span class="p">.</span><span class="n">remoteConnected</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_lobbyState</span><span class="p">.</span><span class="n">statusText</span> <span class="o">=</span> <span class="s">"A remote player must join before starting."</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_lobbyState</span><span class="p">.</span><span class="n">localReady</span> <span class="o">||</span> <span class="o">!</span><span class="n">_lobbyState</span><span class="p">.</span><span class="n">remoteReady</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_lobbyState</span><span class="p">.</span><span class="n">statusText</span> <span class="o">=</span> <span class="s">"Both players must be ready before the match can start."</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">sendMatchStartPacket</span><span class="p">();</span>
+    <span class="n">_lobbyState</span><span class="p">.</span><span class="n">matchStartReceived</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">_lobbyState</span><span class="p">.</span><span class="n">statusText</span> <span class="o">=</span> <span class="s">"Host started the match."</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2-로컬-플레이어-hq-기준-카메라-시작">2. 로컬 플레이어 HQ 기준 카메라 시작</h3>
+
+<p>플레이어 2가 자기 기지를 보지 못하던 문제를 여기서 해결했다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">float</span> <span class="n">viewWidth</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">window</span><span class="p">.</span><span class="n">getScreenWidth</span><span class="p">());</span>
+<span class="k">const</span> <span class="kt">float</span> <span class="n">maxCameraX</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">)(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="n">kGameplayWorldWidth</span> <span class="o">-</span> <span class="n">viewWidth</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">const</span> <span class="n">SandforgeBuilding</span><span class="o">*</span> <span class="n">localHq</span> <span class="o">=</span> <span class="n">_state</span><span class="p">.</span><span class="n">getWorld</span><span class="p">().</span><span class="n">findPrimaryBuilding</span><span class="p">(</span><span class="n">_state</span><span class="p">.</span><span class="n">getLocalPlayerId</span><span class="p">(),</span> <span class="n">SandforgeBuildingType</span><span class="o">::</span><span class="n">HQ</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="n">_cameraX</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">localHq</span><span class="o">-&gt;</span><span class="n">position</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">viewWidth</span> <span class="o">*</span> <span class="mf">0.5f</span><span class="p">),</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="n">maxCameraX</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-클라이언트는-명령만-보내고-월드는-호스트가-반영">3. 클라이언트는 명령만 보내고 월드는 호스트가 반영</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">isRemoteClientControlled</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">_multiplayerSession</span><span class="o">-&gt;</span><span class="n">sendMoveUnitCommand</span><span class="p">(</span><span class="n">unitId</span><span class="p">,</span> <span class="n">position</span><span class="p">);</span>
+    <span class="n">_statusText</span> <span class="o">=</span> <span class="s">"Move command sent to host."</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">return</span> <span class="n">_world</span><span class="p">.</span><span class="n">moveUnitTo</span><span class="p">(</span><span class="n">_localPlayerId</span><span class="p">,</span> <span class="n">unitId</span><span class="p">,</span> <span class="n">position</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="현재-구조의-장점과-한계">현재 구조의 장점과 한계</h2>
+
+<h3 id="장점">장점</h3>
+
+<ul>
+  <li>싱글플레이 월드 로직을 크게 버리지 않았다.</li>
+  <li>책임 분리가 비교적 명확하다.</li>
+  <li>디버깅 기준점이 호스트 하나로 모인다.</li>
+  <li>로비 설정과 실제 게임 시작 조건이 연결되어 있다.</li>
+</ul>
+
+<h3 id="한계">한계</h3>
+
+<ul>
+  <li>스냅샷 기반이라 전송량 최적화가 아직 부족하다.</li>
+  <li>보간이나 예측이 거의 없어 고급 네트워크 감각은 약하다.</li>
+  <li>핑, 재접속, 리매치 흐름은 아직 미완성이다.</li>
+  <li>입력 필드가 아직 “게임용 폼 UI”로 완전 정교하진 않다.</li>
+</ul>
+
+<h2 id="마무리">마무리</h2>
+
+<p>이번 작업에서 가장 크게 느낀 점은, 멀티플레이는 단순히 소켓을 여는 일이 아니라 “게임의 책임 구조를 다시 나누는 일”이라는 것이다.</p>
+
+<p>싱글플레이에서는 입력과 상태 변경이 가까이 있어도 큰 문제가 없어 보인다.<br />
+하지만 멀티플레이를 붙이는 순간 바로 질문이 생긴다.</p>
+
+<ul>
+  <li>누가 상태를 결정하는가</li>
+  <li>누가 보여주기만 하는가</li>
+  <li>어떤 정보가 즉시 반영되고 어떤 정보가 동기화되어야 하는가</li>
+</ul>
+
+<p>이 질문들에 답하면서 로비, 패킷, 세션, 명령, 스냅샷, UI를 한 번씩 다시 설계하게 됐다.<br />
+그 과정 자체가 멀티플레이 구현의 본질에 더 가까웠다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#game" class="page__taxonomy-item p-category" rel="tag">Game</a><span class="sep">, </span>
+    
+      <a href="/tags/#opengl" class="page__taxonomy-item p-category" rel="tag">OpenGL</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%95%A0%EB%8B%88%ED%8C%A1" class="page__taxonomy-item p-category" rel="tag">애니팡</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#opengl" class="page__taxonomy-item p-category" rel="tag">opengl</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-19T00:00:00+09:00">March 19, 2026</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">Share on</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=OpenGL+puzzle+pang%20https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl3-sandforge.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fruyshy.github.io%2Fopengl%2F2026%2F03%2F19%2Fopengl3-sandforge.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://ruyshy.github.io/opengl/2026/03/19/opengl3-sandforge.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/opengl/2026/03/19/opengl3-puzzle_pang.html" class="pagination--pager" title="OpenGL puzzle pang">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+      
+        <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="utterances-comments"></section>
+    
+</div>
+
+      
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You may also enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/opengl/2026/03/19/opengl3-puzzle_pang.html" rel="permalink">OpenGL puzzle pang
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">OpenGL로 애니팡 스타일 퍼즐 게임 만들기
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/opengl/2026/03/19/opengl2-tetris.html" rel="permalink">OpenGL Tetris 만들기
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">OpenGL Game Project + 테트리스 만들기
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/opengl/2026/03/19/opengl1-start.html" rel="permalink">OpenGL Game Project Framework
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html" rel="permalink">PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리
+</a>
+      
+    </h2>
+    
+
+
+    <p class="archive__item-excerpt" itemprop="description">PE Viewer는 .exe, .dll 등 PE(Portable Executable) 형식의 파일 구조를 시각적으로 확인할 수 있는 도구입니다.
+이 글에서는 대표적인 PE Viewer 도구들과, 그 중 PE-bear를 활용한 구조 분석 예시를 간단히 정리합니다.
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://ruyshy.github.io">ruyshy blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+    
+    <!-- JEKYLL LIQUID TAG --> 
+<script src="/assets/js/clipboard.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('div.highlighter-rouge').forEach(function(block) {
+    var button = document.createElement('button');
+    button.className = 'copy-button';
+    button.textContent = 'Copy';
+    button.style.position = 'absolute';
+    button.style.top = '0.25em';
+    button.style.right = '0.25em';
+    block.style.position = 'relative';
+    block.appendChild(button);
+  });
+
+  var clipboard = new ClipboardJS('.copy-button', {
+    target: function(trigger) {
+      return trigger.parentElement.querySelector('pre');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var originalText = e.trigger.textContent;
+    e.trigger.textContent = 'Copied!';
+    setTimeout(function() {
+      e.trigger.textContent = originalText;
+    }, 1500);
+    e.clearSelection();
+  });
+});
+</script> 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.toggle-label').forEach(labelEl => {
+            const baseText = labelEl.dataset.label;
+            labelEl.textContent = '▶ ' + baseText;
+          });
+    });
+    
+    function toggleTextContent(id, labelEl) {
+      const content = document.getElementById(id);
+      const isExpanded = content.classList.contains('expanded');
+      const baseText = labelEl.dataset.label;
+    
+      labelEl.textContent = (isExpanded ? '▶ ' : '▼ ') + baseText;
+    
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+        content.style.display = 'none';
+      } else {
+        content.classList.add('expanded');
+        content.style.display = 'block';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }    
+</script> 
+<!-- 
+
+-->>
+
+<script src="/assets/js/quiz-handler.js"></script>
+
+
+<!-- lunr search script -->
+<script src="/assets/js/sidebar-search.js"></script>
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/search.js"></script>
+
+<!--  -->
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+<!-- 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script> -->
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGYDK4XE75"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VGYDK4XE75'
+  
+  );
+</script>
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'ruyshy/ruyshy.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+  </body>
+</html>

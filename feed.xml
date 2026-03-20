@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-19T11:45:25+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-20T23:12:23+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
 
 <p>OpenGL로 게임을 만든다고 하면 많은 사람이 가장 먼저 셰이더 문법이나 버퍼 객체부터 떠올린다. 하지만 실제로 프로젝트를 시작해 보면 제일 먼저 필요한 것은 화려한 그래픽 기술이 아니라, “게임을 올려둘 수 있는 안정적인 바닥”이다. 창을 만들고, OpenGL 컨텍스트를 초기화하고, 매 프레임마다 갱신과 렌더링을 분리해서 호출하고, 입력과 시간 정보를 관리하고, 이후 텍스처나 스프라이트 같은 상위 개념을 차곡차곡 쌓아 올릴 수 있어야 한다.</p>
 
@@ -1726,7 +1726,440 @@
   <li>렌더링: <code class="language-plaintext highlighter-rouge">PuzzleRenderer.cpp</code></li>
   <li>애니메이션 상태: <code class="language-plaintext highlighter-rouge">BoardAnimator.cpp</code></li>
   <li>세션 상태: <code class="language-plaintext highlighter-rouge">GameSession.cpp</code></li>
-</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><category term="Game" /><category term="애니팡" /><summary type="html"><![CDATA[OpenGL로 애니팡 스타일 퍼즐 게임 만들기]]></summary></entry><entry><title type="html">PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html" rel="alternate" type="text/html" title="PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리" /><published>2025-05-08T00:00:00+09:00</published><updated>2025-05-08T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html"><![CDATA[<p>PE Viewer는 .exe, .dll 등 PE(Portable Executable) 형식의 파일 구조를 시각적으로 확인할 수 있는 도구입니다.
+</ul>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><category term="Game" /><category term="애니팡" /><summary type="html"><![CDATA[OpenGL로 애니팡 스타일 퍼즐 게임 만들기]]></summary></entry><entry><title type="html">OpenGL puzzle pang</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl3-sandforge.html" rel="alternate" type="text/html" title="OpenGL puzzle pang" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl3-sandforge</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl3-sandforge.html"><![CDATA[<h1 id="opengl-rts-프로토타입에-멀티플레이-로비와-권한형-동기화-붙이기">OpenGL RTS 프로토타입에 멀티플레이 로비와 권한형 동기화 붙이기</h1>
+
+<blockquote>
+  <p>프로젝트는 아래에 링크했습니다.</p>
+
+  <p><a href="https://github.com/ruyshy/OpenGL-Game/tree/Sandforge">sandforge project</a></p>
+
+</blockquote>
+
+<h2 id="tldr">TL;DR</h2>
+
+<p>이 글은 <code class="language-plaintext highlighter-rouge">Project Sandforge</code> 프로토타입에 멀티플레이를 붙이면서 정리한 설계와 구현 기록이다.<br />
+핵심은 세 가지였다.</p>
+
+<ul>
+  <li>로비를 별도 씬으로 분리해서 접속, 준비, 시작 설정을 관리하기</li>
+  <li>호스트 authoritative 구조로 월드 상태를 단일 기준으로 유지하기</li>
+  <li>클라이언트는 입력을 명령으로 보내고, 결과는 스냅샷으로 복제받기</li>
+</ul>
+
+<p>이 과정을 통해 “두 창에서 비슷하게 보이는 상태”가 아니라, 실제로 플레이 가능한 멀티플레이 프로토타입에 가까운 구조를 만들 수 있었다.</p>
+
+<h2 id="목차">목차</h2>
+
+<ol>
+  <li><a href="#프로젝트-배경">프로젝트 배경</a></li>
+  <li><a href="#문제-정의">문제 정의</a></li>
+  <li><a href="#전체-구조">전체 구조</a></li>
+  <li><a href="#로비를-별도-씬으로-분리한-이유">로비를 별도 씬으로 분리한 이유</a></li>
+  <li><a href="#패킷-설계와-세션-관리">패킷 설계와 세션 관리</a></li>
+  <li><a href="#왜-authoritative-host-구조를-택했는가">왜 authoritative host 구조를 택했는가</a></li>
+  <li><a href="#게임플레이-동기화-방식">게임플레이 동기화 방식</a></li>
+  <li><a href="#로비-설정을-실제-게임-시작에-반영하기">로비 설정을 실제 게임 시작에 반영하기</a></li>
+  <li><a href="#플레이어-2-관점에서-드러난-문제들">플레이어 2 관점에서 드러난 문제들</a></li>
+  <li><a href="#ui에서-가장-많이-배운-점">UI에서 가장 많이 배운 점</a></li>
+  <li><a href="#핵심-코드-예시">핵심 코드 예시</a></li>
+  <li><a href="#현재-구조의-장점과-한계">현재 구조의 장점과 한계</a></li>
+  <li><a href="#마무리">마무리</a></li>
+</ol>
+
+<h2 id="프로젝트-배경">프로젝트 배경</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Project Sandforge</code>는 C++20, OpenGL, GLFW, FreeType 기반으로 만든 2D RTS 프로토타입이다.<br />
+처음에는 싱글플레이 MVP, HUD 프로토타이핑, 생산/전투/자원 채집 루프를 빠르게 확인하는 데 집중했다.</p>
+
+<p>하지만 프로젝트가 커질수록 자연스럽게 다음 요구가 생겼다.</p>
+
+<ul>
+  <li>메인 메뉴에서 멀티플레이를 선택할 수 있어야 한다.</li>
+  <li>호스트와 클라이언트가 로컬 환경에서 접속할 수 있어야 한다.</li>
+  <li>로비에서 닉네임, 주소, 포트, 시작 설정을 조절할 수 있어야 한다.</li>
+  <li>실제 게임에서는 플레이어 1과 플레이어 2가 각자 자기 진영 기준으로 플레이해야 한다.</li>
+</ul>
+
+<p>여기서부터는 “기능 추가”가 아니라 “게임 상태를 누가 결정하는가”를 다시 설계하는 작업이 시작됐다.</p>
+
+<h2 id="문제-정의">문제 정의</h2>
+
+<p>싱글플레이 구조에서는 <code class="language-plaintext highlighter-rouge">GameplayState</code>가 입력을 받아 곧바로 <code class="language-plaintext highlighter-rouge">SandforgeWorld</code>를 바꾸는 방식이 큰 문제가 되지 않았다.<br />
+하지만 멀티플레이를 붙이는 순간 이 구조는 바로 한계를 드러냈다.</p>
+
+<p>예를 들어 클라이언트가 아래 동작을 로컬에서 직접 처리하면 상태가 쉽게 어긋난다.</p>
+
+<ul>
+  <li>유닛 생산</li>
+  <li>워커 자원 배정</li>
+  <li>건물 건설</li>
+  <li>유닛 이동</li>
+  <li>생산 취소</li>
+</ul>
+
+<p>결국 필요한 건 단순한 네트워크 연결이 아니라, 다음 질문에 대한 답이었다.</p>
+
+<ul>
+  <li>누가 진짜 월드 상태를 결정하는가?</li>
+  <li>누가 보여주기만 하는가?</li>
+  <li>어떤 데이터는 명령으로 보내고, 어떤 데이터는 스냅샷으로 복제할 것인가?</li>
+</ul>
+
+<h2 id="전체-구조">전체 구조</h2>
+
+<p>현재 멀티플레이 관련 핵심 파일은 아래와 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgePacketTypes.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgePacketBuffer.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgePacketBuffer.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgeMultiplayerSession.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Network/SandforgeMultiplayerSession.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Scenes/MultiplayerLobbyScene.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Scenes/MultiplayerLobbyScene.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Scenes/GameplayScene.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/Scenes/GameplayState.cpp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/World/SandforgeWorld.h</code></li>
+  <li><code class="language-plaintext highlighter-rouge">OpenGLGame/World/SandforgeWorld.cpp</code></li>
+</ul>
+
+<p>구조를 짧게 요약하면 이렇다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TitleScene
+  -&gt; MultiplayerLobbyScene
+      -&gt; SandforgeMultiplayerSession
+          -&gt; Host authoritative world
+          -&gt; Client command sender
+          -&gt; Snapshot replication
+</code></pre></div></div>
+
+<p>조금 더 자세히 보면:</p>
+
+<ul>
+  <li>로비에서는 세션 생성, 접속, 준비, 시작 설정을 처리한다.</li>
+  <li>실제 게임에서는 호스트가 월드를 업데이트한다.</li>
+  <li>클라이언트는 입력을 명령 패킷으로 전송한다.</li>
+  <li>호스트는 명령을 적용한 뒤 스냅샷을 보낸다.</li>
+  <li>클라이언트는 최신 스냅샷을 받아 렌더링한다.</li>
+</ul>
+
+<h2 id="로비를-별도-씬으로-분리한-이유">로비를 별도 씬으로 분리한 이유</h2>
+
+<p>처음에는 멀티플레이 버튼을 눌렀을 때 “미구현” 문구만 띄우는 상태였다.<br />
+하지만 로비 단계에서 관리해야 할 정보가 생각보다 많았다.</p>
+
+<ul>
+  <li>호스트 / 클라이언트 역할</li>
+  <li>닉네임</li>
+  <li>접속 주소</li>
+  <li>포트</li>
+  <li>준비 상태</li>
+  <li>시작 프리셋</li>
+  <li>최종 시작 여부</li>
+</ul>
+
+<p>이걸 타이틀 화면 오버레이로 처리하면 UI가 금방 복잡해진다.<br />
+그래서 <code class="language-plaintext highlighter-rouge">MultiplayerLobbyScene</code>을 별도 씬으로 분리했다.</p>
+
+<p>현재 로비에서 다루는 항목은 다음과 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Host Local Session</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Name</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Address</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Port</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Resources</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Workers</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Start Match</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Join Session</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Toggle Ready</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Back To Title</code></li>
+</ul>
+
+<p>특히 <code class="language-plaintext highlighter-rouge">Resources</code>, <code class="language-plaintext highlighter-rouge">Workers</code>, <code class="language-plaintext highlighter-rouge">Start Match</code>는 호스트 전용 기능으로 두고, 클라이언트에서는 시각적으로 비활성처럼 보이게 만들었다.<br />
+이런 사소한 차이가 실제 사용성에 큰 영향을 줬다.</p>
+
+<h2 id="패킷-설계와-세션-관리">패킷 설계와 세션 관리</h2>
+
+<p>패킷 종류를 먼저 분리해둔 것이 전체 구조를 단순하게 만드는 데 큰 도움이 됐다.</p>
+
+<p>현재 대표 패킷은 다음과 같다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">enum</span> <span class="k">class</span> <span class="nc">SandforgePacketType</span> <span class="o">:</span> <span class="kt">uint16_t</span>
+<span class="p">{</span>
+    <span class="n">C2S_JoinRequest</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">S2C_JoinAccept</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">S2C_MatchStart</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">C2S_Ready</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">C2S_Ping</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">S2C_Pong</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">S2C_WorldSnapshot</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">C2S_ProduceCommand</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">C2S_AssignWorkerCommand</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">C2S_MoveUnitCommand</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">C2S_BuildCommand</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">C2S_CancelProduction</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="n">S2C_LobbySettings</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>여기서 중요한 구분은 아래 두 가지다.</p>
+
+<h3 id="1-로비-단계">1. 로비 단계</h3>
+
+<ul>
+  <li>이름</li>
+  <li>준비 상태</li>
+  <li>시작 프리셋</li>
+  <li>게임 시작 신호</li>
+</ul>
+
+<p>즉, 로비에서는 상태 동기화가 중심이다.</p>
+
+<h3 id="2-실제-게임-단계">2. 실제 게임 단계</h3>
+
+<ul>
+  <li>생산 명령</li>
+  <li>워커 배정</li>
+  <li>이동 명령</li>
+  <li>건설 명령</li>
+  <li>생산 취소</li>
+  <li>월드 스냅샷</li>
+</ul>
+
+<p>즉, 인게임에서는 “명령 전송 + 결과 스냅샷 복제”가 중심이다.</p>
+
+<h2 id="왜-authoritative-host-구조를-택했는가">왜 authoritative host 구조를 택했는가</h2>
+
+<p>멀티플레이를 붙일 때 가장 먼저 정해야 했던 것은 권한 구조였다.</p>
+
+<p>이번 프로젝트에서는 host authoritative 구조를 선택했다.</p>
+
+<h3 id="호스트의-책임">호스트의 책임</h3>
+
+<ul>
+  <li>월드 업데이트</li>
+  <li>명령 수신</li>
+  <li>명령 유효성 검사</li>
+  <li>실제 상태 변경</li>
+  <li>스냅샷 송신</li>
+</ul>
+
+<h3 id="클라이언트의-책임">클라이언트의 책임</h3>
+
+<ul>
+  <li>입력 감지</li>
+  <li>명령 송신</li>
+  <li>최신 스냅샷 수신</li>
+  <li>복제 월드 갱신</li>
+  <li>렌더링</li>
+</ul>
+
+<p>이 구조를 택한 이유는 단순하다.</p>
+
+<ul>
+  <li>상태 기준점이 하나라서 디버깅이 쉽다.</li>
+  <li>치트나 로컬 오차에 덜 취약하다.</li>
+  <li>기존 싱글플레이 월드 로직을 호스트 쪽으로 거의 그대로 재사용할 수 있다.</li>
+</ul>
+
+<h2 id="게임플레이-동기화-방식">게임플레이 동기화 방식</h2>
+
+<p>현재 동기화 방식은 “클라이언트가 명령을 보내고, 호스트가 적용한 뒤 스냅샷을 보내는 구조”다.</p>
+
+<p>예를 들어 유닛 생산은 대략 이런 흐름이다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client input
+  -&gt; C2S_ProduceCommand
+      -&gt; Host receives command
+          -&gt; Host updates SandforgeWorld
+              -&gt; Host sends S2C_WorldSnapshot
+                  -&gt; Client applies snapshot
+</code></pre></div></div>
+
+<p>이 방식은 예측이나 보간이 거의 없기 때문에 아주 고급스럽진 않다.<br />
+하지만 프로토타입 단계에서는 “상태가 틀어지지 않는 것”이 더 중요했고, 이 목표에는 잘 맞았다.</p>
+
+<h2 id="로비-설정을-실제-게임-시작에-반영하기">로비 설정을 실제 게임 시작에 반영하기</h2>
+
+<p>로비 설정이 화면에만 있고 실제 게임에 반영되지 않으면, 결국 가짜 옵션이 된다.<br />
+그래서 <code class="language-plaintext highlighter-rouge">SandforgeWorld</code>에 아래 구조를 추가했다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">SandforgeMatchSetup</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">symmetricPlayers</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">aiEnabled</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">SandforgeStartResourcePreset</span> <span class="n">resourcePreset</span> <span class="o">=</span> <span class="n">SandforgeStartResourcePreset</span><span class="o">::</span><span class="n">Standard</span><span class="p">;</span>
+    <span class="n">SandforgeStartWorkerPreset</span> <span class="n">workerPreset</span> <span class="o">=</span> <span class="n">SandforgeStartWorkerPreset</span><span class="o">::</span><span class="n">Standard</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>멀티플레이 시작 시에는 이 값을 <code class="language-plaintext highlighter-rouge">GameplayScene</code> 진입 전에 주입하고, <code class="language-plaintext highlighter-rouge">reset()</code>에서 실제 초기 자원과 시작 워커 수를 계산하도록 연결했다.</p>
+
+<p>현재 의미는 다음과 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Resources: Standard</code>
+    <ul>
+      <li>기본 시작 자원</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Resources: Rich</code>
+    <ul>
+      <li>양쪽 시작 자원 증가</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Workers: Standard</code>
+    <ul>
+      <li>기본 시작 일꾼 수</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Workers: Expanded</code>
+    <ul>
+      <li>양쪽 시작 일꾼 1기 추가</li>
+    </ul>
+  </li>
+</ul>
+
+<p>싱글플레이에서 쓰던 비대칭 보정은 멀티플레이에서는 끄고, 대칭 시작 조건으로 바꿨다.</p>
+
+<h2 id="플레이어-2-관점에서-드러난-문제들">플레이어 2 관점에서 드러난 문제들</h2>
+
+<p>멀티플레이에서 가장 많이 틀어졌던 부분은 사실 네트워크보다 “플레이어 2 기준 로직”이었다.</p>
+
+<p>대표적으로 이런 문제가 있었다.</p>
+
+<ul>
+  <li>플레이어 2로 들어가도 카메라가 항상 플레이어 1 진영부터 보임</li>
+  <li>선택/소유권 판정이 플레이어 1 기준으로 남아 있음</li>
+  <li>HUD와 명령 처리 일부가 플레이어 1 가정으로 작성되어 있음</li>
+</ul>
+
+<p>이를 해결하기 위해:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">localPlayerId</code> 개념을 <code class="language-plaintext highlighter-rouge">GameplayState</code>에 도입</li>
+  <li>선택/렌더링/UI 판정에서 하드코딩된 <code class="language-plaintext highlighter-rouge">1</code> 제거</li>
+  <li>카메라 시작 위치를 로컬 플레이어 HQ 기준으로 설정</li>
+</ul>
+
+<p>이 마지막 수정은 의외로 체감이 컸다.<br />
+플레이어 2도 이제 게임 시작 시 자기 기지부터 보게 된다.</p>
+
+<h2 id="ui에서-가장-많이-배운-점">UI에서 가장 많이 배운 점</h2>
+
+<p>로비를 계속 확장하다 보니, 기능은 늘었는데 화면은 오히려 더 나빠지는 구간이 반복됐다.</p>
+
+<p>실제로 겪었던 문제는 다음과 같다.</p>
+
+<ul>
+  <li>상태 텍스트가 버튼 구역과 겹침</li>
+  <li>하단 긴 상태 문구가 한 줄로 밀려 화면을 가로질러 튀어나감</li>
+  <li>클라이언트가 건드릴 수 없는 항목도 똑같이 보여 혼란스러움</li>
+</ul>
+
+<p>이 문제를 해결한 방법은 꽤 기본적이었다.</p>
+
+<ul>
+  <li>패널을 더 크게 잡고 여백 확보</li>
+  <li>상태 텍스트 영역과 버튼 영역 분리</li>
+  <li>긴 문구 자동 줄바꿈</li>
+  <li>호스트 전용 항목 비활성 표현</li>
+  <li>준비/연결/시작 가능 상태를 색으로 구분</li>
+</ul>
+
+<p>결국 UI는 정보의 양보다 “읽히는가”가 더 중요했다.</p>
+
+<h2 id="핵심-코드-예시">핵심 코드 예시</h2>
+
+<h3 id="1-호스트만-명시적으로-경기-시작">1. 호스트만 명시적으로 경기 시작</h3>
+
+<p>자동 시작 대신 호스트가 <code class="language-plaintext highlighter-rouge">Start Match</code>를 눌렀을 때만 시작하도록 바꿨다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">SandforgeMultiplayerSession</span><span class="o">::</span><span class="n">tryStartMatch</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_lobbyState</span><span class="p">.</span><span class="n">mode</span> <span class="o">!=</span> <span class="n">SandforgeMultiplayerMode</span><span class="o">::</span><span class="n">Host</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_lobbyState</span><span class="p">.</span><span class="n">statusText</span> <span class="o">=</span> <span class="s">"Only the host can start the match."</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_lobbyState</span><span class="p">.</span><span class="n">remoteConnected</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_lobbyState</span><span class="p">.</span><span class="n">statusText</span> <span class="o">=</span> <span class="s">"A remote player must join before starting."</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_lobbyState</span><span class="p">.</span><span class="n">localReady</span> <span class="o">||</span> <span class="o">!</span><span class="n">_lobbyState</span><span class="p">.</span><span class="n">remoteReady</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_lobbyState</span><span class="p">.</span><span class="n">statusText</span> <span class="o">=</span> <span class="s">"Both players must be ready before the match can start."</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">sendMatchStartPacket</span><span class="p">();</span>
+    <span class="n">_lobbyState</span><span class="p">.</span><span class="n">matchStartReceived</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">_lobbyState</span><span class="p">.</span><span class="n">statusText</span> <span class="o">=</span> <span class="s">"Host started the match."</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2-로컬-플레이어-hq-기준-카메라-시작">2. 로컬 플레이어 HQ 기준 카메라 시작</h3>
+
+<p>플레이어 2가 자기 기지를 보지 못하던 문제를 여기서 해결했다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">float</span> <span class="n">viewWidth</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">window</span><span class="p">.</span><span class="n">getScreenWidth</span><span class="p">());</span>
+<span class="k">const</span> <span class="kt">float</span> <span class="n">maxCameraX</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">)(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="n">kGameplayWorldWidth</span> <span class="o">-</span> <span class="n">viewWidth</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">const</span> <span class="n">SandforgeBuilding</span><span class="o">*</span> <span class="n">localHq</span> <span class="o">=</span> <span class="n">_state</span><span class="p">.</span><span class="n">getWorld</span><span class="p">().</span><span class="n">findPrimaryBuilding</span><span class="p">(</span><span class="n">_state</span><span class="p">.</span><span class="n">getLocalPlayerId</span><span class="p">(),</span> <span class="n">SandforgeBuildingType</span><span class="o">::</span><span class="n">HQ</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="n">_cameraX</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">localHq</span><span class="o">-&gt;</span><span class="n">position</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">viewWidth</span> <span class="o">*</span> <span class="mf">0.5f</span><span class="p">),</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="n">maxCameraX</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-클라이언트는-명령만-보내고-월드는-호스트가-반영">3. 클라이언트는 명령만 보내고 월드는 호스트가 반영</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">isRemoteClientControlled</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">_multiplayerSession</span><span class="o">-&gt;</span><span class="n">sendMoveUnitCommand</span><span class="p">(</span><span class="n">unitId</span><span class="p">,</span> <span class="n">position</span><span class="p">);</span>
+    <span class="n">_statusText</span> <span class="o">=</span> <span class="s">"Move command sent to host."</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">return</span> <span class="n">_world</span><span class="p">.</span><span class="n">moveUnitTo</span><span class="p">(</span><span class="n">_localPlayerId</span><span class="p">,</span> <span class="n">unitId</span><span class="p">,</span> <span class="n">position</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="현재-구조의-장점과-한계">현재 구조의 장점과 한계</h2>
+
+<h3 id="장점">장점</h3>
+
+<ul>
+  <li>싱글플레이 월드 로직을 크게 버리지 않았다.</li>
+  <li>책임 분리가 비교적 명확하다.</li>
+  <li>디버깅 기준점이 호스트 하나로 모인다.</li>
+  <li>로비 설정과 실제 게임 시작 조건이 연결되어 있다.</li>
+</ul>
+
+<h3 id="한계">한계</h3>
+
+<ul>
+  <li>스냅샷 기반이라 전송량 최적화가 아직 부족하다.</li>
+  <li>보간이나 예측이 거의 없어 고급 네트워크 감각은 약하다.</li>
+  <li>핑, 재접속, 리매치 흐름은 아직 미완성이다.</li>
+  <li>입력 필드가 아직 “게임용 폼 UI”로 완전 정교하진 않다.</li>
+</ul>
+
+<h2 id="마무리">마무리</h2>
+
+<p>이번 작업에서 가장 크게 느낀 점은, 멀티플레이는 단순히 소켓을 여는 일이 아니라 “게임의 책임 구조를 다시 나누는 일”이라는 것이다.</p>
+
+<p>싱글플레이에서는 입력과 상태 변경이 가까이 있어도 큰 문제가 없어 보인다.<br />
+하지만 멀티플레이를 붙이는 순간 바로 질문이 생긴다.</p>
+
+<ul>
+  <li>누가 상태를 결정하는가</li>
+  <li>누가 보여주기만 하는가</li>
+  <li>어떤 정보가 즉시 반영되고 어떤 정보가 동기화되어야 하는가</li>
+</ul>
+
+<p>이 질문들에 답하면서 로비, 패킷, 세션, 명령, 스냅샷, UI를 한 번씩 다시 설계하게 됐다.<br />
+그 과정 자체가 멀티플레이 구현의 본질에 더 가까웠다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="opengl" /><category term="OpenGL" /><category term="Game" /><category term="애니팡" /><summary type="html"><![CDATA[OpenGL RTS 프로토타입에 멀티플레이 로비와 권한형 동기화 붙이기]]></summary></entry><entry><title type="html">PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html" rel="alternate" type="text/html" title="PE Viewer로 PE 구조 분석하기: PE-bear 활용법 정리" /><published>2025-05-08T00:00:00+09:00</published><updated>2025-05-08T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/08/reversing5-PE-Viewer.html"><![CDATA[<p>PE Viewer는 .exe, .dll 등 PE(Portable Executable) 형식의 파일 구조를 시각적으로 확인할 수 있는 도구입니다.
 이 글에서는 대표적인 PE Viewer 도구들과, 그 중 PE-bear를 활용한 구조 분석 예시를 간단히 정리합니다.</p>
 
 <hr />
@@ -2851,9 +3284,9 @@ archive-single.html %} {%- endfor -%}
 <p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code> 해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-q10s47', this)" data-label="sidebar.html 전체 코드">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-35cmyb', this)" data-label="sidebar.html 전체 코드">
   </div>
-  <div id="toggle-q10s47" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-35cmyb" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
@@ -3232,566 +3665,4 @@ performSearch(e.target.value);
 
 <p><img src="/assets/images/blog/2025-05-02-blog-21-search/image2.png" alt="image2.png" style="max-width:100%;" /></p>
 
-<p>다시 검색을 진행 해본 이미지 입니다. 카테고리가 빠져있고 게시글만 검색되는 것을 확인할 수 있었습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="Jekyll" /><category term="GitHub Pages" /><category term="lunr.js" /><category term="검색 기능" /><category term="블로그 커스터마이징" /><summary type="html"><![CDATA[minimal-mistakes-jekyll 테마에서 Lunr.js를 이용해 상단 및 사이드바에 커스텀 검색창을 구현하고, 검색 페이지와 필터 기능까지 동작하도록 설정하는 전체 과정을 정리합니다.]]></summary></entry><entry><title type="html">PE 구조 분석 완전 정복</title><link href="https://ruyshy.github.io/reversing_engineering/2025/05/02/reversing2-pe-structural-analysis.html" rel="alternate" type="text/html" title="PE 구조 분석 완전 정복" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/reversing_engineering/2025/05/02/reversing2-pe-structural-analysis</id><content type="html" xml:base="https://ruyshy.github.io/reversing_engineering/2025/05/02/reversing2-pe-structural-analysis.html"><![CDATA[<p>Windows 실행파일이 어떻게 구성되어 있고, 어떤 순서로 메모리에 로딩되는지 궁금하셨나요?<br />
-이 글에서는 PE 구조의 전반적인 구성과 주요 필드들의 역할, RVA 변환 방식까지 하나씩 정리해봅니다.</p>
-
-<h2 id="pe-파일이란">PE 파일이란?</h2>
-
-<p><strong>PE 파일</strong>은 쉽게 말해 <strong>Windows에서 실행되는 모든 실행파일(EXE), 라이브러리(DLL)</strong>의 <strong>설계도</strong>.</p>
-
-<p>마치 레고 블록을 조립하려면 블록의 종류와 순서를 알려주는 설명서가 필요하듯,</p>
-
-<p><strong>Windows 운영체제도 PE 구조를 보고 프로그램을 메모리에 어떻게 배치할지 결정.</strong></p>
-
-<p>리버싱에서 <strong>PE 구조(Portable Executable Format)</strong> 는 가장 기본이자 핵심.</p>
-
-<p>Windows에서 실행되는 .exe, .dll파일은 전부 이 포맷을 따르기 때문에, 구조를 이해해야 분석이 가능.</p>
-
-<h2 id="pe-파일을-실행할-때-무슨-일이-벌어지냐면">PE 파일을 실행할 때 무슨 일이 벌어지냐면…</h2>
-
-<ul>
-  <li>어떤 <code class="language-plaintext highlighter-rouge">.exe</code> 파일을 더블 클릭.</li>
-  <li>Windows는 그 파일의 <strong>MZ</strong> 라는 마법 같은 시작 문자를 보고 “오! 이건 실행파일이네?” 라고 판단.</li>
-  <li>그 다음에는 “진짜 실행정보는 어디 있지?” 하고 <strong>e_lfanew</strong> 필드를 보고, 본격적인 PE 구조로 점프.</li>
-  <li>거기서부터 운영체제가 코드를 메모리에 어떻게 배치하고, 어느 DLL을 불러오고, 어디서 실행을 시작해야 하는지를 쫙 읽음.</li>
-</ul>
-
-<h2 id="pe-파일은-어떤-정보들로-되어-있을까">PE 파일은 어떤 정보들로 되어 있을까?</h2>
-
-<p>우리가 책을 볼 때도 표지 → 목차 → 본문 → 부록 이런 순서가 있듯이, PE 파일도 순서가 있음.</p>
-
-<h2 id="pe-구조-전체-개요-전체-흐름">PE 구조 전체 개요 (전체 흐름)</h2>
-
-<div class="language-mathematica highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">┌────────────────────────────┐</span><span class="w">
-</span><span class="err">│</span><span class="w"> </span><span class="nv">MS</span><span class="o">-</span><span class="nv">DOS</span><span class="w"> </span><span class="nv">Header</span><span class="w">              </span><span class="err">│</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="nv">MZ</span><span class="w"> </span><span class="nb">Signature</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="nv">x4D</span><span class="w"> </span><span class="m">0</span><span class="nv">x5A</span><span class="p">)</span><span class="w">
-</span><span class="err">├────────────────────────────┤</span><span class="w">
-</span><span class="err">│</span><span class="w"> </span><span class="nv">DOS</span><span class="w"> </span><span class="nb">Stub</span><span class="w"> </span><span class="nv">Program</span><span class="w">           </span><span class="err">│</span><span class="w">
-</span><span class="err">├────────────────────────────┤</span><span class="w">
-</span><span class="err">│</span><span class="w"> </span><span class="nv">PE</span><span class="w"> </span><span class="nb">Signature</span><span class="w">               </span><span class="err">│</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="s">"PE\0\0"</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="nv">x50</span><span class="w"> </span><span class="m">0</span><span class="nv">x45</span><span class="w"> </span><span class="m">0</span><span class="nv">x00</span><span class="w"> </span><span class="m">0</span><span class="nv">x00</span><span class="p">)</span><span class="w">
-</span><span class="err">├────────────────────────────┤</span><span class="w">
-</span><span class="err">│</span><span class="w"> </span><span class="nv">COFF</span><span class="w"> </span><span class="nb">File</span><span class="w"> </span><span class="nv">Header</span><span class="w">           </span><span class="err">│</span><span class="w">
-</span><span class="err">├────────────────────────────┤</span><span class="w">
-</span><span class="err">│</span><span class="w"> </span><span class="nb">Optional</span><span class="w"> </span><span class="nv">Header</span><span class="w">            </span><span class="err">│</span><span class="w">
-</span><span class="err">│</span><span class="w">  </span><span class="err">├─</span><span class="w"> </span><span class="nv">Standard</span><span class="w"> </span><span class="nv">Fields</span><span class="w">        </span><span class="err">│</span><span class="w">
-</span><span class="err">│</span><span class="w">  </span><span class="err">├─</span><span class="w"> </span><span class="nv">Windows</span><span class="o">-</span><span class="nv">Specific</span><span class="w"> </span><span class="nv">Fields</span><span class="err">│</span><span class="w">
-</span><span class="err">│</span><span class="w">  </span><span class="err">└─</span><span class="w"> </span><span class="nv">Data</span><span class="w"> </span><span class="nv">Directories</span><span class="w">       </span><span class="err">│</span><span class="w">
-</span><span class="err">├────────────────────────────┤</span><span class="w">
-</span><span class="err">│</span><span class="w"> </span><span class="nv">Section</span><span class="w"> </span><span class="nv">Headers</span><span class="w"> </span><span class="p">(</span><span class="o">.</span><span class="nv">text</span><span class="w"> </span><span class="err">등</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w">
-</span><span class="err">├────────────────────────────┤</span><span class="w">
-</span><span class="err">│</span><span class="w"> </span><span class="nv">Section</span><span class="w"> </span><span class="nv">Bodies</span><span class="w"> </span><span class="p">(</span><span class="o">.</span><span class="nv">text</span><span class="w"> </span><span class="err">등</span><span class="p">)</span><span class="w">  </span><span class="err">│</span><span class="w">
-</span><span class="err">└────────────────────────────┘</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-
-<h3 id="1-dos-header-image_dos_header">1. DOS Header (IMAGE_DOS_HEADER)</h3>
-
-<ul>
-  <li>Signature: <code class="language-plaintext highlighter-rouge">MZ</code> (0x5A4D)</li>
-  <li>주요 필드:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">e_lfanew</code>: PE 헤더의 오프셋 (PE Signature 위치)</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>용도:</strong> 오래된 MS-DOS 호환을 위한 Stub 실행 코드 포함</p>
-
-<p><strong>디버깅 팁:</strong> PE 파싱 시 <code class="language-plaintext highlighter-rouge">e_lfanew</code>를 통해 PE Signature로 점프</p>
-
-<p><strong>추가 설명: 표지 같은 느낌</strong></p>
-
-<ul>
-  <li>맨 앞 2바이트는 <code class="language-plaintext highlighter-rouge">MZ</code> → DOS 시절부터 내려온 “이건 실행파일이다”의 표시</li>
-  <li>그 안에는 <code class="language-plaintext highlighter-rouge">e_lfanew</code>라는 중요한 주소가 있음 → “PE 구조는 여기부터 시작해!”라고 알려주는 지표</li>
-</ul>
-
-<hr />
-
-<h3 id="2-dos-stub-program">2. DOS Stub Program</h3>
-
-<ul>
-  <li>짧은 x86 코드로 “This program cannot be run in DOS mode” 출력</li>
-  <li>용량: 일반적으로 수십 바이트</li>
-</ul>
-
-<p><strong>추가 설명: 옛날 코드 조각</strong></p>
-
-<ul>
-  <li>DOS에서는 실행이 안 되니까 이런 메시지가 나와:
-<code class="language-plaintext highlighter-rouge">"This program cannot be run in DOS mode"</code></li>
-</ul>
-
-<p>이건 사실 지금은 의미 없고 그냥 관습적으로 들어있음.</p>
-
-<hr />
-
-<h3 id="3-pe-signature">3. PE Signature</h3>
-
-<ul>
-  <li>값: <code class="language-plaintext highlighter-rouge">"PE\0\0"</code> (4바이트)</li>
-  <li>위치: <code class="language-plaintext highlighter-rouge">e_lfanew</code>에서 지정됨</li>
-</ul>
-
-<p><strong>추가 설명:</strong></p>
-
-<p>딱 <code class="language-plaintext highlighter-rouge">"PE\0\0”</code>(50 45 00 00)이라는 서명이 있음</p>
-
-<p>→ 이거 보면 “이건 진짜 Windows용 실행 파일이다!” 라고 확신함</p>
-
-<hr />
-
-<h3 id="4-coff-file-header-image_file_header">4. COFF File Header (IMAGE_FILE_HEADER)</h3>
-
-<p>주요 필드:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Machine</code>: CPU 아키텍처 (예: x86: 0x014c, x64: 0x8664)</li>
-  <li><code class="language-plaintext highlighter-rouge">NumberOfSections</code>: 섹션 수</li>
-  <li><code class="language-plaintext highlighter-rouge">TimeDateStamp</code>: 빌드 타임스탬프</li>
-  <li><code class="language-plaintext highlighter-rouge">PointerToSymbolTable</code>: 디버깅용 심볼 테이블 (보통 0)</li>
-  <li><code class="language-plaintext highlighter-rouge">SizeOfOptionalHeader</code>: Optional Header의 크기</li>
-  <li><code class="language-plaintext highlighter-rouge">Characteristics</code>: 실행파일 속성 (DLL인지, 실행파일인지 등)</li>
-</ul>
-
-<p><strong>추가 설명: 요약 정보</strong></p>
-
-<ul>
-  <li>CPU 종류 (32비트? 64비트?)</li>
-  <li>섹션이 몇 개?</li>
-  <li>언제 빌드된 파일이야?</li>
-  <li>실행파일이야? DLL이야? 드라이버야?</li>
-</ul>
-
-<p>한마디로 “이 파일은 어떤 환경에서 실행되는 어떤 프로그램이다”라는 기본 정보.</p>
-
-<hr />
-
-<h3 id="5-optional-header-image_optional_header">5. Optional Header (IMAGE_OPTIONAL_HEADER)</h3>
-
-<h4 id="51-standard-fields">5.1. Standard Fields</h4>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Magic</code>: PE32 (0x10b), PE32+ (0x20b)</li>
-  <li><code class="language-plaintext highlighter-rouge">AddressOfEntryPoint</code>: 시작 함수 주소 (RVA)</li>
-  <li><code class="language-plaintext highlighter-rouge">BaseOfCode</code>, <code class="language-plaintext highlighter-rouge">BaseOfData</code>: 코드/데이터 시작 위치</li>
-</ul>
-
-<h4 id="52-windows-specific-fields">5.2. Windows-Specific Fields</h4>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">ImageBase</code>: 가상 메모리에서 매핑될 기본 주소</li>
-  <li><code class="language-plaintext highlighter-rouge">SectionAlignment</code>: 메모리에서 섹션 정렬 기준</li>
-  <li><code class="language-plaintext highlighter-rouge">FileAlignment</code>: 디스크에서 섹션 정렬 기준</li>
-  <li><code class="language-plaintext highlighter-rouge">SizeOfImage</code>: 전체 이미지의 크기 (메모리 기준)</li>
-  <li><code class="language-plaintext highlighter-rouge">Subsystem</code>: GUI, CUI 여부</li>
-</ul>
-
-<h4 id="53-data-directories-image_data_directory">5.3. Data Directories (IMAGE_DATA_DIRECTORY[])</h4>
-
-<p>총 16개 엔트리:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>인덱스</th>
-      <th>이름</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>Export Table</td>
-      <td>DLL 내보내기 함수 테이블</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Import Table</td>
-      <td>외부 DLL 로딩 함수 테이블</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Resource Table</td>
-      <td>아이콘, 다이얼로그, 문자열 등</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Exception Table</td>
-      <td>SEH 정보 (x64)</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Certificate Table</td>
-      <td>디지털 서명</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Base Relocation</td>
-      <td>재배치 정보</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Debug Directory</td>
-      <td>디버그 심볼 정보</td>
-    </tr>
-    <tr>
-      <td>7~15</td>
-      <td>TLS, Load Config 등</td>
-      <td>Thread Local Storage 등</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><strong>추가 설명: 필수</strong></p>
-
-<p>이건 정말 중요한 부분! Windows가 이걸 보고 “이 프로그램은 이렇게 실행하면 되겠다”고 결정함.</p>
-
-<p>여기엔 이런 것들이 있다:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>항목</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>EntryPoint</td>
-      <td>실행 시작 주소 (<code class="language-plaintext highlighter-rouge">main()</code> 같은 곳)</td>
-    </tr>
-    <tr>
-      <td>ImageBase</td>
-      <td>이 파일이 메모리에 올라갈 기본 주소 (예: 0x400000)</td>
-    </tr>
-    <tr>
-      <td>SizeOfImage</td>
-      <td>전체 프로그램이 차지할 메모리 크기</td>
-    </tr>
-    <tr>
-      <td>Subsystem</td>
-      <td>GUI인지, 콘솔인지 등</td>
-    </tr>
-    <tr>
-      <td>DLL 필요 여부</td>
-      <td>Import Table 참고해서 DLL 호출</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><strong>추가 설명: Data Directories (길잡이)</strong></p>
-
-<ul>
-  <li>여긴 “중요한 테이블이 어디에 있는지” 알려주는 지도.</li>
-</ul>
-
-<p>예:</p>
-
-<ul>
-  <li>Import Table → “이 프로그램이 불러오는 DLL 리스트”</li>
-  <li>Export Table → “이 DLL이 외부에 제공하는 함수들”</li>
-  <li>Resource Table → 아이콘, 문자열, 메뉴 같은 GUI 요소</li>
-  <li>Relocation Table → 메모리 위치가 바뀔 경우 주소 보정용</li>
-</ul>
-
-<hr />
-
-<h3 id="6-section-header-table-image_section_header">6. Section Header Table (IMAGE_SECTION_HEADER)</h3>
-
-<p>각 섹션에 대한 메타데이터 배열</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">.text</code>: 코드</li>
-  <li><code class="language-plaintext highlighter-rouge">.data</code>: 초기화된 전역변수</li>
-  <li><code class="language-plaintext highlighter-rouge">.rdata</code>: 읽기 전용 데이터 (예: 상수 문자열)</li>
-  <li><code class="language-plaintext highlighter-rouge">.bss</code> (표시되지 않음): 초기화되지 않은 전역변수</li>
-  <li><code class="language-plaintext highlighter-rouge">.rsrc</code>: 리소스 정보</li>
-  <li><code class="language-plaintext highlighter-rouge">.reloc</code>: 재배치 테이블</li>
-</ul>
-
-<p>각 헤더에는:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Name</code>: 섹션 이름</li>
-  <li><code class="language-plaintext highlighter-rouge">VirtualAddress</code>: 메모리 상 RVA</li>
-  <li><code class="language-plaintext highlighter-rouge">SizeOfRawData</code>: 디스크에 저장된 크기</li>
-  <li><code class="language-plaintext highlighter-rouge">PointerToRawData</code>: 실제 파일 오프셋</li>
-  <li><code class="language-plaintext highlighter-rouge">Characteristics</code>: 코드/데이터/읽기쓰기 속성</li>
-</ul>
-
-<p><strong>추가 설명:</strong>
-이제부터는 <strong>진짜 컨텐츠</strong>를 설명함.</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">.text</code> : 코드가 담긴 부분 (컴파일된 함수들)</li>
-  <li><code class="language-plaintext highlighter-rouge">.data</code> : 전역 변수</li>
-  <li><code class="language-plaintext highlighter-rouge">.rdata</code> : 읽기 전용 데이터</li>
-  <li><code class="language-plaintext highlighter-rouge">.rsrc</code> : 리소스(아이콘, UI 등)</li>
-</ul>
-
-<p>이 표에 “이 섹션은 어디서부터 시작되고, 크기가 얼마며, 메모리상 주소는 어디야”라는 내용이 나옴.</p>
-
-<hr />
-
-<h3 id="7-section-data">7. Section Data</h3>
-
-<ul>
-  <li>실제 코드, 데이터, 리소스 등이 이 영역에 위치</li>
-  <li>파일상에서는 <code class="language-plaintext highlighter-rouge">PointerToRawData</code> 오프셋부터</li>
-  <li>메모리에서는 <code class="language-plaintext highlighter-rouge">VirtualAddress</code> 기준으로 매핑됨</li>
-</ul>
-
-<p><strong>추가 설명:</strong>
-파일의 마지막에는 <strong>실제 코드, 데이터, 리소스</strong>들이 쭉 들어있어. 이 부분은 메모리에 로딩돼서 실행되는 내용.</p>
-
-<hr />
-
-<h3 id="pe-로딩-시-주요-흐름">PE 로딩 시 주요 흐름</h3>
-
-<ul>
-  <li>OS Loader가 <code class="language-plaintext highlighter-rouge">ImageBase</code>에 PE 파일 로딩</li>
-  <li>SectionAlignment 기준으로 섹션 재배치</li>
-  <li><code class="language-plaintext highlighter-rouge">AddressOfEntryPoint</code>로 제어 이동</li>
-  <li>Import Table 파싱 → DLL 로딩 &amp; IAT 구성</li>
-  <li>Relocation Table 적용 (필요 시)</li>
-  <li>TLS 실행, <code class="language-plaintext highlighter-rouge">mainCRTStartup</code> 등 실행</li>
-</ul>
-
-<hr />
-
-<h3 id="실행-과정-요약-memory-상-시나리오">실행 과정 요약 (Memory 상 시나리오)</h3>
-
-<ol>
-  <li>OS가 PE 구조를 읽고 <code class="language-plaintext highlighter-rouge">.text</code>, <code class="language-plaintext highlighter-rouge">.data</code>, <code class="language-plaintext highlighter-rouge">.rsrc</code> 등의 섹션을 메모리에 올림.</li>
-  <li>DLL이 필요하면 Import Table 참고해서 미리 로딩.</li>
-  <li>만약 메모리 기본 주소(<code class="language-plaintext highlighter-rouge">ImageBase</code>)에 이미 다른 앱이 있으면 Relocation Table로 주소 보정.</li>
-  <li>모든 준비가 끝나면 <code class="language-plaintext highlighter-rouge">EntryPoint</code>에 점프해서 코드 실행 시작!</li>
-</ol>
-
-<hr />
-
-<h3 id="pe-파일은-왜-이렇게-복잡하게-나뉘어-있을까">PE 파일은 왜 이렇게 복잡하게 나뉘어 있을까?</h3>
-
-<ul>
-  <li><strong>모듈화</strong>: OS가 필요한 것만 빠르게 읽고 실행</li>
-  <li><strong>이식성</strong>: EXE, DLL, SYS 같은 다양한 용도에 공통 포맷 사용</li>
-  <li><strong>확장성</strong>: 리소스, 서명, 디버깅 정보 등 추가해도 구조 유지</li>
-  <li><strong>보안</strong>: 코드와 데이터, 리소스를 명확히 분리 가능</li>
-</ul>
-
-<hr />
-
-<h3 id="쉽게-기억하는-요령">쉽게 기억하는 요령</h3>
-
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">MZ</span> <span class="err">→</span> <span class="nt">DOS</span> <span class="nt">헤더</span>
-<span class="nt">e_lfanew</span> <span class="err">→</span> <span class="nt">PE</span> <span class="nt">위치</span>
-<span class="nt">PE</span> <span class="err">→</span> <span class="nt">진짜</span> <span class="nt">헤더</span> <span class="nt">시작</span>
-<span class="nt">COFF</span> <span class="err">→</span> <span class="nt">기본</span> <span class="nt">요약</span>
-<span class="nt">Optional</span> <span class="err">→</span> <span class="nt">실행</span> <span class="nt">정보</span>
-<span class="nt">Section</span> <span class="err">→</span> <span class="nt">실제</span> <span class="nt">코드들</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="참고-자료--구조체-이름">참고 자료 / 구조체 이름</h3>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">IMAGE_DOS_HEADER</code></li>
-  <li><code class="language-plaintext highlighter-rouge">IMAGE_NT_HEADERS</code> (Signature + FileHeader + OptionalHeader)</li>
-  <li><code class="language-plaintext highlighter-rouge">IMAGE_FILE_HEADER</code></li>
-  <li><code class="language-plaintext highlighter-rouge">IMAGE_OPTIONAL_HEADER</code></li>
-  <li><code class="language-plaintext highlighter-rouge">IMAGE_SECTION_HEADER</code></li>
-  <li><code class="language-plaintext highlighter-rouge">IMAGE_DATA_DIRECTORY</code></li>
-  <li><code class="language-plaintext highlighter-rouge">IMAGE_IMPORT_DESCRIPTOR</code>, <code class="language-plaintext highlighter-rouge">IMAGE_EXPORT_DIRECTORY</code> 등은 개별 테이블에 해당</li>
-</ul>
-
-<hr />
-
-<h3 id="pe-구조-분석-시-유용한-도구">PE 구조 분석 시 유용한 도구</h3>
-
-<ul>
-  <li><strong>CFF Explorer</strong></li>
-  <li><strong>PE-bear</strong></li>
-  <li><strong>x64dbg + Scylla</strong></li>
-  <li><strong>IDA / Ghidra</strong></li>
-  <li><strong>dumpbin /headers /imports /exports</strong></li>
-  <li><strong>WinDbg + !lmi / !dh 등</strong></li>
-</ul>
-
-<hr />
-
-<h2 id="pe-파일-분석에서-핵심이-되는-두-가지-중요한-개념">PE 파일 분석에서 핵심이 되는 <strong>두 가지 중요한 개념</strong></h2>
-
-<h3 id="1-각-구조체의-메모리-정렬-방식-alignment">1. 각 구조체의 메모리 정렬 방식 (Alignment)</h3>
-
-<p>PE 파일은 <strong>파일에서는 FileAlignment 단위로 정렬</strong>되고, <strong>메모리에서는 SectionAlignment 단위로 정렬</strong>.</p>
-
-<h4 id="filealignment-디스크-상-정렬">FileAlignment (디스크 상 정렬)</h4>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Optional Header</code>에 있음 (<code class="language-plaintext highlighter-rouge">FileAlignment</code>)</li>
-  <li>보통 <strong>0x200 (512바이트)</strong> 또는 0x1000 (4096바이트)</li>
-  <li>각 섹션의 <code class="language-plaintext highlighter-rouge">SizeOfRawData</code>는 이 단위로 정렬됨</li>
-</ul>
-
-<h4 id="sectionalignment-메모리-정렬">SectionAlignment (메모리 정렬)</h4>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Optional Header</code>에 있음 (<code class="language-plaintext highlighter-rouge">SectionAlignment</code>)</li>
-  <li>보통 <strong>0x1000 (4KB)</strong></li>
-  <li>메모리상에서 섹션들의 <code class="language-plaintext highlighter-rouge">VirtualAddress</code>는 이 단위로 정렬됨</li>
-</ul>
-
-<h4 id="예시">예시</h4>
-
-<table>
-  <thead>
-    <tr>
-      <th>항목</th>
-      <th>값</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>FileAlignment</td>
-      <td>0x200</td>
-    </tr>
-    <tr>
-      <td>SectionAlignment</td>
-      <td>0x1000</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">.text</code> Size</td>
-      <td>0x123</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">.data</code> Size</td>
-      <td>0x430</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>→ 디스크에서는 0x200 단위로 반올림 → <code class="language-plaintext highlighter-rouge">.text</code>는 0x200, <code class="language-plaintext highlighter-rouge">.data</code>는 0x600</p>
-
-<p>→ 메모리에서는 0x1000 단위로 반올림 → <code class="language-plaintext highlighter-rouge">.text</code>는 0x1000, <code class="language-plaintext highlighter-rouge">.data</code>는 0x1000</p>
-
-<h3 id="2-rva--file-offset-변환법">2. RVA ↔ File Offset 변환법</h3>
-
-<p>PE에서는 주소가 두 가지로 표현:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>종류</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>RVA</strong> (Relative Virtual Address)</td>
-      <td>베이스 주소 기준 상대 가상주소 (예: EntryPoint 등 대부분 이걸로 표시됨)</td>
-    </tr>
-    <tr>
-      <td><strong>File Offset</strong></td>
-      <td>실제 파일 내 위치 (디스크 오프셋)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="변환-공식">변환 공식</h4>
-
-<p><strong>FileOffset = RVA - VirtualAddress + PointerToRawData</strong></p>
-
-<p>단, 이 변환은 “어느 섹션에 속하는 RVA냐?”에 따라 다름.</p>
-
-<h4 id="변환-순서-정리">변환 순서 정리</h4>
-
-<ul>
-  <li>모든 섹션 헤더를 순회하며:
-    <ul>
-      <li>해당 섹션의 <code class="language-plaintext highlighter-rouge">VirtualAddress ≤ RVA &lt; VirtualAddress + VirtualSize</code>인지 검사</li>
-    </ul>
-  </li>
-  <li>맞는 섹션이 있다면:
-    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FileOffset</span> <span class="o">=</span> <span class="n">RVA</span> <span class="o">-</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">PointerToRawData</span>
-</code></pre></div>    </div>
-  </li>
-  <li>못 찾으면 → 잘못된 RVA일 가능성</li>
-</ul>
-
-<h4 id="예제">예제</h4>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>섹션: .text
-  VirtualAddress     = 0x1000
-  PointerToRawData   = 0x400
-  VirtualSize        = 0x600
-  SizeOfRawData      = 0x600
-
-EntryPoint = 0x1100 (RVA)
-</code></pre></div></div>
-
-<p>→<code class="language-plaintext highlighter-rouge">.text</code>안에 있음 (0x1000 ≤ 0x1100 &lt; 0x1600)</p>
-
-<p>→ FileOffset = 0x1100 - 0x1000 + 0x400 = 0x500</p>
-
-<h4 id="코드로-구현-c-스타일">코드로 구현 (C++ 스타일)</h4>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DWORD</span> <span class="nf">RvaToOffset</span><span class="p">(</span><span class="n">DWORD</span> <span class="n">rva</span><span class="p">,</span> <span class="n">PIMAGE_NT_HEADERS</span> <span class="n">nt</span><span class="p">,</span> <span class="n">PIMAGE_SECTION_HEADER</span> <span class="n">sections</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num_sections</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_sections</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">DWORD</span> <span class="n">va</span>      <span class="o">=</span> <span class="n">sections</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">VirtualAddress</span><span class="p">;</span>
-        <span class="n">DWORD</span> <span class="n">vsize</span>   <span class="o">=</span> <span class="n">sections</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Misc</span><span class="p">.</span><span class="n">VirtualSize</span><span class="p">;</span>
-        <span class="n">DWORD</span> <span class="n">rawptr</span>  <span class="o">=</span> <span class="n">sections</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">PointerToRawData</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">rva</span> <span class="o">&gt;=</span> <span class="n">va</span> <span class="o">&amp;&amp;</span> <span class="n">rva</span> <span class="o">&lt;</span> <span class="n">va</span> <span class="o">+</span> <span class="n">vsize</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="n">rva</span> <span class="o">-</span> <span class="n">va</span> <span class="o">+</span> <span class="n">rawptr</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 실패</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h4 id="참고-구조체-alignment">참고 구조체 Alignment</h4>
-
-<table>
-  <thead>
-    <tr>
-      <th>구조체</th>
-      <th>Alignment 정보</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>IMAGE_DOS_HEADER</td>
-      <td>고정 위치 (0x0)</td>
-    </tr>
-    <tr>
-      <td>IMAGE_NT_HEADERS</td>
-      <td><code class="language-plaintext highlighter-rouge">e_lfanew</code>부터</td>
-    </tr>
-    <tr>
-      <td>IMAGE_FILE_HEADER</td>
-      <td>20 bytes</td>
-    </tr>
-    <tr>
-      <td>IMAGE_OPTIONAL_HEADER</td>
-      <td>224 bytes (PE32), 240 bytes (PE32+)</td>
-    </tr>
-    <tr>
-      <td>IMAGE_SECTION_HEADER</td>
-      <td>40 bytes/섹션</td>
-    </tr>
-    <tr>
-      <td>IMAGE_IMPORT_DESCRIPTOR</td>
-      <td>20 bytes</td>
-    </tr>
-    <tr>
-      <td>IMAGE_EXPORT_DIRECTORY</td>
-      <td>40 bytes</td>
-    </tr>
-    <tr>
-      <td>IMAGE_DATA_DIRECTORY</td>
-      <td>8 bytes × 16개</td>
-    </tr>
-  </tbody>
-</table>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="reversing_engineering" /><category term="pe파일" /><category term="executable format" /><category term="windows 구조" /><category term="리버싱" /><category term="바이너리 분석" /><summary type="html"><![CDATA[Windows 실행파일(EXE, DLL)의 핵심 구조인 PE(Portable Executable) 포맷을 DOS Header부터 Section, RVA 변환까지 전체 흐름으로 정리한 리버싱 초보자 필수 가이드입니다.]]></summary></entry></feed>
+<p>다시 검색을 진행 해본 이미지 입니다. 카테고리가 빠져있고 게시글만 검색되는 것을 확인할 수 있었습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="Jekyll" /><category term="GitHub Pages" /><category term="lunr.js" /><category term="검색 기능" /><category term="블로그 커스터마이징" /><summary type="html"><![CDATA[minimal-mistakes-jekyll 테마에서 Lunr.js를 이용해 상단 및 사이드바에 커스텀 검색창을 구현하고, 검색 페이지와 필터 기능까지 동작하도록 설정하는 전체 과정을 정리합니다.]]></summary></entry></feed>
