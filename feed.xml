@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-20T23:14:45+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-23T10:19:39+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
 
 <p>OpenGL로 게임을 만든다고 하면 많은 사람이 가장 먼저 셰이더 문법이나 버퍼 객체부터 떠올린다. 하지만 실제로 프로젝트를 시작해 보면 제일 먼저 필요한 것은 화려한 그래픽 기술이 아니라, “게임을 올려둘 수 있는 안정적인 바닥”이다. 창을 만들고, OpenGL 컨텍스트를 초기화하고, 매 프레임마다 갱신과 렌더링을 분리해서 호출하고, 입력과 시간 정보를 관리하고, 이후 텍스처나 스프라이트 같은 상위 개념을 차곡차곡 쌓아 올릴 수 있어야 한다.</p>
 
@@ -3284,9 +3284,9 @@ archive-single.html %} {%- endfor -%}
 <p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code> 해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
 
 <div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-p2l7p5', this)" data-label="sidebar.html 전체 코드">
+  <div class="toggle-label " onclick="toggleTextContent('toggle-bouh8b', this)" data-label="sidebar.html 전체 코드">
   </div>
-  <div id="toggle-p2l7p5" class="toggle-body" style="display: none; max-height: 0;">
+  <div id="toggle-bouh8b" class="toggle-body" style="display: none; max-height: 0;">
     
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
