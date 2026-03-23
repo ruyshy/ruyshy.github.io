@@ -349,6 +349,13 @@ defaults:
       categories: [opengl]
 
   - scope:
+      path: "_posts/unity"
+      type: posts
+    values:
+      categories: [unity]
+
+
+  - scope:
       path: "_posts/blog"
       type: posts
     values:
