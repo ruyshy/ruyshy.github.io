@@ -1,4 +1,607 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-23T10:19:39+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ruyshy.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ruyshy.github.io/" rel="alternate" type="text/html" /><updated>2026-03-23T10:32:27+09:00</updated><id>https://ruyshy.github.io/feed.xml</id><title type="html">ruyshy blog</title><subtitle></subtitle><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><entry><title type="html">unity 2d a-star, cellular-automata algorithm</title><link href="https://ruyshy.github.io/unity/2026/03/23/unity1-astar-algorithm.html" rel="alternate" type="text/html" title="unity 2d a-star, cellular-automata algorithm" /><published>2026-03-23T00:00:00+09:00</published><updated>2026-03-23T00:00:00+09:00</updated><id>https://ruyshy.github.io/unity/2026/03/23/unity1-astar-algorithm</id><content type="html" xml:base="https://ruyshy.github.io/unity/2026/03/23/unity1-astar-algorithm.html"><![CDATA[<h1 id="unity로-만든-동굴형-맵-생성--a-추적-시스템-구현기">Unity로 만든 동굴형 맵 생성 + A* 추적 시스템 구현기</h1>
+
+<h2 id="들어가며">들어가며</h2>
+
+<blockquote>
+
+  <p>github project 사이트는 아래에 링크했습니다.</p>
+
+  <p><a href="https://github.com/ruyshy/Astar-CellAuto">Astar-CellAuto</a></p>
+
+</blockquote>
+
+<p>이번 프로젝트는 단순히 맵을 수동 배치하는 방식이 아니라, <strong>셀룰러 오토마타(Cellular Automata)</strong> 를 이용해 동굴처럼 보이는 2D 맵을 자동 생성하고, 적 캐릭터가 <strong>A*</strong> 알고리즘을 통해 플레이어를 추적하도록 구성한 실험형 프로젝트다.</p>
+
+<p>겉으로 보면 “랜덤 맵 + 적 추적” 정도로 보일 수 있지만, 내부적으로는 다음 두 가지 알고리즘 축이 핵심이다.</p>
+
+<ol>
+  <li><strong>셀룰러 오토마타 기반 맵 생성</strong></li>
+  <li><strong>A* 기반 실시간 경로 탐색</strong></li>
+</ol>
+
+<p>이 글에서는 구현 디테일보다는, 프로젝트를 구성하는 <strong>알고리즘의 의도와 동작 방식</strong> 위주로 정리해보려 한다.</p>
+
+<hr />
+
+<h2 id="프로젝트-핵심-구조">프로젝트 핵심 구조</h2>
+
+<p>이 프로젝트의 흐름은 대략 아래와 같다.</p>
+
+<ol>
+  <li>50x50 격자 맵을 만든다.</li>
+  <li>각 셀을 벽 또는 빈 공간으로 랜덤 초기화한다.</li>
+  <li>셀룰러 오토마타 규칙으로 맵을 한 번 다듬어 동굴 형태를 만든다.</li>
+  <li>생성된 타일 맵 위에 계단, 플레이어, 적 스폰 위치를 배치한다.</li>
+  <li>적은 플레이어가 감지 범위 안에 들어오면 A*를 수행하여 최단 경로를 구한다.</li>
+  <li>계산된 경로의 다음 노드로 이동하면서 플레이어를 추적한다.</li>
+</ol>
+
+<p>즉, <strong>맵 생성 알고리즘</strong>과 <strong>길찾기 알고리즘</strong>이 서로 연결되는 구조다.</p>
+
+<hr />
+
+<h1 id="1-셀룰러-오토마타-기반-동굴형-맵-생성">1. 셀룰러 오토마타 기반 동굴형 맵 생성</h1>
+
+<h2 id="왜-셀룰러-오토마타를-사용했는가">왜 셀룰러 오토마타를 사용했는가</h2>
+
+<p>동굴형 맵은 완전히 규칙적이면 인공적인 느낌이 강하고, 반대로 완전 랜덤이면 플레이가 불가능한 수준으로 난잡해질 수 있다.</p>
+
+<p>셀룰러 오토마타는 이 두 문제의 중간 지점을 잘 잡아준다.</p>
+
+<ul>
+  <li>시작은 랜덤하게 생성할 수 있고</li>
+  <li>이후 이웃 셀의 상태를 기준으로 반복 보정하면</li>
+  <li>자연스럽게 덩어리진 벽과 통로가 형성된다</li>
+</ul>
+
+<p>즉, <strong>“랜덤성은 유지하되, 사람이 보기엔 그럴듯한 지형”</strong> 을 만드는 데 적합하다.</p>
+
+<hr />
+
+<h2 id="맵-데이터-표현">맵 데이터 표현</h2>
+
+<p>맵은 2차원 정수 배열로 관리된다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">int</span><span class="p">[,]</span> <span class="n">Map</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>각 셀의 의미는 단순하다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">1</code> : 벽</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> : 빈 공간</li>
+</ul>
+
+<p>이 단순한 표현 덕분에 이후 타일 생성, 충돌 판정, 스폰 위치 탐색, 경로 탐색까지 모두 같은 기준으로 연결할 수 있다.</p>
+
+<hr />
+
+<h2 id="1-1-랜덤-초기화">1-1. 랜덤 초기화</h2>
+
+<p>초기 맵은 <code class="language-plaintext highlighter-rouge">RandomFillMap()</code> 에서 생성된다.</p>
+
+<p>핵심 아이디어는 다음과 같다.</p>
+
+<ul>
+  <li>맵 바깥 테두리는 반드시 벽으로 고정</li>
+  <li>내부는 지정된 확률(<code class="language-plaintext highlighter-rouge">PercentAreWalls</code>)에 따라 벽 또는 빈 공간으로 설정</li>
+  <li>중앙 한 줄은 빈 공간으로 강제 설정</li>
+</ul>
+
+<p>의사코드로 표현하면 다음과 같다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for each cell (x, y):
+    if border:
+        map[x, y] = wall
+    else if y == middleRow:
+        map[x, y] = empty
+    else:
+        map[x, y] = random(percentWall)
+</code></pre></div></div>
+
+<h3 id="이-설계의-의미">이 설계의 의미</h3>
+
+<h4 id="1-테두리를-벽으로-고정">1) 테두리를 벽으로 고정</h4>
+<p>맵 바깥이 비어 있으면 경계 처리와 충돌 판정이 복잡해진다. 테두리를 벽으로 고정하면 맵이 안정적으로 닫힌 구조가 된다.</p>
+
+<h4 id="2-내부는-확률적으로-벽-생성">2) 내부는 확률적으로 벽 생성</h4>
+<p><code class="language-plaintext highlighter-rouge">40%</code> 내외 확률로 벽을 뿌리면, 이후 셀룰러 오토마타 규칙이 작동했을 때 벽 덩어리와 통로가 자연스럽게 형성된다.</p>
+
+<h4 id="3-중앙-행을-비워둠">3) 중앙 행을 비워둠</h4>
+<p>이 부분은 꽤 흥미로운 장치다. 완전 랜덤으로 시작하면 맵이 지나치게 막혀버릴 수 있는데, 중앙 라인을 비워두면 최소한 하나의 가로 통로 축이 형성될 가능성이 커진다. 즉, <strong>맵의 단절을 완화하는 안전장치</strong> 역할을 한다.</p>
+
+<hr />
+
+<h2 id="1-2-이웃-벽-개수-계산">1-2. 이웃 벽 개수 계산</h2>
+
+<p>셀룰러 오토마타의 핵심은 “내 주변에 벽이 몇 개 있는가”이다.</p>
+
+<p>이 프로젝트에서는 <code class="language-plaintext highlighter-rouge">GetAdjacentWalls(x, y, 1, 1)</code> 를 통해 주변 8칸을 검사한다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for ny from y-1 to y+1:
+    for nx from x-1 to x+1:
+        if (nx, ny) is not (x, y):
+            if wall:
+                count++
+</code></pre></div></div>
+
+<p>여기서 중요한 특징은 <strong>맵 밖은 벽으로 취급</strong>한다는 점이다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="nf">IsWall</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nf">IsOutOfBounds</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="왜-맵-밖을-벽으로-보는가">왜 맵 밖을 벽으로 보는가</h3>
+
+<p>이 처리를 하지 않으면 가장자리 셀은 주변 이웃 수가 부족해서 비정상적으로 빈 공간이 되기 쉽다. 반대로 맵 밖을 벽으로 간주하면, 외곽이 더 안정적으로 막히고 동굴 외곽 형태가 유지된다.</p>
+
+<p>이런 경계 처리 방식은 셀룰러 오토마타 기반 맵 생성에서 자주 쓰이는 테크닉이다.</p>
+
+<hr />
+
+<h2 id="1-3-셀-상태-갱신-규칙">1-3. 셀 상태 갱신 규칙</h2>
+
+<p>실제 동굴 형태를 만드는 규칙은 <code class="language-plaintext highlighter-rouge">PlaceWallLogic()</code> 에 구현되어 있다.</p>
+
+<p>규칙은 다음과 같이 해석할 수 있다.</p>
+
+<h3 id="현재-셀이-벽일-때">현재 셀이 벽일 때</h3>
+<ul>
+  <li>주변 벽 수가 4개 이상이면 벽 유지</li>
+  <li>주변 벽 수가 2개 미만이면 빈 공간으로 변경</li>
+</ul>
+
+<h3 id="현재-셀이-빈-공간일-때">현재 셀이 빈 공간일 때</h3>
+<ul>
+  <li>주변 벽 수가 5개 이상이면 벽으로 변경</li>
+</ul>
+
+<p>이를 정리하면 다음과 같다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if current is wall:
+    if adjacentWalls &gt;= 4: stay wall
+    else if adjacentWalls &lt; 2: become empty
+else:
+    if adjacentWalls &gt;= 5: become wall
+    else: stay empty
+</code></pre></div></div>
+
+<h3 id="이-규칙이-만드는-효과">이 규칙이 만드는 효과</h3>
+
+<h4 id="벽-덩어리는-더-단단해진다">벽 덩어리는 더 단단해진다</h4>
+<p>주변에 벽이 많으면 해당 셀도 벽으로 유지되므로 작은 틈이 메워진다.</p>
+
+<h4 id="외딴-벽은-제거된다">외딴 벽은 제거된다</h4>
+<p>혼자 떨어진 벽은 주변 벽 수가 적기 때문에 사라진다.</p>
+
+<h4 id="빈-공간도-너무-넓게-퍼지지-않는다">빈 공간도 너무 넓게 퍼지지 않는다</h4>
+<p>주변이 벽으로 둘러싸인 빈 공간은 다시 벽으로 바뀌므로, 결과적으로 맵은 “들쭉날쭉한 랜덤 노이즈”에서 “덩어리진 동굴 구조”로 수렴한다.</p>
+
+<hr />
+
+<h2 id="1-4-맵을-한-번만-다듬는-구조">1-4. 맵을 한 번만 다듬는 구조</h2>
+
+<p>보통 셀룰러 오토마타는 여러 세대를 반복 적용하는 경우가 많다. 그런데 이 프로젝트는 <code class="language-plaintext highlighter-rouge">MakeCaverns()</code> 호출을 보면 전체 맵을 순회하며 한 번 보정하는 구조에 가깝다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">row</span> <span class="p">...</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="p">...</span>
+        <span class="n">Map</span><span class="p">[</span><span class="n">column</span><span class="p">,</span> <span class="n">row</span><span class="p">]</span> <span class="p">=</span> <span class="nf">PlaceWallLogic</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">row</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="장점">장점</h3>
+<ul>
+  <li>구현이 단순하다</li>
+  <li>생성 속도가 빠르다</li>
+  <li>과도하게 맵이 뭉개지지 않는다</li>
+</ul>
+
+<h3 id="아쉬운-점">아쉬운 점</h3>
+<ul>
+  <li>세대 반복이 적으면 맵 품질 편차가 커질 수 있다</li>
+  <li>좁은 통로, 고립 구역, 끊긴 공간이 남을 수 있다</li>
+</ul>
+
+<p>즉, 현재 구조는 <strong>실험용/학습용으로는 충분히 직관적</strong>이지만, 완성도를 더 높이려면 다음과 같은 후처리를 붙일 수 있다.</p>
+
+<ul>
+  <li>3~5회 반복 보정</li>
+  <li>flood fill로 가장 큰 연결 영역만 남기기</li>
+  <li>시작점과 목표점 사이 연결성 검사</li>
+  <li>고립된 작은 방 제거</li>
+</ul>
+
+<hr />
+
+<h2 id="1-5-스폰-위치-탐색-방식">1-5. 스폰 위치 탐색 방식</h2>
+
+<p>맵 생성 후에는 계단, 플레이어, 적을 배치해야 한다. 이 프로젝트는 <code class="language-plaintext highlighter-rouge">MapGCR2x2()</code> 를 통해 특정 크기 영역이 비어 있는지 검사한 뒤 스폰 위치를 정한다.</p>
+
+<p>핵심 아이디어는 다음과 같다.</p>
+
+<ol>
+  <li>랜덤 좌표를 뽑는다.</li>
+  <li>해당 위치 주변 <code class="language-plaintext highlighter-rouge">S x S</code> 영역을 검사한다.</li>
+  <li>전부 빈 공간이면 배치한다.</li>
+  <li>아니면 다시 랜덤 시도한다.</li>
+</ol>
+
+<p>즉, 이것은 일종의 <strong>빈 영역 샘플링(empty region sampling)</strong> 이다.</p>
+
+<h3 id="왜-중요한가">왜 중요한가</h3>
+
+<p>플레이어나 계단이 벽 위에 생성되면 게임 진행이 불가능해진다. 따라서 맵 생성만큼이나 “안전한 스폰 위치 찾기”도 중요하다.</p>
+
+<p>이 프로젝트는 복잡한 공간 분할 없이, <strong>랜덤 시도 + 주변 영역 검사</strong> 방식으로 이를 해결한다.</p>
+
+<p>단순하지만 50x50 정도 크기에서는 충분히 실용적이다.</p>
+
+<hr />
+
+<h1 id="2-a-알고리즘-기반-적-추적">2. A* 알고리즘 기반 적 추적</h1>
+
+<p>셀룰러 오토마타가 맵의 형태를 만든다면, 실제 게임 플레이의 긴장감은 적의 추적 로직에서 나온다.</p>
+
+<p>이 프로젝트의 적은 플레이어를 감지하면 A* 알고리즘을 실행해 경로를 계산한다.</p>
+
+<hr />
+
+<h2 id="2-1-노드-구조">2-1. 노드 구조</h2>
+
+<p>경로 탐색용 노드는 다음 정보를 가진다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">isWall</code> : 해당 칸이 벽인지</li>
+  <li><code class="language-plaintext highlighter-rouge">x, y</code> : 좌표</li>
+  <li><code class="language-plaintext highlighter-rouge">G</code> : 시작점에서 현재 노드까지의 실제 이동 비용</li>
+  <li><code class="language-plaintext highlighter-rouge">H</code> : 현재 노드에서 목표까지의 휴리스틱 비용</li>
+  <li><code class="language-plaintext highlighter-rouge">F = G + H</code> : 총 평가값</li>
+  <li><code class="language-plaintext highlighter-rouge">ParentNode</code> : 경로 복원용 부모 노드</li>
+</ul>
+
+<p>이는 A*의 전형적인 노드 구성이다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">int</span> <span class="n">F</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">G</span> <span class="p">+</span> <span class="n">H</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="의미-정리">의미 정리</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">G</code> 는 지금까지 얼마나 돌아왔는가</li>
+  <li><code class="language-plaintext highlighter-rouge">H</code> 는 앞으로 얼마나 남았다고 추정하는가</li>
+  <li><code class="language-plaintext highlighter-rouge">F</code> 는 둘을 합친 우선순위 값</li>
+</ul>
+
+<p>즉, A*는 매 순간 <strong>“지금까지 비용 + 앞으로 예상 비용”</strong> 이 가장 좋은 노드를 선택해 탐색한다.</p>
+
+<hr />
+
+<h2 id="2-2-탐색-격자-생성">2-2. 탐색 격자 생성</h2>
+
+<p>적은 탐색을 시작할 때 먼저 현재 공간을 노드 배열로 변환한다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NodeArray</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">[</span><span class="n">sizeX</span><span class="p">,</span> <span class="n">sizeY</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>각 칸이 벽인지 여부는 <code class="language-plaintext highlighter-rouge">Physics2D.OverlapCircleAll()</code> 을 통해 검사한다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">foreach</span> <span class="p">(</span><span class="n">Collider2D</span> <span class="n">col</span> <span class="k">in</span> <span class="n">Physics2D</span><span class="p">.</span><span class="nf">OverlapCircleAll</span><span class="p">(...))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">col</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">layer</span> <span class="p">==</span> <span class="n">LayerMask</span><span class="p">.</span><span class="nf">NameToLayer</span><span class="p">(</span><span class="s">"Wall"</span><span class="p">))</span>
+        <span class="n">isWall</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="이-방식의-특징">이 방식의 특징</h3>
+
+<p>맵 데이터를 그대로 참조하는 대신, <strong>실제 물리 충돌 정보로부터 탐색용 그리드</strong>를 다시 생성한다.</p>
+
+<p>이 방식은 다음 장점이 있다.</p>
+
+<ul>
+  <li>씬에 실제로 존재하는 장애물을 기준으로 탐색 가능</li>
+  <li>타일맵 외의 오브젝트도 벽 판정에 포함 가능</li>
+  <li>경로 탐색과 렌더링/충돌 시스템이 자연스럽게 연결됨</li>
+</ul>
+
+<p>반면 단점도 있다.</p>
+
+<ul>
+  <li>경로 탐색을 실행할 때마다 물리 쿼리를 반복하므로 비용이 크다</li>
+  <li>적 수가 많아지면 성능 저하가 빠르게 발생한다</li>
+</ul>
+
+<p>즉, 소규모 프로젝트에는 직관적이지만, 대규모로 확장하려면 캐싱 또는 별도 내비게이션 그리드가 필요하다.</p>
+
+<hr />
+
+<h2 id="2-3-open-list--closed-list">2-3. Open List / Closed List</h2>
+
+<p>A*의 기본 구조도 정석적으로 구현되어 있다.</p>
+
+<ul>
+  <li><strong>OpenList</strong> : 앞으로 탐색할 후보 노드</li>
+  <li><strong>ClosedList</strong> : 이미 검사한 노드</li>
+</ul>
+
+<p>시작 시점에는 시작 노드만 OpenList에 들어간다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">OpenList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Node</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="n">StartNode</span> <span class="p">};</span>
+<span class="n">ClosedList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Node</span><span class="p">&gt;();</span>
+</code></pre></div></div>
+
+<p>탐색 루프는 아래와 같다.</p>
+
+<ol>
+  <li>OpenList에서 가장 좋은 노드를 고른다.</li>
+  <li>그 노드를 OpenList에서 제거하고 ClosedList에 넣는다.</li>
+  <li>목표 노드면 탐색 종료</li>
+  <li>아니면 이웃 노드를 검사해서 OpenList에 추가한다.</li>
+</ol>
+
+<p>이것이 A*의 핵심 반복 구조다.</p>
+
+<hr />
+
+<h2 id="2-4-현재-노드-선택-기준">2-4. 현재 노드 선택 기준</h2>
+
+<p>현재 노드는 OpenList 중 가장 우선순위가 높은 노드로 선택된다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">OpenList</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">F</span> <span class="p">&lt;=</span> <span class="n">CurNode</span><span class="p">.</span><span class="n">F</span> <span class="p">&amp;&amp;</span> <span class="n">OpenList</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">H</span> <span class="p">&lt;</span> <span class="n">CurNode</span><span class="p">.</span><span class="n">H</span><span class="p">)</span>
+    <span class="n">CurNode</span> <span class="p">=</span> <span class="n">OpenList</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>즉,</p>
+
+<ul>
+  <li>기본적으로 <code class="language-plaintext highlighter-rouge">F</code> 가 작은 노드를 우선</li>
+  <li><code class="language-plaintext highlighter-rouge">F</code> 가 같으면 <code class="language-plaintext highlighter-rouge">H</code> 가 더 작은 노드를 우선</li>
+</ul>
+
+<p>이 tie-break 방식은 목표 방향으로 좀 더 공격적으로 전진하게 만드는 효과가 있다.</p>
+
+<hr />
+
+<h2 id="2-5-이동-비용-설계">2-5. 이동 비용 설계</h2>
+
+<p>이 프로젝트는 직선 이동과 대각선 이동의 비용을 다르게 둔다.</p>
+
+<ul>
+  <li>직선 이동: <code class="language-plaintext highlighter-rouge">10</code></li>
+  <li>대각선 이동: <code class="language-plaintext highlighter-rouge">14</code></li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">MoveCost</span> <span class="p">=</span> <span class="n">CurNode</span><span class="p">.</span><span class="n">G</span> <span class="p">+</span> <span class="p">(</span><span class="n">straight</span> <span class="p">?</span> <span class="m">10</span> <span class="p">:</span> <span class="m">14</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이 값은 흔히 쓰는 근사값이다.</p>
+
+<ul>
+  <li>직선 거리 1칸 = 1.0 → 비용 10</li>
+  <li>대각선 거리 1칸 = 1.414… → 비용 14</li>
+</ul>
+
+<p>즉, 정수 연산만으로 유클리드 거리 느낌을 어느 정도 반영할 수 있다.</p>
+
+<hr />
+
+<h2 id="2-6-휴리스틱-함수">2-6. 휴리스틱 함수</h2>
+
+<p>휴리스틱 <code class="language-plaintext highlighter-rouge">H</code> 는 맨해튼 거리 기반으로 계산된다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NeighborNode</span><span class="p">.</span><span class="n">H</span> <span class="p">=</span> <span class="p">(</span><span class="n">Mathf</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">NeighborNode</span><span class="p">.</span><span class="n">x</span> <span class="p">-</span> <span class="n">TargetNode</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="p">+</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">NeighborNode</span><span class="p">.</span><span class="n">y</span> <span class="p">-</span> <span class="n">TargetNode</span><span class="p">.</span><span class="n">y</span><span class="p">))</span> <span class="p">*</span> <span class="m">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>즉,</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>H = (|dx| + |dy|) * 10
+</code></pre></div></div>
+
+<h3 id="해석">해석</h3>
+
+<p>맨해튼 거리는 격자 기반 탐색에서 가장 기본적인 휴리스틱이다. 목표 지점까지 가로/세로로 몇 칸 남았는지를 빠르게 추정할 수 있다.</p>
+
+<h3 id="주의할-점">주의할 점</h3>
+
+<p>이 프로젝트는 대각선 이동을 허용할 수 있으므로, 이 경우에는 맨해튼보다 <strong>Octile Distance</strong> 같은 휴리스틱이 더 잘 맞는다.</p>
+
+<p>예를 들어:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>H = 14 * min(dx, dy) + 10 * (max(dx, dy) - min(dx, dy))
+</code></pre></div></div>
+
+<p>현재 구현도 동작은 하지만, 대각선 허용 상황에서는 휴리스틱이 최적에 덜 가깝게 작동할 수 있다.</p>
+
+<hr />
+
+<h2 id="2-7-대각선-이동과-코너-통과-제어">2-7. 대각선 이동과 코너 통과 제어</h2>
+
+<p>이 프로젝트에서 특히 좋은 부분은 대각선 이동 옵션을 단순 허용하는 데 그치지 않고, <strong>코너 뚫기 문제</strong>를 제어하려 했다는 점이다.</p>
+
+<p>관련 옵션은 다음 두 가지다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">allowDiagonal</code></li>
+  <li><code class="language-plaintext highlighter-rouge">dontCrossCorner</code></li>
+</ul>
+
+<p>이웃 노드를 추가할 때,</p>
+
+<ul>
+  <li>양쪽 직교 방향이 모두 벽이면 대각선 진입 금지</li>
+  <li>또는 옵션에 따라 한쪽이라도 막혀 있으면 대각선 진입 금지</li>
+</ul>
+
+<p>이런 검사를 수행한다.</p>
+
+<h3 id="왜-중요한가-1">왜 중요한가</h3>
+
+<p>격자 기반 경로 탐색에서 대각선 이동을 허용하면, 실제로는 통과할 수 없는 벽 모서리를 비집고 지나가는 문제가 생긴다. 이를 <strong>corner cutting</strong> 문제라고 한다.</p>
+
+<p>현재 구현은 그 문제를 의식하고 있으며, 게임 플레이상 더 자연스러운 이동을 만들 수 있다.</p>
+
+<hr />
+
+<h2 id="2-8-경로-복원">2-8. 경로 복원</h2>
+
+<p>목표 노드에 도달하면 탐색이 끝나고, 부모 노드를 역추적해서 최종 경로를 만든다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span> <span class="n">TargetCurNode</span> <span class="p">=</span> <span class="n">TargetNode</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">TargetCurNode</span> <span class="p">!=</span> <span class="n">StartNode</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">FinalNodeList</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">TargetCurNode</span><span class="p">);</span>
+    <span class="n">TargetCurNode</span> <span class="p">=</span> <span class="n">TargetCurNode</span><span class="p">.</span><span class="n">ParentNode</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">FinalNodeList</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">StartNode</span><span class="p">);</span>
+<span class="n">FinalNodeList</span><span class="p">.</span><span class="nf">Reverse</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>이 과정은 매우 전형적인 A* 경로 복원 방식이다.</p>
+
+<ul>
+  <li>탐색 중에는 각 노드가 “어디서 왔는지”만 기억한다.</li>
+  <li>도착 후에는 목표에서 시작까지 거꾸로 따라간다.</li>
+  <li>마지막에 뒤집으면 실제 이동 순서가 된다.</li>
+</ul>
+
+<p>알고리즘적으로도 깔끔하고, 구현 난이도도 낮다.</p>
+
+<hr />
+
+<h2 id="2-9-실제-이동-방식">2-9. 실제 이동 방식</h2>
+
+<p>경로가 만들어지면 적은 전체 경로를 한 번에 따라가는 것이 아니라, <strong>다음 노드 한 칸씩</strong> 이동한다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Vector2</span> <span class="n">FinalNodePos</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="n">FinalNodeList</span><span class="p">[</span><span class="m">1</span><span class="p">].</span><span class="n">x</span><span class="p">,</span> <span class="n">FinalNodeList</span><span class="p">[</span><span class="m">1</span><span class="p">].</span><span class="n">y</span><span class="p">);</span>
+<span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="nf">MoveTowards</span><span class="p">(...,</span> <span class="n">FinalNodePos</span><span class="p">,</span> <span class="m">0.07f</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>도착하면 첫 노드를 제거하고 다음 노드로 간다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">((</span><span class="n">Vector2</span><span class="p">)</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">==</span> <span class="n">FinalNodePos</span><span class="p">)</span>
+    <span class="n">FinalNodeList</span><span class="p">.</span><span class="nf">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이 구조는 간단하지만, 현재 구현에서는 매 프레임 <code class="language-plaintext highlighter-rouge">PathFinding()</code> 을 다시 호출하므로 연산량이 꽤 많다.</p>
+
+<hr />
+
+<h1 id="3-알고리즘-관점에서-본-이-프로젝트의-장점">3. 알고리즘 관점에서 본 이 프로젝트의 장점</h1>
+
+<h2 id="1-학습용으로-구조가-명확하다">1) 학습용으로 구조가 명확하다</h2>
+
+<ul>
+  <li>맵 생성: 셀룰러 오토마타</li>
+  <li>이동 AI: A*</li>
+</ul>
+
+<p>서로 다른 두 알고리즘이 한 프로젝트 안에서 유기적으로 이어진다. 그래서 단순한 예제보다 훨씬 교육 효과가 좋다.</p>
+
+<h2 id="2-데이터-흐름이-직관적이다">2) 데이터 흐름이 직관적이다</h2>
+
+<p>격자 맵 → 타일 배치 → 장애물 판정 → 경로 탐색이라는 연결이 명확하다. 알고리즘이 실제 게임 시스템으로 이어지는 흐름을 이해하기 좋다.</p>
+
+<h2 id="3-옵션화-포인트가-보인다">3) 옵션화 포인트가 보인다</h2>
+
+<ul>
+  <li>벽 비율 조정</li>
+  <li>대각선 허용 여부</li>
+  <li>코너 통과 허용 여부</li>
+  <li>스폰 영역 크기</li>
+</ul>
+
+<p>이런 파라미터들이 알고리즘 결과에 어떤 영향을 주는지 실험하기 좋다.</p>
+
+<hr />
+
+<h1 id="4-개선해볼-수-있는-알고리즘-포인트">4. 개선해볼 수 있는 알고리즘 포인트</h1>
+
+<h2 id="4-1-셀룰러-오토마타-반복-횟수-늘리기">4-1. 셀룰러 오토마타 반복 횟수 늘리기</h2>
+
+<p>현재는 한 번 보정하는 수준이어서 맵 품질 편차가 있다. 3~5회 정도 반복하면 더 안정적인 동굴 구조를 얻을 수 있다.</p>
+
+<h2 id="4-2-연결성-보장">4-2. 연결성 보장</h2>
+
+<p>셀룰러 오토마타만으로는 플레이 가능한 맵이 항상 보장되지 않는다. flood fill 또는 BFS를 이용해 가장 큰 연결 영역만 남기면 맵 완성도가 훨씬 올라간다.</p>
+
+<h2 id="4-3-a-성능-개선">4-3. A* 성능 개선</h2>
+
+<p>현재는 매번 <code class="language-plaintext highlighter-rouge">OpenList</code> 선형 탐색으로 최적 노드를 찾는다. 이를 우선순위 큐(최소 힙)로 바꾸면 성능이 크게 좋아진다.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>현재: O(n)으로 최적 노드 선택
+개선: O(log n)으로 최적 노드 선택
+</code></pre></div></div>
+
+<h2 id="4-4-물리-쿼리-캐싱">4-4. 물리 쿼리 캐싱</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Physics2D.OverlapCircleAll()</code> 을 경로 탐색 때마다 전부 다시 수행하는 구조는 비용이 크다. 맵이 변하지 않는다면 벽 정보를 한 번만 추출해서 재사용하는 편이 낫다.</p>
+
+<h2 id="4-5-휴리스틱-개선">4-5. 휴리스틱 개선</h2>
+
+<p>대각선 이동을 허용한다면 맨해튼 거리보다 Octile Distance가 더 적합하다.</p>
+
+<h2 id="4-6-재탐색-주기-조정">4-6. 재탐색 주기 조정</h2>
+
+<p>플레이어가 조금 움직였다고 매 프레임 전체 경로를 다시 계산할 필요는 없다. 예를 들면 다음처럼 줄일 수 있다.</p>
+
+<ul>
+  <li>0.2초마다 재탐색</li>
+  <li>목표가 일정 거리 이상 변했을 때만 재탐색</li>
+  <li>기존 경로가 막혔을 때만 재탐색</li>
+</ul>
+
+<p>이렇게 하면 적 수가 많아져도 훨씬 안정적이다.</p>
+
+<hr />
+
+<h1 id="5-이-프로젝트를-통해-느낀-점">5. 이 프로젝트를 통해 느낀 점</h1>
+
+<p>이 프로젝트의 가장 좋은 점은, 흔히 따로 배우는 두 주제인 <strong>절차적 생성(Procedural Generation)</strong> 과 <strong>경로 탐색(Pathfinding)</strong> 이 하나의 플레이 흐름 안에서 연결된다는 점이다.</p>
+
+<p>맵을 랜덤하게 만든다고 끝이 아니라,
+그 랜덤 맵 위에서 적이 실제로 플레이어를 따라올 수 있어야 하고,
+그 과정에서 장애물과 공간 구조가 길찾기 난이도에 직접 영향을 준다.</p>
+
+<p>즉, 이 프로젝트는 단순한 예제를 넘어서,</p>
+
+<ul>
+  <li>맵 생성 알고리즘이 게임 플레이를 어떻게 바꾸는지</li>
+  <li>경로 탐색이 맵 구조에 얼마나 민감한지</li>
+  <li>랜덤성과 플레이 가능성 사이의 균형이 왜 중요한지</li>
+</ul>
+
+<p>를 직접 확인할 수 있는 좋은 구조였다.</p>
+
+<hr />
+
+<h1 id="마무리">마무리</h1>
+
+<p>정리하자면 이 프로젝트의 핵심은 다음과 같다.</p>
+
+<ul>
+  <li><strong>셀룰러 오토마타</strong>로 자연스러운 동굴형 타일 맵을 생성한다.</li>
+  <li><strong>A*</strong> 알고리즘으로 적이 플레이어까지의 경로를 탐색한다.</li>
+  <li>두 알고리즘이 결합되면서, 매번 다른 지형 위에서 추적 플레이가 이루어진다.</li>
+</ul>
+
+<p>아직 개선 여지는 많다. 하지만 학습용, 포트폴리오용, 혹은 알고리즘 실험용 프로젝트로 보면 꽤 좋은 출발점이다. 특히 “맵 생성”과 “AI 이동”을 따로 보지 않고 하나의 시스템으로 연결해봤다는 점에서 의미가 있다.</p>
+
+<p>다음 단계로 확장한다면 아래 주제를 이어서 실험해보고 싶다.</p>
+
+<ul>
+  <li>연결 영역 보정이 포함된 고품질 동굴 생성</li>
+  <li>힙 기반 A* 최적화</li>
+  <li>여러 적이 동시에 움직이는 군집 추적</li>
+  <li>FOV(시야각)와 탐지 반경을 포함한 더 정교한 적 AI</li>
+  <li>타일 비용(weight)을 도입한 지형별 경로 탐색</li>
+</ul>
+
+<hr />
+
+<h2 id="한-줄-요약">한 줄 요약</h2>
+
+<p><strong>이 프로젝트는 셀룰러 오토마타로 맵의 형태를 만들고, A*로 그 공간 위의 추적 행동을 완성한, 알고리즘 중심의 2D 게임 실험 프로젝트다.</strong></p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="unity" /><category term="unity" /><category term="algorithm" /><category term="a-star" /><category term="cell-automata" /><summary type="html"><![CDATA[Unity로 만든 동굴형 맵 생성 + A* 추적 시스템 구현기]]></summary></entry><entry><title type="html">OpenGL Game Project Framework</title><link href="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html" rel="alternate" type="text/html" title="OpenGL Game Project Framework" /><published>2026-03-19T00:00:00+09:00</published><updated>2026-03-19T00:00:00+09:00</updated><id>https://ruyshy.github.io/opengl/2026/03/19/opengl1-start</id><content type="html" xml:base="https://ruyshy.github.io/opengl/2026/03/19/opengl1-start.html"><![CDATA[<h1 id="opengl-게임-프로젝트-기본-뼈대-분석-창-생성부터-렌더-루프-2d-스프라이트-기반-확장-구조까지">OpenGL 게임 프로젝트 기본 뼈대 분석: 창 생성부터 렌더 루프, 2D 스프라이트 기반 확장 구조까지</h1>
 
 <p>OpenGL로 게임을 만든다고 하면 많은 사람이 가장 먼저 셰이더 문법이나 버퍼 객체부터 떠올린다. 하지만 실제로 프로젝트를 시작해 보면 제일 먼저 필요한 것은 화려한 그래픽 기술이 아니라, “게임을 올려둘 수 있는 안정적인 바닥”이다. 창을 만들고, OpenGL 컨텍스트를 초기화하고, 매 프레임마다 갱신과 렌더링을 분리해서 호출하고, 입력과 시간 정보를 관리하고, 이후 텍스처나 스프라이트 같은 상위 개념을 차곡차곡 쌓아 올릴 수 있어야 한다.</p>
 
@@ -3197,472 +3800,4 @@ archive-single.html %} {%- endfor -%}
 
 <blockquote>
   <p>기존의 태그 목록 방식도 충분히 유용하지만, 저는 <code class="language-plaintext highlighter-rouge">/tags/태그명/</code>처럼 각 태그별로 독립된 페이지가 생성되어 관련 글만 모아볼 수 있는 구조가 훨씬 더 직관적이고 마음에 들었습니다.</p>
-</blockquote>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="Jekyll" /><category term="GitHub Pages" /><category term="tag" /><category term="blog customization" /><summary type="html"><![CDATA[Jekyll 기반 GitHub 블로그에서 태그 기능을 추가하고 /tags/태그명/ 경로로 자동 생성되도록 설정하는 방법을 정리합니다. generate_tags.rb 플러그인과 tag_archive 레이아웃을 활용한 커스터마이징을 포함합니다.]]></summary></entry><entry><title type="html">GitHub 블로그에 Lunr 기반 커스텀 검색창 만들기</title><link href="https://ruyshy.github.io/blog/2025/05/02/blog-21-search.html" rel="alternate" type="text/html" title="GitHub 블로그에 Lunr 기반 커스텀 검색창 만들기" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>https://ruyshy.github.io/blog/2025/05/02/blog-21-search</id><content type="html" xml:base="https://ruyshy.github.io/blog/2025/05/02/blog-21-search.html"><![CDATA[<p>GitHub Pages 블로그에 사용자 정의 검색창을 추가하고 싶으셨나요?<br />
-이 포스트에서는 minimal-mistakes 테마를 기반으로 Lunr.js를 활용해 상단과 사이드바에 검색창을 구현하고, 제목 및 태그 기준의 검색 기능을 설정하는 방법을 단계별로 안내합니다.</p>
-
-<p>해당 강의는 <code class="language-plaintext highlighter-rouge">minimal-mistakes-jekyll</code> 테마를 기준으로 작성되어있습니다.</p>
-
-<h2 id="1-상단-위에-검색-창-만들기">1. 상단 위에 검색 창 만들기</h2>
-
-<p><code class="language-plaintext highlighter-rouge">_config.yml</code> 수정</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">search</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">sidebar</span><span class="pi">:</span>
-        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-</code></pre></div></div>
-
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">search: true</code> 코드를 추가해줍니다.</p>
-
-<h3 id="_configyml-속성-수정">_config.yml 속성 수정</h3>
-
-<p><code class="language-plaintext highlighter-rouge">search:</code> 해당 속성에 추가해줍니다: <code class="language-plaintext highlighter-rouge">search: true</code></p>
-
-<p><code class="language-plaintext highlighter-rouge">search_full_content:</code> 해당 속성에 추가해 줍니다: <code class="language-plaintext highlighter-rouge">search_full_content: true</code></p>
-
-<p><code class="language-plaintext highlighter-rouge">search_provider:</code> 해당 속성에 추가해 줍니다: <code class="language-plaintext highlighter-rouge">search_provider: lunr</code></p>
-
-<p><code class="language-plaintext highlighter-rouge">lunr:</code> 해당 속성 하위 속성인 <code class="language-plaintext highlighter-rouge">search_within_pages:</code> 해당 속성에 추가해 줍니다: <code class="language-plaintext highlighter-rouge">search_within_pages: true</code></p>
-
-<p><img src="/assets/images/blog/2025-05-02-blog-21-search/blog-search-image.png" alt="blog-search-image.png" style="max-width:100%;" /></p>
-
-<p>속성 수정 후 local server로 확인한 스크린샷 이미지입니다.</p>
-
-<p>오른쪽 상단에 Category 옆에 search 아이콘이 생성된 것을 확인할 수 있습니다.</p>
-
-<p>해당 search 아이콘의 코드 위치는 <code class="language-plaintext highlighter-rouge">\_includes\masthead.html</code> 에 25번째 줄에 있습니다.</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.search == true %}
-<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"search__toggle"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"visually-hidden"</span>
-    <span class="nt">&gt;</span>{{ site.data.ui-text[site.locale].search_label | default: "Toggle search"
-    }}<span class="nt">&lt;/span</span>
-  <span class="nt">&gt;</span>
-  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span>
-<span class="nt">&lt;/button&gt;</span>
-{% endif %}
-</code></pre></div></div>
-
-<hr />
-
-<p>해당 코드를 지우면 오른쪽 상단에 search 아이콘이 지워지는 것을 확인할 수 있습니다.</p>
-
-<h2 id="2-사이드-바-카테고리-밑에-검색-창-추가하기">2. 사이드 바 카테고리 밑에 검색 창 추가하기</h2>
-
-<p>해당 코드를 <code class="language-plaintext highlighter-rouge">\_include\sidebar.html</code> 에 넣어 줍니다.</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar__search"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"sidebar-search"</span> <span class="na">onsubmit=</span><span class="s">"return SidebarSearchHandler();"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"search-type"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"tag"</span><span class="nt">&gt;</span>Tag<span class="nt">&lt;/option&gt;</span>
-        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"both"</span><span class="nt">&gt;</span>Title + Tag<span class="nt">&lt;/option&gt;</span>
-      <span class="nt">&lt;/select&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"search-query"</span> <span class="na">placeholder=</span><span class="s">"Search input"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span> Search<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/form&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<p>해당 코드를 넣을 때, <code class="language-plaintext highlighter-rouge">&lt;nav class="nav__list"&gt;</code> … <code class="language-plaintext highlighter-rouge">&lt;/nav&gt;</code> 해당 nav 태그 안에 넣어 주도록 합시다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">&lt;form id="sidebar__search" onsubmit="return SidebarSearchHandler();"&gt;</code> 해당 부분에 <code class="language-plaintext highlighter-rouge">SidebarSearchHandler()</code> 함수는 2-2. 에서 확인 하실 수 있습니다.</p>
-
-<div class="toggle">
-  <div class="toggle-label " onclick="toggleTextContent('toggle-bouh8b', this)" data-label="sidebar.html 전체 코드">
-  </div>
-  <div id="toggle-bouh8b" class="toggle-body" style="display: none; max-height: 0;">
-    
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if page.author_profile or layout.author_profile or page.sidebar %}
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar sticky"</span><span class="nt">&gt;</span>
-  {% if page.author_profile or layout.author_profile %}
-    {% include author-profile.html %}
-  {% endif %}
-
-  <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"nav-divider"</span> <span class="nt">/&gt;&lt;/li&gt;</span>
-
-  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav__list"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav__items"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav__title"</span><span class="nt">&gt;</span>Category<span class="nt">&lt;/li&gt;</span>
-      <span class="nt">&lt;a</span>
-      <span class="na">href=</span><span class="s">"{{ '/categories/' | relative_url }}"</span>
-      <span class="na">class=</span><span class="s">"nav__item{% if page.url == '/categories/' %} active{% endif %}"</span>
-    <span class="nt">&gt;</span>
-    ALL <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"count"</span><span class="nt">&gt;</span>({{ site.posts | size }})<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/li&gt;</span>
-{% assign category_nav = site.data.navigation.main | where: "title","Category" | first %}
- {% if category_nav %}
- {% include sidebar-items.html items=category_nav.children %}
- {% endif %}
-
- <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"nav-divider"</span> <span class="nt">/&gt;&lt;/li&gt;</span>
-
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar__search"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"sidebar-search"</span> <span class="na">onsubmit=</span><span class="s">"return SidebarSearchHandler();"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"search-type"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"tag"</span><span class="nt">&gt;</span>Tag<span class="nt">&lt;/option&gt;</span>
-            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"both"</span><span class="nt">&gt;</span>Title + Tag<span class="nt">&lt;/option&gt;</span>
-          <span class="nt">&lt;/select&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"search-query"</span> <span class="na">placeholder=</span><span class="s">"Search input"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-block"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-search"</span><span class="nt">&gt;&lt;/i&gt;</span> Search<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/form&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/nav&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-{% endif %}
-</code></pre></div></div>
-
-
-  </div>
-</div>
-
-<h3 id="2-1-사이드-바-ui-수정-scss">2-1. 사이드 바 UI 수정 (.scss)</h3>
-
-<p><code class="language-plaintext highlighter-rouge">\_sass\minimal-misktakes\_sidebar.scss</code> 에 추가</p>
-
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.sidebar__search</span> <span class="p">{</span>
-  <span class="nl">font-family</span><span class="p">:</span> <span class="nv">$sans-serif</span><span class="p">;</span>
-  <span class="nl">font-size</span><span class="p">:</span> <span class="nv">$type-size-6</span><span class="p">;</span>
-  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">1em</span><span class="p">;</span>
-  <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">top</span><span class="p">;</span>
-
-  <span class="k">@include</span> <span class="nd">breakpoint</span><span class="p">(</span><span class="nv">$x-large</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nl">width</span><span class="p">:</span> <span class="n">initial</span><span class="p">;</span>
-    <span class="na">margin-inline-end</span><span class="p">:</span> <span class="n">initial</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="nc">.search-block</span> <span class="p">{</span>
-    <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="mi">.6em</span><span class="p">;</span>
-
-    <span class="nt">select</span><span class="o">,</span>
-    <span class="nt">input</span><span class="o">,</span>
-    <span class="nt">button</span> <span class="p">{</span>
-      <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
-      <span class="nl">max-width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
-      <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
-      <span class="nl">height</span><span class="p">:</span> <span class="m">2</span><span class="mi">.2em</span><span class="p">;</span>
-      <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.9em</span><span class="p">;</span>
-      <span class="nl">font-family</span><span class="p">:</span> <span class="nv">$inherit</span><span class="p">;</span>
-      <span class="nl">box-sizing</span><span class="p">:</span> <span class="nb">border-box</span><span class="p">;</span>
-      <span class="nl">border-radius</span><span class="p">:</span> <span class="nv">$border-radius</span><span class="p">;</span>
-      <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nv">$border-color</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nt">select</span> <span class="p">{</span>
-      <span class="nl">appearance</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-      <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span><span class="mi">.6em</span><span class="p">;</span>
-      <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$background-color</span><span class="p">;</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nt">input</span> <span class="p">{</span>
-      <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span><span class="mi">.6em</span><span class="p">;</span>
-      <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$background-color</span><span class="p">;</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nt">button</span> <span class="p">{</span>
-      <span class="nl">background-color</span><span class="p">:</span> <span class="nv">$primary-color</span><span class="p">;</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nv">$base07</span><span class="p">;</span>
-      <span class="nl">border</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
-      <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
-      <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
-      <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-      <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
-      <span class="nl">gap</span><span class="p">:</span> <span class="m">0</span><span class="mi">.4em</span><span class="p">;</span>
-
-      <span class="nt">i</span> <span class="p">{</span>
-        <span class="nl">font-size</span><span class="p">:</span> <span class="m">0</span><span class="mi">.9em</span><span class="p">;</span>
-      <span class="p">}</span>
-
-      <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
-        <span class="nl">background-color</span><span class="p">:</span> <span class="nf">mix</span><span class="p">(</span><span class="nv">$primary-color</span><span class="o">,</span> <span class="n">black</span><span class="o">,</span> <span class="m">80%</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<p>해당 스타일까지 구현했다면, 로컬 서버로 테스트 할 때, UI가 보입니다. 작동은 아직은 안하지요.</p>
-
-<h3 id="2-2-sidebarsearchhandler-함수-구현하기">2-2. SidebarSearchHandler() 함수 구현하기</h3>
-
-<p><code class="language-plaintext highlighter-rouge">\assets\js\</code> 해당 폴더에 <code class="language-plaintext highlighter-rouge">sidebar-search.js</code> 파일을 새로 만들기 해줍니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">\assets\js\sidebar-search.js</code> 코드</p>
-
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">SidebarSearchHandler</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">search-query</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">type</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">search-type</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-
-  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">query</span><span class="p">.</span><span class="nf">trim</span><span class="p">())</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-
-  <span class="kd">let</span> <span class="nx">finalQuery</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
-  <span class="k">if </span><span class="p">(</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">)</span> <span class="nx">finalQuery</span> <span class="o">=</span> <span class="s2">`title:</span><span class="p">${</span><span class="nx">query</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-  <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">tag</span><span class="dl">"</span><span class="p">)</span> <span class="nx">finalQuery</span> <span class="o">=</span> <span class="s2">`tags:</span><span class="p">${</span><span class="nx">query</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-  <span class="k">else</span> <span class="nx">finalQuery</span> <span class="o">=</span> <span class="nx">query</span><span class="p">;</span>
-
-  <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">`/_search/?q=</span><span class="p">${</span><span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">finalQuery</span><span class="p">)}</span><span class="s2">`</span><span class="p">;</span>
-  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="2-3-search-page-추가하기">2-3. search page 추가하기</h3>
-
-<p><code class="language-plaintext highlighter-rouge">\_pages\</code> 경로에 <code class="language-plaintext highlighter-rouge">search.md</code> 새로 파일을 만들기 해줍니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">search.md</code> 코드</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">search</span><span class="nv"> </span><span class="s">result"</span>
-<span class="na">layout</span><span class="pi">:</span> <span class="s">search</span>
-<span class="na">permalink</span><span class="pi">:</span> <span class="s">/_search/</span>
-<span class="nn">---</span>
-</code></pre></div></div>
-
-<hr />
-
-<p><img src="/assets/images/blog/2025-05-02-blog-21-search/image.png" alt="image.png" style="max-width:100%;" /></p>
-
-<p>serach.md를 추가하고 로컬 서버에서 <a href="http://localhost:4000/_search/">http://localhost:4000/_search/</a> 해당 홈페이지가 만들어집니다.</p>
-
-<h3 id="2-4-serachjs-구현하기">2-4. serach.js 구현하기</h3>
-
-<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\</code> 경로에 <code class="language-plaintext highlighter-rouge">search.js</code> 파일을 새로 만들기 합니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">assets\js\lunr\search.js</code> 코드</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(function () {
-const params = new URLSearchParams(window.location.search);
-const query = params.get("q");
-
-const searchInput = document.getElementById("search");
-const resultsContainer = document.getElementById("results");
-
-if (!searchInput || !resultsContainer) return;
-if (typeof window.store === "undefined") return;
-
-function renderResults(results, query) {
-resultsContainer.innerHTML = "";<span class="sb">
-
-    if (results.length === 0) {
-      resultsContainer.innerHTML = `&lt;p&gt;&lt;em&gt;"${query}"&lt;/em&gt;에 대한 결과가 없습니다.&lt;/p&gt;`;
-      return;
-    }
-
-    const html = results
-      .map(
-        (post) =&gt; `
-      &lt;div class="list__item"&gt;
-        &lt;article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork"&gt;
-          &lt;h2 class="archive__item-title" itemprop="headline"&gt;
-            &lt;a href="${post.url}" rel="bookmark"&gt;${post.title}&lt;/a&gt;
-          &lt;/h2&gt;
-          &lt;div class="archive__item-excerpt" itemprop="description"&gt;
-            ${post.excerpt?.slice(0, 150) ?? ""}...
-          &lt;/div&gt;
-        &lt;/article&gt;
-      &lt;/div&gt;
-    `
-      )
-      .join("");
-
-    resultsContainer.innerHTML = html;
-
-</span>}
-
-function performSearch(query) {
-const results = [];
-const lower = query.toLowerCase();<span class="sb">
-
-    for (const post of window.store) {
-      const title = post.title?.toLowerCase() ?? "";
-      const excerpt = post.excerpt?.toLowerCase() ?? "";
-      const tags = post.tags?.join(" ").toLowerCase() ?? "";
-      const categories = post.categories?.join(" ").toLowerCase() ?? "";
-
-      let match = false;
-
-      if (lower.startsWith("title:")) {
-        const keyword = lower.replace("title:", "").trim();
-        match = title.includes(keyword);
-      } else if (lower.startsWith("tags:")) {
-        const keyword = lower.replace("tags:", "").trim();
-        match = tags.includes(keyword);
-      } else {
-        match =
-          title.includes(lower) ||
-          excerpt.includes(lower) ||
-          tags.includes(lower) ||
-          categories.includes(lower);
-      }
-
-      if (match) {
-        results.push(post);
-      }
-    }
-
-    renderResults(results, query);
-
-</span>}
-
-if (query) {
-searchInput.value = query;
-performSearch(query);
-}
-
-searchInput.addEventListener("input", function (e) {
-performSearch(e.target.value);
-});
-})();
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="동작-요약">동작 요약</h4>
-
-<ol>
-  <li><strong>검색창에 입력된 값을 실시간으로 감지</strong></li>
-  <li><strong>검색어(<code class="language-plaintext highlighter-rouge">q</code>)가 URL에 있을 경우 자동으로 검색 수행</strong></li>
-  <li><strong>정적 데이터(<code class="language-plaintext highlighter-rouge">window.store</code>)를 기준으로 <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">excerpt</code>, <code class="language-plaintext highlighter-rouge">tags</code>, <code class="language-plaintext highlighter-rouge">categories</code>에서 키워드 검색</strong></li>
-  <li><strong>검색 결과를 실시간으로 DOM에 렌더링</strong></li>
-</ol>
-
-<h2 id="2-5-serachjs">2-5. serach.js</h2>
-
-<p><code class="language-plaintext highlighter-rouge">\_layouts\default.html</code> 코드 추가:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- lunr search script --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/sidebar-search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/lunr-store.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/lunr/search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">\_layouts\default.html</code> 전체 코드:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
----
-<span class="cp">&lt;!doctype html&gt;</span>
-{% include copyright.html %}
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"{{ site.locale | replace: "</span><span class="na">_</span><span class="err">",</span> <span class="err">"</span><span class="na">-</span><span class="err">"</span> <span class="err">|</span> <span class="na">default:</span> <span class="err">"</span><span class="na">en</span><span class="err">"</span> <span class="err">}}"</span> <span class="na">class=</span><span class="s">"no-js"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    {% include head.html %}
-    {% include head/custom.html %}
-  <span class="nt">&lt;/head&gt;</span>
-
-  <span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}"</span> <span class="na">dir=</span><span class="s">"{% if site.rtl %}rtl{% else %}ltr{% endif %}"</span><span class="nt">&gt;</span>
-    {% include_cached skip-links.html %}
-    {% include_cached masthead.html %}
-
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"initial-content"</span><span class="nt">&gt;</span>
-      {{ content }}
-      {% include after-content.html %}
-    <span class="nt">&lt;/div&gt;</span>
-
-    {% if site.search == true %}
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-content"</span><span class="nt">&gt;</span>
-        {% include_cached search/search_form.html %}
-      <span class="nt">&lt;/div&gt;</span>
-    {% endif %}
-
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span> <span class="na">class=</span><span class="s">"page__footer"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;footer&gt;</span>
-        {% include footer/custom.html %}
-        {% include_cached footer.html %}
-      <span class="nt">&lt;/footer&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-
-    <span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span>
-    {% include custom_code-block_custom.html %}
-    {%include custom_toggle-script.html %}
-    {% include custom_quiz-form.html %}
-
-    <span class="c">&lt;!-- lunr search script --&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/sidebar-search.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/lunr.min.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/lunr-store.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/search.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-    {% include scripts.html %}
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<hr />
-
-<p>저는 해당 부분을 <code class="language-plaintext highlighter-rouge">custom_script.html</code> 으로 분리 해서 사용했습니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">custom_script.html</code> 코드:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- JEKYLL LIQUID TAG --&gt;</span>
-{% include custom_code-block_custom.html %} {%include custom_toggle-script.html
-%} {% include custom_quiz-form.html %}
-
-<span class="c">&lt;!-- lunr search script --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/sidebar-search.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/lunr.min.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/lunr-store.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{ '/assets/js/lunr/search.js' | relative_url }}"</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-</code></pre></div></div>
-
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">\_layouts\default.html</code> 에 추가한 코드:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include custom_script.html %}
-</code></pre></div></div>
-
-<p><img src="/assets/images/blog/2025-05-02-blog-21-search/image1.png" alt="image1.png" style="max-width:100%;" /></p>
-
-<p>title 을 assembly 으로 검색한 이미지 하지만 처음에 Assembly Category까지 검색되어 나온 모습을 볼 수 있습니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">\_config.yml</code> 에서 <code class="language-plaintext highlighter-rouge">defaults:</code> 속성에서 수정:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-    <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-    <span class="na">type</span><span class="pi">:</span> <span class="s">pages</span>
-  <span class="na">values</span><span class="pi">:</span>
-    <span class="na">author_profile</span><span class="pi">:</span> <span class="kc">true</span>
-    <span class="na">search</span><span class="pi">:</span> <span class="kc">false</span>
-    <span class="na">sidebar</span><span class="pi">:</span>
-      <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">main"</span>
-</code></pre></div></div>
-
-<hr />
-
-<p>카테고리까지 검색 되는 것을 방지 하기 위해 <code class="language-plaintext highlighter-rouge">serach:</code> 속성의 값을 <code class="language-plaintext highlighter-rouge">false</code> 으로 설정해주었습니다.</p>
-
-<p><img src="/assets/images/blog/2025-05-02-blog-21-search/image2.png" alt="image2.png" style="max-width:100%;" /></p>
-
-<p>다시 검색을 진행 해본 이미지 입니다. 카테고리가 빠져있고 게시글만 검색되는 것을 확인할 수 있었습니다.</p>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="Jekyll" /><category term="GitHub Pages" /><category term="lunr.js" /><category term="검색 기능" /><category term="블로그 커스터마이징" /><summary type="html"><![CDATA[minimal-mistakes-jekyll 테마에서 Lunr.js를 이용해 상단 및 사이드바에 커스텀 검색창을 구현하고, 검색 페이지와 필터 기능까지 동작하도록 설정하는 전체 과정을 정리합니다.]]></summary></entry></feed>
+</blockquote>]]></content><author><name>ruyshy</name><email>ruyshyttr@gmail.com</email></author><category term="blog" /><category term="GitHub Blog" /><category term="Jekyll" /><category term="GitHub Pages" /><category term="tag" /><category term="blog customization" /><summary type="html"><![CDATA[Jekyll 기반 GitHub 블로그에서 태그 기능을 추가하고 /tags/태그명/ 경로로 자동 생성되도록 설정하는 방법을 정리합니다. generate_tags.rb 플러그인과 tag_archive 레이아웃을 활용한 커스터마이징을 포함합니다.]]></summary></entry></feed>
